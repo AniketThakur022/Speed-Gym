@@ -1,0 +1,23 @@
+{
+ "experiment": "Does OCR hard-wrapping cause Station-3 grounding losses?",
+ "date": "2026-09-03",
+ "why": "Page OCR hard-wraps prose every ~23 chars (44 newlines per 1k). A model quoting a span across a wrap renders it with a space, so exact char alignment fails and the extraction is DISCARDED by the grounding gate. Settled before the key-gated station-2 embedding commits the chunk store to a shape.",
+ "setup": {
+  "book": "Tirthaji",
+  "chunks": "same slice, page >= 60 (front matter excluded), station-0 verbatim store",
+  "model": "llama3.2:3b via local Ollama",
+  "arms": ["wrapped (as-chunked)", "unwrapped (--unwrap: rejoins wrapped prose, preserves columnar/math lines)"]
+ },
+ "results": {
+  "wrapped": {"chunks_completed": 25, "grounded_rows": 40, "exact": 18, "fuzzy": 22,
+              "exact_share": 0.45, "grounded_per_chunk": 1.60, "grounding_rate_of_raw": 0.165},
+  "unwrapped": {"chunks_completed": 22, "grounded_rows": 35, "exact": 24, "fuzzy": 11,
+                "exact_share": 0.69, "grounded_per_chunk": 1.59,
+                "grounding_rate_of_raw": null,
+                "note": "run died on an Ollama 120s timeout at chunk 23; raw counts unavailable, so rate-of-raw is not comparable. Per-chunk yield and exact/fuzzy mix are."}
+ },
+ "finding": "Unwrapping does NOT change how much is extracted (1.60 vs 1.59 grounded per chunk) but substantially improves how precisely it aligns: exact-match share 45% -> 69%. Fuzzy matching is our own whitespace-tolerant fallback; exact alignment is what gives trustworthy character-level provenance.",
+ "recommendation": "Unwrap prose at station 0 before embedding. Yield is unaffected, citation precision improves, and doing it pre-embedding avoids paying the key-gated embedding cost twice.",
+ "limits": "Small sample (25 vs 22 chunks; 40 vs 35 rows), one small model, one book. Directionally consistent with the mechanism but not statistically strong. The 16.5% vs the old 54.1% summary-chunk rate is NOT a regression: summary prose was clean LLM-written English that is trivially quotable, and those citations pointed at a paraphrase rather than the book.",
+ "harness_bug_fixed": "The crash discarded the whole run's report despite 22 chunks of completed work. Per-chunk model failures are now caught and counted (chunk_errors), and report.json is written in a finally block with a `complete` flag."
+}

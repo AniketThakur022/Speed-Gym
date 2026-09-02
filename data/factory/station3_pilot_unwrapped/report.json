@@ -1,0 +1,12 @@
+{
+ "provider": "ollama",
+ "model": "llama3.2:3b",
+ "unwrap": true,
+ "stats": {
+  "skipped_checkpoint": 22
+ },
+ "grounding_rate": null,
+ "exact_share_of_grounded": null,
+ "complete": true,
+ "note": "ungrounded extractions are DISCARDED per the factory PDF hard rule"
+}

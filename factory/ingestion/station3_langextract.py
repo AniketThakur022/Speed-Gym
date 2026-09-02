@@ -209,12 +209,19 @@ def main() -> int:
 
     stats = Counter()
     ext_path = out_dir / "extractions.jsonl"
-    with ext_path.open("a") as out:
+    try:
+      with ext_path.open("a") as out:
         for row in slice_rows:
             if row["id"] in done:
                 stats["skipped_checkpoint"] += 1
                 continue
-            result = run_model(row["content"], args)
+            try:
+                result = run_model(row["content"], args)
+            except Exception as e:
+                # One slow/failed chunk must not discard a whole run's work.
+                stats["chunk_errors"] += 1
+                print(f"  chunk {row['id']}: {e.__class__.__name__}: {str(e)[:90]}")
+                continue
             for e in (result.extractions or []):
                 stats[f"raw_{e.extraction_class}"] += 1
                 g = ground(e, row["content"])
@@ -231,17 +238,21 @@ def main() -> int:
             done.add(row["id"])
             ckpt_path.write_text(json.dumps({"done": sorted(done)}))
             stats["chunks_processed"] += 1
-
-    raw = sum(v for k, v in stats.items() if k.startswith("raw_"))
-    grounded = stats["grounded_exact"] + stats["grounded_fuzzy"]
-    report = {
-        "provider": args.provider, "model": args.model,
-        "stats": dict(stats),
-        "grounding_rate": round(grounded / raw, 3) if raw else None,
-        "note": "ungrounded extractions are DISCARDED per the factory PDF hard rule",
-    }
-    (out_dir / "report.json").write_text(json.dumps(report, indent=1))
-    print(json.dumps(report, indent=1))
+    finally:
+        # Always emit the report — a crash at chunk N must not erase N-1 chunks of
+        # measurement (it did, on the first unwrapped A/B run).
+        raw = sum(v for k, v in stats.items() if k.startswith("raw_"))
+        grounded = stats["grounded_exact"] + stats["grounded_fuzzy"]
+        report = {
+            "provider": args.provider, "model": args.model, "unwrap": bool(args.unwrap),
+            "stats": dict(stats),
+            "grounding_rate": round(grounded / raw, 3) if raw else None,
+            "exact_share_of_grounded": round(stats["grounded_exact"] / grounded, 3) if grounded else None,
+            "complete": stats["chunks_processed"] + stats["skipped_checkpoint"] == len(slice_rows),
+            "note": "ungrounded extractions are DISCARDED per the factory PDF hard rule",
+        }
+        (out_dir / "report.json").write_text(json.dumps(report, indent=1))
+        print(json.dumps(report, indent=1))
     return 0
 
 
