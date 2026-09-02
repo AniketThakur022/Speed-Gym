@@ -26,6 +26,7 @@ import {
 
 import { getPracticeSession, type PracticeItem } from "@/services/practice";
 import { checkAnswer, type CheckOutcome } from "@/lib/answer-check";
+import { MathText } from "@/components/math-text";
 
 type Verdict = { outcome: CheckOutcome; expected: number | null };
 
@@ -163,7 +164,9 @@ export default function PracticePage() {
         <span>{mastery === null ? "—" : `${mastery}% mastery`}</span>
       </div>
 
-      <h1 className="mt-4 text-fluid-lg font-medium">{item.question_text}</h1>
+      <h1 className="mt-4 text-fluid-lg font-medium">
+        <MathText>{item.question_text ?? ""}</MathText>
+      </h1>
 
       <div className="mt-2 flex flex-wrap gap-2 text-fluid-xs text-muted-foreground">
         {(item.technique || item.topic) && <Tag>{item.technique || item.topic}</Tag>}

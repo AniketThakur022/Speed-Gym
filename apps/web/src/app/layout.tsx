@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 
+import "katex/dist/katex.min.css";
 import "./globals.css";
 import { CapacitorInit } from "./capacitor-init";
 import { AppEntry } from "@/components/ui/app-entry";
