@@ -21,12 +21,12 @@ So the transitive skill-ordering layer is only **93 directed edges over 467 skil
 
 Deterministic, no-AI derivation from recovered data, written as `REQUIRES` edges (dependent → prerequisite; the 11 existing curated edges already have exactly these semantics — we extend that relation rather than overloading `PREREQUISITE_OF`, which stays Skill→Problem):
 
-1. **Template chains:** every recovered template carries an ordered `prerequisite_chain` (2,863 entries; 91% resolve exactly to live `:Skill.name`, 420/439 distinct). For a template teaching skill S with chain `[A, B, C]`: emit `B REQUIRES A`, `C REQUIRES B`, `S REQUIRES C`. Aggregate over all 861 templates; keep edges seen ≥2 times (noise floor), tag `source:'chain_derived', support:<n>`.
+1. **Template chains (set semantics — REVISED after sampling):** every recovered template carries a `prerequisite_chain` (2,863 entries; 91% resolve exactly to live `:Skill.name`). Sampling shows chains are **unordered prerequisite sets** (broad→specific-ish, with sutras sometimes listed before basics), so consecutive-pair derivation is unsafe. Rule: resolve the template's taught skill **S** (its `sub_topic` when it names a live Skill — 772/915 records; else the `TEACHES` edge — 307, but coarse; else `technique_name` via `name_norm`), then emit `S REQUIRES member` for each resolved chain member, no chain-internal pairs, no self-loops. Aggregate over the 861 unique templates; keep edges with support ≥2 (noise floor), tag `source:'chain_derived', support:<n>`. Transitive depth still emerges because chain members are themselves taught skills of other templates.
 2. **Curated sequence:** invert `NEXT_TOPIC` (82) into `later REQUIRES earlier`, tag `source:'next_topic'`.
 3. **Keep** the 11 hand-curated `REQUIRES`, tag `source:'curated'` (highest precedence).
-4. **Root guard:** the 9 `is_root` skills (Arithmetic, Algebra, …, VedicMath) must have out-degree 0 after derivation (roots require nothing) — drop violating edges.
-5. **Cycle break:** verified the chain-derived graph is acyclic today (0 back-edges in export-derived edges); the builder still runs Tarjan SCC detection and breaks cycles by lowest `support`, logging to the run report.
-6. **Name resolution:** the 9% non-matching chain entries (19 distinct strings) resolve via `ontology_registry.yaml` aliases or get stub `:Skill{is_stub:true}` nodes — same convention the graph already uses.
+4. **Root guard (derived edges only):** chain-derived edges FROM one of the 9 `is_root` skills are dropped — noisy chains must not give roots new dependencies. Curated edges are exempt (`VedicMath REQUIRES Arithmetic` is legitimate and stays).
+5. **Cycle break:** the builder runs SCC detection on the final edge set and breaks cycles by removing the lowest-`support` derived edge per cycle, logging every removal to the run report. Curated/next_topic edges are never auto-removed.
+6. **Name resolution:** unresolved chain strings (~9%) resolve via `name_norm` casefold matching and `ontology_registry.yaml` aliases; the remainder are dropped and reported (no stub-node creation until the owner reviews the unresolved list).
 7. `FRONTIER_OF` is **never** used for closure. It remains the sibling/adjacency signal for the hourly T3 bridge (1-hop "sibling subtopic" pulls).
 
 ## 3. Strategy A proper (per the PDF, corrected labels/filters)
