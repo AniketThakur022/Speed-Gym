@@ -20,6 +20,18 @@ Subcommands:
   inventory             counts by class x book, PDF availability
   build [--book B] [--limit N]
                         write task manifest + render page images (offline)
+  station1 --book B     verbatim full-book page sweep (offline): extract every
+                        page's text layer to the shared page store
+                        (data/vision_pass/pages/<book>/NNNN_ocr.md + _meta.json,
+                        same artifact contract as page_ocr_pipeline.py), flag
+                        poor-text-layer pages needs_render for the vision batch,
+                        print a per-book quality report. This is the Station-1
+                        digitizer lane the RAG factory's verbatim re-chunk
+                        consumes (chunking itself is RAG-owned, downstream) —
+                        one sweep serves both the vision pass and RAG, so each
+                        book is only processed once. MinerU/Docling bake-off
+                        may later replace the extractor; the artifact contract
+                        stays.
   submit --tasks FILE   create a message batch  [requires ANTHROPIC_API_KEY]
   poll --batch ID       processing status       [requires ANTHROPIC_API_KEY]
   collect --batch ID    write raw results JSONL [requires ANTHROPIC_API_KEY]
@@ -107,6 +119,16 @@ PROMPTS = {
         "The attached page(s) contain a scored sample GRE essay whose extraction was truncated. "
         "Transcribe the COMPLETE printed essay text verbatim. Return ONLY a JSON object: "
         "{{\"set_id\": ..., \"text\": ..., \"confidence\": ..., \"note\": ...}}. Item: {items}"
+    ),
+    "answer_grid": (
+        "The attached image is a page from a book's ANSWERS section: numbered answers grouped "
+        "under exercise headings (e.g. 'IV. a. Pages 31, 32'). The answers are mathematical "
+        "expressions. Transcribe the ENTIRE page faithfully, reading each column top-to-bottom in "
+        "print order. Use ^ for superscripts, sqrt() for roots, a/b for fractions, and keep mixed "
+        "numbers like 3 1/2 explicit. Return ONLY a JSON array of exercise blocks: "
+        '[{{"exercise": "IV. a.", "question_pages": "31, 32", "answers": {{"1": ..., "2": ..., ...}}, '
+        '"illegible": ["numbers you could not read"]}}]. '
+        "Do not guess illegible values — list them in illegible. Context: {items}"
     ),
 }
 
@@ -236,6 +258,61 @@ def cmd_build(args):
     print("tasks by class:", dict(by_class))
 
 
+def cmd_station1(args):
+    """Full-book verbatim text sweep into the shared page store (no API, no PNGs).
+
+    Pages whose text layer is too weak to be verbatim-trustworthy are flagged
+    needs_render: true in their _meta.json — the vision batch picks those up as
+    page-digitization tasks. Everything else is servable verbatim markdown."""
+    import re
+    import unicodedata
+    import pymupdf
+    book = args.book
+    if book in PRERENDERED:
+        print("%s already has a full page store at %s (pipeline artifacts) — skipping" %
+              (book, PRERENDERED[book]))
+        return
+    pdf = BOOK_PDFS.get(book)
+    if not (pdf and pdf.exists()):
+        sys.exit("no recovered PDF for book %r" % book)
+    pages_dir = WORKDIR / "pages" / book.replace(" ", "_")
+    pages_dir.mkdir(parents=True, exist_ok=True)
+    doc = pymupdf.open(str(pdf))
+    stats = {"pages": len(doc), "verbatim_ok": 0, "needs_render": 0, "blank": 0, "chars": 0}
+    for pno in range(len(doc)):
+        page = doc[pno]
+        n = pno + 1
+        raw = unicodedata.normalize("NFKC", (page.get_text("text") or "")).strip()
+        words = len(raw.split())
+        letters = sum(c.isalpha() for c in raw)
+        # verbatim-quality gate: enough words AND mostly real characters
+        # (garbled OCR layers produce symbol soup; image-only pages produce nothing)
+        garbage = len(re.findall(r"[^\w\s.,;:()\[\]{}+\-*/=<>%'\"?!^_|~&#$@\\]", raw))
+        if words < 8:
+            verdict = "blank" if not page.get_images() else "needs_render"
+        elif letters < 0.35 * max(1, len(raw)) or garbage > 0.15 * max(1, len(raw)):
+            verdict = "needs_render"
+        else:
+            verdict = "verbatim_ok"
+        stats[verdict if verdict != "verbatim_ok" else "verbatim_ok"] += 1
+        stats["chars"] += len(raw)
+        (pages_dir / ("%04d_ocr.md" % n)).write_text(
+            "<!-- PAGE %d -->\n<!-- OCR_SOURCE: pymupdf -->\n<!-- VERBATIM: %s -->\n"
+            "<!-- LABEL: %s -->\n\n%s\n" % (n, verdict, page.get_label() or n, raw),
+            encoding="utf-8")
+        (pages_dir / ("%04d_meta.json" % n)).write_text(json.dumps({
+            "page_num": n, "page_label": page.get_label() or str(n),
+            "word_count": words, "ocr_source": "pymupdf",
+            "verbatim": verdict == "verbatim_ok", "needs_render": verdict == "needs_render",
+            "has_images": bool(page.get_images()),
+            "book": book, "pdf": str(pdf.name),
+        }, ensure_ascii=False, indent=1), encoding="utf-8")
+    doc.close()
+    report = {"book": book, "pdf": pdf.name, **stats}
+    (pages_dir / "station1_report.json").write_text(json.dumps(report, indent=1))
+    print(json.dumps(report, indent=1))
+
+
 def build_request(task, model):
     """One batch Request per task: page images + class prompt."""
     from anthropic.types.message_create_params import MessageCreateParamsNonStreaming
@@ -301,6 +378,8 @@ def main():
     sub.add_parser("inventory")
     b = sub.add_parser("build")
     b.add_argument("--book"), b.add_argument("--limit", type=int)
+    s1 = sub.add_parser("station1")
+    s1.add_argument("--book", required=True)
     s = sub.add_parser("submit")
     s.add_argument("--tasks", required=True), s.add_argument("--model", default=MODEL_DEFAULT)
     p = sub.add_parser("poll")
@@ -308,8 +387,8 @@ def main():
     c = sub.add_parser("collect")
     c.add_argument("--batch", required=True)
     args = ap.parse_args()
-    {"inventory": cmd_inventory, "build": cmd_build, "submit": cmd_submit,
-     "poll": cmd_poll, "collect": cmd_collect}[args.cmd](args)
+    {"inventory": cmd_inventory, "build": cmd_build, "station1": cmd_station1,
+     "submit": cmd_submit, "poll": cmd_poll, "collect": cmd_collect}[args.cmd](args)
 
 
 if __name__ == "__main__":

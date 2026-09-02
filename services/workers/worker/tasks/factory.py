@@ -1,7 +1,11 @@
-"""Content-factory entry points — the two beat-scheduled task names the RAG
-workstream registers its pipeline under. The names below are the CONTRACT
-(shared with the RAG chat 2026-09-02); implementations are RAG-owned modules
-invoked from here. Factory work is batch-only with zero runtime consumers.
+"""Content-factory entry points — beat-scheduled task names wired to the
+RAG-owned lanes in factory/runs.py (contract shared 2026-09-02, RAG commit
+a11a842). Lanes run file-sink until the MERGE window, then swap to DB/Redis
+sinks without touching lane logic. Batch-only, zero runtime consumers.
+
+Imports are lazy so the worker boots even if the factory package is absent
+(e.g. a stripped deployment); worker/app.py pins CWD to the repo root, which
+the lanes' relative data/factory/ paths require.
 """
 
 from worker.app import app
@@ -9,13 +13,17 @@ from worker.app import app
 
 @app.task(name="factory.nightly_run")
 def nightly_factory_run() -> dict:
-    """Nightly window (00:00 UTC): 6-station ingestion, 7-stage auditor,
-    trust-ladder promotion sweep, Strategy-A closure rebuild + shadow diff."""
-    return {"status": "stub", "note": "RAG-owned pipeline plugs in here"}
+    """Nightly window (00:00 UTC): T2 generation → 7-stage audit → adapter →
+    zod-validated delivery → run report."""
+    from factory.runs import nightly_run
+
+    return nightly_run()
 
 
 @app.task(name="factory.hourly_run")
 def hourly_factory_run() -> dict:
-    """Hourly window: T1–T5 generation ladder top-ups (T3 sibling bridging,
-    template refresh), bounded by the nightly audit's trust gates."""
-    return {"status": "stub", "note": "RAG-owned pipeline plugs in here"}
+    """Hourly window (:15): pool check (<50 → make 100) via the T1–T5 ladder;
+    T4/T5 stay gated offline until their dependencies exist."""
+    from factory.runs import hourly_run
+
+    return hourly_run()

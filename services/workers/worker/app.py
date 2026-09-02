@@ -5,9 +5,18 @@ here in Phase 1 (FIX #5: pg_cron deferred to Phase-2a infra).
 """
 
 import os
+import sys
+from pathlib import Path
 
 from celery import Celery
 from celery.schedules import crontab
+
+# The RAG factory lanes (factory/runs.py) import as top-level `factory.*` and
+# use repo-relative data/factory/ paths — this worker is repo-scoped by design.
+REPO_ROOT = Path(__file__).resolve().parents[3]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+os.chdir(REPO_ROOT)
 
 app = Celery(
     "vmsg",

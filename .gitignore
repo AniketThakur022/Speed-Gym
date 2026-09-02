@@ -9,6 +9,10 @@ dist/
 out/
 .next/
 incoming/
+# vision-pass / station-1 page store (renders + verbatim page text; large, regenerable)
+data/vision_pass/pages/
+data/vision_pass/tasks/
+data/vision_pass/results/
 .venv/
 .pytest_cache/
 *.tsbuildinfo
