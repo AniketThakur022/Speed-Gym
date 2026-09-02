@@ -36,7 +36,7 @@ ROOT = Path(__file__).resolve().parents[2]
 MASTER = ROOT / "data/corpus/MASTER_corpus.jsonl"
 PAGES = ROOT / "data/vision_pass/pages"
 
-ADDITIVE = {"key", "format", "flag", "suspect"}
+ADDITIVE = {"key", "format", "flag", "suspect", "difficulty"}
 REWRITE = {"text", "options", "record_tags", "markdown"}
 WORD = re.compile(r"[A-Za-z]{3,}|\d+")
 
@@ -109,6 +109,20 @@ def main():
                 flag("empty answer_key", "%s #%s" % (sid, num))
             if not e.get("key_source"):
                 flag("key without key_source provenance", "%s #%s" % (sid, num))
+        if act == "difficulty":
+            existing = q.get("difficulty")
+            if existing is not None:
+                if existing == e.get("difficulty"):
+                    problems["(info) already applied — identical difficulty present"] += 1
+                else:
+                    flag("CONFLICT: would overwrite a DIFFERENT difficulty",
+                         "%s #%s: have %r, patch says %r"
+                         % (sid, num, existing, e.get("difficulty")))
+            d = e.get("difficulty")
+            if not isinstance(d, int) or not (1 <= d <= 5):
+                flag("difficulty outside the 1-5 scale", "%s #%s: %r" % (sid, num, d))
+            if not e.get("difficulty_source"):
+                flag("difficulty without provenance", "%s #%s" % (sid, num))
         if act == "format":
             existing = q.get("question_format")
             if existing not in (None, "", "unclassified"):

@@ -80,6 +80,12 @@ def main():
                     elif e["action"] == "suspect":
                         q.setdefault("extra", {})["key_suspect"] = e["reason"]
                         flagged += 1
+                    elif e["action"] == "difficulty":
+                        if q.get("difficulty") is not None:
+                            continue          # never overwrite an existing value
+                        q["difficulty"] = e["difficulty"]
+                        q.setdefault("extra", {})["difficulty_source"] = e["difficulty_source"]
+                        applied += 1
                     elif e["action"] == "format":
                         # only ever fills in "unclassified"; never overwrites a
                         # format the extraction pipeline already determined
