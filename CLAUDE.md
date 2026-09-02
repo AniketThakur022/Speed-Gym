@@ -12,6 +12,8 @@ Work is split across three chats that all run in THIS directory and share the sa
 
 When you make a decision other workstreams depend on (API contract, graph schema, taxonomy, file formats), **write/update a memory file** so the other chats inherit it.
 
+**Owner directive (2026-09-02): ultracode is ON for all Speed Gym chats** — for every substantive task, orchestrate with the Workflow tool (parallel fan-out, adversarial verification, completeness critics); optimize for the most exhaustive correct result, not token cost. Solo work only for trivial/conversational turns. The owner also selects Opus as the working model — model switching is done by the owner in each chat's model picker, not by the chats themselves.
+
 ## Directory layout
 
 - `docs/reference/` — surviving specs of record: `VMSG_TECHNICAL_ARCHITECTURE.md` (the 510-line blueprint), `VMSG_CLIENT_BRIEF.md`, `VMSG_CONTENT_READINESS.md`, `VMSG_PROGRESS_REPORT.pdf` (what was built pre-loss), `VMSG_RAG_Content_Factory.pdf` (factory spec, scope-locked 2026-07-17), `pipeline-untitled.pdf` (graph-closure strategies A–D), `system-design.excalidraw`, preview dashboards (`preview-1.html`, `preview-2.html`, `gre_preview.html`).
