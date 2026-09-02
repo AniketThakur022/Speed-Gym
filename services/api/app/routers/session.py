@@ -103,12 +103,12 @@ async def _load_tier1(topic: Optional[str], technique: Optional[str], limit: int
 
     # The skill edge is REQUIRED, not optional: a problem with no :Skill cannot
     # move mastery, so serving it spends a learner's attempt on something the
-    # engine will discard. That costs only ~1.5% of the verified pool.
+    # engine will discard. That costs only ~1.5% of the verified pool, and it is
+    # what fixed the first page arriving full of unattributable items.
     #
-    # Ordering by p.difficulty alone is not usable — it is null on all but a
-    # handful of problems, and the resulting tie-break landed the whole first
-    # page on the unconnected nodes. coalesce() puts unknown difficulty in the
-    # middle so the window is representative.
+    # difficulty is populated on every graph :Problem (spread 10/110/315/260/112),
+    # so coalesce() here is only a guard for future rows; template_id breaks ties
+    # so a page is stable rather than ordered arbitrarily among equal difficulties.
     query = (
         "MATCH (s:Skill)-[:PREREQUISITE_OF]->(p:Problem) WHERE "
         + " AND ".join(filters)
