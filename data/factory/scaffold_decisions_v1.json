@@ -1,0 +1,1591 @@
+{
+ "decisions": [
+  {
+   "group": "dhvajanka",
+   "template_id": "vedic_completion_dhvajanka_001",
+   "scaffold_type": "place_value_chart",
+   "config": {
+    "description": "Straight-division place-value chart for 84 ÷ 7: dividend digits 8|4 in tens and units columns with a quotient digit written under each; the remainder 1 from the tens column is handed into the units column to form gross dividend 14.",
+    "elements": [
+     {
+      "type": "column",
+      "place": "tens"
+     },
+     {
+      "type": "column",
+      "place": "units"
+     },
+     {
+      "type": "arrow",
+      "from": "higher_place",
+      "to": "lower_place",
+      "label": "borrow"
+     }
+    ],
+    "textual_equivalent": "84 ÷ 7: 8 ÷ 7 = 1 remainder 1; bring down 4 to form gross dividend 14; 14 ÷ 7 = 2 remainder 0; quotient digits 1 and 2 give 12."
+   },
+   "status": "approved_3of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 3,
+    "reject": 0,
+    "verdicts_seen": 3
+   },
+   "rationale": "Steps march column-by-column with remainders — 8÷7=1 remainder 1, the remainder prefixed to the brought-down 4 to form gross dividend 14, then per-column quotient digits combined into 12 — the exact write-digit/carry-remainder-to-next-column flow of the columnar chart.",
+   "reject_reasons": []
+  },
+  {
+   "group": "dhvajanka",
+   "template_id": "vedic_completion_dhvajanka_002",
+   "scaffold_type": "arrow_matrix",
+   "config": {
+    "description": "Divisor 13 split into main 1 | flag 3 lanes over dividend digits 9|1; a diagonal arrow carries the crosswise product 9×3=27 into the adjustment lane, where it is subtracted from gross dividend 91 before the quotient is corrected to 7.",
+    "elements": [
+     {
+      "type": "grid",
+      "subtype": "multiplication_arrow_matrix",
+      "rows": 2,
+      "cols": 2
+     },
+     {
+      "type": "arrow",
+      "from": "tentative_quotient",
+      "to": "flag_digit",
+      "label": "crosswise product"
+     },
+     {
+      "type": "text_label",
+      "content": "diagonal sum lane"
+     }
+    ],
+    "textual_equivalent": "91 ÷ 13, main 1 flag 3: tentative 9 ÷ 1 = 9; crosswise product 9×3 = 27; 91 − 27 = 64 shows 9 is too large; corrected quotient 7 since 7×13 = 91."
+   },
+   "status": "approved_3of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 3,
+    "reject": 0,
+    "verdicts_seen": 3
+   },
+   "rationale": "The walkthrough pivots on a single crosswise correction — tentative quotient 9 (from 9÷1) times flag 3 gives 27, subtracted from gross dividend 91 before re-estimating to 7 — a flag×quotient cross-product structure rather than a per-column remainder march.",
+   "reject_reasons": []
+  },
+  {
+   "group": "dhvajanka",
+   "template_id": "vedic_completion_dhvajanka_003",
+   "scaffold_type": "place_value_chart",
+   "config": {
+    "description": "Columnar chart for 72 ÷ 8: dividend digits 7|2 in tens and units columns; leading quotient digit 0 with remainder 7 handed into the units column to form 72, quotient digits 0|9 assembled to 9.",
+    "elements": [
+     {
+      "type": "column",
+      "place": "tens"
+     },
+     {
+      "type": "column",
+      "place": "units"
+     },
+     {
+      "type": "arrow",
+      "from": "higher_place",
+      "to": "lower_place",
+      "label": "borrow"
+     }
+    ],
+    "textual_equivalent": "72 ÷ 8: 7 ÷ 8 = 0 remainder 7; bring down 2 to form gross dividend 72; 72 ÷ 8 = 9 remainder 0; quotient digits 0 and 9 give 9."
+   },
+   "status": "approved_3of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 3,
+    "reject": 0,
+    "verdicts_seen": 3
+   },
+   "rationale": "Pure columnar division with no flag digit: 7÷8 writes quotient 0 with remainder 7 handed into the next column to form 72, and the per-column digits 0 and 9 are assembled by place — a column-by-column remainder walkthrough.",
+   "reject_reasons": []
+  },
+  {
+   "group": "dhvajanka",
+   "template_id": "vedic_completion_dhvajanka_004",
+   "scaffold_type": "place_value_chart",
+   "config": {
+    "description": "Columnar chart for 65 ÷ 5: dividend digits 6|5 in tens and units columns; remainder 1 from the tens division prefixes the brought-down 5 to make gross dividend 15; quotient digits 1|3 give 13.",
+    "elements": [
+     {
+      "type": "column",
+      "place": "tens"
+     },
+     {
+      "type": "column",
+      "place": "units"
+     },
+     {
+      "type": "arrow",
+      "from": "higher_place",
+      "to": "lower_place",
+      "label": "borrow"
+     }
+    ],
+    "textual_equivalent": "65 ÷ 5: 6 ÷ 5 = 1 remainder 1; bring down 5 to form gross dividend 15; 15 ÷ 5 = 3 remainder 0; quotient digits 1 and 3 give 13."
+   },
+   "status": "approved_3of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 3,
+    "reject": 0,
+    "verdicts_seen": 3
+   },
+   "rationale": "Digit-serial columnar flow — 6÷5=1 remainder 1, the remainder prefixed to the brought-down 5 for gross dividend 15, quotient digits 1 and 3 assembled by place into 13 — matching the column/remainder-carry chart exactly.",
+   "reject_reasons": []
+  },
+  {
+   "group": "dhvajanka",
+   "template_id": "vedic_completion_dhvajanka_005",
+   "scaffold_type": "arrow_matrix",
+   "config": {
+    "description": "Divisor 14 split into main 1 | flag 4 lanes over dividend digits 9|8; a diagonal arrow carries the crosswise product 9×4=36 into the adjustment lane subtracted from 98, leading to the corrected quotient 7.",
+    "elements": [
+     {
+      "type": "grid",
+      "subtype": "multiplication_arrow_matrix",
+      "rows": 2,
+      "cols": 2
+     },
+     {
+      "type": "arrow",
+      "from": "tentative_quotient",
+      "to": "flag_digit",
+      "label": "crosswise product"
+     },
+     {
+      "type": "text_label",
+      "content": "diagonal sum lane"
+     }
+    ],
+    "textual_equivalent": "98 ÷ 14, main 1 flag 4: tentative 9 ÷ 1 = 9; crosswise product 9×4 = 36; 98 − 36 = 62; corrected quotient 7 since 7×14 = 98."
+   },
+   "status": "approved_3of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 3,
+    "reject": 0,
+    "verdicts_seen": 3
+   },
+   "rationale": "The core move is the crosswise flag product 9×4=36 subtracted from gross dividend 98 followed by quotient re-estimation to 7 — cross-product-correction emphasis, the arrow_matrix branch of the flag-division rubric, with no columnar digit march.",
+   "reject_reasons": []
+  },
+  {
+   "group": "dhvajanka",
+   "template_id": "vedic_completion_dhvajanka_006",
+   "scaffold_type": "arrow_matrix",
+   "config": {
+    "description": "Divisor 12 split into main 1 | flag 2 lanes over dividend digits 9|6; the crosswise product 9×2=18 flows diagonally into the adjustment lane (96−18=78) before the quotient is corrected to 8.",
+    "elements": [
+     {
+      "type": "grid",
+      "subtype": "multiplication_arrow_matrix",
+      "rows": 2,
+      "cols": 2
+     },
+     {
+      "type": "arrow",
+      "from": "tentative_quotient",
+      "to": "flag_digit",
+      "label": "crosswise product"
+     },
+     {
+      "type": "text_label",
+      "content": "diagonal sum lane"
+     }
+    ],
+    "textual_equivalent": "96 ÷ 12, main 1 flag 2: tentative 9 ÷ 1 = 9; crosswise product 9×2 = 18; 96 − 18 = 78; corrected quotient 8 since 8×12 = 96."
+   },
+   "status": "approved_3of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 3,
+    "reject": 0,
+    "verdicts_seen": 3
+   },
+   "rationale": "Steps center on the single crosswise product tentative 9 × flag 2 = 18 subtracted from 96 and a re-estimate to 8 — a flag×quotient cross-product correction rather than column-by-column digit placement.",
+   "reject_reasons": []
+  },
+  {
+   "group": "dhvajanka",
+   "template_id": "vedic_completion_dhvajanka_007",
+   "scaffold_type": "arrow_matrix",
+   "config": {
+    "description": "Divisor 16 split into main 1 | flag 6 lanes over dividend digits 1|4|4; the crosswise product 14×6=84 feeds the adjustment lane (144−84=60), and the quotient is corrected to 9.",
+    "elements": [
+     {
+      "type": "grid",
+      "subtype": "multiplication_arrow_matrix",
+      "rows": 2,
+      "cols": 3
+     },
+     {
+      "type": "arrow",
+      "from": "tentative_quotient",
+      "to": "flag_digit",
+      "label": "crosswise product"
+     },
+     {
+      "type": "text_label",
+      "content": "diagonal sum lane"
+     }
+    ],
+    "textual_equivalent": "144 ÷ 16, main 1 flag 6: tentative 14 ÷ 1 = 14; crosswise product 14×6 = 84; 144 − 84 = 60; corrected quotient 9 since 9×16 = 144."
+   },
+   "status": "approved_3of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 3,
+    "reject": 0,
+    "verdicts_seen": 3
+   },
+   "rationale": "The walkthrough is estimate-correct-verify built around the crosswise product 14×6=84 removed from 144 before correcting the quotient to 9 — flag cross-product correction with no per-column remainder flow to chart.",
+   "reject_reasons": []
+  },
+  {
+   "group": "dhvajanka",
+   "template_id": "vedic_completion_dhvajanka_008",
+   "scaffold_type": "arrow_matrix",
+   "config": {
+    "description": "Divisor 13 split into main 1 | flag 3 lanes over dividend digits 1|6|9; the crosswise product 16×3=48 feeds the adjustment lane (169−48=121) with iterated correction converging on quotient 13.",
+    "elements": [
+     {
+      "type": "grid",
+      "subtype": "multiplication_arrow_matrix",
+      "rows": 2,
+      "cols": 3
+     },
+     {
+      "type": "arrow",
+      "from": "tentative_quotient",
+      "to": "flag_digit",
+      "label": "crosswise product"
+     },
+     {
+      "type": "text_label",
+      "content": "diagonal sum lane"
+     }
+    ],
+    "textual_equivalent": "169 ÷ 13, main 1 flag 3: tentative 16 ÷ 1 = 16; crosswise product 16×3 = 48; 169 − 48 = 121; iterate the adjustment to reach quotient 13 since 13×13 = 169."
+   },
+   "status": "approved_3of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 3,
+    "reject": 0,
+    "verdicts_seen": 3
+   },
+   "rationale": "Emphasis is on iterated flag cross-products — 16×3=48 subtracted from 169, further adjustment, then verification 13×13=169 — the correction-centric cross-product shape the rubric routes to arrow_matrix.",
+   "reject_reasons": []
+  },
+  {
+   "group": "dhvajanka",
+   "template_id": "vedic_completion_dhvajanka_009",
+   "scaffold_type": "arrow_matrix",
+   "config": {
+    "description": "Divisor 12 split into main 1 | flag 2 lanes over dividend digits 8|4; the crosswise product 8×2=16 feeds the adjustment lane (84−16=68) before the quotient is corrected to 7.",
+    "elements": [
+     {
+      "type": "grid",
+      "subtype": "multiplication_arrow_matrix",
+      "rows": 2,
+      "cols": 2
+     },
+     {
+      "type": "arrow",
+      "from": "tentative_quotient",
+      "to": "flag_digit",
+      "label": "crosswise product"
+     },
+     {
+      "type": "text_label",
+      "content": "diagonal sum lane"
+     }
+    ],
+    "textual_equivalent": "84 ÷ 12, main 1 flag 2: tentative 8 ÷ 1 = 8; crosswise product 8×2 = 16; 84 − 16 = 68; corrected quotient 7 since 7×12 = 84."
+   },
+   "status": "approved_3of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 3,
+    "reject": 0,
+    "verdicts_seen": 3
+   },
+   "rationale": "A single crosswise correction drives the solution — 8×2=16 subtracted from gross dividend 84, then re-estimation to 7 — flag×quotient product emphasis over columnar digit placement.",
+   "reject_reasons": []
+  },
+  {
+   "group": "dhvajanka",
+   "template_id": "vedic_completion_dhvajanka_010",
+   "scaffold_type": "arrow_matrix",
+   "config": {
+    "description": "Divisor 13 split into main 1 | flag 3 lanes over dividend digits 1|5|6; the crosswise product 15×3=45 feeds the adjustment lane (156−45=111) with iteration converging on quotient 12.",
+    "elements": [
+     {
+      "type": "grid",
+      "subtype": "multiplication_arrow_matrix",
+      "rows": 2,
+      "cols": 3
+     },
+     {
+      "type": "arrow",
+      "from": "tentative_quotient",
+      "to": "flag_digit",
+      "label": "crosswise product"
+     },
+     {
+      "type": "text_label",
+      "content": "diagonal sum lane"
+     }
+    ],
+    "textual_equivalent": "156 ÷ 13, main 1 flag 3: tentative 15 ÷ 1 = 15; crosswise product 15×3 = 45; 156 − 45 = 111; iterate the adjustment to reach quotient 12 since 13×12 = 156."
+   },
+   "status": "approved_3of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 3,
+    "reject": 0,
+    "verdicts_seen": 3
+   },
+   "rationale": "Steps revolve around the flag cross-product 15×3=45 subtracted from 156 with iterative re-adjustment converging on 12 — cross-product correction, not a column-by-column remainder march.",
+   "reject_reasons": []
+  },
+  {
+   "group": "dhvajanka",
+   "template_id": "vedic_completion_dhvajanka_011",
+   "scaffold_type": "arrow_matrix",
+   "config": {
+    "description": "Divisor 15 split into main 1 | flag 5 lanes over dividend digits 1|8|0; the crosswise product 18×5=90 feeds the adjustment lane (180−90=90), verified as quotient 12.",
+    "elements": [
+     {
+      "type": "grid",
+      "subtype": "multiplication_arrow_matrix",
+      "rows": 2,
+      "cols": 3
+     },
+     {
+      "type": "arrow",
+      "from": "tentative_quotient",
+      "to": "flag_digit",
+      "label": "crosswise product"
+     },
+     {
+      "type": "text_label",
+      "content": "diagonal sum lane"
+     }
+    ],
+    "textual_equivalent": "180 ÷ 15, main 1 flag 5: tentative 18 ÷ 1 = 18; crosswise product 18×5 = 90; 180 − 90 = 90; quotient 12 since 15×12 = 180."
+   },
+   "status": "approved_3of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 3,
+    "reject": 0,
+    "verdicts_seen": 3
+   },
+   "rationale": "The solution is one crosswise flag product (18×5=90) subtracted from 180 followed by verification of quotient 12 — cross-product-correction emphasis with no columnar remainder flow.",
+   "reject_reasons": []
+  },
+  {
+   "group": "dhvajanka",
+   "template_id": "vedic_completion_dhvajanka_012",
+   "scaffold_type": "arrow_matrix",
+   "config": {
+    "description": "Divisor 14 split into main 1 | flag 4 lanes over dividend digits 1|9|6; the crosswise product 19×4=76 feeds the adjustment lane (196−76=120) with iterated correction to quotient 14.",
+    "elements": [
+     {
+      "type": "grid",
+      "subtype": "multiplication_arrow_matrix",
+      "rows": 2,
+      "cols": 3
+     },
+     {
+      "type": "arrow",
+      "from": "tentative_quotient",
+      "to": "flag_digit",
+      "label": "crosswise product"
+     },
+     {
+      "type": "text_label",
+      "content": "diagonal sum lane"
+     }
+    ],
+    "textual_equivalent": "196 ÷ 14, main 1 flag 4: tentative 19 ÷ 1 = 19; crosswise product 19×4 = 76; 196 − 76 = 120; iterate the adjustment to reach quotient 14 since 14×14 = 196."
+   },
+   "status": "approved_3of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 3,
+    "reject": 0,
+    "verdicts_seen": 3
+   },
+   "rationale": "Iterated flag cross-products dominate the steps — 19×4=76 subtracted from 196, further adjustment, then verification 14×14=196 — the correction-centric arrow_matrix branch for flag division.",
+   "reject_reasons": []
+  },
+  {
+   "group": "dhvajanka",
+   "template_id": "vedic_completion_dhvajanka_013",
+   "scaffold_type": "textual_scaffold",
+   "config": null,
+   "status": "fallback_textual_1of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 1,
+    "reject": 2,
+    "verdicts_seen": 3
+   },
+   "rationale": "Full straight division marching by position — 4÷2=2, per-position flag product 8 subtracted from the 43 column to leave working value 35, next digit brought down — with common mistakes calling out multiple per-position flag adjustments and carry mishandling, the columnar chart's exact flow.",
+   "reject_reasons": [
+    "REFUTED: the chart cannot be populated from the walkthrough. Steps 5-6 are incoherent — tentative quotient digit 2 is never reconciled with final quotient 18 (whose leading digit is 1), '35 ÷ 2 = 17 remainder 1... 17 ÷ 24 is wrong, need 1' and 'Bring down 2: 12 ÷ 24, No, adjust' place no digit in any column before asserting 18. The config's 'quotient digits built place by place toward 18' is invented smoothing the steps do not deliver, and it adds a spurious lower-to-higher 'carry' arrow that has no referent in division. A structural chart here is decoration over a broken narrative; only an annotated textual walkthrough can honestly carry the estimate-repair prose. (Arrow_matrix would fit steps 1-4's cross-product but equally cannot depict the flailing correction.)",
+    "Refuted. 432 / 24 carries an explicit 'Flag adjustment = 2 x 4 = 8' - a genuine quotient x flag crosswise product - and the source steps contain no remainder-and-bring-down at all (step 4 is 'Gross dividend = 43, Adjusted = 43 - 8 = 35'), so the rationale's 'column-by-column remainder march' is not in the record. This is the same structure as 002/005-012, which the same reviewer routed to arrow_matrix; nothing in the bank distinguishes 'one correction' from 'several corrections'. Convention is unambiguous: flag/straight division with a two-digit divisor is arrow_matrix 3/3 (sa_298 Dhvajanka Sutra 38982/73, sa_297 Straight Division 389/73, sa_303 'Vedic method with flags' 1681/41), and technique_name matching straight/flag/short/long division yields arrow_matrix 3, place_value_chart 0. The only pvc counterexample for a two-digit divisor, sa_300 (529/23), is a flag-free plain long division tagged under Polynomials and Factoring."
+   ]
+  },
+  {
+   "group": "dhvajanka",
+   "template_id": "vedic_completion_dhvajanka_014",
+   "scaffold_type": "textual_scaffold",
+   "config": null,
+   "status": "fallback_textual_1of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 1,
+    "reject": 2,
+    "verdicts_seen": 3
+   },
+   "rationale": "Column-by-column march: first quotient digit from 6÷2 in the hundreds column, flag product 24 subtracted in the next column (67−24=43), then continuation to the second quotient digit — the columnar write-digit/adjust-next-column flow with remainder handling.",
+   "reject_reasons": [
+    "REFUTED: step 5 is self-contradictory — tentative 3, then '43 ÷ 28 ≈ 1.5, use 1', then 'First quotient digit = 2', then a jump to 24. The config charts the flag product 3×8=24 subtracted in the tens column as if quotient digit 3 stood, but the answer's first digit is 2 and the steps never derive either digit's column placement. No assignment of these numbers to chart cells is consistent, so the chart would mislead rather than scaffold; the honest fallback is annotated text that can present the repair narrative verbatim.",
+    "Refuted. 672 / 28 has the crosswise flag product '3 x 8 = 24' and, like 013, no remainder/bring-down step in the source (step 4 is simply '67 - 24 = 43'); the config's borrow arrow depicts a flow the record does not contain. Structurally indistinguishable from 002/005-012, which were assigned arrow_matrix. Contradicts the 3/3 flag/straight-division arrow_matrix convention (sa_297, sa_298, sa_303) with no supporting place_value_chart precedent in that technique family."
+   ]
+  },
+  {
+   "group": "dhvajanka",
+   "template_id": "vedic_completion_dhvajanka_015",
+   "scaffold_type": "place_value_chart",
+   "config": {
+    "description": "Columnar chart for 504 ÷ 24 (main 2, flag 4): 5÷2 writes 2 remainder 1; the remainder prefixes the brought-down 0 to make 10; the flag product 2×4=8 is subtracted in that column to leave 2; columns build quotient 21.",
+    "elements": [
+     {
+      "type": "column",
+      "place": "hundreds"
+     },
+     {
+      "type": "column",
+      "place": "tens"
+     },
+     {
+      "type": "column",
+      "place": "units"
+     },
+     {
+      "type": "arrow",
+      "from": "higher_place",
+      "to": "lower_place",
+      "label": "borrow"
+     }
+    ],
+    "textual_equivalent": "504 ÷ 24 with main 2 and flag 4: 5 ÷ 2 = 2 remainder 1; bring down 0 to form 10; subtract flag product 8 to leave 2; continue to quotient 21."
+   },
+   "status": "approved_2of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 2,
+    "reject": 1,
+    "verdicts_seen": 3
+   },
+   "rationale": "Textbook columnar flow — 5÷2=2 remainder 1, the remainder prefixed to the brought-down 0 making 10, then the flag product 8 subtracted in that column to leave 2 — remainder-prefix bring-down division on place-value columns.",
+   "reject_reasons": [
+    "Refuted. The remainder/bring-down framing is real here ('Remainder 1, bring down 0: 10') but it does not license place_value_chart in this family: sa_298 - the single same-sub_topic exemplar, Dhvajanka Sutra (Flag Digit Division) - contains the same march ('3/7 = 0 remainder 3, write 0 above, carry 3 to next digit; bring down next digit: 38...') and is enriched as arrow_matrix. 504 / 24 also carries the quotient x flag product '2 x 4 = 8', the feature the bank consistently routes to arrow_matrix. When a record has both a bring-down and a real crosswise product, the on-point precedents (sa_297, sa_298, sa_303) resolve to arrow_matrix 3/3."
+   ]
+  },
+  {
+   "group": "dhvajanka",
+   "template_id": "vedic_completion_dhvajanka_016",
+   "scaffold_type": "place_value_chart",
+   "config": {
+    "description": "Columnar chart for 735 ÷ 35 (main 3, flag 5): 7÷3 writes 2 remainder 1; the bring-down forms 13; the flag product 2×5=10 is subtracted in the tens column to leave 3; quotient 21 assembled by place.",
+    "elements": [
+     {
+      "type": "column",
+      "place": "hundreds"
+     },
+     {
+      "type": "column",
+      "place": "tens"
+     },
+     {
+      "type": "column",
+      "place": "units"
+     },
+     {
+      "type": "arrow",
+      "from": "higher_place",
+      "to": "lower_place",
+      "label": "borrow"
+     }
+    ],
+    "textual_equivalent": "735 ÷ 35 with main 3 and flag 5: 7 ÷ 3 = 2 remainder 1; bring down 3 to form 13; subtract flag product 10 to leave 3; continue to quotient 21."
+   },
+   "status": "approved_2of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 2,
+    "reject": 1,
+    "verdicts_seen": 3
+   },
+   "rationale": "Steps run column-by-column with remainders — 7÷3=2 remainder 1, bring down 3 to make 13, subtract the flag product 10 in that column to leave 3 — the write-digit/adjust-next-column place-value flow.",
+   "reject_reasons": [
+    "Refuted. 735 / 35 pairs a bring-down with the flag product '2 x 5 = 10'. The bank's productless columnar exemplars that earn place_value_chart (sa_321 conventional long division, sa_300 529/23, sa_114 1203/9, Vedic_Secrets_sa_35 26/9) all lack any crosswise digit product; every record that has one - including ones that also bring down digits (sa_298) - is arrow_matrix. Assignment contradicts the stronger, more specific convention."
+   ]
+  },
+  {
+   "group": "dhvajanka",
+   "template_id": "vedic_completion_dhvajanka_017",
+   "scaffold_type": "place_value_chart",
+   "config": {
+    "description": "Columnar chart for 960 ÷ 32 (main 3, flag 2): quotient digit 3 from the hundreds column, flag product 3×2=6 subtracted to leave working dividend 90 flowing into the next column, building quotient 30.",
+    "elements": [
+     {
+      "type": "column",
+      "place": "hundreds"
+     },
+     {
+      "type": "column",
+      "place": "tens"
+     },
+     {
+      "type": "column",
+      "place": "units"
+     },
+     {
+      "type": "arrow",
+      "from": "higher_place",
+      "to": "lower_place",
+      "label": "borrow"
+     }
+    ],
+    "textual_equivalent": "960 ÷ 32 with main 3 and flag 2: 9 ÷ 3 = 3; flag product 3×2 = 6; 96 − 6 = 90 carried into the next column; continue to quotient 30."
+   },
+   "status": "approved_2of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 2,
+    "reject": 1,
+    "verdicts_seen": 3
+   },
+   "rationale": "Multi-digit columnar march — 9÷3=3, flag product 6 subtracted so the working dividend 90 flows into the next position toward quotient 30 — with the noted mistake of forgetting the flag adjustment for each quotient digit, i.e. per-column straight division.",
+   "reject_reasons": [
+    "Refuted. 960 / 32 has flag product '3 x 2 = 6' and, like 013 and 014, no remainder/bring-down in the source (step 4: '96 - 6 = 90'), so the columnar justification is unsupported by the record even though the cited common mistake ('Forgetting flag adjustment for each quotient digit') is genuine - and that mistake is about the cross-product, which is precisely the arrow_matrix cue. Contradicts the 3/3 flag/straight-division arrow_matrix convention and is inconsistent with the identical treatment given 002/005-012."
+   ]
+  },
+  {
+   "group": "dhvajanka",
+   "template_id": "vedic_completion_dhvajanka_018",
+   "scaffold_type": "place_value_chart",
+   "config": {
+    "description": "Straight-division chart for 1848 ÷ 168 (main 16, flag 8): the dividend spans four place columns with the leading digits grouped for the two-digit main; 184÷16 writes 11 remainder 8; the remainder prefixes the brought-down 8 to make 88; the flag product 88 is subtracted in the units column to leave 0.",
+    "elements": [
+     {
+      "type": "column",
+      "place": "hundreds"
+     },
+     {
+      "type": "column",
+      "place": "tens"
+     },
+     {
+      "type": "column",
+      "place": "units"
+     },
+     {
+      "type": "arrow",
+      "from": "higher_place",
+      "to": "lower_place",
+      "label": "borrow"
+     }
+    ],
+    "textual_equivalent": "1848 ÷ 168 with main 16 and flag 8: 184 ÷ 16 = 11 remainder 8; bring down 8 to form 88; subtract flag product 11×8 = 88 to leave 0; quotient 11."
+   },
+   "status": "approved_2of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 2,
+    "reject": 1,
+    "verdicts_seen": 3
+   },
+   "rationale": "Columnar straight division with a two-digit main — 184÷16=11 remainder 8, the remainder prefixed to the brought-down 8 making 88, then the flag product 11×8=88 subtracted in that column to reach 0 — the remainder/bring-down place-value flow.",
+   "reject_reasons": [
+    "Refuted. 1848 / 168 with main 16 | flag 8 produces the substantial crosswise product '11 x 8 = 88'; a two-digit main divisor makes the flag cross-work more prominent, not less. The nearest bank content by both sub_topic and procedure - sa_298 (Dhvajanka Sutra, 38982 / 73, two-digit divisor, remainder-and-carry march) - is arrow_matrix, as are sa_297 and sa_303. Zero place_value_chart precedent exists for any straight/flag-division technique."
+   ]
+  },
+  {
+   "group": "dhvajanka",
+   "template_id": "vedic_completion_dhvajanka_019",
+   "scaffold_type": "place_value_chart",
+   "config": {
+    "description": "Straight-division chart for 2946 ÷ 231 (main 23, flag 1): the dividend spans four place columns with the leading digits grouped for the two-digit main; 294÷23 writes 12 remainder 18; the remainder prefixes the brought-down 6 to make 186; the flag product 12 is subtracted, leaving final remainder 174.",
+    "elements": [
+     {
+      "type": "column",
+      "place": "hundreds"
+     },
+     {
+      "type": "column",
+      "place": "tens"
+     },
+     {
+      "type": "column",
+      "place": "units"
+     },
+     {
+      "type": "arrow",
+      "from": "higher_place",
+      "to": "lower_place",
+      "label": "borrow"
+     }
+    ],
+    "textual_equivalent": "2946 ÷ 231 with main 23 and flag 1: 294 ÷ 23 = 12 remainder 18; bring down 6 to form 186; subtract flag product 12 to leave 174; quotient 12 remainder 174."
+   },
+   "status": "approved_2of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 2,
+    "reject": 1,
+    "verdicts_seen": 3
+   },
+   "rationale": "Column-serial remainder flow — 294÷23=12 remainder 18, bring down 6 to form 186, subtract the flag product 12 leaving final remainder 174 — the columnar adjust-next-column chart with explicit remainder handling.",
+   "reject_reasons": [
+    "Refuted, and in any case uncertain enough to reject. 2946 / 231 does have the richest remainder flow of the group ('Remainder 18, bring down 6: 186'), but it also applies the flag product '12 x 1 = 12'. Flag = 1 arguably degenerates the product the way base-deviation 1 does in sa_113/sa_114 (both place_value_chart), so the case is genuinely ambiguous - and the on-point conventions all point the other way: same sub_topic sa_298 -> arrow_matrix, straight/flag division 3/3 -> arrow_matrix, technique_name straight/flag/short/long division place_value_chart count 0. Under the rejection-on-uncertainty rule the conventional type wins."
+   ]
+  },
+  {
+   "group": "dhvajanka",
+   "template_id": "vedic_completion_dhvajanka_020",
+   "scaffold_type": "arrow_matrix",
+   "config": {
+    "description": "Divisor x+3 split into main x | flag 3 lanes over the coefficient row 1|2|−5|−6; each quotient term sends a diagonal crosswise product (3x², −3x, −6) into the next coefficient's adjustment lane, building x² − x − 2 with remainder 0.",
+    "elements": [
+     {
+      "type": "grid",
+      "subtype": "multiplication_arrow_matrix",
+      "rows": 2,
+      "cols": 4
+     },
+     {
+      "type": "arrow",
+      "from": "quotient_term",
+      "to": "flag_digit",
+      "label": "crosswise product"
+     },
+     {
+      "type": "text_label",
+      "content": "diagonal sum lane"
+     }
+    ],
+    "textual_equivalent": "(x³ + 2x² − 5x − 6) ÷ (x + 3), main x flag 3: x³ ÷ x = x², crosswise 3x² adjusts 2x² to −x²; −x² ÷ x = −x, crosswise −3x adjusts −5x to −2x; −2x ÷ x = −2, crosswise −6 leaves remainder 0; quotient x² − x − 2."
+   },
+   "status": "approved_3of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 3,
+    "reject": 0,
+    "verdicts_seen": 3
+   },
+   "rationale": "Term-by-term coefficient march where each quotient term times flag 3 is subtracted from the next coefficient (3x² from 2x², −3x from −5x, −6 from −6) — algebraic crosswise cross-work of the Paravartya division family, which the bank observes on arrow_matrix.",
+   "reject_reasons": []
+  },
+  {
+   "group": "yavadunam",
+   "template_id": "yavadunam_L1_01",
+   "scaffold_type": "textual_scaffold",
+   "config": null,
+   "status": "fallback_textual_1of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 1,
+    "reject": 2,
+    "verdicts_seen": 3
+   },
+   "rationale": "Steps 4-7 build the two Nikhilam lanes for 8² — cross-operation left lane 10+2×(−2)=6 and product-of-deviations right lane (−2)²=4 — concatenated with no inter-lane digit movement, exactly the base-complement cross-product structure ArrowMatrixRenderer draws.",
+   "reject_reasons": [
+    "Refuted by the template's own step 4 formula: \"Left part = 10 + 2 x (-2) = 10 - 4 = 6\" - a scalar doubling-and-add on ONE number with ONE deviation (step 2 yields only \"deficiency = -2\"). The solution never writes 8 twice, so the config's second row and BOTH \"crosswise product\" arrows are fabricated structure; the only multiplication in the whole solution is (-2)x(-2) in step 5. Per the spec, arrow_matrix routes to ArrowMatrixRenderer, \"a cross-product grid with diagonal arrows showing pairwise multiplications\" - there are no pairwise cross-products here, and a learner following crosswise arrows would compute the left part by a method step 4 does not state. What the steps DO show is fixed-width slot assembly: step 5 right part, step 6 \"Pad the right part to 1 digit(s)\", step 7 \"6 | 4 = 64\". place_value_chart (StrikePadRenderer) renders that faithfully and matches the same group's carry sibling L1_06.",
+    "Refuted. Step 4 is literally 'Compute the left part' with formula 10 + 2×(−2) — a DOUBLING of the deviation, not a cross-operation. Only the L3 multiplication templates say 'by cross-operation'. The arrow matrix draws a crossing route (8 + −2) the walkthrough never takes, so a FRAGILE-lock learner is shown two competing procedures for the same number. Worse, the config is self-contradictory: the crossing arrows are labeled 'crosswise product', which traced literally gives 8×(−2) = −16, while the text_label says 'base + 2×deviation'. The steps here are eight LaTeX formulas transforming one into the next with a named identity at step 3 — equation_chain renders exactly that, 1:1 with the step list."
+   ]
+  },
+  {
+   "group": "yavadunam",
+   "template_id": "yavadunam_L1_02",
+   "scaffold_type": "textual_scaffold",
+   "config": null,
+   "status": "fallback_textual_1of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 1,
+    "reject": 2,
+    "verdicts_seen": 3
+   },
+   "rationale": "Steps 4-7 form the cross-operation left lane 10+2×(−3)=4 and the deviation-product right lane (−3)²=9 then concatenate with no carry, the canonical two-lane Nikhilam cross-product layout.",
+   "reject_reasons": [
+    "Same structural refutation. Step 4 reads \"Left part = 10 + 2 x (-3) = 10 - 6 = 4\": an addition of twice a single deviation, not a crosswise product between two rows. Step 2 produces exactly one deviation (-3), so the 2x2 grid's second row exists only in the config, and two of its three arrows are labeled \"crosswise product\" for an operation that is not a product at all. The genuine visual content is steps 5-7: right part 9, padded to the 1-digit slot, concatenated as 4|9 - fixed-width place-value slot assembly, which StrikePad draws without inventing anything.",
+    "Same refutation as L1_01: 7² has no cross-operation anywhere in its steps — step 4 is 10 + 2×(−3), a doubling. Right part 9 fits the 1-digit slot exactly, so there is no pad, carry or borrow either; the entire item is applying the identity (base+d)² = (base+2d)·base + d² and concatenating. The arrow matrix adds a two-row crossing structure with no referent in the walkthrough, and its 'crosswise product' arrow labels contradict its own 'base + 2×deviation' caption. equation_chain follows the actual eight formula steps."
+   ]
+  },
+  {
+   "group": "yavadunam",
+   "template_id": "yavadunam_L1_03",
+   "scaffold_type": "textual_scaffold",
+   "config": null,
+   "status": "fallback_textual_1of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 1,
+    "reject": 2,
+    "verdicts_seen": 3
+   },
+   "rationale": "Steps 4-7 compute a cross-operation lane 10+2×(−1)=8 and a deviation-square lane 1, joined by simple concatenation, so the two-lane cross-product matrix is the whole visual story.",
+   "reject_reasons": [
+    "Step 4's formula \"Left part = 10 + 2 x (-1) = 10 - 2 = 8\" is a scalar computation on one number/one deviation; step 5's (-1)x(-1) is the solution's only multiplication. A cross-product grid with diagonal pairwise-multiplication arrows has no counterpart in these steps, so ArrowMatrixRenderer would have to depict a crosswise operation the template never performs. The steps' real structure - right part into a 1-digit slot then concatenation 8|1 = 81 - is place-value slot mechanics.",
+    "Same refutation. The rationale asserts 'a cross-operation lane 10+2×(−1)=8', but the template's step 4 names no cross-operation and computes it by doubling. For 9² the right part is a single digit with no pad or carry, so nothing in the walkthrough needs a matrix — the visual is decoration over an eight-line identity application, and its arrows are mislabeled as products. equation_chain maps to the steps as written."
+   ]
+  },
+  {
+   "group": "yavadunam",
+   "template_id": "yavadunam_L1_04",
+   "scaffold_type": "textual_scaffold",
+   "config": null,
+   "status": "fallback_textual_1of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 1,
+    "reject": 2,
+    "verdicts_seen": 3
+   },
+   "rationale": "The surplus case runs the same two-lane cross-work — left lane 10+2×(+2)=14, right lane (+2)²=4, straight concatenation with no carry — matching the Nikhilam arrow-matrix structure.",
+   "reject_reasons": [
+    "The surplus case is structurally identical to the deficiency cases and fails for the same reason: step 4 is \"Left part = 10 + 2 x (+2) = 10 + 4 = 14\", an addition, and step 2 gives a single surplus +2. There is no second factor, hence no pairwise cross-product for ArrowMatrixRenderer to draw; the config's two crosswise arrows are invented. Steps 5-7 (right part 4 into the 1-digit slot, concatenate 14|4) are place-value slot assembly.",
+    "Refuted on the same grounds — 12²'s step 4 is 10 + 2×(+2), a doubling, not the crosswise work an arrow matrix draws, and the arrows labeled 'crosswise product' would yield 12×2 = 24 rather than 14. The one genuinely non-obvious moment is that the two-digit left part 14 concatenates as 14|4 = 144 (left is multiplied by the base), which the arrow matrix does not depict at all. equation_chain follows the step formulas; place_value_chart would be the second-best if the concatenation semantics are the teaching target."
+   ]
+  },
+  {
+   "group": "yavadunam",
+   "template_id": "yavadunam_L1_05",
+   "scaffold_type": "textual_scaffold",
+   "config": null,
+   "status": "fallback_textual_1of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 1,
+    "reject": 2,
+    "verdicts_seen": 3
+   },
+   "rationale": "Steps 4-7 assemble left lane 10+2×(+3)=16 and right lane (+3)²=9 and concatenate without any inter-lane digit transfer, so the two-lane deviation cross-product grid carries the pedagogy.",
+   "reject_reasons": [
+    "Step 4 \"Left part = 10 + 2 x (+3) = 10 + 6 = 16\" is a doubling-and-add on one deviation; the sole multiplication is (+3)x(+3) in step 5. The 2x2 cross-product grid and its two \"crosswise product\" arrows correspond to nothing in the eight steps. The faithful visual is the left slot plus the fixed-width 1-digit right slot (16|9 = 169), which StrikePad renders.",
+    "Same refutation: 13² computes the left lane as 10 + 2×(+3) by doubling; no step in this template performs a cross-operation, so the crossing arrows model a procedure the learner is never asked to execute, and their 'crosswise product' labels are arithmetically wrong for the lane they feed. Right part 9 fits its slot exactly, leaving pure identity application — equation_chain."
+   ]
+  },
+  {
+   "group": "yavadunam",
+   "template_id": "yavadunam_L1_06",
+   "scaffold_type": "place_value_chart",
+   "config": {
+    "description": "Place-value slot assembly for 14² = 196: left slot holds base+2×surplus = 18, the units slot must hold exactly 1 digit; surplus² = 16 overflows, so its tens digit 1 carries into the left slot (18 → 19), keeping 6 in units.",
+    "elements": [
+     {
+      "type": "column",
+      "place": "units"
+     },
+     {
+      "type": "column",
+      "place": "tens"
+     },
+     {
+      "type": "column",
+      "place": "hundreds"
+     },
+     {
+      "type": "arrow",
+      "from": "units",
+      "to": "tens",
+      "label": "carry"
+     }
+    ],
+    "textual_equivalent": "14² by Yavadunam: base 10, surplus +4. Left = 10+8 = 18; right = 4² = 16 overflows the 1-digit slot, so carry 1 to the left: 18+1 = 19, keep 6. Answer 19|6 = 196."
+   },
+   "status": "approved_2of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 2,
+    "reject": 1,
+    "verdicts_seen": 3
+   },
+   "rationale": "Step 6 is 'Handle right part overflow (carry to left)': 4²=16 exceeds the 1-digit units slot and its tens digit carries into the left part (18→19), an explicit lower-place-to-higher-place carry that StrikePadRenderer's carry arrows are built to draw.",
+   "reject_reasons": [
+    "REFUTED by the bank. The rationale's rule — carry/overflow step implies place_value_chart — is inverted relative to the enriched convention: of the base-complement multiplication/squaring records under Nikhilam+Yavadunam that contain a carry/overflow step, 5 of 5 are arrow_matrix and 0 are place_value_chart. Tirthaji_Vedic_Math_sa_74 is the same shape as this record (6x7 base 10, right part 12 overflows the 1-digit slot, 'Handle carry-over', carry 1 into the left portion, answer 42) and is enriched as arrow_matrix. Conversely the Nikhilam place_value_chart records (sa_88, sa_89, Vedic_Secrets_sa_14) are all NO-carry, the exact opposite of the proposed discriminator. Conventional type: arrow_matrix."
+   ]
+  },
+  {
+   "group": "yavadunam",
+   "template_id": "yavadunam_L2_01",
+   "scaffold_type": "textual_scaffold",
+   "config": null,
+   "status": "fallback_textual_1of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 1,
+    "reject": 2,
+    "verdicts_seen": 3
+   },
+   "rationale": "Steps 4-7 run the base-100 two-lane structure — cross-operation left lane 100+2×(−4)=92 and deviation-square right lane 16 filling the 2-digit slot exactly — with no carry, the Nikhilam cross-product layout.",
+   "reject_reasons": [
+    "Base-100 changes the numbers, not the structure. Step 2 gives one deviation (-4) and step 4 computes \"Left part = 100 + 2 x (-4) = 100 - 8 = 92\" - an addition, not a crosswise pairing; step 5's (-4)x(-4) is the only product. ArrowMatrixRenderer's defining visual (a grid of pairwise cross-products with diagonal arrows) has no referent in these steps, and the config's duplicated row plus two \"crosswise product\" arrows would show a method step 4 contradicts. The real content of steps 5-7 is 16 filling a 2-digit slot and concatenating 92|16 - place-value slot assembly.",
+    "Refuted. 96² is a squaring template: step 4 is 100 + 2×(−4), a doubling, and the phrase 'cross-operation' appears nowhere in its steps (contrast L3_01, where it is the literal operation name). The right part 16 fills the 2-digit slot exactly — no pad, no carry — so after the identity there is nothing left for a matrix to show, and the config's 'crosswise product' arrows would give 96×(−4). equation_chain renders the eight formula steps directly."
+   ]
+  },
+  {
+   "group": "yavadunam",
+   "template_id": "yavadunam_L2_02",
+   "scaffold_type": "place_value_chart",
+   "config": null,
+   "status": "replaced_by_verifier_majority_2of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 1,
+    "reject": 2,
+    "verdicts_seen": 3
+   },
+   "rationale": "The steps build left lane 94 and right lane 9 padded to '09' — the pad is passive slot-width bookkeeping with no digit crossing between lanes — so the deviation cross-product structure remains the visual crux.",
+   "reject_reasons": [
+    "Rejected on the same grounds, and the config's own words give it away: it concedes the interesting event is \"9 padded to 09 for the 2-digit slot\" - a place-value width fact, not a cross-product. Step 4 (\"100 + 2 x (-3) = 94\") is scalar addition on a single deviation, so the two-row grid and its crosswise arrows are fabricated. Leading-zero padding into a fixed-width slot is precisely what StrikePad's columns show.",
+    "Refuted twice over. First, the squaring objection: step 4 is 100 + 2×(−3), a doubling, not the crossing the arrows draw. Second, the rationale dismisses the padding of 9 to '09' as 'passive slot-width bookkeeping' — but this template's own common_mistakes list flags 'Right part padding error: forgetting to pad the right part with leading zeros' as a top error, and the pad is the ONLY thing distinguishing this item from L2_01/L2_03. An arrow matrix has no fixed-width slot to show a leading zero in; a place-value chart with a 2-wide right slot displays the empty tens column and the 0 written into it."
+   ]
+  },
+  {
+   "group": "yavadunam",
+   "template_id": "yavadunam_L2_03",
+   "scaffold_type": "textual_scaffold",
+   "config": null,
+   "status": "fallback_textual_1of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 1,
+    "reject": 2,
+    "verdicts_seen": 3
+   },
+   "rationale": "Steps 4-7 form the cross-operation lane 100+2×(−7)=86 and deviation-square lane 49 that fits its slot exactly, a pure two-lane concatenation with no carry — canonical Nikhilam arrow-matrix content.",
+   "reject_reasons": [
+    "Step 4 is \"Left part = 100 + 2 x (-7) = 100 - 14 = 86\" - one number, one deviation, an addition. Step 5's (-7)x(-7) = 49 is the only multiplication, so there is no pairwise cross-product grid for ArrowMatrixRenderer to render; the config's second row and crosswise arrows are invented. Steps 5-7 assemble 86|49 through a fixed 2-digit right slot, which is place-value slot mechanics.",
+    "Refuted. 93² computes its left lane by doubling (100 + 2×(−7) = 86), not by cross-operation, so the two-row crossing layout misrepresents the walkthrough; the arrows' 'crosswise product' labels would produce 93×(−7). Right part 49 fits the slot exactly, so no pad or carry remains for the visual to earn its place. equation_chain follows the actual step formulas."
+   ]
+  },
+  {
+   "group": "yavadunam",
+   "template_id": "yavadunam_L2_04",
+   "scaffold_type": "place_value_chart",
+   "config": {
+    "description": "Place-value slot assembly for 88² = 7744: left slot holds 100+2×(−12) = 76, the right slot spans tens and units; deviation² = 144 overflows 2 digits, so 1 carries from the right slot into the hundreds (76 → 77), keeping 44.",
+    "elements": [
+     {
+      "type": "column",
+      "place": "units"
+     },
+     {
+      "type": "column",
+      "place": "tens"
+     },
+     {
+      "type": "column",
+      "place": "hundreds"
+     },
+     {
+      "type": "arrow",
+      "from": "tens",
+      "to": "hundreds",
+      "label": "carry"
+     }
+    ],
+    "textual_equivalent": "88² by Yavadunam: base 100, deficiency −12. Left = 100 − 24 = 76; right = 144 overflows the 2-digit slot, so carry 1: 76+1 = 77, keep 44. Answer 77|44 = 7744."
+   },
+   "status": "approved_2of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 2,
+    "reject": 1,
+    "verdicts_seen": 3
+   },
+   "rationale": "Step 6 'Handle right part overflow (carry to left)' moves the hundreds digit of (−12)²=144 out of the 2-digit right slot into the left part (76→77), so the columnar carry propagation — not the lane setup — is the step the visual must show.",
+   "reject_reasons": [
+    "REFUTED by an exact-content precedent. Tirthaji_Vedic_Math_sa_75 is this identical computation — base 100, deviation -12, cross-subtract left part 76, deviations product 144, 'Handle carry-over' keep 44 carry 1, 'Add carry to left part' 76+1=77, combine 77|44 = 7744 — and the enriched bank assigns it arrow_matrix, not place_value_chart. Same answer 7744, same carry, same lanes. The carry-implies-place_value_chart rule is contradicted 5/5 in this content family. Conventional type: arrow_matrix."
+   ]
+  },
+  {
+   "group": "yavadunam",
+   "template_id": "yavadunam_L2_05",
+   "scaffold_type": "textual_scaffold",
+   "config": null,
+   "status": "fallback_textual_1of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 1,
+    "reject": 2,
+    "verdicts_seen": 3
+   },
+   "rationale": "Steps 4-7 assemble left lane 100+2×(+4)=108 and right lane 16 in a straight two-lane concatenation with no inter-slot movement, matching the Nikhilam cross-product grid.",
+   "reject_reasons": [
+    "Step 2 yields a single surplus +4 and step 4 computes \"Left part = 100 + 2 x (+4) = 100 + 8 = 108\" by addition; the lone multiplication is (+4)x(+4) = 16. No pairwise cross-product exists for the arrow matrix to draw, so its two \"crosswise product\" arrows would misrepresent step 4. Note also that the left part 108 is 3 digits against a 2-digit right slot, which a symmetric 2x2 lane grid renders awkwardly; the honest picture is left part plus a fixed 2-digit slot (108|16).",
+    "Refuted. 104² is squaring — step 4 is 100 + 2×(+4) = 108 by doubling, with no cross-operation in the step list — and the right part 16 fills its 2-digit slot exactly, so there is no pad, carry or borrow. The arrow matrix supplies a crossing structure absent from the walkthrough and labels its arrows 'crosswise product' while captioning the lane 'base + 2×surplus'. equation_chain matches the steps as written."
+   ]
+  },
+  {
+   "group": "yavadunam",
+   "template_id": "yavadunam_L2_06",
+   "scaffold_type": "textual_scaffold",
+   "config": null,
+   "status": "fallback_textual_1of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 1,
+    "reject": 2,
+    "verdicts_seen": 3
+   },
+   "rationale": "Steps 4-7 compute left lane 100+2×(+7)=114 and right lane 49 that exactly fills its 2-digit slot, no carry — the two-lane deviation cross-product structure is the entire mechanism.",
+   "reject_reasons": [
+    "Step 4 \"Left part = 100 + 2 x (+7) = 100 + 14 = 114\" is scalar addition on one deviation, and step 5's (+7)x(+7) = 49 is the solution's only product. The cross-product grid with diagonal pairwise-multiplication arrows that arrow_matrix denotes has no counterpart in the steps; the config's second row is fabricated by duplication the template never performs. Steps 5-7 (49 into the 2-digit slot, concatenate 114|49) are place-value slot assembly.",
+    "Refuted on the same basis: 107²'s left lane comes from doubling (100 + 2×(+7) = 114), not crossing, and 49 fits the slot exactly, leaving a pure identity application. The rationale's claim that 'the two-lane deviation cross-product structure is the entire mechanism' is contradicted by the template, which never performs a cross-product. equation_chain."
+   ]
+  },
+  {
+   "group": "yavadunam",
+   "template_id": "yavadunam_L2_07",
+   "scaffold_type": "place_value_chart",
+   "config": {
+    "description": "Place-value slot assembly for 112² = 12544: left slot holds 100+2×(+12) = 124, the right slot spans tens and units; surplus² = 144 overflows 2 digits, so 1 carries into the hundreds (124 → 125), keeping 44.",
+    "elements": [
+     {
+      "type": "column",
+      "place": "units"
+     },
+     {
+      "type": "column",
+      "place": "tens"
+     },
+     {
+      "type": "column",
+      "place": "hundreds"
+     },
+     {
+      "type": "arrow",
+      "from": "tens",
+      "to": "hundreds",
+      "label": "carry"
+     }
+    ],
+    "textual_equivalent": "112² by Yavadunam: base 100, surplus +12. Left = 100 + 24 = 124; right = 144 overflows the 2-digit slot, so carry 1: 124+1 = 125, keep 44. Answer 125|44 = 12544."
+   },
+   "status": "approved_2of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 2,
+    "reject": 1,
+    "verdicts_seen": 3
+   },
+   "rationale": "Step 6 carries the overflow of (+12)²=144 out of the 2-digit right slot into the left part (124→125), an explicit lower-to-higher place carry that maps directly onto the place-value chart's carry arrows.",
+   "reject_reasons": [
+    "REFUTED. Structurally identical to yavadunam_L2_04 apart from the deviation's sign (+12 vs -12), and its exact-content counterpart Tirthaji_Vedic_Math_sa_75 (right part 144, keep 44, carry 1 into the left part) is arrow_matrix in the bank. No base-complement multiplication/squaring record with a carry step is place_value_chart anywhere in the 819 enriched templates. Conventional type: arrow_matrix."
+   ]
+  },
+  {
+   "group": "yavadunam",
+   "template_id": "yavadunam_L2_08",
+   "scaffold_type": "place_value_chart",
+   "config": {
+    "description": "Place-value slot assembly for 115² = 13225: left slot holds 100+2×(+15) = 130, the right slot spans tens and units; surplus² = 225 overflows 2 digits, so 2 carries into the hundreds (130 → 132), keeping 25.",
+    "elements": [
+     {
+      "type": "column",
+      "place": "units"
+     },
+     {
+      "type": "column",
+      "place": "tens"
+     },
+     {
+      "type": "column",
+      "place": "hundreds"
+     },
+     {
+      "type": "arrow",
+      "from": "tens",
+      "to": "hundreds",
+      "label": "carry"
+     }
+    ],
+    "textual_equivalent": "115² by Yavadunam: base 100, surplus +15. Left = 100 + 30 = 130; right = 225 overflows the 2-digit slot, so carry 2: 130+2 = 132, keep 25. Answer 132|25 = 13225."
+   },
+   "status": "approved_2of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 2,
+    "reject": 1,
+    "verdicts_seen": 3
+   },
+   "rationale": "Step 6 carries 2 from the overflowing right part (15²=225) into the left part (130→132), the largest carry in the group, making columnar carry propagation the pedagogical crux the chart's carry arrows visualize.",
+   "reject_reasons": [
+    "REFUTED, including the 'largest carry' argument. Vedic_Made_Easy_sa_52 is the matching carry-2 case — 950², base 1000, deviations product 2500 overflowing the 3-digit right slot, 'Handle carry-over ... carry over 2 to LHS', answer 902500 — and it is enriched as arrow_matrix. A carry of 2 rather than 1 does not flip the type anywhere in the bank. Conventional type: arrow_matrix."
+   ]
+  },
+  {
+   "group": "yavadunam",
+   "template_id": "yavadunam_L3_01",
+   "scaffold_type": "arrow_matrix",
+   "config": {
+    "description": "Nikhilam-style arrow matrix for 96×97: each factor with its deviation (−4, −3) in its own row; diagonal crosswise arrows give the left lane 100−4−3 = 93, the deviation column multiplies down to the right lane 12; concatenate to 9312.",
+    "elements": [
+     {
+      "type": "grid",
+      "subtype": "multiplication_arrow_matrix",
+      "rows": 2,
+      "cols": 2
+     },
+     {
+      "type": "arrow",
+      "from": "number_row1",
+      "to": "deviation_row2",
+      "label": "crosswise product"
+     },
+     {
+      "type": "arrow",
+      "from": "number_row2",
+      "to": "deviation_row1",
+      "label": "crosswise product"
+     },
+     {
+      "type": "arrow",
+      "from": "deviation_row1",
+      "to": "deviation_row2",
+      "label": "product of deviations"
+     },
+     {
+      "type": "text_label",
+      "content": "cross-subtraction lane: base + d1 + d2"
+     },
+     {
+      "type": "text_label",
+      "content": "product-of-deficiencies lane"
+     }
+    ],
+    "textual_equivalent": "96×97 by Yavadunam/Nikhilam: base 100, deviations −4 and −3. Left part = 100 − 4 − 3 = 93 (cross-operation). Right part = (−4)×(−3) = 12. Concatenate 93|12 = 9312."
+   },
+   "status": "approved_3of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 3,
+    "reject": 0,
+    "verdicts_seen": 3
+   },
+   "rationale": "Step 4 is literally 'Compute the left part by cross-operation' — cross-adding deviations −4 and −3 to the base for one lane while their product 12 fills the other — the exact Nikhilam base-complement product layout (cross-subtraction lane + product-of-deficiencies lane) named in the arrow_matrix rubric.",
+   "reject_reasons": []
+  },
+  {
+   "group": "yavadunam",
+   "template_id": "yavadunam_L3_02",
+   "scaffold_type": "arrow_matrix",
+   "config": {
+    "description": "Nikhilam-style arrow matrix for 103×104: each factor with its surplus (+3, +4) in its own row; diagonal crosswise arrows give the left lane 100+3+4 = 107, the deviation column multiplies down to the right lane 12; concatenate to 10712.",
+    "elements": [
+     {
+      "type": "grid",
+      "subtype": "multiplication_arrow_matrix",
+      "rows": 2,
+      "cols": 2
+     },
+     {
+      "type": "arrow",
+      "from": "number_row1",
+      "to": "deviation_row2",
+      "label": "crosswise product"
+     },
+     {
+      "type": "arrow",
+      "from": "number_row2",
+      "to": "deviation_row1",
+      "label": "crosswise product"
+     },
+     {
+      "type": "arrow",
+      "from": "deviation_row1",
+      "to": "deviation_row2",
+      "label": "product of deviations"
+     },
+     {
+      "type": "text_label",
+      "content": "cross-addition lane: base + d1 + d2"
+     },
+     {
+      "type": "text_label",
+      "content": "product-of-surpluses lane"
+     }
+    ],
+    "textual_equivalent": "103×104 by Yavadunam/Nikhilam: base 100, surpluses +3 and +4. Left part = 100 + 3 + 4 = 107. Right part = 3×4 = 12. Concatenate 107|12 = 10712."
+   },
+   "status": "approved_3of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 3,
+    "reject": 0,
+    "verdicts_seen": 3
+   },
+   "rationale": "The steps cross-add surpluses +3 and +4 to form the left lane 107 and multiply them for the right lane 12 with no carry, the canonical two-lane Nikhilam multiplication that ArrowMatrixRenderer draws.",
+   "reject_reasons": []
+  },
+  {
+   "group": "yavadunam",
+   "template_id": "yavadunam_L3_03",
+   "scaffold_type": "place_value_chart",
+   "config": {
+    "description": "Place-value slot assembly for 98×102 = 9996: cross-operation gives left slot 100 and deviation product −4 is negative, so borrow 1 hundred from the left slot (100 → 99) and add it to the right slot (−4 + 100 = 96).",
+    "elements": [
+     {
+      "type": "column",
+      "place": "units"
+     },
+     {
+      "type": "column",
+      "place": "tens"
+     },
+     {
+      "type": "column",
+      "place": "hundreds"
+     },
+     {
+      "type": "arrow",
+      "from": "hundreds",
+      "to": "tens",
+      "label": "borrow"
+     }
+    ],
+    "textual_equivalent": "98×102 by Yavadunam/Nikhilam: base 100, deviations −2 and +2. Left = 100 − 2 + 2 = 100; right = (−2)×(+2) = −4 is negative, so borrow 1 from the left: left 99, right 100 − 4 = 96. Answer 99|96 = 9996."
+   },
+   "status": "approved_2of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 2,
+    "reject": 1,
+    "verdicts_seen": 3
+   },
+   "rationale": "Step 6 'Adjust for negative right part (borrow from left)' pulls 1 from the left part (100→99) and adds the base to −4 to make 96 — an explicit higher-to-lower place borrow, precisely the borrow arrow the place-value chart renderer documents.",
+   "reject_reasons": [
+    "REFUTED. The borrow here is a lane-level adjustment inside a two-lane Nikhilam cross-product, not columnar place-value borrowing, and the bank never flips type for such an adjustment: all 5 carry/borrow-bearing base-complement multiplication records are arrow_matrix, and the Nikhilam-family records carrying negative/vinculum adjustments (Vedic_Made_Easy_sa_105, Tirthaji_Vedic_Math_sa_121, sa_128, sa_132, sa_310) are likewise arrow_matrix. The one place_value_chart borrow record, Bird_Engineering_Math_sa_31, is plain decimal column subtraction (64.46 - 28.77) — a different genre. It also breaks type consistency with its identically-structured siblings L3_01/02/05/06. Conventional type: arrow_matrix."
+   ]
+  },
+  {
+   "group": "yavadunam",
+   "template_id": "yavadunam_L3_04",
+   "scaffold_type": "place_value_chart",
+   "config": {
+    "description": "Place-value slot assembly for 95×105 = 9975: cross-operation gives left slot 100 and deviation product −25 is negative, so borrow 1 hundred from the left slot (100 → 99) and add it to the right slot (−25 + 100 = 75).",
+    "elements": [
+     {
+      "type": "column",
+      "place": "units"
+     },
+     {
+      "type": "column",
+      "place": "tens"
+     },
+     {
+      "type": "column",
+      "place": "hundreds"
+     },
+     {
+      "type": "arrow",
+      "from": "hundreds",
+      "to": "tens",
+      "label": "borrow"
+     }
+    ],
+    "textual_equivalent": "95×105 by Yavadunam/Nikhilam: base 100, deviations −5 and +5. Left = 100 − 5 + 5 = 100; right = (−5)×(+5) = −25 is negative, so borrow 1 from the left: left 99, right 100 − 25 = 75. Answer 99|75 = 9975."
+   },
+   "status": "approved_2of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 2,
+    "reject": 1,
+    "verdicts_seen": 3
+   },
+   "rationale": "Step 6 handles the negative deviation product −25 by borrowing 1 from the left part (100→99) and rewriting the right slot as 75, so the inter-slot borrow — not the lane setup — is what the scaffold must show, matching the chart's higher-to-lower borrow arrow.",
+   "reject_reasons": [
+    "REFUTED on the same grounds as L3_03: 95 x 105 differs from the arrow_matrix-conventional L3_01/L3_02/L3_05/L3_06 only by one negative-right-part adjustment step, and no base-complement multiplication record in the enriched bank switches to place_value_chart on account of a carry or borrow adjustment (0 of 5). Conventional type: arrow_matrix."
+   ]
+  },
+  {
+   "group": "yavadunam",
+   "template_id": "yavadunam_L3_05",
+   "scaffold_type": "arrow_matrix",
+   "config": {
+    "description": "Nikhilam-style arrow matrix for 94×96: each factor with its deviation (−6, −4) in its own row; diagonal crosswise arrows give the left lane 100−6−4 = 90, the deviation column multiplies down to the right lane 24; concatenate to 9024.",
+    "elements": [
+     {
+      "type": "grid",
+      "subtype": "multiplication_arrow_matrix",
+      "rows": 2,
+      "cols": 2
+     },
+     {
+      "type": "arrow",
+      "from": "number_row1",
+      "to": "deviation_row2",
+      "label": "crosswise product"
+     },
+     {
+      "type": "arrow",
+      "from": "number_row2",
+      "to": "deviation_row1",
+      "label": "crosswise product"
+     },
+     {
+      "type": "arrow",
+      "from": "deviation_row1",
+      "to": "deviation_row2",
+      "label": "product of deviations"
+     },
+     {
+      "type": "text_label",
+      "content": "cross-subtraction lane: base + d1 + d2"
+     },
+     {
+      "type": "text_label",
+      "content": "product-of-deficiencies lane"
+     }
+    ],
+    "textual_equivalent": "94×96 by Yavadunam/Nikhilam: base 100, deviations −6 and −4. Left part = 100 − 6 − 4 = 90. Right part = 24. Concatenate 90|24 = 9024."
+   },
+   "status": "approved_3of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 3,
+    "reject": 0,
+    "verdicts_seen": 3
+   },
+   "rationale": "The steps cross-add deficiencies −6 and −4 for the left lane 90 and multiply them for the right lane 24 with a clean concatenation, the standard Nikhilam cross-subtraction plus product-of-deficiencies matrix.",
+   "reject_reasons": []
+  },
+  {
+   "group": "yavadunam",
+   "template_id": "yavadunam_L3_06",
+   "scaffold_type": "arrow_matrix",
+   "config": {
+    "description": "Nikhilam-style arrow matrix for 106×108: each factor with its surplus (+6, +8) in its own row; diagonal crosswise arrows give the left lane 100+6+8 = 114, the deviation column multiplies down to the right lane 48; concatenate to 11448.",
+    "elements": [
+     {
+      "type": "grid",
+      "subtype": "multiplication_arrow_matrix",
+      "rows": 2,
+      "cols": 2
+     },
+     {
+      "type": "arrow",
+      "from": "number_row1",
+      "to": "deviation_row2",
+      "label": "crosswise product"
+     },
+     {
+      "type": "arrow",
+      "from": "number_row2",
+      "to": "deviation_row1",
+      "label": "crosswise product"
+     },
+     {
+      "type": "arrow",
+      "from": "deviation_row1",
+      "to": "deviation_row2",
+      "label": "product of deviations"
+     },
+     {
+      "type": "text_label",
+      "content": "cross-addition lane: base + d1 + d2"
+     },
+     {
+      "type": "text_label",
+      "content": "product-of-surpluses lane"
+     }
+    ],
+    "textual_equivalent": "106×108 by Yavadunam/Nikhilam: base 100, surpluses +6 and +8. Left part = 100 + 6 + 8 = 114. Right part = 6×8 = 48. Concatenate 114|48 = 11448."
+   },
+   "status": "approved_3of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 3,
+    "reject": 0,
+    "verdicts_seen": 3
+   },
+   "rationale": "The steps cross-add surpluses +6 and +8 into the left lane 114 and multiply them into the right lane 48 with no overflow, keeping the whole solution inside the two-lane Nikhilam cross-product structure.",
+   "reject_reasons": []
+  },
+  {
+   "group": "yavadunam",
+   "template_id": "yavadunam_L4_01",
+   "scaffold_type": "place_value_chart",
+   "config": null,
+   "status": "replaced_by_verifier_majority_2of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 1,
+    "reject": 2,
+    "verdicts_seen": 3
+   },
+   "rationale": "At base 1000 the steps still run the pure two-lane structure — left lane 1000+2×(−4)=992, right lane 16 zero-padded to 016 with no digit crossing lanes — so the deviation cross-product matrix remains the right visual.",
+   "reject_reasons": [
+    "Base 1000 does not change the refutation. Step 2 gives one deviation (-4); step 4 is \"Left part = 1000 + 2 x (-4) = 1000 - 8 = 992\", an addition; step 5's (-4)x(-4) = 16 is the only product. There is no grid of pairwise cross-products, so the config's duplicated row and its two \"crosswise product\" arrows depict an operation absent from the solution. The steps' actual structure is a 3-digit fixed-width slot with leading-zero padding (16 -> 016) concatenated as 992|016 - explicitly place-value bookkeeping, per step 6's reasoning about the base's three zeros.",
+    "Refuted twice. 996² is squaring: step 4 is 1000 + 2×(−4) = 992, a doubling, and no step performs a cross-operation, so the crossing arrows (labeled 'crosswise product', which would give 996×(−4)) model a route the learner never takes. And the sole feature distinguishing this item from L4_02 is step 6's pad of 16 to '016' — a top-listed common mistake that an arrow matrix has no slot width to display. A place-value chart with a 3-wide right slot shows the two empty leading columns and the zero written into them."
+   ]
+  },
+  {
+   "group": "yavadunam",
+   "template_id": "yavadunam_L4_02",
+   "scaffold_type": "textual_scaffold",
+   "config": null,
+   "status": "fallback_textual_1of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 1,
+    "reject": 2,
+    "verdicts_seen": 3
+   },
+   "rationale": "Steps 4-7 build left lane 1000+2×(−13)=974 and right lane 169 that exactly fills the 3-digit slot with no carry, keeping the solution a clean two-lane Nikhilam cross-product assembly.",
+   "reject_reasons": [
+    "Step 4 \"Left part = 1000 + 2 x (-13) = 1000 - 26 = 974\" is a scalar doubling-and-add on a single deviation; (-13)x(-13) = 169 in step 5 is the solution's lone multiplication. ArrowMatrixRenderer's pairwise cross-product grid has no referent here and the second row is fabricated. Steps 5-7 place 169 into the 3-digit slot and concatenate 974|169 - fixed-width place-value assembly.",
+    "Refuted. 987²'s left lane comes from doubling (1000 + 2×(−13) = 974), not the cross-operation the arrow matrix depicts, and the config's arrow labels contradict its own 'base + 2×deviation' caption. Right part 169 fills the 3-digit slot exactly, so there is no pad or carry either — what remains is a chain of formula transformations from the stated identity, which equation_chain renders step-for-step."
+   ]
+  },
+  {
+   "group": "yavadunam",
+   "template_id": "yavadunam_L4_03",
+   "scaffold_type": "place_value_chart",
+   "config": null,
+   "status": "replaced_by_verifier_majority_2of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 1,
+    "reject": 2,
+    "verdicts_seen": 3
+   },
+   "rationale": "The steps form left lane 1000+2×(−8)=984 and right lane 64 zero-padded to 064 — passive width bookkeeping, no inter-lane transfer — so the two-lane deviation structure carries the walkthrough.",
+   "reject_reasons": [
+    "One number, one deviation (-8), and step 4's \"1000 + 2 x (-8) = 984\" is an addition, not a crosswise pairing. The config itself concedes the only notable event is padding 64 to 064 for the 3-digit slot - a place-value width fact that a cross-product grid does not express, while the crosswise arrows it does draw correspond to nothing in the steps.",
+    "Refuted twice, as with L4_01. The squaring walkthrough computes 1000 + 2×(−8) = 984 by doubling, never by crossing; and the item's distinguishing content is step 6's pad of 64 to '064', which the rationale waves off as 'passive width bookkeeping' despite the template listing padding errors among its common mistakes. A fixed-width place-value slot is the visual that teaches the leading zero; a crossing matrix is not."
+   ]
+  },
+  {
+   "group": "yavadunam",
+   "template_id": "yavadunam_L4_04",
+   "scaffold_type": "place_value_chart",
+   "config": null,
+   "status": "replaced_by_verifier_majority_2of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 1,
+    "reject": 2,
+    "verdicts_seen": 3
+   },
+   "rationale": "Steps 4-7 assemble left lane 1000+2×(+4)=1008 and right lane 16 padded to 016 in a straight concatenation with no carry, the standard two-lane Yavadunam/Nikhilam cross-product layout.",
+   "reject_reasons": [
+    "Step 2 yields a single surplus +4 and step 4 computes \"1000 + 2 x (+4) = 1008\" by addition; the only product is (+4)x(+4) = 16. No pairwise cross-product exists for the arrow matrix, and the left part 1008 (4 digits) against a 3-digit right slot is not the symmetric two-lane shape the config claims. Steps 5-7 (16 -> 016 into the 3-digit slot, concatenate 1008|016) are place-value slot assembly.",
+    "Refuted. 1004² is squaring — step 4 doubles the surplus (1000 + 2×(+4) = 1008) rather than crossing — and the arrows labeled 'crosswise product' would produce 1004×4. The only step beyond the identity is padding 16 to '016', an explicitly flagged common mistake that needs a 3-column right slot to show, not a 2×2 matrix."
+   ]
+  },
+  {
+   "group": "yavadunam",
+   "template_id": "yavadunam_L4_05",
+   "scaffold_type": "textual_scaffold",
+   "config": null,
+   "status": "fallback_textual_1of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 1,
+    "reject": 2,
+    "verdicts_seen": 3
+   },
+   "rationale": "The steps compute left lane 1000+2×(+12)=1024 and right lane 144 that exactly fills the 3-digit slot with no carry, so the two-lane deviation cross-work is the whole mechanism to draw.",
+   "reject_reasons": [
+    "Step 4 \"Left part = 1000 + 2 x (+12) = 1000 + 24 = 1024\" is scalar addition on one deviation; 12 x 12 = 144 in step 5 is the only multiplication. The 2x2 cross-product grid and its two crosswise arrows would show an operation the template never performs, contradicting step 4's stated method. The honest visual is the left part plus the exactly-filled 3-digit right slot (1024|144), i.e. place-value columns.",
+    "Refuted. 1012²'s step 4 is 1000 + 2×(+12) = 1024 by doubling; the template contains no cross-operation, so the crossing arrows introduce a second, unreconciled procedure for the same quantity. Right part 144 fills the 3-digit slot exactly, leaving no pad or carry, so the item is a pure identity application best rendered as the eight-formula chain it already is."
+   ]
+  },
+  {
+   "group": "yavadunam",
+   "template_id": "yavadunam_L4_06",
+   "scaffold_type": "place_value_chart",
+   "config": null,
+   "status": "replaced_by_verifier_majority_2of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 1,
+    "reject": 2,
+    "verdicts_seen": 3
+   },
+   "rationale": "Steps 4-7 form left lane 1000+2×(+8)=1016 and right lane 64 zero-padded to 064 with no digit movement between lanes, keeping the Nikhilam two-lane cross-product grid as the natural scaffold.",
+   "reject_reasons": [
+    "Same single-deviation structure: step 4 is \"1000 + 2 x (+8) = 1016\" (addition) and step 5's (+8)x(+8) = 64 is the only product, padded to 064 by step 6 because the base has three zeros. Nothing in these steps is a pairwise cross-product, so ArrowMatrixRenderer would render fabricated structure while failing to show the leading-zero slot padding that the steps actually emphasise.",
+    "Refuted twice. The squaring objection applies (1000 + 2×(+8) = 1016 is a doubling, and the 'crosswise product' arrow labels contradict the lane caption), and the item's distinguishing step is padding 64 to '064' — one of the template's own listed common mistakes, which an arrow matrix cannot depict because it has no fixed-width slot. place_value_chart with a 3-wide right slot shows the leading zero explicitly."
+   ]
+  },
+  {
+   "group": "yavadunam",
+   "template_id": "yavadunam_L4_07",
+   "scaffold_type": "arrow_matrix",
+   "config": {
+    "description": "Nikhilam-style arrow matrix for 996×997: each factor with its deviation (−4, −3) in its own row; diagonal crosswise arrows give the left lane 1000−4−3 = 993, the deviation column multiplies down to the right lane 12 padded to 012; concatenate to 993012.",
+    "elements": [
+     {
+      "type": "grid",
+      "subtype": "multiplication_arrow_matrix",
+      "rows": 2,
+      "cols": 2
+     },
+     {
+      "type": "arrow",
+      "from": "number_row1",
+      "to": "deviation_row2",
+      "label": "crosswise product"
+     },
+     {
+      "type": "arrow",
+      "from": "number_row2",
+      "to": "deviation_row1",
+      "label": "crosswise product"
+     },
+     {
+      "type": "arrow",
+      "from": "deviation_row1",
+      "to": "deviation_row2",
+      "label": "product of deviations"
+     },
+     {
+      "type": "text_label",
+      "content": "cross-subtraction lane: base + d1 + d2"
+     },
+     {
+      "type": "text_label",
+      "content": "product-of-deficiencies lane padded to 3 digits"
+     }
+    ],
+    "textual_equivalent": "996×997 by Yavadunam/Nikhilam: base 1000, deviations −4 and −3. Left part = 1000 − 4 − 3 = 993. Right part = 12, padded to 012. Concatenate 993|012 = 993012."
+   },
+   "status": "approved_3of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 3,
+    "reject": 0,
+    "verdicts_seen": 3
+   },
+   "rationale": "Step 4 computes the left part 'by cross-operation' (1000−4−3=993) while the deviation product fills the right lane as 012 — the Nikhilam base-complement product with its cross-subtraction and product-of-deficiencies lanes, arrow_matrix's named home turf.",
+   "reject_reasons": []
+  },
+  {
+   "group": "yavadunam",
+   "template_id": "yavadunam_L4_08",
+   "scaffold_type": "arrow_matrix",
+   "config": {
+    "description": "Nikhilam-style arrow matrix for 1003×1005: each factor with its surplus (+3, +5) in its own row; diagonal crosswise arrows give the left lane 1000+3+5 = 1008, the deviation column multiplies down to the right lane 15 padded to 015; concatenate to 1008015.",
+    "elements": [
+     {
+      "type": "grid",
+      "subtype": "multiplication_arrow_matrix",
+      "rows": 2,
+      "cols": 2
+     },
+     {
+      "type": "arrow",
+      "from": "number_row1",
+      "to": "deviation_row2",
+      "label": "crosswise product"
+     },
+     {
+      "type": "arrow",
+      "from": "number_row2",
+      "to": "deviation_row1",
+      "label": "crosswise product"
+     },
+     {
+      "type": "arrow",
+      "from": "deviation_row1",
+      "to": "deviation_row2",
+      "label": "product of deviations"
+     },
+     {
+      "type": "text_label",
+      "content": "cross-addition lane: base + d1 + d2"
+     },
+     {
+      "type": "text_label",
+      "content": "product-of-surpluses lane padded to 3 digits"
+     }
+    ],
+    "textual_equivalent": "1003×1005 by Yavadunam/Nikhilam: base 1000, surpluses +3 and +5. Left part = 1000 + 3 + 5 = 1008. Right part = 3×5 = 15, padded to 015. Concatenate 1008|015 = 1008015."
+   },
+   "status": "approved_3of3",
+   "quorum": 3,
+   "full_quorum": true,
+   "votes": {
+    "approve": 3,
+    "reject": 0,
+    "verdicts_seen": 3
+   },
+   "rationale": "The steps cross-add surpluses +3 and +5 into the left lane 1008 and multiply them into the right lane 015 with only a passive zero-pad, the canonical two-lane Nikhilam multiplication structure the arrow-matrix renderer draws.",
+   "reject_reasons": []
+  }
+ ],
+ "rubric_notes": "SOURCES. Spec: /Users/harshahirrao/Speed gym/incoming/Resources/6-19-26-full architect/architecture/TEMPLATE_RENDERER_SCHEMA.md (v3.0, 2026-06-17, canonical). Usage evidence: 915 records / 819 with visual_scaffold across /Users/harshahirrao/Speed gym/incoming/topic_browser_full_package/content_data/templates/solve_along/*.jsonl; full-record shapes from Tirthaji_Vedic_Math_solvealong.jsonl (sa_42 arrow_matrix, sa_43 place_value_chart, sa_183 number_line, sa_68 textual_scaffold, plus Magic_Squares grid_construction/rotation/formula records).\n\nCONFIG CONTRACT — IMPORTANT. The spec documents ONLY visual_scaffold.type (renderer router) and visual_scaffold.description (layout context); it defines no per-type config keys anywhere. No `config` key exists in any of the 819 enriched records. The de-facto bank contract is exactly four keys on every scaffold: type, description, elements[] (typed element objects with a rigidly consistent per-type vocabulary — verified identical signatures across all books), textual_equivalent (accessibility fallback, 819/819 present). New enrichment should emit all four; the elements[] vocabulary per type is captured in each rubric entry's config_keys. Renderer selection: type is the primary router; unknown or missing type falls back technique-mapping → content_type → TextScaffold (never crashes).\n\nFLAG-DIGIT DIVISION (Dhvajanka / straight division) candidates. The step shape is digit-serial columnar: split divisor into main part + flag digit; each step produces one quotient digit, then subtracts flag×(previous quotient digit) from the next dividend column to form the working remainder. Primary: place_value_chart — the columnar write-digit/adjust-next-column flow with carry/borrow arrows matches exactly, and the bank's digit-serial division walkthroughs (Ekadhikena recurring-decimal expansion, Basic Operations division) already sit on it. Secondary: arrow_matrix — the flag correction is structurally a crosswise product (inverse-Urdhva), and Paravartya Yojayet division-family templates are observed on arrow_matrix (×10). Either is defensible; place_value_chart when the walkthrough is written column-by-column with remainders, arrow_matrix when it emphasizes the cross-product corrections.\n\nDEFICIENCY SQUARING (Yavadunam) candidates. Step shape: deficiency d = base − n; left part = n − d; right part = d² padded to base width, with possible carry from d² overflowing into the left part. Primary: arrow_matrix — Yavadunam is the a=b special case of Nikhilam base-complement multiplication, and the Nikhilam family is predominantly arrow_matrix in the bank (×71 vs ×31 place_value_chart). Secondary: place_value_chart — equally defensible when the walkthrough is written as left-slot/right-slot place-value assembly with a carry.\n\nSAFE FALLBACK. textual_scaffold. It routes to TextScaffold, which the spec insists is NOT a degraded fallback but the full SolveAlongStepper (all 5 layers, all 3 modes, traps, hints, remediation). Prefer emitting textual_scaffold over omitting visual_scaffold entirely: the §9 deployment check wants visual_scaffold.type set ('preferred'), and the explicit type also carries the text_badge/highlight/annotation elements. Never fall back to equation_chain or shape_canvas — both renderers are TBD with zero observed usage. Caveat on counts: the spec's §2.2 coverage table matches this bank for the deployed types but its 'not yet deployed' row (equation_chain, shape_canvas, venn_diagram = 6) disagrees with the bank, where the 6 long-tail templates are actually venn_diagram ×2, rotation_diagram ×2, formula_generalization ×2 — trust the bank."
+}

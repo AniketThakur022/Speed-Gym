@@ -133,7 +133,8 @@ def enrichment_score(rec: dict) -> tuple:
             len(rec))
 
 
-def adapt(rec: dict, overrides: dict | None = None) -> tuple[dict | None, dict]:
+def adapt(rec: dict, overrides: dict | None = None,
+          defects: dict | None = None) -> tuple[dict | None, dict]:
     """Returns (frontend_record | None, meta{trust, repairs, quarantine_reasons}).
 
     `overrides` maps template_id -> scaffold decision from the verification panel;
@@ -211,6 +212,9 @@ def adapt(rec: dict, overrides: dict | None = None) -> tuple[dict | None, dict]:
     legacy_status = rec.get("_validation_status")
     if legacy_status == "flagged":
         meta["quarantine"].append("legacy_validation_flagged")
+    if defects and rec.get("template_id") in defects:
+        # Correct answer, broken derivation — the compute check cannot see this.
+        meta["quarantine"].append(f"content_defect_{defects[rec['template_id']]['defect']}")
 
     if meta["quarantine"]:
         meta["trust"] = "quarantined"
@@ -248,10 +252,19 @@ def main() -> int:
     ap.add_argument("--input-dir", default="incoming/topic_browser_full_package/content_data/templates/solve_along")
     ap.add_argument("--out", default="data/factory/solvealong_bank_v1.jsonl")
     ap.add_argument("--manifest", default="data/factory/solvealong_bank_v1.manifest.json")
+    ap.add_argument("--content-defects", default="data/factory/content_defects_v1.json",
+                    help="verified content-defect list; these are quarantined regardless "
+                         "of legacy validation status")
     ap.add_argument("--scaffold-overrides", default=None,
                     help="JSON {decisions:[{template_id, scaffold_type, config, status, full_quorum}]} "
                          "from the scaffold verification panel")
     args = ap.parse_args()
+
+    defects = {}
+    if args.content_defects and Path(args.content_defects).exists():
+        defects = {d["template_id"]: d
+                   for d in json.loads(Path(args.content_defects).read_text())["defects"]}
+        print(f"content defects loaded: {len(defects)}")
 
     overrides = {}
     if args.scaffold_overrides:
@@ -275,7 +288,7 @@ def main() -> int:
 
     bank, trust_by_id, quarantined, repairs_log = [], {}, {}, {}
     for tid in sorted(by_id):
-        out, meta = adapt(by_id[tid], overrides)
+        out, meta = adapt(by_id[tid], overrides, defects)
         if out is None:
             quarantined[tid] = meta["quarantine"]
             continue

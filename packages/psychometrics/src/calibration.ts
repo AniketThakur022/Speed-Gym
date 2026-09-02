@@ -2,7 +2,7 @@
  * Trinary cold-start calibration — 6-problem warm-up priors, ANS baseline,
  * and 3-path routing (users.active_path enum).
  */
-import { WARMUP_PRIORS } from "./constants.js";
+import { WARMUP_PRIORS } from "./constants";
 
 export type WarmupOutcome = keyof typeof WARMUP_PRIORS;
 

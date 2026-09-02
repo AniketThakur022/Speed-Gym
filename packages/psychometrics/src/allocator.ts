@@ -11,7 +11,7 @@ import {
   CLUSTER_ALLOCATIONS,
   AGE_TIME_MULTIPLIERS,
   BASE_TIME_SECONDS,
-} from "./constants.js";
+} from "./constants";
 import type { SessionAllocation } from "@vmsg/shared-types";
 
 export function allocationPercentages(persona?: string, cluster?: string): AllocationPercentages {

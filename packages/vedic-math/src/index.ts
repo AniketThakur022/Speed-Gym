@@ -1,2 +1,2 @@
-export * from "./sutras.js";
-export * from "./generators.js";
+export * from "./sutras";
+export * from "./generators";

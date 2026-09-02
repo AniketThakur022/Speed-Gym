@@ -9,7 +9,7 @@ import {
   squareEndingIn5,
   yavadunamSquare,
   digitalRoot,
-} from "./sutras.js";
+} from "./sutras";
 
 /** mulberry32 — tiny, fast, deterministic 32-bit PRNG. */
 export function mulberry32(seed: number): () => number {

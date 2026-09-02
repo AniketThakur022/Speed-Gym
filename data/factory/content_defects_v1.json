@@ -1,0 +1,24 @@
+{
+ "description": "Templates with verified CONTENT defects — the walkthrough is pedagogically broken even though the final answer is arithmetically correct. Consumed by factory/adapters/solvealong_adapter.py, which quarantines these regardless of legacy validation status. Evidence-based only: every entry names what was checked and by whom. NOT a heuristic list — the auditor's solution_coherence check handles the lexical class.",
+ "provenance": "Surfaced by the adversarial scaffold-verification panel (3 independent lenses, run wf_f8a17c59-ced, 2026-09-03), then confirmed by direct reading of the source solution steps.",
+ "defects": [
+  {
+   "template_id": "vedic_completion_dhvajanka_013",
+   "problem": "Divide 432 by 24 using the Dhvajanka Sutra",
+   "stated_answer": "18",
+   "answer_arithmetically_correct": true,
+   "defect": "abandoned_method_walkthrough",
+   "evidence": "Step 5 reads '35 ÷ 2 = 17 remainder 1 / Try: 17 ÷ 24 is wrong, need 1'; step 6 reads 'Bring down 2: 12 ÷ 24 / No, adjust: 432 ÷ 24 = 18'. The walkthrough visibly fails, abandons the flag-division method, and asserts the answer instead of deriving it. A learner cannot follow it.",
+   "why_the_auditor_missed_it": "Stage 3 recomputes the ANSWER (432/24 = 18 passes) and stage 1 sees all required fields present. Neither inspects whether the solution narrative actually derives that answer."
+  },
+  {
+   "template_id": "vedic_completion_dhvajanka_014",
+   "problem": "Divide 672 by 28 using the Dhvajanka Sutra",
+   "stated_answer": "24",
+   "answer_arithmetically_correct": true,
+   "defect": "self_contradictory_walkthrough",
+   "evidence": "Step 5 reads '43 ÷ 28 ≈ 1.5, use 1' and then immediately 'First quotient digit = 2' — the step contradicts itself within two lines; step 6 asserts '672 ÷ 28 = 24' without deriving the second digit.",
+   "why_the_auditor_missed_it": "Same as above, and this one also escapes the lexical solution_coherence check: the contradiction is numeric, not signalled by any self-correction phrase. Catching this class requires the stage-7 jester panel."
+  }
+ ]
+}

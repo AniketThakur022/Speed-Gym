@@ -1,2 +1,2 @@
-export * from "./template.js";
-export * from "./prescription.js";
+export * from "./template";
+export * from "./prescription";

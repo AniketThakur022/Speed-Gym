@@ -4,7 +4,7 @@
  * Verified against the pre-loss build's live demo: P(L)=0.35 (FRACTURED) +
  * one correct difficulty-1 answer → 0.8247 (FRAGILE 82%).
  */
-import { BktParams, RFP_BKT_PARAMS, LEARN_RATE_BY_DIFFICULTY, FLUID_GATE, PROFICIENT_GATE } from "./constants.js";
+import { BktParams, RFP_BKT_PARAMS, LEARN_RATE_BY_DIFFICULTY, FLUID_GATE, PROFICIENT_GATE } from "./constants";
 
 export function validateParams(params: BktParams): void {
   if (params.pSlip + params.pGuess >= 1) {

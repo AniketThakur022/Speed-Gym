@@ -1,0 +1,78 @@
+/*
+ * Exam Arena global styles.
+ *
+ * AUTHORED during the 2026-09-03 reseed: the recovered `globals.css` was only a
+ * webpack dev-build stub (`export default "49d9fb99609c"`), so the real
+ * stylesheet did not survive. Token names are reconstructed from the class
+ * names the recovered pages use (bg-background, text-muted-foreground,
+ * border-border, text-fluid-*, …) and the brand palette shipped in the APK
+ * manifest (lime #C8FF5A on near-black #050505), which also lives in
+ * @vmsg/design-tokens.
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 2%;
+    --foreground: 0 0% 96%;
+
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 96%;
+
+    --primary: 76 100% 67%;
+    --primary-foreground: 0 0% 2%;
+
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 64%;
+
+    --accent: 0 0% 10%;
+    --accent-foreground: 0 0% 96%;
+
+    --border: 0 0% 16%;
+    --input: 0 0% 16%;
+    --ring: 76 100% 67%;
+
+    --radius: 0.625rem;
+  }
+
+  :root.light {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 6%;
+
+    --card: 0 0% 98%;
+    --card-foreground: 0 0% 6%;
+
+    --primary: 76 74% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 94%;
+    --muted-foreground: 0 0% 38%;
+
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 6%;
+
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
+    --ring: 76 74% 42%;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    -webkit-font-smoothing: antialiased;
+    /* The shells run full-bleed; avoid rubber-banding over the app chrome. */
+    overscroll-behavior-y: none;
+  }
+
+  /* AppEntry removes this class once it has decided native vs web, so the
+     first paint never flashes the wrong surface. */
+  html.loading body {
+    visibility: hidden;
+  }
+}

@@ -7,7 +7,7 @@ import {
   SINKING_BUMP,
   SINKING_PRIORITY_CAP,
   DECAY_CLIFF_DAYS,
-} from "./constants.js";
+} from "./constants";
 
 export type SinkingTrigger = "mock_wrong_answer" | "session_wrong" | "decay" | "manual";
 

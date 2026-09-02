@@ -97,6 +97,16 @@ class Auditor:
         if reasons:
             return {"verdict": "rejected", "failed_stage": 1, "reasons": reasons}
 
+        # 1b solution coherence — a walkthrough that visibly abandons its own method
+        # still passes the answer check (stage 3 recomputes the ANSWER, not the
+        # derivation). Lexical only: silent numeric contradictions need stage 7.
+        for step in rec.get("solution", []):
+            blob = " ".join(str(step.get(k) or "") for k in ("operation", "formula", "reasoning"))
+            m = ABANDON_RE.search(blob)
+            if m:
+                return {"verdict": "rejected", "failed_stage": 1,
+                        "reasons": [f"solution_abandons_method:{m.group(0).strip()!r}"]}
+
         # 2 latex sanity
         for step in rec.get("solution", []):
             f = step.get("formula") or ""

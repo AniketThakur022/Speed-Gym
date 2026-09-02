@@ -3,9 +3,9 @@
  * (client-side prescription builder, ~50 ms budget).
  */
 import type { Bucket, PrescribedProblem, SessionPrescription, TechniqueStateName } from "@vmsg/shared-types";
-import { updateBkt } from "./bkt.js";
-import { composeAllocation, targetTimeSeconds, ComposeAllocationOptions } from "./allocator.js";
-import { WRONG_ANSWER_GUARDS, RFP_BKT_PARAMS } from "./constants.js";
+import { updateBkt } from "./bkt";
+import { composeAllocation, targetTimeSeconds, ComposeAllocationOptions } from "./allocator";
+import { WRONG_ANSWER_GUARDS, RFP_BKT_PARAMS } from "./constants";
 
 export interface TechniqueState {
   techniqueId: string;
