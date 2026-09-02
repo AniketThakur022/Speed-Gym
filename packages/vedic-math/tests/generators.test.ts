@@ -7,6 +7,11 @@ function independentAnswer(p: GeneratedProblem): number {
     case "nikhilam-base-100":
     case "urdhva-2digit":
       return p.params.a * p.params.b;
+    case "anurupyena-base-50":
+    case "vyashti-mean-product":
+      return p.params.a * p.params.b;
+    case "ekanyunena-nines":
+      return p.params.n * (Math.pow(10, p.params.nines) - 1);
     case "square-ending-5":
     case "yavadunam-100":
       return p.params.n * p.params.n;
@@ -39,7 +44,7 @@ describe("seeded parametric generators (mulberry32)", () => {
     expect(generateSet("nikhilam-base-100", 10, 999, 2)).not.toEqual(first);
   });
 
-  it("625 generated problems re-derive exactly (5 techniques × 5 difficulties × 25)", () => {
+  it("every generated problem re-derives exactly (8 techniques × 5 difficulties × 25)", () => {
     let total = 0;
     for (const techniqueId of TECHNIQUE_IDS) {
       for (let difficulty = 1; difficulty <= 5; difficulty++) {
@@ -50,7 +55,8 @@ describe("seeded parametric generators (mulberry32)", () => {
         }
       }
     }
-    expect(total).toBe(625);
+    expect(total).toBe(TECHNIQUE_IDS.length * 5 * 25);
+    expect(TECHNIQUE_IDS.length).toBe(8);
   });
 
   it("generated parameters respect their difficulty windows", () => {

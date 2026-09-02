@@ -10,6 +10,7 @@ import {
   yavadunamSquare,
   digitalRoot,
 } from "./sutras";
+import { anurupyenaMultiply, ekanyunenaByNines, vyashtiProduct } from "./sutras-extended";
 
 /** mulberry32 — tiny, fast, deterministic 32-bit PRNG. */
 export function mulberry32(seed: number): () => number {
@@ -116,12 +117,61 @@ const digitalRootGen: Generator = (rng, difficulty) => {
   };
 };
 
+const ekanyunenaNines: Generator = (rng, difficulty) => {
+  const nines = Math.min(4, 1 + Math.floor((difficulty - 1) / 2));
+  const base = Math.pow(10, nines);
+  const n = randInt(rng, 2, base - 1);
+  const { answer, steps } = ekanyunenaByNines(n, nines);
+  return {
+    techniqueId: "ekanyunena-nines",
+    difficulty,
+    problemText: `${n} × ${base - 1}`,
+    params: { n, nines },
+    answer,
+    steps,
+  };
+};
+
+const anurupyenaBase50: Generator = (rng, difficulty) => {
+  const spread = 2 + difficulty * 2;
+  const a = 50 + randInt(rng, -spread, spread);
+  const b = 50 + randInt(rng, -spread, spread);
+  const { answer, steps } = anurupyenaMultiply(a, b, 100, 0.5);
+  return {
+    techniqueId: "anurupyena-base-50",
+    difficulty,
+    problemText: `${a} × ${b}`,
+    params: { a, b, base: 100, multiplier: 0.5 },
+    answer,
+    steps,
+  };
+};
+
+const vyashtiMean: Generator = (rng, difficulty) => {
+  const mean = randInt(rng, 10 * difficulty, 20 * difficulty + 30);
+  const half = randInt(rng, 1, 3 + difficulty * 2);
+  const a = mean - half;
+  const b = mean + half;
+  const { answer, steps } = vyashtiProduct(a, b);
+  return {
+    techniqueId: "vyashti-mean-product",
+    difficulty,
+    problemText: `${a} × ${b}`,
+    params: { a, b },
+    answer,
+    steps,
+  };
+};
+
 export const GENERATORS: Record<string, Generator> = {
   "nikhilam-base-100": nikhilamBase100,
   "urdhva-2digit": urdhva2Digit,
   "square-ending-5": square5,
   "yavadunam-100": yavadunam100,
   "digital-root": digitalRootGen,
+  "ekanyunena-nines": ekanyunenaNines,
+  "anurupyena-base-50": anurupyenaBase50,
+  "vyashti-mean-product": vyashtiMean,
 };
 
 export const TECHNIQUE_IDS = Object.keys(GENERATORS);
