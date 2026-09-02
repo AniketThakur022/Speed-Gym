@@ -50,6 +50,29 @@ def nfkc(s: str) -> str:
     return unicodedata.normalize("NFKC", s or "")
 
 
+# Page OCR hard-wraps prose every ~23 chars. A model quoting across a wrap renders
+# it as a space, so exact char alignment fails. Rejoin wrapped PROSE lines only —
+# lines that look columnar/mathematical keep their breaks, since layout is content
+# in a worked example.
+MATHY = re.compile(r"^\s*[\d(|+\-=×÷.]|[=|]\s*$|\\\\|\s{3,}\S")
+
+
+def unwrap_prose(text: str) -> str:
+    out = []
+    for line in text.split("\n"):
+        prev = out[-1] if out else ""
+        joinable = (
+            prev and not prev.rstrip().endswith((".", ":", ";", "?", "!", "—"))
+            and line[:1].islower()
+            and not MATHY.search(line) and not MATHY.search(prev)
+        )
+        if joinable:
+            out[-1] = prev.rstrip() + " " + line.strip()
+        else:
+            out.append(line)
+    return "\n".join(out)
+
+
 def fold(s: str) -> str:
     return re.sub(r"\s+", " ", s).strip().casefold()
 
@@ -146,6 +169,9 @@ def main() -> int:
     ap.add_argument("--ollama-url", default="http://localhost:11434")
     ap.add_argument("--out-dir", default="data/factory/station3_pilot")
     ap.add_argument("--list-slice", action="store_true", help="preview input, no model calls")
+    ap.add_argument("--unwrap", action="store_true",
+                    help="rejoin hard-wrapped prose lines before extraction (A/B: does "
+                         "line wrapping cause the grounding losses?)")
     args = ap.parse_args()
 
     out_dir = Path(args.out_dir)
@@ -167,6 +193,8 @@ def main() -> int:
             if args.min_page and (page or 0) < args.min_page:
                 continue
             content = nfkc(c.get("content") or "")
+            if args.unwrap:
+                content = unwrap_prose(content)
             if len(content) < 60:  # skip fragments
                 continue
             slice_rows.append({"id": cid, "book_id": book, "page": page, "content": content})
