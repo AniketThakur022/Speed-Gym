@@ -75,6 +75,14 @@ def main():
                     elif e["action"] == "suspect":
                         q.setdefault("extra", {})["key_suspect"] = e["reason"]
                         flagged += 1
+                    elif e["action"] == "format":
+                        # only ever fills in "unclassified"; never overwrites a
+                        # format the extraction pipeline already determined
+                        if q.get("question_format") not in (None, "", "unclassified"):
+                            continue
+                        q["question_format"] = e["question_format"]
+                        q.setdefault("extra", {})["format_source"] = e["format_source"]
+                        applied += 1
             out_lines.append(json.dumps(r, ensure_ascii=False))
     MASTER.write_text("\n".join(out_lines) + "\n")
     print(f"applied {applied} keys, flagged {flagged} questions for re-extraction")
