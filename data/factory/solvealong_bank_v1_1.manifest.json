@@ -15,12 +15,12 @@
  ],
  "input_records": 915,
  "unique_templates": 861,
- "emitted": 825,
+ "emitted": 823,
  "trust_entry_recommendation": {
   "trusted_candidate": 776,
-  "sandbox_candidate": 49
+  "sandbox_candidate": 47
  },
- "quarantined_count": 36,
+ "quarantined_count": 38,
  "quarantined": {
   "Bird_Engineering_Math_sa_169": [
    "legacy_validation_flagged"
@@ -139,6 +139,12 @@
   ],
   "Vedic_Made_Easy_sa_49": [
    "legacy_validation_flagged"
+  ],
+  "vedic_completion_dhvajanka_013": [
+   "content_defect_abandoned_method_walkthrough"
+  ],
+  "vedic_completion_dhvajanka_014": [
+   "content_defect_self_contradictory_walkthrough"
   ]
  },
  "repairs": {
@@ -180,12 +186,6 @@
   ],
   "vedic_completion_dhvajanka_012": [
    "scaffold_from_panel_approved_3of3"
-  ],
-  "vedic_completion_dhvajanka_013": [
-   "scaffold_from_panel_fallback_textual_1of3"
-  ],
-  "vedic_completion_dhvajanka_014": [
-   "scaffold_from_panel_fallback_textual_1of3"
   ],
   "vedic_completion_dhvajanka_015": [
    "scaffold_from_panel_approved_2of3"
@@ -295,7 +295,7 @@
   "median": 95,
   "max": 230
  },
- "scaffold_overrides_applied": 48,
+ "scaffold_overrides_applied": 46,
  "placeholder_scaffolds_remaining": 0,
  "trust_by_id": {
   "Bird_Engineering_Math_sa_102": "trusted_candidate",
@@ -1087,8 +1087,6 @@
   "vedic_completion_dhvajanka_010": "sandbox_candidate",
   "vedic_completion_dhvajanka_011": "sandbox_candidate",
   "vedic_completion_dhvajanka_012": "sandbox_candidate",
-  "vedic_completion_dhvajanka_013": "sandbox_candidate",
-  "vedic_completion_dhvajanka_014": "sandbox_candidate",
   "vedic_completion_dhvajanka_015": "sandbox_candidate",
   "vedic_completion_dhvajanka_016": "sandbox_candidate",
   "vedic_completion_dhvajanka_017": "sandbox_candidate",

@@ -30,6 +30,14 @@ TOLERANCE = 1e-10
 BASES_VALID = {10, 100, 1000, 10000}
 MAX_TRAPS = 5
 
+# Self-narrated abandonment of the method being taught ("Try: ... is wrong",
+# "No, adjust: <answer>"). Deliberately narrow — these phrases have no place in a
+# finished worked solution, so false positives are cheap and the miss rate is the
+# real limit (a contradiction stated only in numbers slips through).
+ABANDON_RE = re.compile(
+    r"\bNo,\s*adjust\b|\bis wrong\b|\bTry:|\bdoesn'?t work\b|\bwait\b|\boops\b|\bactually,|\blet me\b",
+    re.I)
+
 _OPS = {ast.Add: operator.add, ast.Sub: operator.sub, ast.Mult: operator.mul,
         ast.Div: lambda a, b: Fraction(a) / Fraction(b), ast.Pow: operator.pow,
         ast.USub: operator.neg}
