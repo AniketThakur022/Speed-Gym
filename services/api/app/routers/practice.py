@@ -1,10 +1,24 @@
-"""Practice reads — Neo4j "GPS" routes (live labels: :Skill, :Problem)."""
+"""Practice reads — Neo4j "GPS" routes (live labels: :Skill, :Problem).
+
+VERIFICATION SEMANTICS (contract, 2026-09-02): answer-verification and
+solution-verification are DISTINCT signals and must never be merged into one
+"verified" field. SymPy — in the graph's validation_status, in the legacy
+content audit, and in the factory's stage-3 gate — recomputes the ANSWER only;
+a template can carry a correct answer with a broken walkthrough and still pass
+(observed: data/factory/content_defects_v1.json). Solution correctness is only
+established by the stage-7 jester review, which is gated offline, so this API
+reports it as unverified rather than inferring it. See memory
+`content-verification-semantics`.
+"""
 
 from fastapi import APIRouter, HTTPException, Query
 
 from .. import db
 
 router = APIRouter(prefix="/api/practice", tags=["practice"])
+
+# Graph validation_status values are answer-level verdicts.
+ANSWER_VERIFIED = {"verified_L1", "verified_L2"}
 
 
 @router.get("/techniques")
@@ -57,4 +71,13 @@ async def list_problems(
             records = [dict(r) async for r in result]
     except Exception as exc:  # noqa: BLE001
         raise HTTPException(status_code=503, detail=f"graph unavailable: {type(exc).__name__}")
+
+    for record in records:
+        raw = record.pop("validation_status", None)
+        # Two named signals instead of one ambiguous "validation_status", so no
+        # consumer can read an answer check as a checked walkthrough.
+        record["answer_verification"] = (
+            "verified" if raw in ANSWER_VERIFIED else (raw or "unverified")
+        )
+        record["solution_verification"] = "unverified"
     return {"problems": records}

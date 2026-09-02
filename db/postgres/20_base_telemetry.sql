@@ -194,13 +194,20 @@ CREATE TABLE IF NOT EXISTS content_validation_log (
 CREATE INDEX IF NOT EXISTS idx_cvl_content ON content_validation_log(content_id);
 
 -- Canonical 5-value trust enum (RUNTIME_SAFETY wins over the 4-value variant)
+--
+-- VERIFICATION SEMANTICS: sympy_score is an ANSWER check (it recomputes the
+-- result), NOT a check of the worked solution — a template can hold a correct
+-- answer with a broken derivation and still score 1.0 here. Solution
+-- correctness comes only from the stage-7 jester consensus, which lands in
+-- consensus_score. Never collapse these into a single "verified" flag in an
+-- API field, admin column, or trust badge.
 CREATE TABLE IF NOT EXISTS problem_health_scores (
     content_id VARCHAR(200) PRIMARY KEY,
     trust_level VARCHAR(20) NOT NULL DEFAULT 'QUARANTINED_SOFT' CHECK (trust_level IN (
         'LIVE', 'TRUSTED', 'SANDBOX', 'QUARANTINED_SOFT', 'QUARANTINED_HARD'
     )),
     health_score DECIMAL(4,3),         -- sympy*0.40 + trap*0.20 + consensus*0.25 + hallucination*0.15
-    sympy_score DECIMAL(4,3),
+    sympy_score DECIMAL(4,3),          -- ANSWER equivalence only (see note above)
     trap_score DECIMAL(4,3),
     consensus_score DECIMAL(4,3),
     hallucination_score DECIMAL(4,3),
