@@ -132,7 +132,8 @@ CREATE TABLE IF NOT EXISTS problems (
     answer_key_structured JSONB,
     target_variable VARCHAR(100),
     data_points JSONB DEFAULT '{}'::jsonb,
-    verification_status VARCHAR(50),
+    verification_status VARCHAR(50),   -- LEGACY v1 verifier verdict (63.7% FP) — diagnostic only,
+                                       -- never a quality gate; live signal = graph validation_status
     verification_error TEXT,
     verified_roots JSONB DEFAULT '[]'::jsonb,
     verified_at TIMESTAMPTZ,

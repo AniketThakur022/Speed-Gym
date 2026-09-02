@@ -26,6 +26,13 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_EXPORTS = ROOT / "incoming" / "topic_browser_full_package" / "db_exports"
+CHUNK_TYPE_PATCH = ROOT / "data" / "factory" / "chunk_type_patch_v1.jsonl"
+
+# Legacy pre-loss SymPy verifier v1 verdicts (documented 63.7% false-positive
+# rate) — quarantined: never seeded as live fields. The real quality signal is
+# the graph's validation_status (verified_L1/L2). See memory
+# `neo4j-live-graph-schema` / coordinator note 2026-09-02.
+QUARANTINED_FIELDS = {"python_audit_status", "_python_audit_status"}
 
 DATABASE_URL = os.environ.get("DATABASE_URL", "postgresql://vmsg:vmsg@localhost:5432/vmsg")
 NEO4J_URI = os.environ.get("NEO4J_URI", "bolt://localhost:7687")
@@ -75,6 +82,12 @@ def seed_postgres(exports: Path) -> None:
         t0 = time.time()
 
         # ── chunks ────────────────────────────────────────────────────────
+        # RAG's normalization patch overrides chunk_type per id (4,943 rows).
+        type_patch: dict[str, str] = {}
+        if CHUNK_TYPE_PATCH.exists():
+            type_patch = {r["id"]: r["chunk_type"] for r in read_jsonl(CHUNK_TYPE_PATCH)}
+            print(f"  chunk_type patch loaded: {len(type_patch)} overrides")
+
         n = 0
         with conn.cursor() as cur:
             for batch in batched(read_jsonl(exports / "chunks.jsonl"), PG_BATCH):
@@ -87,7 +100,8 @@ def seed_postgres(exports: Path) -> None:
                     [
                         (
                             r["id"], r.get("book_id"), r.get("page_number"),
-                            r.get("chunk_type"), r.get("content"), r.get("content_md"),
+                            type_patch.get(r["id"], r.get("chunk_type")),
+                            r.get("content"), r.get("content_md"),
                             as_vector(r.get("embedding")),
                             jdump(r.get("logic_bundle") or {}),
                             jdump(r.get("station_audit") or {}),
@@ -186,7 +200,11 @@ def seed_neo4j(exports: Path) -> None:
             groups: dict[tuple[str, str], list[dict]] = {}
             for r in read_jsonl(exports / "nodes.jsonl"):
                 label, key_field = r["_label"], r["_key_field"]
-                props = {k: v for k, v in r.items() if not k.startswith("_") and v is not None}
+                props = {
+                    k: v
+                    for k, v in r.items()
+                    if not k.startswith("_") and v is not None and k not in QUARANTINED_FIELDS
+                }
                 props[key_field] = r["_key_value"]
                 groups.setdefault((label, key_field), []).append(props)
 
@@ -228,6 +246,19 @@ def seed_neo4j(exports: Path) -> None:
                 total += len(rows)
                 print(f"  rels {sl}-[{rt}]->{el}: {len(rows)}")
             print(f"  relationships total: {total}")
+
+            # Pre-create the 3 Skill nodes for the 54 newly recovered Dhvajanka
+            # templates (never in the 2026-06-03 export; 26 chain mentions in
+            # RAG's derived REQUIRES edges reference them — their loader
+            # factory/closure/load_requires_edges.cypher MERGE-matches these).
+            for name in ("Dhvajanka Sutra Level 1", "Dhvajanka Sutra Level 2", "Dhvajanka Sutra Level 3"):
+                session.run(
+                    "MERGE (s:Skill {name: $name}) "
+                    "ON CREATE SET s.name_norm = toLower($name), s.topic = 'VedicMath', "
+                    "s.source = 'recovered_2026-09-02', s.is_root = false, s.is_stub = false",
+                    name=name,
+                ).consume()
+            print("  Dhvajanka Level 1-3 :Skill nodes ensured (RAG MERGE-window prereq)")
     finally:
         driver.close()
 

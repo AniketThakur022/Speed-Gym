@@ -13,11 +13,20 @@ app = Celery(
     "vmsg",
     broker=os.environ.get("REDIS_URL", "redis://localhost:6379/0"),
     backend=os.environ.get("REDIS_URL", "redis://localhost:6379/0"),
-    include=["worker.tasks.content", "worker.tasks.maintenance"],
+    include=["worker.tasks.content", "worker.tasks.maintenance", "worker.tasks.factory"],
 )
 
 app.conf.timezone = "UTC"
 app.conf.beat_schedule = {
+    # Content factory (RAG-owned pipeline; task-name contract shared 2026-09-02)
+    "factory-nightly-run": {
+        "task": "factory.nightly_run",
+        "schedule": crontab(minute=0, hour=0),
+    },
+    "factory-hourly-run": {
+        "task": "factory.hourly_run",
+        "schedule": crontab(minute=15),
+    },
     # Parametric pre-warming: 100 problems/pattern at 00:00 UTC (GEN cache)
     "prewarm-generated-problems": {
         "task": "worker.tasks.content.prewarm_generated_problems",

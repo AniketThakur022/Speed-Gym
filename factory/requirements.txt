@@ -1,0 +1,3 @@
+# RAG content-factory Python deps (verified installable on Python 3.14, 2026-09-02).
+# The factory's own tools are stdlib-only; these are the optional station backends.
+langextract==1.6.0     # Station 3 grounded extraction (pilot: station3_langextract.py)
