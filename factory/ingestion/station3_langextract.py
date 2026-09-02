@@ -50,27 +50,9 @@ def nfkc(s: str) -> str:
     return unicodedata.normalize("NFKC", s or "")
 
 
-# Page OCR hard-wraps prose every ~23 chars. A model quoting across a wrap renders
-# it as a space, so exact char alignment fails. Rejoin wrapped PROSE lines only —
-# lines that look columnar/mathematical keep their breaks, since layout is content
-# in a worked example.
-MATHY = re.compile(r"^\s*[\d(|+\-=×÷.]|[=|]\s*$|\\\\|\s{3,}\S")
-
-
-def unwrap_prose(text: str) -> str:
-    out = []
-    for line in text.split("\n"):
-        prev = out[-1] if out else ""
-        joinable = (
-            prev and not prev.rstrip().endswith((".", ":", ";", "?", "!", "—"))
-            and line[:1].islower()
-            and not MATHY.search(line) and not MATHY.search(prev)
-        )
-        if joinable:
-            out[-1] = prev.rstrip() + " " + line.strip()
-        else:
-            out.append(line)
-    return "\n".join(out)
+# Single definition, owned by station 0 (chunks are now written already reflowed as
+# of station0_v2_unwrap; --unwrap remains for A/B against a legacy v1 chunk file).
+from station0_chunker import unwrap_prose  # noqa: E402
 
 
 def fold(s: str) -> str:

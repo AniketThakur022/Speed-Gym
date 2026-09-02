@@ -1,25 +1,317 @@
-[
- {
-  "book": "Tirthaji",
-  "pages": {
-   "used": 362,
-   "needs_render": 63
+{
+ "chunker_version": "station0_v2_unwrap",
+ "reflow": "unwrap_prose applied post-segmentation (predicate-based; columnar/tabular/enumerated lines preserved)",
+ "books": 20,
+ "total_chunks": 12540,
+ "reports": [
+  {
+   "book": "Arun_Sharma",
+   "pages": {
+    "needs_render": 466
+   },
+   "chunks": {},
+   "total_chunks": 0,
+   "out": "data/factory/chunks/Arun_Sharma_chunks_v1.jsonl"
   },
-  "chunks": {
-   "explanation": 133,
-   "problem_set": 38,
-   "worked_example": 1
+  {
+   "book": "Arun_Sharma_Quant",
+   "pages": {
+    "needs_render": 44,
+    "used": 876
+   },
+   "chunks": {
+    "explanation": 327,
+    "problem_set": 78,
+    "problem": 2516,
+    "dropped_duplicate": 6,
+    "worked_example": 21
+   },
+   "total_chunks": 2942,
+   "out": "data/factory/chunks/Arun_Sharma_Quant_chunks_v1.jsonl"
   },
-  "total_chunks": 172,
-  "out": "data/factory/chunks/Tirthaji_chunks_v1.jsonl"
- },
- {
-  "book": "Arun_Sharma",
-  "pages": {
-   "needs_render": 466
+  {
+   "book": "Bhatia",
+   "pages": {
+    "needs_render": 14,
+    "used": 116
+   },
+   "chunks": {
+    "explanation": 59,
+    "problem_set": 46,
+    "worked_example": 6
+   },
+   "total_chunks": 111,
+   "out": "data/factory/chunks/Bhatia_chunks_v1.jsonl"
   },
-  "chunks": {},
-  "total_chunks": 0,
-  "out": "data/factory/chunks/Arun_Sharma_chunks_v1.jsonl"
- }
-]
+  {
+   "book": "Bird",
+   "pages": {
+    "needs_render": 28,
+    "used": 349
+   },
+   "chunks": {
+    "explanation": 12,
+    "problem_set": 110,
+    "problem": 98
+   },
+   "total_chunks": 220,
+   "out": "data/factory/chunks/Bird_chunks_v1.jsonl"
+  },
+  {
+   "book": "Dehaene",
+   "pages": {
+    "needs_render": 18,
+    "used": 321
+   },
+   "chunks": {
+    "explanation": 130,
+    "problem_set": 83
+   },
+   "total_chunks": 213,
+   "out": "data/factory/chunks/Dehaene_chunks_v1.jsonl"
+  },
+  {
+   "book": "ETS_GRE",
+   "pages": {
+    "needs_render": 10,
+    "used": 660
+   },
+   "chunks": {
+    "explanation": 94,
+    "problem_set": 129,
+    "problem": 297,
+    "dropped_duplicate": 5,
+    "worked_example": 139
+   },
+   "total_chunks": 659,
+   "out": "data/factory/chunks/ETS_GRE_chunks_v1.jsonl"
+  },
+  {
+   "book": "ETS_GRE_Verbal",
+   "pages": {
+    "needs_render": 10,
+    "used": 244
+   },
+   "chunks": {
+    "explanation": 63,
+    "problem_set": 80
+   },
+   "total_chunks": 143,
+   "out": "data/factory/chunks/ETS_GRE_Verbal_chunks_v1.jsonl"
+  },
+  {
+   "book": "Hall___Knight",
+   "pages": {
+    "needs_render": 102,
+    "used": 490
+   },
+   "chunks": {
+    "explanation": 329,
+    "problem_set": 199,
+    "worked_example": 186,
+    "problem": 125,
+    "dropped_duplicate": 2
+   },
+   "total_chunks": 839,
+   "out": "data/factory/chunks/Hall___Knight_chunks_v1.jsonl"
+  },
+  {
+   "book": "Hogg",
+   "pages": {
+    "used": 410,
+    "needs_render": 42
+   },
+   "chunks": {
+    "explanation": 416,
+    "worked_example": 242,
+    "problem_set": 88,
+    "dropped_duplicate": 5
+   },
+   "total_chunks": 746,
+   "out": "data/factory/chunks/Hogg_chunks_v1.jsonl"
+  },
+  {
+   "book": "Knuth",
+   "pages": {
+    "used": 666,
+    "needs_render": 4
+   },
+   "chunks": {
+    "explanation": 243,
+    "problem_set": 144,
+    "worked_example": 14
+   },
+   "total_chunks": 401,
+   "out": "data/factory/chunks/Knuth_chunks_v1.jsonl"
+  },
+  {
+   "book": "Manhattan_5_lb",
+   "pages": {
+    "needs_render": 12,
+    "used": 1441
+   },
+   "chunks": {
+    "explanation": 311,
+    "problem_set": 62,
+    "problem": 543,
+    "worked_example": 8
+   },
+   "total_chunks": 924,
+   "out": "data/factory/chunks/Manhattan_5_lb_chunks_v1.jsonl"
+  },
+  {
+   "book": "Manhattan_GMAT_Verbal",
+   "pages": {
+    "needs_render": 9,
+    "used": 790
+   },
+   "chunks": {
+    "explanation": 147,
+    "problem_set": 141,
+    "problem": 12
+   },
+   "total_chunks": 300,
+   "out": "data/factory/chunks/Manhattan_GMAT_Verbal_chunks_v1.jsonl"
+  },
+  {
+   "book": "Manhattan_Logic_Games",
+   "pages": {
+    "needs_render": 115,
+    "used": 1386
+   },
+   "chunks": {
+    "explanation": 63,
+    "problem_set": 56,
+    "problem": 448,
+    "dropped_duplicate": 17
+   },
+   "total_chunks": 567,
+   "out": "data/factory/chunks/Manhattan_Logic_Games_chunks_v1.jsonl"
+  },
+  {
+   "book": "Manhattan_Quant",
+   "pages": {
+    "needs_render": 8,
+    "used": 1177
+   },
+   "chunks": {
+    "explanation": 135,
+    "problem_set": 82,
+    "problem": 556,
+    "worked_example": 12
+   },
+   "total_chunks": 785,
+   "out": "data/factory/chunks/Manhattan_Quant_chunks_v1.jsonl"
+  },
+  {
+   "book": "Mosteller",
+   "pages": {
+    "needs_render": 5,
+    "used": 137
+   },
+   "chunks": {
+    "explanation": 36,
+    "problem_set": 3,
+    "problem": 8
+   },
+   "total_chunks": 47,
+   "out": "data/factory/chunks/Mosteller_chunks_v1.jsonl"
+  },
+  {
+   "book": "Schaum",
+   "pages": {
+    "needs_render": 28,
+    "used": 405
+   },
+   "chunks": {
+    "explanation": 447,
+    "problem_set": 32,
+    "worked_example": 139,
+    "dropped_duplicate": 2
+   },
+   "total_chunks": 618,
+   "out": "data/factory/chunks/Schaum_chunks_v1.jsonl"
+  },
+  {
+   "book": "Strang",
+   "pages": {
+    "used": 582,
+    "needs_render": 2
+   },
+   "chunks": {
+    "explanation": 151,
+    "problem_set": 21,
+    "worked_example": 231,
+    "problem": 2
+   },
+   "total_chunks": 405,
+   "out": "data/factory/chunks/Strang_chunks_v1.jsonl"
+  },
+  {
+   "book": "Tirthaji",
+   "pages": {
+    "used": 362,
+    "needs_render": 63
+   },
+   "chunks": {
+    "explanation": 133,
+    "problem_set": 38,
+    "worked_example": 1
+   },
+   "total_chunks": 172,
+   "out": "data/factory/chunks/Tirthaji_chunks_v1.jsonl"
+  },
+  {
+   "book": "Tyra",
+   "pages": {
+    "needs_render": 45,
+    "used": 723
+   },
+   "chunks": {
+    "explanation": 364,
+    "problem_set": 51,
+    "problem": 74,
+    "worked_example": 3,
+    "dropped_duplicate": 5
+   },
+   "total_chunks": 492,
+   "out": "data/factory/chunks/Tyra_chunks_v1.jsonl"
+  },
+  {
+   "book": "Vedic_Secrets",
+   "pages": {
+    "used": 53,
+    "needs_render": 7
+   },
+   "chunks": {
+    "explanation": 7,
+    "problem_set": 19,
+    "problem": 5
+   },
+   "total_chunks": 31,
+   "out": "data/factory/chunks/Vedic_Secrets_chunks_v1.jsonl"
+  },
+  {
+   "book": "CAT_DI_LR_Nishit_K_Sinha",
+   "pages": {
+    "used": 372,
+    "too_few_words": 11,
+    "low_conf_0.40": 2,
+    "low_conf_0.47": 1,
+    "low_conf_0.49": 7,
+    "low_conf_0.46": 1,
+    "low_conf_0.42": 1,
+    "low_conf_0.45": 1
+   },
+   "chunks": {
+    "explanation": 1622,
+    "problem_set": 69,
+    "worked_example": 28,
+    "dropped_duplicate": 74,
+    "problem": 206
+   },
+   "total_chunks": 1925,
+   "out": "data/factory/chunks/CAT_DI_LR_Nishit_K_Sinha_chunks_v1.jsonl"
+  }
+ ]
+}
