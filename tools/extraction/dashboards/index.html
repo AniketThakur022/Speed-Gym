@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phase 3 — CAT Pillar Dashboard</title>
+<style>
+:root{
+  --bg:#0f172a; --card:#1e293b; --border:#334155; --text:#e2e8f0; --muted:#94a3b8;
+  --blue:#3b82f6; --green:#22c55e; --orange:#f59e0b; --red:#ef4444; --purple:#a855f7;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;padding:40px;line-height:1.6;min-height:100vh}
+h1{font-size:2rem;background:linear-gradient(90deg,var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px}
+.subtitle{color:var(--muted);font-size:.95rem;margin-bottom:36px}
+.quick-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:36px;max-width:600px}
+.stat{text-align:center}
+.stat .num{font-size:2rem;font-weight:700;color:var(--blue)}
+.stat .lbl{color:var(--muted);font-size:.75rem;text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
+.nav-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;max-width:1200px}
+.nav-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;text-decoration:none;color:var(--text);transition:transform .2s,border-color .2s;display:block}
+.nav-card:hover{transform:translateY(-4px);border-color:var(--blue)}
+.nav-card .icon{font-size:1.8rem;margin-bottom:12px}
+.nav-card .title{font-size:1.1rem;font-weight:600;margin-bottom:6px}
+.nav-card .desc{color:var(--muted);font-size:.85rem}
+.nav-card .path{color:var(--blue);font-size:.75rem;margin-top:10px;font-family:monospace}
+.phases{margin-top:36px;max-width:1200px}
+.phase-row{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--border)}
+.phase-row:last-child{border-bottom:none}
+.phase-badge{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;flex-shrink:0}
+.badge-done{background:rgba(34,197,94,.2);color:var(--green)}
+.badge-active{background:rgba(59,130,246,.2);color:var(--blue);box-shadow:0 0 0 4px rgba(59,130,246,.1)}
+.badge-pending{background:rgba(148,163,184,.15);color:var(--muted)}
+.phase-info{flex:1}
+.phase-info .name{font-weight:600}
+.phase-info .desc{color:var(--muted);font-size:.85rem}
+footer{color:var(--muted);font-size:.75rem;text-align:center;margin-top:48px}
+@media(max-width:600px){.quick-stats{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<h1>Phase 3 — CAT Pillar Dashboard</h1>
+<p class="subtitle">Content pipeline navigation hub · Updated 2026-07-08</p>
+
+<div class="quick-stats">
+  <div class="stat"><div class="num">738</div><div class="lbl">Records</div></div>
+  <div class="stat"><div class="num">90</div><div class="lbl">Clusters</div></div>
+  <div class="stat"><div class="num">738</div><div class="lbl">Q-Matrix</div></div>
+  <div class="stat"><div class="num">3</div><div class="lbl">Books</div></div>
+</div>
+
+<div class="nav-grid">
+  <a class="nav-card" href="explorer.html" style="border-color: var(--blue)">
+    <div class="icon">🔍</div>
+    <div class="title">Content Explorer</div>
+    <div class="desc">Search, filter, and inspect question content, logic steps, progressive hints, trap tags, and Q-matrices</div>
+    <div class="path">explorer.html</div>
+  </a>
+  <a class="nav-card" href="cat.html">
+    <div class="icon">📊</div>
+    <div class="title">Enrichment Dashboard</div>
+    <div class="desc">L1–L7 coverage, validation status, subtopic breakdown, known issues</div>
+    <div class="path">cat.html</div>
+  </a>
+  <a class="nav-card" href="docs/pipeline_tracking.md">
+    <div class="icon">📈</div>
+    <div class="title">Pipeline Tracking</div>
+    <div class="desc">Full enrichment status, per-book coverage, validation, known issues</div>
+    <div class="path">docs/pipeline_tracking.md</div>
+  </a>
+  <a class="nav-card" href="docs/handover_checklist.md">
+    <div class="icon">✅</div>
+    <div class="title">Handover Checklist</div>
+    <div class="desc">Pre-handoff verification, file inventory, Neo4j readiness, sign-off</div>
+    <div class="path">docs/handover_checklist.md</div>
+  </a>
+  <a class="nav-card" href="docs/COMPLETED_TASKS.md">
+    <div class="icon">📋</div>
+    <div class="title">Completed Tasks</div>
+    <div class="desc">Phase-by-phase completion log, artifacts created, key discoveries</div>
+    <div class="path">docs/COMPLETED_TASKS.md</div>
+  </a>
+  <a class="nav-card" href="docs/task_orchestrator_index.md">
+    <div class="icon">🗂️</div>
+    <div class="title">Task Orchestrator Index</div>
+    <div class="desc">Script index, data locations, execution order, next-phase reference</div>
+    <div class="path">docs/task_orchestrator_index.md</div>
+  </a>
+  <a class="nav-card" href="docs/TEMPLATE_RENDERER_SCHEMA.md">
+    <div class="icon">📐</div>
+    <div class="title">Template Renderer Schema</div>
+    <div class="desc">Record schema, field types, required vs optional, validation fields</div>
+    <div class="path">docs/TEMPLATE_RENDERER_SCHEMA.md</div>
+  </a>
+  <a class="nav-card" href="docs/PSYCHOMETRIC_MODEL_MASTER_SPEC.md">
+    <div class="icon">🧠</div>
+    <div class="title">Psychometric Model Spec</div>
+    <div class="desc">DINA model, Q-matrix structure, skill taxonomies, BKT integration</div>
+    <div class="path">docs/PSYCHOMETRIC_MODEL_MASTER_SPEC.md</div>
+  </a>
+  <a class="nav-card" href="../cat_data/explainers/cluster_registry.json">
+    <div class="icon">🎯</div>
+    <div class="title">Cluster Registry</div>
+    <div class="desc">90 clusters with metadata, subtopic, technique, difficulty</div>
+    <div class="path">../cat_data/explainers/cluster_registry.json</div>
+  </a>
+  <a class="nav-card" href="../cat_data/qmatrix/qmatrix_entries.jsonl">
+    <div class="icon">🔢</div>
+    <div class="title">Q-Matrix Entries</div>
+    <div class="desc">738 DINA entries with skill vectors, slip/guess probabilities</div>
+    <div class="path">../cat_data/qmatrix/qmatrix_entries.jsonl</div>
+  </a>
+  <a class="nav-card" href="neo4j_cat_classification.cypher">
+    <div class="icon">🕸️</div>
+    <div class="title">Neo4j Classification</div>
+    <div class="desc">Cypher script for Exam/Subject/Subtopic/Technique node creation</div>
+    <div class="path">neo4j_cat_classification.cypher</div>
+  </a>
+  <a class="nav-card" href="../cat_data/qmatrix/qmatrix_ingest.cypher">
+    <div class="icon">📥</div>
+    <div class="title">Neo4j Q-Matrix Ingest</div>
+    <div class="desc">Cypher script for Q-matrix node creation and linking</div>
+    <div class="path">qmatrix/qmatrix_ingest.cypher</div>
+  </a>
+</div>
+
+<div class="phases">
+  <div class="phase-row">
+    <div class="phase-badge badge-done">✓</div>
+    <div class="phase-info"><div class="name">Wave 1 — Extraction</div><div class="desc">738 records extracted from 3 source books, parsed into JSONL</div></div>
+  </div>
+  <div class="phase-row">
+    <div class="phase-badge badge-active">⟳</div>
+    <div class="phase-info"><div class="name">Wave 2 — Enrichment</div><div class="desc">L1–L7 enrichment at 99–100%, validation re-run in progress, cluster explainers + Q-matrix generated</div></div>
+  </div>
+  <div class="phase-row">
+    <div class="phase-badge badge-pending">3</div>
+    <div class="phase-info"><div class="name">Wave 3 — Adaptive Engine</div><div class="desc">BKT calibration, student model, difficulty adjustment, Sutra linking, gaming readiness</div></div>
+  </div>
+</div>
+
+<footer>CAT Pillar · Phase 3 · Generated by Orchestrator (GLM-5.2) · Build Consensus Protocol</footer>
+</body>
+</html>

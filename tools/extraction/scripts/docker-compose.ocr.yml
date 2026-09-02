@@ -1,0 +1,45 @@
+# =================================================================
+# OCR Docker Compose Overlay
+# =================================================================
+# Extends docker-compose.full.yml with a dedicated OCR service.
+# On Windows Docker Desktop, run:
+#   docker compose -f docker-compose.full.yml -f docker-compose.ocr.yml up -d ocr
+# Or run OCR standalone:
+#   docker compose -f docker-compose.ocr.yml up -d
+# =================================================================
+
+services:
+
+  ocr:
+    build:
+      context: .
+      dockerfile: Dockerfile.ocr
+    container_name: brain_ocr
+    restart: unless-stopped
+    volumes:
+      # Workspace: project root mounted read-write for output
+      - ./:/workspace:rw
+      # Persistent OCR output cache
+      - ocr_cache:/workspace/.ocr_cache
+      # Log files
+      - ./logs:/workspace/logs:rw
+    working_dir: /workspace
+    environment:
+      - PYTHONPATH=/workspace
+      - TESSDATA_PREFIX=/usr/share/tesseract-ocr/4.00/tessdata
+      - OCR_DPI=300
+      - OCR_LANG=eng+equ
+      - LOG_LEVEL=INFO
+    # GPU passthrough for accelerated vision (NVIDIA on Windows Docker Desktop)
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: '1.0'
+    # Optional: expose a REST API port if we add a FastAPI wrapper later
+    # ports:
+    #   - "8765:8765"
+
+# ── Volumes ──
+volumes:
+  ocr_cache:

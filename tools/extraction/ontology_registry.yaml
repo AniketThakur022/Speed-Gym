@@ -1,0 +1,209 @@
+sutras:
+  - canonical: "Ekādhikena Pūrveṇa"
+    aliases: ["Ekadhika", "Ekadhikena", "Ekadhikena Purvena", "By one more than the previous one", "Ekadhikena Purvena"]
+    label: "Sutra"
+    description: "By one more than the previous one"
+    formula_hint: "x+1"
+  - canonical: "Nikhilam Navataścaramaṃ Daśataḥ"
+    aliases: ["Nikhilam", "Nikhilam Sutra", "Nikhilam Navatascaramam Dasatah", "All from 9 and the last from 10", "Base Method"]
+    label: "Sutra"
+    description: "All from 9 and the last from 10"
+    formula_hint: "10^n - 1"
+  - canonical: "Ūrdhva-Tiryagbhyām"
+    aliases: ["Urdhva-Tiryagbhyam", "Urdhva", "Tiryagbhyam", "Vertically and Crosswise", "Vertically and crosswise"]
+    label: "Sutra"
+    description: "Vertically and crosswise multiplication"
+    formula_hint: "general multiplication"
+  - canonical: "Parāvartya Yojayet"
+    aliases: ["Paravartya Yojayet", "Paravartya", "Transpose and Apply", "Transpose and apply"]
+    label: "Sutra"
+    description: "Transpose and apply"
+    formula_hint: "transposition"
+  - canonical: "Śūnyaṃ Sāmyasamuccaye"
+    aliases: ["Shunyam Samyasamuccaye", "Sunyam Samuccaye", "When the sum is the same, that sum is zero", "Shunyam"]
+    label: "Sutra"
+    description: "When the sum is the same, that sum is zero"
+    formula_hint: "a+b = c+d → a = b"
+  - canonical: "(Ānurūpye) Śūnyaṃ Anyat"
+    aliases: ["Anurupye Shunyam Anyat", "Anurupye", "If one is in ratio, the other is zero", "Anurupye Sunyamanyat"]
+    label: "Sutra"
+    description: "If one is in ratio, the other is zero"
+    formula_hint: "ratio → zero"
+  - canonical: "Saṅkalana-Vyavakalanābhyām"
+    aliases: ["Sankalana-Vyavakalanabhyam", "Sankalana", "Vyavakalana", "By addition and by subtraction"]
+    label: "Sutra"
+    description: "By addition and by subtraction"
+    formula_hint: "simultaneous equations"
+  - canonical: "Pūraṇāpūraṇābhyām"
+    aliases: ["Puranapuranabhyam", "By the completion or non-completion"]
+    label: "Sutra"
+    description: "By the completion or non-completion"
+    formula_hint: "completing the square"
+  - canonical: "Calana-Kalanābhyām"
+    aliases: ["Calana-Kalanabhyam", "By calculus"]
+    label: "Sutra"
+    description: "Differential calculus approach"
+    formula_hint: "d/dx"
+  - canonical: "Yāvadūnaṃ Tāvadūnaṃ"
+    aliases: ["Yavadunam", "By the deficiency"]
+    label: "Sutra"
+    description: "By the deficiency"
+    formula_hint: "(10^n - d)"
+  - canonical: "Vyāṣṭi Samaṣṭi"
+    aliases: ["Vyasti Samasti", "Vyasti-Samasti", "Individuality and Totality", "Vyasti Samasti Sutra"]
+    label: "Sutra"
+    description: "Individual and collective analysis"
+    formula_hint: "partial vs total"
+  - canonical: "Śeṣānyakena Carameṇa"
+    aliases: ["Seshanyakena Caramena", "The remainders by the last digit"]
+    label: "Sutra"
+    description: "The remainders by the last digit"
+    formula_hint: "recurring decimals"
+  - canonical: "Sopāntyadvayaṃ"
+    aliases: ["Sopantyadvayam", "The ultimate and twice the penultimate"]
+    label: "Sutra"
+    description: "The ultimate and twice the penultimate"
+    formula_hint: "last + 2×penultimate"
+  - canonical: "Ekanyūnena Pūrveṇa"
+    aliases: ["Ekanyunena Purvena", "By one less than the previous one"]
+    label: "Sutra"
+    description: "By one less than the previous one"
+    formula_hint: "x-1"
+  - canonical: "Guṇita Samuccayaḥ"
+    aliases: ["Gunita Samuccayah", "Gunitasamuccayah", "Product of the sum"]
+    label: "Sutra"
+    description: "Product of the sum"
+    formula_hint: "factors sum = 0"
+  - canonical: "Guṇaka Samuccayaḥ"
+    aliases: ["Gunaka Samuccayah", "Collectivity of multipliers"]
+    label: "Sutra"
+    description: "Collectivity of multipliers"
+    formula_hint: "multipliers"
+
+techniques:
+  - canonical: "Criss-Cross Multiplication"
+    aliases: ["Cross Multiplication", "Criss-Cross", "Cross-multiplication"]
+    label: "Technique"
+    derived_from: "Ūrdhva-Tiryagbhyām"
+    description: "Urdhva-Tiryagbhyam applied to 2-digit numbers"
+  - canonical: "Base Method Multiplication"
+    aliases: ["Working Base", "Base Method", "Nikhilam Method", "Base Multiplication"]
+    label: "Technique"
+    derived_from: "Nikhilam Navataścaramaṃ Daśataḥ"
+    description: "Nikhilam method using a working base"
+  - canonical: "Vinculum Method"
+    aliases: ["Vinculum Numbers", "Bar Numbers", "Vinculum"]
+    label: "Technique"
+    description: "Using vinculum (bar) numbers for subtraction"
+  - canonical: "Ekadhika Division"
+    aliases: ["Flag Division", "Straight Division", "Ekadhika Flag"]
+    label: "Technique"
+    derived_from: "Ekādhikena Pūrveṇa"
+    description: "Division using multiplier p = 10 - m"
+  - canonical: "Complement Method"
+    aliases: ["Complement", "Nikhilam Complement", "Base Complement"]
+    label: "Technique"
+    derived_from: "Nikhilam Navataścaramaṃ Daśataḥ"
+    description: "Using complements for addition/subtraction"
+  - canonical: "Paravartya Division"
+    aliases: ["Paravartya", "Straight Division", "Paravartya Sutra Division"]
+    label: "Technique"
+    derived_from: "Parāvartya Yojayet"
+    description: "Transposed division algorithm"
+  - canonical: "Vertically and Crosswise for Division"
+    aliases: ["Urdhva Division", "Crosswise Division"]
+    label: "Technique"
+    derived_from: "Ūrdhva-Tiryagbhyām"
+    description: "Division via vertically and crosswise"
+  - canonical: "Digit Sums (Śeṣānyakena Carameṇa)"
+    aliases: ["Digit Sum", "Beejank", "Digital Root", "Casting Out Nines"]
+    label: "Technique"
+    derived_from: "Śeṣānyakena Carameṇa"
+    description: "Digit sum verification and divisibility testing using remainders by the last digit"
+  - canonical: "Mensuration Formulas"
+    aliases: ["Mensuration", "Geometry Formulas", "Area Volume"]
+    label: "Technique"
+    description: "Area, perimeter, surface area, and volume calculations for 2D and 3D shapes"
+traps:
+  - canonical: "Verbal Distractor"
+    aliases: ["Verbal Maze", "Word Trick"]
+    label: "LogicTrap"
+    description: "Question uses complex language to hide simple math"
+  - canonical: "Logic Trap"
+    aliases: ["Tricky Question", "Logic Maze"]
+    label: "LogicTrap"
+    description: "Misleading logical structure in problem"
+  - canonical: "Calculation Error"
+    aliases: ["Math Error", "Computation Trap"]
+    label: "LogicTrap"
+    description: "Problem designed to induce arithmetic mistakes"
+  - canonical: "Step Gap"
+    aliases: ["Hidden Step", "Implicit Step"]
+    label: "LogicTrap"
+    description: "Missing intermediate step that must be inferred"
+  - canonical: "Variable Shift"
+    aliases: ["Variable Swap", "Moving Target"]
+    label: "LogicTrap"
+    description: "Variables change meaning mid-problem"
+  - canonical: "Builder Blindness"
+    aliases: ["Wrong Sutra", "Builder Misapplication"]
+    label: "LogicTrap"
+    description: "Student uses Vedic shortcut on non-compatible problem"
+  - canonical: "Base Rate Fallacy"
+    aliases: []
+    label: "LogicTrap"
+    description: "Ignoring base probability in conditional problems"
+
+skills:
+  - canonical: "Mental Math"
+    aliases: ["Speed Calculation", "Oral Math"]
+    label: "Skill"
+    description: "Rapid arithmetic without paper"
+  - canonical: "Pattern Recognition"
+    aliases: []
+    label: "Skill"
+    description: "Ability to identify recurring mathematical patterns"
+  - canonical: "Divisibility Rule"
+    aliases: ["Osculation", "Divisibility Test"]
+    label: "Skill"
+    description: "Quick divisibility checks via osculation"
+  - canonical: "Cube Root Extraction"
+    aliases: ["Cube Root", "Vedic Cube Root"]
+    label: "Skill"
+    description: "Mental calculation of cube roots"
+  - canonical: "Unit Conversion"
+    aliases: []
+    label: "Skill"
+    description: "Converting between measurement units correctly"
+
+strategies:
+  - canonical: "Builder: Nikhilam"
+    strategy_type: "Builder"
+    aliases: ["Builder: Base Method", "Builder: All from 9"]
+    label: "Technique"
+    description: "Fast mental calculation using complement method"
+  - canonical: "Builder: Criss-Cross"
+    strategy_type: "Builder"
+    aliases: ["Builder: Urdhva", "Builder: Crosswise"]
+    label: "Technique"
+    description: "Vertically and crosswise for any digit multiplication"
+  - canonical: "Builder: Ekadhika"
+    strategy_type: "Builder"
+    aliases: ["Builder: Flag", "Builder: Straight Division"]
+    label: "Technique"
+    description: "Division by one-more-than-previous multiplier"
+  - canonical: "Architect: Standard Long Division"
+    strategy_type: "Architect"
+    aliases: ["Architect: Division"]
+    label: "Technique"
+    description: "Conventional step-by-step division"
+  - canonical: "Architect: Quadratic Formula"
+    strategy_type: "Architect"
+    aliases: ["Architect: ABC Formula"]
+    label: "Technique"
+    description: "Standard formula for quadratic equations"
+  - canonical: "Architect: FOIL Expansion"
+    strategy_type: "Architect"
+    aliases: ["Architect: Binomial"]
+    label: "Technique"
+    description: "First, Outer, Inner, Last expansion"

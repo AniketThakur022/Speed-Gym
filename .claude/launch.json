@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "topic-browser-dashboards",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8888", "--directory", "incoming/topic_browser_full_package"],
+      "port": 8888
+    }
+  ]
+}

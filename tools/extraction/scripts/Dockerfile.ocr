@@ -1,0 +1,60 @@
+# =================================================================
+# OCR Service Dockerfile
+# =================================================================
+# Purpose:  Page-by-page PDF OCR + Vision preprocessing for CAT books
+# Base:     python:3.11-slim with Tesseract 5 + Poppler + OpenCV
+# Usage:    docker build -f Dockerfile.ocr -t webapp-brain-ocr .
+# =================================================================
+
+FROM python:3.11-slim
+
+LABEL maintainer="Vedic Maths Brain"
+LABEL description="OCR + PDF processing pipeline for page-by-page extraction"
+
+# ── System Dependencies ──
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    # Tesseract OCR engine + language packs
+    tesseract-ocr \
+    tesseract-ocr-eng \
+    libtesseract-dev \
+    # Poppler for pdf2image (PDF → PNG rendering)
+    poppler-utils \
+    # OpenCV system dependencies
+    libgl1 \
+    libglib2.0-0 \
+    libsm6 \
+    libxext6 \
+    libxrender-dev \
+    # General utilities
+    curl \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+# ── Verify Tesseract Installation ──
+RUN tesseract --version && echo "Tesseract OK"
+
+# ── Python Dependencies ──
+WORKDIR /workspace
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# ── Create Output Directories ──
+RUN mkdir -p \
+    /workspace/data/extraction_phase3/cat \
+    /workspace/data/extraction_phase3/cat/pages \
+    /workspace/scripts \
+    /workspace/logs
+
+# ── Environment ──
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV TESSDATA_PREFIX=/usr/share/tesseract-ocr/4.00/tessdata
+ENV PYTHONPATH=/workspace
+
+# ── Health Check ──
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD python -c "import pytesseract; import cv2; import fitz; print('OCR deps OK')" || exit 1
+
+# ── Keep Container Alive ──
+# User will exec into container to run OCR scripts
+CMD ["tail", "-f", "/dev/null"]

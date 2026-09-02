@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAT Content Explorer — Topic Browser V2</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<style>
+:root{
+  --bg:#0f172a; --card:#1e293b; --border:#334155; --text:#e2e8f0; --muted:#94a3b8;
+  --blue:#3b82f6; --green:#22c55e; --orange:#f59e0b; --red:#ef4444; --purple:#a855f7;
+  --cyan:#06b6d4; --rose:#f43f5e; --card-hover:#253346;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',system-ui,sans-serif;line-height:1.6;height:100vh;display:flex;flex-direction:column;overflow:hidden}
+.mono{font-family:'JetBrains Mono',monospace}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:#475569}
+
+/* Header */
+.header{background:var(--card);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.header-left{display:flex;align-items:center;gap:14px}
+.logo{height:36px;width:36px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--purple));display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:.8rem;box-shadow:0 4px 12px rgba(59,130,246,.25)}
+.header h1{font-size:1.1rem;background:linear-gradient(90deg,#fff,var(--muted));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.header .sub{color:var(--muted);font-size:.65rem}
+.header-right{display:flex;gap:10px;align-items:center}
+.status-badge{display:flex;align-items:center;gap:6px;padding:4px 12px;border-radius:20px;background:var(--bg);border:1px solid var(--border);font-size:.65rem;font-weight:600}
+.status-dot{width:6px;height:6px;border-radius:50%;background:var(--orange);animation:pulse 1.5s infinite}
+.status-dot.ok{background:var(--green);animation:none}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.btn-load{background:var(--blue);color:#fff;border:none;padding:5px 12px;border-radius:8px;font-size:.7rem;font-weight:600;cursor:pointer;transition:background .2s}
+.btn-load:hover{background:#2563eb}
+.verify-toggle{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.7rem;font-weight:600;color:var(--muted);background:var(--bg);border:1px solid var(--border);padding:5px 10px;border-radius:8px;transition:all .15s}
+.verify-toggle:hover{border-color:var(--blue);color:var(--text)}
+.verify-toggle input{width:14px;height:14px;accent-color:var(--blue);cursor:pointer}
+.verify-toggle.active{color:var(--blue);border-color:var(--blue);background:rgba(59,130,246,.1)}
+
+/* KPI Strip */
+.kpi-strip{display:flex;gap:10px;padding:12px 24px;border-bottom:1px solid var(--border);background:rgba(30,41,59,.5);flex-shrink:0;overflow-x:auto}
+.kpi{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 16px;min-width:115px;text-align:center}
+.kpi .num{font-size:1.4rem;font-weight:700}
+.kpi .lbl{color:var(--muted);font-size:.6rem;text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
+.kpi.blue .num{color:var(--blue)} .kpi.green .num{color:var(--green)}
+.kpi.purple .num{color:var(--purple)} .kpi.orange .num{color:var(--orange)}
+.kpi.cyan .num{color:var(--cyan)}
+
+/* Breadcrumb */
+.breadcrumb{padding:8px 24px;border-bottom:1px solid var(--border);font-size:.7rem;color:var(--muted);flex-shrink:0;display:flex;align-items:center;gap:6px;background:rgba(15,23,42,.4)}
+.breadcrumb span{cursor:pointer;transition:color .15s}
+.breadcrumb span:hover{color:var(--blue)}
+.breadcrumb .sep{color:var(--border);cursor:default}
+.breadcrumb .active{color:var(--text);font-weight:600}
+.breadcrumb .filter-tag{background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:1px 6px;font-size:.6rem}
+
+/* 3-Panel Layout */
+.panels{display:flex;flex:1;overflow:hidden}
+
+/* Panel 1 */
+.panel-topics{width:170px;border-right:1px solid var(--border);background:var(--bg);display:flex;flex-direction:column;flex-shrink:0}
+.panel-title{font-size:.6rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;padding:12px 14px 6px}
+.topic-card{padding:12px 14px;cursor:pointer;border-left:3px solid transparent;transition:all .15s;display:flex;flex-direction:column;gap:3px}
+.topic-card:hover{background:var(--card)}
+.topic-card.active{background:var(--card);border-left-color:var(--blue)}
+.topic-card .t-name{font-size:.78rem;font-weight:600}
+.topic-card .t-meta{font-size:.6rem;color:var(--muted);display:flex;gap:6px}
+.topic-card .t-count{font-weight:700;color:var(--blue);font-size:.7rem}
+.topic-card[data-color="green"].active{border-left-color:var(--green)} .topic-card[data-color="green"] .t-count{color:var(--green)}
+.topic-card[data-color="purple"].active{border-left-color:var(--purple)} .topic-card[data-color="purple"] .t-count{color:var(--purple)}
+.topic-card[data-color="cyan"].active{border-left-color:var(--cyan)} .topic-card[data-color="cyan"] .t-count{color:var(--cyan)}
+
+/* Panel 2 */
+.panel-subtopics{width:260px;border-right:1px solid var(--border);background:rgba(15,23,42,.6);display:flex;flex-direction:column;flex-shrink:0;overflow-y:auto}
+.sub-card{padding:10px 14px;cursor:pointer;border-left:3px solid transparent;transition:all .15s;border-bottom:1px solid rgba(51,65,85,.4)}
+.sub-card:hover{background:var(--card)}
+.sub-card.active{background:var(--card);border-left-color:var(--blue)}
+.sub-card .s-name{font-size:.75rem;font-weight:600;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sub-card .s-row{display:flex;align-items:center;gap:6px;font-size:.6rem;color:var(--muted)}
+.sub-card .s-count{background:var(--bg);border:1px solid var(--border);border-radius:5px;padding:1px 6px;font-weight:700;color:var(--text);font-size:.65rem}
+.sub-card .s-traps{color:var(--rose);font-weight:600}
+.sub-card .s-verified{color:var(--green);font-weight:600}
+.spark{display:flex;gap:1px;height:7px;border-radius:3px;overflow:hidden;flex:1;max-width:70px}
+.spark span{flex:none;border-radius:1px;min-width:2px}
+
+/* Panel 3 */
+.panel-detail{flex:1;overflow-y:auto;padding:0;display:flex;flex-direction:column}
+.detail-inner{padding:18px 22px;display:flex;flex-direction:column;gap:14px}
+.d-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.d-card h3{font-size:.65rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.d-card h3 .dot{width:6px;height:6px;border-radius:50%}
+
+/* Filter Pills — status toggles (NO checkbox) */
+.filter-pills{display:flex;gap:6px;flex-wrap:wrap}
+.filter-pill{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:10px;font-size:.65rem;font-weight:700;cursor:pointer;transition:all .2s;user-select:none}
+.filter-pill.active{opacity:1}
+.filter-pill.dimmed{opacity:.3}
+.fp-green{background:rgba(34,197,94,.12);color:var(--green);border:1px solid rgba(34,197,94,.25)}
+.fp-green.active{box-shadow:0 0 0 2px rgba(34,197,94,.3)}
+.fp-orange{background:rgba(245,158,11,.12);color:var(--orange);border:1px solid rgba(245,158,11,.25)}
+.fp-orange.active{box-shadow:0 0 0 2px rgba(245,158,11,.3)}
+.fp-blue{background:rgba(59,130,246,.12);color:var(--blue);border:1px solid rgba(59,130,246,.25)}
+.fp-blue.active{box-shadow:0 0 0 2px rgba(59,130,246,.3)}
+.fp-muted{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid rgba(148,163,184,.15)}
+.fp-muted.active{box-shadow:0 0 0 2px rgba(148,163,184,.2)}
+.showing-label{font-size:.6rem;color:var(--muted);font-weight:600;margin-left:auto}
+
+/* Difficulty Bars with Checkboxes */
+.diff-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.diff-cb{width:14px;height:14px;border-radius:3px;border:2px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.55rem;font-weight:700;color:#fff;flex-shrink:0;transition:all .15s}
+.diff-cb.checked{border-color:transparent}
+.diff-cb.unchecked{background:transparent !important;border-color:var(--border)}
+.diff-label{font-size:.7rem;font-weight:600;width:22px;flex-shrink:0;text-align:center}
+.diff-bar-bg{flex:1;background:var(--bg);border-radius:5px;height:14px;overflow:hidden}
+.diff-bar-fill{height:100%;border-radius:5px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-size:.55rem;color:#fff;font-weight:700;transition:width .5s ease}
+.diff-count{font-size:.6rem;color:var(--muted);width:50px;text-align:right;flex-shrink:0}
+.diff-row.excluded .diff-bar-fill{background:#1e293b !important}
+.diff-row.excluded .diff-label,.diff-row.excluded .diff-count{opacity:.3}
+
+/* Trap Heatmap with Checkboxes */
+.trap-controls{display:flex;gap:8px;margin-bottom:8px;font-size:.6rem}
+.trap-controls button{background:none;border:none;color:var(--blue);cursor:pointer;font-size:.6rem;font-weight:600;padding:0}
+.trap-row{display:flex;align-items:center;gap:6px;margin-bottom:5px;cursor:pointer;transition:opacity .15s}
+.trap-row.excluded{opacity:.25}
+.trap-cb{width:12px;height:12px;border-radius:2px;border:2px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.5rem;color:var(--rose);transition:all .15s}
+.trap-cb.checked{background:rgba(244,63,94,.15);border-color:var(--rose)}
+.trap-name{font-size:.68rem;font-weight:500;width:160px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.trap-bar-bg{flex:1;background:var(--bg);border-radius:3px;height:8px;overflow:hidden}
+.trap-bar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--rose),var(--orange));transition:width .5s}
+.trap-count{font-size:.6rem;color:var(--muted);width:28px;text-align:right;flex-shrink:0;font-weight:600}
+.trap-expand-btn{background:none;border:1px solid var(--border);color:var(--muted);cursor:pointer;font-size:.6rem;padding:4px 10px;border-radius:6px;margin-top:6px;width:100%;text-align:center;transition:all .15s}
+.trap-expand-btn:hover{border-color:var(--blue);color:var(--blue)}
+
+/* Trap Detail Expansion (click name) */
+.trap-detail-inline{display:none;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin:4px 0 6px 18px;font-size:.65rem}
+.trap-detail-inline.open{display:block}
+.trap-detail-inline .tdi-row{display:flex;justify-content:space-between;padding:2px 0;color:var(--muted)}
+.trap-detail-inline .tdi-row strong{color:var(--text)}
+.trap-detail-inline .tdi-samples{margin-top:6px;border-top:1px solid var(--border);padding-top:6px}
+.trap-detail-inline .tdi-sample{padding:3px 0;border-bottom:1px solid rgba(51,65,85,.3)}
+
+/* Stimulus/Bundle Card */
+.stimulus-card{background:rgba(59,130,246,.04);border:1px solid rgba(59,130,246,.15);border-radius:10px;padding:14px;margin-bottom:10px}
+.stimulus-card .stim-label{font-size:.6rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;display:flex;align-items:center;gap:5px}
+.stimulus-card .stim-label .stim-type{background:rgba(59,130,246,.12);padding:1px 6px;border-radius:4px;font-size:.55rem}
+.stim-table{width:100%;border-collapse:collapse;font-size:.65rem;font-family:'JetBrains Mono',monospace}
+.stim-table th{background:rgba(30,41,59,.8);color:var(--muted);font-weight:600;text-transform:uppercase;font-size:.55rem;letter-spacing:.3px;padding:6px 8px;text-align:left;border-bottom:1px solid var(--border);position:sticky;top:0}
+.stim-table td{padding:5px 8px;border-bottom:1px solid rgba(51,65,85,.3);color:var(--text)}
+.stim-table tr:nth-child(even) td{background:rgba(15,23,42,.3)}
+.stim-table-wrap{max-height:250px;overflow-y:auto;border-radius:6px;border:1px solid var(--border)}
+.stim-passage{font-size:.75rem;line-height:1.7;color:var(--text);max-height:200px;overflow-y:auto;padding:8px;background:rgba(15,23,42,.3);border-radius:6px;border:1px solid var(--border)}
+.stim-warning{display:flex;align-items:center;gap:6px;font-size:.65rem;color:var(--orange);padding:8px 10px;background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.15);border-radius:6px;margin-top:6px}
+
+/* Problem Cards (same as V1 + bundle grouping) */
+.bundle-group{margin-bottom:10px;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.bundle-header{padding:8px 12px;background:var(--card);display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.7rem;font-weight:600;border-bottom:1px solid var(--border)}
+.bundle-header .b-icon{font-size:.8rem}
+.bundle-header .b-count{margin-left:auto;font-size:.6rem;color:var(--muted);font-weight:500}
+.bundle-body{}
+.bundle-group.collapsed .bundle-body{display:none}
+.prob-card{background:var(--bg);border-bottom:1px solid rgba(51,65,85,.3);padding:10px 14px;cursor:pointer;transition:all .15s}
+.prob-card:last-child{border-bottom:none}
+.prob-card:hover{background:rgba(59,130,246,.03)}
+.prob-card.expanded{background:rgba(30,41,59,.7)}
+.prob-top{display:flex;align-items:center;gap:8px}
+.prob-idx{font-size:.55rem;color:var(--muted);font-family:'JetBrains Mono',monospace;width:24px;flex-shrink:0}
+.prob-snippet{flex:1;font-size:.72rem;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.prob-stars{font-size:.65rem;flex-shrink:0;letter-spacing:1px}
+.pill{display:inline-block;padding:1px 7px;border-radius:10px;font-size:.55rem;font-weight:700}
+.pill-green{background:rgba(34,197,94,.12);color:var(--green);border:1px solid rgba(34,197,94,.2)}
+.pill-orange{background:rgba(245,158,11,.12);color:var(--orange);border:1px solid rgba(245,158,11,.2)}
+.pill-red{background:rgba(239,68,68,.12);color:var(--red);border:1px solid rgba(239,68,68,.2)}
+.pill-blue{background:rgba(59,130,246,.12);color:var(--blue);border:1px solid rgba(59,130,246,.2)}
+.pill-muted{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid rgba(148,163,184,.15)}
+.prob-trap-pills{display:flex;gap:2px;margin-top:4px;flex-wrap:wrap}
+.prob-expand{display:none;margin-top:12px;border-top:1px solid var(--border);padding-top:12px}
+.prob-card.expanded .prob-expand{display:block}
+.expand-section{margin-bottom:12px}
+.expand-section h4{font-size:.6rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;display:flex;align-items:center;gap:5px}
+.expand-section h4 .edot{width:5px;height:5px;border-radius:50%}
+.q-text{font-size:.78rem;line-height:1.7;color:var(--text);white-space:pre-line;margin-bottom:8px}
+.option-row{display:flex;align-items:center;gap:6px;padding:5px 8px;border:1px solid var(--border);border-radius:7px;margin-bottom:3px;font-size:.7rem}
+.option-row.correct{border-color:rgba(34,197,94,.35);background:rgba(34,197,94,.06)}
+.option-key{width:20px;height:20px;border-radius:4px;background:var(--bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.6rem;flex-shrink:0}
+.option-text{flex:1}
+.correct-mark{color:var(--green);font-weight:700;font-size:.6rem;flex-shrink:0}
+.step-item{display:flex;gap:6px;padding:6px 8px;background:rgba(15,23,42,.5);border:1px solid rgba(51,65,85,.5);border-radius:6px;margin-bottom:3px;font-size:.7rem}
+.step-num{width:18px;height:18px;border-radius:50%;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);display:flex;align-items:center;justify-content:center;font-size:.55rem;color:var(--green);font-weight:700;flex-shrink:0;margin-top:1px}
+.hint-box{border:1px solid var(--border);border-radius:6px;padding:6px 8px;margin-bottom:3px;background:rgba(15,23,42,.4)}
+.hint-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:3px}
+.hint-label{font-size:.6rem;font-weight:600;color:var(--muted)}
+.hint-reveal{background:none;border:none;color:var(--blue);font-size:.6rem;font-weight:600;cursor:pointer}
+.hint-text{font-size:.7rem;color:var(--text);transition:all .3s}
+.hint-text.blurred{filter:blur(6px);user-select:none}
+.trap-detail-row{display:flex;align-items:center;justify-content:space-between;padding:5px 8px;border:1px solid var(--border);border-radius:6px;margin-bottom:3px;background:rgba(15,23,42,.4)}
+.trap-detail-name{font-size:.7rem;font-weight:600}
+.trap-detail-cat{font-size:.55rem;color:var(--muted)}
+.trap-detail-conf{font-size:.55rem;font-weight:700;color:var(--rose);padding:2px 6px;border-radius:5px;background:rgba(244,63,94,.08);border:1px solid rgba(244,63,94,.15)}
+.skill-row{margin-bottom:5px}
+.skill-header{display:flex;justify-content:space-between;font-size:.6rem;font-weight:600;color:var(--muted);margin-bottom:2px}
+.skill-val{color:var(--purple)}
+.skill-bar-bg{height:5px;background:var(--bg);border:1px solid var(--border);border-radius:3px;overflow:hidden}
+.skill-bar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--purple),var(--blue))}
+.explainer-card{background:rgba(59,130,246,.04);border:1px solid rgba(59,130,246,.12);border-radius:8px;padding:12px}
+.explainer-card h5{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px}
+.explainer-card p{font-size:.7rem;line-height:1.6;color:var(--text)}
+.explainer-card .concept-h{color:var(--blue)} .explainer-card .trap-h{color:var(--rose)}
+
+/* Enrichment Health */
+.health-row{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.health-label{font-size:.6rem;font-weight:600;width:60px;flex-shrink:0;color:var(--muted)}
+.health-bar-bg{flex:1;background:var(--bg);border-radius:4px;height:10px;overflow:hidden}
+.health-bar-fill{height:100%;border-radius:4px;transition:width .5s}
+.health-count{font-size:.55rem;color:var(--muted);width:70px;text-align:right;flex-shrink:0;font-weight:600}
+
+/* Verify Mode Workspace */
+.verify-set{margin-bottom:14px}
+.verify-set-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.verify-set-layout{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+.verify-set-left,.verify-set-right{display:flex;flex-direction:column;gap:14px}
+@media(max-width:1100px){.verify-set-layout{grid-template-columns:1fr}}
+.multi-topic-badge{cursor:help}
+.verify-question-row{display:grid;grid-template-columns:40px 1fr 70px 70px;align-items:center;gap:8px;padding:6px 8px;border-bottom:1px solid rgba(51,65,85,.3);font-size:.72rem;cursor:pointer;transition:background .15s}
+.verify-question-row:hover{background:rgba(59,130,246,.06)}
+.verify-question-row:last-child{border-bottom:none}
+.verify-question-row.mismatched{background:rgba(245,158,11,.06)}
+.verify-question-row.expanded{background:rgba(30,41,59,.5)}
+.verify-question-detail{grid-column:1/-1;display:none;margin-top:8px;padding:10px;background:rgba(15,23,42,.4);border:1px solid var(--border);border-radius:8px}
+.verify-question-row.expanded .verify-question-detail{display:block}
+.vq-num{font-family:'JetBrains Mono',monospace;color:var(--muted);font-size:.65rem}
+.vq-subtopic{font-weight:600}
+.vq-stars{font-size:.65rem;letter-spacing:1px;text-align:center}
+.vq-status{font-size:.55rem;text-align:center}
+.audit-board{border-top:1px solid var(--border);padding-top:12px}
+.audit-board h4{font-size:.65rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.audit-check{display:flex;align-items:center;gap:6px;font-size:.7rem;margin-bottom:6px;cursor:pointer}
+.audit-check input{width:14px;height:14px;accent-color:var(--blue);cursor:pointer}
+.audit-actions{display:flex;align-items:center;gap:8px;margin-top:10px;flex-wrap:wrap}
+.audit-btn{border:none;padding:5px 12px;border-radius:6px;font-size:.65rem;font-weight:700;cursor:pointer;transition:opacity .15s}
+.audit-btn.pass{background:rgba(34,197,94,.15);color:var(--green);border:1px solid rgba(34,197,94,.25)}
+.audit-btn.fail{background:rgba(239,68,68,.15);color:var(--red);border:1px solid rgba(239,68,68,.25)}
+.audit-btn:hover{opacity:.8}
+.verify-skills{display:flex;gap:4px;flex-wrap:wrap}
+.set-matrix-wrap{overflow:auto}
+.set-matrix-table{width:100%;border-collapse:collapse;font-size:.7rem}
+.set-matrix-table th{background:rgba(30,41,59,.8);color:var(--muted);font-weight:700;text-transform:uppercase;font-size:.6rem;letter-spacing:.5px;padding:8px 10px;text-align:left;border-bottom:1px solid var(--border)}
+.set-matrix-table td{padding:7px 10px;border-bottom:1px solid rgba(51,65,85,.3)}
+.set-matrix-table tr:hover{background:rgba(59,130,246,.06)}
+
+/* Empty state */
+.empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;color:var(--muted);gap:8px;padding:40px}
+.empty-state .icon{font-size:2.5rem}
+.empty-state h3{font-size:.85rem;font-weight:600;color:var(--text)}
+.empty-state p{font-size:.68rem;max-width:280px;text-align:center}
+
+/* Drop overlay */
+.drop-overlay{position:fixed;inset:0;background:rgba(11,15,25,.92);z-index:100;display:none;align-items:center;justify-content:center;flex-direction:column;gap:12px}
+.drop-overlay.visible{display:flex}
+.drop-overlay .icon{font-size:3rem}
+.drop-overlay p{font-size:1rem;font-weight:600}
+.drop-overlay .hint{font-size:.75rem;color:var(--muted)}
+
+@media(max-width:900px){.panel-topics{width:130px}.panel-subtopics{width:200px}}
+@media(max-width:600px){.panels{flex-direction:column}.panel-topics,.panel-subtopics{width:100%;max-height:28vh;border-right:none;border-bottom:1px solid var(--border)}}
+</style>
+</head>
+<body>
+
+<div class="drop-overlay" id="drop-overlay"><span class="icon">📥</span><p>Drop JSONL files here</p><span class="hint">records.jsonl and/or explainers.jsonl</span></div>
+
+<!-- Header -->
+<div class="header">
+  <div class="header-left">
+    <div class="logo">CAT</div>
+    <div><h1>Content Explorer V2</h1><div class="sub">Topic Browser · Bundle View · Interactive Filters · L1–L7 Audit</div></div>
+  </div>
+  <div class="header-right">
+    <label class="verify-toggle" title="Toggle amalgamated bundle verification workspace">
+      <input type="checkbox" id="verify-toggle" onchange="toggleVerifyMode(this.checked)">
+      <span>Verify Mode</span>
+    </label>
+    <div class="status-badge"><span class="status-dot" id="status-dot"></span><span id="status-text">Loading…</span></div>
+    <button class="btn-load" onclick="document.getElementById('file-input').click()">📥 Load Files</button>
+    <input type="file" id="file-input" style="display:none" multiple accept=".jsonl">
+  </div>
+</div>
+
+<!-- KPI Strip -->
+<div class="kpi-strip">
+  <div class="kpi blue"><div class="num" id="kpi-records">—</div><div class="lbl">Records</div></div>
+  <div class="kpi purple"><div class="num" id="kpi-clusters">—</div><div class="lbl">Clusters</div></div>
+  <div class="kpi green"><div class="num" id="kpi-subtopics">—</div><div class="lbl">Subtopics</div></div>
+  <div class="kpi orange"><div class="num" id="kpi-traps">—</div><div class="lbl">Unique Traps</div></div>
+  <div class="kpi cyan"><div class="num" id="kpi-bundles">—</div><div class="lbl">Bundles</div></div>
+</div>
+
+<!-- Breadcrumb -->
+<div class="breadcrumb" id="breadcrumb">
+  <span class="active">Home</span>
+</div>
+
+<!-- 3-Panel Layout -->
+<div class="panels">
+  <div class="panel-topics"><div class="panel-title">Topics</div><div id="topic-list"></div></div>
+  <div class="panel-subtopics"><div class="panel-title">Subtopics</div><div id="subtopic-list"><div class="empty-state"><span class="icon">👈</span><p>Select a topic</p></div></div></div>
+  <div class="panel-detail" id="panel-detail"><div id="detail-content"><div class="empty-state" style="height:100%"><span class="icon">🔍</span><h3>CAT Content Explorer</h3><p>Select a topic → subtopic to browse questions with tables, charts, passages, and full L1-L7 enrichment.</p></div></div></div>
+</div>
+
+<script>
+// ═══════════════ STATE ═══════════════
+let allRecords=[], explainers={}, hierarchy={};
+let activeTopic=null, activeSubtopic=null;
+let activeStatuses=new Set(['VERIFIED','SUSPECT','PARTIAL','UNKNOWN','JURY_VERIFIED','DATA_VERIFIED']);
+let activeDiffs=new Set([0,1,2,3,4,5]);
+let activeTraps=new Set();  // filled on subtopic select
+let allTrapsExpanded=false;
+let initialLoadStarted=false;
+let verifyMode=localStorage.getItem('cat_explorer_verify_mode')==='true';
+
+function toggleVerifyMode(on){
+  verifyMode=!!on;
+  localStorage.setItem('cat_explorer_verify_mode', verifyMode?'true':'false');
+  renderVerifyToggle();
+  if(activeTopic && activeSubtopic){
+    if(verifyMode) renderVerifyWorkspace(activeTopic, activeSubtopic);
+    else renderDetail(activeTopic, activeSubtopic);
+  }
+}
+function renderVerifyToggle(){
+  const cb=document.getElementById('verify-toggle');
+  if(!cb)return;
+  cb.checked=verifyMode;
+  cb.closest('.verify-toggle').classList.toggle('active', verifyMode);
+}
+
+const BOOK_FILES=[
+  {key:'DI_Arun',path:'../cat_data/CAT_DI_LR_Arun_Sharma/records.jsonl',book:'CAT_DI_LR_Arun_Sharma'},
+  {key:'DI_Nishit',path:'../cat_data/CAT_DI_LR_Nishit_K_Sinha/records.jsonl',book:'CAT_DI_LR_Nishit_K_Sinha'},
+  {key:'LR_LSAT',path:'../cat_data/CAT_LR_LSAT_Logic_Games/records.jsonl',book:'CAT_LR_LSAT_Logic_Games'},
+  {key:'VARC_P1',path:'../cat_data/CAT_VARC_Part1/records.jsonl',book:'CAT_VARC_Part1'},
+  {key:'VARC_P2',path:'../cat_data/CAT_VARC_Part2/records.jsonl',book:'CAT_VARC_Part2'},
+];
+const EXPLAINER_PATH='../cat_data/explainers/explainers.jsonl';
+const TOPIC_COLORS={CAT_DI:'blue',CAT_LR:'green',CAT_Verbal:'purple',VARC:'cyan'};
+const DIFF_COLORS=['#94a3b8','#22c55e','#3b82f6','#f59e0b','#ef4444','#dc2626'];
+
+// ═══════════════ INIT ═══════════════
+window.addEventListener('DOMContentLoaded',async()=>{
+  setupDragDrop();
+  renderVerifyToggle();
+  document.getElementById('file-input').addEventListener('change',e=>{if(e.target.files.length>0)loadDroppedFiles(e.target.files)});
+  if(!initialLoadStarted){initialLoadStarted=true;await loadAllData();}
+});
+
+async function loadAllData(){
+  setStatus('loading','Loading data…');
+  try{
+    try{const r=await fetch(EXPLAINER_PATH);if(r.ok)parseExplainers(await r.text())}catch(e){}
+    const results=await Promise.allSettled(BOOK_FILES.map(async bf=>{const r=await fetch(bf.path);if(!r.ok)throw 0;return{...bf,text:await r.text()}}));
+    let loaded=0;
+    results.forEach(r=>{if(r.status==='fulfilled'){r.value.text.split('\n').forEach(l=>{if(!l.trim())return;try{const rec=JSON.parse(l);rec._source_book=r.value.book;allRecords.push(rec)}catch(e){}});loaded++}});
+    if(loaded>0){buildHierarchy();renderAll();setStatus('ok',`${allRecords.length.toLocaleString()} records · ${loaded} books`)}
+    else setStatus('error','No files loaded — drag & drop');
+  }catch(e){setStatus('error','Fetch failed — use drag & drop')}
+}
+
+// ═══════════════ DATA ═══════════════
+function parseExplainers(t){t.split('\n').forEach(l=>{if(!l.trim())return;try{const e=JSON.parse(l);if(e.cluster_id)explainers[e.cluster_id]=e}catch(e){}})}
+function getDiff(r){let d=r.difficulty||(r.data_points||{}).difficulty||((r.data_points||{})._di_attributes||{}).cognitive_load_score||3;return Math.round(Number(d))}
+function getTraps(r){let tags=r.trap_tags||(r.data_points||{}).trap_tags||[];return tags.map(t=>{if(typeof t==='object')return{name:t.trap_name||t.type||'unknown',category:t.category||t.cognitive_taxonomy||'',confidence:t.confidence||0.5};return{name:String(t),category:'',confidence:0.5}})}
+function getStatus(r){return r._validation_status||'UNKNOWN'}
+function getStatusGroup(r){const s=getStatus(r);if(s.includes('VERIFIED'))return'VERIFIED';if(s.includes('SUSPECT'))return'SUSPECT';if(s.includes('PARTIAL'))return'PARTIAL';if(s.includes('REJECTED'))return'UNKNOWN';return'UNKNOWN'}
+function getCluster(r){return r.explainer_cluster_id||(r.data_points||{}).explainer_cluster_id||null}
+function getBundle(r){return r.source_reference||r._bundle_source||(r.data_points||{})._bundle_source||null}
+
+function getStimulus(r){
+  const dp=r.data_points||{};
+  const dd=r.diagram_data||dp.diagram_data;
+  const fd=r._di_figure_data||dp._di_figure_data;
+  const cfd=r._di_correct_figure_data||dp._di_correct_figure_data;
+  if(dd&&dd.headers)return{type:'table',data:dd};
+  if(fd&&fd.headers)return{type:'table',data:fd};
+  if(cfd)return{type:'markdown',text:cfd};
+  if(dp.foundational_concept)return{type:'concept',text:dp.foundational_concept};
+  return null;
+}
+
+function buildHierarchy(){
+  hierarchy={};
+  allRecords.forEach(r=>{
+    const topic=r.topic||r.subject||'Unknown';
+    const sub=r.sub_topic||'General';
+    if(!hierarchy[topic])hierarchy[topic]={subtopics:{},records:[]};
+    if(!hierarchy[topic].subtopics[sub])hierarchy[topic].subtopics[sub]=[];
+    hierarchy[topic].subtopics[sub].push(r);
+    hierarchy[topic].records.push(r);
+  });
+}
+
+// ═══════════════ AMALGAMATED BUNDLE HELPERS ═══════════════
+function getPrimarySubtopic(recs){
+  const counts={};
+  recs.forEach((r,i)=>{const s=r.sub_topic||'General';counts[s]=(counts[s]||0)+1});
+  const sorted=Object.entries(counts).sort((a,b)=>b[1]-a[1]);
+  if(!sorted.length)return{name:'General',count:0,confidence:0};
+  return{name:sorted[0][0],count:sorted[0][1],confidence:Math.round(sorted[0][1]/recs.length*100)/100};
+}
+
+function getSkillsTested(recs){
+  const skills=new Set();
+  recs.forEach(r=>{
+    const dp=r.data_points||{};
+    const qm=dp.q_matrix_entry||dp._dina_parameters||r.q_matrix||{};
+    const names=qm.skill_names||[];
+    const vec=qm.q_matrix||[];
+    names.forEach((n,i)=>{if(vec[i])skills.add(n)});
+  });
+  return Array.from(skills);
+}
+
+function getBundleStimulus(recs){
+  let stim=null;
+  for(const br of recs){
+    const s=getStimulus(br);
+    if(s){
+      if(s.type==='table'){stim=s;break}
+      if(!stim)stim=s;
+    }
+  }
+  return stim;
+}
+
+function calculateAmalgamatedMeta(recs){
+  const total=recs.length;
+  if(total===0)return{question_count:0,difficulty_avg:null,difficulty_max:null,traps_union:[],skills_tested:[],enrichment_health:{L2:0,L4:0,L5:0,L6:0,L7:0},classification_confidence:0};
+  const diffs=recs.map(getDiff).filter(d=>!isNaN(d));
+  const avg=diffs.length?Math.round(diffs.reduce((a,b)=>a+b,0)/diffs.length*10)/10:null;
+  const max=diffs.length?Math.max(...diffs):null;
+  const trapsUnion=new Set();
+  recs.forEach(r=>getTraps(r).forEach(t=>trapsUnion.add(t.name)));
+  const primary=getPrimarySubtopic(recs);
+  let l2=0,l4=0,l5=0,l6=0,l7=0;
+  recs.forEach(r=>{
+    const dp=r.data_points||{};
+    if((r.logic_steps&&r.logic_steps.length)||(dp.logic_steps&&dp.logic_steps.length))l2++;
+    if(r.hints||dp.hints)l4++;
+    if((r.trap_tags&&r.trap_tags.length)||(dp.trap_tags&&dp.trap_tags.length))l5++;
+    if(getCluster(r))l6++;
+    if(dp.q_matrix_entry||dp._dina_parameters||r.q_matrix)l7++;
+  });
+  return{
+    question_count:total,
+    difficulty_avg:avg,
+    difficulty_max:max,
+    traps_union:Array.from(trapsUnion),
+    skills_tested:getSkillsTested(recs),
+    enrichment_health:{
+      L2:Math.round(l2/total*100)/100,
+      L4:Math.round(l4/total*100)/100,
+      L5:Math.round(l5/total*100)/100,
+      L6:Math.round(l6/total*100)/100,
+      L7:Math.round(l7/total*100)/100
+    },
+    classification_confidence:primary.confidence
+  };
+}
+
+function hashString(str){
+  let h=5381;for(let i=0;i<str.length;i++){h=((h<<5)+h)+str.charCodeAt(i)}
+  return (h>>>0).toString(36);
+}
+function stableStringify(obj){
+  if(obj===null||obj===undefined)return'';
+  if(typeof obj!=='object')return String(obj);
+  if(Array.isArray(obj))return '['+obj.map(stableStringify).join(',')+']';
+  return '{'+Object.keys(obj).sort().map(k=>JSON.stringify(k)+':'+stableStringify(obj[k])).join(',')+'}';
+}
+function getStimulusHash(r){
+  const stim=getStimulus(r);
+  if(!stim)return'';
+  if(stim.type==='table'&&stim.data)return stableStringify(stim.data);
+  if(stim.text)return stim.text.substring(0,500);
+  return'';
+}
+function getSetSignature(r,idx){
+  const book=r._source_book||'unknown';
+  const raw=getBundle(r)||'solo';
+  const cluster=getCluster(r)||'none';
+  const stimHash=getStimulusHash(r);
+  if(cluster==='none'&&!stimHash){
+    return hashString(`${book}|${raw}|solo_${idx}|${(r.summary||r.content||'').substring(0,80)}`);
+  }
+  return hashString(`${book}|${raw}|${cluster}|${stimHash}`);
+}
+function buildLogicalSet(recs,setId){
+  const primary=getPrimarySubtopic(recs);
+  const subCounts={};
+  recs.forEach((r,idx)=>{const s=r.sub_topic||'General';if(!subCounts[s])subCounts[s]=[];subCounts[s].push(`q${idx+1}`)});
+  const subtopicsSpanned=Object.entries(subCounts).map(([name,ids])=>({name,count:ids.length,question_ids:ids}));
+  const topic=recs[0].topic||recs[0].subject||'Unknown';
+  const rawId=getBundle(recs[0])||'solo';
+  const sortedQuestions=recs.slice().sort((a,b)=>{
+    const da=(a.data_points||{}).matched_question_number||0;
+    const db=(b.data_points||{}).matched_question_number||0;
+    if(da&&db&&da!==db)return da-db;
+    return 0;
+  });
+  return{
+    set_id:setId,
+    raw_bundle_id:rawId,
+    book:recs[0]._source_book||'unknown',
+    primary_topic:topic,
+    primary_subtopic:primary.name,
+    subtopics_spanned:subtopicsSpanned,
+    shared_stimulus:getBundleStimulus(recs),
+    questions:sortedQuestions,
+    meta:calculateAmalgamatedMeta(recs)
+  };
+}
+function getLogicalSets(){
+  const map=new Map();
+  allRecords.forEach((r,i)=>{
+    const sig=getSetSignature(r,i);
+    if(!map.has(sig))map.set(sig,[]);
+    map.get(sig).push(r);
+  });
+  const sets=[];
+  map.forEach((recs,sig)=>sets.push(buildLogicalSet(recs,sig)));
+  return sets;
+}
+
+// ═══════════════ FILTER PIPELINE ═══════════════
+function filterRecords(recs){
+  return recs.filter(r=>{
+    const sg=getStatusGroup(r);
+    if(!activeStatuses.has(sg)&&!activeStatuses.has(getStatus(r)))return false;
+    const d=getDiff(r);
+    if(!activeDiffs.has(d))return false;
+    if(activeTraps.size>0){
+      const traps=getTraps(r);
+      if(traps.length===0)return true; // show untagged records always
+      if(!traps.some(t=>activeTraps.has(t.name)))return false;
+    }
+    return true;
+  });
+}
+
+// ═══════════════ RENDER ═══════════════
+function renderAll(){renderKPIs();renderTopics();updateBreadcrumb()}
+function renderKPIs(){
+  document.getElementById('kpi-records').textContent=allRecords.length.toLocaleString();
+  document.getElementById('kpi-clusters').textContent=Object.keys(explainers).length;
+  const subs=new Set(),traps=new Set(),bundles=new Set();
+  allRecords.forEach(r=>{if(r.sub_topic)subs.add(r.sub_topic);getTraps(r).forEach(t=>traps.add(t.name));const b=getBundle(r);if(b)bundles.add(b)});
+  document.getElementById('kpi-subtopics').textContent=subs.size;
+  document.getElementById('kpi-traps').textContent=traps.size;
+  document.getElementById('kpi-bundles').textContent=bundles.size;
+}
+
+function updateBreadcrumb(){
+  const bc=document.getElementById('breadcrumb');
+  let html=`<span onclick="goHome()">Home</span>`;
+  if(activeTopic){html+=`<span class="sep">›</span><span onclick="selectTopic('${activeTopic}')">${activeTopic.replace('CAT_','')}</span>`}
+  if(activeSubtopic){html+=`<span class="sep">›</span><span class="active">${activeSubtopic}</span>`}
+  bc.innerHTML=html;
+}
+function goHome(){activeTopic=null;activeSubtopic=null;renderTopics();document.getElementById('subtopic-list').innerHTML='<div class="empty-state"><span class="icon">👈</span><p>Select a topic</p></div>';document.getElementById('detail-content').innerHTML='<div class="empty-state" style="height:100%"><span class="icon">🔍</span><h3>CAT Content Explorer</h3><p>Select a topic → subtopic to browse.</p></div>';updateBreadcrumb()}
+
+// ═══════════════ PANEL 1: TOPICS ═══════════════
+function renderTopics(){
+  const list=document.getElementById('topic-list');list.innerHTML='';
+  Object.keys(hierarchy).sort().forEach(topic=>{
+    const data=hierarchy[topic],subCount=Object.keys(data.subtopics).length,color=TOPIC_COLORS[topic]||'blue';
+    const card=document.createElement('div');
+    card.className='topic-card'+(topic===activeTopic?' active':'');
+    card.setAttribute('data-color',color);
+    card.innerHTML=`<div class="t-name">${topic.replace('CAT_','')}</div><div class="t-meta"><span class="t-count">${data.records.length}</span><span>${subCount} subs</span></div>`;
+    card.onclick=()=>selectTopic(topic);
+    list.appendChild(card);
+  });
+}
+function selectTopic(topic){
+  activeTopic=topic;activeSubtopic=null;renderTopics();renderSubtopics(topic);
+  document.getElementById('detail-content').innerHTML=`<div class="empty-state" style="height:100%"><span class="icon">👈</span><h3>${topic.replace('CAT_','')}</h3><p>Select a subtopic to view problems.</p></div>`;
+  updateBreadcrumb();
+}
+
+// ═══════════════ PANEL 2: SUBTOPICS ═══════════════
+function renderSubtopics(topic){
+  const list=document.getElementById('subtopic-list');list.innerHTML='';
+  const data=hierarchy[topic];if(!data)return;
+  const allSets=getLogicalSets();
+  const multiTopicSubs=new Set();
+  allSets.forEach(s=>{
+    if(s.meta.classification_confidence<1.0)multiTopicSubs.add(s.primary_subtopic);
+    s.subtopics_spanned.forEach(sp=>{if(sp.name!==s.primary_subtopic)multiTopicSubs.add(sp.name)});
+  });
+  Object.entries(data.subtopics).sort((a,b)=>b[1].length-a[1].length).forEach(([sub,recs])=>{
+    const diffCounts={},trapSet=new Set();let verified=0;
+    recs.forEach(r=>{const d=getDiff(r);diffCounts[d]=(diffCounts[d]||0)+1;getTraps(r).forEach(t=>trapSet.add(t.name));if(getStatusGroup(r)==='VERIFIED')verified++});
+    const hasMultiTopic=multiTopicSubs.has(sub);
+    const maxDiff=Math.max(...Object.values(diffCounts),1);
+    let sparkHTML='';for(let d=0;d<=5;d++){const c=diffCounts[d]||0;if(!c)continue;sparkHTML+=`<span style="width:${Math.max(3,Math.round(c/maxDiff*28))}px;background:${DIFF_COLORS[d]}"></span>`}
+    const card=document.createElement('div');
+    card.className='sub-card'+(sub===activeSubtopic?' active':'');
+    card.innerHTML=`<div class="s-name" title="${sub}">${sub}${verifyMode&&hasMultiTopic?'<span class="pill pill-orange multi-topic-badge" style="margin-left:6px;font-size:.5rem;padding:1px 5px">Multi-topic</span>':''}</div><div class="s-row"><span class="s-count">${recs.length}</span><div class="spark">${sparkHTML}</div><span class="s-traps">${trapSet.size}t</span><span class="s-verified">${Math.round(verified/recs.length*100)}%✓</span></div>`;
+    card.onclick=()=>selectSubtopic(topic,sub);
+    list.appendChild(card);
+  });
+}
+function selectSubtopic(topic,sub){
+  activeSubtopic=sub;activeDiffs=new Set([0,1,2,3,4,5]);activeTraps=new Set();allTrapsExpanded=false;
+  renderSubtopics(topic);
+  if(verifyMode)renderVerifyWorkspace(topic,sub);
+  else renderDetail(topic,sub);
+  updateBreadcrumb();
+}
+
+// ═══════════════ PANEL 3: DETAIL ═══════════════
+let currentRecs=[];
+function renderDetail(topic,sub){
+  currentRecs=hierarchy[topic].subtopics[sub];
+  // Collect all traps for this subtopic and activate all
+  const allTrapNames=new Set();currentRecs.forEach(r=>getTraps(r).forEach(t=>allTrapNames.add(t.name)));
+  activeTraps=new Set(allTrapNames);
+  activeStatuses=new Set(['VERIFIED','SUSPECT','PARTIAL','UNKNOWN','JURY_VERIFIED','DATA_VERIFIED','CSP_VERIFIED','MODEL_VERIFIED','ANSWER_KEY_SUSPECT','JURY_PARTIAL','JURY_REJECTED']);
+  activeDiffs=new Set([0,1,2,3,4,5]);
+  rebuildDetail();
+}
+
+function rebuildDetail(){
+  const recs=currentRecs;
+  const filtered=filterRecords(recs);
+  const container=document.getElementById('detail-content');
+
+  // Stats on ALL records (for bars) and filtered (for cards)
+  const diffCounts={},trapCounts={};let verified=0,suspect=0,partial=0,unknown=0;
+  const clusterSet=new Set(),bookSet=new Set(),bundleSet=new Set();
+  recs.forEach(r=>{
+    const d=getDiff(r);diffCounts[d]=(diffCounts[d]||0)+1;
+    getTraps(r).forEach(t=>{trapCounts[t.name]=(trapCounts[t.name]||0)+1});
+    const sg=getStatusGroup(r);
+    if(sg==='VERIFIED')verified++;else if(sg==='SUSPECT')suspect++;else if(sg==='PARTIAL')partial++;else unknown++;
+    const cl=getCluster(r);if(cl)clusterSet.add(cl);
+    if(r._source_book)bookSet.add(r._source_book);
+    const b=getBundle(r);if(b)bundleSet.add(b);
+  });
+  const maxDiffCount=Math.max(...Object.values(diffCounts),1);
+  const sortedTraps=Object.entries(trapCounts).sort((a,b)=>b[1]-a[1]);
+  const maxTrapCount=sortedTraps.length>0?sortedTraps[0][1]:1;
+
+  let html=`<div class="detail-inner">`;
+
+  // Header + Status Toggles
+  html+=`<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+    <div><h2 style="font-size:1rem;font-weight:700">${activeSubtopic}</h2>
+    <div style="font-size:.6rem;color:var(--muted);margin-top:2px">${activeTopic} · ${bundleSet.size} bundles · ${clusterSet.size} clusters · ${Array.from(bookSet).map(b=>b.replace('CAT_','')).join(', ')}</div></div>
+    <div class="filter-pills">
+      <span class="filter-pill fp-green ${activeStatuses.has('VERIFIED')?'active':'dimmed'}" onclick="toggleStatus('VERIFIED')">${verified} Verified</span>
+      <span class="filter-pill fp-orange ${activeStatuses.has('SUSPECT')?'active':'dimmed'}" onclick="toggleStatus('SUSPECT')">${suspect} Suspect</span>
+      <span class="filter-pill fp-blue ${activeStatuses.has('PARTIAL')?'active':'dimmed'}" onclick="toggleStatus('PARTIAL')">${partial} Partial</span>
+      ${unknown>0?`<span class="filter-pill fp-muted ${activeStatuses.has('UNKNOWN')?'active':'dimmed'}" onclick="toggleStatus('UNKNOWN')">${unknown} Other</span>`:''}
+      <span class="showing-label">Showing ${filtered.length}/${recs.length}</span>
+    </div>
+  </div>`;
+
+  // Difficulty Distribution with Checkboxes
+  html+=`<div class="d-card"><h3><span class="dot" style="background:var(--blue)"></span>Difficulty Distribution</h3>`;
+  for(let d=0;d<=5;d++){
+    const c=diffCounts[d]||0;if(!c)continue;
+    const pct=Math.round(c/recs.length*100),w=Math.max(3,Math.round(c/maxDiffCount*100));
+    const checked=activeDiffs.has(d);
+    html+=`<div class="diff-row ${checked?'':'excluded'}">
+      <div class="diff-cb ${checked?'checked':'unchecked'}" style="background:${checked?DIFF_COLORS[d]:'transparent'}" onclick="toggleDiff(${d})">${checked?'✓':''}</div>
+      <div class="diff-label" style="color:${DIFF_COLORS[d]}">d${d}</div>
+      <div class="diff-bar-bg"><div class="diff-bar-fill" style="width:${w}%;background:${checked?DIFF_COLORS[d]:'var(--border)'}">${w>15?pct+'%':''}</div></div>
+      <div class="diff-count">${c} (${pct}%)</div>
+    </div>`;
+  }
+  html+=`</div>`;
+
+  // Trap Heatmap with Checkboxes + Full Expansion
+  const showCount=allTrapsExpanded?sortedTraps.length:Math.min(8,sortedTraps.length);
+  html+=`<div class="d-card"><h3><span class="dot" style="background:var(--rose)"></span>Trap Heatmap<span style="margin-left:auto;font-size:.55rem;color:var(--rose)">${sortedTraps.length} unique</span></h3>`;
+  if(sortedTraps.length>0){
+    html+=`<div class="trap-controls"><button onclick="trapSelectAll()">Select All</button><button onclick="trapDeselectAll()">Deselect All</button></div>`;
+    sortedTraps.slice(0,showCount).forEach(([name,count],i)=>{
+      const w=Math.max(4,Math.round(count/maxTrapCount*100));
+      const checked=activeTraps.has(name);
+      html+=`<div class="trap-row ${checked?'':'excluded'}" id="trap-row-${i}">
+        <div class="trap-cb ${checked?'checked':''}" onclick="toggleTrap('${name}',event)">✓</div>
+        <div class="trap-name" style="${i<3?'color:var(--rose);font-weight:600':''}" onclick="expandTrapDetail('${name}',${i},event)">${name.replace(/_/g,' ')}</div>
+        <div class="trap-bar-bg"><div class="trap-bar-fill" style="width:${w}%"></div></div>
+        <div class="trap-count">${count}</div>
+      </div>
+      <div class="trap-detail-inline" id="trap-detail-${i}"></div>`;
+    });
+    if(sortedTraps.length>8){
+      html+=`<button class="trap-expand-btn" onclick="toggleTrapExpand()">${allTrapsExpanded?'Show Less ▲':`Show All ${sortedTraps.length} Traps ▼`}</button>`;
+    }
+  }else{html+=`<div style="font-size:.7rem;color:var(--muted);text-align:center;padding:10px">No traps tagged.</div>`}
+  html+=`</div>`;
+
+  // Bundle-Grouped Problem Cards
+  html+=`<div class="d-card"><h3><span class="dot" style="background:var(--green)"></span>Problems<span style="margin-left:auto;font-size:.55rem;color:var(--muted)">${filtered.length} showing</span></h3>`;
+  // Group by bundle
+  const bundles=new Map();
+  filtered.forEach((r,i)=>{const b=getBundle(r)||`solo_${i}`;if(!bundles.has(b))bundles.set(b,[]);bundles.get(b).push(r)});
+  let globalIdx=0;
+  bundles.forEach((bundleRecs,bundleKey)=>{
+    if(bundleRecs.length===1&&bundleKey.startsWith('solo_')){
+      html+=renderProblemCard(bundleRecs[0],globalIdx++,true);
+    }else{
+      // Search ALL records in bundle for best stimulus
+      let stim=null;
+      for(const br of bundleRecs){const s=getStimulus(br);if(s){if(s.type==='table'){stim=s;break}if(!stim)stim=s}}
+      const icon=stim&&stim.type==='table'?'📊':stim&&stim.type==='concept'?'📖':'📋';
+      html+=`<div class="bundle-group" id="bundle-${bundleKey.replace(/[^a-z0-9]/gi,'_')}">
+        <div class="bundle-header" onclick="toggleBundle(this)">
+          <span class="b-icon">${icon}</span>
+          <span>Bundle: ${bundleKey}</span>
+          <span class="b-count">${bundleRecs.length} questions</span>
+        </div>
+        <div class="bundle-body">`;
+      if(stim)html+=renderStimulus(stim);
+      bundleRecs.forEach(r=>{html+=renderProblemCard(r,globalIdx++,false)});
+      html+=`</div></div>`;
+    }
+  });
+  html+=`</div>`;
+
+  // Enrichment Health
+  let lSteps=0,lHints=0,lTraps=0,lCluster=0,lQM=0;
+  currentRecs.forEach(r=>{
+    const dp=r.data_points||{};
+    if((r.logic_steps&&r.logic_steps.length)||(dp.logic_steps&&dp.logic_steps.length))lSteps++;
+    if(r.hints||dp.hints)lHints++;
+    if((r.trap_tags&&r.trap_tags.length)||(dp.trap_tags&&dp.trap_tags.length))lTraps++;
+    if(getCluster(r))lCluster++;
+    if(r.q_matrix||dp.q_matrix_entry||dp.q_matrix)lQM++;
+  });
+  const total=currentRecs.length;
+  html+=`<div class="d-card"><h3><span class="dot" style="background:var(--cyan)"></span>Enrichment Health</h3>`;
+  [{lbl:'L2 Steps',val:lSteps},{lbl:'L4 Hints',val:lHints},{lbl:'L5 Traps',val:lTraps},{lbl:'L6 Cluster',val:lCluster},{lbl:'L7 Q-Mat',val:lQM}].forEach(h=>{
+    const pct=total>0?Math.round(h.val/total*100):0;
+    const color=pct>=80?'var(--green)':pct>=50?'var(--orange)':'var(--red)';
+    html+=`<div class="health-row"><div class="health-label">${h.lbl}</div><div class="health-bar-bg"><div class="health-bar-fill" style="width:${pct}%;background:${color}"></div></div><div class="health-count">${pct}% (${h.val}/${total})</div></div>`;
+  });
+  html+=`</div>`;
+
+  html+=`</div>`;
+  container.innerHTML=html;
+}
+
+// ═══════════════ VERIFY MODE WORKSPACE ═══════════════
+function getAuditState(bundleId){
+  try{const raw=localStorage.getItem('cat_set_audit_'+bundleId);if(raw)return JSON.parse(raw)}catch(e){}
+  return {checks:{textMatches:false,answersCorrect:false,stimulusComplete:false,enrichmentUsable:false},verdict:null};
+}
+function saveAuditState(bundleId,state){try{localStorage.setItem('cat_set_audit_'+bundleId,JSON.stringify(state))}catch(e){}}
+function setAuditVerdict(bundleId,verdict){
+  const s=getAuditState(bundleId);s.verdict=verdict;saveAuditState(bundleId,s);
+  const idSafe=bundleId.replace(/[^a-z0-9]/gi,'_');
+  const card=document.getElementById('audit-'+idSafe);
+  const board=card?card.querySelector('.audit-board'):null;
+  if(board)board.innerHTML=renderAuditBoardInner(bundleId,s);
+}
+function toggleAuditCheck(bundleId,key){
+  const s=getAuditState(bundleId);s.checks[key]=!s.checks[key];saveAuditState(bundleId,s);
+}
+function renderAuditBoardInner(bundleId,state){
+  const id=bundleId.replace(/[^a-z0-9]/gi,'_');
+  const verdictClass=state.verdict==='pass'?'pill-green':state.verdict==='fail'?'pill-red':'pill-muted';
+  const verdictText=state.verdict?state.verdict.toUpperCase():'NOT AUDITED';
+  return `<h4><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--gold);margin-right:6px"></span>Human Audit Board</h4>
+    <label class="audit-check"><input type="checkbox" ${state.checks.textMatches?'checked':''} onchange="toggleAuditCheck('${bundleId}','textMatches')"> Text matches PDF</label>
+    <label class="audit-check"><input type="checkbox" ${state.checks.answersCorrect?'checked':''} onchange="toggleAuditCheck('${bundleId}','answersCorrect')"> Answers correct</label>
+    <label class="audit-check"><input type="checkbox" ${state.checks.stimulusComplete?'checked':''} onchange="toggleAuditCheck('${bundleId}','stimulusComplete')"> Shared stimulus complete</label>
+    <label class="audit-check"><input type="checkbox" ${state.checks.enrichmentUsable?'checked':''} onchange="toggleAuditCheck('${bundleId}','enrichmentUsable')"> L2-L7 enrichment usable</label>
+    <div class="audit-actions">
+      <span class="pill ${verdictClass}">${verdictText}</span>
+      <button class="audit-btn pass" onclick="setAuditVerdict('${bundleId}','pass')">Pass Set</button>
+      <button class="audit-btn fail" onclick="setAuditVerdict('${bundleId}','fail')">Fail Set</button>
+    </div>`;
+}
+function renderAuditBoard(bundleId,state){
+  return `<div class="audit-board">${renderAuditBoardInner(bundleId,state)}</div>`;
+}
+function renderEnrichmentHealth(meta){
+  const h=meta.enrichment_health;
+  const rows=[
+    {lbl:'L2 Logic Steps',val:h.L2},{lbl:'L4 Hints',val:h.L4},{lbl:'L5 Traps',val:h.L5},
+    {lbl:'L6 Cluster',val:h.L6},{lbl:'L7 Q-Matrix',val:h.L7}
+  ];
+  const overall=Math.round(rows.reduce((a,b)=>a+b.val,0)/rows.length*100);
+  let html=`<div class="d-card"><h3><span class="dot" style="background:var(--cyan)"></span>Enrichment Health <span style="margin-left:auto;font-size:.65rem;color:var(--muted)">Overall ${overall}%</span></h3>`;
+  rows.forEach(r=>{
+    const pct=Math.round(r.val*100);
+    const color=pct>=80?'var(--green)':pct>=50?'var(--orange)':'var(--red)';
+    html+=`<div class="health-row"><div class="health-label">${r.lbl}</div><div class="health-bar-bg"><div class="health-bar-fill" style="width:${pct}%;background:${color}"></div></div><div class="health-count">${pct}%</div></div>`;
+  });
+  html+=`</div>`;return html;
+}
+function renderSetMatrix(){
+  const sets=getLogicalSets();
+  const byBook=new Map();
+  sets.forEach(s=>{
+    const b=s.book;
+    if(!byBook.has(b))byBook.set(b,{sets:0,questions:0});
+    byBook.get(b).sets++;
+    byBook.get(b).questions+=s.questions.length;
+  });
+  let rows='';
+  byBook.forEach((m,b)=>{
+    rows+=`<tr><td>${b.replace('CAT_','')}</td><td style="text-align:center">${m.sets}</td><td style="text-align:center">${m.questions}</td><td style="text-align:center">${(m.questions/m.sets).toFixed(2)}</td></tr>`;
+  });
+  const totalSets=sets.length;
+  const totalQs=sets.reduce((a,s)=>a+s.questions.length,0);
+  rows+=`<tr style="font-weight:700;border-top:1px solid var(--border)"><td>Total</td><td style="text-align:center">${totalSets}</td><td style="text-align:center">${totalQs}</td><td style="text-align:center">${(totalQs/totalSets).toFixed(2)}</td></tr>`;
+  return `<div class="d-card"><h3><span class="dot" style="background:var(--cyan)"></span>Logical Set Matrix</h3>
+    <div class="set-matrix-wrap"><table class="set-matrix-table"><thead><tr><th>Book</th><th>Sets</th><th>Questions</th><th>Avg Q/Set</th></tr></thead><tbody>${rows}</tbody></table></div>
+  </div>`;
+}
+function renderVerifyQuestion(q,idx,primarySubtopic,setIdSafe){
+  const dp=q.data_points||{};
+  const sub=q.sub_topic||'General';
+  const mismatched=sub!==primarySubtopic;
+  const diff=getDiff(q);
+  const qnum=dp.matched_question_number||idx+1;
+  const answer=String(q.correct_answer||dp.correct_answer||'').trim().toLowerCase();
+  const opts=q.options||dp.options||{};
+  let optHTML='';
+  if(opts&&typeof opts==='object'){
+    if(Array.isArray(opts)){
+      opts.forEach((v,i)=>{
+        const k=String.fromCharCode(97+i);
+        const isC=k===answer;
+        optHTML+=`<div class="option-row ${isC?'correct':''}"><span class="option-key">${k}</span><span class="option-text">${esc(String(v))}</span>${isC?'<span class="correct-mark">✓</span>':''}</div>`;
+      });
+    }else{
+      Object.entries(opts).forEach(([k,v])=>{
+        const isC=k.toLowerCase()===answer;
+        optHTML+=`<div class="option-row ${isC?'correct':''}"><span class="option-key">${esc(k)}</span><span class="option-text">${esc(String(v))}</span>${isC?'<span class="correct-mark">✓</span>':''}</div>`;
+      });
+    }
+  }
+  const qText=esc(q.content||q.summary||'No question text available');
+  return `<div class="verify-question-row ${mismatched?'mismatched':''}" id="vq-${setIdSafe}-${idx}" onclick="toggleVerifyQuestion('${setIdSafe}',${idx})">
+    <div class="vq-num">Q${qnum}</div>
+    <div class="vq-subtopic">${sub}${mismatched?' <span class="pill pill-orange" title="Differs from primary subtopic">!</span>':''}</div>
+    <div class="vq-stars" style="color:${DIFF_COLORS[diff]}">${'★'.repeat(Math.min(diff,5))+'☆'.repeat(Math.max(0,5-diff))}</div>
+    <div class="vq-status pill ${getStatusGroup(q)==='VERIFIED'?'pill-green':getStatusGroup(q)==='SUSPECT'?'pill-orange':'pill-muted'}">${getStatusGroup(q)}</div>
+    <div class="verify-question-detail">
+      <div class="expand-section"><h4><span class="edot" style="background:var(--blue)"></span>Question</h4><div class="q-text">${qText}</div>${optHTML||'<div style="font-size:.65rem;color:var(--muted)">No options available</div>'}</div>
+    </div>
+  </div>`;
+}
+function toggleVerifyQuestion(setIdSafe,idx){document.getElementById('vq-'+setIdSafe+'-'+idx).classList.toggle('expanded')}
+function renderVerifySet(set){
+  const meta=set.meta;
+  const idSafe=set.set_id.replace(/[^a-z0-9]/gi,'_');
+  const multiTopic=meta.classification_confidence<1.0;
+  const tooltip=set.subtopics_spanned.map(s=>`${s.name}: ${s.count}`).join(' | ');
+  const icon=set.shared_stimulus?(set.shared_stimulus.type==='table'?'📊':'📖'):'📋';
+  let html=`<div class="d-card verify-set" id="verify-set-${idSafe}">
+    <div class="verify-set-header">
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+        <span class="b-icon">${icon}</span>
+        <span style="font-weight:700">${set.raw_bundle_id}</span>
+        <span class="pill pill-muted" style="font-size:.55rem">${set.book.replace('CAT_','')}</span>
+        ${multiTopic?`<span class="pill pill-orange multi-topic-badge" title="${esc(tooltip)}">Multi-topic</span>`:''}
+      </div>
+      <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+        <span class="pill pill-muted" title="Avg difficulty · Max difficulty">d${meta.difficulty_avg||'—'} · max ${meta.difficulty_max||'—'}</span>
+        <span class="pill pill-blue">conf ${Math.round(meta.classification_confidence*100)}%</span>
+        <span class="b-count">${meta.question_count} questions</span>
+      </div>
+    </div>
+    <div class="verify-set-layout">
+      <div class="verify-set-left">
+        ${set.shared_stimulus?renderStimulus(set.shared_stimulus):'<div class="stim-warning">⚠️ No shared stimulus extracted for this set</div>'}
+        ${renderEnrichmentHealth(meta)}
+        ${meta.traps_union.length?`<div class="d-card"><h3><span class="dot" style="background:var(--rose)"></span>Set Traps</h3><div class="verify-skills">${meta.traps_union.map(t=>`<span class="pill pill-red">${t.replace(/_/g,' ')}</span>`).join('')}</div></div>`:''}
+      </div>
+      <div class="verify-set-right">
+        <div class="d-card"><h3><span class="dot" style="background:var(--green)"></span>Questions</h3>
+          ${set.questions.map((q,i)=>renderVerifyQuestion(q,i,set.primary_subtopic,idSafe)).join('')}
+        </div>
+        <div class="d-card" id="audit-${idSafe}">${renderAuditBoard(set.set_id,getAuditState(set.set_id))}</div>
+        ${meta.skills_tested.length?`<div class="d-card"><h3><span class="dot" style="background:var(--purple)"></span>Skills Tested</h3><div class="verify-skills">${meta.skills_tested.map(s=>`<span class="pill pill-blue">${s.replace(/_/g,' ')}</span>`).join('')}</div></div>`:''}
+      </div>
+    </div>
+  </div>`;
+  return html;
+}
+function renderVerifyWorkspace(topic,sub){
+  activeTopic=topic;activeSubtopic=sub;
+  const allSets=getLogicalSets();
+  const primarySets=allSets.filter(s=>s.primary_topic===topic && s.primary_subtopic===sub);
+  const spanningSets=allSets.filter(s=>s.primary_subtopic!==sub && s.subtopics_spanned.some(sp=>sp.name===sub));
+  const container=document.getElementById('detail-content');
+  let html=`<div class="detail-inner verify-workspace">
+    ${renderSetMatrix()}
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+      <div><h2 style="font-size:1rem;font-weight:700">${sub}</h2>
+      <div style="font-size:.6rem;color:var(--muted);margin-top:2px">${topic} · ${primarySets.length} primary sets · ${spanningSets.length} spanning sets</div></div>
+    </div>`;
+  if(primarySets.length===0)html+=`<div class="d-card"><div style="font-size:.7rem;color:var(--muted);text-align:center;padding:12px">No primary problem sets for this subtopic.</div></div>`;
+  else primarySets.forEach(s=>html+=renderVerifySet(s));
+  if(spanningSets.length>0){
+    html+=`<div class="d-card"><h3><span class="dot" style="background:var(--orange)"></span>Multi-topic Sets Spanning Here <span style="margin-left:auto;font-size:.55rem;color:var(--muted)">${spanningSets.length}</span></h3>`;
+    spanningSets.forEach(s=>html+=renderVerifySet(s));
+    html+=`</div>`;
+  }
+  html+=`</div>`;
+  container.innerHTML=html;
+}
+
+// ═══════════════ STIMULUS RENDERER ═══════════════
+function renderStimulus(stim){
+  if(stim.type==='table'&&stim.data&&stim.data.headers){
+    let thtml=`<div class="stimulus-card"><div class="stim-label">📊 Shared Data <span class="stim-type">${stim.data.diagram_type||'table'}</span></div>`;
+    thtml+=`<div class="stim-table-wrap"><table class="stim-table"><thead><tr>`;
+    stim.data.headers.forEach(h=>{thtml+=`<th>${esc(h)}</th>`});
+    thtml+=`</tr></thead><tbody>`;
+    (stim.data.rows||[]).forEach(row=>{thtml+=`<tr>`;row.forEach(cell=>{thtml+=`<td>${esc(String(cell))}</td>`});thtml+=`</tr>`});
+    thtml+=`</tbody></table></div></div>`;
+    return thtml;
+  }
+  if(stim.type==='markdown'&&stim.text){
+    return`<div class="stimulus-card"><div class="stim-label">📊 Data Table</div><div class="stim-passage" style="font-family:'JetBrains Mono',monospace;font-size:.65rem;white-space:pre">${esc(stim.text.substring(0,1000))}</div></div>`;
+  }
+  if(stim.type==='concept'&&stim.text){
+    return`<div class="stimulus-card"><div class="stim-label">📖 Foundational Concept</div><div class="stim-passage">${esc(stim.text.substring(0,500))}</div><div class="stim-warning">⚠️ RC passage text not extracted into records — question + enrichment layers available for review</div></div>`;
+  }
+  return'';
+}
+
+// ═══════════════ PROBLEM CARD ═══════════════
+function renderProblemCard(r,idx,standalone){
+  const diff=getDiff(r),status=getStatus(r),snippet=(r.summary||r.content||'').substring(0,75);
+  const traps=getTraps(r),clusterId=getCluster(r)||'—';
+  const stars='★'.repeat(Math.min(diff,5))+'☆'.repeat(Math.max(0,5-diff));
+  let sp='pill-muted',sl=status.replace(/_/g,' ');
+  if(status.includes('VERIFIED')){sp='pill-green';sl=status.replace('_VERIFIED','')}
+  else if(status.includes('SUSPECT')){sp='pill-orange';sl='SUSPECT'}
+  else if(status.includes('PARTIAL')){sp='pill-blue';sl='PARTIAL'}
+  else if(status.includes('REJECTED')){sp='pill-red';sl='REJECTED'}
+  let trapPills='';traps.slice(0,3).forEach(t=>{trapPills+=`<span class="pill pill-red">${t.name.replace(/_/g,' ')}</span>`});
+
+  // Expanded content
+  const dp=r.data_points||{};const qText=esc(r.content||r.summary||'');
+  const answer=r.correct_answer||dp.correct_answer||'';
+  const opts=r.options||dp.options||{};
+  const steps=r.logic_steps||dp.logic_steps||[];
+  const hints=r.hints||dp.hints||{};
+  const qmatrix=dp.q_matrix_entry||dp._dina_parameters||r.q_matrix||{};
+  const skillNames=qmatrix.skill_names||[];const qvec=qmatrix.q_matrix||[];
+
+  let optHTML='';
+  if(opts&&typeof opts==='object'){
+    (Array.isArray(opts)?opts:[]).forEach((v,i)=>{
+      const k=String.fromCharCode(97+i);
+      const isC=k===answer.toLowerCase();
+      optHTML+=`<div class="option-row ${isC?'correct':''}"><span class="option-key">${k}</span><span class="option-text">${esc(String(v))}</span>${isC?'<span class="correct-mark">✓</span>':''}</div>`;
+    });
+    if(!Array.isArray(opts)){
+      Object.entries(opts).forEach(([k,v])=>{
+        const isC=k.toLowerCase()===answer.toLowerCase();
+        optHTML+=`<div class="option-row ${isC?'correct':''}"><span class="option-key">${esc(k)}</span><span class="option-text">${esc(String(v))}</span>${isC?'<span class="correct-mark">✓</span>':''}</div>`;
+      });
+    }
+  }
+
+  let stepsHTML='';if(steps.length>0)steps.forEach((s,i)=>{stepsHTML+=`<div class="step-item"><span class="step-num">${i+1}</span><span>${esc(typeof s==='string'?s:s.toString())}</span></div>`});
+  else stepsHTML='<div style="font-size:.65rem;color:var(--muted);text-align:center;padding:4px">No logic steps</div>';
+
+  let hintsHTML='';
+  [{k:'level_1',l:'Nudge'},{k:'level_2',l:'Technique'},{k:'level_3',l:'Core Op'}].forEach(h=>{
+    const text=hints[h.k]||hints[h.k.replace('level_','hint_')]||'Not generated';
+    const uid=`hint-${idx}-${h.k}`;
+    hintsHTML+=`<div class="hint-box"><div class="hint-header"><span class="hint-label">${h.l}</span><button class="hint-reveal" onclick="toggleHint('${uid}',this,event)">Reveal</button></div><div class="hint-text blurred" id="${uid}">${esc(text)}</div></div>`;
+  });
+
+  let trapDHTML='';if(traps.length>0)traps.forEach(t=>{trapDHTML+=`<div class="trap-detail-row"><div><div class="trap-detail-name">${t.name.replace(/_/g,' ')}</div><div class="trap-detail-cat">${t.category||'—'}</div></div><span class="trap-detail-conf">${Math.round(t.confidence*100)}%</span></div>`});
+  else trapDHTML='<div style="font-size:.65rem;color:var(--muted);text-align:center;padding:4px">No traps</div>';
+
+  let skillsHTML='';if(skillNames.length>0&&qvec.length>0)skillNames.forEach((sk,i)=>{if(qvec[i]===0)return;skillsHTML+=`<div class="skill-row"><div class="skill-header"><span>${sk.replace(/_/g,' ')}</span><span class="skill-val">${qvec[i]?'Active':'—'}</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:${qvec[i]*100}%"></div></div></div>`});
+  if(!skillsHTML)skillsHTML='<div style="font-size:.65rem;color:var(--muted);text-align:center;padding:4px">No Q-Matrix</div>';
+
+  let explHTML='';
+  if(clusterId!=='—'&&explainers[clusterId]){const exp=explainers[clusterId];let concept=exp.explainer||'';let trapAdd='';if(concept.includes('TRAP ADDENDUM')){const parts=concept.split(/TRAP ADDENDUM/i);concept=parts[0].replace(/CONCEPT CORE/i,'').trim();trapAdd=parts[1].trim()}
+  explHTML=`<div class="explainer-card"><h5 class="concept-h">Concept Core</h5><p>${esc(concept.substring(0,500))}</p>${trapAdd?`<h5 class="trap-h" style="margin-top:8px">Trap Addendum</h5><p>${esc(trapAdd.substring(0,400))}</p>`:''}</div>`}
+
+  // Inline stimulus for standalone cards
+  let stimHTML='';
+  if(standalone){const stim=getStimulus(r);if(stim)stimHTML=renderStimulus(stim)}
+
+  return`<div class="prob-card" id="prob-${idx}" onclick="toggleProblem(${idx})">
+    <div class="prob-top"><span class="prob-idx">#${idx}</span><span class="prob-snippet">${esc(snippet)}</span><span class="prob-stars" style="color:${DIFF_COLORS[diff]}">${stars}</span><span class="pill ${sp}">${sl}</span></div>
+    ${trapPills?`<div class="prob-trap-pills">${trapPills}<span class="pill pill-muted">${clusterId.substring(0,8)}</span></div>`:''}
+    <div class="prob-expand">
+      ${stimHTML}
+      <div class="expand-section"><h4><span class="edot" style="background:var(--blue)"></span>Question</h4><div class="q-text">${qText}</div>${optHTML}</div>
+      <div class="expand-section"><h4><span class="edot" style="background:var(--green)"></span>L2: Logic Steps</h4>${stepsHTML}</div>
+      <div class="expand-section"><h4><span class="edot" style="background:var(--orange)"></span>L4: Hints</h4>${hintsHTML}</div>
+      <div class="expand-section"><h4><span class="edot" style="background:var(--rose)"></span>L5: Traps</h4>${trapDHTML}</div>
+      ${explHTML?`<div class="expand-section"><h4><span class="edot" style="background:var(--blue)"></span>L6: Explainer</h4>${explHTML}</div>`:''}
+      <div class="expand-section"><h4><span class="edot" style="background:var(--purple)"></span>L7: Skills</h4>${skillsHTML}</div>
+    </div>
+  </div>`;
+}
+
+// ═══════════════ FILTER INTERACTIONS ═══════════════
+function toggleStatus(sg){
+  let keys=[];
+  if(sg==='VERIFIED') keys=['VERIFIED','JURY_VERIFIED','DATA_VERIFIED','CSP_VERIFIED','MODEL_VERIFIED'];
+  else if(sg==='SUSPECT') keys=['SUSPECT','ANSWER_KEY_SUSPECT'];
+  else if(sg==='PARTIAL') keys=['PARTIAL','JURY_PARTIAL'];
+  else if(sg==='UNKNOWN') keys=['UNKNOWN','JURY_REJECTED'];
+  else keys=[sg];
+  const isActive=keys.some(k=>activeStatuses.has(k));
+  if(isActive)keys.forEach(k=>activeStatuses.delete(k));
+  else keys.forEach(k=>activeStatuses.add(k));
+  rebuildDetail();
+}
+function toggleDiff(d){if(activeDiffs.has(d))activeDiffs.delete(d);else activeDiffs.add(d);rebuildDetail()}
+function toggleTrap(name,e){e.stopPropagation();if(activeTraps.has(name))activeTraps.delete(name);else activeTraps.add(name);rebuildDetail()}
+function trapSelectAll(){const allNames=new Set();currentRecs.forEach(r=>getTraps(r).forEach(t=>allNames.add(t.name)));activeTraps=allNames;rebuildDetail()}
+function trapDeselectAll(){activeTraps=new Set();rebuildDetail()}
+function toggleTrapExpand(){allTrapsExpanded=!allTrapsExpanded;rebuildDetail()}
+
+function expandTrapDetail(name,idx,e){
+  e.stopPropagation();
+  const el=document.getElementById('trap-detail-'+idx);
+  if(el.classList.contains('open')){el.classList.remove('open');return}
+  // Compute details
+  const recs=currentRecs.filter(r=>getTraps(r).some(t=>t.name===name));
+  const diffSpread={},bookSpread={};let totalConf=0;
+  recs.forEach(r=>{const d=getDiff(r);diffSpread[d]=(diffSpread[d]||0)+1;if(r._source_book)bookSpread[r._source_book]=(bookSpread[r._source_book]||0)+1;
+    const t=getTraps(r).find(t=>t.name===name);if(t)totalConf+=t.confidence});
+  const avgConf=recs.length>0?Math.round(totalConf/recs.length*100):0;
+  let html=`<div class="tdi-row"><strong>Records:</strong><span>${recs.length}</span></div>`;
+  html+=`<div class="tdi-row"><strong>Avg Confidence:</strong><span>${avgConf}%</span></div>`;
+  html+=`<div class="tdi-row"><strong>Difficulty:</strong><span>${Object.entries(diffSpread).map(([d,c])=>`d${d}(${c})`).join(' ')}</span></div>`;
+  html+=`<div class="tdi-row"><strong>Books:</strong><span>${Object.entries(bookSpread).map(([b,c])=>`${b.replace('CAT_','')}(${c})`).join(' ')}</span></div>`;
+  html+=`<div class="tdi-samples"><strong>Sample Questions:</strong>`;
+  recs.slice(0,3).forEach(r=>{html+=`<div class="tdi-sample">${esc((r.summary||r.content||'').substring(0,80))} — d${getDiff(r)}, ${getStatusGroup(r)}</div>`});
+  html+=`</div>`;
+  el.innerHTML=html;el.classList.add('open');
+}
+
+// ═══════════════ INTERACTIONS ═══════════════
+function toggleProblem(idx){document.getElementById('prob-'+idx).classList.toggle('expanded')}
+function toggleBundle(el){el.parentElement.classList.toggle('collapsed')}
+function toggleHint(id,btn,e){e.stopPropagation();const el=document.getElementById(id);if(el.classList.contains('blurred')){el.classList.remove('blurred');btn.textContent='Hide'}else{el.classList.add('blurred');btn.textContent='Reveal'}}
+function esc(t){if(!t)return'';return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function setStatus(type,text){const d=document.getElementById('status-dot'),t=document.getElementById('status-text');d.className='status-dot';if(type==='ok')d.classList.add('ok');t.textContent=text}
+
+// ═══════════════ DRAG & DROP ═══════════════
+function setupDragDrop(){
+  let dc=0;const ov=document.getElementById('drop-overlay');
+  document.addEventListener('dragenter',e=>{e.preventDefault();dc++;ov.classList.add('visible')});
+  document.addEventListener('dragleave',e=>{e.preventDefault();dc--;if(dc<=0){dc=0;ov.classList.remove('visible')}});
+  document.addEventListener('dragover',e=>e.preventDefault());
+  document.addEventListener('drop',e=>{e.preventDefault();dc=0;ov.classList.remove('visible');if(e.dataTransfer.files.length>0)loadDroppedFiles(e.dataTransfer.files)});
+}
+function loadDroppedFiles(files){
+  setStatus('loading',`Reading ${files.length} file(s)…`);allRecords=[];let pending=files.length;
+  Array.from(files).forEach(file=>{const reader=new FileReader();reader.onload=evt=>{const text=evt.target.result;
+    if(file.name.includes('explainer'))parseExplainers(text);
+    else text.split('\n').forEach(l=>{if(!l.trim())return;try{const r=JSON.parse(l);r._source_book=file.name.replace('.jsonl','');allRecords.push(r)}catch(e){}});
+    pending--;if(pending<=0){buildHierarchy();renderAll();setStatus('ok',`${allRecords.length.toLocaleString()} records loaded`)}};reader.readAsText(file)});
+}
+
+window.onload = async () => {
+  setupDragDrop();
+  renderVerifyToggle();
+  if(window.location.protocol.startsWith('http') && !initialLoadStarted){
+    initialLoadStarted=true;
+    setStatus('loading', 'Auto-fetching books...');
+    try {
+      const exRes = await fetch('../cat_data/explainers/explainers.jsonl');
+      if(exRes.ok) parseExplainers(await exRes.text());
+
+      const books = ['CAT_DI_LR_Arun_Sharma','CAT_DI_LR_Nishit_K_Sinha','CAT_LR_LSAT_Logic_Games','CAT_VARC_Part1','CAT_VARC_Part2'];
+      let loaded = 0;
+      for(const b of books){
+        const res = await fetch(`../cat_data/${b}/records.jsonl`);
+        if(res.ok){
+          const text = await res.text();
+          text.split('\n').forEach(l=>{if(!l.trim())return;try{const r=JSON.parse(l);r._source_book=b;allRecords.push(r)}catch(e){}});
+          loaded++;
+        }
+      }
+      if(loaded > 0){
+        buildHierarchy();
+        renderAll();
+        setStatus('ok', `${allRecords.length.toLocaleString()} records auto-loaded`);
+        document.getElementById('drop-overlay').style.display='none';
+      }
+    } catch(e) {
+      console.error(e);
+      setStatus('error', 'Auto-fetch failed. Drop files to load.');
+    }
+  }
+};
+</script>
+</body>
+</html>
