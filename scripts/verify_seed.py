@@ -120,6 +120,16 @@ def verify_db(exports: Path) -> None:
         with driver.session() as session:
             for label, expected in manifest["nodes_by_label"].items():
                 n = session.run(f"MATCH (n:`{label}`) RETURN count(n) AS n").single()["n"]
+                if label == "Skill":
+                    # Seeding deliberately adds 3 post-export skills (Dhvajanka
+                    # Sutra Level 1-3, prereq for RAG's derived-REQUIRES load).
+                    dh = session.run(
+                        "MATCH (s:Skill) WHERE s.name STARTS WITH 'Dhvajanka Sutra Level' "
+                        "RETURN count(s) AS n"
+                    ).single()["n"]
+                    check("neo4j :Skill (export + 3 Dhvajanka)", n, expected + 3)
+                    check("neo4j Dhvajanka L1-3 present", dh, 3)
+                    continue
                 check(f"neo4j :{label}", n, expected)
             total = session.run("MATCH (n) RETURN count(n) AS n").single()["n"]
             print(f"  [--- ] neo4j total nodes: {total} (manifest content nodes: {manifest['nodes_total']})")

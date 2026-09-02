@@ -23,9 +23,11 @@ services:
     environment:
       NEO4J_AUTH: neo4j/vmsg-dev-password
       NEO4J_PLUGINS: '["apoc"]'
-      # Phase-1 RAM caps (Droplet B budget — keep dev honest about prod limits)
+      # Phase-1 RAM caps (Droplet B budget; arch doc says heap ≤1G, pagecache ≤1G —
+      # dev engine has 3.8GiB total, and the graph is small, so pagecache runs at 512m)
+      NEO4J_server_memory_heap_initial__size: 512m
       NEO4J_server_memory_heap_max__size: 1G
-      NEO4J_server_memory_pagecache_size: 1G
+      NEO4J_server_memory_pagecache_size: 512m
     ports:
       - "7474:7474"
       - "7687:7687"

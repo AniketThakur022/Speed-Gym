@@ -139,7 +139,7 @@ CREATE TABLE IF NOT EXISTS problems (
     verified_at TIMESTAMPTZ,
     verification_payload JSONB,
     difficulty_level INTEGER,
-    digit_size INTEGER,
+    digit_size TEXT,               -- descriptive in the export ("2-digit × 3-digit")
     operation_type VARCHAR(100),
     strategy_type VARCHAR(100),
     is_multi_step BOOLEAN DEFAULT FALSE,

@@ -122,11 +122,12 @@ def migrate_neo4j(dry_run: bool) -> None:
             with driver.session() as session:
                 for key, path in pending:
                     text = path.read_text()
-                    if re.search(r"\$rows\b", text):
+                    statements = split_cypher(text)
+                    if any(re.search(r"\$rows\b", s) for s in statements):
                         print(f"  ! {key} skipped: requires $rows params (loader, not a migration)")
                         continue
                     print(f"  + {key} ...", end=" ", flush=True)
-                    for stmt in split_cypher(text):
+                    for stmt in statements:
                         session.run(stmt).consume()
                     conn.execute(
                         "INSERT INTO schema_migrations (filename, checksum) VALUES (%s, %s)",
