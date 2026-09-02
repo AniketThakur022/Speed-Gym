@@ -28,5 +28,19 @@
   "closure_rows_both_stub": 17,
   "closure_rows_total": 2711,
   "caveat": "Prerequisite edges over is_stub skills are structurally valid but semantically thin — the stub skills are harvested placeholders with no topic/sub_topic, not curated taxonomy entries. Consumers should weight closure results accordingly until taxonomy_v1 review lands."
+ },
+ "decline_log": {
+  "invariant": "Every item a factory pass declines, skips or drops must appear in a report WITH a reason. An unlogged non-write is indistinguishable from an item that was never seen.",
+  "where_declines_are_recorded": {
+   "skill_dag_builder": "skill_dag_report_v1.json -> dropped{below_support,already_curated_or_next_topic,derived_from_root}, cycle_removals[], unresolved_chain_members_top20",
+   "closure_build": "this file (rows/depth distribution); start-node predicate documented in STRATEGY_A_CLOSURE_DESIGN.md",
+   "solvealong_adapter": "bank manifest -> quarantined{} with per-template reasons, repairs{}",
+   "latex_normalization": "bank manifest -> known_latex_defects[] (carried, not silently dropped) + skipped_ambiguous_escaped_dollar count",
+   "auditor": "run report stats -> fail_stage_N counters per rejected item",
+   "station3_grounding": "report.json -> discarded_ungrounded count (ungrounded extractions are DISCARDED by design)",
+   "station0_chunker": "station0_report.json -> per-book skipped{needs_render,low_conf_*,too_few_words}"
+  },
+  "known_gap": "problem_requirements carries no row for the 13 :Problem nodes with no incoming PREREQUISITE_OF edge — they are absent rather than declined-with-reason. Now recorded here and in docs/rag/TAXONOMY_V1_REVIEW.md.",
+  "orphan_problems_without_skill_edge": 13
  }
 }
