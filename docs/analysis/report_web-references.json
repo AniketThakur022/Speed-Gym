@@ -1,0 +1,62 @@
+{
+ "summary": "Fetched the four reference links for the Vedic Math Speed Gym (VMSG) restart. Results: (1) HKUDS/DeepTutor is a mature open-source \"agent-native learning workspace\" (Apache 2.0, Python 3.11+ FastAPI backend on port 8001, Next.js 16/React 19 frontend on port 3782, WebSocket realtime) that unifies tutoring chat, problem solving, quiz generation, research, visualization, and mastery practice in one agent loop. It is a strong architecture reference for VMSG's RAG content factory and tutoring layer: multi-engine versioned RAG knowledge bases (LlamaIndex default with local vector + BM25, PageIndex with page citations, GraphRAG, LightRAG, remote LightRAG Server, Obsidian, Tencent IMA, MarginNote 4), seven pluggable document-parsing engines (MinerU for PDF/images/DOCX/PPTX/XLSX, Docling incl. Docling Serve remote, Apache Tika, markitdown, PyMuPDF4LLM, LiteParse, text-only), a \"Book Engine\" that compiles source materials into living books of typed blocks (text, quizzes, animations, interactive widgets) with page-level chat, an L1/L2/L3 memory layer, a SKILL.md-based skills framework with an EduHub community registry, MCP server support, and an agent-driven CLI (deeptutor run with NDJSON event streaming) plus multi-user isolation. Deployable via pip, source, Docker (ghcr.io/hkuds/deeptutor:latest), or headless CLI.\n\n(2) withmarbleapp/os-taxonomy: IMPORTANT CORRECTION — the public GitHub repo does NOT contain VMSG's extraction/enrichment scripts or tracking dashboard as the briefing claimed. Both the README and the GitHub API file listing show it is Marble's open-source elementary-curriculum skill taxonomy: 1,590 micro-topics in a prerequisite dependency graph across 8 subjects (Mathematics 503, Science 547, English 286, etc.), with data/ (topics.json, dependencies.json with 3,221 hard/soft prerequisite edges, curriculum-standards.json covering NGSS/Common Core/UK National Curriculum, clusters.json, manifest.json), schema/ (JSON Schemas), media/ (3D graph visualizations), scripts/ (validation/processing utilities), plus README.md, CHANGELOG.md, CITATION.cff, PROVENANCE.md, LICENSE (ODbL 1.0 for the database) and LICENSE-CONTENT (CC BY-SA 4.0 for authored content), and a tiny package.json (328 bytes; pure JSON data, no runtime dependencies). Each topic node carries a stable ID, type (conceptual/procedural/representational/language/meta), subject, domain, plain-language description, age range, centrality score, mastery evidence criteria, assessment prompts, and aligned standards codes — which makes it directly reusable as a skill-graph/BKT-topic-model reference for VMSG even though it is not the project's own pipeline repo. The VMSG extraction scripts likely live in a private repo, a fork, or elsewhere; the orchestrator should verify the actual location.\n\n(3) brilliant.org/courses/ is client-side rendered; two fetch attempts (root and /math/) returned only the page shell — title \"Courses | Brilliant | Your Personal Tutor for Math & Coding\", section headers \"Courses\" and \"Learning Paths\", and the tagline \"Step-by-step paths to mastery\". No course names or category structure were retrievable via plain fetch; a browser-based scrape would be needed for the full catalog. The retrievable signal confirms Brilliant's current framing: personalized tutoring for Math & Coding, organized around sequential Learning Paths to mastery.\n\n(4) The Google Drive folder (1ODMexaWbghZ7wbL8T6Y3-QKIMeedaT5p) returns a 302 redirect to Google accounts sign-in (accounts.google.com/ServiceLogin) — it requires authentication and yields nothing anonymously, as expected. Accessing it would require the user's authenticated Drive session/connector.",
+ "key_facts": [
+  "DeepTutor (github.com/HKUDS/DeepTutor): Apache 2.0, docs at deeptutor.info, Docker image ghcr.io/hkuds/deeptutor:latest, pip install -U deeptutor; backend FastAPI (port 8001), frontend Next.js 16/React 19/TypeScript (port 3782), Python 3.11-3.13, Node 20+",
+  "DeepTutor uses one unified agent loop for all modes (Chat, Research, Problem-solving, Quizzes); optional sandboxed code-execution runner (Dockerfile.runner)",
+  "DeepTutor RAG engines: LlamaIndex (default, local vector + BM25), PageIndex (reasoning with page citations), GraphRAG, LightRAG, remote LightRAG Server, Obsidian vault linking, Tencent IMA, MarginNote 4; knowledge bases are versioned (version-N directories) with per-document removal and GitHub-repo tracking with diff sync",
+  "DeepTutor document parsing engines: MinerU (PDF/images/DOCX/PPTX/XLSX, cloud or local CLI), Docling (incl. remote Docling Serve), Apache Tika, markitdown, PyMuPDF4LLM, LiteParse, text-only — a ready menu of OCR/parsing options for book ingestion",
+  "DeepTutor 'Book Engine': compiles uploaded materials into a 'living book' of typed blocks — text, quizzes, animations, interactive widgets — with page-level chat; closest existing analogue to VMSG's book-to-practice-content factory",
+  "DeepTutor extras: Co-Writer (selection-aware markdown editor with approval diffs), Partners (persistent companion agents with IM channels: Feishu, Telegram, Slack, Discord), My Agents (consult_subagent harness for Claude Code/Codex/etc.), 3-layer memory (L1 traces, L2 summaries, L3 synthesis), EduHub skill registry using SKILL.md Agent-Skills standard, MCP support (deny-by-default for non-admins), multi-user isolation under data/users/<uid>/",
+  "DeepTutor CLI is agent-drivable: 'deeptutor run <capability>' with NDJSON event streaming (content, tool_call, tool_result, done); settings persist in data/user/settings/*.json",
+  "withmarbleapp/os-taxonomy is NOT the VMSG extraction/enrichment repo — it is Marble's open-source elementary curriculum taxonomy; the briefing's claim that it holds this project's scripts and tracking dashboard is contradicted by the public repo contents",
+  "os-taxonomy contents: 1,590 micro-topics, 3,221 prerequisite edges (hard/soft with reasoning), 8 subjects (Science 547, Mathematics 503, English 286, History 90, Personal & Social Development 88, Life Skills 37, Computing 21, Learning to Learn 18)",
+  "os-taxonomy files: data/topics.json, data/dependencies.json, data/curriculum-standards.json (NGSS, Common Core, UK National Curriculum), data/clusters.json, data/manifest.json (checksums); schema/ JSON Schemas; media/ 3D graph animations; scripts/ validation utilities; README.md (6,209 B), CHANGELOG.md, CITATION.cff, PROVENANCE.md, LICENSE (25,289 B), LICENSE-CONTENT (18,375 B), package.json (328 B), .gitignore",
+  "os-taxonomy topic node schema: stable ID, type (conceptual/procedural/representational/language/meta), subject, domain, name, description, age range, centrality score, mastery evidence criteria, assessment prompts, aligned curriculum-standard codes — directly reusable as a BKT skill-graph schema template",
+  "os-taxonomy licensing: ODbL 1.0 (database structure/relationships) + CC BY-SA 4.0 (authored content); explicitly released for research AND commercial use; interactive visualization at withmarble.com/curriculum; pure JSON, no runtime dependencies",
+  "brilliant.org/courses/ is JS-rendered — plain fetch returns only shell: 'Your Personal Tutor for Math & Coding', sections 'Courses' and 'Learning Paths', tagline 'Step-by-step paths to mastery'; full catalog needs a real browser session to scrape",
+  "Google Drive folder 1ODMexaWbghZ7wbL8T6Y3-QKIMeedaT5p: 302 redirect to accounts.google.com/ServiceLogin — auth-gated, nothing retrievable anonymously (expected); needs the user's authenticated Drive access"
+ ],
+ "entities": [
+  "Vedic Math Speed Gym (VMSG / Speed Gym)",
+  "DeepTutor (HKUDS)",
+  "HKUDS (HKU Data Science lab)",
+  "Marble (withmarbleapp)",
+  "os-taxonomy repo",
+  "Brilliant.org",
+  "LlamaIndex",
+  "PageIndex",
+  "GraphRAG",
+  "LightRAG",
+  "MinerU",
+  "Docling",
+  "Apache Tika",
+  "PyMuPDF4LLM",
+  "markitdown",
+  "LiteParse",
+  "Obsidian",
+  "Tencent IMA",
+  "MarginNote 4",
+  "EduHub",
+  "Nishit K Sinha (CAT LR/DI book author)",
+  "NGSS",
+  "Common Core",
+  "UK National Curriculum",
+  "Google Drive folder 1ODMexaWbghZ7wbL8T6Y3-QKIMeedaT5p"
+ ],
+ "workstream_notes": {
+  "backend": "DeepTutor is the strongest architectural comp for the FastAPI backend: FastAPI + agent loop + WebSockets, versioned knowledge-base storage (version-N dirs), per-user data isolation (data/users/<uid>/), JSON settings files, and an NDJSON-streaming CLI designed to be driven by other agents. Its multi-provider LLM/embedding abstraction (OpenAI, Anthropic, Gemini, DeepSeek, Ollama, vLLM, etc.) and MCP deny-by-default policy are patterns worth copying. os-taxonomy's topic schema (stable ID, type, domain, centrality, mastery evidence criteria, prerequisite edges with hard/soft strength) is a ready-made data model for the BKT mastery engine's skill graph — VMSG can adopt the same JSON shape for its Vedic-math/CAT-quant topic graph.",
+  "data_extraction": "Key correction: the public withmarbleapp/os-taxonomy repo does NOT contain the VMSG extraction/enrichment scripts or tracking dashboard — it is Marble's curriculum taxonomy dataset. The real pipeline repo must be located elsewhere (likely private or under another name); the auth-gated Google Drive folder (needs the user's login) is the other candidate source for book scans/corpus files. For rebuilding the OCR pipeline, DeepTutor's parser menu is the practical shortlist: MinerU (best for scanned PDF math books, has cloud API and local CLI), Docling/Docling Serve, PyMuPDF4LLM, Tika, markitdown.",
+  "rag": "DeepTutor is a direct blueprint for the content factory: ingest books via pluggable parsers, index into versioned multi-engine RAG stores (LlamaIndex vector+BM25 default; PageIndex for page-cited reasoning — valuable for tracing extracted problems back to book pages; GraphRAG/LightRAG for concept graphs), then generate typed learning blocks (its Book Engine produces text/quizzes/animations/widgets from source material — essentially VMSG's extract-enrich-generate loop, already built and Apache-licensed, so components can be reused or the whole system embedded). Brilliant's fetchable signal ('Learning Paths — step-by-step paths to mastery', personal-tutor framing) confirms the pedagogy target but the full catalog needs a browser scrape; os-taxonomy's prerequisite graph shows how to sequence generated content into mastery paths."
+ },
+ "decisions_and_status": [
+  "All four URLs fetched: DeepTutor and os-taxonomy succeeded in full; Brilliant returned only a JS shell after two attempts (root + /math/), so catalog details were not retrievable by plain fetch; Google Drive folder is auth-gated (302 to Google sign-in) — noted and not pursued further, per instructions",
+  "Determined that the briefing's claim about withmarbleapp/os-taxonomy is wrong for the public repo: it holds Marble's curriculum taxonomy, not VMSG's extraction scripts/dashboard — orchestrator should locate the actual pipeline repo",
+  "No retries beyond the allowed one per resource; no files written"
+ ],
+ "open_questions": [
+  "Where do VMSG's actual extraction/enrichment scripts and tracking dashboard live, given the public os-taxonomy repo is unrelated Marble taxonomy data? (Private repo, different name, or local-only?)",
+  "What is inside the auth-gated Google Drive folder (likely book scans/OCR corpus) — needs the user's authenticated Drive access or a connector to enumerate",
+  "Should VMSG reuse DeepTutor components (MinerU parsing, PageIndex page-cited RAG, Book Engine) directly rather than rebuilding the content factory from scratch, given its Apache 2.0 license?",
+  "Brilliant's detailed course catalog structure requires a browser-based scrape (JS-rendered) if the pedagogy/UX reference needs more than the 'Learning Paths / paths to mastery' framing"
+ ]
+}
