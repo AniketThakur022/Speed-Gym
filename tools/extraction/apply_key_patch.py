@@ -56,6 +56,11 @@ def main():
     with MASTER.open() as f:
         for line in f:
             r = json.loads(line)
+            rec_e = patch.get((r.get("set_id"), "*"))
+            if rec_e is not None and rec_e["action"] == "record_tags":
+                r.setdefault("extra", {})["tags"] = rec_e["tags"]
+                r["extra"]["tags_source"] = rec_e["tags_source"]
+                applied += 1
             if r.get("set_id") in patch_sets:
                 for q in r.get("questions") or []:
                     e = patch.get((r["set_id"], str(q.get("number"))))
