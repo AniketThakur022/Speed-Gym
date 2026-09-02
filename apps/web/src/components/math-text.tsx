@@ -1,17 +1,23 @@
 "use client";
 
 /**
- * Renders corpus text that mixes prose with LaTeX.
+ * Math rendering, per docs/rag/LATEX_RENDER_CONTRACT.md.
  *
- * The book-extracted corpus is LaTeX-heavy — question text arrives as
- * "Determine $735 + 167$" or a full \[ \begin{array} … \] block — so without a
- * renderer the learner sees raw markup. KaTeX is already the project's math
- * engine (the factory auditor validates with katex_parser), so this keeps one
- * engine across producer and consumer.
+ * There are two genuinely different kinds of string in this product, and one
+ * render call cannot serve both:
  *
- * Rendering is deliberately fault-tolerant: a malformed expression falls back
- * to its source text rather than blanking the question. A learner reading
- * slightly ugly markup can still answer; an empty question is unanswerable.
+ *   mode="prose" (default) — book-extracted `question_text`, which is prose
+ *     with inline math delimited by $…$, $$…$$, \(…\) or \[…\]. Segment it and
+ *     render only the math runs.
+ *   mode="math" — factory `result`/formula fields, which the contract fixes as
+ *     RAW math-mode with NO delimiters ("5 \times 7 = 35"). Passing these
+ *     through the prose path would render them as plain text, silently, which
+ *     is precisely the failure the contract exists to prevent. `description` is
+ *     prose and must NOT be rendered as math.
+ *
+ * `throwOnError: false` is contractual: a malformed formula degrades to visible
+ * source instead of blanking a step, and a partially-valid expression still
+ * renders the parts KaTeX understands.
  */
 
 import { useMemo } from "react";
@@ -31,11 +37,7 @@ export function segment(source: string): Segment[] {
     }
     const [, blockDollar, blockBracket, inlineDollar, inlineParen] = match;
     const body = blockDollar ?? blockBracket ?? inlineDollar ?? inlineParen ?? "";
-    segments.push({
-      type: "math",
-      value: body,
-      display: Boolean(blockDollar || blockBracket),
-    });
+    segments.push({ type: "math", value: body, display: Boolean(blockDollar || blockBracket) });
     cursor = match.index + match[0].length;
   }
 
@@ -45,9 +47,45 @@ export function segment(source: string): Segment[] {
   return segments;
 }
 
-export function MathText({ children, className }: { children: string; className?: string }) {
+function renderMath(tex: string, display: boolean): string | null {
+  try {
+    return katex.renderToString(tex, {
+      displayMode: display,
+      // Contractual: degrade visibly rather than blanking the step.
+      throwOnError: false,
+      strict: false,
+    });
+  } catch {
+    // KaTeX still throws on a few pathological inputs even with throwOnError
+    // false; fall back to source text so the item stays answerable.
+    return null;
+  }
+}
+
+export function MathText({
+  children,
+  className,
+  mode = "prose",
+  display = false,
+}: {
+  children: string;
+  className?: string;
+  mode?: "prose" | "math";
+  display?: boolean;
+}) {
   const rendered = useMemo(() => {
-    return segment(children).map((part, index) => {
+    const source = children ?? "";
+
+    if (mode === "math") {
+      const html = renderMath(source, display);
+      return html === null ? (
+        <code className="text-muted-foreground">{source}</code>
+      ) : (
+        <span dangerouslySetInnerHTML={{ __html: html }} />
+      );
+    }
+
+    return segment(source).map((part, index) => {
       if (part.type === "text") {
         return (
           <span key={index} className="whitespace-pre-wrap">
@@ -55,23 +93,25 @@ export function MathText({ children, className }: { children: string; className?
           </span>
         );
       }
-      try {
-        const html = katex.renderToString(part.value, {
-          displayMode: part.display,
-          throwOnError: true,
-          strict: false,
-        });
-        return <span key={index} dangerouslySetInnerHTML={{ __html: html }} />;
-      } catch {
-        // Unparsable: show the source so the problem stays answerable.
-        return (
-          <code key={index} className="text-muted-foreground">
-            {part.value}
-          </code>
-        );
-      }
+      const html = renderMath(part.value, part.display);
+      return html === null ? (
+        <code key={index} className="text-muted-foreground">
+          {part.value}
+        </code>
+      ) : (
+        <span key={index} dangerouslySetInnerHTML={{ __html: html }} />
+      );
     });
-  }, [children]);
+  }, [children, mode, display]);
 
   return <span className={className}>{rendered}</span>;
+}
+
+/** A factory `result`/formula field: raw math-mode, no delimiters. */
+export function MathExpr({ children, className }: { children: string; className?: string }) {
+  return (
+    <MathText mode="math" className={className}>
+      {children}
+    </MathText>
+  );
 }
