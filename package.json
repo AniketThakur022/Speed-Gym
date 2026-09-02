@@ -1,0 +1,19 @@
+{
+  "name": "vedic-speed-gym",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Vedic Math Speed Gym (Exam Arena) — offline-first speed-training + CAT/GMAT/GRE prep. Rebuild of the lost 2026-09-01 codebase.",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc -p packages/shared-types && tsc -p packages/design-tokens && tsc -p packages/psychometrics && tsc -p packages/vedic-math && tsc -p apps/game-server"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "typescript": "^5.4.0",
+    "vitest": "^1.6.0"
+  }
+}
