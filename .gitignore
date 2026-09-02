@@ -9,3 +9,7 @@ dist/
 out/
 .next/
 incoming/
+.venv/
+.pytest_cache/
+*.tsbuildinfo
+next-env.d.ts
