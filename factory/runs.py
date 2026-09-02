@@ -23,6 +23,7 @@ from pathlib import Path
 from factory.adapters.solvealong_adapter import adapt, validate_frontend_record
 from factory.audit.auditor import Auditor
 from factory.generation import t2
+from factory.sinks import deliver as sink_deliver
 
 STATE_DIR = Path("data/factory/state")
 RUNS_DIR = Path("data/factory/runs")
@@ -123,9 +124,10 @@ def _write_run(run_id: str, lane: str, rows: list[dict], stats: Counter, extra: 
         pool[r["sub_topic"]] = pool.get(r["sub_topic"], 0) + 1
     STATE_DIR.mkdir(parents=True, exist_ok=True)
     pool_path.write_text(json.dumps(pool, indent=1, ensure_ascii=False))
+    sink_result = sink_deliver(rows, run_id, lane)
     report = {"run_id": run_id, "lane": lane, "tokens_spent": 0,
-              "delivered": len(rows), "stats": dict(stats),
-              "pool_depth_after": pool, **extra}
+              "delivered": len(rows), "stats": dict(stats), "sink": sink_result,
+              "pool_depth_after": sink_result.get("tray_depth", pool), **extra}
     (run_dir / "report.json").write_text(json.dumps(report, indent=1, ensure_ascii=False))
     return report
 

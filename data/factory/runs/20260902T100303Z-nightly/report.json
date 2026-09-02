@@ -1,0 +1,57 @@
+{
+ "run_id": "20260902T100303Z-nightly",
+ "lane": "nightly",
+ "tokens_spent": 0,
+ "delivered": 96,
+ "stats": {
+  "audit_rejected": 182,
+  "fail_stage_6": 182,
+  "resample_rounds": 16,
+  "audit_quarantined_pending_consensus": 96
+ },
+ "sink": {
+  "sink": "db",
+  "inserted": 96,
+  "duplicate_in_db": 0,
+  "tray_depth": {
+   "Nikhilam Navatashcaramam (All from 9, Last from 10)": 70,
+   "Multiplication by 11 (neighbour sums)": 26
+  }
+ },
+ "pool_depth_after": {
+  "Nikhilam Navatashcaramam (All from 9, Last from 10)": 70,
+  "Multiplication by 11 (neighbour sums)": 26
+ },
+ "targets": [
+  [
+   "mult_near_base",
+   1,
+   40
+  ],
+  [
+   "mult_near_base",
+   2,
+   40
+  ],
+  [
+   "mult_near_base",
+   3,
+   30
+  ],
+  [
+   "square_near_base",
+   2,
+   30
+  ],
+  [
+   "square_near_base",
+   3,
+   30
+  ],
+  [
+   "mult_by_11",
+   1,
+   30
+  ]
+ ]
+}

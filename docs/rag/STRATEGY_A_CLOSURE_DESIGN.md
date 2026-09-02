@@ -34,7 +34,10 @@ Deterministic, no-AI derivation from recovered data, written as `REQUIRES` edges
 Per-skill bounded BFS, APOC (built into AuraDB Free):
 
 ```cypher
-MATCH (s:Skill) WHERE NOT coalesce(s.is_stub,false)
+// Start from every skill with outgoing REQUIRES — stubs included (verified in the
+// 2026-09-02 merge window: stub-seeded skills like 'Division' are legitimate
+// closure targets; filtering them caused a 23-row shadow-diff miss).
+MATCH (s:Skill) WHERE (s)-[:REQUIRES]->()
 CALL apoc.path.spanningTree(s, {
   relationshipFilter: "REQUIRES>",
   minLevel: 1, maxLevel: 5, limit: 1000

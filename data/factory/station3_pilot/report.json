@@ -1,0 +1,16 @@
+{
+ "provider": "ollama",
+ "model": "llama3.2:3b",
+ "stats": {
+  "raw_skill": 44,
+  "grounded_exact": 72,
+  "raw_worked_example": 29,
+  "raw_trap": 42,
+  "discarded_ungrounded": 62,
+  "chunks_processed": 40,
+  "raw_sutra_reference": 20,
+  "grounded_fuzzy": 1
+ },
+ "grounding_rate": 0.541,
+ "note": "ungrounded extractions are DISCARDED per the factory PDF hard rule"
+}
