@@ -1,0 +1,176 @@
+{
+ "summary": {
+  "bank": "data/factory/solvealong_bank_v1_4.jsonl",
+  "templates": 823,
+  "formulas_checked": 6404,
+  "failing_formulas": 22,
+  "failing_templates": 13,
+  "failure_rate": 0.0034,
+  "error_kinds": {
+   "KaTeX parse error": 22
+  },
+  "classification": {
+   "raw_ok": 6382,
+   "dollar_wrapped_ok_after_strip": 0,
+   "fails_either_way": 22,
+   "mixed_inline_dollars": 2
+  },
+  "katex_version": "0.18.5"
+ },
+ "failures": [
+  {
+   "template_id": "Schaums_College_Math_sa_274",
+   "example": 0,
+   "step_num": 14,
+   "error": "KaTeX parse error: Expected 'EOF', got '}' at position 67: …13}}{\\sqrt{13}}}̲ = 12",
+   "latex": "\\frac{bc}{\\sqrt{a^2 + b^2}} = \\frac{6 \\cdot 2\\sqrt{13}}{\\sqrt{13}}} = 12"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_337",
+   "example": 0,
+   "step_num": 3,
+   "error": "KaTeX parse error: Can't use function '$' in math mode at position 1: $̲f(-2) = -25 < 0…",
+   "latex": "$f(-2) = -25 < 0$, $f(-1) = 3 > 0$\\$f(0) = 5 > 0$, $f(1) = -7 < 0$\\$f(4) = -7 < 0$, $f(5) = 45 > 0$"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_407",
+   "example": 0,
+   "step_num": 1,
+   "error": "KaTeX parse error: Undefined control sequence: \\theta at position 101: …0), and P = (r,\\̲t̲h̲e̲t̲a̲)}",
+   "latex": "\\text{Place base BC along polar axis with midpoint at pole O. Let B = (a,0), C = (-a,0), and P = (r,\\theta)}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_108",
+   "example": 1,
+   "step_num": 1,
+   "error": "KaTeX parse error: Expected 'EOF', got '}' at position 8: 3x + 7 }̲ = 20 x^{2} + 1…",
+   "latex": "3x + 7 } = 20 x^{2} + 10 x + 10"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_108",
+   "example": 1,
+   "step_num": 2,
+   "error": "KaTeX parse error: Expected 'EOF', got '}' at position 8: 3x + 7 }̲ = 20 x^{2} + 1…",
+   "latex": "3x + 7 } = 20 x^{2} + 10 x + 10"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_113",
+   "example": 0,
+   "step_num": 5,
+   "error": "KaTeX parse error: Can't use function '$' in math mode at position 1: $̲1 \\times 1 = 1$…",
+   "latex": "$1 \\times 1 = 1$ (quotient digit × deviation)\\\\$2 + 1 = 3$ (next digit + previous result)"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_134",
+   "example": 0,
+   "step_num": 2,
+   "error": "KaTeX parse error: Undefined control sequence: \\raise at position 56: …verline{\\smash{\\̲r̲a̲i̲s̲e̲.2ex}\\large{)}4…",
+   "latex": "\\begin{array}{r} \\phantom{0} \\\\ 118 \\ \\overline{\\smash{\\raise.2ex}\\large{)}4009\\phantom{0}} \\end{array}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_134",
+   "example": 0,
+   "step_num": 3,
+   "error": "KaTeX parse error: Undefined control sequence: \\raise at position 56: …verline{\\smash{\\̲r̲a̲i̲s̲e̲.2ex}\\large{)}4…",
+   "latex": "\\begin{array}{r} \\phantom{0}4\\\\ 118 \\ \\overline{\\smash{\\raise.2ex}\\large{)}4009\\phantom{0}} \\\\ \\underline{4000} \\\\ \\phan"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_134",
+   "example": 0,
+   "step_num": 4,
+   "error": "KaTeX parse error: Undefined control sequence: \\raise at position 56: …verline{\\smash{\\̲r̲a̲i̲s̲e̲.2ex}\\large{)}4…",
+   "latex": "\\begin{array}{r} \\phantom{0}4\\\\ 118 \\ \\overline{\\smash{\\raise.2ex}\\large{)}4009\\phantom{0}} \\\\ \\underline{4000} \\\\ \\phan"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_134",
+   "example": 0,
+   "step_num": 5,
+   "error": "KaTeX parse error: Undefined control sequence: \\raise at position 56: …verline{\\smash{\\̲r̲a̲i̲s̲e̲.2ex}\\large{)}4…",
+   "latex": "\\begin{array}{r} \\phantom{0}4\\\\ 118 \\ \\overline{\\smash{\\raise.2ex}\\large{)}4009\\phantom{0}} \\\\ \\underline{4000} \\\\ \\phan"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_134",
+   "example": 0,
+   "step_num": 6,
+   "error": "KaTeX parse error: Undefined control sequence: \\raise at position 56: …verline{\\smash{\\̲r̲a̲i̲s̲e̲.2ex}\\large{)}4…",
+   "latex": "\\begin{array}{r} \\phantom{0}4\\\\ 118 \\ \\overline{\\smash{\\raise.2ex}\\large{)}4009\\phantom{0}} \\\\ \\underline{4000} \\\\ \\phan"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_177",
+   "example": 0,
+   "step_num": 7,
+   "error": "KaTeX parse error: Unexpected character: ' ' at position 31: …x = -1 \\\\ x = - ̲rac{17}{3} \\\\ x…",
+   "latex": "\\begin{aligned}x = -1 \\\\ x = -\frac{17}{3} \\\\ x = -6\\end{aligned}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_179",
+   "example": 0,
+   "step_num": 7,
+   "error": "KaTeX parse error: Unexpected character: ' ' at position 34: …x = 75 \\\\ x = - ̲rac{75}{40} = -…",
+   "latex": "\\begin{aligned}-40x = 75 \\\\ x = -\frac{75}{40} = -\frac{15}{8} = -1.875\\end{aligned}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_318",
+   "example": 0,
+   "step_num": 5,
+   "error": "KaTeX parse error: Undefined control sequence: \\n at position 15: 1st term: 0.01\\̲n̲2nd term: 0.01 …",
+   "latex": "1st term: 0.01\\n2nd term: 0.01 \\times 0.59 = 0.0059\\n3rd term: 0.0059 \\times 0.59 = 0.003481\\n4th term: 0.003481 \\times "
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_397",
+   "example": 0,
+   "step_num": 6,
+   "error": "KaTeX parse error: Can't use function '$' in math mode at position 1: $̲2247 \\times 224…",
+   "latex": "$2247 \\times 2247 = 5,049,009$ (square)\\\\$5,049,009 \\times 2247 = 11,345,123,223$ (cube)"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_405",
+   "example": 0,
+   "step_num": 2,
+   "error": "KaTeX parse error: Expected 'EOF', got '&' at position 46: …34 ∴ Q_{6}=0 ; &̲ R_{6}=34",
+   "latex": "GD=769 ; and 3bc^{2}=735 ∴ AD=34 ∴ Q_{6}=0 ; & R_{6}=34"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_405",
+   "example": 0,
+   "step_num": 3,
+   "error": "KaTeX parse error: Expected 'EOF', got '&' at position 46: …34 ∴ Q_{6}=0 ; &̲ R_{6}=34",
+   "latex": "GD=769 ; and 3bc^{2}=735 ∴ AD=34 ∴ Q_{6}=0 ; & R_{6}=34"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_405",
+   "example": 1,
+   "step_num": 2,
+   "error": "KaTeX parse error: Expected 'EOF', got '&' at position 46: …34 ∴ Q_{6}=0 ; &̲ R_{6}=34",
+   "latex": "GD=769 ; and 3bc^{2}=735 ∴ AD=34 ∴ Q_{6}=0 ; & R_{6}=34"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_62",
+   "example": 0,
+   "step_num": 7,
+   "error": "KaTeX parse error: Undefined control sequence: \\n at position 29: …86 - 1000 = -14\\̲n̲(986 + (-14)) |…",
+   "latex": "Deviation = 986 - 1000 = -14\\n(986 + (-14)) | (-14)^2 = 972 | 196"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_62",
+   "example": 0,
+   "step_num": 10,
+   "error": "KaTeX parse error: Undefined control sequence: \\n at position 27: … 498 - 500 = -2\\̲n̲(498 + (-2)) \\t…",
+   "latex": "Deviation = 498 - 500 = -2\\n(498 + (-2)) \\times 500 + (-2)^2 = 496 \\times 500 + 4 = 248000 + 4"
+  },
+  {
+   "template_id": "Vedic_Secrets_sa_32",
+   "example": 0,
+   "step_num": 3,
+   "error": "KaTeX parse error: Can't use function '$' in math mode at position 1: $̲10^3 = 1000$\\$3…",
+   "latex": "$10^3 = 1000$\\$3(10^2)(2) = 3(100)(2) = 600$\\$3(10)(2^2) = 3(10)(4) = 120$\\$2^3 = 8$"
+  },
+  {
+   "template_id": "Vedic_Secrets_sa_32",
+   "example": 0,
+   "step_num": 5,
+   "error": "KaTeX parse error: Unknown column alignment: @ at position 16: \\begin{array}{c@̲{}c@{}c@{}c} & …",
+   "latex": "\\begin{array}{c@{}c@{}c@{}c} & 1 & 2 & \\\\ \\times & 1 & 2 & \\\\ \\times & 1 & 2 & \\\\ \\hline & & & \\end{array}"
+  }
+ ]
+}

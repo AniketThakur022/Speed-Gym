@@ -39,6 +39,12 @@ MAX_TRAPS = 5
 # cleanly (μ θ π α β ✓ × ÷ ° ≈ − →) are deliberately allowed.
 METRICLESS_CHARS = set("²³⁴¹ⁿ₀₁₂₃₄₆₇ₙ‖⁄🚗")
 
+# Clean in math mode, no glyph in KaTeX's text fonts — so they only misrender
+# INSIDE \text{...}. Repair is to split the text group, not to substitute a
+# command (\mu inside \text{} throws).
+TEXT_MODE_UNSAFE_CHARS = set("μθπαβγδελσφωΩ✓✗∞√")
+TEXT_GROUP_RE = re.compile(r"\\text\{([^{}]*)\}")
+
 ABANDON_RE = re.compile(
     r"\bNo,\s*adjust\b|\bis wrong\b|\bTry:|\bdoesn'?t work\b|\bwait\b|\boops\b|\bactually,|\blet me\b",
     re.I)
@@ -95,6 +101,13 @@ def _check_latex(s: str) -> str | None:
         return "align_env_needs_display_mode"  # use aligned/gathered instead
     if re.search(r"\\n[A-Za-z]", s):
         return "newline_escaped_into_control_sequence"
+    # Mode-dependent: Greek letters and ✓ render fine in math mode but have no
+    # glyph in KaTeX's TEXT fonts, so a whole-string scan misses them. Check the
+    # contents of each \text{...} group separately.
+    for group in TEXT_GROUP_RE.findall(s):
+        unsafe = TEXT_MODE_UNSAFE_CHARS & set(group)
+        if unsafe:
+            return f"unicode_unsafe_inside_text_group:{''.join(sorted(unsafe))}"
     bad = METRICLESS_CHARS & set(s)
     if bad:
         # KaTeX has no font metrics for these: they render subtly wrong and emit

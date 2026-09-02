@@ -45,6 +45,34 @@ SUP_RUN = re.compile("[" + "".join(SUP) + "]+")
 SUB_RUN = re.compile("[" + "".join(SUB) + "]+")
 
 
+# Mode-dependent: these render cleanly in MATH mode but have no glyph in KaTeX's
+# TEXT fonts, so they warn inside \text{...}. Verified by rendering each in both
+# modes. The repair is to split the text group and leave the character in math
+# mode — NOT to substitute a command, since \mu inside \text{} throws outright.
+TEXT_MODE_UNSAFE = set("μθπαβγδελσφωΩ✓✗∞√")
+TEXT_GROUP = re.compile(r"\\text\{([^{}]*)\}")
+
+
+def fix_text_mode_unicode(text: str) -> str:
+    def split_group(m):
+        inner = m.group(1)
+        if not (TEXT_MODE_UNSAFE & set(inner)):
+            return m.group(0)
+        out, buf = [], ""
+        for ch in inner:
+            if ch in TEXT_MODE_UNSAFE:
+                if buf:
+                    out.append("\\text{" + buf + "}")
+                    buf = ""
+                out.append(ch)
+            else:
+                buf += ch
+        if buf:
+            out.append("\\text{" + buf + "}")
+        return "".join(out)
+    return TEXT_GROUP.sub(split_group, text)
+
+
 def fix_unicode_math(text: str) -> str:
     text = SUP_RUN.sub(lambda m: "^{" + "".join(SUP[c] for c in m.group(0)) + "}", text)
     text = SUB_RUN.sub(lambda m: "_{" + "".join(SUB[c] for c in m.group(0)) + "}", text)
@@ -81,6 +109,11 @@ def normalize_step(result: str, description: str | None, stats: Counter):
     if METRICLESS & set(text):
         text = fix_unicode_math(text)
         stats["fixed_unicode_math"] += 1
+    if TEXT_MODE_UNSAFE & set(text):
+        fixed = fix_text_mode_unicode(text)
+        if fixed != text:
+            text = fixed
+            stats["fixed_text_mode_unicode"] += 1
 
     # 5. align/align* -> aligned (valid inline in KaTeX)
     if re.search(r"\\begin\{align\*?\}", text):
