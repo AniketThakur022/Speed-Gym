@@ -243,8 +243,18 @@ def render_task_pages(task):
 
 
 def cmd_build(args):
-    tasks = group_tasks(args.book, args.limit)
-    manifest = WORKDIR / "tasks" / ("tasks_%s.jsonl" % (args.book or "all").replace(" ", "_"))
+    if args.answer_grid:
+        # e.g. --answer-grid "Hall & Knight:553-585" — one transcription task per page
+        book, span = args.answer_grid.rsplit(":", 1)
+        first, last = (int(x) for x in span.split("-"))
+        tasks = [{"task_id": "answer_grid__%s__p%04d" % (book.replace(" ", "_"), p),
+                  "class": "answer_grid", "book": book, "pages": [p],
+                  "items": {"book": book, "pdf_page": p}}
+                 for p in range(first, last + 1)]
+        manifest = WORKDIR / "tasks" / ("tasks_answer_grid_%s.jsonl" % book.replace(" ", "_"))
+    else:
+        tasks = group_tasks(args.book, args.limit)
+        manifest = WORKDIR / "tasks" / ("tasks_%s.jsonl" % (args.book or "all").replace(" ", "_"))
     manifest.parent.mkdir(parents=True, exist_ok=True)
     n_img = 0
     with manifest.open("w") as f:
@@ -378,6 +388,7 @@ def main():
     sub.add_parser("inventory")
     b = sub.add_parser("build")
     b.add_argument("--book"), b.add_argument("--limit", type=int)
+    b.add_argument("--answer-grid", dest="answer_grid", metavar="BOOK:FIRST-LAST")
     s1 = sub.add_parser("station1")
     s1.add_argument("--book", required=True)
     s = sub.add_parser("submit")
