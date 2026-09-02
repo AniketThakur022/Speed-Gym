@@ -22,7 +22,12 @@ app = Celery(
     "vmsg",
     broker=os.environ.get("REDIS_URL", "redis://localhost:6379/0"),
     backend=os.environ.get("REDIS_URL", "redis://localhost:6379/0"),
-    include=["worker.tasks.content", "worker.tasks.maintenance", "worker.tasks.factory"],
+    include=[
+        "worker.tasks.content",
+        "worker.tasks.maintenance",
+        "worker.tasks.factory",
+        "worker.tasks.outbox",
+    ],
 )
 
 app.conf.timezone = "UTC"
@@ -45,6 +50,12 @@ app.conf.beat_schedule = {
     "nightly-content-validation": {
         "task": "worker.tasks.content.validate_content",
         "schedule": crontab(minute=30, hour=0),
+    },
+    # Postgres→Neo4j bridge: keep graph lag small without putting Neo4j in the
+    # sync request path.
+    "drain-sync-outbox": {
+        "task": "sync.drain_outbox",
+        "schedule": 30,
     },
     # KPI matview refresh — pg_cron's job, run app-side in Phase 1
     "refresh-kpi-dashboard": {

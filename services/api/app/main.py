@@ -12,7 +12,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from .config import get_settings
 from . import db
-from .routers import auth, content, health, practice, session, webhooks
+from .routers import auth, content, health, practice, session, sync, webhooks
 
 
 @asynccontextmanager
@@ -34,6 +34,7 @@ def create_app() -> FastAPI:
     app.include_router(health.router)
     app.include_router(auth.router, prefix=settings.api_v1_prefix)
     app.include_router(session.router, prefix=settings.api_v1_prefix)
+    app.include_router(sync.router, prefix=settings.api_v1_prefix)
     app.include_router(webhooks.router)
     app.include_router(content.router)
     app.include_router(practice.router)
