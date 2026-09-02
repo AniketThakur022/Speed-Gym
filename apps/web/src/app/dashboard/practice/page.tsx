@@ -51,7 +51,10 @@ export default function PracticePage() {
 
   const items = data?.items ?? [];
   const item: PracticeItem | undefined = items[index];
-  const techniqueId = item?.technique ?? item?.topic ?? "unknown";
+  // Mastery is keyed on the graph :Skill name only. Falling back to a corpus
+  // display label here would accumulate state against a vocabulary that is
+  // ~96% disjoint from the skill graph, so it could never be joined back.
+  const skillId = item?.skill ?? null;
 
   useEffect(() => {
     setStartedAt(Date.now());
@@ -66,16 +69,16 @@ export default function PracticePage() {
       return;
     }
 
-    // Only locally-graded items on trusted content may move mastery: a
-    // deferred item has no verdict yet, and sandbox content is excluded by
-    // the trust ladder.
-    if (result.outcome !== "deferred" && item.feeds_mastery) {
+    // Only locally-graded items on trusted content with a resolvable skill may
+    // move mastery: a deferred item has no verdict, sandbox content is excluded
+    // by the trust ladder, and an unattributable item has nowhere to record it.
+    if (result.outcome !== "deferred" && item.feeds_mastery && skillId) {
       const elapsedSeconds = (Date.now() - startedAt) / 1000;
       setStates((previous) => {
-        const current = previous[techniqueId] ?? freshState(techniqueId);
+        const current = previous[skillId] ?? freshState(skillId);
         return {
           ...previous,
-          [techniqueId]: processAttempt(current, {
+          [skillId]: processAttempt(current, {
             correct: result.outcome === "correct",
             timeSpentSeconds: elapsedSeconds,
             targetTimeSeconds: 30,
@@ -86,7 +89,7 @@ export default function PracticePage() {
     }
 
     setVerdict({ outcome: result.outcome, expected: item.expected_answer });
-  }, [answer, item, startedAt, techniqueId, verdict]);
+  }, [answer, item, startedAt, skillId, verdict]);
 
   const next = useCallback(() => {
     setAnswer("");
@@ -95,9 +98,9 @@ export default function PracticePage() {
   }, [items.length]);
 
   const mastery = useMemo(() => {
-    const state = states[techniqueId];
+    const state = skillId ? states[skillId] : undefined;
     return state ? Math.round(bktToMastery(state.pLearned)) : null;
-  }, [states, techniqueId]);
+  }, [states, skillId]);
 
   if (isLoading) {
     return <Shell><p className="text-muted-foreground">Loading session…</p></Shell>;

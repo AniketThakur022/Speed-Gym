@@ -7,6 +7,11 @@ export type PracticeItem = {
   template_id: string;
   question_text: string | null;
   difficulty: number;
+  /** Mastery key — a graph :Skill name. Null when the problem has no skill
+   *  edge, in which case the attempt cannot be attributed and is not scored. */
+  skill: string | null;
+  /** Display labels only. The corpus vocabulary is near-disjoint from :Skill
+   *  names, so these must never be used as a mastery key (see taxonomy hold). */
   technique: string | null;
   topic: string | null;
   sub_topic: string | null;

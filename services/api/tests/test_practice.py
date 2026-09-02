@@ -59,3 +59,32 @@ def test_techniques_route_serves_the_live_skill_graph(client):
     assert res.status_code == 200
     techniques = res.json()["techniques"]
     assert techniques and {"name", "problem_count"} <= set(techniques[0])
+
+
+def test_mastery_is_keyed_on_a_graph_skill_not_a_corpus_label(client):
+    """Only 14 of 368 corpus `technique` labels match a :Skill name, so keying
+    mastery on them accumulates state the graph can never join back. Items must
+    carry a `skill` from the existing PREREQUISITE_OF edge, and anything without
+    one must be excluded from mastery rather than falling back to a label."""
+    res = client.get("/api/v1/practice/session", params={"size": 10})
+    assert res.status_code == 200
+    items = res.json()["items"]
+    assert items
+
+    for item in items:
+        assert "skill" in item
+        if item["skill"] is None:
+            assert item["feeds_mastery"] is False
+        # Display labels are passed through verbatim, never turned into an id.
+        assert "topic" in item and "technique" in item
+
+
+def test_most_served_problems_resolve_a_skill(client):
+    """98.4% of answerable problems reach a :Skill today; if a change dropped
+    that to near zero, mastery would silently stop accumulating."""
+    res = client.get("/api/v1/practice/session", params={"size": 20})
+    items = res.json()["items"]
+    tier1 = [i for i in items if i["source"] == "tier1_static"]
+    assert tier1
+    with_skill = [i for i in tier1 if i["skill"]]
+    assert len(with_skill) / len(tier1) >= 0.8

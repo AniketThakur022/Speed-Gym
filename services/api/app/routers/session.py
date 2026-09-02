@@ -34,16 +34,26 @@ TRAY_PREFIX = "factory:tray:"
 
 def _tier1_item(record: dict[str, Any]) -> dict[str, Any]:
     answer = extract_numeric_answer(record.get("answer_key"))
+    # `skill` is the mastery key and comes from the graph's existing
+    # (:Skill)-[:PREREQUISITE_OF]->(:Problem) edge. The corpus `technique`/
+    # `topic` strings are DISPLAY LABELS only: just 14 of 368 of them match a
+    # :Skill name, so keying mastery on them would accumulate state against a
+    # vocabulary the graph cannot join back to. Labels are passed through
+    # verbatim — no canonical id is fabricated — pending taxonomy_v1.
+    skill = record.get("skill")
     return {
         "source": "tier1_static",
         "template_id": record.get("template_id"),
         "question_text": record.get("question_text"),
         "difficulty": record.get("difficulty") or 1,
+        "skill": skill,
         "technique": record.get("technique"),
         "topic": record.get("topic"),
         "sub_topic": record.get("sub_topic"),
         "trust": "trusted",
-        "feeds_mastery": True,
+        # Without a resolvable skill there is nothing to attribute mastery to,
+        # and guessing from a display label is the bug this replaces.
+        "feeds_mastery": skill is not None,
         "answer_verification": "verified",
         "solution_verification": "unverified",
         "answer_check": "client_extract" if answer is not None else "server_sympy",
@@ -61,6 +71,9 @@ def _tier2_item(entry: dict[str, Any], decision) -> dict[str, Any]:
         "template_id": template.get("id"),
         "question_text": example.get("problem_statement"),
         "difficulty": template.get("difficulty") or 1,
+        # Generated templates carry no :Skill edge yet, so they have no mastery
+        # key; combined with sandbox trust they never move mastery either way.
+        "skill": None,
         "technique": (template.get("concept") or {}).get("technique_name"),
         "topic": (template.get("concept") or {}).get("category"),
         "sub_topic": (template.get("concept") or {}).get("sub_category"),
@@ -88,13 +101,23 @@ async def _load_tier1(topic: Optional[str], technique: Optional[str], limit: int
         filters.append("p.technique = $technique")
         params["technique"] = technique
 
+    # The skill edge is REQUIRED, not optional: a problem with no :Skill cannot
+    # move mastery, so serving it spends a learner's attempt on something the
+    # engine will discard. That costs only ~1.5% of the verified pool.
+    #
+    # Ordering by p.difficulty alone is not usable — it is null on all but a
+    # handful of problems, and the resulting tie-break landed the whole first
+    # page on the unconnected nodes. coalesce() puts unknown difficulty in the
+    # middle so the window is representative.
     query = (
-        "MATCH (p:Problem) WHERE "
+        "MATCH (s:Skill)-[:PREREQUISITE_OF]->(p:Problem) WHERE "
         + " AND ".join(filters)
-        + """ RETURN p.template_id AS template_id, p.question_text AS question_text,
+        + """ WITH p, head(collect(s.name)) AS skill
+              RETURN p.template_id AS template_id, p.question_text AS question_text,
                      p.answer_key AS answer_key, p.difficulty AS difficulty,
-                     p.technique AS technique, p.topic AS topic, p.sub_topic AS sub_topic
-              ORDER BY p.difficulty LIMIT $limit"""
+                     p.technique AS technique, p.topic AS topic, p.sub_topic AS sub_topic,
+                     skill
+              ORDER BY coalesce(p.difficulty, 3), p.template_id LIMIT $limit"""
     )
     driver = db.get_neo4j()
     async with driver.session() as neo:
