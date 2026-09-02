@@ -37,6 +37,9 @@ PATCH = ROOT / "data/corpus/patches/2026-09-02_sinha_grid_keys.patch.jsonl"
 
 
 def main():
+    global PATCH
+    if len(sys.argv) > 1:
+        PATCH = Path(sys.argv[1]).resolve()
     patch = {}  # (set_id, number) -> entry
     for line in PATCH.read_text().splitlines():
         if not line.strip():
@@ -64,6 +67,9 @@ def main():
                         applied += 1
                     elif e["action"] == "flag":
                         q.setdefault("extra", {})["needs_reextraction"] = e["reason"]
+                        flagged += 1
+                    elif e["action"] == "suspect":
+                        q.setdefault("extra", {})["key_suspect"] = e["reason"]
                         flagged += 1
             out_lines.append(json.dumps(r, ensure_ascii=False))
     MASTER.write_text("\n".join(out_lines) + "\n")
