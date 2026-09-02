@@ -67,14 +67,30 @@ class JesterGate:
         return "pending"
 
 
-def _check_latex(s: str) -> bool:
+def _check_latex(s: str) -> str | None:
+    """Deterministic mirror of the constraints real KaTeX enforces (KaTeX is the
+    approved renderer). Returns a reason string, or None when clean.
+
+    Rules 4-6 were derived by running KaTeX over the recovered bank
+    (factory/audit/katex_validate.js): 55.9% of its formulas carry $ delimiters,
+    30 use align* (rejected outside display mode), and 44 contain a backslash-n
+    followed by a letter — a JSON-escaping corruption that KaTeX reads as an
+    undefined control sequence like \\nBC. Generated content must never do these.
+    """
     if s.count("{") != s.count("}"):
-        return False
+        return "unbalanced_braces"
     if len(re.findall(r"\\begin\b", s)) != len(re.findall(r"\\end\b", s)):
-        return False
-    if s.count("$") % 2 != 0:
-        return False
-    return not re.search(r"\\[0-9]", s)  # digits directly after backslash = broken command
+        return "unbalanced_begin_end"
+    if re.search(r"\\[0-9]", s):
+        return "backslash_digit"
+    if "$" in s:
+        # The result field IS math mode; delimiters here mean a mixed convention.
+        return "dollar_delimiter_in_math_field"
+    if re.search(r"\\begin\{align\*?\}", s):
+        return "align_env_needs_display_mode"  # use aligned/gathered instead
+    if re.search(r"\\n[A-Za-z]", s):
+        return "newline_escaped_into_control_sequence"
+    return None
 
 
 class Auditor:
@@ -118,9 +134,10 @@ class Auditor:
         # 2 latex sanity
         for step in rec.get("solution", []):
             f = step.get("formula") or ""
-            if f and not _check_latex(f):
+            reason = _check_latex(f) if f else None
+            if reason:
                 return {"verdict": "rejected", "failed_stage": 2,
-                        "reasons": [f"latex_unbalanced_step_{step.get('step_num')}"]}
+                        "reasons": [f"latex_{reason}_step_{step.get('step_num')}"]}
 
         # 3 independent computation
         expr = rec.get("compute")
