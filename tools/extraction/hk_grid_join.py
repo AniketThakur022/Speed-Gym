@@ -42,6 +42,8 @@ def parse_heading(exercise):
     """
     if not exercise:
         return None
+    if "MISCELLANEOUS" in exercise.upper():
+        return (0, 0)
     m = re.match(r"\s*([IVXL]+)\s*\.?\s*([a-h])?\b", exercise.strip(), re.I)
     if not m:
         return None
@@ -87,10 +89,18 @@ def main(grid_json, patch_out):
             if r["book"] == "Hall & Knight" and r["content_type"] == "question_set":
                 hk.append(r)
     by_key = {}
+    misc_rec = None
     for r in hk:
         m = re.match(r"hall_knight_ch(\d+)_examples_(\d+)$", r["set_id"])
         if m:
             by_key[(int(m.group(1)), int(m.group(2)))] = r
+        elif r["set_id"] == "hall_knight_miscellaneous_examples":
+            misc_rec = r
+    # The end-of-book MISCELLANEOUS EXAMPLES block has no roman heading; it is
+    # keyed by name and still page-validated below like every other block.
+    MISC_KEY = (0, 0)
+    if misc_rec is not None:
+        by_key[MISC_KEY] = misc_rec
 
     entries, report = [], {"joined": 0, "keyed": 0, "page_mismatch": [], "no_record": [],
                            "unparsed_heading": [], "already_keyed": 0, "no_grid_number": 0}
