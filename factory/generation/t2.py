@@ -161,7 +161,18 @@ def gen_urdhva_2x2(rng: random.Random, level: int) -> dict:
     patterns at base 10), which is what makes hourly refill viable per-level.
     """
     lo, hi = {1: (11, 39), 2: (11, 69), 3: (21, 99), 4: (21, 99), 5: (31, 99)}[level]
-    a_n, b_n = rng.randint(lo, hi), rng.randint(lo, hi)
+
+    def draw():
+        return rng.randint(lo, hi), rng.randint(lo, hi)
+
+    a_n, b_n = draw()
+    for _ in range(40):
+        # a == b would emit a squaring item labelled "multiplication"; a shared digit
+        # makes the same token appear as both a crosswise and a vertical product,
+        # which is confusing for the one template whose job is that distinction.
+        if a_n != b_n and not (set(str(a_n)) & set(str(b_n))) and len(set(str(a_n))) == 2:
+            break
+        a_n, b_n = draw()
     a, b = divmod(a_n, 10)[0], a_n % 10
     c, d = divmod(b_n, 10)[0], b_n % 10
     p1 = b * d
@@ -187,10 +198,17 @@ def gen_urdhva_2x2(rng: random.Random, level: int) -> dict:
                         + (f" + {p1 // 10}" if p1 // 10 else "")
                         + f" = {p2} \\Rightarrow \\text{{write }} {p2 % 10}"
                         + (f", \\text{{carry }} {p2 // 10}" if p2 // 10 else ""),
-             "reasoning": "The tens digit collects both crosswise pairs plus any carry"},
-            {"step_num": 4, "operation": "Vertical product of the leading digits",
-             "formula": f"{a} \\times {c}" + (f" + {p2 // 10}" if p2 // 10 else "") + f" = {p3}",
-             "reasoning": "The leading columns finish the number"},
+             "reasoning": "Crosswise means tens of the top number times units of the bottom, "
+                          "plus units of the top times tens of the bottom; the tens column "
+                          "collects both pairs plus any carry"},
+            {"step_num": 4, "operation": "Vertical product of the leading digits"
+                                        + (", plus the carry" if p2 // 10 else ""),
+             "formula": f"{a} \\times {c}" + (f" + {p2 // 10}" if p2 // 10 else "")
+                        + f" = {p3} \\Rightarrow \\text{{write }} {p3}"
+                        + (" \\text{ (all of it — this is the leftmost column)}"
+                           if p3 > 9 else ""),
+             "reasoning": "This is the leftmost column, so its whole value is written down "
+                          "rather than carried further"},
             {"step_num": 5, "operation": "Read the digits off left to right",
              "formula": f"{a_n} \\times {b_n} = {a_n * b_n}",
              "reasoning": "Assembling the column digits with their carries gives the product"},
@@ -206,8 +224,11 @@ def gen_urdhva_2x2(rng: random.Random, level: int) -> dict:
 @pattern("ekadhikena_square_5")
 def gen_ekadhikena_square_5(rng: random.Random, level: int) -> dict:
     """Ekadhikena Purvena — squaring a number ending in 5: a(a+1) | 25."""
-    hi = {1: 9, 2: 19, 3: 39, 4: 69, 5: 99}[level]
-    a = rng.randint(1, hi)
+    # L1-L2 keep "the previous" a single digit; L3+ guarantee it is multi-digit so
+    # the ladder actually introduces the general case (a verifier caught that every
+    # level was the same four steps with only the leading digit changing).
+    lo, hi = {1: (1, 9), 2: (1, 9), 3: (10, 29), 4: (10, 69), 5: (30, 99)}[level]
+    a = rng.randint(lo, hi)
     n = 10 * a + 5
     left = a * (a + 1)
     return {
@@ -243,23 +264,36 @@ def gen_ekadhikena_square_5(rng: random.Random, level: int) -> dict:
 def gen_nikhilam_complement(rng: random.Random, level: int) -> dict:
     """All from 9 and the last from 10 — subtraction from a power of ten."""
     # Capped at 4 digits because the recovered question_generator_config enumerates
-    # bases [10, 100, 1000, 10000]; L5 gets its difficulty from tighter digits
-    # (no 0s or 9s, which make complements trivial) rather than a 5th digit.
+    # bases [10, 100, 1000, 10000]. The ladder is STRUCTURAL, not just bigger
+    # numbers: L1-L2 are the plain case, L3-L4 introduce short numbers needing
+    # leading-zero padding, L5 introduces trailing zeros (where 'last from 10'
+    # applies to the last NON-ZERO digit). Two verifiers independently flagged an
+    # earlier version whose levels were the same four steps on larger numbers.
     digits = {1: 2, 2: 3, 3: 3, 4: 4, 5: 4}[level]
     base = 10 ** digits
+    case = "plain"
+    if level in (3, 4) and rng.random() < 0.5:
+        case = "padded"      # fewer digits than the base has zeros
+    elif level == 5:
+        case = "trailing_zero" if rng.random() < 0.6 else "padded"
 
-    def ok(x: int) -> bool:
-        if x % 10 == 0:  # 'last from 10' needs a nonzero final digit
-            return False
-        return not (level == 5 and ({"0", "9"} & set(str(x))))
-
-    n = rng.randint(10 ** (digits - 1), base - 1)
-    for _ in range(60):
-        if ok(n):
-            break
+    if case == "padded":
+        n = rng.randint(10 ** (digits - 2), 10 ** (digits - 1) - 1)
+        while n % 10 == 0:
+            n = rng.randint(10 ** (digits - 2), 10 ** (digits - 1) - 1)
+    elif case == "trailing_zero":
+        n = rng.randint(10 ** (digits - 2), 10 ** (digits - 1) - 1) * 10
+    else:
         n = rng.randint(10 ** (digits - 1), base - 1)
-    ds = [int(c) for c in str(n).zfill(digits)]
-    comp = [9 - x for x in ds[:-1]] + [10 - ds[-1]]
+        while n % 10 == 0:
+            n = rng.randint(10 ** (digits - 1), base - 1)
+
+    padded = str(n).zfill(digits)
+    ds = [int(c) for c in padded]
+    # Trailing zeros stay zero; the last NON-ZERO digit goes from 10; the rest from 9.
+    last_nz = max(i for i, d in enumerate(ds) if d != 0)
+    comp = [(0 if i > last_nz else (10 - d if i == last_nz else 9 - d))
+            for i, d in enumerate(ds)]
     return {
         "sub_topic": "Nikhilam Navatashcaramam (All from 9, Last from 10)",
         "technique_name": "subtraction",
@@ -268,21 +302,32 @@ def gen_nikhilam_complement(rng: random.Random, level: int) -> dict:
         "final_answer": str(base - n),
         "params": {"n": n, "base": base},
         "solution": [
-            {"step_num": 1, "operation": "Line the number up against the base",
-             "formula": f"{base} - {n}",
-             "reasoning": f"The base is a power of ten with {digits} zeros"},
-            {"step_num": 2, "operation": "Subtract every digit but the last from 9",
-             "formula": " ,\\quad ".join(f"9 - {d} = {9 - d}" for d in ds[:-1]) or "\\text{(no leading digits)}",
-             "reasoning": "'All from 9' applies to every digit except the final one"},
-            {"step_num": 3, "operation": "Subtract the last digit from 10",
-             "formula": f"10 - {ds[-1]} = {comp[-1]}",
-             "reasoning": "'The last from 10' completes the complement"},
-            {"step_num": 4, "operation": "Read the complement",
-             "formula": f"{base} - {n} = {''.join(str(x) for x in comp)}",
-             "reasoning": "No borrowing is needed anywhere in the subtraction"},
+            {"step_num": 1, "operation": f"Pad the number to the base's {digits} digits",
+             "formula": f"{base} - {n} \\Rightarrow {base} - {padded}",
+             "reasoning": f"The base has {digits} zeros, so the number is written with "
+                          f"{digits} digits, adding leading zeros if it is shorter — the "
+                          f"complement is taken column by column"},
+            {"step_num": 2, "operation": "Every digit before the last non-zero one: from 9",
+             "formula": (" ,\\quad ".join(f"9 - {d} = {9 - d}" for d in ds[:last_nz])
+                         or "\\text{(none — the first digit is already the last non-zero one)}"),
+             "reasoning": "'All from 9' applies to each digit up to but excluding the last "
+                          "non-zero digit"},
+            {"step_num": 3, "operation": "The last non-zero digit: from 10"
+                                        + ("; trailing zeros stay 0" if last_nz < digits - 1 else ""),
+             "formula": (f"10 - {ds[last_nz]} = {comp[last_nz]}"
+                         + (f" ,\\quad \\text{{then }} {digits - 1 - last_nz}"
+                            f" \\text{{ trailing zero(s) stay }} 0" if last_nz < digits - 1 else "")),
+             "reasoning": "'The last from 10' applies to the last NON-ZERO digit; any zeros "
+                          "after it are already complete and stay 0 (taking 10 from a 0 "
+                          "would produce a two-digit column)"},
+            {"step_num": 4, "operation": "Write the column results in order",
+             "formula": " \\,|\\, ".join(str(x) for x in comp) + f" = {''.join(str(x) for x in comp)}",
+             "reasoning": "Each column already holds a single digit, so they are read off "
+                          "left to right with no borrowing anywhere"},
         ],
         "traps": ["taking the last digit from 9 as well, giving an answer one too small",
-                  "borrowing out of habit instead of applying the complement"],
+                  "forgetting to pad a short number with leading zeros before complementing",
+                  "applying 'from 10' to a trailing zero instead of the last non-zero digit"],
         "visual_scaffold": {"type": "place_value_chart"},
         "prerequisite_chain": ["Arithmetic", "Basic Operations (+, -, ×, ÷)", "Number Bases"],
     }
