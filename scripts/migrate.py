@@ -35,12 +35,27 @@ def sha256(text: str) -> str:
     return hashlib.sha256(text.encode()).hexdigest()
 
 
+def _order_key(path: Path) -> tuple[int, str]:
+    """Order by the numeric prefix, not lexicographically.
+
+    Plain string sorting puts "100_gaming.sql" BEFORE "10_create_core.sql"
+    (compare "10" then '0' < '_'), so a fresh database would try to create the
+    gaming tables before the users table they reference. The lost build
+    renumbered to 00/10/20/... for exactly this class of ordering hazard.
+    """
+    match = re.match(r"^(\d+)", path.name)
+    return (int(match.group(1)) if match else 10**9, path.name)
+
+
 def pg_migrations() -> list[Path]:
-    return sorted(PG_DIR.glob("*.sql"))
+    return sorted(PG_DIR.glob("*.sql"), key=_order_key)
 
 
 def neo4j_migrations() -> list[Path]:
-    return sorted(p for p in NEO_DIR.glob("*.cypher") if p.name != "reference_queries.cypher")
+    return sorted(
+        (p for p in NEO_DIR.glob("*.cypher") if p.name != "reference_queries.cypher"),
+        key=_order_key,
+    )
 
 
 def split_cypher(text: str) -> list[str]:

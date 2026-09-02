@@ -25,6 +25,12 @@ class Settings(BaseSettings):
 
     api_v1_prefix: str = "/api/v1"
 
+    # Internal API (game server ↔ FastAPI). It serves problem ANSWERS, so it is
+    # loopback-bound and key-guarded; loosen the loopback check only when the
+    # game server runs on a separate host inside the VPC.
+    internal_api_key: str = "dev-internal-key"
+    internal_api_require_loopback: bool = True
+
     # The mobile shells are not same-origin with the API: Capacitor serves the
     # bundle from capacitor://localhost (iOS) or http://localhost (Android), so
     # CORS is a production requirement, not just a dev convenience. Traefik
