@@ -9,6 +9,13 @@ Pilot scope (as planned pre-loss): the Tirthaji book chunks from the recovered
 Ledger export — Station 1/2 output already exists there, so this isolates
 Station 3. Resumable via a checkpoint file (station-2 convention).
 
+DATA CAVEAT (verified 2026-09-02): the legacy chunks' `content` is LLM-written
+SUMMARY prose from the July enrichment, not verbatim book text — so pilot
+extractions ground to summaries, validating Station-3 MECHANICS only.
+Production runs require verbatim chunks from a Station 0/1 re-pass over the
+recovered source PDFs (incoming/Resources) before extraction provenance
+reaches the book itself.
+
 Model backends (choose via env / flags; NO key ever read from recovered files):
   --provider ollama  : local, e.g. --model llama3.2:3b (needs `ollama pull` first)
   --provider openai  : OPENAI_API_KEY from owner .env (key policy 2026-09-02)
