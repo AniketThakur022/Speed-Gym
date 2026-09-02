@@ -1,0 +1,17 @@
+{
+ "in": "data/factory/solvealong_bank_v1_1.jsonl",
+ "out": "data/factory/solvealong_bank_v1_2.jsonl",
+ "templates_touched": 515,
+ "stats": {
+  "formulas_seen": 6471,
+  "stripped_wrapper": 2720,
+  "fixed_backslash_n": 8,
+  "split_prose_from_math": 885,
+  "prose_relocated": 731,
+  "fixed_align_env": 30,
+  "repaired_in_place": 30,
+  "moved_prose_only_to_description": 68,
+  "unbalanced_dollar_left": 8,
+  "skipped_ambiguous_escaped_dollar": 4
+ }
+}
