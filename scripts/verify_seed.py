@@ -133,8 +133,15 @@ def verify_db(exports: Path) -> None:
                 check(f"neo4j :{label}", n, expected)
             total = session.run("MATCH (n) RETURN count(n) AS n").single()["n"]
             print(f"  [--- ] neo4j total nodes: {total} (manifest content nodes: {manifest['nodes_total']})")
+            # Post-MERGE-window deltas (RAG's derived skill DAG, 2026-09-02):
+            # REQUIRES grew 11 → 294 (201 chain_derived + 82 next_topic +
+            # 11 curated, provenance in r.source). Manifest value is pre-MERGE.
+            rel_overrides = {"REQUIRES": 294}
             for rtype, expected in manifest["relationships_by_type"].items():
                 n = session.run(f"MATCH ()-[r:`{rtype}`]->() RETURN count(r) AS n").single()["n"]
+                if rtype in rel_overrides:
+                    check(f"neo4j [:{rtype}] (post-MERGE contract)", n, rel_overrides[rtype])
+                    continue
                 check(f"neo4j [:{rtype}]", n, expected)
     finally:
         driver.close()
