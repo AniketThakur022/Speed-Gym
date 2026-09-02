@@ -1,0 +1,48 @@
+{
+ "run_id": "20260902T095222Z-hourly",
+ "lane": "hourly",
+ "tokens_spent": 0,
+ "delivered": 104,
+ "stats": {
+  "audit_rejected": 155,
+  "fail_stage_6": 155,
+  "resample_rounds": 6,
+  "audit_quarantined_pending_consensus": 104,
+  "tier45_gated_subtopics": 1
+ },
+ "pool_depth_after": {
+  "Nikhilam Navatashcaramam (All from 9, Last from 10)": 74,
+  "Yavadunam (Deficiency Squaring)": 38,
+  "Multiplication by 11 (neighbour sums)": 130
+ },
+ "threshold": 50,
+ "ladder": [
+  {
+   "sub_topic": "Yavadunam (Deficiency Squaring)",
+   "tier": "T1",
+   "made": 0
+  },
+  {
+   "sub_topic": "Yavadunam (Deficiency Squaring)",
+   "tier": "T2_escalate",
+   "made": 4
+  },
+  {
+   "sub_topic": "Yavadunam (Deficiency Squaring)",
+   "tier": "T4_llm_regenerate",
+   "status": "GATED_no_jester_models",
+   "short_by": 96
+  },
+  {
+   "sub_topic": "Yavadunam (Deficiency Squaring)",
+   "tier": "T5_explainer_conversion",
+   "status": "GATED_alert_operator",
+   "short_by": 96
+  },
+  {
+   "sub_topic": "Multiplication by 11 (neighbour sums)",
+   "tier": "T1",
+   "made": 100
+  }
+ ]
+}

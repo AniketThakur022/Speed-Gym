@@ -1,0 +1,49 @@
+{
+ "run_id": "20260902T095222Z-nightly",
+ "lane": "nightly",
+ "tokens_spent": 0,
+ "delivered": 138,
+ "stats": {
+  "audit_quarantined_pending_consensus": 138,
+  "resample_rounds": 10,
+  "audit_rejected": 80,
+  "fail_stage_6": 80
+ },
+ "pool_depth_after": {
+  "Nikhilam Navatashcaramam (All from 9, Last from 10)": 74,
+  "Yavadunam (Deficiency Squaring)": 34,
+  "Multiplication by 11 (neighbour sums)": 30
+ },
+ "targets": [
+  [
+   "mult_near_base",
+   1,
+   40
+  ],
+  [
+   "mult_near_base",
+   2,
+   40
+  ],
+  [
+   "mult_near_base",
+   3,
+   30
+  ],
+  [
+   "square_near_base",
+   2,
+   30
+  ],
+  [
+   "square_near_base",
+   3,
+   30
+  ],
+  [
+   "mult_by_11",
+   1,
+   30
+  ]
+ ]
+}
