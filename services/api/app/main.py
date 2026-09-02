@@ -11,7 +11,7 @@ from fastapi import FastAPI
 
 from .config import get_settings
 from . import db
-from .routers import content, health, practice
+from .routers import auth, content, health, practice, webhooks
 
 
 @asynccontextmanager
@@ -24,6 +24,8 @@ def create_app() -> FastAPI:
     settings = get_settings()
     app = FastAPI(title=settings.app_name, version=settings.version, lifespan=lifespan)
     app.include_router(health.router)
+    app.include_router(auth.router, prefix=settings.api_v1_prefix)
+    app.include_router(webhooks.router)
     app.include_router(content.router)
     app.include_router(practice.router)
     return app

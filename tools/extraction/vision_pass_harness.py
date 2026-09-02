@@ -77,6 +77,8 @@ BOOK_PDFS = {
     "Knuth": RES / "Phase 3 - Universal Logic Engine/Concrete Mathematics - 2Nd Edition - Knuth - A Foundation For Computer Science - (New - Complete - Not Ocr) no marges.pdf",
     "Hogg": RES / "Phase 3 - Universal Logic Engine/Hogg - Probability and Statistical Inference.pdf",
     "Mosteller": RES / "Phase 3 - Universal Logic Engine/dokumen.pub_fifty-challenging-problems-in-probability-with-solutions-dover-books-on-mathematics-revised-ed-9780486134963-0486134962.pdf",
+    # Staged (non-MASTER) books swept for the RAG page store only:
+    "Tirthaji": RES / "Phase 1 - Speed Gym/toaz.info-vedic-mathematicsorignal-book-pr_8a2ffa2809f58b15549e5b731f26bb32.pdf",
     # No PDF recovered: Thakur, RS Aggarwal, Lewis, ETS GRE Writing Pool, CAT LR Bank
     "Thakur": None, "RS Aggarwal": None, "Lewis": None,
     "ETS GRE Writing Pool": None, "CAT LR Bank": None,
@@ -119,6 +121,15 @@ PROMPTS = {
         "The attached page(s) contain a scored sample GRE essay whose extraction was truncated. "
         "Transcribe the COMPLETE printed essay text verbatim. Return ONLY a JSON object: "
         "{{\"set_id\": ..., \"text\": ..., \"confidence\": ..., \"note\": ...}}. Item: {items}"
+    ),
+    "page_digitization": (
+        "Transcribe the attached scanned book page to faithful verbatim markdown for a retrieval "
+        "corpus. Preserve reading order (columns top-to-bottom, left before right), headings as "
+        "markdown headings, math with ^ / sqrt() / a/b fractions, tables as markdown tables, and "
+        "mark figures as [FIGURE: one-line description]. No commentary, no summarization — verbatim "
+        "text only. Return ONLY a JSON object: {{\"page\": <pdf page>, \"print_label\": ..., "
+        "\"markdown\": ..., \"has_figures\": bool, \"confidence\": \"high|medium|low\"}}. "
+        "Context: {items}"
     ),
     "answer_grid": (
         "The attached image is a page from a book's ANSWERS section: numbered answers grouped "
@@ -243,7 +254,23 @@ def render_task_pages(task):
 
 
 def cmd_build(args):
-    if args.answer_grid:
+    if args.render_flagged:
+        # tasks for every needs_render page in a book's station-1 store
+        book = args.render_flagged
+        store = WORKDIR / "pages" / book.replace(" ", "_")
+        flagged = []
+        for mp in sorted(store.glob("[0-9]*_meta.json")):
+            m = json.loads(mp.read_text())
+            if m.get("needs_render"):
+                flagged.append(m["page_num"])
+        tasks = [{"task_id": "page_digitization__%s__p%04d" % (book.replace(" ", "_"), p),
+                  "class": "page_digitization", "book": book, "pages": [p],
+                  "items": {"book": book, "pdf_page": p}}
+                 for p in flagged]
+        if args.limit:
+            tasks = tasks[:args.limit]
+        manifest = WORKDIR / "tasks" / ("tasks_digitize_%s.jsonl" % book.replace(" ", "_"))
+    elif args.answer_grid:
         # e.g. --answer-grid "Hall & Knight:553-585" — one transcription task per page
         book, span = args.answer_grid.rsplit(":", 1)
         first, last = (int(x) for x in span.split("-"))
@@ -389,6 +416,7 @@ def main():
     b = sub.add_parser("build")
     b.add_argument("--book"), b.add_argument("--limit", type=int)
     b.add_argument("--answer-grid", dest="answer_grid", metavar="BOOK:FIRST-LAST")
+    b.add_argument("--render-flagged", dest="render_flagged", metavar="BOOK")
     s1 = sub.add_parser("station1")
     s1.add_argument("--book", required=True)
     s = sub.add_parser("submit")
