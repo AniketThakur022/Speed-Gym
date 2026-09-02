@@ -295,6 +295,8 @@
   "median": 95,
   "max": 230
  },
+ "scaffold_overrides_applied": 0,
+ "placeholder_scaffolds_remaining": 48,
  "trust_by_id": {
   "Bird_Engineering_Math_sa_102": "trusted_candidate",
   "Bird_Engineering_Math_sa_103": "trusted_candidate",
