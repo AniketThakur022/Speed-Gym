@@ -104,7 +104,9 @@ def gen_square_near_base(rng: random.Random, level: int) -> dict:
     a = base + d
     left, right = a + d, d * d
     return {
-        "sub_topic": "Yavadunam (Deficiency Squaring)",
+        # Canonical sub_topic strings mirror the recovered bank exactly, so generated
+        # items join the same :Skill as the 861 static templates instead of forking one.
+        "sub_topic": "Yavadunam Sutra (Deficiency/Surplus Squaring)",
         "technique_name": "squaring",
         "problem_statement": f"Square {a} using the Yavadunam method (base {base})",
         "compute": f"{a}*{a}",
@@ -148,6 +150,141 @@ def gen_mult_by_11(rng: random.Random, level: int) -> dict:
         "traps": ["forgetting to carry when neighbour sums exceed 9"],
         "visual_scaffold": {"type": "arrow_matrix"},
         "prerequisite_chain": ["Arithmetic", "Basic Operations (+, -, ×, ÷)"],
+    }
+
+
+@pattern("urdhva_2x2")
+def gen_urdhva_2x2(rng: random.Random, level: int) -> dict:
+    """Vertically and crosswise — the general multiplication algorithm.
+
+    Parameter space is ~8,100 pairs at 2 digits (vs a handful for the near-base
+    patterns at base 10), which is what makes hourly refill viable per-level.
+    """
+    lo, hi = {1: (11, 39), 2: (11, 69), 3: (21, 99), 4: (21, 99), 5: (31, 99)}[level]
+    a_n, b_n = rng.randint(lo, hi), rng.randint(lo, hi)
+    a, b = divmod(a_n, 10)[0], a_n % 10
+    c, d = divmod(b_n, 10)[0], b_n % 10
+    p1 = b * d
+    p2 = a * d + b * c + p1 // 10
+    p3 = a * c + p2 // 10
+    return {
+        "sub_topic": "Urdhva Tiryagbhyam (Vertically and Crosswise)",
+        "technique_name": "multiplication",
+        "problem_statement": f"Multiply {a_n} × {b_n} using Urdhva Tiryagbhyam (vertically and crosswise)",
+        "compute": f"{a_n}*{b_n}",
+        "final_answer": str(a_n * b_n),
+        "params": {"a": a_n, "b": b_n},
+        "solution": [
+            {"step_num": 1, "operation": "Write the numbers one above the other",
+             "formula": f"{a_n} \\times {b_n}",
+             "reasoning": "Urdhva works digit-position by digit-position, right to left"},
+            {"step_num": 2, "operation": "Vertical product of the units digits",
+             "formula": f"{b} \\times {d} = {p1} \\Rightarrow \\text{{write }} {p1 % 10}"
+                        + (f", \\text{{carry }} {p1 // 10}" if p1 // 10 else ""),
+             "reasoning": "The units digit of the answer comes from the units column alone"},
+            {"step_num": 3, "operation": "Crosswise products, added",
+             "formula": f"({a} \\times {d}) + ({b} \\times {c})"
+                        + (f" + {p1 // 10}" if p1 // 10 else "")
+                        + f" = {p2} \\Rightarrow \\text{{write }} {p2 % 10}"
+                        + (f", \\text{{carry }} {p2 // 10}" if p2 // 10 else ""),
+             "reasoning": "The tens digit collects both crosswise pairs plus any carry"},
+            {"step_num": 4, "operation": "Vertical product of the leading digits",
+             "formula": f"{a} \\times {c}" + (f" + {p2 // 10}" if p2 // 10 else "") + f" = {p3}",
+             "reasoning": "The leading columns finish the number"},
+            {"step_num": 5, "operation": "Read the digits off left to right",
+             "formula": f"{a_n} \\times {b_n} = {a_n * b_n}",
+             "reasoning": "Assembling the column digits with their carries gives the product"},
+        ],
+        "traps": ["adding only one crosswise product instead of both",
+                  "dropping the carry from the units column into the crosswise step"],
+        "visual_scaffold": {"type": "arrow_matrix"},
+        "prerequisite_chain": ["Arithmetic", "Basic Operations (+, -, ×, ÷)",
+                               "Multiplication Tables"],
+    }
+
+
+@pattern("ekadhikena_square_5")
+def gen_ekadhikena_square_5(rng: random.Random, level: int) -> dict:
+    """Ekadhikena Purvena — squaring a number ending in 5: a(a+1) | 25."""
+    hi = {1: 9, 2: 19, 3: 39, 4: 69, 5: 99}[level]
+    a = rng.randint(1, hi)
+    n = 10 * a + 5
+    left = a * (a + 1)
+    return {
+        "sub_topic": "Ekadhikena Purvena (One More than the Previous)",
+        "technique_name": "squaring",
+        "problem_statement": f"Square {n} using Ekadhikena Purvena (one more than the previous)",
+        "compute": f"{n}*{n}",
+        "final_answer": str(n * n),
+        "params": {"a": a, "n": n},
+        "solution": [
+            {"step_num": 1, "operation": "Split off the final 5",
+             "formula": f"{n} = {a}\\,|\\,5",
+             "reasoning": "The sutra applies to any number whose last digit is 5"},
+            {"step_num": 2, "operation": "Take one more than the previous digits",
+             "formula": f"{a} + 1 = {a + 1}",
+             "reasoning": "'Ekadhikena Purvena' means by one more than the previous one"},
+            {"step_num": 3, "operation": "Multiply the previous by that successor",
+             "formula": f"{a} \\times {a + 1} = {left}",
+             "reasoning": "This product forms the left-hand part of the square"},
+            {"step_num": 4, "operation": "Append 25",
+             "formula": f"{left}\\,|\\,25 = {n * n}",
+             "reasoning": "The square of the final 5 always contributes exactly 25"},
+        ],
+        "traps": ["multiplying the digits by themselves instead of by the next number",
+                  "appending 5 instead of 25 to the left-hand part"],
+        "visual_scaffold": {"type": "place_value_chart"},
+        "prerequisite_chain": ["Arithmetic", "Basic Operations (+, -, ×, ÷)",
+                               "Multiplication Tables"],
+    }
+
+
+@pattern("nikhilam_complement")
+def gen_nikhilam_complement(rng: random.Random, level: int) -> dict:
+    """All from 9 and the last from 10 — subtraction from a power of ten."""
+    # Capped at 4 digits because the recovered question_generator_config enumerates
+    # bases [10, 100, 1000, 10000]; L5 gets its difficulty from tighter digits
+    # (no 0s or 9s, which make complements trivial) rather than a 5th digit.
+    digits = {1: 2, 2: 3, 3: 3, 4: 4, 5: 4}[level]
+    base = 10 ** digits
+
+    def ok(x: int) -> bool:
+        if x % 10 == 0:  # 'last from 10' needs a nonzero final digit
+            return False
+        return not (level == 5 and ({"0", "9"} & set(str(x))))
+
+    n = rng.randint(10 ** (digits - 1), base - 1)
+    for _ in range(60):
+        if ok(n):
+            break
+        n = rng.randint(10 ** (digits - 1), base - 1)
+    ds = [int(c) for c in str(n).zfill(digits)]
+    comp = [9 - x for x in ds[:-1]] + [10 - ds[-1]]
+    return {
+        "sub_topic": "Nikhilam Navatashcaramam (All from 9, Last from 10)",
+        "technique_name": "subtraction",
+        "problem_statement": f"Subtract {n} from {base} using 'all from 9 and the last from 10'",
+        "compute": f"{base}-{n}",
+        "final_answer": str(base - n),
+        "params": {"n": n, "base": base},
+        "solution": [
+            {"step_num": 1, "operation": "Line the number up against the base",
+             "formula": f"{base} - {n}",
+             "reasoning": f"The base is a power of ten with {digits} zeros"},
+            {"step_num": 2, "operation": "Subtract every digit but the last from 9",
+             "formula": " ,\\quad ".join(f"9 - {d} = {9 - d}" for d in ds[:-1]) or "\\text{(no leading digits)}",
+             "reasoning": "'All from 9' applies to every digit except the final one"},
+            {"step_num": 3, "operation": "Subtract the last digit from 10",
+             "formula": f"10 - {ds[-1]} = {comp[-1]}",
+             "reasoning": "'The last from 10' completes the complement"},
+            {"step_num": 4, "operation": "Read the complement",
+             "formula": f"{base} - {n} = {''.join(str(x) for x in comp)}",
+             "reasoning": "No borrowing is needed anywhere in the subtraction"},
+        ],
+        "traps": ["taking the last digit from 9 as well, giving an answer one too small",
+                  "borrowing out of habit instead of applying the complement"],
+        "visual_scaffold": {"type": "place_value_chart"},
+        "prerequisite_chain": ["Arithmetic", "Basic Operations (+, -, ×, ÷)", "Number Bases"],
     }
 
 

@@ -31,10 +31,23 @@ POOL_THRESHOLD = 50
 POOL_REFILL = 100
 MAX_AUDIT_RETRIES = 3  # master_orchestrator_config.global_thresholds
 
-# v1 nightly composition (pool composer proper arrives with BKT/seen data)
-DEFAULT_TARGETS = [("mult_near_base", 1, 40), ("mult_near_base", 2, 40),
-                   ("mult_near_base", 3, 30), ("square_near_base", 2, 30),
-                   ("square_near_base", 3, 30), ("mult_by_11", 1, 30)]
+# Nightly composition (the pool composer proper arrives with BKT/seen data).
+# Counts are capacity-aware per (pattern, level): the near-base patterns exhaust
+# their parameter space at L1/L2 (a base-10 deviation of 2-3 admits only a handful
+# of pairs), so volume is asked of the wide-space patterns instead.
+DEFAULT_TARGETS = [
+    # narrow spaces — ask little at low levels
+    ("mult_near_base", 1, 5), ("mult_near_base", 3, 30), ("mult_near_base", 4, 30),
+    ("square_near_base", 2, 15), ("square_near_base", 3, 25), ("square_near_base", 4, 25),
+    ("ekadhikena_square_5", 1, 8), ("ekadhikena_square_5", 3, 25),
+    ("ekadhikena_square_5", 5, 25),
+    # wide spaces — carry the volume
+    ("urdhva_2x2", 1, 40), ("urdhva_2x2", 2, 40), ("urdhva_2x2", 3, 40),
+    ("urdhva_2x2", 4, 30), ("urdhva_2x2", 5, 30),
+    ("nikhilam_complement", 1, 30), ("nikhilam_complement", 3, 30),
+    ("nikhilam_complement", 5, 30),
+    ("mult_by_11", 1, 25), ("mult_by_11", 3, 25),
+]
 
 PATTERN_LEVELS = {pid: [1, 2, 3, 4, 5] for pid in t2.PATTERNS}
 
