@@ -34,6 +34,11 @@ MAX_TRAPS = 5
 # "No, adjust: <answer>"). Deliberately narrow — these phrases have no place in a
 # finished worked solution, so false positives are cheap and the miss rate is the
 # real limit (a contradiction stated only in numbers slips through).
+# Measured by rendering every distinct non-ASCII char in the bank through KaTeX
+# 0.18.5 — these are the ones with no font metrics. Characters that DO render
+# cleanly (μ θ π α β ✓ × ÷ ° ≈ − →) are deliberately allowed.
+METRICLESS_CHARS = set("²³⁴¹ⁿ₀₁₂₃₄₆₇ₙ‖⁄🚗")
+
 ABANDON_RE = re.compile(
     r"\bNo,\s*adjust\b|\bis wrong\b|\bTry:|\bdoesn'?t work\b|\bwait\b|\boops\b|\bactually,|\blet me\b",
     re.I)
@@ -90,6 +95,11 @@ def _check_latex(s: str) -> str | None:
         return "align_env_needs_display_mode"  # use aligned/gathered instead
     if re.search(r"\\n[A-Za-z]", s):
         return "newline_escaped_into_control_sequence"
+    bad = METRICLESS_CHARS & set(s)
+    if bad:
+        # KaTeX has no font metrics for these: they render subtly wrong and emit
+        # only a console warning, so nothing downstream can flag them.
+        return f"unicode_without_katex_metrics:{''.join(sorted(bad))}"
     return None
 
 

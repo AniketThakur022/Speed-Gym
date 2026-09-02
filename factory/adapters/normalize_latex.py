@@ -32,6 +32,26 @@ from pathlib import Path
 
 # A backslash-escaped \$ is a literal currency symbol, NOT a math delimiter —
 # treating it as one shreds expressions like "\$3.98 - \$6.02 = -\$2.04".
+# Characters KaTeX has NO font metrics for — measured by rendering every distinct
+# non-ASCII character in the bank, not assumed. They render subtly wrong and nothing
+# reports it. NOTE: μ θ π α β ✓ × ÷ ° ≈ £ − → all render CLEANLY and are left alone.
+SUP = {"²": "2", "³": "3", "⁴": "4", "¹": "1", "ⁿ": "n"}
+SUB = {"₀": "0", "₁": "1", "₂": "2", "₃": "3", "₄": "4", "₆": "6", "₇": "7", "ₙ": "n"}
+OTHER_FIXES = {"‖": "\\|", "⁄": "/", "🚗": "\\text{car}"}
+METRICLESS = set(SUP) | set(SUB) | set(OTHER_FIXES)
+# Runs must collapse into ONE group: "₁₃" is the single subscript 13, and replacing
+# per character yields "_{1}_{3}" — a double subscript KaTeX rejects.
+SUP_RUN = re.compile("[" + "".join(SUP) + "]+")
+SUB_RUN = re.compile("[" + "".join(SUB) + "]+")
+
+
+def fix_unicode_math(text: str) -> str:
+    text = SUP_RUN.sub(lambda m: "^{" + "".join(SUP[c] for c in m.group(0)) + "}", text)
+    text = SUB_RUN.sub(lambda m: "_{" + "".join(SUB[c] for c in m.group(0)) + "}", text)
+    for ch, rep in OTHER_FIXES.items():
+        text = text.replace(ch, rep)
+    return text
+
 DOLLAR_SEG = re.compile(r"(?<!\\)\$\$?(.+?)(?<!\\)\$\$?", re.S)
 WHOLE_WRAPPED = re.compile(r"^\s*(?<!\\)\$\$?(.+?)(?<!\\)\$\$?\s*$", re.S)
 UNESCAPED_DOLLAR = re.compile(r"(?<!\\)\$")
@@ -56,6 +76,11 @@ def normalize_step(result: str, description: str | None, stats: Counter):
     if LITERAL_NL.search(text):
         text = LITERAL_NL.sub("\n", text)
         stats["fixed_backslash_n"] += 1
+
+    # 6. metric-less unicode -> real LaTeX (silent mis-render class)
+    if METRICLESS & set(text):
+        text = fix_unicode_math(text)
+        stats["fixed_unicode_math"] += 1
 
     # 5. align/align* -> aligned (valid inline in KaTeX)
     if re.search(r"\\begin\{align\*?\}", text):

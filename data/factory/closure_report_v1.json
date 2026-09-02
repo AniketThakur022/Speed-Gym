@@ -16,5 +16,17 @@
  },
  "problem_requirements_rows": 2457,
  "max_depth_cap": 5,
- "note": "Offline equivalent of Strategy A; live run must reproduce these counts (shadow-table diff) before promotion — see sync_manifest protocol."
+ "note": "Offline equivalent of Strategy A; live run must reproduce these counts (shadow-table diff) before promotion — see sync_manifest protocol.",
+ "stub_share": {
+  "skill_nodes_total": 467,
+  "skill_nodes_stub": 374,
+  "skills_in_dag": 170,
+  "skills_in_dag_stub": 77,
+  "edges_touching_stub": 96,
+  "edges_total": 294,
+  "closure_rows_touching_stub": 1653,
+  "closure_rows_both_stub": 17,
+  "closure_rows_total": 2711,
+  "caveat": "Prerequisite edges over is_stub skills are structurally valid but semantically thin — the stub skills are harvested placeholders with no topic/sub_topic, not curated taxonomy entries. Consumers should weight closure results accordingly until taxonomy_v1 review lands."
+ }
 }
