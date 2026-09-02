@@ -38,4 +38,4 @@ When you make a decision other workstreams depend on (API contract, graph schema
 1. RFP v7.2 still not recovered — check `incoming/Resources/6-19-26-full architect/docs_archive.zip`, WhatsApp media, client email.
 2. Rotate the Anthropic API key leaked in WhatsApp (2026-03-20).
 3. App source code (backend monorepo, full frontend) remains lost — rebuild from specs + `recovered/exam-arena-src/`.
-4. Add a git remote and push; back up `incoming/` somewhere durable (it is gitignored).
+4. Remote is wired: `origin = https://github.com/AniketThakur022/Speed-Gym.git` (histories merged). A LaunchAgent (`com.speedgym.daily-commit`, daily 03:00, script `tools/daily_commit.sh`) auto-commits and pushes — do not add another auto-commit mechanism. **Pushes fail until the owner authenticates once** (`brew install gh && gh auth login`); never create or paste credentials on their behalf. Back up `incoming/` somewhere durable (it is gitignored).
