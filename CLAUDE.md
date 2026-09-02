@@ -28,10 +28,14 @@ When you make a decision other workstreams depend on (API contract, graph schema
 - Docs disagree in places (counts, edges, QA gates, chatbot-RAG, hosting) — check the `contradictions-to-resolve` memory / `docs/analysis/report_critic.json` before trusting a single source.
 - Everything gets committed to git and pushed to a remote — the project already died once from having no backup.
 
-## Open recovery items
+## Recovered resources (2026-09-02, in `incoming/` — gitignored for size)
 
-1. **Download the Google Drive zip** (auth-gated; link in `reference-links` memory) — extraction/enrichment scripts, per-book JSONLs, `page_view.html`/`explore.html` dashboards, pipeline PDF. Do this before rebuilding any extraction tooling.
-2. RFP v7.2 itself was never recovered — spec-ID references are unverifiable until found (client email / WhatsApp media / Drive).
-3. Check whether any cloud DBs survived (Neo4j AuraDB Free, cloud Postgres) before rebuilding from zero.
-4. Rotate the Anthropic API key leaked in WhatsApp (2026-03-20).
-5. Source book PDFs (25 books) — needed for the vision re-pass; location unknown (likely Drive).
+- `incoming/Resources/` — 53 source book PDFs by pillar, per-book intermediate JSONLs, and `6-19-26-full architect/` = the complete Architecture v5.2 spec corpus (complete_coder_spec.md, vedic_speed_gym_backend.md, decision_engine/, gaming/, v5_specs/, …) + June-19 package + unexplored `docs_archive.zip`.
+- `incoming/topic_browser_full_package/` — July-12 package: `dashboards/` (page_view.html, explorer.html, problem_view.html), `scripts/` (page_ocr_pipeline.py + Dockerfile.ocr stack, enrichment, audit_and_validation, pattern_identification, quant_extraction), `schemas_and_taxonomy/ontology_registry.yaml`, `schemas/` (SQL + Cypher), `runtime_config/` (6 factory configs), per-book `cat_data/` working dirs, and `db_exports/` (chunks.jsonl 110MB, nodes.jsonl, relationships.jsonl, problems.jsonl, registry.jsonl — **re-seed the DBs from these**).
+
+## Open items
+
+1. RFP v7.2 still not recovered — check `incoming/Resources/6-19-26-full architect/docs_archive.zip`, WhatsApp media, client email.
+2. Rotate the Anthropic API key leaked in WhatsApp (2026-03-20).
+3. App source code (backend monorepo, full frontend) remains lost — rebuild from specs + `recovered/exam-arena-src/`.
+4. Add a git remote and push; back up `incoming/` somewhere durable (it is gitignored).
