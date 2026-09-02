@@ -8,10 +8,11 @@ see memory `api-contract-v1` for the frozen resolution.
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 from .config import get_settings
 from . import db
-from .routers import auth, content, health, practice, webhooks
+from .routers import auth, content, health, practice, session, webhooks
 
 
 @asynccontextmanager
@@ -23,8 +24,16 @@ async def lifespan(app: FastAPI):
 def create_app() -> FastAPI:
     settings = get_settings()
     app = FastAPI(title=settings.app_name, version=settings.version, lifespan=lifespan)
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=settings.cors_origins,
+        allow_credentials=True,
+        allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        allow_headers=["Authorization", "Content-Type", "X-Device-Fingerprint"],
+    )
     app.include_router(health.router)
     app.include_router(auth.router, prefix=settings.api_v1_prefix)
+    app.include_router(session.router, prefix=settings.api_v1_prefix)
     app.include_router(webhooks.router)
     app.include_router(content.router)
     app.include_router(practice.router)

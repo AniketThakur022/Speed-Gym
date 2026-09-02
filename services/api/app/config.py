@@ -25,6 +25,19 @@ class Settings(BaseSettings):
 
     api_v1_prefix: str = "/api/v1"
 
+    # The mobile shells are not same-origin with the API: Capacitor serves the
+    # bundle from capacitor://localhost (iOS) or http://localhost (Android), so
+    # CORS is a production requirement, not just a dev convenience. Traefik
+    # fronts both under one host on the web, hence the explicit allow-list.
+    cors_allow_origins: str = (
+        "http://localhost:3000,http://localhost:3100,"
+        "capacitor://localhost,http://localhost,https://examarena.com"
+    )
+
+    @property
+    def cors_origins(self) -> list[str]:
+        return [origin.strip() for origin in self.cors_allow_origins.split(",") if origin.strip()]
+
 
 @lru_cache
 def get_settings() -> Settings:
