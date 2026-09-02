@@ -2,6 +2,1415 @@
  "version": "taxonomy_v1_candidate",
  "generated": "2026-09-03",
  "authority": "CANDIDATE ONLY — not authoritative until reviewed by RAG (against graph + ontology) and accepted by backend for BKT joins",
+ "rename_constraint": "Backend requirement: every merge/rename decided during review MUST be recorded in label_mappings as an old->new pair, because accepting it requires migrating user mastery keys and rebuilding the prerequisite closure. A reviewer who merges two entries must add the losing label with kind='semantic_merge' pointing at the surviving id — never delete the losing label from this file.",
+ "label_mappings_note": "Complete old->new map for every raw label observed anywhere. kind: 'canonical' (the surviving display form), 'surface_variant' (casing/separator spelling of the same label), 'semantic_merge' (added by review when two different labels are judged the same concept), or 'excluded' (to_id null, with reason).",
+ "label_mappings": {
+  "Algebra": {
+   "to_id": "vmsg.skill.algebra.algebra",
+   "kind": "canonical"
+  },
+  "Anurupyena (Proportionately)": {
+   "to_id": "vmsg.skill.vedicmath.anurupyena_proportionately",
+   "kind": "canonical"
+  },
+  "Applications of Derivatives": {
+   "to_id": "vmsg.skill.calculus.applications_of_derivatives",
+   "kind": "canonical"
+  },
+  "Applications of Integrals": {
+   "to_id": "vmsg.skill.calculus.applications_of_integrals",
+   "kind": "canonical"
+  },
+  "Arithmetic": {
+   "to_id": "vmsg.skill.arithmetic.arithmetic",
+   "kind": "canonical"
+  },
+  "Arrangements (Seating, Ranking)": {
+   "to_id": "vmsg.skill.logic.arrangements_seating_ranking",
+   "kind": "canonical"
+  },
+  "Averages": {
+   "to_id": "vmsg.skill.arithmetic.averages",
+   "kind": "canonical"
+  },
+  "Basic Operations (+, -, ×, ÷)": {
+   "to_id": "vmsg.skill.arithmetic.basic_operations",
+   "kind": "canonical"
+  },
+  "Binomial Theorem": {
+   "to_id": "vmsg.skill.algebra.binomial_theorem",
+   "kind": "canonical"
+  },
+  "Blood Relations": {
+   "to_id": "vmsg.skill.logic.blood_relations",
+   "kind": "canonical"
+  },
+  "Calculus": {
+   "to_id": "vmsg.skill.calculus.calculus",
+   "kind": "canonical"
+  },
+  "Chalana Kalanabhyam (Differences and Similarities)": {
+   "to_id": "vmsg.skill.vedicmath.chalana_kalanabhyam_differences_and_similarities",
+   "kind": "canonical"
+  },
+  "Charts and Graphs": {
+   "to_id": "vmsg.skill.statistics.charts_and_graphs",
+   "kind": "canonical"
+  },
+  "Circles": {
+   "to_id": "vmsg.skill.geometry.circles",
+   "kind": "canonical"
+  },
+  "Coding-Decoding": {
+   "to_id": "vmsg.skill.logic.coding_decoding",
+   "kind": "canonical"
+  },
+  "Complex Numbers": {
+   "to_id": "vmsg.skill.algebra.complex_numbers",
+   "kind": "canonical"
+  },
+  "Conic Sections (Parabola, Ellipse, Hyperbola)": {
+   "to_id": "vmsg.skill.geometry.conic_sections_parabola_ellipse_hyperbola",
+   "kind": "canonical"
+  },
+  "Coordinate Geometry": {
+   "to_id": "vmsg.skill.geometry.coordinate_geometry",
+   "kind": "canonical"
+  },
+  "Cube Root Extraction": {
+   "to_id": "vmsg.skill.cube_root_extraction",
+   "kind": "canonical"
+  },
+  "Cube Root": {
+   "to_id": "vmsg.skill.cube_root_extraction",
+   "kind": "surface_variant"
+  },
+  "Vedic Cube Root": {
+   "to_id": "vmsg.skill.cube_root_extraction",
+   "kind": "surface_variant"
+  },
+  "Data Interpretation": {
+   "to_id": "vmsg.skill.statistics.data_interpretation",
+   "kind": "canonical"
+  },
+  "Data Sufficiency": {
+   "to_id": "vmsg.skill.statistics.data_sufficiency",
+   "kind": "canonical"
+  },
+  "Differential Equations": {
+   "to_id": "vmsg.skill.calculus.differential_equations",
+   "kind": "canonical"
+  },
+  "Differentiation": {
+   "to_id": "vmsg.skill.calculus.differentiation",
+   "kind": "canonical"
+  },
+  "Digital Roots": {
+   "to_id": "vmsg.skill.numbertheory.digital_roots",
+   "kind": "canonical"
+  },
+  "Direction Sense": {
+   "to_id": "vmsg.skill.logic.direction_sense",
+   "kind": "canonical"
+  },
+  "Divisibility Rule": {
+   "to_id": "vmsg.skill.divisibility_rule",
+   "kind": "canonical"
+  },
+  "Divisibility Test": {
+   "to_id": "vmsg.skill.divisibility_rule",
+   "kind": "surface_variant"
+  },
+  "Osculation": {
+   "to_id": "vmsg.skill.divisibility_rule",
+   "kind": "surface_variant"
+  },
+  "Divisibility Rules": {
+   "to_id": "vmsg.skill.numbertheory.divisibility_rules",
+   "kind": "canonical"
+  },
+  "Ekadhikena Purvena (One More than the Previous)": {
+   "to_id": "vmsg.skill.vedicmath.ekadhikena_purvena_one_more_than_the_previous",
+   "kind": "canonical"
+  },
+  "Ekanyunena Purvena (One Less than the Previous)": {
+   "to_id": "vmsg.skill.vedicmath.ekanyunena_purvena_one_less_than_the_previous",
+   "kind": "canonical"
+  },
+  "Exponents and Radicals": {
+   "to_id": "vmsg.skill.algebra.exponents_and_radicals",
+   "kind": "canonical"
+  },
+  "Fractions and Decimals": {
+   "to_id": "vmsg.skill.arithmetic.fractions_and_decimals",
+   "kind": "canonical"
+  },
+  "Functions and Graphs": {
+   "to_id": "vmsg.skill.algebra.functions_and_graphs",
+   "kind": "canonical"
+  },
+  "Geometry": {
+   "to_id": "vmsg.skill.geometry.geometry",
+   "kind": "canonical"
+  },
+  "Graphs of Trigonometric Functions": {
+   "to_id": "vmsg.skill.trigonometry.graphs_of_trigonometric_functions",
+   "kind": "canonical"
+  },
+  "Gunaka Samuchchayah (Sum of the Products)": {
+   "to_id": "vmsg.skill.vedicmath.gunaka_samuchchayah_sum_of_the_products",
+   "kind": "canonical"
+  },
+  "Gunitasamuchchayah (Product of the Sum)": {
+   "to_id": "vmsg.skill.vedicmath.gunitasamuchchayah_product_of_the_sum",
+   "kind": "canonical"
+  },
+  "HCF and LCM": {
+   "to_id": "vmsg.skill.arithmetic.hcf_and_lcm",
+   "kind": "canonical"
+  },
+  "HCF and LCM (Advanced)": {
+   "to_id": "vmsg.skill.numbertheory.hcf_and_lcm_advanced",
+   "kind": "canonical"
+  },
+  "Heights and Distances": {
+   "to_id": "vmsg.skill.trigonometry.heights_and_distances",
+   "kind": "canonical"
+  },
+  "Inequalities": {
+   "to_id": "vmsg.skill.algebra.inequalities",
+   "kind": "canonical"
+  },
+  "Integration": {
+   "to_id": "vmsg.skill.calculus.integration",
+   "kind": "canonical"
+  },
+  "Inverse Trigonometric Functions": {
+   "to_id": "vmsg.skill.trigonometry.inverse_trigonometric_functions",
+   "kind": "canonical"
+  },
+  "Limits and Continuity": {
+   "to_id": "vmsg.skill.calculus.limits_and_continuity",
+   "kind": "canonical"
+  },
+  "Linear Equations": {
+   "to_id": "vmsg.skill.algebra.linear_equations",
+   "kind": "canonical"
+  },
+  "Lines and Angles": {
+   "to_id": "vmsg.skill.geometry.lines_and_angles",
+   "kind": "canonical"
+  },
+  "Logarithms and Exponentials": {
+   "to_id": "vmsg.skill.algebra.logarithms_and_exponentials",
+   "kind": "canonical"
+  },
+  "Logic": {
+   "to_id": "vmsg.skill.logic.logic",
+   "kind": "canonical"
+  },
+  "Matrices and Determinants": {
+   "to_id": "vmsg.skill.algebra.matrices_and_determinants",
+   "kind": "canonical"
+  },
+  "Mean, Median, Mode": {
+   "to_id": "vmsg.skill.statistics.mean_median_mode",
+   "kind": "canonical"
+  },
+  "Mensuration (Area/Volume)": {
+   "to_id": "vmsg.skill.geometry.mensuration_area_volume",
+   "kind": "canonical"
+  },
+  "Mental Math": {
+   "to_id": "vmsg.skill.mental_math",
+   "kind": "canonical"
+  },
+  "Oral Math": {
+   "to_id": "vmsg.skill.mental_math",
+   "kind": "surface_variant"
+  },
+  "Speed Calculation": {
+   "to_id": "vmsg.skill.mental_math",
+   "kind": "surface_variant"
+  },
+  "Modular Arithmetic": {
+   "to_id": "vmsg.skill.numbertheory.modular_arithmetic",
+   "kind": "canonical"
+  },
+  "Nikhilam Navatashcaramam (All from 9, Last from 10)": {
+   "to_id": "vmsg.skill.vedicmath.nikhilam_navatashcaramam_all_from_9_last_from_10",
+   "kind": "canonical"
+  },
+  "Number Bases": {
+   "to_id": "vmsg.skill.numbertheory.number_bases",
+   "kind": "canonical"
+  },
+  "NumberTheory": {
+   "to_id": "vmsg.skill.numbertheory.numbertheory",
+   "kind": "canonical"
+  },
+  "Paravartya Yojayet (Transpose and Apply)": {
+   "to_id": "vmsg.skill.vedicmath.paravartya_yojayet_transpose_and_apply",
+   "kind": "canonical"
+  },
+  "Partial Differentiation": {
+   "to_id": "vmsg.skill.calculus.partial_differentiation",
+   "kind": "canonical"
+  },
+  "Pattern Recognition": {
+   "to_id": "vmsg.skill.pattern_recognition",
+   "kind": "canonical"
+  },
+  "Percentages": {
+   "to_id": "vmsg.skill.arithmetic.percentages",
+   "kind": "canonical"
+  },
+  "Permutations and Combinations": {
+   "to_id": "vmsg.skill.statistics.permutations_and_combinations",
+   "kind": "canonical"
+  },
+  "Polygon Properties": {
+   "to_id": "vmsg.skill.geometry.polygon_properties",
+   "kind": "canonical"
+  },
+  "Polynomials and Factoring": {
+   "to_id": "vmsg.skill.algebra.polynomials_and_factoring",
+   "kind": "canonical"
+  },
+  "Prime Numbers": {
+   "to_id": "vmsg.skill.numbertheory.prime_numbers",
+   "kind": "canonical"
+  },
+  "Probability": {
+   "to_id": "vmsg.skill.statistics.probability",
+   "kind": "canonical"
+  },
+  "Puranapuranabhyam (By Completion or Non-Completion)": {
+   "to_id": "vmsg.skill.vedicmath.puranapuranabhyam_by_completion_or_non_completion",
+   "kind": "canonical"
+  },
+  "Puzzles": {
+   "to_id": "vmsg.skill.logic.puzzles",
+   "kind": "canonical"
+  },
+  "Quadratic Equations": {
+   "to_id": "vmsg.skill.algebra.quadratic_equations",
+   "kind": "canonical"
+  },
+  "Quadrilaterals": {
+   "to_id": "vmsg.skill.geometry.quadrilaterals",
+   "kind": "canonical"
+  },
+  "Ratios and Proportions": {
+   "to_id": "vmsg.skill.arithmetic.ratios_and_proportions",
+   "kind": "canonical"
+  },
+  "Remainders": {
+   "to_id": "vmsg.skill.numbertheory.remainders",
+   "kind": "canonical"
+  },
+  "Roots and Surds": {
+   "to_id": "vmsg.skill.arithmetic.roots_and_surds",
+   "kind": "canonical"
+  },
+  "Sankalana Vyavakalanabhyam (By Addition and Subtraction)": {
+   "to_id": "vmsg.skill.vedicmath.sankalana_vyavakalanabhyam_by_addition_and_subtraction",
+   "kind": "canonical"
+  },
+  "Sequences and Series": {
+   "to_id": "vmsg.skill.algebra.sequences_and_series",
+   "kind": "canonical"
+  },
+  "Shesanyankena Charamena (Remainder by the Last Digit)": {
+   "to_id": "vmsg.skill.vedicmath.shesanyankena_charamena_remainder_by_the_last_digit",
+   "kind": "canonical"
+  },
+  "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)": {
+   "to_id": "vmsg.skill.vedicmath.shunyam_saamyasamuccaye_when_samuccaya_is_same_it_is_zero",
+   "kind": "canonical"
+  },
+  "Simple and Compound Interest": {
+   "to_id": "vmsg.skill.arithmetic.simple_and_compound_interest",
+   "kind": "canonical"
+  },
+  "Solid Geometry": {
+   "to_id": "vmsg.skill.geometry.solid_geometry",
+   "kind": "canonical"
+  },
+  "Sopaantyadvayamantyam (Ultimate and Twice the Penultimate)": {
+   "to_id": "vmsg.skill.vedicmath.sopaantyadvayamantyam_ultimate_and_twice_the_penultimate",
+   "kind": "canonical"
+  },
+  "Speed, Time, Distance": {
+   "to_id": "vmsg.skill.arithmetic.speed_time_distance",
+   "kind": "canonical"
+  },
+  "Squares and Cubes": {
+   "to_id": "vmsg.skill.arithmetic.squares_and_cubes",
+   "kind": "canonical"
+  },
+  "Standard Deviation": {
+   "to_id": "vmsg.skill.statistics.standard_deviation",
+   "kind": "canonical"
+  },
+  "Statistics": {
+   "to_id": "vmsg.skill.statistics.statistics",
+   "kind": "canonical"
+  },
+  "Syllogisms": {
+   "to_id": "vmsg.skill.logic.syllogisms",
+   "kind": "canonical"
+  },
+  "Transformational Geometry": {
+   "to_id": "vmsg.skill.geometry.transformational_geometry",
+   "kind": "canonical"
+  },
+  "Triangles": {
+   "to_id": "vmsg.skill.geometry.triangles",
+   "kind": "canonical"
+  },
+  "Trigonometric Equations": {
+   "to_id": "vmsg.skill.trigonometry.trigonometric_equations",
+   "kind": "canonical"
+  },
+  "Trigonometric Identities": {
+   "to_id": "vmsg.skill.trigonometry.trigonometric_identities",
+   "kind": "canonical"
+  },
+  "Trigonometric Ratios": {
+   "to_id": "vmsg.skill.trigonometry.trigonometric_ratios",
+   "kind": "canonical"
+  },
+  "Trigonometry": {
+   "to_id": "vmsg.skill.trigonometry.trigonometry",
+   "kind": "canonical"
+  },
+  "Unit Conversion": {
+   "to_id": "vmsg.skill.unit_conversion",
+   "kind": "canonical"
+  },
+  "Urdhva Tiryagbhyam (Vertically and Crosswise)": {
+   "to_id": "vmsg.skill.vedicmath.urdhva_tiryagbhyam_vertically_and_crosswise",
+   "kind": "canonical"
+  },
+  "Vector Calculus": {
+   "to_id": "vmsg.skill.calculus.vector_calculus",
+   "kind": "canonical"
+  },
+  "Vectors": {
+   "to_id": "vmsg.skill.algebra.vectors",
+   "kind": "canonical"
+  },
+  "VedicMath": {
+   "to_id": "vmsg.skill.vedicmath.vedicmath",
+   "kind": "canonical"
+  },
+  "Venn Diagrams": {
+   "to_id": "vmsg.skill.logic.venn_diagrams",
+   "kind": "canonical"
+  },
+  "Vyashti Samashti (Part and Whole)": {
+   "to_id": "vmsg.skill.vedicmath.vyashti_samashti_part_and_whole",
+   "kind": "canonical"
+  },
+  "Work and Time": {
+   "to_id": "vmsg.skill.arithmetic.work_and_time",
+   "kind": "canonical"
+  },
+  "Yaavadunam (Whatever the Extent of Its Deficiency)": {
+   "to_id": "vmsg.skill.vedicmath.yaavadunam_whatever_the_extent_of_its_deficiency",
+   "kind": "canonical"
+  },
+  "Architect: FOIL Expansion": {
+   "to_id": "vmsg.strategy.vedicmath.architect_foil_expansion",
+   "kind": "canonical"
+  },
+  "Architect: Binomial": {
+   "to_id": "vmsg.strategy.vedicmath.architect_foil_expansion",
+   "kind": "surface_variant"
+  },
+  "Architect: Quadratic Formula": {
+   "to_id": "vmsg.strategy.vedicmath.architect_quadratic_formula",
+   "kind": "canonical"
+  },
+  "Architect: ABC Formula": {
+   "to_id": "vmsg.strategy.vedicmath.architect_quadratic_formula",
+   "kind": "surface_variant"
+  },
+  "Architect: Standard Long Division": {
+   "to_id": "vmsg.strategy.vedicmath.architect_standard_long_division",
+   "kind": "canonical"
+  },
+  "Architect: Division": {
+   "to_id": "vmsg.strategy.vedicmath.architect_standard_long_division",
+   "kind": "surface_variant"
+  },
+  "Builder: Criss-Cross": {
+   "to_id": "vmsg.strategy.vedicmath.builder_criss_cross",
+   "kind": "canonical"
+  },
+  "Builder: Crosswise": {
+   "to_id": "vmsg.strategy.vedicmath.builder_criss_cross",
+   "kind": "surface_variant"
+  },
+  "Builder: Urdhva": {
+   "to_id": "vmsg.strategy.vedicmath.builder_criss_cross",
+   "kind": "surface_variant"
+  },
+  "Builder: Ekadhika": {
+   "to_id": "vmsg.strategy.vedicmath.builder_ekadhika",
+   "kind": "canonical"
+  },
+  "Builder: Flag": {
+   "to_id": "vmsg.strategy.vedicmath.builder_ekadhika",
+   "kind": "surface_variant"
+  },
+  "Builder: Straight Division": {
+   "to_id": "vmsg.strategy.vedicmath.builder_ekadhika",
+   "kind": "surface_variant"
+  },
+  "Builder: Nikhilam": {
+   "to_id": "vmsg.strategy.vedicmath.builder_nikhilam",
+   "kind": "canonical"
+  },
+  "Builder: All from 9": {
+   "to_id": "vmsg.strategy.vedicmath.builder_nikhilam",
+   "kind": "surface_variant"
+  },
+  "Builder: Base Method": {
+   "to_id": "vmsg.strategy.vedicmath.builder_nikhilam",
+   "kind": "surface_variant"
+  },
+  "(Ānurūpye) Śūnyaṃ Anyat": {
+   "to_id": "vmsg.sutra.vedicmath.anurupye_sunyam_anyat",
+   "kind": "canonical"
+  },
+  "Anurupye": {
+   "to_id": "vmsg.sutra.vedicmath.anurupye_sunyam_anyat",
+   "kind": "surface_variant"
+  },
+  "Anurupye Shunyam Anyat": {
+   "to_id": "vmsg.sutra.vedicmath.anurupye_sunyam_anyat",
+   "kind": "surface_variant"
+  },
+  "Anurupye Sunyamanyat": {
+   "to_id": "vmsg.sutra.vedicmath.anurupye_sunyam_anyat",
+   "kind": "surface_variant"
+  },
+  "If one is in ratio": {
+   "to_id": "vmsg.sutra.vedicmath.anurupye_sunyam_anyat",
+   "kind": "surface_variant"
+  },
+  "the other is zero": {
+   "to_id": "vmsg.sutra.vedicmath.anurupye_sunyam_anyat",
+   "kind": "surface_variant"
+  },
+  "Calana-Kalanābhyām": {
+   "to_id": "vmsg.sutra.vedicmath.calana_kalanabhyam",
+   "kind": "canonical"
+  },
+  "By calculus": {
+   "to_id": "vmsg.sutra.vedicmath.calana_kalanabhyam",
+   "kind": "surface_variant"
+  },
+  "Calana-Kalanabhyam": {
+   "to_id": "vmsg.sutra.vedicmath.calana_kalanabhyam",
+   "kind": "surface_variant"
+  },
+  "Ekanyūnena Pūrveṇa": {
+   "to_id": "vmsg.sutra.vedicmath.ekanyunena_purvena",
+   "kind": "canonical"
+  },
+  "By one less than the previous one": {
+   "to_id": "vmsg.sutra.vedicmath.ekanyunena_purvena",
+   "kind": "surface_variant"
+  },
+  "Ekanyunena Purvena": {
+   "to_id": "vmsg.sutra.vedicmath.ekanyunena_purvena",
+   "kind": "surface_variant"
+  },
+  "Ekādhikena Pūrveṇa": {
+   "to_id": "vmsg.sutra.vedicmath.ekadhikena_purvena",
+   "kind": "canonical"
+  },
+  "By one more than the previous one": {
+   "to_id": "vmsg.sutra.vedicmath.ekadhikena_purvena",
+   "kind": "surface_variant"
+  },
+  "Ekadhika": {
+   "to_id": "vmsg.sutra.vedicmath.ekadhikena_purvena",
+   "kind": "surface_variant"
+  },
+  "Ekadhikena": {
+   "to_id": "vmsg.sutra.vedicmath.ekadhikena_purvena",
+   "kind": "surface_variant"
+  },
+  "Ekadhikena Purvena": {
+   "to_id": "vmsg.sutra.vedicmath.ekadhikena_purvena",
+   "kind": "surface_variant"
+  },
+  "Guṇaka Samuccayaḥ": {
+   "to_id": "vmsg.sutra.vedicmath.gunaka_samuccayah",
+   "kind": "canonical"
+  },
+  "Collectivity of multipliers": {
+   "to_id": "vmsg.sutra.vedicmath.gunaka_samuccayah",
+   "kind": "surface_variant"
+  },
+  "Gunaka Samuccayah": {
+   "to_id": "vmsg.sutra.vedicmath.gunaka_samuccayah",
+   "kind": "surface_variant"
+  },
+  "Guṇita Samuccayaḥ": {
+   "to_id": "vmsg.sutra.vedicmath.gunita_samuccayah",
+   "kind": "canonical"
+  },
+  "Gunita Samuccayah": {
+   "to_id": "vmsg.sutra.vedicmath.gunita_samuccayah",
+   "kind": "surface_variant"
+  },
+  "Gunitasamuccayah": {
+   "to_id": "vmsg.sutra.vedicmath.gunita_samuccayah",
+   "kind": "surface_variant"
+  },
+  "Product of the sum": {
+   "to_id": "vmsg.sutra.vedicmath.gunita_samuccayah",
+   "kind": "surface_variant"
+  },
+  "Nikhilam Navataścaramaṃ Daśataḥ": {
+   "to_id": "vmsg.sutra.vedicmath.nikhilam_navatascaramam_dasatah",
+   "kind": "canonical"
+  },
+  "All from 9 and the last from 10": {
+   "to_id": "vmsg.sutra.vedicmath.nikhilam_navatascaramam_dasatah",
+   "kind": "surface_variant"
+  },
+  "Base Method": {
+   "to_id": "vmsg.sutra.vedicmath.nikhilam_navatascaramam_dasatah",
+   "kind": "surface_variant"
+  },
+  "Nikhilam": {
+   "to_id": "vmsg.sutra.vedicmath.nikhilam_navatascaramam_dasatah",
+   "kind": "surface_variant"
+  },
+  "Nikhilam Navatascaramam Dasatah": {
+   "to_id": "vmsg.sutra.vedicmath.nikhilam_navatascaramam_dasatah",
+   "kind": "surface_variant"
+  },
+  "Nikhilam Sutra": {
+   "to_id": "vmsg.sutra.vedicmath.nikhilam_navatascaramam_dasatah",
+   "kind": "surface_variant"
+  },
+  "Parāvartya Yojayet": {
+   "to_id": "vmsg.sutra.vedicmath.paravartya_yojayet",
+   "kind": "canonical"
+  },
+  "Paravartya": {
+   "to_id": "vmsg.sutra.vedicmath.paravartya_yojayet",
+   "kind": "surface_variant"
+  },
+  "Paravartya Yojayet": {
+   "to_id": "vmsg.sutra.vedicmath.paravartya_yojayet",
+   "kind": "surface_variant"
+  },
+  "Transpose and Apply": {
+   "to_id": "vmsg.sutra.vedicmath.paravartya_yojayet",
+   "kind": "surface_variant"
+  },
+  "Transpose and apply": {
+   "to_id": "vmsg.sutra.vedicmath.paravartya_yojayet",
+   "kind": "surface_variant"
+  },
+  "Pūraṇāpūraṇābhyām": {
+   "to_id": "vmsg.sutra.vedicmath.puranapuranabhyam",
+   "kind": "canonical"
+  },
+  "By the completion or non-completion": {
+   "to_id": "vmsg.sutra.vedicmath.puranapuranabhyam",
+   "kind": "surface_variant"
+  },
+  "Puranapuranabhyam": {
+   "to_id": "vmsg.sutra.vedicmath.puranapuranabhyam",
+   "kind": "surface_variant"
+  },
+  "Saṅkalana-Vyavakalanābhyām": {
+   "to_id": "vmsg.sutra.vedicmath.sankalana_vyavakalanabhyam",
+   "kind": "canonical"
+  },
+  "By addition and by subtraction": {
+   "to_id": "vmsg.sutra.vedicmath.sankalana_vyavakalanabhyam",
+   "kind": "surface_variant"
+  },
+  "Sankalana": {
+   "to_id": "vmsg.sutra.vedicmath.sankalana_vyavakalanabhyam",
+   "kind": "surface_variant"
+  },
+  "Sankalana-Vyavakalanabhyam": {
+   "to_id": "vmsg.sutra.vedicmath.sankalana_vyavakalanabhyam",
+   "kind": "surface_variant"
+  },
+  "Vyavakalana": {
+   "to_id": "vmsg.sutra.vedicmath.sankalana_vyavakalanabhyam",
+   "kind": "surface_variant"
+  },
+  "Sopāntyadvayaṃ": {
+   "to_id": "vmsg.sutra.vedicmath.sopantyadvayam",
+   "kind": "canonical"
+  },
+  "Sopantyadvayam": {
+   "to_id": "vmsg.sutra.vedicmath.sopantyadvayam",
+   "kind": "surface_variant"
+  },
+  "The ultimate and twice the penultimate": {
+   "to_id": "vmsg.sutra.vedicmath.sopantyadvayam",
+   "kind": "surface_variant"
+  },
+  "Vyāṣṭi Samaṣṭi": {
+   "to_id": "vmsg.sutra.vedicmath.vyasti_samasti",
+   "kind": "canonical"
+  },
+  "Individuality and Totality": {
+   "to_id": "vmsg.sutra.vedicmath.vyasti_samasti",
+   "kind": "surface_variant"
+  },
+  "Vyasti Samasti": {
+   "to_id": "vmsg.sutra.vedicmath.vyasti_samasti",
+   "kind": "surface_variant"
+  },
+  "Vyasti Samasti Sutra": {
+   "to_id": "vmsg.sutra.vedicmath.vyasti_samasti",
+   "kind": "surface_variant"
+  },
+  "Vyasti-Samasti": {
+   "to_id": "vmsg.sutra.vedicmath.vyasti_samasti",
+   "kind": "surface_variant"
+  },
+  "Yāvadūnaṃ Tāvadūnaṃ": {
+   "to_id": "vmsg.sutra.vedicmath.yavadunam_tavadunam",
+   "kind": "canonical"
+  },
+  "By the deficiency": {
+   "to_id": "vmsg.sutra.vedicmath.yavadunam_tavadunam",
+   "kind": "surface_variant"
+  },
+  "Yavadunam": {
+   "to_id": "vmsg.sutra.vedicmath.yavadunam_tavadunam",
+   "kind": "surface_variant"
+  },
+  "Śeṣānyakena Carameṇa": {
+   "to_id": "vmsg.sutra.vedicmath.sesanyakena_caramena",
+   "kind": "canonical"
+  },
+  "Seshanyakena Caramena": {
+   "to_id": "vmsg.sutra.vedicmath.sesanyakena_caramena",
+   "kind": "surface_variant"
+  },
+  "The remainders by the last digit": {
+   "to_id": "vmsg.sutra.vedicmath.sesanyakena_caramena",
+   "kind": "surface_variant"
+  },
+  "Śūnyaṃ Sāmyasamuccaye": {
+   "to_id": "vmsg.sutra.vedicmath.sunyam_samyasamuccaye",
+   "kind": "canonical"
+  },
+  "Shunyam": {
+   "to_id": "vmsg.sutra.vedicmath.sunyam_samyasamuccaye",
+   "kind": "surface_variant"
+  },
+  "Shunyam Samyasamuccaye": {
+   "to_id": "vmsg.sutra.vedicmath.sunyam_samyasamuccaye",
+   "kind": "surface_variant"
+  },
+  "Sunyam Samuccaye": {
+   "to_id": "vmsg.sutra.vedicmath.sunyam_samyasamuccaye",
+   "kind": "surface_variant"
+  },
+  "When the sum is the same": {
+   "to_id": "vmsg.sutra.vedicmath.sunyam_samyasamuccaye",
+   "kind": "surface_variant"
+  },
+  "that sum is zero": {
+   "to_id": "vmsg.sutra.vedicmath.sunyam_samyasamuccaye",
+   "kind": "surface_variant"
+  },
+  "Ūrdhva-Tiryagbhyām": {
+   "to_id": "vmsg.sutra.vedicmath.urdhva_tiryagbhyam",
+   "kind": "canonical"
+  },
+  "Tiryagbhyam": {
+   "to_id": "vmsg.sutra.vedicmath.urdhva_tiryagbhyam",
+   "kind": "surface_variant"
+  },
+  "Urdhva": {
+   "to_id": "vmsg.sutra.vedicmath.urdhva_tiryagbhyam",
+   "kind": "surface_variant"
+  },
+  "Urdhva-Tiryagbhyam": {
+   "to_id": "vmsg.sutra.vedicmath.urdhva_tiryagbhyam",
+   "kind": "surface_variant"
+  },
+  "Vertically and Crosswise": {
+   "to_id": "vmsg.sutra.vedicmath.urdhva_tiryagbhyam",
+   "kind": "surface_variant"
+  },
+  "Vertically and crosswise": {
+   "to_id": "vmsg.sutra.vedicmath.urdhva_tiryagbhyam",
+   "kind": "surface_variant"
+  },
+  "Base Method Multiplication": {
+   "to_id": "vmsg.technique.base_method_multiplication",
+   "kind": "canonical"
+  },
+  "Base Multiplication": {
+   "to_id": "vmsg.technique.base_method_multiplication",
+   "kind": "surface_variant"
+  },
+  "Nikhilam Method": {
+   "to_id": "vmsg.technique.base_method_multiplication",
+   "kind": "surface_variant"
+  },
+  "Working Base": {
+   "to_id": "vmsg.technique.base_method_multiplication",
+   "kind": "surface_variant"
+  },
+  "Complement Method": {
+   "to_id": "vmsg.technique.complement_method",
+   "kind": "canonical"
+  },
+  "Base Complement": {
+   "to_id": "vmsg.technique.complement_method",
+   "kind": "surface_variant"
+  },
+  "Complement": {
+   "to_id": "vmsg.technique.complement_method",
+   "kind": "surface_variant"
+  },
+  "Nikhilam Complement": {
+   "to_id": "vmsg.technique.complement_method",
+   "kind": "surface_variant"
+  },
+  "Criss-Cross Multiplication": {
+   "to_id": "vmsg.technique.criss_cross_multiplication",
+   "kind": "canonical"
+  },
+  "Criss-Cross": {
+   "to_id": "vmsg.technique.criss_cross_multiplication",
+   "kind": "surface_variant"
+  },
+  "Cross Multiplication": {
+   "to_id": "vmsg.technique.criss_cross_multiplication",
+   "kind": "surface_variant"
+  },
+  "Cross-multiplication": {
+   "to_id": "vmsg.technique.criss_cross_multiplication",
+   "kind": "surface_variant"
+  },
+  "Digit Sums (Śeṣānyakena Carameṇa)": {
+   "to_id": "vmsg.technique.digit_sums_sesanyakena_caramena",
+   "kind": "canonical"
+  },
+  "Beejank": {
+   "to_id": "vmsg.technique.digit_sums_sesanyakena_caramena",
+   "kind": "surface_variant"
+  },
+  "Casting Out Nines": {
+   "to_id": "vmsg.technique.digit_sums_sesanyakena_caramena",
+   "kind": "surface_variant"
+  },
+  "Digit Sum": {
+   "to_id": "vmsg.technique.digit_sums_sesanyakena_caramena",
+   "kind": "surface_variant"
+  },
+  "Digital Root": {
+   "to_id": "vmsg.technique.digit_sums_sesanyakena_caramena",
+   "kind": "surface_variant"
+  },
+  "Ekadhika Division": {
+   "to_id": "vmsg.technique.ekadhika_division",
+   "kind": "canonical"
+  },
+  "Ekadhika Flag": {
+   "to_id": "vmsg.technique.ekadhika_division",
+   "kind": "surface_variant"
+  },
+  "Flag Division": {
+   "to_id": "vmsg.technique.ekadhika_division",
+   "kind": "surface_variant"
+  },
+  "Straight Division": {
+   "to_id": "vmsg.technique.ekadhika_division",
+   "kind": "surface_variant"
+  },
+  "Mensuration Formulas": {
+   "to_id": "vmsg.technique.mensuration_formulas",
+   "kind": "canonical"
+  },
+  "Area Volume": {
+   "to_id": "vmsg.technique.mensuration_formulas",
+   "kind": "surface_variant"
+  },
+  "Geometry Formulas": {
+   "to_id": "vmsg.technique.mensuration_formulas",
+   "kind": "surface_variant"
+  },
+  "Mensuration": {
+   "to_id": "vmsg.technique.mensuration_formulas",
+   "kind": "surface_variant"
+  },
+  "Paravartya Division": {
+   "to_id": "vmsg.technique.paravartya_division",
+   "kind": "canonical"
+  },
+  "Paravartya Sutra Division": {
+   "to_id": "vmsg.technique.paravartya_division",
+   "kind": "surface_variant"
+  },
+  "Vertically and Crosswise for Division": {
+   "to_id": "vmsg.technique.vertically_and_crosswise_for_division",
+   "kind": "canonical"
+  },
+  "Crosswise Division": {
+   "to_id": "vmsg.technique.vertically_and_crosswise_for_division",
+   "kind": "surface_variant"
+  },
+  "Urdhva Division": {
+   "to_id": "vmsg.technique.vertically_and_crosswise_for_division",
+   "kind": "surface_variant"
+  },
+  "Vinculum Method": {
+   "to_id": "vmsg.technique.vinculum_method",
+   "kind": "canonical"
+  },
+  "Bar Numbers": {
+   "to_id": "vmsg.technique.vinculum_method",
+   "kind": "surface_variant"
+  },
+  "Vinculum": {
+   "to_id": "vmsg.technique.vinculum_method",
+   "kind": "surface_variant"
+  },
+  "Vinculum Numbers": {
+   "to_id": "vmsg.technique.vinculum_method",
+   "kind": "surface_variant"
+  },
+  "Base Rate Fallacy": {
+   "to_id": "vmsg.trap.base_rate_fallacy",
+   "kind": "canonical"
+  },
+  "Builder Blindness": {
+   "to_id": "vmsg.trap.builder_blindness",
+   "kind": "canonical"
+  },
+  "Builder Misapplication": {
+   "to_id": "vmsg.trap.builder_blindness",
+   "kind": "surface_variant"
+  },
+  "Wrong Sutra": {
+   "to_id": "vmsg.trap.builder_blindness",
+   "kind": "surface_variant"
+  },
+  "Calculation Error": {
+   "to_id": "vmsg.trap.calculation_error",
+   "kind": "canonical"
+  },
+  "Computation Trap": {
+   "to_id": "vmsg.trap.calculation_error",
+   "kind": "surface_variant"
+  },
+  "Math Error": {
+   "to_id": "vmsg.trap.calculation_error",
+   "kind": "surface_variant"
+  },
+  "Logic Trap": {
+   "to_id": "vmsg.trap.logic_trap",
+   "kind": "canonical"
+  },
+  "Logic Maze": {
+   "to_id": "vmsg.trap.logic_trap",
+   "kind": "surface_variant"
+  },
+  "Tricky Question": {
+   "to_id": "vmsg.trap.logic_trap",
+   "kind": "surface_variant"
+  },
+  "Step Gap": {
+   "to_id": "vmsg.trap.step_gap",
+   "kind": "canonical"
+  },
+  "Hidden Step": {
+   "to_id": "vmsg.trap.step_gap",
+   "kind": "surface_variant"
+  },
+  "Implicit Step": {
+   "to_id": "vmsg.trap.step_gap",
+   "kind": "surface_variant"
+  },
+  "Variable Shift": {
+   "to_id": "vmsg.trap.variable_shift",
+   "kind": "canonical"
+  },
+  "Moving Target": {
+   "to_id": "vmsg.trap.variable_shift",
+   "kind": "surface_variant"
+  },
+  "Variable Swap": {
+   "to_id": "vmsg.trap.variable_shift",
+   "kind": "surface_variant"
+  },
+  "Verbal Distractor": {
+   "to_id": "vmsg.trap.verbal_distractor",
+   "kind": "canonical"
+  },
+  "Verbal Maze": {
+   "to_id": "vmsg.trap.verbal_distractor",
+   "kind": "surface_variant"
+  },
+  "Word Trick": {
+   "to_id": "vmsg.trap.verbal_distractor",
+   "kind": "surface_variant"
+  },
+  "Algebraic Multiplication": {
+   "to_id": "vmsg.topic.algebraic_multiplication",
+   "kind": "canonical"
+  },
+  "Alphabet Position Calculations": {
+   "to_id": "vmsg.topic.alphabet_position_calculations",
+   "kind": "canonical"
+  },
+  "Arithmetic Algorithms": {
+   "to_id": "vmsg.topic.arithmetic_algorithms",
+   "kind": "canonical"
+  },
+  "Arithmetic Computation": {
+   "to_id": "vmsg.topic.arithmetic_computation",
+   "kind": "canonical"
+  },
+  "Arithmetic Operations": {
+   "to_id": "vmsg.topic.arithmetic_operations",
+   "kind": "canonical"
+  },
+  "Arithmetic Reasoning": {
+   "to_id": "vmsg.topic.arithmetic_reasoning",
+   "kind": "canonical"
+  },
+  "Arithmetical Reasoning": {
+   "to_id": "vmsg.topic.arithmetical_reasoning",
+   "kind": "canonical"
+  },
+  "Back matter": {
+   "to_id": "vmsg.topic.back_matter",
+   "kind": "canonical"
+  },
+  "Calendar Calculations": {
+   "to_id": "vmsg.topic.calendar_calculations",
+   "kind": "canonical"
+  },
+  "Calendar Reasoning": {
+   "to_id": "vmsg.topic.calendar_reasoning",
+   "kind": "canonical"
+  },
+  "Calendar Systems": {
+   "to_id": "vmsg.topic.calendar_systems",
+   "kind": "canonical"
+  },
+  "Clock and Time Reasoning": {
+   "to_id": "vmsg.topic.clock_and_time_reasoning",
+   "kind": "canonical"
+  },
+  "Clock Reasoning": {
+   "to_id": "vmsg.topic.clock_reasoning",
+   "kind": "canonical"
+  },
+  "Combinatorial Counting": {
+   "to_id": "vmsg.topic.combinatorial_counting",
+   "kind": "canonical"
+  },
+  "Combinatorial Geometry": {
+   "to_id": "vmsg.topic.combinatorial_geometry",
+   "kind": "canonical"
+  },
+  "Combinatorial Optimization": {
+   "to_id": "vmsg.topic.combinatorial_optimization",
+   "kind": "canonical"
+  },
+  "Combinatorics": {
+   "to_id": "vmsg.topic.combinatorics",
+   "kind": "canonical"
+  },
+  "Competition Reasoning": {
+   "to_id": "vmsg.topic.competition_reasoning",
+   "kind": "canonical"
+  },
+  "Competitive Exam Preparation": {
+   "to_id": "vmsg.topic.competitive_exam_preparation",
+   "kind": "canonical"
+  },
+  "Competitive Exam Reasoning": {
+   "to_id": "vmsg.topic.competitive_exam_reasoning",
+   "kind": "canonical"
+  },
+  "Competitive Reasoning": {
+   "to_id": "vmsg.topic.competitive_reasoning",
+   "kind": "canonical"
+  },
+  "Conclusions": {
+   "to_id": "vmsg.topic.conclusions",
+   "kind": "canonical"
+  },
+  "Direction and Distance": {
+   "to_id": "vmsg.topic.direction_and_distance",
+   "kind": "canonical"
+  },
+  "Direction and Distance Reasoning": {
+   "to_id": "vmsg.topic.direction_and_distance_reasoning",
+   "kind": "canonical"
+  },
+  "Discrete Mathematics": {
+   "to_id": "vmsg.topic.discrete_mathematics",
+   "kind": "canonical"
+  },
+  "Elementary Mathematics": {
+   "to_id": "vmsg.topic.elementary_mathematics",
+   "kind": "canonical"
+  },
+  "Family Tree Logic": {
+   "to_id": "vmsg.topic.family_tree_logic",
+   "kind": "canonical"
+  },
+  "Flow chart showing different operations": {
+   "to_id": "vmsg.topic.flow_chart_showing_different_operations",
+   "kind": "canonical"
+  },
+  "Formal Logic": {
+   "to_id": "vmsg.topic.formal_logic",
+   "kind": "canonical"
+  },
+  "Introduction": {
+   "to_id": "vmsg.topic.introduction",
+   "kind": "canonical"
+  },
+  "Logic and Data Interpretation": {
+   "to_id": "vmsg.topic.logic_and_data_interpretation",
+   "kind": "canonical"
+  },
+  "Logic and Reasoning": {
+   "to_id": "vmsg.topic.logic_and_reasoning",
+   "kind": "canonical"
+  },
+  "Logic Grid Puzzles": {
+   "to_id": "vmsg.topic.logic_grid_puzzles",
+   "kind": "canonical"
+  },
+  "Logic Puzzle": {
+   "to_id": "vmsg.topic.logic_puzzle",
+   "kind": "canonical"
+  },
+  "Logic Puzzle Data": {
+   "to_id": "vmsg.topic.logic_puzzle_data",
+   "kind": "canonical"
+  },
+  "Logic Puzzles": {
+   "to_id": "vmsg.topic.logic_puzzles",
+   "kind": "canonical"
+  },
+  "Logic Reasoning": {
+   "to_id": "vmsg.topic.logic_reasoning",
+   "kind": "canonical"
+  },
+  "LOGIC_REASONING": {
+   "to_id": "vmsg.topic.logic_reasoning",
+   "kind": "surface_variant"
+  },
+  "Logic Reasoning Problems": {
+   "to_id": "vmsg.topic.logic_reasoning_problems",
+   "kind": "canonical"
+  },
+  "Logical Reasoning": {
+   "to_id": "vmsg.topic.logical_reasoning",
+   "kind": "canonical"
+  },
+  "Logical Reasoning and Data Interpretation": {
+   "to_id": "vmsg.topic.logical_reasoning_and_data_interpretation",
+   "kind": "canonical"
+  },
+  "Logical Reasoning with Data Interpretation": {
+   "to_id": "vmsg.topic.logical_reasoning_with_data_interpretation",
+   "kind": "canonical"
+  },
+  "Logical Venn Diagrams": {
+   "to_id": "vmsg.topic.logical_venn_diagrams",
+   "kind": "canonical"
+  },
+  "Mathematical Logic": {
+   "to_id": "vmsg.topic.mathematical_logic",
+   "kind": "canonical"
+  },
+  "Mathematical Reasoning": {
+   "to_id": "vmsg.topic.mathematical_reasoning",
+   "kind": "canonical"
+  },
+  "Mathematical Series": {
+   "to_id": "vmsg.topic.mathematical_series",
+   "kind": "canonical"
+  },
+  "Mathematical Systems": {
+   "to_id": "vmsg.topic.mathematical_systems",
+   "kind": "canonical"
+  },
+  "Mathematics": {
+   "to_id": "vmsg.topic.mathematics",
+   "kind": "canonical"
+  },
+  "Mathematics Education": {
+   "to_id": "vmsg.topic.mathematics_education",
+   "kind": "canonical"
+  },
+  "Mental Math / Arithmetic": {
+   "to_id": "vmsg.topic.mental_math_arithmetic",
+   "kind": "canonical"
+  },
+  "Non-Verbal Reasoning": {
+   "to_id": "vmsg.topic.non_verbal_reasoning",
+   "kind": "canonical"
+  },
+  "Number Series": {
+   "to_id": "vmsg.topic.number_series",
+   "kind": "canonical"
+  },
+  "Number Theory": {
+   "to_id": "vmsg.topic.number_theory",
+   "kind": "canonical"
+  },
+  "Number Theory / Arithmetic": {
+   "to_id": "vmsg.topic.number_theory_arithmetic",
+   "kind": "canonical"
+  },
+  "Number Theory / Arithmetic Computation": {
+   "to_id": "vmsg.topic.number_theory_arithmetic_computation",
+   "kind": "canonical"
+  },
+  "Number Theory / Arithmetic Verification": {
+   "to_id": "vmsg.topic.number_theory_arithmetic_verification",
+   "kind": "canonical"
+  },
+  "Numerical Approximation": {
+   "to_id": "vmsg.topic.numerical_approximation",
+   "kind": "canonical"
+  },
+  "numerical cognition": {
+   "to_id": "vmsg.topic.numerical_cognition",
+   "kind": "canonical"
+  },
+  "Polynomial Algebra": {
+   "to_id": "vmsg.topic.polynomial_algebra",
+   "kind": "canonical"
+  },
+  "Quantitative Aptitude": {
+   "to_id": "vmsg.topic.quantitative_aptitude",
+   "kind": "canonical"
+  },
+  "Quantitative Reasoning": {
+   "to_id": "vmsg.topic.quantitative_reasoning",
+   "kind": "canonical"
+  },
+  "Reasoning Skills": {
+   "to_id": "vmsg.topic.reasoning_skills",
+   "kind": "canonical"
+  },
+  "Set Theory": {
+   "to_id": "vmsg.topic.set_theory",
+   "kind": "canonical"
+  },
+  "Spatial Reasoning": {
+   "to_id": "vmsg.topic.spatial_reasoning",
+   "kind": "canonical"
+  },
+  "Spatial Reasoning / Combinatorial Geometry": {
+   "to_id": "vmsg.topic.spatial_reasoning_combinatorial_geometry",
+   "kind": "canonical"
+  },
+  "Spatial Reasoning / Visual Puzzles": {
+   "to_id": "vmsg.topic.spatial_reasoning_visual_puzzles",
+   "kind": "canonical"
+  },
+  "Symbolic Logic and Arithmetic": {
+   "to_id": "vmsg.topic.symbolic_logic_and_arithmetic",
+   "kind": "canonical"
+  },
+  "Symbolic Logic and Pattern Recognition": {
+   "to_id": "vmsg.topic.symbolic_logic_and_pattern_recognition",
+   "kind": "canonical"
+  },
+  "Vedic Mathematics": {
+   "to_id": "vmsg.topic.vedic_mathematics",
+   "kind": "canonical"
+  },
+  "Verbal and Logical Reasoning": {
+   "to_id": "vmsg.topic.verbal_and_logical_reasoning",
+   "kind": "canonical"
+  },
+  "Verbal and Non-Verbal Reasoning": {
+   "to_id": "vmsg.topic.verbal_and_non_verbal_reasoning",
+   "kind": "canonical"
+  },
+  "Verbal Reasoning": {
+   "to_id": "vmsg.topic.verbal_reasoning",
+   "kind": "canonical"
+  },
+  "Visual Reasoning": {
+   "to_id": "vmsg.topic.visual_reasoning",
+   "kind": "canonical"
+  },
+  "Visual Reasoning / Combinatorial Counting": {
+   "to_id": "vmsg.topic.visual_reasoning_combinatorial_counting",
+   "kind": "canonical"
+  },
+  "1. Multiplication near bases 10, 100, 1000 etc.": {
+   "to_id": null,
+   "kind": "excluded",
+   "reason": "book-structure: numbered chapter heading"
+  },
+  "10. Division": {
+   "to_id": null,
+   "kind": "excluded",
+   "reason": "book-structure: numbered chapter heading"
+  },
+  "11. Division by large numbers": {
+   "to_id": null,
+   "kind": "excluded",
+   "reason": "book-structure: numbered chapter heading"
+  },
+  "12. Dividing by 19, 29, 39": {
+   "to_id": null,
+   "kind": "excluded",
+   "reason": "book-structure: numbered chapter heading"
+  },
+  "2. Multiplication of numbers near bases 50, 150, 200 etc.": {
+   "to_id": null,
+   "kind": "excluded",
+   "reason": "book-structure: numbered chapter heading"
+  },
+  "3. Squares": {
+   "to_id": null,
+   "kind": "excluded",
+   "reason": "book-structure: numbered chapter heading"
+  },
+  "4. Squaring numbers ending in 5": {
+   "to_id": null,
+   "kind": "excluded",
+   "reason": "book-structure: numbered chapter heading"
+  },
+  "5. Multiplying numbers where the first parts are the same and the last parts add up to 10": {
+   "to_id": null,
+   "kind": "excluded",
+   "reason": "book-structure: numbered chapter heading"
+  },
+  "6. Multiplication of any numbers": {
+   "to_id": null,
+   "kind": "excluded",
+   "reason": "book-structure: numbered chapter heading"
+  },
+  "7. Multiplying a number by 11": {
+   "to_id": null,
+   "kind": "excluded",
+   "reason": "book-structure: numbered chapter heading"
+  },
+  "8. Multiplying a number by 12": {
+   "to_id": null,
+   "kind": "excluded",
+   "reason": "book-structure: numbered chapter heading"
+  },
+  "9. Cubing two digit numbers": {
+   "to_id": null,
+   "kind": "excluded",
+   "reason": "book-structure: numbered chapter heading"
+  },
+  "Advance Level": {
+   "to_id": null,
+   "kind": "excluded",
+   "reason": "difficulty band, not a subject — belongs in a difficulty field"
+  },
+  "Answer Key": {
+   "to_id": null,
+   "kind": "excluded",
+   "reason": "extraction artifact: an answer-key section header captured as a topic"
+  },
+  "Answer Key Data": {
+   "to_id": null,
+   "kind": "excluded",
+   "reason": "extraction artifact: an answer-key section header captured as a topic"
+  },
+  "Answer Key Structure": {
+   "to_id": null,
+   "kind": "excluded",
+   "reason": "extraction artifact: an answer-key section header captured as a topic"
+  },
+  "Appendices": {
+   "to_id": null,
+   "kind": "excluded",
+   "reason": "book-structure: front/back matter"
+  },
+  "Appendix": {
+   "to_id": null,
+   "kind": "excluded",
+   "reason": "book-structure: front/back matter"
+  },
+  "Appendix A: The Sutras": {
+   "to_id": null,
+   "kind": "excluded",
+   "reason": "book-structure: front/back matter"
+  },
+  "Appendix B: The Sub-Sutras, upa-sutras or corollaries": {
+   "to_id": null,
+   "kind": "excluded",
+   "reason": "book-structure: front/back matter"
+  },
+  "Appendix C: Applications of the Sutras": {
+   "to_id": null,
+   "kind": "excluded",
+   "reason": "book-structure: front/back matter"
+  },
+  "Appendix D: Applications of the Sub-Sutras": {
+   "to_id": null,
+   "kind": "excluded",
+   "reason": "book-structure: front/back matter"
+  },
+  "Basic Level": {
+   "to_id": null,
+   "kind": "excluded",
+   "reason": "difficulty band, not a subject — belongs in a difficulty field"
+  },
+  "Front matter": {
+   "to_id": null,
+   "kind": "excluded",
+   "reason": "book-structure: front/back matter"
+  },
+  "Intermediate Level": {
+   "to_id": null,
+   "kind": "excluded",
+   "reason": "difficulty band, not a subject — belongs in a difficulty field"
+  },
+  "Part I - Review of Algebra": {
+   "to_id": null,
+   "kind": "excluded",
+   "reason": "book-structure: Schaum part title, not a subject"
+  },
+  "Part II - Topics in Discrete Mathematics": {
+   "to_id": null,
+   "kind": "excluded",
+   "reason": "book-structure: Schaum part title, not a subject"
+  },
+  "Part III - Topics in Precalculus": {
+   "to_id": null,
+   "kind": "excluded",
+   "reason": "book-structure: Schaum part title, not a subject"
+  },
+  "Part IV - Introduction to Calculus": {
+   "to_id": null,
+   "kind": "excluded",
+   "reason": "book-structure: Schaum part title, not a subject"
+  }
+ },
  "sources": {
   "neo4j_skill_nonstub": 93,
   "ontology_registry": 43,

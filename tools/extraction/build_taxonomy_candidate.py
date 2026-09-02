@@ -270,11 +270,43 @@ def main(out_path):
 
     final.sort(key=lambda x: (x["status"], x["type"], x["label"].lower()))
 
+    # ---- explicit old -> new label mappings ----
+    # Backend constraint (2026-09-03): any merge/rename in an accepted v1 needs a
+    # matching migration of user mastery keys plus a closure rebuild, so this file
+    # must always ship old->new mappings, never just the surviving label list.
+    # Every raw label ever observed appears here exactly once.
+    label_mappings = {}
+    for e in final:
+        if e["status"] == "excluded":
+            for raw in e["aliases"]:
+                label_mappings[raw] = {"to_id": None, "kind": "excluded",
+                                       "reason": e["exclusion_reason"]}
+            label_mappings[e["label"]] = {"to_id": None, "kind": "excluded",
+                                          "reason": e["exclusion_reason"]}
+            continue
+        label_mappings[e["label"]] = {"to_id": e["id"], "kind": "canonical"}
+        for raw in e["aliases"]:
+            label_mappings.setdefault(raw, {"to_id": e["id"], "kind": "surface_variant"})
+
     doc = {
         "version": "taxonomy_v1_candidate",
         "generated": "2026-09-03",
         "authority": "CANDIDATE ONLY — not authoritative until reviewed by RAG "
                      "(against graph + ontology) and accepted by backend for BKT joins",
+        "rename_constraint": (
+            "Backend requirement: every merge/rename decided during review MUST be "
+            "recorded in label_mappings as an old->new pair, because accepting it "
+            "requires migrating user mastery keys and rebuilding the prerequisite "
+            "closure. A reviewer who merges two entries must add the losing label "
+            "with kind='semantic_merge' pointing at the surviving id — never delete "
+            "the losing label from this file."),
+        "label_mappings_note": (
+            "Complete old->new map for every raw label observed anywhere. kind: "
+            "'canonical' (the surviving display form), 'surface_variant' (casing/"
+            "separator spelling of the same label), 'semantic_merge' (added by "
+            "review when two different labels are judged the same concept), or "
+            "'excluded' (to_id null, with reason)."),
+        "label_mappings": label_mappings,
         "sources": {
             "neo4j_skill_nonstub": n_skill,
             "ontology_registry": n_ont,
