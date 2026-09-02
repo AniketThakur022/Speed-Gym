@@ -133,8 +133,12 @@ def enrichment_score(rec: dict) -> tuple:
             len(rec))
 
 
-def adapt(rec: dict) -> tuple[dict | None, dict]:
-    """Returns (frontend_record | None, meta{trust, repairs, quarantine_reasons})."""
+def adapt(rec: dict, overrides: dict | None = None) -> tuple[dict | None, dict]:
+    """Returns (frontend_record | None, meta{trust, repairs, quarantine_reasons}).
+
+    `overrides` maps template_id -> scaffold decision from the verification panel;
+    it fills MISSING scaffolds only and never displaces one the source already has.
+    """
     meta = {"repairs": [], "quarantine": []}
     src = rec.get("source") or {}
     concept = rec.get("concept") or {}
@@ -155,11 +159,22 @@ def adapt(rec: dict) -> tuple[dict | None, dict]:
         meta["quarantine"].append("difficulty_invalid")
 
     vs = rec.get("visual_scaffold") or {}
+    override = (overrides or {}).get(rec.get("template_id")) if overrides else None
     scaffold_placeholder = False
     if vs.get("type") in SCAFFOLD_TYPES:
         scaffold = {"type": vs["type"]}
         if isinstance(vs.get("config"), dict):
             scaffold["config"] = vs["config"]
+    elif override and override.get("scaffold_type") in SCAFFOLD_TYPES:
+        # Enrichment decided by the adversarially-verified scaffold panel; provenance
+        # travels with the record so a degraded-quorum choice stays auditable.
+        scaffold = {"type": override["scaffold_type"]}
+        cfg = dict(override.get("config") or {})
+        cfg["scaffold_source"] = override.get("status", "panel")
+        if not override.get("full_quorum", True):
+            cfg["low_quorum"] = True
+        scaffold["config"] = cfg
+        meta["repairs"].append(f"scaffold_from_panel_{override.get('status', 'panel')}")
     else:
         scaffold = {"type": "textual_scaffold",
                     "config": {"placeholder": True, "needs_visual_enrichment": True}}
@@ -233,7 +248,17 @@ def main() -> int:
     ap.add_argument("--input-dir", default="incoming/topic_browser_full_package/content_data/templates/solve_along")
     ap.add_argument("--out", default="data/factory/solvealong_bank_v1.jsonl")
     ap.add_argument("--manifest", default="data/factory/solvealong_bank_v1.manifest.json")
+    ap.add_argument("--scaffold-overrides", default=None,
+                    help="JSON {decisions:[{template_id, scaffold_type, config, status, full_quorum}]} "
+                         "from the scaffold verification panel")
     args = ap.parse_args()
+
+    overrides = {}
+    if args.scaffold_overrides:
+        payload = json.loads(Path(args.scaffold_overrides).read_text())
+        for d in payload.get("decisions", payload if isinstance(payload, list) else []):
+            overrides[d["template_id"]] = d
+        print(f"scaffold overrides loaded: {len(overrides)}")
 
     by_id: dict[str, dict] = {}
     files = sorted(Path(args.input_dir).glob("*.jsonl"))
@@ -250,7 +275,7 @@ def main() -> int:
 
     bank, trust_by_id, quarantined, repairs_log = [], {}, {}, {}
     for tid in sorted(by_id):
-        out, meta = adapt(by_id[tid])
+        out, meta = adapt(by_id[tid], overrides)
         if out is None:
             quarantined[tid] = meta["quarantine"]
             continue
@@ -283,6 +308,10 @@ def main() -> int:
         "quarantined": quarantined,
         "repairs": repairs_log,
         "expected_time_stats": {"min": min(et), "median": statistics.median(et), "max": max(et)},
+        "scaffold_overrides_applied": sum(
+            1 for r in bank if (r["visual_scaffold"].get("config") or {}).get("scaffold_source")),
+        "placeholder_scaffolds_remaining": sum(
+            1 for r in bank if (r["visual_scaffold"].get("config") or {}).get("placeholder")),
         "trust_by_id": trust_by_id,
         "notes": [
             "Trust values are ladder ENTRY recommendations; promotion requires the 7-stage auditor.",
