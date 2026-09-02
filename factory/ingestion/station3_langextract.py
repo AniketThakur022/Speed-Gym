@@ -139,6 +139,8 @@ def main() -> int:
     ap.add_argument("--chunks", default="incoming/topic_browser_full_package/db_exports/chunks.jsonl")
     ap.add_argument("--book-filter", default="Tirthaji")
     ap.add_argument("--limit", type=int, default=40, help="pilot chunk count (0 = all)")
+    ap.add_argument("--min-page", type=int, default=0,
+                    help="skip pages below this (front matter is not teaching content)")
     ap.add_argument("--provider", choices=["ollama", "openai", "gemini"], default="ollama")
     ap.add_argument("--model", default="llama3.2:3b")
     ap.add_argument("--ollama-url", default="http://localhost:11434")
@@ -155,13 +157,19 @@ def main() -> int:
     with Path(args.chunks).open() as f:
         for line in f:
             c = json.loads(line)
-            if args.book_filter.casefold() not in (c.get("book_id") or "").casefold():
+            # Two shapes: legacy Ledger export (id/book_id/page_number) and the
+            # station-0 verbatim store (chunk_id/book/page_start).
+            cid = c.get("id") or c.get("chunk_id")
+            book = c.get("book_id") or c.get("book") or ""
+            page = c.get("page_number") if "page_number" in c else c.get("page_start")
+            if args.book_filter.casefold() not in book.casefold():
+                continue
+            if args.min_page and (page or 0) < args.min_page:
                 continue
             content = nfkc(c.get("content") or "")
             if len(content) < 60:  # skip fragments
                 continue
-            slice_rows.append({"id": c["id"], "book_id": c["book_id"],
-                               "page": c.get("page_number"), "content": content})
+            slice_rows.append({"id": cid, "book_id": book, "page": page, "content": content})
             if args.limit and len(slice_rows) >= args.limit:
                 break
 
