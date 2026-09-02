@@ -34,16 +34,23 @@ ROMAN = {"I": 1, "II": 2, "III": 3, "IV": 4, "V": 5, "VI": 6, "VII": 7, "VIII": 
 
 
 def parse_heading(exercise):
-    """'IV. a.' -> (4, 1); 'XXI. b' -> (21, 2); returns None for misc/unparseable."""
+    """'IV. a.' -> (4, 1); 'XXI. b' -> (21, 2); bare 'I.' -> (1, 1).
+
+    Chapters with a single exercise print no letter suffix; MASTER still
+    stores them as ..._examples_1. The page-cite cross-check below is what
+    validates either mapping, so a bare numeral is safe to accept here.
+    """
     if not exercise:
         return None
-    m = re.match(r"\s*([IVXL]+)\s*\.?\s*([a-h])\b", exercise.strip(), re.I)
+    m = re.match(r"\s*([IVXL]+)\s*\.?\s*([a-h])?\b", exercise.strip(), re.I)
     if not m:
         return None
     rom = m.group(1).upper()
     if rom not in ROMAN:
         return None
-    return ROMAN[rom], ord(m.group(2).lower()) - ord("a") + 1
+    letter = m.group(2)
+    idx = (ord(letter.lower()) - ord("a") + 1) if letter else 1
+    return ROMAN[rom], idx
 
 
 def parse_qpages(question_pages):
