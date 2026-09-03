@@ -1,0 +1,106 @@
+{
+ "export": "vmsg_questions_v1",
+ "generated": "2026-09-03",
+ "source": "data/corpus/MASTER_corpus.jsonl",
+ "taxonomy_version": "taxonomy_v1",
+ "row_key": "question_id = <set_id>#<number> (unique)",
+ "counts": {
+  "questions": 19619,
+  "playable": 12014,
+  "not_playable": 7605,
+  "taxonomy_resolved": 2033
+ },
+ "playable_blockers": {
+  "no_answer_key": 4412,
+  "needs_vision": 4384,
+  "format_unclassified": 2835,
+  "text_too_short": 782,
+  "option_format_without_options": 420,
+  "format_options_are_images": 299,
+  "text_is_misextracted": 244,
+  "duplicate_question_number_in_record": 53,
+  "errata_key_is_raster_image": 37,
+  "errata_confirmed_book_erratum": 5,
+  "key_suspect": 3,
+  "errata_proven_wrong": 1
+ },
+ "answer_provenance": {
+  "printed_grid": 8507,
+  "uncited": 3678,
+  "printed_inline_answer": 2359,
+  "other_cited": 421,
+  "hint_verdict_derivation": 132,
+  "solution_note_derivation": 110
+ },
+ "contracts": {
+  "verification": "answer_provenance / answer_check / derivation_check are three separate signals. derivation_check is 'none' on every row: no pipeline has ever validated a walkthrough. Never collapse these into one 'verified' flag.",
+  "taxonomy": "skill_key mirrors the live :Skill name and is the BKT join key; display_label is owner-changeable with zero migration. taxonomy_status 'unresolved' means no id was assigned — the row carries raw_label + normalized_key instead of a fabricated id.",
+  "playability": "playable is a verdict; playable_blockers lists why not, so a consumer can widen or narrow the filter without re-deriving it."
+ },
+ "known_limits": {
+  "taxonomy_coverage": "question_set records carry NO topic field; the only per-question signal is the book chapter (72% of records). Chapter-derived taxonomy is thin by nature.",
+  "top_unresolved_chapters": [
+   {
+    "chapter": "Ch 1: Number Systems",
+    "questions": 506
+   },
+   {
+    "chapter": "Ch 11: Geometry and Mensuration",
+    "questions": 422
+   },
+   {
+    "chapter": "MISCELLANEOUS EXAMPLES (items 1-300)",
+    "questions": 299
+   },
+   {
+    "chapter": "Ch 13: Functions",
+    "questions": 285
+   },
+   {
+    "chapter": "Chapter 2. Solving Linear Equations",
+    "questions": 245
+   },
+   {
+    "chapter": "Reading Comprehension",
+    "questions": 210
+   },
+   {
+    "chapter": "Chapter 3. Vector Spaces and Subspaces",
+    "questions": 206
+   },
+   {
+    "chapter": "Ch 10: Time, Speed and Distance",
+    "questions": 195
+   },
+   {
+    "chapter": "Block III extras: Applications of TSD, Block Review Tests, Taste of the Exams",
+    "questions": 188
+   },
+   {
+    "chapter": "Chapter 6. Eigenvalues and Eigenvectors",
+    "questions": 183
+   },
+   {
+    "chapter": "Block V extras: Training Ground, Block Review Tests, Taste of the Exams",
+    "questions": 177
+   },
+   {
+    "chapter": "Ch 2: Progressions",
+    "questions": 168
+   },
+   {
+    "chapter": "Block I extras: Training Ground, Block Review Tests, Taste of the Exams",
+    "questions": 165
+   },
+   {
+    "chapter": "Ch 6: Profit & Loss",
+    "questions": 155
+   },
+   {
+    "chapter": "Sentence Equivalence",
+    "questions": 148
+   }
+  ],
+  "difficulty_coverage": "difficulty is set on ~17% of questions (ETS p_plus and Arun Sharma printed bands); NULL elsewhere because no signal exists. Not imputed."
+ }
+}
