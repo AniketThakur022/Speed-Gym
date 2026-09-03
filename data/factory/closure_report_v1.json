@@ -62,5 +62,11 @@
    "consequence": "They remain invisible to BKT: a learner can answer them and no skill updates.",
    "fix_owner": "extraction — needs technique enrichment at source, then edges can be derived."
   }
+ },
+ "key_semantics": {
+  "warning": "template_id is NOT unique across Neo4j labels. All 791 :SolveAlong nodes share their template_id with a distinct :Problem node (verified 2026-09-03), so a label-agnostic MATCH on template_id can resolve to the wrong node.",
+  "rule": "Always qualify the label when joining on template_id. :Problem and :SolveAlong are separate nodes and are never dual-labeled, so an id-keyed write to one does NOT touch the other.",
+  "this_artifact": "problem_requirements.template_id means a :Problem node SPECIFICALLY — the rows are derived from (:Skill)-[:PREREQUISITE_OF]->(:Problem) edges. It must not be resolved against :SolveAlong.",
+  "consequence": "This table is the BKT join spine, so a label-agnostic resolution would attribute mastery to the wrong content."
  }
 }

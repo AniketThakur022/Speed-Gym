@@ -1342,5 +1342,11 @@
   "text_mode_groups_split": 3,
   "mode_dependency": "KaTeX unicode support is MODE-DEPENDENT: Greek letters and check marks render cleanly in math mode but have NO glyph in the text fonts, so they misrender only inside \\text{...}. Verified by rendering each char in both modes. Repair is to SPLIT the text group leaving the char in math mode — substituting a command is wrong, \\mu inside \\text{} throws.",
   "verified": "0 of 6,404 formulas emit a no-character-metrics warning in either mode"
+ },
+ "key_semantics": {
+  "warning": "template_id is NOT unique across Neo4j labels. All 791 :SolveAlong nodes share their template_id with a distinct :Problem node (verified 2026-09-03), so a label-agnostic MATCH on template_id can resolve to the wrong node.",
+  "rule": "Always qualify the label when joining on template_id. :Problem and :SolveAlong are separate nodes and are never dual-labeled, so an id-keyed write to one does NOT touch the other.",
+  "this_artifact": "bank `id` is the recovered template_id of SolveAlong-shaped teaching content. 766 of the 823 also name a :Problem node; 20 of the 38 quarantined ids name both labels.",
+  "consequence": "Backend's trust import keys on these ids — it must exclude on BOTH labels if it ever serves the walkthrough pool, since excluding the :Problem alone leaves the same-id :SolveAlong untouched."
  }
 }
