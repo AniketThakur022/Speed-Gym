@@ -15,6 +15,16 @@ the underlying book problem. A quarantine for `empty_solution` means the
 converted walkthrough is unusable — which is why those ids are excluded from
 serving. It is deliberately NOT read as a verdict on the book's answer key.
 
+LABEL SCOPE — must stay true by construction. `template_id` is NOT unique across
+labels: all 791 :SolveAlong nodes share their template_id with a DISTINCT
+:Problem node (1,582 nodes across 791 ids; none dual-labelled). The ids written
+here are label-agnostic, but every serving path applies them inside a
+:Problem-qualified MATCH, which is correct only because :SolveAlong currently has
+no serving surface. IF THE WALKTHROUGH POOL IS EVER SERVED, that query must
+apply this same exclusion itself — an id-keyed filter on one label does not
+touch the other, so a new :SolveAlong route would silently serve quarantined
+walkthroughs. Recorded in the shared memory `neo4j-live-graph-schema`.
+
 Usage:
   python3 scripts/import_content_trust.py [--manifest PATH] [--dry-run]
 """
