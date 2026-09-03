@@ -262,7 +262,49 @@ def render_task_pages(task):
 
 
 def cmd_build(args):
-    if args.render_flagged:
+    if args.convertible:
+        # Build from the export's own verdict: questions whose ONLY blockers are
+        # vision-fixable AND which already carry an answer key, so a successful
+        # read converts them to playable immediately. This is a much better
+        # target than the raw needs_vision flag, ~45% of which is held by other
+        # blockers vision cannot clear (missing key, unclassified format).
+        export = ROOT / "data/exports/vmsg_questions_v1.jsonl"
+        if not export.exists():
+            sys.exit("run build_question_export.py first — this mode reads its verdicts")
+        VISION_FIXABLE = {"needs_vision", "text_is_misextracted",
+                          "option_format_without_options", "format_options_are_images",
+                          "text_too_short", "duplicate_question_number_in_record"}
+        want = collections.defaultdict(list)
+        for line in export.open():
+            r = json.loads(line)
+            if r["playable"] or not r["playable_blockers"]:
+                continue
+            if not set(r["playable_blockers"]) <= VISION_FIXABLE:
+                continue
+            if not r.get("answer_key"):
+                continue
+            if args.book and r["book"] != args.book:
+                continue
+            pages = tuple(sorted(set(r.get("pdf_pages") or []))[:4])
+            if not pages:
+                continue
+            want[(r["book"], pages)].append({
+                "set_id": r["set_id"], "number": r["number"],
+                "reason": "; ".join(r["playable_blockers"]),
+                "answer_key_already_known": r["answer_key"],
+                "current_text": (r.get("text") or "")[:200],
+            })
+        tasks = []
+        for (book, pages), items in sorted(want.items(), key=lambda kv: -len(kv[1])):
+            tasks.append({"task_id": "convert__%s__p%s" % (book.replace(" ", "_"),
+                                                           "-".join(map(str, pages))),
+                          "class": "needs_vision", "book": book,
+                          "pages": list(pages), "items": items})
+        if args.limit:
+            tasks = tasks[:args.limit]
+        manifest = WORKDIR / "tasks" / ("tasks_convertible_%s.jsonl"
+                                        % (args.book or "all").replace(" ", "_"))
+    elif args.render_flagged:
         # tasks for every needs_render page in a book's station-1 store
         book = args.render_flagged
         store = WORKDIR / "pages" / book.replace(" ", "_")
@@ -425,6 +467,8 @@ def main():
     b.add_argument("--book"), b.add_argument("--limit", type=int)
     b.add_argument("--answer-grid", dest="answer_grid", metavar="BOOK:FIRST-LAST")
     b.add_argument("--render-flagged", dest="render_flagged", metavar="BOOK")
+    b.add_argument("--convertible", action="store_true",
+                   help="target questions the export says vision can make playable")
     s1 = sub.add_parser("station1")
     s1.add_argument("--book", required=True)
     s = sub.add_parser("submit")
