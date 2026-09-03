@@ -37,6 +37,11 @@
   "hint_verdict_derivation": 132,
   "solution_note_derivation": 110
  },
+ "resolution_modes": {
+  "book_chapter_rule": "matched a taxonomy_v1.1 chapter_rule keyed on (book, chapter) — the preferred path, since one chapter title can mean different things in different books",
+  "label_match": "no (book, chapter) rule existed, so the normalized chapter label matched a taxonomy entry directly. This is a FALLBACK and is weaker: a bare label match is not book-scoped. A high count here is a prompt to add explicit chapter_rules, not a second endorsed path.",
+  "note": "These two counts are a measurement of HOW rows resolved, not a claim that either taxonomy version is short. They sum to taxonomy_resolved."
+ },
  "contracts": {
   "verification": "answer_provenance / answer_check / derivation_check are three separate signals. derivation_check is 'none' on every row: no pipeline has ever validated a walkthrough. Never collapse these into one 'verified' flag.",
   "taxonomy": "skill_key mirrors the live :Skill name and is the BKT join key; display_label is owner-changeable with zero migration. taxonomy_status 'unresolved' means no id was assigned — the row carries raw_label + normalized_key instead of a fabricated id.",
