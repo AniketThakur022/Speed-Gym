@@ -55,6 +55,14 @@ def _tier1_item(record: dict[str, Any]) -> dict[str, Any]:
         # the graph's ANSWER verification plus exclusion of factory-quarantined
         # ids — a different, weaker claim. Saying "trusted" here would repeat
         # the answer/solution conflation this codebase already corrected once.
+        #
+        # SCOPE OF THIS LABEL — do not let it drift: static_verified certifies
+        # the QUESTION and its ANSWER, nothing else. It says nothing about a
+        # worked solution. If Tier-1 ever renders static solution STEPS, those
+        # steps are unverified until the stage-7 jesters pass on them, and this
+        # label must NOT be stretched to cover them — that is exactly the
+        # answer-vs-derivation conflation recorded in the shared memory
+        # `content-verification-semantics`.
         # (Open question for the owner: the factory rates 776 of the derived
         # templates `trusted_candidate`, which servable_trust maps to sandbox.
         # Those ratings describe the derived walkthrough, not the book's answer,
