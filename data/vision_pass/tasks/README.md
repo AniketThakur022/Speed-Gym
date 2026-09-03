@@ -1,0 +1,27 @@
+# data/vision_pass/tasks — staged extraction batches
+
+Built by `tools/extraction/vision_pass_harness.py`. Every prompt is scoped to
+**targeted fact extraction for specific numbered exercise items** — not page
+transcription. Results are candidate input only: they run through
+`tools/extraction/verify_patch.py` (validity + token-preservation against the
+source page OCR) and a spot-check before any patch touches MASTER.
+
+| File | Tasks | Questions | What it recovers |
+|---|---|---|---|
+| `tasks_fact_options_recovery.jsonl` | 557 | 2,401 | Answer options for questions that already have a verified key but lost their option list from the text layer. Each success makes a question playable. |
+| `tasks_fact_needs_reextraction.jsonl` | 89 | 244 | The true printed question stem + options where the extractor captured hint/solution prose instead. 133 carry the answer from the printed grid as a hint. |
+| `tasks_answer_grid_HK_targeted.jsonl` | 4 | ~19 keys | Re-read of the four Hall & Knight ANSWERS pages whose entries a prior direct read left illegible. |
+| `tasks_convertible_all.jsonl` | 558 | 2,402 | Superset of the two fact batches, grouped by page. |
+| `tasks_digitize_Arun_Sharma.jsonl` | 123 | — | **Source-limited.** See `tasks_digitize_Arun_Sharma.BLOCKED.md`: 343 of 466 pages are Google Books placeholders. |
+| `tasks_Sinha.jsonl` | 10 | — | Chart transcription; delivered, flags cleared (all false positives). |
+
+**Priority.** `options_recovery` first — 2,401 questions, every one already
+carrying a verified answer key, so a successful read converts each straight to
+playable. Then `needs_reextraction`, then the H&K targeted re-read.
+
+**Open question for the owner, not resolvable here.** The RFP-era docs list
+*"content ownership: confirm with client"* as still open. Per-question fact
+extraction for an exam-prep product is the work these batches do; wholesale
+verbatim reproduction of copyrighted books is a different activity with a
+different rights basis, and the full-page corpus lane should not proceed past
+the already-swept text layer until the owner confirms that basis.

@@ -91,7 +91,8 @@ PRERENDERED = {
 
 PROMPTS = {
     "needs_vision": (
-        "You are re-reading a scanned book page to repair a flawed text extraction.\n"
+        'SCOPE — read carefully. This is targeted fact extraction for specific numbered exercise items, NOT page transcription. Return ONLY the fields asked for, for ONLY the listed items. Do not transcribe, summarise or reproduce the rest of the page, its narrative, worked solutions or surrounding prose. If an item is not on the page, say so rather than substituting nearby content.\n\n'
+        "You are repairing a flawed extraction of specific exercise items.\n"
         "The attached image(s) are the cited page(s). For EACH item listed below, find the printed "
         "question and return exact text: the question stem (fix flattened super/subscripts using ^ "
         "and _ or LaTeX), the answer options in order (empty list if the question has none printed), "
@@ -103,6 +104,7 @@ PROMPTS = {
         "If an item is not on these pages, return it with \"text\": null and explain in note."
     ),
     "needs_reextraction": (
+        'SCOPE — read carefully. This is targeted fact extraction for specific numbered exercise items, NOT page transcription. Return ONLY the fields asked for, for ONLY the listed items. Do not transcribe, summarise or reproduce the rest of the page, its narrative, worked solutions or surrounding prose. If an item is not on the page, say so rather than substituting nearby content.\n\n'
         "A previous extraction captured hints/solution prose instead of the printed question. "
         "The attached image(s) show the exercise pages. For EACH item below, extract the TRUE printed "
         "question with that number from this exercise: full stem and options. The expected answer key "
