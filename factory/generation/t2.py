@@ -13,6 +13,7 @@ same auditor + to_solvealong_template() adapter as recovered T1 content.
 
 import hashlib
 import random
+import re
 
 # question_generator_config.json difficulty_scaling (recovered, canonical)
 SCALING = {
@@ -44,10 +45,41 @@ def params_hash(pattern_id: str, params: dict) -> str:
     return hashlib.sha256(blob.encode()).hexdigest()
 
 
+def _assemble_near_base(cross: int, prod: int, base: int):
+    """Resolve the right part against the base's digit width.
+
+    The stage-7 panel caught the walkthroughs asserting the right part "must fill
+    exactly N digits" while displaying a product that does not — measured at ~80%
+    of L3-L5 instances. The real sutra rule is a carry (or a borrow when the
+    deviation product is negative), so it must be computed AND shown, not asserted.
+    Returns (left_final, right_str, adjust_note | None).
+    """
+    width = len(str(base)) - 1
+    span = 10 ** width
+    if prod >= span:
+        carry, right = divmod(prod, span)
+        return cross + carry, str(right).zfill(width), (
+            f"{prod} \\text{{ exceeds }} {width} \\text{{ digits, so carry }} {carry} "
+            f"\\text{{ into the left part: }} {cross} + {carry} = {cross + carry}")
+    if prod < 0:
+        borrowed = span + prod
+        if borrowed >= 0:
+            return cross - 1, str(borrowed).zfill(width), (
+                f"\\text{{the deviation product }} {prod} \\text{{ is negative, so borrow }} 1 "
+                f"\\text{{ from the left part: }} {cross} - 1 = {cross - 1}, "
+                f"\\text{{ right part }} {span} {prod:+d} = {borrowed}")
+        carry, right = divmod(prod, span)  # deep borrow
+        return cross + carry, str(right).zfill(width), (
+            f"\\text{{large negative deviation product: borrow }} {abs(carry)} "
+            f"\\text{{ from the left part}}")
+    return cross, str(prod).zfill(width), None
+
+
 def _nikhilam_steps(a, b, base):
     da, db = a - base, b - base
     cross = a + db
     prod = da * db
+    left_final, right_str, adjust = _assemble_near_base(cross, prod, base)
     steps = [
         {"step_num": 1, "operation": f"Choose the base {base}",
          "formula": f"a={a},\\; b={b},\\; \\text{{base}}={base}",
@@ -60,11 +92,20 @@ def _nikhilam_steps(a, b, base):
          "reasoning": "Either cross-sum gives the same left part"},
         {"step_num": 4, "operation": "Multiply the deviations for the right part",
          "formula": f"({da:+d})\\times({db:+d}) = {prod}",
-         "reasoning": f"Right part must fill exactly {len(str(base)) - 1} digits (carry/borrow if not)"},
-        {"step_num": 5, "operation": "Assemble the answer",
-         "formula": f"{cross}\\times{base} {prod:+d} = {a * b}",
-         "reasoning": "left·base + deviation product"},
+         "reasoning": f"The right part occupies {len(str(base)) - 1} digits — the width of "
+                      f"the base's zeros"},
     ]
+    if adjust:
+        steps.append({
+            "step_num": 5, "operation": "Adjust the right part to fit the base width",
+            "formula": adjust,
+            "reasoning": "The right part cannot be wider than the base's zeros, so the "
+                         "excess moves into the left part — this carry is part of the "
+                         "method, not an afterthought"})
+    steps.append({
+        "step_num": len(steps) + 1, "operation": "Assemble the answer",
+        "formula": f"{left_final}\\,|\\,{right_str} = {a * b}",
+        "reasoning": f"left \\times {base} + right, with the digits placed by width"})
     return steps
 
 
@@ -102,7 +143,8 @@ def gen_square_near_base(rng: random.Random, level: int) -> dict:
     base = BASES[SCALING[level]["digit_complexity"]]
     d = _deviation(rng, base, level)
     a = base + d
-    left, right = a + d, d * d
+    left_raw, right_raw = a + d, d * d
+    left, right_str, adjust = _assemble_near_base(left_raw, right_raw, base)
     return {
         # Canonical sub_topic strings mirror the recovered bank exactly, so generated
         # items join the same :Skill as the 861 static templates instead of forking one.
@@ -116,17 +158,66 @@ def gen_square_near_base(rng: random.Random, level: int) -> dict:
             {"step_num": 1, "operation": "Deviation from the base",
              "formula": f"{a} - {base} = {d:+d}", "reasoning": "Yavadunam works on the deficiency/surplus"},
             {"step_num": 2, "operation": "Left part: add the deviation again",
-             "formula": f"{a}{d:+d} = {left}", "reasoning": "Whatever the deficiency, lessen it further"},
+             "formula": f"{a}{d:+d} = {left_raw}",
+             "reasoning": "Whatever the deficiency, lessen it further"},
             {"step_num": 3, "operation": "Right part: square the deviation",
-             "formula": f"({d:+d})^2 = {right}", "reasoning": f"Must fill {len(str(base)) - 1} digits"},
-            {"step_num": 4, "operation": "Assemble",
-             "formula": f"{left}\\times{base} + {right} = {a * a}", "reasoning": "left·base + deviation²"},
+             "formula": f"({d:+d})^2 = {right_raw}",
+             "reasoning": f"The right part occupies {len(str(base)) - 1} digits — the width "
+                          f"of the base's zeros"},
+            *([{"step_num": 4, "operation": "Adjust the right part to fit the base width",
+                "formula": adjust,
+                "reasoning": "The squared deviation is wider than the base's zeros, so the "
+                             "excess carries into the left part — part of the method, not "
+                             "an afterthought"}] if adjust else []),
+            {"step_num": 5 if adjust else 4, "operation": "Assemble",
+             "formula": f"{left}\\,|\\,{right_str} = {a * a}",
+             "reasoning": f"left \\times {base} + right, with the digits placed by width"},
         ],
         "traps": ["squaring the deviation but dropping its sign context",
                   "right part written with too few digits (missing leading zeros)"],
         "visual_scaffold": {"type": "place_value_chart"},
         "prerequisite_chain": ["Arithmetic", "Basic Operations (+, -, ×, ÷)", "Number Bases"],
     }
+
+
+def _neighbour_sum_steps(n: int) -> list[dict]:
+    """The actual ×11 method: write the last digit, then add each digit to its right
+    neighbour moving left, carrying, then the leading digit plus any carry."""
+    ds = [int(c) for c in str(n)]
+    digit_row = "\\,|\\,".join(["0", *(str(d) for d in ds), "0"])
+    steps = [{"step_num": 1, "operation": "Write the digits with a zero at each end",
+              "formula": digit_row,
+              "reasoning": "Each output digit is a digit plus its right neighbour; the "
+                           "outer zeros make the first and last cases follow the same rule"}]
+    out, carry, step = [], 0, 2
+    steps.append({"step_num": step, "operation": "Units digit: copy it down",
+                  "formula": f"{ds[-1]}", "reasoning": "It has no right neighbour to add"})
+    out.append(ds[-1] % 10)
+    carry = 0
+    step += 1
+    for i in range(len(ds) - 1, 0, -1):
+        s = ds[i - 1] + ds[i] + carry
+        steps.append({
+            "step_num": step,
+            "operation": f"Add digit {ds[i-1]} to its right neighbour {ds[i]}"
+                         + (f" plus carry {carry}" if carry else ""),
+            "formula": f"{ds[i-1]} + {ds[i]}" + (f" + {carry}" if carry else "")
+                       + f" = {s} \\Rightarrow \\text{{write }} {s % 10}"
+                       + (f", \\text{{carry }} {s // 10}" if s // 10 else ""),
+            "reasoning": "Neighbour sums run right to left, carrying like ordinary addition"})
+        out.append(s % 10)
+        carry = s // 10
+        step += 1
+    lead = ds[0] + carry
+    steps.append({"step_num": step,
+                  "operation": "Leading digit" + (f" plus carry {carry}" if carry else ""),
+                  "formula": f"{ds[0]}" + (f" + {carry} = {lead}" if carry else f" = {lead}"),
+                  "reasoning": "The leftmost digit closes the number"})
+    out.append(lead)
+    steps.append({"step_num": step + 1, "operation": "Read the digits right to left",
+                  "formula": f"{n} \\times 11 = {n * 11}",
+                  "reasoning": "The collected digits are the product"})
+    return steps
 
 
 @pattern("mult_by_11")
@@ -141,13 +232,14 @@ def gen_mult_by_11(rng: random.Random, level: int) -> dict:
         "compute": f"{a}*11",
         "final_answer": str(a * 11),
         "params": {"a": a, "b": 11},
-        "solution": [
-            {"step_num": 1, "operation": "Split into digit neighbours",
-             "formula": f"{a} \\times 11 = {a} \\times (10+1)", "reasoning": "11 = 10 + 1"},
-            {"step_num": 2, "operation": "Add each digit to its right neighbour",
-             "formula": f"{a}0 + {a} = {a * 11}", "reasoning": "Shift-and-add is the neighbour-sum rule"},
-        ],
-        "traps": ["forgetting to carry when neighbour sums exceed 9"],
+        "solution": _neighbour_sum_steps(a),
+        # An earlier version LABELLED these steps "split into digit neighbours" /
+        # "add each digit to its right neighbour" while the formulas actually computed
+        # a distributive shift-and-add (n×10 + n). The stage-7 panel caught the labels
+        # teaching one method while the arithmetic executed another; the steps now
+        # perform the digit-wise neighbour-sum they name.
+        "traps": ["forgetting to carry when a neighbour sum exceeds 9",
+                  "adding digits left to right instead of right to left"],
         "visual_scaffold": {"type": "arrow_matrix"},
         "prerequisite_chain": ["Arithmetic", "Basic Operations (+, -, ×, ÷)"],
     }
@@ -170,7 +262,17 @@ def gen_urdhva_2x2(rng: random.Random, level: int) -> dict:
         # a == b would emit a squaring item labelled "multiplication"; a shared digit
         # makes the same token appear as both a crosswise and a vertical product,
         # which is confusing for the one template whose job is that distinction.
-        if a_n != b_n and not (set(str(a_n)) & set(str(b_n))) and len(set(str(a_n))) == 2:
+        # From L3 up, require the instance to actually EXERCISE a carry. The panel
+        # failed this pattern on a carry-free example (41×90); measuring showed only
+        # ~1/40 instances are carry-free, so that draw was atypical rather than the
+        # rule — but a level that exists to teach carrying should never be able to
+        # demonstrate itself without one.
+        A, B = divmod(a_n, 10)
+        C, D = divmod(b_n, 10)
+        p1 = B * D
+        carries = (p1 // 10) or ((A * D + B * C + p1 // 10) // 10)
+        if (a_n != b_n and not (set(str(a_n)) & set(str(b_n)))
+                and len(set(str(a_n))) == 2 and (level < 3 or carries)):
             break
         a_n, b_n = draw()
     a, b = divmod(a_n, 10)[0], a_n % 10
@@ -359,3 +461,21 @@ def generate(pattern_id: str, level: int, count: int, run_seed: str,
         })
         out.append(rec)
     return out
+
+
+def skeleton_fingerprint(pattern_id: str, level: int) -> str:
+    """Hash of a pattern's WALKTHROUGH SKELETON at one level.
+
+    A stage-7 verdict judges the skeleton (the sequence of operations and their
+    reasoning), not the particular numbers. Digits are stripped so instance
+    variation does not change the hash, while any edit to what a step SAYS does.
+    This is what makes a verdict falsifiable: change the teaching and the verdict
+    that blessed it stops matching.
+    """
+    rec = generate(pattern_id, level, 1, f"fingerprint:{pattern_id}:{level}")
+    if not rec:
+        return "empty"
+    skeleton = "|".join(
+        re.sub(r"\d+", "#", f"{s.get('operation','')}~{s.get('reasoning','')}")
+        for s in rec[0]["solution"])
+    return hashlib.sha256(skeleton.encode()).hexdigest()[:16]

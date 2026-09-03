@@ -63,7 +63,16 @@ def main() -> int:
     ap.add_argument("verdicts", nargs="+", help="verdict JSONL files (globs ok)")
     ap.add_argument("--apply", action="store_true",
                     help="write the ladder state (default is a dry run)")
+    ap.add_argument("--stale", nargs="*", default=[],
+                    help="substrings of target_ids whose SKELETON changed after judging; "
+                         "their verdicts describe content that no longer exists and are "
+                         "held for re-judge instead of promoted")
+    ap.add_argument("--fingerprints", default=None,
+                    help="JSON map target_id -> current skeleton fingerprint, recorded so "
+                         "future staleness is detected automatically rather than by hand")
     args = ap.parse_args()
+
+    fps = json.loads(Path(args.fingerprints).read_text()) if args.fingerprints else {}
 
     paths = [p for pat in args.verdicts for p in sorted(glob.glob(pat))]
     if not paths:
@@ -88,6 +97,24 @@ def main() -> int:
                 continue
             backend = v["judge_backend"]
             interim = backend not in CONFIGURED_TRIO
+            tid = v["target_id"]
+
+            # A verdict is evidence about the skeleton it judged. If that skeleton has
+            # since changed, the verdict is not evidence about anything currently
+            # generated — neither a pass nor a fail may carry over.
+            current_fp = fps.get(tid)
+            stated_fp = v.get("skeleton_fingerprint")
+            drifted = bool(stated_fp and current_fp and stated_fp != current_fp)
+            if drifted or any(s and s in tid for s in args.stale):
+                stats["held_stale_skeleton_changed"] += 1
+                state["targets"][tid] = {
+                    "state": "quarantined_pending_consensus",
+                    "held_reason": "skeleton changed after this verdict was rendered; "
+                                   "re-judge required",
+                    "prior_verdict": v["result"], "judge_backend": backend,
+                    "skeleton_fingerprint": current_fp,
+                }
+                continue
             if v["result"] == "fail":
                 new_state = "quarantined"
                 stats["quarantined_by_panel"] += 1

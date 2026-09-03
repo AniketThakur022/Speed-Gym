@@ -1,0 +1,163 @@
+{
+ "targets": {
+  "multiplication__nikhilam_navatashcaramam_all_from_9_last_from_10@L3": {
+   "state": "quarantined_pending_consensus",
+   "held_reason": "skeleton changed after this verdict was rendered; re-judge required",
+   "prior_verdict": "pass",
+   "judge_backend": "claude-session-panel",
+   "skeleton_fingerprint": "195d0f85373d1f45"
+  },
+  "multiplication__nikhilam_navatashcaramam_all_from_9_last_from_10@L4": {
+   "state": "quarantined_pending_consensus",
+   "held_reason": "skeleton changed after this verdict was rendered; re-judge required",
+   "prior_verdict": "pass",
+   "judge_backend": "claude-session-panel",
+   "skeleton_fingerprint": "195d0f85373d1f45"
+  },
+  "squaring__yavadunam_sutra_deficiency_surplus_squaring@L4": {
+   "state": "quarantined_pending_consensus",
+   "held_reason": "skeleton changed after this verdict was rendered; re-judge required",
+   "prior_verdict": "fail",
+   "judge_backend": "claude-session-panel",
+   "skeleton_fingerprint": "87afaab51efc3df9"
+  },
+  "squaring__ekadhikena_purvena_one_more_than_the_previous@L3": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "pattern",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-03T17:10:00Z",
+   "spot_check_ids": [
+    "t2_ekadhikena_square_5_L3_816115be1908",
+    "t2_ekadhikena_square_5_L3_9821af0d4b72",
+    "t2_ekadhikena_square_5_L3_0e64e6eb0f5f"
+   ],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "squaring__ekadhikena_purvena_one_more_than_the_previous@L5": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "pattern",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-03T17:10:00Z",
+   "spot_check_ids": [
+    "t2_ekadhikena_square_5_L5_5061fb7139c7",
+    "t2_ekadhikena_square_5_L5_7839ab5bd512",
+    "t2_ekadhikena_square_5_L5_d77d5a7b3deb"
+   ],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "multiplication__urdhva_tiryagbhyam_vertically_and_crosswise@L1": {
+   "state": "quarantined_pending_consensus",
+   "held_reason": "skeleton changed after this verdict was rendered; re-judge required",
+   "prior_verdict": "pass",
+   "judge_backend": "claude-session-panel",
+   "skeleton_fingerprint": "2e01db6adb1ddd4a"
+  },
+  "multiplication__urdhva_tiryagbhyam_vertically_and_crosswise@L2": {
+   "state": "quarantined_pending_consensus",
+   "held_reason": "skeleton changed after this verdict was rendered; re-judge required",
+   "prior_verdict": "pass",
+   "judge_backend": "claude-session-panel",
+   "skeleton_fingerprint": "2e01db6adb1ddd4a"
+  },
+  "multiplication__urdhva_tiryagbhyam_vertically_and_crosswise@L3": {
+   "state": "quarantined_pending_consensus",
+   "held_reason": "skeleton changed after this verdict was rendered; re-judge required",
+   "prior_verdict": "pass",
+   "judge_backend": "claude-session-panel",
+   "skeleton_fingerprint": "2e01db6adb1ddd4a"
+  },
+  "multiplication__urdhva_tiryagbhyam_vertically_and_crosswise@L4": {
+   "state": "quarantined_pending_consensus",
+   "held_reason": "skeleton changed after this verdict was rendered; re-judge required",
+   "prior_verdict": "fail",
+   "judge_backend": "claude-session-panel",
+   "skeleton_fingerprint": "2e01db6adb1ddd4a"
+  },
+  "multiplication__urdhva_tiryagbhyam_vertically_and_crosswise@L5": {
+   "state": "quarantined_pending_consensus",
+   "held_reason": "skeleton changed after this verdict was rendered; re-judge required",
+   "prior_verdict": "pass",
+   "judge_backend": "claude-session-panel",
+   "skeleton_fingerprint": "2e01db6adb1ddd4a"
+  },
+  "subtraction__nikhilam_navatashcaramam_all_from_9_last_from_10@L1": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "pattern",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-03T17:10:00Z",
+   "spot_check_ids": [
+    "t2_nikhilam_complement_L1_913093f7d451",
+    "t2_nikhilam_complement_L1_e79db1f3092a",
+    "t2_nikhilam_complement_L1_241e4a8615e7"
+   ],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "subtraction__nikhilam_navatashcaramam_all_from_9_last_from_10@L3": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "pattern",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-03T17:10:00Z",
+   "spot_check_ids": [
+    "t2_nikhilam_complement_L3_9905f3670463",
+    "t2_nikhilam_complement_L3_6383f7c7425f",
+    "t2_nikhilam_complement_L3_48d5e3c75735"
+   ],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "subtraction__nikhilam_navatashcaramam_all_from_9_last_from_10@L5": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "pattern",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-03T17:10:00Z",
+   "spot_check_ids": [
+    "t2_nikhilam_complement_L5_27b431653989",
+    "t2_nikhilam_complement_L5_d0a2e2d757a1",
+    "t2_nikhilam_complement_L5_3cecc5e26b82"
+   ],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "multiplication__multiplication_by_11_neighbour_sums@L3": {
+   "state": "quarantined_pending_consensus",
+   "held_reason": "skeleton changed after this verdict was rendered; re-judge required",
+   "prior_verdict": "fail",
+   "judge_backend": "claude-session-panel",
+   "skeleton_fingerprint": "ffd9f3f8b9909ac7"
+  }
+ },
+ "ceiling_note": "Any judge_backend outside the configured trio is capped at 'sandbox' — it never feeds BKT mastery or mock exams. See docs/rag/STAGE7_SESSION_PANEL_INTAKE.md.",
+ "configured_trio": [
+  "deepseek-v4-flash",
+  "glm-5.1",
+  "kimi-k2.6"
+ ]
+}
