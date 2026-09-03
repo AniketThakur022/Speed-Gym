@@ -40,7 +40,27 @@
    "station3_grounding": "report.json -> discarded_ungrounded count (ungrounded extractions are DISCARDED by design)",
    "station0_chunker": "station0_report.json -> per-book skipped{needs_render,low_conf_*,too_few_words}"
   },
-  "known_gap": "problem_requirements carries no row for the 13 :Problem nodes with no incoming PREREQUISITE_OF edge — they are absent rather than declined-with-reason. Now recorded here and in docs/rag/TAXONOMY_V1_REVIEW.md.",
-  "orphan_problems_without_skill_edge": 13
+  "known_gap": "RESOLVED as declined-with-reason: the 13 :Problem nodes with no incoming PREREQUISITE_OF edge are now recorded in data/taxonomy/taxonomy_v1.json -> orphan_problems_declined, with the reason (empty technique, coarse topic) and the fix owner (extraction).",
+  "orphan_problems_without_skill_edge": 13,
+  "orphan_problems_declined": {
+   "problems": [
+    "Schaums_College_Math_sa_11",
+    "Schaums_College_Math_sa_13",
+    "Schaums_College_Math_sa_14",
+    "Schaums_College_Math_sa_16",
+    "Schaums_College_Math_sa_19",
+    "Schaums_College_Math_sa_20",
+    "Schaums_College_Math_sa_21",
+    "Schaums_College_Math_sa_24",
+    "Schaums_College_Math_sa_25",
+    "Schaums_College_Math_sa_26",
+    "Schaums_College_Math_sa_27",
+    "Schaums_College_Math_sa_30",
+    "Schaums_College_Math_sa_31"
+   ],
+   "decline_reason": "No skill edge added. These 13 :Problem nodes carry an EMPTY technique field and only a coarse topic ('General' x10, 'DI' x3). Since the Q-matrix is now the BKT join spine, deriving a mastery edge from a label that carries no instructional meaning would corrupt mastery signal — worse than the current gap.",
+   "consequence": "They remain invisible to BKT: a learner can answer them and no skill updates.",
+   "fix_owner": "extraction — needs technique enrichment at source, then edges can be derived."
+  }
  }
 }
