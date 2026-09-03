@@ -61,6 +61,13 @@ def main():
                 r.setdefault("extra", {})["tags"] = rec_e["tags"]
                 r["extra"]["tags_source"] = rec_e["tags_source"]
                 applied += 1
+            rec_c = patch.get((r.get("set_id"), "*"))
+            if rec_c is not None and rec_c["action"] == "clear_chart_flag":
+                ex = r.setdefault("extra", {})
+                if ex.get("needs_chart_vision"):
+                    ex["needs_chart_vision"] = False
+                    ex["chart_vision_resolution"] = rec_c["resolution"]
+                    applied += 1
             if r.get("set_id") in patch_sets:
                 for q in r.get("questions") or []:
                     e = patch.get((r["set_id"], str(q.get("number"))))

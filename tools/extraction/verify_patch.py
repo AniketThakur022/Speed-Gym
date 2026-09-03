@@ -36,7 +36,7 @@ ROOT = Path(__file__).resolve().parents[2]
 MASTER = ROOT / "data/corpus/MASTER_corpus.jsonl"
 PAGES = ROOT / "data/vision_pass/pages"
 
-ADDITIVE = {"key", "format", "flag", "suspect", "difficulty"}
+ADDITIVE = {"key", "format", "flag", "suspect", "difficulty", "clear_chart_flag"}
 REWRITE = {"text", "options", "record_tags", "markdown"}
 WORD = re.compile(r"[A-Za-z]{3,}|\d+")
 
