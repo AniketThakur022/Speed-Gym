@@ -169,3 +169,22 @@ def test_leaderboard_is_ordered_by_rating(client):
     assert res.status_code == 200
     ratings = [row["elo"] for row in res.json()["leaderboard"]]
     assert ratings == sorted(ratings, reverse=True)
+
+
+QUARANTINED_SAMPLE = [
+    "Tirthaji_Vedic_Math_sa_61",
+    "Bird_Engineering_Math_sa_17",
+    "Vedic_Made_Easy_sa_20",
+]
+
+
+def test_duel_problem_batch_applies_the_same_guards_as_practice(client):
+    """The duel route feeds live matches, so it must apply the SAME content
+    guards as the practice loop: a required skill edge, no blank prompts, and
+    no factory-quarantined items. It previously used a bare MATCH, so the two
+    serving paths enforced opposite rules."""
+    res = client.post("/internal/game/problem-batch", json={"count": 20}, headers=KEY)
+    assert res.status_code == 200
+    for problem in res.json()["problems"]:
+        assert problem["problem_id"] not in QUARANTINED_SAMPLE
+        assert problem["problem_text"].strip()

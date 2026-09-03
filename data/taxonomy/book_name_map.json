@@ -1,0 +1,296 @@
+{
+  "$comment": [
+    "Canonical book-name mapping across the project's three independent book vocabularies.",
+    "Written because the same book is named differently in each, and three separate",
+    "cross-workstream errors were caused by comparing them as strings: a graph/MASTER",
+    "overlap reported as 0 when it is 5, plus two earlier naming mismatches.",
+    "",
+    "COMPARE ON canonical_id, NEVER on a display name.",
+    "",
+    "  graph_book   = (:Book).name in Neo4j, seeded from db_exports (June snapshot)",
+    "  master_book  = the `book` field in data/corpus/MASTER_corpus.jsonl",
+    "  page_store   = directory under data/vision_pass/pages/",
+    "  title        = MASTER `book_title`, which is what actually proves the identity",
+    "",
+    "Membership is genuinely uneven, and that is the point of the table:",
+    "  - 5 books are in BOTH the graph and MASTER (the Phase-1 set)",
+    "  - Tirthaji is in the graph and the page store but NOT merged into MASTER",
+    "  - 20 exam-pillar books are in MASTER and the page store but NOT in the graph",
+    "",
+    "There is still NO question-level join between the graph and MASTER (id overlap is",
+    "0), so this table maps books, not questions. A page-level mapping for the shared 5",
+    "is the tractable next step; the corpus->graph question mapping remains unbuilt and",
+    "gates any extraction output reaching the runtime."
+  ],
+  "verified_at": "2026-09-03",
+  "books": [
+    {
+      "canonical_id": "bird_basic_engineering_math",
+      "title": "Basic Engineering Mathematics (5e)",
+      "graph_book": "Bird_Engineering_Math",
+      "master_book": "Bird",
+      "page_store": "Bird",
+      "in_graph": true,
+      "in_master": true,
+      "page_store_root": "data/vision_pass/pages"
+    },
+    {
+      "canonical_id": "dehaene_number_sense",
+      "title": "The Number Sense",
+      "graph_book": "Number_Sense",
+      "master_book": "Dehaene",
+      "page_store": "Dehaene",
+      "in_graph": true,
+      "in_master": true,
+      "page_store_root": "data/vision_pass/pages"
+    },
+    {
+      "canonical_id": "schaum_college_math",
+      "title": "Schaum's Outline of College Mathematics (3e)",
+      "graph_book": "Schaums_College_Math",
+      "master_book": "Schaum",
+      "page_store": "Schaum",
+      "in_graph": true,
+      "in_master": true,
+      "page_store_root": "data/vision_pass/pages"
+    },
+    {
+      "canonical_id": "bhatia_vedic_made_easy",
+      "title": "Vedic Mathematics Made Easy",
+      "graph_book": "Vedic_Made_Easy",
+      "master_book": "Bhatia",
+      "page_store": "Bhatia",
+      "in_graph": true,
+      "in_master": true,
+      "page_store_root": "data/vision_pass/pages"
+    },
+    {
+      "canonical_id": "vedic_secrets",
+      "title": "Vedic Mathematics Secrets",
+      "graph_book": "Vedic_Secrets",
+      "master_book": "Vedic Secrets",
+      "page_store": "Vedic_Secrets",
+      "in_graph": true,
+      "in_master": true,
+      "page_store_root": "data/vision_pass/pages"
+    },
+    {
+      "canonical_id": "tirthaji_vedic_mathematics",
+      "title": "Vedic Mathematics (Bharati Krishna Tirthaji)",
+      "graph_book": "Tirthaji_Vedic_Math",
+      "master_book": null,
+      "page_store": "Tirthaji",
+      "in_graph": true,
+      "in_master": false,
+      "note": "Staged candidate, never merged into MASTER. Do NOT confuse with `Thakur` (The Essentials of Vedic Mathematics) — a different book.",
+      "page_store_root": "data/vision_pass/pages"
+    },
+    {
+      "canonical_id": "arun_sharma_di_lr",
+      "title": "How to Prepare for DI & LR for CAT (5e)",
+      "graph_book": null,
+      "master_book": "Arun Sharma",
+      "page_store": "Arun_Sharma",
+      "in_graph": false,
+      "in_master": true,
+      "page_store_root": "data/vision_pass/pages"
+    },
+    {
+      "canonical_id": "arun_sharma_quant",
+      "title": "How to Prepare for Quantitative Aptitude for the CAT (2018)",
+      "graph_book": null,
+      "master_book": "Arun Sharma Quant",
+      "page_store": "Arun_Sharma_Quant",
+      "in_graph": false,
+      "in_master": true,
+      "page_store_root": "data/vision_pass/pages"
+    },
+    {
+      "canonical_id": "sinha_lrdi",
+      "title": "Logical Reasoning & Data Interpretation for CAT",
+      "graph_book": null,
+      "master_book": "Sinha",
+      "page_store": "CAT_DI_LR_Nishit_K_Sinha/pages",
+      "in_graph": false,
+      "in_master": true,
+      "page_store_root": "incoming/topic_browser_full_package/cat_data",
+      "note": "Pages live under the cat_data root, NOT data/vision_pass/pages (1,188 files). The queued vision task data/vision_pass/tasks/tasks_Sinha.jsonl reads from there."
+    },
+    {
+      "canonical_id": "hall_knight_higher_algebra",
+      "title": "Higher Algebra",
+      "graph_book": null,
+      "master_book": "Hall & Knight",
+      "page_store": "Hall_&_Knight",
+      "in_graph": false,
+      "in_master": true,
+      "page_store_root": "data/vision_pass/pages"
+    },
+    {
+      "canonical_id": "thakur_essentials_vedic",
+      "title": "The Essentials of Vedic Mathematics",
+      "graph_book": null,
+      "master_book": "Thakur",
+      "page_store": null,
+      "in_graph": false,
+      "in_master": true,
+      "page_store_root": null,
+      "note": "No page store under either root."
+    },
+    {
+      "canonical_id": "tyra_quicker_maths",
+      "title": "Magical Book on Quicker Maths",
+      "graph_book": null,
+      "master_book": "Tyra",
+      "page_store": "Tyra",
+      "in_graph": false,
+      "in_master": true,
+      "page_store_root": "data/vision_pass/pages"
+    },
+    {
+      "canonical_id": "ets_gre_official_guide",
+      "title": "The Official Guide to the GRE General Test (3e)",
+      "graph_book": null,
+      "master_book": "ETS GRE",
+      "page_store": "ETS_GRE",
+      "in_graph": false,
+      "in_master": true,
+      "page_store_root": "data/vision_pass/pages"
+    },
+    {
+      "canonical_id": "ets_gre_verbal",
+      "title": "GRE Verbal Reasoning Practice Questions (2014)",
+      "graph_book": null,
+      "master_book": "ETS GRE Verbal",
+      "page_store": "ETS_GRE_Verbal",
+      "in_graph": false,
+      "in_master": true,
+      "page_store_root": "data/vision_pass/pages"
+    },
+    {
+      "canonical_id": "ets_gre_writing_pool",
+      "title": "GRE Analytical Writing — official topic pools",
+      "graph_book": null,
+      "master_book": "ETS GRE Writing Pool",
+      "page_store": null,
+      "in_graph": false,
+      "in_master": true,
+      "title_variants": [
+        "GRE Analytical Writing — official topic pools",
+        "GRE Analytical Writing — pillar index"
+      ]
+    },
+    {
+      "canonical_id": "manhattan_gre_5lb",
+      "title": "5 lb. Book of GRE Practice Problems",
+      "graph_book": null,
+      "master_book": "Manhattan 5 lb",
+      "page_store": "Manhattan_5_lb",
+      "in_graph": false,
+      "in_master": true,
+      "page_store_root": "data/vision_pass/pages"
+    },
+    {
+      "canonical_id": "manhattan_gre_quant",
+      "title": "GRE All the Quant",
+      "graph_book": null,
+      "master_book": "Manhattan Quant",
+      "page_store": "Manhattan_Quant",
+      "in_graph": false,
+      "in_master": true,
+      "page_store_root": "data/vision_pass/pages"
+    },
+    {
+      "canonical_id": "manhattan_gmat_verbal",
+      "title": "GMAT All the Verbal",
+      "graph_book": null,
+      "master_book": "Manhattan GMAT Verbal",
+      "page_store": "Manhattan_GMAT_Verbal",
+      "in_graph": false,
+      "in_master": true,
+      "page_store_root": "data/vision_pass/pages"
+    },
+    {
+      "canonical_id": "manhattan_lsat_logic_games",
+      "title": "Logic Games: LSAT Strategy Guide (4e)",
+      "graph_book": null,
+      "master_book": "Manhattan Logic Games",
+      "page_store": "Manhattan_Logic_Games",
+      "in_graph": false,
+      "in_master": true,
+      "page_store_root": "data/vision_pass/pages"
+    },
+    {
+      "canonical_id": "strang_linear_algebra",
+      "title": "Introduction to Linear Algebra (5e)",
+      "graph_book": null,
+      "master_book": "Strang",
+      "page_store": "Strang",
+      "in_graph": false,
+      "in_master": true,
+      "page_store_root": "data/vision_pass/pages"
+    },
+    {
+      "canonical_id": "knuth_concrete_math",
+      "title": "Concrete Mathematics (2e)",
+      "graph_book": null,
+      "master_book": "Knuth",
+      "page_store": "Knuth",
+      "in_graph": false,
+      "in_master": true,
+      "page_store_root": "data/vision_pass/pages"
+    },
+    {
+      "canonical_id": "hogg_probability",
+      "title": "Probability and Statistical Inference",
+      "graph_book": null,
+      "master_book": "Hogg",
+      "page_store": "Hogg",
+      "in_graph": false,
+      "in_master": true,
+      "page_store_root": "data/vision_pass/pages"
+    },
+    {
+      "canonical_id": "mosteller_fifty_problems",
+      "title": "Fifty Challenging Problems in Probability",
+      "graph_book": null,
+      "master_book": "Mosteller",
+      "page_store": "Mosteller",
+      "in_graph": false,
+      "in_master": true,
+      "page_store_root": "data/vision_pass/pages"
+    },
+    {
+      "canonical_id": "rs_aggarwal_reasoning",
+      "title": "A New Approach to Reasoning (R.S. Aggarwal)",
+      "graph_book": null,
+      "master_book": "RS Aggarwal",
+      "page_store": null,
+      "in_graph": false,
+      "in_master": true
+    },
+    {
+      "canonical_id": "lewis_word_power",
+      "title": "Word Power Made Easy (Norman Lewis)",
+      "graph_book": null,
+      "master_book": "Lewis",
+      "page_store": null,
+      "in_graph": false,
+      "in_master": true
+    },
+    {
+      "canonical_id": "cat_lr_bank",
+      "title": "CAT Logical Reasoning Questions (client compilation)",
+      "graph_book": null,
+      "master_book": "CAT LR Bank",
+      "page_store": null,
+      "in_graph": false,
+      "in_master": true,
+      "title_variants": [
+        "CAT Logical Reasoning Questions (client compilation)",
+        "CAT Logical Reasoning Questions and Answers (client compilation)"
+      ]
+    }
+  ],
+  "verification_status": "Structural mappings (graph_book / master_book / in_graph / in_master) were re-derived from live data and independently audited row by row. Titles were CORRECTED after that audit found five inexact strings. page_store was corrected after the audit found the original check only looked under data/vision_pass — Sinha's pages exist under a second root. Treat page_store as root-qualified: always join page_store_root + page_store."
+}

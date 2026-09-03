@@ -18,7 +18,7 @@ from pydantic import BaseModel, Field
 
 from .. import db
 from ..config import get_settings
-from ..content import extract_numeric_answer
+from ..content import extract_numeric_answer, quarantined_ids
 from ..glicko2 import Rating, seed_rating, update_match
 
 router = APIRouter(prefix="/internal", tags=["internal"])
@@ -111,17 +111,32 @@ async def problem_batch(body: ProblemBatchRequest) -> dict:
     scored inside a round timer.
     """
     low, high = (body.difficulty_range or [1, 5])[:2] if body.difficulty_range else (1, 5)
-    filters = ["p.question_text IS NOT NULL", "p.answer_key IS NOT NULL",
-               "p.validation_status IN ['verified_L1','verified_L2']"]
-    params: dict[str, Any] = {"limit": body.count * 6}
+
+    # This route feeds live duels, so it must apply the SAME content guards as
+    # the practice session builder. It previously used a bare MATCH with no
+    # skill-edge requirement, which put edge-less problems and
+    # factory-quarantined items into the duel pool — the practice loop refused
+    # exactly those, so the backend was enforcing opposite rules on two serving
+    # paths.
+    pool = await db.get_pg()
+    excluded = await quarantined_ids(pool)
+
+    filters = [
+        "p.question_text IS NOT NULL AND trim(p.question_text) <> ''",
+        "p.answer_key IS NOT NULL",
+        "p.validation_status IN ['verified_L1','verified_L2']",
+        "NOT p.template_id IN $excluded",
+    ]
+    params: dict[str, Any] = {"limit": body.count * 6, "excluded": sorted(excluded)}
     if body.technique_ids:
         filters.append("p.technique IN $technique_ids")
         params["technique_ids"] = body.technique_ids
 
     query = (
-        "MATCH (p:Problem) WHERE "
+        "MATCH (s:Skill)-[:PREREQUISITE_OF]->(p:Problem) WHERE "
         + " AND ".join(filters)
-        + """ RETURN p.template_id AS problem_id, p.question_text AS problem_text,
+        + """ WITH DISTINCT p
+              RETURN p.template_id AS problem_id, p.question_text AS problem_text,
                      p.answer_key AS answer_key, p.difficulty AS difficulty
               ORDER BY rand() LIMIT $limit"""
     )

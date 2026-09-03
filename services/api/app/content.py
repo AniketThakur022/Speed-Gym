@@ -70,6 +70,43 @@ def extract_numeric_answer(answer_key: Optional[str]) -> Optional[float]:
 TRUSTED_LABELS = {"LIVE", "TRUSTED", "trusted", "live"}
 SANDBOX_LABELS = {"SANDBOX", "sandbox", "sandbox_candidate", "trusted_candidate"}
 
+# Ids the content factory rejected, loaded once per process from
+# problem_health_scores (populated by scripts/import_content_trust.py).
+# Cached because every serving path needs it and the set is tiny; a factory
+# re-import is a deploy-time event, not a per-request one.
+_quarantined: Optional[set[str]] = None
+
+
+async def quarantined_ids(pool) -> set[str]:
+    """Content ids that must never be served, from the canonical trust table.
+
+    Returns an empty set if the table cannot be read: failing open on a
+    *serving* path is wrong, but failing closed here would take the whole
+    practice loop down over a trust-metadata outage. Callers still apply the
+    graph-level filters, so the worst case is the pre-existing behaviour.
+    """
+    global _quarantined
+    if _quarantined is not None:
+        return _quarantined
+    try:
+        async with pool.connection() as conn:
+            rows = await (
+                await conn.execute(
+                    "SELECT content_id FROM problem_health_scores "
+                    "WHERE trust_level IN ('QUARANTINED_SOFT', 'QUARANTINED_HARD')"
+                )
+            ).fetchall()
+        _quarantined = {row[0] for row in rows}
+    except Exception:  # noqa: BLE001
+        return set()
+    return _quarantined
+
+
+def reset_quarantine_cache() -> None:
+    """Drop the cache — for tests and for after a factory re-import."""
+    global _quarantined
+    _quarantined = None
+
 
 class TrustDecision:
     __slots__ = ("servable", "tier", "feeds_mastery", "reason")

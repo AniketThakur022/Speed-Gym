@@ -88,3 +88,34 @@ def test_most_served_problems_resolve_a_skill(client):
     assert tier1
     with_skill = [i for i in tier1 if i["skill"]]
     assert len(with_skill) / len(tier1) >= 0.8
+
+
+QUARANTINED_SAMPLE = [
+    "Tirthaji_Vedic_Math_sa_61",   # empty_problem_statement + no_valid_examples
+    "Bird_Engineering_Math_sa_17",  # empty_solution
+    "Vedic_Made_Easy_sa_20",
+]
+
+
+def test_factory_quarantined_content_is_never_served(client):
+    """The factory rejected these; serving them anyway defeats the trust ladder.
+    Fetch a large page and assert none appear."""
+    res = client.get("/api/v1/practice/session", params={"size": 50})
+    served = {i["template_id"] for i in res.json()["items"]}
+    assert not (served & set(QUARANTINED_SAMPLE))
+
+
+def test_served_questions_are_never_blank(client):
+    """IS NOT NULL passes the empty string, which is unanswerable."""
+    res = client.get("/api/v1/practice/session", params={"size": 50})
+    for item in res.json()["items"]:
+        assert (item["question_text"] or "").strip()
+
+
+def test_tier1_does_not_claim_the_factory_trust_ladder(client):
+    """Tier-1 book content has never been on the factory's ladder; calling it
+    'trusted' would repeat the answer/solution conflation fixed earlier."""
+    res = client.get("/api/v1/practice/session", params={"size": 10})
+    for item in res.json()["items"]:
+        if item["source"] == "tier1_static":
+            assert item["trust"] == "static_verified"

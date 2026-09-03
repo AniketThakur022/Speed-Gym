@@ -24,7 +24,7 @@ from typing import Any, Optional
 from fastapi import APIRouter, HTTPException, Query
 
 from .. import db
-from ..content import extract_numeric_answer, servable_trust
+from ..content import extract_numeric_answer, quarantined_ids, servable_trust
 
 router = APIRouter(prefix="/practice", tags=["practice"])
 
@@ -50,7 +50,16 @@ def _tier1_item(record: dict[str, Any]) -> dict[str, Any]:
         "technique": record.get("technique"),
         "topic": record.get("topic"),
         "sub_topic": record.get("sub_topic"),
-        "trust": "trusted",
+        # NOT "trusted": that word names a rung on the factory's trust ladder,
+        # and Tier-1 book content has never been on that ladder. Its warrant is
+        # the graph's ANSWER verification plus exclusion of factory-quarantined
+        # ids — a different, weaker claim. Saying "trusted" here would repeat
+        # the answer/solution conflation this codebase already corrected once.
+        # (Open question for the owner: the factory rates 776 of the derived
+        # templates `trusted_candidate`, which servable_trust maps to sandbox.
+        # Those ratings describe the derived walkthrough, not the book's answer,
+        # so they are deliberately NOT applied to Tier-1 here.)
+        "trust": "static_verified",
         # Without a resolvable skill there is nothing to attribute mastery to,
         # and guessing from a display label is the bug this replaces.
         "feeds_mastery": skill is not None,
@@ -87,13 +96,23 @@ def _tier2_item(entry: dict[str, Any], decision) -> dict[str, Any]:
     }
 
 
-async def _load_tier1(topic: Optional[str], technique: Optional[str], limit: int) -> list[dict]:
+async def _load_tier1(
+    topic: Optional[str], technique: Optional[str], limit: int, excluded: set[str]
+) -> list[dict]:
     filters = [
-        "p.question_text IS NOT NULL",
+        # trim() guards the empty-string hole: IS NOT NULL happily passes "",
+        # and a blank prompt is unanswerable.
+        "p.question_text IS NOT NULL AND trim(p.question_text) <> ''",
         "p.answer_key IS NOT NULL",
         "p.validation_status IN $verified",
+        # Never serve what the content factory rejected.
+        "NOT p.template_id IN $excluded",
     ]
-    params: dict[str, Any] = {"verified": sorted(ANSWER_VERIFIED), "limit": limit}
+    params: dict[str, Any] = {
+        "verified": sorted(ANSWER_VERIFIED),
+        "limit": limit,
+        "excluded": sorted(excluded),
+    }
     if topic:
         filters.append("p.topic = $topic")
         params["topic"] = topic
@@ -166,7 +185,9 @@ async def build_session(
     is quarantined pending stage-7 review, so Tier-2 legitimately yields none.
     """
     try:
-        tier1 = await _load_tier1(topic, technique, size)
+        pool = await db.get_pg()
+        excluded = await quarantined_ids(pool)
+        tier1 = await _load_tier1(topic, technique, size, excluded)
         tier2, withheld = await _load_tier2(sub_topic, max(0, size - len(tier1)))
     except HTTPException:
         raise
