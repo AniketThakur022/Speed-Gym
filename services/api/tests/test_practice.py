@@ -119,3 +119,25 @@ def test_tier1_does_not_claim_the_factory_trust_ladder(client):
     for item in res.json()["items"]:
         if item["source"] == "tier1_static":
             assert item["trust"] == "static_verified"
+
+
+def test_mastery_key_is_deterministic_and_never_a_chapter_number(client):
+    """757 of the served problems have 2-7 skill parents, so one is chosen as the
+    mastery key. collect() has no ordering guarantee and this key joins a
+    learner's history, so an unstable pick would split mastery across two keys.
+    The graph also contains structural names ('Chapter 11'), which must never win
+    over a real concept."""
+    import re
+
+    structural = re.compile(
+        r"(?i)^\s*(chapter|ch\.?|section|sec\.?|unit|part|exercise|ex\.?|lesson)\s*[0-9ivxl.]*\s*$"
+        r"|^\s*[0-9.]+\s*$"
+    )
+    runs = []
+    for _ in range(3):
+        res = client.get("/api/v1/practice/session", params={"size": 50})
+        runs.append({i["template_id"]: i["skill"] for i in res.json()["items"]})
+
+    assert runs[0] == runs[1] == runs[2], "mastery key must be stable across calls"
+    for template_id, skill in runs[0].items():
+        assert not (skill and structural.match(skill)), f"{template_id} keyed on {skill!r}"

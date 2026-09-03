@@ -128,10 +128,22 @@ async def _load_tier1(
     # difficulty is populated on every graph :Problem (spread 10/110/315/260/112),
     # so coalesce() here is only a guard for future rows; template_id breaks ties
     # so a page is stable rather than ordered arbitrarily among equal difficulties.
+    # 757 of the served problems have 2-7 skill parents, so ONE of them becomes
+    # the mastery key. collect() has no ordering guarantee, and this key joins a
+    # learner's history — an unstable choice would silently split mastery across
+    # two keys. Ordering before collect() makes the pick deterministic, and the
+    # CASE demotes structural names ("Chapter 11" is a real :Skill in this graph)
+    # so a chapter number never becomes a mastery key while a concept is
+    # available. Cleaning up those names is a separate scheduled migration.
+    params["structural_skill"] = (
+        r"(?i)^\s*(chapter|ch\.?|section|sec\.?|unit|part|exercise|ex\.?|lesson)\s*[0-9ivxl.]*\s*$|^\s*[0-9.]+\s*$"
+    )
     query = (
         "MATCH (s:Skill)-[:PREREQUISITE_OF]->(p:Problem) WHERE "
         + " AND ".join(filters)
-        + """ WITH p, head(collect(s.name)) AS skill
+        + """ WITH p, s
+              ORDER BY (CASE WHEN s.name =~ $structural_skill THEN 1 ELSE 0 END), s.name
+              WITH p, head(collect(s.name)) AS skill
               RETURN p.template_id AS template_id, p.question_text AS question_text,
                      p.answer_key AS answer_key, p.difficulty AS difficulty,
                      p.technique AS technique, p.topic AS topic, p.sub_topic AS sub_topic,
