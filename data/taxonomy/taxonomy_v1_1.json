@@ -50,6 +50,7 @@
  "chapter_rules": [
   {
    "book": "Arun Sharma Quant",
+   "canonical_book_id": "arun_sharma_quant",
    "chapter": "Ch 1: Number Systems",
    "normalized": "number systems",
    "skill_key": "Number Systems",
@@ -59,6 +60,7 @@
   },
   {
    "book": "Arun Sharma Quant",
+   "canonical_book_id": "arun_sharma_quant",
    "chapter": "Ch 11: Geometry and Mensuration",
    "normalized": "geometry and mensuration",
    "skill_key": "Geometry and Mensuration",
@@ -68,6 +70,7 @@
   },
   {
    "book": "Arun Sharma Quant",
+   "canonical_book_id": "arun_sharma_quant",
    "chapter": "Ch 13: Functions",
    "normalized": "functions",
    "skill_key": "Functions",
@@ -77,6 +80,7 @@
   },
   {
    "book": "Strang",
+   "canonical_book_id": "strang_linear_algebra",
    "chapter": "Chapter 2. Solving Linear Equations",
    "normalized": "solving linear equations",
    "skill_key": "Solving Linear Equations",
@@ -86,6 +90,7 @@
   },
   {
    "book": "Strang",
+   "canonical_book_id": "strang_linear_algebra",
    "chapter": "Chapter 3. Vector Spaces and Subspaces",
    "normalized": "vector spaces and subspaces",
    "skill_key": "Vector Spaces",
@@ -95,6 +100,7 @@
   },
   {
    "book": "Arun Sharma Quant",
+   "canonical_book_id": "arun_sharma_quant",
    "chapter": "Ch 3: Averages",
    "normalized": "averages",
    "skill_key": "Averages",
@@ -104,6 +110,7 @@
   },
   {
    "book": "Arun Sharma Quant",
+   "canonical_book_id": "arun_sharma_quant",
    "chapter": "Ch 10: Time, Speed and Distance",
    "normalized": "time speed and distance",
    "skill_key": "Time, Speed and Distance",
@@ -113,6 +120,7 @@
   },
   {
    "book": "Arun Sharma Quant",
+   "canonical_book_id": "arun_sharma_quant",
    "chapter": "Ch 14: Inequalities",
    "normalized": "inequalities",
    "skill_key": "Inequalities",
@@ -122,6 +130,7 @@
   },
   {
    "book": "Arun Sharma Quant",
+   "canonical_book_id": "arun_sharma_quant",
    "chapter": "Ch 17: Permutations and Combinations",
    "normalized": "permutations and combinations",
    "skill_key": "Permutations and Combinations",
@@ -131,6 +140,7 @@
   },
   {
    "book": "Strang",
+   "canonical_book_id": "strang_linear_algebra",
    "chapter": "Chapter 6. Eigenvalues and Eigenvectors",
    "normalized": "eigenvalues and eigenvectors",
    "skill_key": "Eigenvalues and Eigenvectors",
@@ -140,6 +150,7 @@
   },
   {
    "book": "Manhattan 5 lb",
+   "canonical_book_id": "manhattan_gre_5lb",
    "chapter": "Reading Comprehension",
    "normalized": "reading comprehension",
    "skill_key": "Reading Comprehension",
@@ -149,6 +160,7 @@
   },
   {
    "book": "Arun Sharma Quant",
+   "canonical_book_id": "arun_sharma_quant",
    "chapter": "Ch 5: Percentages",
    "normalized": "percentages",
    "skill_key": "Percentages",
@@ -158,6 +170,7 @@
   },
   {
    "book": "Arun Sharma Quant",
+   "canonical_book_id": "arun_sharma_quant",
    "chapter": "Ch 2: Progressions",
    "normalized": "progressions",
    "skill_key": "Progressions",
@@ -167,6 +180,7 @@
   },
   {
    "book": "Arun Sharma Quant",
+   "canonical_book_id": "arun_sharma_quant",
    "chapter": "Ch 6: Profit & Loss",
    "normalized": "profit loss",
    "skill_key": "Profit and Loss",
@@ -176,6 +190,7 @@
   },
   {
    "book": "Arun Sharma Quant",
+   "canonical_book_id": "arun_sharma_quant",
    "chapter": "Ch 15: Quadratic and Other Equations",
    "normalized": "quadratic and other equations",
    "skill_key": "Quadratic and Other Equations",
@@ -185,6 +200,7 @@
   },
   {
    "book": "Arun Sharma Quant",
+   "canonical_book_id": "arun_sharma_quant",
    "chapter": "Ch 18: Probability",
    "normalized": "probability",
    "skill_key": "Probability",
@@ -194,6 +210,7 @@
   },
   {
    "book": "Manhattan 5 lb",
+   "canonical_book_id": "manhattan_gre_5lb",
    "chapter": "Text Completions",
    "normalized": "text completions",
    "skill_key": "Text Completions",
@@ -203,6 +220,7 @@
   },
   {
    "book": "Arun Sharma Quant",
+   "canonical_book_id": "arun_sharma_quant",
    "chapter": "Ch 8: Ratio, Proportion and Variation",
    "normalized": "ratio proportion and variation",
    "skill_key": "Ratio, Proportion and Variation",
@@ -212,6 +230,7 @@
   },
   {
    "book": "Strang",
+   "canonical_book_id": "strang_linear_algebra",
    "chapter": "Chapter 4. Orthogonality",
    "normalized": "orthogonality",
    "skill_key": "Orthogonality",
@@ -221,6 +240,7 @@
   },
   {
    "book": "Manhattan 5 lb",
+   "canonical_book_id": "manhattan_gre_5lb",
    "chapter": "Sentence Equivalence",
    "normalized": "sentence equivalence",
    "skill_key": "Sentence Equivalence",
@@ -230,6 +250,7 @@
   },
   {
    "book": "Hall & Knight",
+   "canonical_book_id": "hall_knight_higher_algebra",
    "chapter": "35. Theory of Equations",
    "normalized": "theory of equations",
    "skill_key": "Theory of Equations",
@@ -239,6 +260,7 @@
   },
   {
    "book": "Tyra",
+   "canonical_book_id": "tyra_quicker_maths",
    "chapter": "Profit and Loss",
    "normalized": "profit and loss",
    "skill_key": "Profit and Loss",
@@ -248,6 +270,7 @@
   },
   {
    "book": "Arun Sharma Quant",
+   "canonical_book_id": "arun_sharma_quant",
    "chapter": "Ch 9: Time and Work",
    "normalized": "time and work",
    "skill_key": "Time and Work",
@@ -257,6 +280,7 @@
   },
   {
    "book": "Hall & Knight",
+   "canonical_book_id": "hall_knight_higher_algebra",
    "chapter": "10. Miscellaneous Equations",
    "normalized": "miscellaneous equations",
    "skill_key": "Miscellaneous Equations",
@@ -266,6 +290,7 @@
   },
   {
    "book": "Knuth",
+   "canonical_book_id": "knuth_concrete_math",
    "chapter": "Chapter 5: Binomial Coefficients",
    "normalized": "binomial coefficients",
    "skill_key": "Binomial Coefficients",
@@ -275,6 +300,7 @@
   },
   {
    "book": "Strang",
+   "canonical_book_id": "strang_linear_algebra",
    "chapter": "Chapter 5. Determinants",
    "normalized": "determinants",
    "skill_key": "Determinants",
@@ -284,6 +310,7 @@
   },
   {
    "book": "Hall & Knight",
+   "canonical_book_id": "hall_knight_higher_algebra",
    "chapter": "32. Probability",
    "normalized": "probability",
    "skill_key": "Probability",
@@ -293,6 +320,7 @@
   },
   {
    "book": "Tyra",
+   "canonical_book_id": "tyra_quicker_maths",
    "chapter": "Number System",
    "normalized": "number system",
    "skill_key": "Number Systems",
@@ -302,6 +330,7 @@
   },
   {
    "book": "Tyra",
+   "canonical_book_id": "tyra_quicker_maths",
    "chapter": "Multiplication",
    "normalized": "multiplication",
    "skill_key": "Multiplication",
@@ -311,6 +340,7 @@
   },
   {
    "book": "Knuth",
+   "canonical_book_id": "knuth_concrete_math",
    "chapter": "Chapter 6: Special Numbers",
    "normalized": "special numbers",
    "skill_key": "Special Numbers",
@@ -320,6 +350,7 @@
   },
   {
    "book": "Tyra",
+   "canonical_book_id": "tyra_quicker_maths",
    "chapter": "Elementary Algebra",
    "normalized": "elementary algebra",
    "skill_key": "Elementary Algebra",
@@ -329,6 +360,7 @@
   },
   {
    "book": "Arun Sharma Quant",
+   "canonical_book_id": "arun_sharma_quant",
    "chapter": "Ch 7: Interest",
    "normalized": "interest",
    "skill_key": "Interest",
@@ -338,6 +370,7 @@
   },
   {
    "book": "Arun Sharma Quant",
+   "canonical_book_id": "arun_sharma_quant",
    "chapter": "Ch 12: Coordinate Geometry",
    "normalized": "coordinate geometry",
    "skill_key": "Coordinate Geometry",
@@ -347,6 +380,7 @@
   },
   {
    "book": "Knuth",
+   "canonical_book_id": "knuth_concrete_math",
    "chapter": "Chapter 4: Number Theory",
    "normalized": "number theory",
    "skill_key": "NumberTheory",
@@ -356,6 +390,7 @@
   },
   {
    "book": "Strang",
+   "canonical_book_id": "strang_linear_algebra",
    "chapter": "Chapter 8. Linear Transformations",
    "normalized": "linear transformations",
    "skill_key": "Linear Transformations",
@@ -365,6 +400,7 @@
   },
   {
    "book": "Bird",
+   "canonical_book_id": "bird_basic_engineering_math",
    "chapter": "Chapter 14. Solving quadratic equations",
    "normalized": "solving quadratic equations",
    "skill_key": "Solving Quadratic Equations",
@@ -374,6 +410,7 @@
   },
   {
    "book": "Hall & Knight",
+   "canonical_book_id": "hall_knight_higher_algebra",
    "chapter": "11. Permutations and Combinations",
    "normalized": "permutations and combinations",
    "skill_key": "Permutations and Combinations",
@@ -383,6 +420,7 @@
   },
   {
    "book": "Tyra",
+   "canonical_book_id": "tyra_quicker_maths",
    "chapter": "HCF and LCM",
    "normalized": "hcf and lcm",
    "skill_key": "HCF and LCM",
@@ -392,6 +430,7 @@
   },
   {
    "book": "Tyra",
+   "canonical_book_id": "tyra_quicker_maths",
    "chapter": "Time and Work",
    "normalized": "time and work",
    "skill_key": "Time and Work",
@@ -401,6 +440,7 @@
   },
   {
    "book": "Hall & Knight",
+   "canonical_book_id": "hall_knight_higher_algebra",
    "chapter": "29. Summation of Series",
    "normalized": "summation of series",
    "skill_key": "Summation of Series",
@@ -410,6 +450,7 @@
   },
   {
    "book": "Arun Sharma Quant",
+   "canonical_book_id": "arun_sharma_quant",
    "chapter": "Ch 19: Set Theory",
    "normalized": "set theory",
    "skill_key": "Set Theory",
@@ -419,6 +460,7 @@
   },
   {
    "book": "Tyra",
+   "canonical_book_id": "tyra_quicker_maths",
    "chapter": "Simple Interest",
    "normalized": "simple interest",
    "skill_key": "Interest",
@@ -428,6 +470,7 @@
   },
   {
    "book": "Arun Sharma Quant",
+   "canonical_book_id": "arun_sharma_quant",
    "chapter": "Ch 16: Logarithms",
    "normalized": "logarithms",
    "skill_key": "Logarithms",
@@ -437,6 +480,7 @@
   },
   {
    "book": "Manhattan 5 lb",
+   "canonical_book_id": "manhattan_gre_5lb",
    "chapter": "Algebra",
    "normalized": "algebra",
    "skill_key": "Algebra",
@@ -446,6 +490,7 @@
   },
   {
    "book": "Manhattan 5 lb",
+   "canonical_book_id": "manhattan_gre_5lb",
    "chapter": "Number Properties",
    "normalized": "number properties",
    "skill_key": "Number Properties",
@@ -455,6 +500,7 @@
   },
   {
    "book": "Manhattan 5 lb",
+   "canonical_book_id": "manhattan_gre_5lb",
    "chapter": "Triangles",
    "normalized": "triangles",
    "skill_key": "Triangles",
@@ -464,6 +510,7 @@
   },
   {
    "book": "Bird",
+   "canonical_book_id": "bird_basic_engineering_math",
    "chapter": "Chapter 9. Basic algebra",
    "normalized": "basic algebra",
    "skill_key": "Basic Algebra",
@@ -473,6 +520,7 @@
   },
   {
    "book": "Tyra",
+   "canonical_book_id": "tyra_quicker_maths",
    "chapter": "Division",
    "normalized": "division",
    "skill_key": "Division",
@@ -482,6 +530,7 @@
   },
   {
    "book": "Hall & Knight",
+   "canonical_book_id": "hall_knight_higher_algebra",
    "chapter": "16. Logarithms",
    "normalized": "logarithms",
    "skill_key": "Logarithms",
@@ -491,6 +540,7 @@
   },
   {
    "book": "Bird",
+   "canonical_book_id": "bird_basic_engineering_math",
    "chapter": "Chapter 2. Fractions",
    "normalized": "fractions",
    "skill_key": "fractions",
@@ -500,6 +550,7 @@
   },
   {
    "book": "Tyra",
+   "canonical_book_id": "tyra_quicker_maths",
    "chapter": "Series",
    "normalized": "series",
    "skill_key": "Series",
@@ -509,6 +560,7 @@
   },
   {
    "book": "Manhattan 5 lb",
+   "canonical_book_id": "manhattan_gre_5lb",
    "chapter": "Fractions and Decimals",
    "normalized": "fractions and decimals",
    "skill_key": "Fractions and Decimals",
@@ -518,6 +570,7 @@
   },
   {
    "book": "Manhattan 5 lb",
+   "canonical_book_id": "manhattan_gre_5lb",
    "chapter": "Data Interpretation",
    "normalized": "data interpretation",
    "skill_key": "Data Interpretation",
@@ -527,6 +580,7 @@
   },
   {
    "book": "Bird",
+   "canonical_book_id": "bird_basic_engineering_math",
    "chapter": "Chapter 15. Logarithms",
    "normalized": "logarithms",
    "skill_key": "Logarithms",
@@ -536,6 +590,7 @@
   },
   {
    "book": "Tyra",
+   "canonical_book_id": "tyra_quicker_maths",
    "chapter": "Compound Interest",
    "normalized": "compound interest",
    "skill_key": "Interest",
@@ -545,6 +600,7 @@
   },
   {
    "book": "Bird",
+   "canonical_book_id": "bird_basic_engineering_math",
    "chapter": "Chapter 1. Basic arithmetic",
    "normalized": "basic arithmetic",
    "skill_key": "Basic Arithmetic",
@@ -554,6 +610,7 @@
   },
   {
    "book": "Bird",
+   "canonical_book_id": "bird_basic_engineering_math",
    "chapter": "Chapter 5. Percentages",
    "normalized": "percentages",
    "skill_key": "Percentages",
@@ -563,6 +620,7 @@
   },
   {
    "book": "Bird",
+   "canonical_book_id": "bird_basic_engineering_math",
    "chapter": "Chapter 3. Decimals",
    "normalized": "decimals",
    "skill_key": "decimals",
@@ -572,6 +630,7 @@
   },
   {
    "book": "Manhattan Quant",
+   "canonical_book_id": "manhattan_gre_quant",
    "chapter": "Fractions",
    "normalized": "fractions",
    "skill_key": "fractions",
@@ -581,6 +640,7 @@
   },
   {
    "book": "Hall & Knight",
+   "canonical_book_id": "hall_knight_higher_algebra",
    "chapter": "33. Determinants",
    "normalized": "determinants",
    "skill_key": "Determinants",
@@ -590,6 +650,7 @@
   },
   {
    "book": "Hall & Knight",
+   "canonical_book_id": "hall_knight_higher_algebra",
    "chapter": "19. Inequalities",
    "normalized": "inequalities",
    "skill_key": "Inequalities",
@@ -599,6 +660,7 @@
   },
   {
    "book": "Arun Sharma Quant",
+   "canonical_book_id": "arun_sharma_quant",
    "chapter": "Ch 4: Alligations",
    "normalized": "alligations",
    "skill_key": "Averages and Alligations",
@@ -608,6 +670,7 @@
   },
   {
    "book": "Manhattan Quant",
+   "canonical_book_id": "manhattan_gre_quant",
    "chapter": "Number Properties",
    "normalized": "number properties",
    "skill_key": "Number Properties",
@@ -617,6 +680,7 @@
   },
   {
    "book": "Manhattan 5 lb",
+   "canonical_book_id": "manhattan_gre_5lb",
    "chapter": "Arithmetic",
    "normalized": "arithmetic",
    "skill_key": "Arithmetic",
@@ -626,6 +690,7 @@
   },
   {
    "book": "Tyra",
+   "canonical_book_id": "tyra_quicker_maths",
    "chapter": "Decimal Fractions",
    "normalized": "decimal fractions",
    "skill_key": "Decimal fractions",
@@ -635,6 +700,7 @@
   },
   {
    "book": "Manhattan Quant",
+   "canonical_book_id": "manhattan_gre_quant",
    "chapter": "Statistics",
    "normalized": "statistics",
    "skill_key": "Statistics",
@@ -644,6 +710,7 @@
   },
   {
    "book": "Manhattan 5 lb",
+   "canonical_book_id": "manhattan_gre_5lb",
    "chapter": "Coordinate Geometry",
    "normalized": "coordinate geometry",
    "skill_key": "Coordinate Geometry",
@@ -653,6 +720,7 @@
   },
   {
    "book": "Bird",
+   "canonical_book_id": "bird_basic_engineering_math",
    "chapter": "Chapter 29. Vectors",
    "normalized": "vectors",
    "skill_key": "Vectors",
@@ -662,6 +730,7 @@
   },
   {
    "book": "Manhattan Quant",
+   "canonical_book_id": "manhattan_gre_quant",
    "chapter": "Data Interpretation",
    "normalized": "data interpretation",
    "skill_key": "Data Interpretation",
@@ -671,6 +740,7 @@
   },
   {
    "book": "ETS GRE Verbal",
+   "canonical_book_id": "ets_gre_verbal",
    "chapter": "Reading Comprehension",
    "normalized": "reading comprehension",
    "skill_key": "Reading Comprehension",
@@ -680,6 +750,7 @@
   },
   {
    "book": "Manhattan Quant",
+   "canonical_book_id": "manhattan_gre_quant",
    "chapter": "Equations",
    "normalized": "equations",
    "skill_key": "Equations",
@@ -689,6 +760,7 @@
   },
   {
    "book": "Manhattan Quant",
+   "canonical_book_id": "manhattan_gre_quant",
    "chapter": "Quadratic Equations",
    "normalized": "quadratic equations",
    "skill_key": "Quadratic Equations",
@@ -698,6 +770,7 @@
   },
   {
    "book": "Manhattan Quant",
+   "canonical_book_id": "manhattan_gre_quant",
    "chapter": "Polygons",
    "normalized": "polygons",
    "skill_key": "Polygons",
@@ -707,6 +780,7 @@
   },
   {
    "book": "ETS GRE Verbal",
+   "canonical_book_id": "ets_gre_verbal",
    "chapter": "Text Completion",
    "normalized": "text completion",
    "skill_key": "Text Completions",
@@ -716,6 +790,7 @@
   },
   {
    "book": "Manhattan Quant",
+   "canonical_book_id": "manhattan_gre_quant",
    "chapter": "Lines and Angles",
    "normalized": "lines and angles",
    "skill_key": "Lines and Angles",
@@ -725,6 +800,7 @@
   },
   {
    "book": "Bird",
+   "canonical_book_id": "bird_basic_engineering_math",
    "chapter": "Chapter 16. Exponential functions",
    "normalized": "exponential functions",
    "skill_key": "Exponential Functions",
@@ -734,6 +810,7 @@
   },
   {
    "book": "Tyra",
+   "canonical_book_id": "tyra_quicker_maths",
    "chapter": "Fractions",
    "normalized": "fractions",
    "skill_key": "fractions",
@@ -743,6 +820,7 @@
   },
   {
    "book": "ETS GRE Verbal",
+   "canonical_book_id": "ets_gre_verbal",
    "chapter": "Sentence Equivalence",
    "normalized": "sentence equivalence",
    "skill_key": "Sentence Equivalence",
@@ -752,6 +830,7 @@
   },
   {
    "book": "Manhattan Quant",
+   "canonical_book_id": "manhattan_gre_quant",
    "chapter": "Combinatorics",
    "normalized": "combinatorics",
    "skill_key": "Combinatorics",
@@ -761,6 +840,7 @@
   },
   {
    "book": "Manhattan Quant",
+   "canonical_book_id": "manhattan_gre_quant",
    "chapter": "Optimization",
    "normalized": "optimization",
    "skill_key": "Optimization",
@@ -770,6 +850,7 @@
   },
   {
    "book": "Manhattan Quant",
+   "canonical_book_id": "manhattan_gre_quant",
    "chapter": "Probability",
    "normalized": "probability",
    "skill_key": "Probability",
@@ -779,6 +860,7 @@
   },
   {
    "book": "Tyra",
+   "canonical_book_id": "tyra_quicker_maths",
    "chapter": "Probability",
    "normalized": "probability",
    "skill_key": "Probability",
@@ -788,6 +870,7 @@
   },
   {
    "book": "Hall & Knight",
+   "canonical_book_id": "hall_knight_higher_algebra",
    "chapter": "23. Partial Fractions",
    "normalized": "partial fractions",
    "skill_key": "Partial Fractions",
@@ -797,6 +880,7 @@
   },
   {
    "book": "Bird",
+   "canonical_book_id": "bird_basic_engineering_math",
    "chapter": "Chapter 33. Probability",
    "normalized": "probability",
    "skill_key": "Probability",
@@ -806,6 +890,7 @@
   },
   {
    "book": "Vedic Secrets",
+   "canonical_book_id": "vedic_secrets",
    "chapter": "10. Division",
    "normalized": "division",
    "skill_key": "Division",
@@ -815,6 +900,7 @@
   },
   {
    "book": "Manhattan Logic Games",
+   "canonical_book_id": "manhattan_lsat_logic_games",
    "chapter": "1. Introduction",
    "normalized": "introduction",
    "skill_key": "Introduction",

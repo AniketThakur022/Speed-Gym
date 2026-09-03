@@ -143,6 +143,21 @@ def main() -> int:
                 by_norm.setdefault(ak, e)
         added.append(canon)
 
+    # Book display names differ across the three vocabularies; the shared map exists
+    # because comparing them as strings has already caused three cross-workstream
+    # errors. Rules carry canonical_book_id so consumers never join on a display name.
+    book_map = {}
+    bm_path = Path("data/taxonomy/book_name_map.json")
+    if bm_path.exists():
+        recs = json.loads(bm_path.read_text())["books"]
+        recs = list(recs.values()) if isinstance(recs, dict) else recs
+        for rec in recs:
+            for field in ("master_book", "graph_book", "page_store", "title", "canonical_id"):
+                val = rec.get(field)
+                for v in (val if isinstance(val, list) else [val]):
+                    if isinstance(v, str):
+                        book_map.setdefault(v, rec.get("canonical_id"))
+
     # chapter rules from the export
     counts, resolved_by, declined = Counter(), {}, {}
     for line in EXPORT.open():
@@ -180,7 +195,8 @@ def main() -> int:
                 "questions": n,
                 "reason": "no taxonomy entry or :Skill matches this chapter subject"}
             continue
-        rules.append({"book": book, "chapter": ch, "normalized": k,
+        rules.append({"book": book, "canonical_book_id": book_map.get(book),
+                      "chapter": ch, "normalized": k,
                       "skill_key": e["skill_key"], "display_label": e.get("display_label"),
                       "graph_backed": e.get("graph_backed", True), "questions": n})
         lift += n
