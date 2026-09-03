@@ -42,6 +42,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 MASTER = ROOT / "data/corpus/MASTER_corpus.jsonl"
 TAXONOMY = ROOT / "data/taxonomy/taxonomy_v1.json"
+TAXONOMY_V1_1 = ROOT / "data/taxonomy/taxonomy_v1_1.json"
 
 CH_PREFIX = re.compile(r"^\s*(ch(apter)?\.?\s*)?\d+\s*[.:)\-]?\s*", re.I)
 TRAIL_PAREN = re.compile(r"\s*\([^)]*\)\s*$")
@@ -65,15 +66,60 @@ def norm_key(s, strip_chapter=False):
 
 
 def load_taxonomy():
-    if not TAXONOMY.exists():
-        return {}, None
-    doc = json.loads(TAXONOMY.read_text())
-    lookup = {}
+    """Resolve against the newest taxonomy present.
+
+    v1.1 introduced rules keyed on (book, chapter) rather than the label alone,
+    because one chapter title means different things in different books. Those
+    rules win; a bare label match is the fallback. v1.1 also declines 285
+    structural-container chapters WITH reasons — carrying that reason through is
+    strictly better than reporting them as generically unresolved.
+    """
+    path = TAXONOMY_V1_1 if TAXONOMY_V1_1.exists() else TAXONOMY
+    if not path.exists():
+        return {}, {}, {}, None
+    doc = json.loads(path.read_text())
+
+    by_label = {}
     for e in doc.get("entries", []):
         for lab in [e.get("label")] + (e.get("aliases") or []):
             if lab:
-                lookup.setdefault(norm_key(lab), e)
-    return lookup, doc.get("version")
+                by_label.setdefault(norm_key(lab), e)
+
+    by_skill_key = {}
+    for e in doc.get("entries", []):
+        if e.get("skill_key"):
+            by_skill_key.setdefault(e["skill_key"], e)
+
+    by_book_chapter = {}
+    for rule in doc.get("chapter_rules", []):
+        key = (rule.get("book"), norm_key(rule.get("chapter") or "", strip_chapter=True))
+        rule = dict(rule)
+        # rules name a skill_key but no stable id — recover it where the entry
+        # list has one, so a consumer gets both the join key and the id.
+        ent = by_skill_key.get(rule.get("skill_key"))
+        if ent and ent.get("id"):
+            rule.setdefault("id", ent["id"])
+        by_book_chapter[key] = rule
+
+    declined = {}
+    for k, v in (doc.get("declined_chapters") or {}).items():
+        # keys look like "Book :: Chapter"
+        if " :: " in k:
+            book, chap = k.split(" :: ", 1)
+            declined[(book, norm_key(chap, strip_chapter=True))] = v
+    return by_label, by_book_chapter, declined, doc.get("version")
+
+
+def graph_backing(entry):
+    """True only on evidence. Absence of the field is not a claim either way."""
+    if entry is None:
+        return None
+    if "graph_backed" in entry:
+        return bool(entry["graph_backed"])
+    for p in entry.get("provenance") or []:
+        if p.get("source") == "neo4j_skill_nonstub":
+            return True
+    return False
 
 
 def classify_answer_provenance(q):
@@ -121,7 +167,7 @@ def main():
     ap.add_argument("--manifest")
     args = ap.parse_args()
 
-    tax, tax_version = load_taxonomy()
+    tax_by_label, tax_by_bc, tax_declined, tax_version = load_taxonomy()
     rows = []
     stats = collections.Counter()
     blockers = collections.Counter()
@@ -135,7 +181,15 @@ def main():
                 continue
             rex = r.get("extra") or {}
             chapter = r.get("chapter")
-            entry = tax.get(norm_key(chapter, strip_chapter=True)) if chapter else None
+            nchap = norm_key(chapter, strip_chapter=True) if chapter else None
+            book = r.get("book")
+            # (book, chapter) rule first, then a bare-label match, then declined.
+            entry = tax_by_bc.get((book, nchap)) if nchap else None
+            resolved_by = "book_chapter_rule" if entry else None
+            if entry is None and nchap:
+                entry = tax_by_label.get(nchap)
+                resolved_by = "label_match" if entry else None
+            decline = tax_declined.get((book, nchap)) if nchap else None
 
             # 12 records (all Sinha) hold two entries under one question number:
             # the real question plus a hint/solution capture from the same
@@ -209,12 +263,20 @@ def main():
                     # --- taxonomy ---
                     "taxonomy": {
                         "raw_label": chapter,
-                        "normalized_key": norm_key(chapter, strip_chapter=True) if chapter else None,
+                        "normalized_key": nchap,
                         "taxonomy_version": tax_version,
-                        "taxonomy_id": entry["id"] if entry else None,
+                        "taxonomy_id": entry.get("id") if entry else None,
                         "skill_key": entry.get("skill_key") if entry else None,
                         "display_label": entry.get("display_label") if entry else None,
-                        "taxonomy_status": "resolved" if entry else "unresolved",
+                        "graph_backed": graph_backing(entry),
+                        # BKT may only join a label that exists as a :Skill node.
+                        # A corpus-labelling-only entry is fine for display and
+                        # filtering, and must NOT be joined into mastery.
+                        "bkt_joinable": bool(entry) and graph_backing(entry) is True,
+                        "resolved_by": resolved_by,
+                        "taxonomy_status": ("resolved" if entry
+                                            else "declined" if decline else "unresolved"),
+                        "decline_reason": (decline or {}).get("reason") if decline else None,
                     },
                     # --- flags ---
                     "flags": {
@@ -237,6 +299,13 @@ def main():
                     prov[provenance] += 1
                 if entry:
                     stats["taxonomy_resolved"] += 1
+                    stats["taxonomy_via_" + (resolved_by or "unknown")] += 1
+                    if graph_backing(entry) is True:
+                        stats["taxonomy_bkt_joinable"] += 1
+                    if not blk:
+                        stats["playable_and_resolved"] += 1
+                elif decline:
+                    stats["taxonomy_declined"] += 1
                 elif chapter:
                     unresolved_chapters[chapter] += 1
 
