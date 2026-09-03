@@ -24,6 +24,9 @@ SCALING = {
     5: {"digit_complexity": 3, "base_distance_pct": 0.30, "carry_density": "high"},
 }
 MIN_DEVIATION = 2
+# Bump when the fingerprint hashing rule changes: v2 added the step FORMULA and
+# multi-instance variant sampling, so v1 hashes are incomparable, not "changed".
+FINGERPRINT_VERSION = "fpv2"
 BASES = {1: 10, 2: 100, 3: 1000}  # digit_complexity -> base
 
 
@@ -59,20 +62,47 @@ def _assemble_near_base(cross: int, prod: int, base: int):
     if prod >= span:
         carry, right = divmod(prod, span)
         return cross + carry, str(right).zfill(width), (
-            f"{prod} \\text{{ exceeds }} {width} \\text{{ digits, so carry }} {carry} "
-            f"\\text{{ into the left part: }} {cross} + {carry} = {cross + carry}")
+            f"{prod} \\div {span} = {carry} \\text{{ remainder }} {right} "
+            f"\\;\\Rightarrow\\; \\text{{carry }} {carry},\\; "
+            f"\\text{{left }} {cross} + {carry} = {cross + carry},\\; "
+            f"\\text{{right }} {str(right).zfill(width)}")
     if prod < 0:
-        borrowed = span + prod
-        if borrowed >= 0:
-            return cross - 1, str(borrowed).zfill(width), (
-                f"\\text{{the deviation product }} {prod} \\text{{ is negative, so borrow }} 1 "
-                f"\\text{{ from the left part: }} {cross} - 1 = {cross - 1}, "
-                f"\\text{{ right part }} {span} {prod:+d} = {borrowed}")
-        carry, right = divmod(prod, span)  # deep borrow
-        return cross + carry, str(right).zfill(width), (
-            f"\\text{{large negative deviation product: borrow }} {abs(carry)} "
-            f"\\text{{ from the left part}}")
+        # The trigger here is NEGATIVITY, not width: a negative product must be
+        # completed from the base regardless of how few digits it has. Sizing the
+        # borrow is ceil(|prod| / span), and every figure is shown rather than
+        # asserted — a panel caught an earlier version stating "borrow 31" with the
+        # two load-bearing computations happening off-page.
+        borrow = -(-abs(prod) // span) if abs(prod) % span else abs(prod) // span
+        borrow = max(1, borrow)
+        right = borrow * span + prod
+        return cross - borrow, str(right).zfill(width), (
+            f"\\text{{the product }} {prod} \\text{{ is negative, so complete it from the base: }}"
+            f"\\;\\lceil {abs(prod)} \\div {span} \\rceil = {borrow} "
+            f"\\;\\Rightarrow\\; \\text{{left }} {cross} - {borrow} = {cross - borrow},\\; "
+            f"\\text{{right }} {borrow}\\times{span} {prod:+d} = {right}")
     return cross, str(prod).zfill(width), None
+
+
+def _near_base_traps(da: int, db: int, base: int) -> list[str]:
+    """Hazards this instance can actually present — not a generic list."""
+    width = len(str(base)) - 1
+    span = 10 ** width
+    prod = da * db
+    traps = []
+    if da < 0 and db < 0:
+        traps.append("treating the product of two negative deviations as negative, when "
+                     "two minuses give a positive right part")
+    if (da < 0) != (db < 0):
+        traps.append("sign error when one deviation is positive and the other negative")
+    if prod >= span:
+        traps.append("writing the whole product in the right part instead of carrying the "
+                     "overflow into the left part")
+    elif prod < 0:
+        traps.append("forgetting to complete a negative right part from the base, and to "
+                     "reduce the left part by the amount borrowed")
+    elif len(str(abs(prod))) < width:
+        traps.append(f"omitting the leading zero(s) needed to fill the {width}-digit right part")
+    return traps or ["misreading the deviation's sign when writing it under the number"]
 
 
 def _nikhilam_steps(a, b, base):
@@ -123,6 +153,17 @@ def pattern(pid):
 def gen_mult_near_base(rng: random.Random, level: int) -> dict:
     base = BASES[SCALING[level]["digit_complexity"]]
     a, b = base + _deviation(rng, base, level), base + _deviation(rng, base, level)
+    # From L3 up, require an instance that actually EXERCISES the carry/borrow. A
+    # panel drew an L3 example (85×98, product 30) whose product happened to fit, so
+    # the walkthrough never showed the rule — the same weakness found in urdhva.
+    # Internal consistency ("the step appears when arithmetically needed") is not the
+    # same property as pedagogical coverage ("the learner is shown the rule").
+    span = 10 ** (len(str(base)) - 1)
+    for _ in range(60):
+        prod = (a - base) * (b - base)
+        if level < 3 or prod >= span or prod < 0:
+            break
+        a, b = base + _deviation(rng, base, level), base + _deviation(rng, base, level)
     return {
         "sub_topic": "Nikhilam Navatashcaramam (All from 9, Last from 10)",
         "technique_name": "multiplication",
@@ -131,8 +172,10 @@ def gen_mult_near_base(rng: random.Random, level: int) -> dict:
         "final_answer": str(a * b),
         "params": {"a": a, "b": b, "base": base},
         "solution": _nikhilam_steps(a, b, base),
-        "traps": ["forgetting the carry when the deviation product overflows the base digits",
-                  "sign error when one deviation is positive and one negative"],
+        # Traps must describe hazards THIS instance can actually present. A panel
+        # caught a static list naming a mixed-sign error on an instance where both
+        # deviations were negative — a mistake the learner could not commit here.
+        "traps": _near_base_traps(a - base, b - base, base),
         "visual_scaffold": {"type": "place_value_chart"},
         "prerequisite_chain": ["Arithmetic", "Basic Operations (+, -, ×, ÷)", "Number Bases"],
     }
@@ -142,6 +185,11 @@ def gen_mult_near_base(rng: random.Random, level: int) -> dict:
 def gen_square_near_base(rng: random.Random, level: int) -> dict:
     base = BASES[SCALING[level]["digit_complexity"]]
     d = _deviation(rng, base, level)
+    span = 10 ** (len(str(base)) - 1)
+    for _ in range(60):  # L3+ must demonstrate the carry, not merely be consistent
+        if level < 3 or d * d >= span:
+            break
+        d = _deviation(rng, base, level)
     a = base + d
     left_raw, right_raw = a + d, d * d
     left, right_str, adjust = _assemble_near_base(left_raw, right_raw, base)
@@ -472,10 +520,33 @@ def skeleton_fingerprint(pattern_id: str, level: int) -> str:
     This is what makes a verdict falsifiable: change the teaching and the verdict
     that blessed it stops matching.
     """
-    rec = generate(pattern_id, level, 1, f"fingerprint:{pattern_id}:{level}")
-    if not rec:
+    # Sample MANY instances, not one. Near-base patterns emit two different skeletons
+    # depending on whether the deviation product overflows, so a single-instance
+    # fingerprint silently represents only whichever variant that seed produced —
+    # and a single-instance spot-check judges only that variant too.
+    recs = generate(pattern_id, level, 24, f"fingerprint:{pattern_id}:{level}")
+    if not recs:
         return "empty"
-    skeleton = "|".join(
-        re.sub(r"\d+", "#", f"{s.get('operation','')}~{s.get('reasoning','')}")
-        for s in rec[0]["solution"])
-    return hashlib.sha256(skeleton.encode()).hexdigest()[:16]
+    # Include the FORMULA, not just operation/reasoning. An earlier version hashed
+    # only the prose, so rewriting a step's arithmetic — exactly the fix panels ask
+    # for ("show the computation instead of asserting it") — left the fingerprint
+    # unchanged and a stale verdict would have carried over silently.
+    variants = sorted({
+        "|".join(re.sub(r"\d+", "#",
+                        f"{s.get('operation','')}~{s.get('reasoning','')}~{s.get('formula','')}")
+                 for s in r["solution"])
+        for r in recs})
+    # Version-stamped: changing the hashing rule invalidates every stored fingerprint,
+    # and a version mismatch means "incomparable", NOT "the content changed". Without
+    # the stamp an algorithm change looks identical to a content change, which would
+    # either strand valid verdicts or silently bless stale ones.
+    return f"{FINGERPRINT_VERSION}:{hashlib.sha256('||'.join(variants).encode()).hexdigest()[:16]}"
+
+
+def skeleton_variants(pattern_id: str, level: int, n: int = 24) -> int:
+    """How many distinct walkthrough skeletons this (pattern, level) can emit.
+
+    >1 means a spot-check of one instance cannot characterise the level.
+    """
+    recs = generate(pattern_id, level, n, f"variants:{pattern_id}:{level}")
+    return len({tuple(s.get("operation", "") for s in r["solution"]) for r in recs})

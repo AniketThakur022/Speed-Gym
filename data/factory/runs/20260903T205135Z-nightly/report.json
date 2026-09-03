@@ -1,0 +1,121 @@
+{
+ "run_id": "20260903T205135Z-nightly",
+ "lane": "nightly",
+ "tokens_spent": 0,
+ "delivered": 355,
+ "stats": {
+  "audit_rejected": 494,
+  "fail_stage_6": 494,
+  "resample_rounds": 40,
+  "audit_quarantined_pending_consensus": 355
+ },
+ "sink": {
+  "sink": "file_only",
+  "reason": "VMSG_FORCE_FILE_SINK=1"
+ },
+ "pool_depth_after": {
+  "Nikhilam Navatashcaramam (All from 9, Last from 10)": 871,
+  "Yavadunam (Deficiency Squaring)": 38,
+  "Multiplication by 11 (neighbour sums)": 290,
+  "Yavadunam Sutra (Deficiency/Surplus Squaring)": 99,
+  "Ekadhikena Purvena (One More than the Previous)": 97,
+  "Urdhva Tiryagbhyam (Vertically and Crosswise)": 720
+ },
+ "targets": [
+  [
+   "mult_near_base",
+   1,
+   5
+  ],
+  [
+   "mult_near_base",
+   3,
+   30
+  ],
+  [
+   "mult_near_base",
+   4,
+   30
+  ],
+  [
+   "square_near_base",
+   2,
+   15
+  ],
+  [
+   "square_near_base",
+   3,
+   25
+  ],
+  [
+   "square_near_base",
+   4,
+   25
+  ],
+  [
+   "ekadhikena_square_5",
+   1,
+   8
+  ],
+  [
+   "ekadhikena_square_5",
+   3,
+   25
+  ],
+  [
+   "ekadhikena_square_5",
+   5,
+   25
+  ],
+  [
+   "urdhva_2x2",
+   1,
+   40
+  ],
+  [
+   "urdhva_2x2",
+   2,
+   40
+  ],
+  [
+   "urdhva_2x2",
+   3,
+   40
+  ],
+  [
+   "urdhva_2x2",
+   4,
+   30
+  ],
+  [
+   "urdhva_2x2",
+   5,
+   30
+  ],
+  [
+   "nikhilam_complement",
+   1,
+   30
+  ],
+  [
+   "nikhilam_complement",
+   3,
+   30
+  ],
+  [
+   "nikhilam_complement",
+   5,
+   30
+  ],
+  [
+   "mult_by_11",
+   1,
+   25
+  ],
+  [
+   "mult_by_11",
+   3,
+   25
+  ]
+ ]
+}

@@ -3,23 +3,23 @@
   "multiplication__nikhilam_navatashcaramam_all_from_9_last_from_10@L3": {
    "state": "quarantined_pending_consensus",
    "held_reason": "skeleton changed after this verdict was rendered; re-judge required",
-   "prior_verdict": "pass",
+   "prior_verdict": "fail",
    "judge_backend": "claude-session-panel",
-   "skeleton_fingerprint": "195d0f85373d1f45"
+   "skeleton_fingerprint": null
   },
   "multiplication__nikhilam_navatashcaramam_all_from_9_last_from_10@L4": {
    "state": "quarantined_pending_consensus",
    "held_reason": "skeleton changed after this verdict was rendered; re-judge required",
-   "prior_verdict": "pass",
+   "prior_verdict": "fail",
    "judge_backend": "claude-session-panel",
-   "skeleton_fingerprint": "195d0f85373d1f45"
+   "skeleton_fingerprint": null
   },
   "squaring__yavadunam_sutra_deficiency_surplus_squaring@L4": {
    "state": "quarantined_pending_consensus",
    "held_reason": "skeleton changed after this verdict was rendered; re-judge required",
    "prior_verdict": "fail",
    "judge_backend": "claude-session-panel",
-   "skeleton_fingerprint": "87afaab51efc3df9"
+   "skeleton_fingerprint": null
   },
   "squaring__ekadhikena_purvena_one_more_than_the_previous@L3": {
    "state": "sandbox",
@@ -58,39 +58,94 @@
    "requires_rejudge_by": "configured_trio"
   },
   "multiplication__urdhva_tiryagbhyam_vertically_and_crosswise@L1": {
-   "state": "quarantined_pending_consensus",
-   "held_reason": "skeleton changed after this verdict was rendered; re-judge required",
-   "prior_verdict": "pass",
+   "state": "sandbox",
    "judge_backend": "claude-session-panel",
-   "skeleton_fingerprint": "2e01db6adb1ddd4a"
+   "stage7_interim": true,
+   "target_kind": "pattern",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T05:40:00Z",
+   "spot_check_ids": [
+    "t2_urdhva_2x2_L1_e10b3a8844d9",
+    "t2_urdhva_2x2_L1_5feb6ec61d29",
+    "t2_urdhva_2x2_L1_ec0d2ab657b6"
+   ],
+   "requires_rejudge_by": "configured_trio"
   },
   "multiplication__urdhva_tiryagbhyam_vertically_and_crosswise@L2": {
-   "state": "quarantined_pending_consensus",
-   "held_reason": "skeleton changed after this verdict was rendered; re-judge required",
-   "prior_verdict": "pass",
+   "state": "sandbox",
    "judge_backend": "claude-session-panel",
-   "skeleton_fingerprint": "2e01db6adb1ddd4a"
+   "stage7_interim": true,
+   "target_kind": "pattern",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T05:40:00Z",
+   "spot_check_ids": [
+    "t2_urdhva_2x2_L2_0d9a3bd455c2",
+    "t2_urdhva_2x2_L2_31f162e684ab",
+    "t2_urdhva_2x2_L2_003ca83ffce9"
+   ],
+   "requires_rejudge_by": "configured_trio"
   },
   "multiplication__urdhva_tiryagbhyam_vertically_and_crosswise@L3": {
-   "state": "quarantined_pending_consensus",
-   "held_reason": "skeleton changed after this verdict was rendered; re-judge required",
-   "prior_verdict": "pass",
+   "state": "sandbox",
    "judge_backend": "claude-session-panel",
-   "skeleton_fingerprint": "2e01db6adb1ddd4a"
+   "stage7_interim": true,
+   "target_kind": "pattern",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T05:40:00Z",
+   "spot_check_ids": [
+    "t2_urdhva_2x2_L3_9dfd5f83eac9",
+    "t2_urdhva_2x2_L3_22ea04cd2df3",
+    "t2_urdhva_2x2_L3_879c49e9cad7"
+   ],
+   "requires_rejudge_by": "configured_trio"
   },
   "multiplication__urdhva_tiryagbhyam_vertically_and_crosswise@L4": {
-   "state": "quarantined_pending_consensus",
-   "held_reason": "skeleton changed after this verdict was rendered; re-judge required",
-   "prior_verdict": "fail",
+   "state": "sandbox",
    "judge_backend": "claude-session-panel",
-   "skeleton_fingerprint": "2e01db6adb1ddd4a"
+   "stage7_interim": true,
+   "target_kind": "pattern",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T05:40:00Z",
+   "spot_check_ids": [
+    "t2_urdhva_2x2_L4_9aeaadf7c8b1",
+    "t2_urdhva_2x2_L4_22f17565da91",
+    "t2_urdhva_2x2_L4_89671f645f59"
+   ],
+   "requires_rejudge_by": "configured_trio"
   },
   "multiplication__urdhva_tiryagbhyam_vertically_and_crosswise@L5": {
-   "state": "quarantined_pending_consensus",
-   "held_reason": "skeleton changed after this verdict was rendered; re-judge required",
-   "prior_verdict": "pass",
+   "state": "sandbox",
    "judge_backend": "claude-session-panel",
-   "skeleton_fingerprint": "2e01db6adb1ddd4a"
+   "stage7_interim": true,
+   "target_kind": "pattern",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T05:40:00Z",
+   "spot_check_ids": [
+    "t2_urdhva_2x2_L5_e9750708997c",
+    "t2_urdhva_2x2_L5_66b6122f9e9d",
+    "t2_urdhva_2x2_L5_967e9a8c53fb"
+   ],
+   "requires_rejudge_by": "configured_trio"
   },
   "subtraction__nikhilam_navatashcaramam_all_from_9_last_from_10@L1": {
    "state": "sandbox",
@@ -147,11 +202,22 @@
    "requires_rejudge_by": "configured_trio"
   },
   "multiplication__multiplication_by_11_neighbour_sums@L3": {
-   "state": "quarantined_pending_consensus",
-   "held_reason": "skeleton changed after this verdict was rendered; re-judge required",
-   "prior_verdict": "fail",
+   "state": "sandbox",
    "judge_backend": "claude-session-panel",
-   "skeleton_fingerprint": "ffd9f3f8b9909ac7"
+   "stage7_interim": true,
+   "target_kind": "pattern",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T05:40:00Z",
+   "spot_check_ids": [
+    "t2_mult_by_11_L3_99207d05861f",
+    "t2_mult_by_11_L3_aca1d5536ef7",
+    "t2_mult_by_11_L3_69fd35150c31"
+   ],
+   "requires_rejudge_by": "configured_trio"
   }
  },
  "ceiling_note": "Any judge_backend outside the configured trio is capped at 'sandbox' — it never feeds BKT mastery or mock exams. See docs/rag/STAGE7_SESSION_PANEL_INTAKE.md.",
