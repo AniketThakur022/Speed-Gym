@@ -43,6 +43,7 @@ ROOT = Path(__file__).resolve().parents[2]
 MASTER = ROOT / "data/corpus/MASTER_corpus.jsonl"
 TAXONOMY = ROOT / "data/taxonomy/taxonomy_v1.json"
 TAXONOMY_V1_1 = ROOT / "data/taxonomy/taxonomy_v1_1.json"
+BOOK_MAP = ROOT / "data/taxonomy/book_name_map.json"
 
 CH_PREFIX = re.compile(r"^\s*(ch(apter)?\.?\s*)?\d+\s*[.:)\-]?\s*", re.I)
 TRAIL_PAREN = re.compile(r"\s*\([^)]*\)\s*$")
@@ -110,6 +111,20 @@ def load_taxonomy():
     return by_label, by_book_chapter, declined, doc.get("version")
 
 
+def load_book_map():
+    """master_book -> canonical book record.
+
+    Three vocabularies name the same book differently (MASTER, the graph, the
+    page store), and comparing them as strings has already caused three
+    cross-workstream errors. Rows therefore carry canonical_id so nobody has
+    to string-match a display name.
+    """
+    if not BOOK_MAP.exists():
+        return {}
+    doc = json.loads(BOOK_MAP.read_text())
+    return {b["master_book"]: b for b in doc.get("books", []) if b.get("master_book")}
+
+
 def graph_backing(entry):
     """True only on evidence. Absence of the field is not a claim either way."""
     if entry is None:
@@ -168,6 +183,7 @@ def main():
     args = ap.parse_args()
 
     tax_by_label, tax_by_bc, tax_declined, tax_version = load_taxonomy()
+    book_map = load_book_map()
     rows = []
     stats = collections.Counter()
     blockers = collections.Counter()
@@ -239,6 +255,8 @@ def main():
                     "duplicate_number_in_record": dup_number,
                     "book": r.get("book"),
                     "book_title": r.get("book_title"),
+                    "book_canonical_id": (book_map.get(book) or {}).get("canonical_id"),
+                    "book_in_graph": (book_map.get(book) or {}).get("in_graph"),
                     "chapter": chapter,
                     "pdf_pages": r.get("pdf_pages") or [],
                     "text": q.get("text"),

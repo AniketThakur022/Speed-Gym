@@ -36,5 +36,12 @@ A label can be resolved for corpus labelling and display while having no
 accumulate mastery against a key the graph does not know. Resolved rows split
 roughly 3.7k joinable / 4.2k label-only.
 
+**Book identity.** Rows carry `book_canonical_id` from
+`data/taxonomy/book_name_map.json` (plus `book_in_graph`). Three vocabularies
+name the same book differently — MASTER, the graph, and the page store — and
+comparing them as display strings has already caused three cross-workstream
+errors. **Join on `book_canonical_id`, never on `book`.** All 20 books in this
+export are mapped; coverage is asserted at build time.
+
 **Playability.** `playable` is a verdict; `playable_blockers` lists why not, so
 a consumer can widen or narrow the filter without re-deriving it.
