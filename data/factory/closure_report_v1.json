@@ -1,34 +1,22 @@
 {
- "skills_in_dag": 170,
- "closure_rows": 2711,
+ "skills_in_dag": 126,
+ "closure_rows": 1544,
  "depth_distribution": {
-  "1": 294,
+  "1": 262,
   "2": 718,
-  "3": 641,
-  "4": 576,
-  "5": 482
+  "3": 350,
+  "4": 152,
+  "5": 62
  },
  "ancestors_per_skill": {
-  "mean": 15.95,
-  "median": 4.0,
-  "max": 95,
-  "zero": 78
+  "mean": 12.25,
+  "median": 0.0,
+  "max": 76,
+  "zero": 86
  },
  "problem_requirements_rows": 2457,
  "max_depth_cap": 5,
  "note": "Offline equivalent of Strategy A; live run must reproduce these counts (shadow-table diff) before promotion — see sync_manifest protocol.",
- "stub_share": {
-  "skill_nodes_total": 467,
-  "skill_nodes_stub": 374,
-  "skills_in_dag": 170,
-  "skills_in_dag_stub": 77,
-  "edges_touching_stub": 96,
-  "edges_total": 294,
-  "closure_rows_touching_stub": 1653,
-  "closure_rows_both_stub": 17,
-  "closure_rows_total": 2711,
-  "caveat": "Prerequisite edges over is_stub skills are structurally valid but semantically thin — the stub skills are harvested placeholders with no topic/sub_topic, not curated taxonomy entries. Consumers should weight closure results accordingly until taxonomy_v1 review lands."
- },
  "decline_log": {
   "invariant": "Every item a factory pass declines, skips or drops must appear in a report WITH a reason. An unlogged non-write is indistinguishable from an item that was never seen.",
   "where_declines_are_recorded": {
@@ -63,10 +51,39 @@
    "fix_owner": "extraction — needs technique enrichment at source, then edges can be derived."
   }
  },
+ "stub_share": {
+  "skill_nodes_total": 467,
+  "skill_nodes_stub": 374,
+  "skills_in_dag": 170,
+  "skills_in_dag_stub": 77,
+  "edges_touching_stub": 96,
+  "edges_total": 294,
+  "closure_rows_touching_stub": 1139,
+  "closure_rows_both_stub": 17,
+  "closure_rows_total": 1544,
+  "caveat": "Prerequisite edges over is_stub skills are structurally valid but semantically thin — the stub skills are harvested placeholders with no topic/sub_topic, not curated taxonomy entries. Consumers should weight closure results accordingly until taxonomy_v1 review lands.",
+  "note": "recomputed after the next_topic retraction: 73.8% (was 61.0%) — removed rows were disproportionately non-stub"
+ },
  "key_semantics": {
   "warning": "template_id is NOT unique across Neo4j labels. All 791 :SolveAlong nodes share their template_id with a distinct :Problem node (verified 2026-09-03), so a label-agnostic MATCH on template_id can resolve to the wrong node.",
   "rule": "Always qualify the label when joining on template_id. :Problem and :SolveAlong are separate nodes and are never dual-labeled, so an id-keyed write to one does NOT touch the other.",
   "this_artifact": "problem_requirements.template_id means a :Problem node SPECIFICALLY — the rows are derived from (:Skill)-[:PREREQUISITE_OF]->(:Problem) edges. It must not be resolved against :SolveAlong.",
   "consequence": "This table is the BKT join spine, so a label-agnostic resolution would attribute mastery to the wrong content."
+ },
+ "next_topic_tier_retraction": {
+  "date": "2026-09-04",
+  "what": "The next_topic-derived tier (82 edges) was retracted from the DAG, the live graph and the promoted closure.",
+  "why": "NEXT_TOPIC is a browse ring that wraps back to its parent topic, not a pedagogical ordering. Its chains terminate at root skills (Sequences and Series -> Binomial Theorem -> Algebra), so inverting them asserted a sub-topic as the prerequisite of its own root — for all 9 roots. It also supplied 21 of the 23 hops in the longest chain, presenting a table of contents as prerequisite depth.",
+  "found_by": "coordinator, by rendering the graph as an atlas — invisible in aggregate counts, unmissable once drawn",
+  "my_own_gaps": [
+   "a root guard existed but ran only on the chain_derived tier, so these bypassed it; it now runs on every derived tier",
+   "live_load only ADDED edges, so a tier retracted in the builder stayed live and kept feeding the closure; it now reconciles and prunes"
+  ],
+  "impact": {
+   "edges": "294 -> 262",
+   "closure_rows": "2711 -> 1544 (-43%)",
+   "longest_chain": "23 -> 6",
+   "skills_in_dag": "170 -> 126"
+  }
  }
 }

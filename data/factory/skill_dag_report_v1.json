@@ -1,9 +1,8 @@
 {
- "edges_total": 294,
+ "edges_total": 262,
  "edges_by_source": {
   "curated": 11,
-  "next_topic": 82,
-  "chain_derived": 201
+  "chain_derived": 251
  },
  "taught_skill_resolution": {
   "sub_topic": 772,
@@ -14,7 +13,9 @@
  "chain_pairs_raw": 799,
  "dropped": {
   "below_support": 527,
-  "already_curated_or_next_topic": 9
+  "already_curated_or_next_topic": 9,
+  "next_topic_tier_disabled": 82,
+  "next_topic_from_root": 9
  },
  "cycle_removals": [
   {
@@ -23,7 +24,7 @@
     "Divisibility Rules"
    ],
    "support": 2,
-   "scc_size": 43
+   "scc_size": 11
   },
   {
    "removed": [
@@ -31,39 +32,7 @@
     "Prime Numbers"
    ],
    "support": 2,
-   "scc_size": 43
-  },
-  {
-   "removed": [
-    "Circles",
-    "Algebra"
-   ],
-   "support": 2,
-   "scc_size": 43
-  },
-  {
-   "removed": [
-    "Circles",
-    "Coordinate Geometry"
-   ],
-   "support": 2,
-   "scc_size": 43
-  },
-  {
-   "removed": [
-    "Complex Numbers",
-    "Coordinate Geometry"
-   ],
-   "support": 2,
-   "scc_size": 43
-  },
-  {
-   "removed": [
-    "Complex Numbers",
-    "Polynomials and Factoring"
-   ],
-   "support": 2,
-   "scc_size": 43
+   "scc_size": 11
   },
   {
    "removed": [
@@ -71,15 +40,7 @@
     "Divisibility Rules"
    ],
    "support": 2,
-   "scc_size": 43
-  },
-  {
-   "removed": [
-    "Functions and Graphs",
-    "Algebra"
-   ],
-   "support": 2,
-   "scc_size": 43
+   "scc_size": 10
   },
   {
    "removed": [
@@ -87,55 +48,7 @@
     "Linear Equations"
    ],
    "support": 2,
-   "scc_size": 43
-  },
-  {
-   "removed": [
-    "HCF and LCM (Advanced)",
-    "Algebra"
-   ],
-   "support": 2,
-   "scc_size": 43
-  },
-  {
-   "removed": [
-    "HCF and LCM (Advanced)",
-    "Basic Operations (+, -, ×, ÷)"
-   ],
-   "support": 2,
-   "scc_size": 43
-  },
-  {
-   "removed": [
-    "Inverse Trigonometric Functions",
-    "Functions and Graphs"
-   ],
-   "support": 2,
-   "scc_size": 43
-  },
-  {
-   "removed": [
-    "Inverse Trigonometric Functions",
-    "Trigonometric Identities"
-   ],
-   "support": 2,
-   "scc_size": 43
-  },
-  {
-   "removed": [
-    "Mensuration (Area/Volume)",
-    "Circles"
-   ],
-   "support": 2,
-   "scc_size": 43
-  },
-  {
-   "removed": [
-    "Mensuration (Area/Volume)",
-    "Triangles"
-   ],
-   "support": 2,
-   "scc_size": 43
+   "scc_size": 9
   },
   {
    "removed": [
@@ -143,95 +56,7 @@
     "Divisibility Rules"
    ],
    "support": 2,
-   "scc_size": 43
-  },
-  {
-   "removed": [
-    "Modular Arithmetic",
-    "NumberTheory"
-   ],
-   "support": 2,
-   "scc_size": 43
-  },
-  {
-   "removed": [
-    "Polynomials and Factoring",
-    "Binomial Theorem"
-   ],
-   "support": 2,
-   "scc_size": 43
-  },
-  {
-   "removed": [
-    "Quadratic Equations",
-    "Basic Operations (+, -, ×, ÷)"
-   ],
-   "support": 2,
-   "scc_size": 43
-  },
-  {
-   "removed": [
-    "Quadratic Equations",
-    "Coordinate Geometry"
-   ],
-   "support": 2,
-   "scc_size": 43
-  },
-  {
-   "removed": [
-    "Triangles",
-    "Coordinate Geometry"
-   ],
-   "support": 2,
-   "scc_size": 43
-  },
-  {
-   "removed": [
-    "Trigonometric Equations",
-    "Coordinate Geometry"
-   ],
-   "support": 2,
-   "scc_size": 43
-  },
-  {
-   "removed": [
-    "Trigonometric Equations",
-    "Graphs of Trigonometric Functions"
-   ],
-   "support": 2,
-   "scc_size": 43
-  },
-  {
-   "removed": [
-    "Trigonometric Equations",
-    "Inverse Trigonometric Functions"
-   ],
-   "support": 2,
-   "scc_size": 43
-  },
-  {
-   "removed": [
-    "Trigonometric Equations",
-    "Triangles"
-   ],
-   "support": 2,
-   "scc_size": 43
-  },
-  {
-   "removed": [
-    "Trigonometric Identities",
-    "Complex Numbers"
-   ],
-   "support": 2,
-   "scc_size": 43
-  },
-  {
-   "removed": [
-    "Trigonometric Ratios",
-    "Algebra"
-   ],
-   "support": 2,
-   "scc_size": 43
+   "scc_size": 9
   },
   {
    "removed": [
@@ -239,293 +64,69 @@
     "Division"
    ],
    "support": 3,
-   "scc_size": 43
-  },
-  {
-   "removed": [
-    "Basic Operations (+, -, ×, ÷)",
-    "Modular Arithmetic"
-   ],
-   "support": 3,
-   "scc_size": 42
-  },
-  {
-   "removed": [
-    "Coordinate Geometry",
-    "Basic Operations (+, -, ×, ÷)"
-   ],
-   "support": 3,
-   "scc_size": 42
-  },
-  {
-   "removed": [
-    "Divisibility Rules",
-    "Basic Operations (+, -, ×, ÷)"
-   ],
-   "support": 3,
-   "scc_size": 42
-  },
-  {
-   "removed": [
-    "Divisibility Rules",
-    "Modular Arithmetic"
-   ],
-   "support": 3,
-   "scc_size": 42
-  },
-  {
-   "removed": [
-    "Exponents and Radicals",
-    "Fractions and Decimals"
-   ],
-   "support": 3,
-   "scc_size": 41
-  },
-  {
-   "removed": [
-    "Functions and Graphs",
-    "Basic Operations (+, -, ×, ÷)"
-   ],
-   "support": 3,
-   "scc_size": 41
-  },
-  {
-   "removed": [
-    "Functions and Graphs",
-    "Coordinate Geometry"
-   ],
-   "support": 3,
-   "scc_size": 41
-  },
-  {
-   "removed": [
-    "Linear Equations",
-    "Ratios and Proportions"
-   ],
-   "support": 3,
-   "scc_size": 41
-  },
-  {
-   "removed": [
-    "Modular Arithmetic",
-    "Basic Operations (+, -, ×, ÷)"
-   ],
-   "support": 3,
-   "scc_size": 39
-  },
-  {
-   "removed": [
-    "Polynomials and Factoring",
-    "Fractions and Decimals"
-   ],
-   "support": 3,
-   "scc_size": 39
-  },
-  {
-   "removed": [
-    "Polynomials and Factoring",
-    "NumberTheory"
-   ],
-   "support": 3,
-   "scc_size": 39
-  },
-  {
-   "removed": [
-    "Trigonometric Identities",
-    "Algebra"
-   ],
-   "support": 3,
-   "scc_size": 39
-  },
-  {
-   "removed": [
-    "Conic Sections (Parabola, Ellipse, Hyperbola)",
-    "Trigonometry"
-   ],
-   "support": 4,
-   "scc_size": 39
-  },
-  {
-   "removed": [
-    "Coordinate Geometry",
-    "Vectors"
-   ],
-   "support": 4,
-   "scc_size": 39
-  },
-  {
-   "removed": [
-    "Exponents and Radicals",
-    "Functions and Graphs"
-   ],
-   "support": 4,
-   "scc_size": 39
-  },
-  {
-   "removed": [
-    "Inverse Trigonometric Functions",
-    "Trigonometric Ratios"
-   ],
-   "support": 4,
-   "scc_size": 39
-  },
-  {
-   "removed": [
-    "Linear Equations",
-    "Coordinate Geometry"
-   ],
-   "support": 4,
-   "scc_size": 39
-  },
-  {
-   "removed": [
-    "Quadratic Equations",
-    "Functions and Graphs"
-   ],
-   "support": 4,
-   "scc_size": 21
-  },
-  {
-   "removed": [
-    "Trigonometric Ratios",
-    "Coordinate Geometry"
-   ],
-   "support": 5,
-   "scc_size": 16
-  },
-  {
-   "removed": [
-    "Basic Operations (+, -, ×, ÷)",
-    "Algebra"
-   ],
-   "support": 5,
-   "scc_size": 21
-  },
-  {
-   "removed": [
-    "Heights and Distances",
-    "Trigonometric Ratios"
-   ],
-   "support": 6,
-   "scc_size": 16
-  },
-  {
-   "removed": [
-    "Fractions and Decimals",
-    "NumberTheory"
-   ],
-   "support": 5,
-   "scc_size": 21
-  },
-  {
-   "removed": [
-    "Coordinate Geometry",
-    "Trigonometry"
-   ],
-   "support": 9,
-   "scc_size": 16
-  },
-  {
-   "removed": [
-    "Quadratic Equations",
-    "Algebra"
-   ],
-   "support": 5,
-   "scc_size": 21
-  },
-  {
-   "removed": [
-    "Basic Operations (+, -, ×, ÷)",
-    "Exponents and Radicals"
-   ],
-   "support": 7,
-   "scc_size": 21
-  },
-  {
-   "removed": [
-    "Basic Operations (+, -, ×, ÷)",
-    "Fractions and Decimals"
-   ],
-   "support": 7,
    "scc_size": 8
   },
   {
    "removed": [
-    "Polynomials and Factoring",
-    "Functions and Graphs"
-   ],
-   "support": 7,
-   "scc_size": 13
-  },
-  {
-   "removed": [
     "Basic Operations (+, -, ×, ÷)",
-    "NumberTheory"
+    "Modular Arithmetic"
    ],
-   "support": 14,
+   "support": 3,
    "scc_size": 7
   },
   {
    "removed": [
-    "Quadratic Equations",
-    "Exponents and Radicals"
+    "Coordinate Geometry",
+    "Basic Operations (+, -, ×, ÷)"
    ],
-   "support": 9,
-   "scc_size": 13
+   "support": 3,
+   "scc_size": 6
   },
   {
    "removed": [
-    "Polynomials and Factoring",
-    "Linear Equations"
+    "Functions and Graphs",
+    "Basic Operations (+, -, ×, ÷)"
    ],
-   "support": 10,
-   "scc_size": 13
+   "support": 3,
+   "scc_size": 6
+  },
+  {
+   "removed": [
+    "Functions and Graphs",
+    "Coordinate Geometry"
+   ],
+   "support": 3,
+   "scc_size": 6
+  },
+  {
+   "removed": [
+    "Basic Operations (+, -, ×, ÷)",
+    "Exponents and Radicals"
+   ],
+   "support": 7,
+   "scc_size": 2
   },
   {
    "removed": [
     "Linear Equations",
-    "Algebra"
+    "Coordinate Geometry"
    ],
-   "support": 11,
-   "scc_size": 13
-  },
-  {
-   "removed": [
-    "Quadratic Equations",
-    "Polynomials and Factoring"
-   ],
-   "support": 17,
-   "scc_size": 12
-  },
-  {
-   "removed": [
-    "Polynomials and Factoring",
-    "Algebra"
-   ],
-   "support": 18,
-   "scc_size": 11
-  },
-  {
-   "removed": [
-    "Polynomials and Factoring",
-    "Exponents and Radicals"
-   ],
-   "support": 29,
+   "support": 4,
    "scc_size": 2
   }
  ],
  "root_out_degrees": {
-  "Algebra": 1,
-  "Arithmetic": 1,
-  "Calculus": 1,
-  "Geometry": 1,
-  "Logic": 1,
-  "NumberTheory": 1,
-  "Statistics": 1,
-  "Trigonometry": 1,
-  "VedicMath": 9
+  "Algebra": 0,
+  "Arithmetic": 0,
+  "Calculus": 0,
+  "Geometry": 0,
+  "Logic": 0,
+  "NumberTheory": 0,
+  "Statistics": 0,
+  "Trigonometry": 0,
+  "VedicMath": 8
  },
- "skills_with_outgoing": 92,
+ "skills_with_outgoing": 40,
  "skills_total": 467,
  "unresolved_chain_members_top20": [
   [

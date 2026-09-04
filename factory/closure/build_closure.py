@@ -86,7 +86,15 @@ def main() -> int:
         "note": "Offline equivalent of Strategy A; live run must reproduce these counts "
                 "(shadow-table diff) before promotion — see sync_manifest protocol.",
     }
-    (out_dir / "closure_report_v1.json").write_text(json.dumps(report, indent=1, ensure_ascii=False))
+    # Merge, don't clobber. This report also carries sections written elsewhere
+    # (decline_log, stub_share, retraction notes); a fresh write silently deleted
+    # them on every rebuild.
+    report_path = out_dir / "closure_report_v1.json"
+    if report_path.exists():
+        existing = json.loads(report_path.read_text())
+        existing.update(report)
+        report = existing
+    report_path.write_text(json.dumps(report, indent=1, ensure_ascii=False))
     print(json.dumps(report, indent=1))
     return 0
 

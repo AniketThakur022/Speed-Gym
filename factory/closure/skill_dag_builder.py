@@ -98,7 +98,16 @@ def main() -> int:
         if r["rel_type"] == "REQUIRES":
             curated.append((r["start_key"], r["end_key"]))
         elif r["rel_type"] == "NEXT_TOPIC":
-            next_topic.append((r["end_key"], r["start_key"]))  # inverted: later REQUIRES earlier
+            # DISABLED 2026-09-04. The inversion (earlier->later => dependent->prereq) is
+            # sound in principle, but NEXT_TOPIC is not a pedagogical ordering — it is a
+            # browse ring that WRAPS BACK to its parent topic. The chains terminate at
+            # root skills ("Sequences and Series -> Binomial Theorem -> Algebra"), so
+            # inverting produced "Algebra REQUIRES Binomial Theorem" for all 9 roots.
+            # It also supplied 21 of the 23 hops in the longest chain, turning a book's
+            # table of contents into apparent prerequisite depth and inflating every
+            # closure row computed through it. Re-enable only if someone validates the
+            # ordering as pedagogical; the raw edges remain in the export either way.
+            next_topic.append((r["end_key"], r["start_key"]))
         elif r["rel_type"] == "TEACHES":
             teaches[r["start_key"]] = r["end_key"]
 
@@ -156,8 +165,16 @@ def main() -> int:
             continue
         derived.append((s, m, n))
 
+    # Root guard applies to EVERY derived tier, not just chain_derived. Restricting it
+    # to one tier is what let the next_topic wrap-backs through: a root skill requires
+    # nothing, so any derived edge leaving a root is wrong by construction.
+    USE_NEXT_TOPIC = False
+    next_kept = [(s, m) for s, m in next_set if s not in roots] if USE_NEXT_TOPIC else []
+    dropped["next_topic_tier_disabled"] = len(next_set) if not USE_NEXT_TOPIC else 0
+    dropped["next_topic_from_root"] = sum(1 for s, _m in next_set if s in roots)
+
     edges = ([(s, m, "curated", 1) for s, m in curated]
-             + [(s, m, "next_topic", 1) for s, m in next_set]
+             + [(s, m, "next_topic", 1) for s, m in next_kept]
              + [(s, m, "chain_derived", n) for s, m, n in derived])
 
     # --- cycle break: drop lowest-support derived edge per SCC, iterate ---

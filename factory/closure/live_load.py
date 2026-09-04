@@ -63,6 +63,18 @@ def main() -> int:
             SET r.source = e.source, r.support = e.support
             RETURN count(r) AS bound
             """, edges=edges).single()
+        # Reconcile, don't just add. An add-only loader leaves retracted edges live:
+        # the next_topic tier was disabled in the builder on 2026-09-04 but its 82
+        # edges stayed in the graph, still feeding the closure. Any edge this loader
+        # created that the current file no longer asserts is removed.
+        pruned = s.run("""
+            MATCH (a:Skill)-[r:REQUIRES]->(b:Skill)
+            WHERE r.created_by = 'skill_dag_builder_v1'
+              AND NOT [a.name, b.name] IN $pairs
+            DELETE r RETURN count(r) AS n
+            """, pairs=[[e["from"], e["to"]] for e in edges]).single()["n"]
+        print(f"pruned {pruned} REQUIRES edges no longer asserted by the builder")
+
         total = s.run("MATCH ()-[r:REQUIRES]->() RETURN count(r) AS n").single()["n"]
         missing = s.run("""
             UNWIND $edges AS e
