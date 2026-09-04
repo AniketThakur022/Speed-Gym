@@ -1,0 +1,54 @@
+{
+ "sample": {
+  "n": 60,
+  "stratification": "(book x technique), 470 strata, seed 20260904",
+  "judge_backend": "claude-session-panel",
+  "consensus": "2_of_3"
+ },
+ "headline": {
+  "fail": 53,
+  "defect_rate_pct": 88.3,
+  "unanimous_fail": 42,
+  "unanimous_pass": 2
+ },
+ "calibration_check": {
+  "metadata_only_failures": 2,
+  "failures_with_method_or_followability_defect": 51,
+  "note": "trap-realism failed 57/60, so a metadata-only read would over-report; but 51 of 53 failed items carry an independent method or followability defect, so the rate is not a metadata artifact"
+ },
+ "by_book": {
+  "Schaums_College_Math": {
+   "sampled": 13,
+   "failed": 10
+  },
+  "Tirthaji_Vedic_Math": {
+   "sampled": 20,
+   "failed": 18
+  },
+  "Bird_Engineering_Math": {
+   "sampled": 15,
+   "failed": 13
+  },
+  "Number_Sense": {
+   "sampled": 6,
+   "failed": 6
+  },
+  "Vedic_Made_Easy": {
+   "sampled": 5,
+   "failed": 5
+  },
+  "Vedic_Secrets": {
+   "sampled": 1,
+   "failed": 1
+  }
+ },
+ "dominant_defect_class": "within-template description/operation misalignment: step descriptions carried over from a sibling example or offset by one example, contradicting the operations they label; plus technique mislabelling (template name != method taught) and junk result fields",
+ "deterministic_scan": {
+  "file": "data/factory/desc_operation_misalignment_scan.json",
+  "signature": "description cites numbers absent from its own example",
+  "templates_flagged": 80,
+  "pct": 9.7,
+  "limitation": "catches only number-bearing descriptions; misses carried-over prose with no distinctive numerals (e.g. \"Add the partial products to get final result\"), which the panels found repeatedly \u2014 the true prevalence lies between 9.7% and the sampled 88.3%"
+ },
+ "serving_consequence": "these 823 templates overlap the served Tier-1 pool 766/777 and are labelled static_verified, which certifies question+answer only \u2014 this sample says the WALKTHROUGHS are unreliable at scale"
+}
