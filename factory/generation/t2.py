@@ -62,9 +62,9 @@ def _assemble_near_base(cross: int, prod: int, base: int):
     if prod >= span:
         carry, right = divmod(prod, span)
         return cross + carry, str(right).zfill(width), {
-            "operation": "Carry the overflow into the left part",
-            "reasoning": "The right part cannot be wider than the base's zeros, so the "
-                         "excess is ADDED to the left part",
+            "operation": "Carry the surplus from the right part into the left part",
+            "reasoning": "The right part may hold only as many digits as the base has "
+                         "zeros; the surplus above that is carried into the left part.",
             "formula": (
                 f"{prod} \\div {span} = {carry} \\text{{ remainder }} {right} "
                 f"\\;\\Rightarrow\\; \\text{{carry }} {carry},\\; "
@@ -87,8 +87,9 @@ def _assemble_near_base(cross: int, prod: int, base: int):
             # subtracting and got the wrong answer. All three fields now come from the
             # same branch so the prose cannot drift from the arithmetic again.
             "operation": "Complete the negative right part from the base",
-            "reasoning": "The right part came out negative, so it is completed from the "
-                         "base and the amount borrowed is SUBTRACTED from the left part",
+            "reasoning": "A negative right part is completed from the base — of any width, "
+                         "not only when it is too wide — and the borrowed multiple of the "
+                         "base is subtracted from the left part.",
             "formula": (
                 f"\\text{{the product }} {prod} \\text{{ is negative, so complete it from "
                 f"the base: }}\\;\\lceil {abs(prod)} \\div {span} \\rceil = {borrow} "
@@ -119,6 +120,30 @@ def _near_base_traps(da: int, db: int, base: int) -> list[str]:
     return traps or ["misreading the deviation's sign when writing it under the number"]
 
 
+def _yavadunam_traps(d: int, base: int) -> list[str]:
+    """Hazards a Yavadunam squaring instance can actually present.
+
+    Squaring annihilates sign, so any "dropped the sign of the square" trap is
+    vacuous; and a padding trap is impossible whenever the squared deviation is
+    wider than the base's zeros, which is the norm at higher levels.
+    """
+    width = len(str(base)) - 1
+    span = 10 ** width
+    sq = d * d
+    traps = []
+    if d > 0:
+        traps.append("lessening the left part as if the deviation were a deficiency, when "
+                     "a surplus must be added")
+    else:
+        traps.append("adding the deficiency to the left part instead of subtracting it")
+    if sq >= span:
+        traps.append("writing the whole squared deviation in the right part instead of "
+                     "carrying its surplus into the left part")
+    elif len(str(sq)) < width:
+        traps.append(f"omitting the leading zero(s) needed to fill the {width}-digit right part")
+    return traps
+
+
 def _nikhilam_steps(a, b, base):
     da, db = a - base, b - base
     cross = a + db
@@ -132,7 +157,10 @@ def _nikhilam_steps(a, b, base):
          "formula": f"{a}\\to{da:+d},\\quad {b}\\to{db:+d}",
          "reasoning": "Deviation = number − base"},
         {"step_num": 3, "operation": "Cross-add for the left part",
-         "formula": f"{a}{db:+d} = {cross}",
+         # Render the addition of a signed deviation explicitly. "8-3 = 5" under a
+         # step labelled "Cross-ADD" makes the label look wrong to a learner; the
+         # operation really is addition, of a negative quantity.
+         "formula": f"{a} + ({db:+d}) = {cross}",
          "reasoning": "Either cross-sum gives the same left part"},
         {"step_num": 4, "operation": "Multiply the deviations for the right part",
          "formula": f"({da:+d})\\times({db:+d}) = {prod}",
@@ -214,9 +242,16 @@ def gen_square_near_base(rng: random.Random, level: int) -> dict:
         "solution": [
             {"step_num": 1, "operation": "Deviation from the base",
              "formula": f"{a} - {base} = {d:+d}", "reasoning": "Yavadunam works on the deficiency/surplus"},
-            {"step_num": 2, "operation": "Left part: add the deviation again",
+            # Branch on sign. A frozen "whatever the deficiency, lessen it further" was
+            # handed to SURPLUS instances where the step adds (1208 + 208 = 1416) — the
+            # rule said lessen while the worked line increased. The sub_category
+            # advertises "Deficiency/Surplus", so both halves of the sutra are in scope.
+            {"step_num": 2,
+             "operation": ("Left part: reduce by the deficiency again" if d < 0
+                           else "Left part: increase by the surplus again"),
              "formula": f"{a}{d:+d} = {left_raw}",
-             "reasoning": "Whatever the deficiency, lessen it further"},
+             "reasoning": ("Whatever the deficiency, lessen it by the same extent" if d < 0
+                           else "Whatever the surplus, increase it by the same extent")},
             {"step_num": 3, "operation": "Right part: square the deviation",
              "formula": f"({d:+d})^2 = {right_raw}",
              "reasoning": f"The right part occupies {len(str(base)) - 1} digits — the width "
@@ -226,8 +261,11 @@ def gen_square_near_base(rng: random.Random, level: int) -> dict:
              "formula": f"{left}\\,|\\,{right_str} = {a * a}",
              "reasoning": f"left \\times {base} + right, with the digits placed by width"},
         ],
-        "traps": ["squaring the deviation but dropping its sign context",
-                  "right part written with too few digits (missing leading zeros)"],
+        # Instance-aware, like the multiplication pattern. The old static pair was
+        # vacuous here: squaring annihilates sign, and at L4 the squared deviation is
+        # always WIDER than the base width, so "missing leading zeros" is structurally
+        # impossible — neither mistake could be committed on the shown work.
+        "traps": _yavadunam_traps(d, base),
         "visual_scaffold": {"type": "place_value_chart"},
         "prerequisite_chain": ["Arithmetic", "Basic Operations (+, -, ×, ÷)", "Number Bases"],
     }
