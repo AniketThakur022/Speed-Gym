@@ -132,8 +132,13 @@ CREATE TABLE IF NOT EXISTS problems (
     answer_key_structured JSONB,
     target_variable VARCHAR(100),
     data_points JSONB DEFAULT '{}'::jsonb,
-    verification_status VARCHAR(50),   -- LEGACY v1 verifier verdict (63.7% FP) — diagnostic only,
-                                       -- never a quality gate; live signal = graph validation_status
+    -- LEGACY v1 verifier verdict. Never a quality gate: ALL_FAILED on 806 of
+    -- 807 is unusable per item, and the verifier had a documented 63.7% FP
+    -- rate. But do NOT read it as known-meaningless — it checked step RESULTS,
+    -- and those are genuinely contaminated at scale, so it may have detected
+    -- something real. Unresolved; RAG owns the re-test. The live serving signal
+    -- is the graph's validation_status (question + answer).
+    verification_status VARCHAR(50),
     verification_error TEXT,
     verified_roots JSONB DEFAULT '[]'::jsonb,
     verified_at TIMESTAMPTZ,

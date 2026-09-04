@@ -28,10 +28,22 @@ ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_EXPORTS = ROOT / "incoming" / "topic_browser_full_package" / "db_exports"
 CHUNK_TYPE_PATCH = ROOT / "data" / "factory" / "chunk_type_patch_v1.jsonl"
 
-# Legacy pre-loss SymPy verifier v1 verdicts (documented 63.7% false-positive
-# rate) — quarantined: never seeded as live fields. The real quality signal is
-# the graph's validation_status (verified_L1/L2). See memory
-# `neo4j-live-graph-schema` / coordinator note 2026-09-02.
+# Legacy pre-loss SymPy verifier v1 verdicts. QUARANTINED — never seeded as a
+# live field — because ALL_FAILED on 806 of 807 items is not usable as a
+# per-item verdict, and the verifier carried a documented 63.7% false-positive
+# rate.
+#
+# It is NOT established that the field is meaningless, and it should not be
+# described that way. The old verifier checked step RESULTS, and a later repair
+# pass found those results genuinely cross-contaminated between examples at
+# scale (124 of 500 templates refused as unrepairable for contradictory
+# arithmetic in exactly that layer). So the verifier may have been detecting
+# something real while still being useless per item. RAG owns the re-test;
+# quarantine is the safe posture meanwhile, not a verdict of noise.
+#
+# The signal actually used for serving is the graph's validation_status
+# (verified_L1/L2), which certifies question + answer — the layer the
+# contamination does NOT touch. See memory `neo4j-live-graph-schema`.
 QUARANTINED_FIELDS = {"python_audit_status", "_python_audit_status"}
 
 DATABASE_URL = os.environ.get("DATABASE_URL", "postgresql://vmsg:vmsg@localhost:5432/vmsg")
