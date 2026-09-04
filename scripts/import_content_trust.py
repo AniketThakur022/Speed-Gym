@@ -83,9 +83,25 @@ def main() -> int:
 
     import psycopg
 
+    written, skipped_promoted = 0, []
+    version = str(manifest.get("bank", "unknown"))[:20]
+
     with psycopg.connect(DATABASE_URL) as conn:
         with conn.cursor() as cur:
             for content_id, level, reasons in rows:
+                # Re-runnable, and deliberately NOT a blind upsert: stage-7 is
+                # promoting items into this same table. Overwriting a TRUSTED or
+                # SANDBOX promotion with a quarantine from a stale manifest
+                # would silently un-promote reviewed content, so an existing
+                # non-quarantine verdict wins and is reported instead.
+                existing = cur.execute(
+                    "SELECT trust_level FROM problem_health_scores WHERE content_id = %s",
+                    (content_id,),
+                ).fetchone()
+                if existing and not str(existing[0]).startswith("QUARANTINED"):
+                    skipped_promoted.append((content_id, existing[0]))
+                    continue
+
                 cur.execute(
                     """INSERT INTO problem_health_scores (content_id, trust_level, updated_at)
                        VALUES (%s, %s, NOW())
@@ -93,21 +109,34 @@ def main() -> int:
                          SET trust_level = EXCLUDED.trust_level, updated_at = NOW()""",
                     (content_id, level),
                 )
+                # The log is append-only by design, so clear this manifest's
+                # prior entry for the id first — otherwise every re-run stacks
+                # duplicates and the gate history stops being readable.
+                cur.execute(
+                    """DELETE FROM content_validation_log
+                       WHERE content_id = %s AND gate = 'trap_taxonomy' AND verifier_version = %s""",
+                    (content_id, version),
+                )
                 cur.execute(
                     """INSERT INTO content_validation_log
                            (content_id, content_kind, gate, passed, details, verifier_version)
                        VALUES (%s, 'solvealong_template', 'trap_taxonomy', FALSE, %s, %s)""",
                     (
                         content_id,
-                        json.dumps({"reasons": reasons, "bank": manifest.get("bank")}),
                         # verifier_version is VARCHAR(20); the full bank name lives
                         # in details so nothing is lost to the truncation.
-                        str(manifest.get("bank", "unknown"))[:20],
+                        json.dumps({"reasons": reasons, "bank": manifest.get("bank")}),
+                        version,
                     ),
                 )
+                written += 1
         conn.commit()
 
-    print(f"  wrote {len(rows)} quarantine decisions to problem_health_scores")
+    print(f"  wrote {written} quarantine decisions to problem_health_scores")
+    if skipped_promoted:
+        print(f"  LEFT ALONE {len(skipped_promoted)} already-promoted rows (not downgraded):")
+        for content_id, level in skipped_promoted[:10]:
+            print(f"    {level:18} {content_id}")
     return 0
 
 

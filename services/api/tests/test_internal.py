@@ -87,9 +87,11 @@ def test_problem_batch_returns_answers_for_server_side_scoring(client):
     assert problems
     for problem in problems:
         # The game server needs the answer; the client never receives this shape.
-        assert problem["answer"]
-        assert float(problem["answer"])
-        assert problem["problem_text"]
+        # Assert it PARSES — not that it is truthy: 0 is a perfectly valid
+        # answer, and a truthiness check made this test fail ~1 run in 6.
+        assert problem["answer"] != ""
+        float(problem["answer"])
+        assert problem["problem_text"].strip()
 
 
 def test_user_context_seeds_elo_from_ability_for_a_new_player(client, user):

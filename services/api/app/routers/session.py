@@ -24,7 +24,7 @@ from typing import Any, Optional
 from fastapi import APIRouter, HTTPException, Query
 
 from .. import db
-from ..content import extract_numeric_answer, quarantined_ids, servable_trust
+from ..content import extract_numeric_answer, quarantined_ids, servable_trust, trust_levels
 
 router = APIRouter(prefix="/practice", tags=["practice"])
 
@@ -32,7 +32,26 @@ ANSWER_VERIFIED = {"verified_L1", "verified_L2"}
 TRAY_PREFIX = "factory:tray:"
 
 
-def _tier1_item(record: dict[str, Any]) -> dict[str, Any]:
+def _tier1_trust(template_id: Optional[str], ladder: dict[str, str]) -> str:
+    """Trust label for a Tier-1 item, honouring a stage-7 verdict if one exists.
+
+    No ladder row means the item has never been reviewed, which is the default
+    for book content: `static_verified` (question + answer only).
+    """
+    level = ladder.get(template_id or "")
+    if level in {"LIVE", "TRUSTED"}:
+        return "trusted"
+    if level == "SANDBOX":
+        return "sandbox"
+    return "static_verified"
+
+
+def _feeds_mastery(template_id: Optional[str], ladder: dict[str, str]) -> bool:
+    """SANDBOX content is served but excluded from mastery and mocks."""
+    return ladder.get(template_id or "") != "SANDBOX"
+
+
+def _tier1_item(record: dict[str, Any], ladder: dict[str, str]) -> dict[str, Any]:
     answer = extract_numeric_answer(record.get("answer_key"))
     # `skill` is the mastery key and comes from the graph's existing
     # (:Skill)-[:PREREQUISITE_OF]->(:Problem) edge. The corpus `technique`/
@@ -67,10 +86,16 @@ def _tier1_item(record: dict[str, Any]) -> dict[str, Any]:
         # templates `trusted_candidate`, which servable_trust maps to sandbox.
         # Those ratings describe the derived walkthrough, not the book's answer,
         # so they are deliberately NOT applied to Tier-1 here.)
-        "trust": "static_verified",
+        #
+        # A stage-7 promotion in problem_health_scores DOES override, in both
+        # directions: it is a human/jester review of this exact content, which
+        # outranks the default provenance label. Without this the whole review
+        # pipeline would have no observable effect on what gets served.
+        "trust": _tier1_trust(record.get("template_id"), ladder),
         # Without a resolvable skill there is nothing to attribute mastery to,
         # and guessing from a display label is the bug this replaces.
-        "feeds_mastery": skill is not None,
+        # SANDBOX content is playable but must never move mastery.
+        "feeds_mastery": skill is not None and _feeds_mastery(record.get("template_id"), ladder),
         "answer_verification": "verified",
         "solution_verification": "unverified",
         "answer_check": "client_extract" if answer is not None else "server_sympy",
@@ -105,7 +130,11 @@ def _tier2_item(entry: dict[str, Any], decision) -> dict[str, Any]:
 
 
 async def _load_tier1(
-    topic: Optional[str], technique: Optional[str], limit: int, excluded: set[str]
+    topic: Optional[str],
+    technique: Optional[str],
+    limit: int,
+    excluded: set[str],
+    ladder: dict[str, str],
 ) -> list[dict]:
     filters = [
         # trim() guards the empty-string hole: IS NOT NULL happily passes "",
@@ -161,7 +190,7 @@ async def _load_tier1(
     driver = db.get_neo4j()
     async with driver.session() as neo:
         result = await neo.run(query, **params)
-        return [_tier1_item(dict(record)) async for record in result]
+        return [_tier1_item(dict(record), ladder) async for record in result]
 
 
 async def _load_tier2(sub_topic: Optional[str], limit: int) -> tuple[list[dict], dict[str, int]]:
@@ -207,7 +236,8 @@ async def build_session(
     try:
         pool = await db.get_pg()
         excluded = await quarantined_ids(pool)
-        tier1 = await _load_tier1(topic, technique, size, excluded)
+        ladder = await trust_levels(pool)
+        tier1 = await _load_tier1(topic, technique, size, excluded, ladder)
         tier2, withheld = await _load_tier2(sub_topic, max(0, size - len(tier1)))
     except HTTPException:
         raise

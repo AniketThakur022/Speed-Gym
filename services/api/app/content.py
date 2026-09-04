@@ -23,6 +23,12 @@ FRACTION = re.compile(
 )
 PLAIN_NUMBER = re.compile(r"^-?\d+(?:\.\d+)?$")
 LATEX_NOISE = ("\\,", "\\;", "\\!", "\\ ", "\\left", "\\right", "\\$")
+LATEX_COMMAND = re.compile(r"\\[a-zA-Z]+")
+
+
+def _strip_latex_commands(text: str) -> str:
+    """Drop \\frac, \\times etc. so their letters are not mistaken for variables."""
+    return LATEX_COMMAND.sub(" ", text)
 
 
 def extract_numeric_answer(answer_key: Optional[str]) -> Optional[float]:
@@ -38,7 +44,24 @@ def extract_numeric_answer(answer_key: Optional[str]) -> Optional[float]:
         return None
 
     text = answer_key.strip().strip("$")
-    text = text.split("=")[-1]
+
+    # An answer key is often "expression = value" ("$735 + 167 = 902$"), so the
+    # value is the right-hand side. But the key is just as often an EQUATION that
+    # IS the answer ("$x + 3y - 11 = 0$" — find the line), and blindly taking the
+    # RHS turns those into the number 0. That is the worst possible failure:
+    # a learner who answers correctly is marked wrong, and one who types "0" is
+    # marked right. So only split when the left side is pure arithmetic.
+    if "=" in text:
+        parts = text.split("=")
+        # More than one "=" means an equation chain or a multi-part answer
+        # ("(a) ... = 0; (b) ... = 0"); never a single numeric value.
+        if len(parts) != 2:
+            return None
+        lhs = _strip_latex_commands(parts[0])
+        if re.search(r"[a-zA-Z]", lhs):
+            return None  # the left side names variables, so this is an equation
+        text = parts[1]
+
     for noise in LATEX_NOISE:
         text = text.replace(noise, "")
     text = text.strip()
@@ -75,6 +98,33 @@ SANDBOX_LABELS = {"SANDBOX", "sandbox", "sandbox_candidate", "trusted_candidate"
 # Cached because every serving path needs it and the set is tiny; a factory
 # re-import is a deploy-time event, not a per-request one.
 _quarantined: Optional[set[str]] = None
+_trust_levels: Optional[dict[str, str]] = None
+
+
+async def trust_levels(pool) -> dict[str, str]:
+    """content_id -> trust_level for everything the ladder has an opinion on.
+
+    Stage-7 promotes items into this table, so the serving path must read the
+    WHOLE ladder, not just the quarantine rung — otherwise a promotion to
+    SANDBOX or TRUSTED has no observable effect and the review work is wasted.
+
+    Fails open to an empty mapping for the same reason as quarantined_ids: a
+    trust-metadata outage must not take the practice loop down. The caller
+    treats "no opinion" as the default rung, which is what applied before this
+    table was populated at all.
+    """
+    global _trust_levels
+    if _trust_levels is not None:
+        return _trust_levels
+    try:
+        async with pool.connection() as conn:
+            rows = await (
+                await conn.execute("SELECT content_id, trust_level FROM problem_health_scores")
+            ).fetchall()
+        _trust_levels = {row[0]: row[1] for row in rows}
+    except Exception:  # noqa: BLE001
+        return {}
+    return _trust_levels
 
 
 async def quarantined_ids(pool) -> set[str]:
@@ -103,9 +153,11 @@ async def quarantined_ids(pool) -> set[str]:
 
 
 def reset_quarantine_cache() -> None:
-    """Drop the cache — for tests and for after a factory re-import."""
-    global _quarantined
+    """Drop the caches — for tests, and after a factory import or a stage-7
+    promotion writes new rows."""
+    global _quarantined, _trust_levels
     _quarantined = None
+    _trust_levels = None
 
 
 class TrustDecision:
