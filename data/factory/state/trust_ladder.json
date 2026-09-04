@@ -218,6 +218,846 @@
     "t2_mult_by_11_L3_69fd35150c31"
    ],
    "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_329": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_76": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_66": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_117": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_346": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_41": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_270": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_167": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Number_Sense_sa_184": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_143": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_313": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_66": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Vedic_Made_Easy_sa_36": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_280": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_235": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_381": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_96": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_177": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_48": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_210": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_332": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_28": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Vedic_Secrets_sa_46": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Number_Sense_sa_294": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_171": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_390": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_212": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_416": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_39": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_110": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_415": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_285": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_75": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Number_Sense_sa_206": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_237": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_350": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_250": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Number_Sense_sa_125": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_260": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Number_Sense_sa_148": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Number_Sense_sa_107": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_254": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_228": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Vedic_Made_Easy_sa_74": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Vedic_Made_Easy_sa_32": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_197": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_47": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_417": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_184": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_244": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_156": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_23": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Vedic_Made_Easy_sa_78": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_76": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Vedic_Made_Easy_sa_91": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_401": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_188": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_189": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_146": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_257": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "sutra-fidelity",
+    "learner-followability",
+    "trap-realism"
+   ],
+   "judged_at": "2026-09-04T06:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
   }
  },
  "ceiling_note": "Any judge_backend outside the configured trio is capped at 'sandbox' — it never feeds BKT mastery or mock exams. See docs/rag/STAGE7_SESSION_PANEL_INTAKE.md.",

@@ -28,8 +28,11 @@ LADDER_STATE = Path("data/factory/state/trust_ladder.json")
 def validate(v: dict) -> list[str]:
     """Returns a list of problems; empty means the verdict is admissible."""
     errs = []
-    if v.get("target_kind") not in ("pattern", "template"):
-        errs.append("target_kind must be 'pattern' or 'template'")
+    # "item" is the coordinator's word for a single bank template — the same thing my
+    # spec calls "template". Aliased explicitly rather than by loosening the check,
+    # so an genuinely unknown kind is still rejected.
+    if v.get("target_kind") not in ("pattern", "template", "item"):
+        errs.append("target_kind must be 'pattern', 'template' or 'item'")
     if not v.get("target_id"):
         errs.append("missing target_id")
     backend = v.get("judge_backend")
