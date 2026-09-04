@@ -21,6 +21,13 @@ import {
   type MatchmakingProfile,
 } from "./matchmaking.js";
 import {
+  botsAllowedFor,
+  makeBot,
+  publicOpponent,
+  weightBotEloChange,
+  type BotProfile,
+} from "./bot.js";
+import {
   COUNTDOWN_SECONDS,
   DISCONNECT_GRACE_MS,
   beginRound,
@@ -52,6 +59,11 @@ const queue = new Map<string, MatchmakingProfile>();
 const matches = new Map<string, DuelMatch>();
 const answers = new Map<string, string>(); // matchId → expected answer, SERVER ONLY
 const turnTimers = new Map<string, NodeJS.Timeout>();
+/** matchId → the bot in that match, if any. INTERNAL ONLY: this map is the
+ *  single place the server knows an opponent is synthetic, and nothing derived
+ *  from it may be emitted to a client. */
+const matchBots = new Map<string, BotProfile>();
+const playerAges = new Map<string, number | null>();
 let matchSequence = 0;
 
 const httpServer = createServer((req, res) => {
@@ -114,11 +126,43 @@ io.of("/lobby").on("connection", (socket: AuthedSocket) => {
       queueJoinTimeMs: Date.now(),
     };
 
+    // Age comes from the account, not the client: the COPPA gate must not be
+    // something a caller can talk its way past by omitting a field.
+    let age: number | null = playerAges.get(userId) ?? null;
+    if (!playerAges.has(userId)) {
+      try {
+        const context = (await internalPost("/internal/user/context", { user_id: userId })) as {
+          age_group?: number;
+        };
+        age = typeof context.age_group === "number" ? context.age_group : null;
+      } catch {
+        age = null; // unknown age -> bots are refused downstream, which is the safe default
+      }
+      playerAges.set(userId, age);
+    }
+
     const decision = findMatch(profile, [...queue.values()], Date.now());
     if (decision.type === "matched" && decision.opponent) {
       queue.delete(decision.opponent.userId);
       await startMatch(profile, decision.opponent);
       ack?.({ status: "matched" });
+      return;
+    }
+
+    if (decision.type === "bot_fill") {
+      const eligibility = botsAllowedFor({ age, mode: payload?.mode ?? "accuracy_duel" });
+      if (eligibility.allowed) {
+        const waiting = [...queue.values()].map((p) => p.thetaU);
+        const bot = makeBot(waiting.length ? waiting : [profile.thetaU], Math.random);
+        queue.delete(userId);
+        await startMatch(profile, bot, bot);
+        ack?.({ status: "matched" });
+        return;
+      }
+      // Not eligible for a bot: keep waiting for a human rather than telling the
+      // client why, which would disclose that bots exist for other players.
+      queue.set(userId, profile);
+      ack?.({ status: "waiting" });
       return;
     }
 
@@ -131,8 +175,13 @@ io.of("/lobby").on("connection", (socket: AuthedSocket) => {
   });
 });
 
-async function startMatch(a: MatchmakingProfile, b: MatchmakingProfile): Promise<void> {
+async function startMatch(
+  a: MatchmakingProfile,
+  b: MatchmakingProfile | BotProfile,
+  bot?: BotProfile,
+): Promise<void> {
   const matchId = makeMatchId(new Date(), ++matchSequence);
+  if (bot) matchBots.set(matchId, bot);
   const match = createMatch(
     matchId,
     { userId: a.userId, thetaU: a.thetaU, age: 20 },
@@ -143,10 +192,9 @@ async function startMatch(a: MatchmakingProfile, b: MatchmakingProfile): Promise
 
   io.of("/lobby").emit(WS_EVENTS.MATCH_FOUND, {
     match_id: matchId,
-    opponents: [
-      { user_id: a.userId, theta_u: a.thetaU },
-      { user_id: b.userId, theta_u: b.thetaU },
-    ],
+    // publicOpponent strips isBot/persona: a serialization slip here would
+    // disclose a synthetic opponent to the client.
+    opponents: [publicOpponent(a), publicOpponent(b)],
     mode: "accuracy_duel",
     topology: "online",
   });
@@ -280,6 +328,8 @@ async function finishMatch(
   const match = matches.get(matchId);
   if (!match) return;
 
+  const bot = matchBots.get(matchId);
+
   clearTimeout(turnTimers.get(matchId));
   turnTimers.delete(matchId);
 
@@ -299,7 +349,9 @@ async function finishMatch(
       topology: "online",
       results: outcomes.map((o) => ({
         user_id: o.userId,
-        is_bot: false,
+        // is_bot is persisted server-side for auditing but is stripped from
+        // every client-facing payload (see publicOpponent).
+        is_bot: bot?.userId === o.userId,
         final_rank: o.rank,
         final_score: o.finalScore,
         problems_attempted: o.problemsAttempted,
@@ -326,11 +378,20 @@ async function finishMatch(
       avg_time: o.avgTimeMs,
     })),
     elimination_reason: resolution.eliminationReason,
-    elo_updates: eloUpdates,
+    // A result against a bot moves the rating half as far: a bot is a
+    // calibrated approximation of an opponent, not an opponent.
+    elo_updates: bot
+      ? (eloUpdates as Array<{ user_id: string; elo_change: number }>).map((u) => ({
+          ...u,
+          elo_change: weightBotEloChange(u.elo_change ?? 0),
+          bot_round: true,
+        }))
+      : eloUpdates,
   });
 
   matches.delete(matchId);
   answers.delete(matchId);
+  matchBots.delete(matchId);
 }
 
 httpServer.listen(PORT, () => {
