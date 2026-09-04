@@ -3,14 +3,14 @@
   "multiplication__nikhilam_navatashcaramam_all_from_9_last_from_10@L3": {
    "state": "quarantined_pending_consensus",
    "held_reason": "skeleton changed after this verdict was rendered; re-judge required",
-   "prior_verdict": "fail",
+   "prior_verdict": "pass",
    "judge_backend": "claude-session-panel",
    "skeleton_fingerprint": null
   },
   "multiplication__nikhilam_navatashcaramam_all_from_9_last_from_10@L4": {
    "state": "quarantined_pending_consensus",
    "held_reason": "skeleton changed after this verdict was rendered; re-judge required",
-   "prior_verdict": "fail",
+   "prior_verdict": "pass",
    "judge_backend": "claude-session-panel",
    "skeleton_fingerprint": null
   },

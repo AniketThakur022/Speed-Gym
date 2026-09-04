@@ -70,6 +70,11 @@ def main() -> int:
                     help="substrings of target_ids whose SKELETON changed after judging; "
                          "their verdicts describe content that no longer exists and are "
                          "held for re-judge instead of promoted")
+    ap.add_argument("--resolves-held", action="store_true",
+                    help="assert every target_id is ALREADY in the ladder. Use when a "
+                         "batch claims to resolve held targets: a re-slugged id (hyphens "
+                         "for underscores) would otherwise create NEW targets and leave "
+                         "the held ones held forever, silently.")
     ap.add_argument("--fingerprints", default=None,
                     help="JSON map target_id -> current skeleton fingerprint, recorded so "
                          "future staleness is detected automatically rather than by hand")
@@ -93,6 +98,10 @@ def main() -> int:
             v = json.loads(line)
             stats["verdicts_seen"] += 1
             errs = validate(v)
+            if args.resolves_held and v.get("target_id") not in state["targets"]:
+                errs.append(f"target_id {v.get('target_id')!r} is not already in the ladder; "
+                            "a batch resolving held targets must match existing ids exactly "
+                            "(check underscore/hyphen slugging)")
             if errs:
                 stats["rejected_invalid"] += 1
                 rejected.append({"target_id": v.get("target_id"), "reasons": errs,

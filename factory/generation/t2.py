@@ -61,11 +61,15 @@ def _assemble_near_base(cross: int, prod: int, base: int):
     span = 10 ** width
     if prod >= span:
         carry, right = divmod(prod, span)
-        return cross + carry, str(right).zfill(width), (
-            f"{prod} \\div {span} = {carry} \\text{{ remainder }} {right} "
-            f"\\;\\Rightarrow\\; \\text{{carry }} {carry},\\; "
-            f"\\text{{left }} {cross} + {carry} = {cross + carry},\\; "
-            f"\\text{{right }} {str(right).zfill(width)}")
+        return cross + carry, str(right).zfill(width), {
+            "operation": "Carry the overflow into the left part",
+            "reasoning": "The right part cannot be wider than the base's zeros, so the "
+                         "excess is ADDED to the left part",
+            "formula": (
+                f"{prod} \\div {span} = {carry} \\text{{ remainder }} {right} "
+                f"\\;\\Rightarrow\\; \\text{{carry }} {carry},\\; "
+                f"\\text{{left }} {cross} + {carry} = {cross + carry},\\; "
+                f"\\text{{right }} {str(right).zfill(width)}")}
     if prod < 0:
         # The trigger here is NEGATIVITY, not width: a negative product must be
         # completed from the base regardless of how few digits it has. Sizing the
@@ -75,11 +79,21 @@ def _assemble_near_base(cross: int, prod: int, base: int):
         borrow = -(-abs(prod) // span) if abs(prod) % span else abs(prod) // span
         borrow = max(1, borrow)
         right = borrow * span + prod
-        return cross - borrow, str(right).zfill(width), (
-            f"\\text{{the product }} {prod} \\text{{ is negative, so complete it from the base: }}"
-            f"\\;\\lceil {abs(prod)} \\div {span} \\rceil = {borrow} "
-            f"\\;\\Rightarrow\\; \\text{{left }} {cross} - {borrow} = {cross - borrow},\\; "
-            f"\\text{{right }} {borrow}\\times{span} {prod:+d} = {right}")
+        return cross - borrow, str(right).zfill(width), {
+            # A dissenting lens caught the previous version describing this case with
+            # the CARRY text: it named a width trigger (false — the trigger is the
+            # negative sign) and said the excess "moves into" the left part, while the
+            # arithmetic SUBTRACTS. A learner following that prose added instead of
+            # subtracting and got the wrong answer. All three fields now come from the
+            # same branch so the prose cannot drift from the arithmetic again.
+            "operation": "Complete the negative right part from the base",
+            "reasoning": "The right part came out negative, so it is completed from the "
+                         "base and the amount borrowed is SUBTRACTED from the left part",
+            "formula": (
+                f"\\text{{the product }} {prod} \\text{{ is negative, so complete it from "
+                f"the base: }}\\;\\lceil {abs(prod)} \\div {span} \\rceil = {borrow} "
+                f"\\;\\Rightarrow\\; \\text{{left }} {cross} - {borrow} = {cross - borrow},"
+                f"\\; \\text{{right }} {borrow}\\times{span} {prod:+d} = {right}")}
     return cross, str(prod).zfill(width), None
 
 
@@ -126,12 +140,7 @@ def _nikhilam_steps(a, b, base):
                       f"the base's zeros"},
     ]
     if adjust:
-        steps.append({
-            "step_num": 5, "operation": "Adjust the right part to fit the base width",
-            "formula": adjust,
-            "reasoning": "The right part cannot be wider than the base's zeros, so the "
-                         "excess moves into the left part — this carry is part of the "
-                         "method, not an afterthought"})
+        steps.append({"step_num": 5, **adjust})
     steps.append({
         "step_num": len(steps) + 1, "operation": "Assemble the answer",
         "formula": f"{left_final}\\,|\\,{right_str} = {a * b}",
@@ -212,11 +221,7 @@ def gen_square_near_base(rng: random.Random, level: int) -> dict:
              "formula": f"({d:+d})^2 = {right_raw}",
              "reasoning": f"The right part occupies {len(str(base)) - 1} digits — the width "
                           f"of the base's zeros"},
-            *([{"step_num": 4, "operation": "Adjust the right part to fit the base width",
-                "formula": adjust,
-                "reasoning": "The squared deviation is wider than the base's zeros, so the "
-                             "excess carries into the left part — part of the method, not "
-                             "an afterthought"}] if adjust else []),
+            *([{"step_num": 4, **adjust}] if adjust else []),
             {"step_num": 5 if adjust else 4, "operation": "Assemble",
              "formula": f"{left}\\,|\\,{right_str} = {a * a}",
              "reasoning": f"left \\times {base} + right, with the digits placed by width"},
