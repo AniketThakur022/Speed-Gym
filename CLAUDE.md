@@ -35,9 +35,10 @@ When you make a decision other workstreams depend on (API contract, graph schema
 - `incoming/Resources/` — 53 source book PDFs by pillar, per-book intermediate JSONLs, and `6-19-26-full architect/` = the complete Architecture v5.2 spec corpus (complete_coder_spec.md, vedic_speed_gym_backend.md, decision_engine/, gaming/, v5_specs/, …) + June-19 package + unexplored `docs_archive.zip`.
 - `incoming/topic_browser_full_package/` — July-12 package: `dashboards/` (page_view.html, explorer.html, problem_view.html), `scripts/` (page_ocr_pipeline.py + Dockerfile.ocr stack, enrichment, audit_and_validation, pattern_identification, quant_extraction), `schemas_and_taxonomy/ontology_registry.yaml`, `schemas/` (SQL + Cypher), `runtime_config/` (6 factory configs), per-book `cat_data/` working dirs, and `db_exports/` (chunks.jsonl 110MB, nodes.jsonl, relationships.jsonl, problems.jsonl, registry.jsonl — **re-seed the DBs from these**).
 
-## Open items
+## Open items (updated 2026-09-05 — see `project-status-2026-09-05` memory for the full board)
 
-1. RFP v7.2 still not recovered — check `incoming/Resources/6-19-26-full architect/docs_archive.zip`, WhatsApp media, client email.
-2. Rotate the Anthropic API key leaked in WhatsApp (2026-03-20).
-3. App source code (backend monorepo, full frontend) remains lost — rebuild from specs + `recovered/exam-arena-src/`.
-4. Remote is LIVE: `origin = https://github.com/AniketThakur022/Speed-Gym.git`, fully pushed 2026-09-03. Auth = gh CLI (`~/.local/bin/gh`, token in keychain, workflow scope) via git credential helper — pushes just work. A LaunchAgent (`com.speedgym.daily-commit`, daily 03:00, `tools/daily_commit.sh`) auto-commits and pushes — do not add another auto-commit mechanism. Back up `incoming/` somewhere durable (it is gitignored).
+1. **Serving path** — owner decision still parked: June 6-book graph vs 25-book corpus vs both. Until decided, extraction's enrichment has no route to learners.
+2. **RFP v7.2** still not recovered (check `incoming/Resources/6-19-26-full architect/docs_archive.zip`, WhatsApp, client email).
+3. **OPENAI_API_KEY** — the one genuinely key-blocked item (embedding 12,540 verbatim chunks). Anthropic-side work runs on the coordinator session.
+4. **Legacy bank**: do not repair further — `result`+`description` layers are cross-contaminated; regenerate from T2 patterns / converted templates (`legacy-bank-anatomy` memory). v1_4 remains the serve target until RAG promotes a successor.
+5. Remote is live (`origin` = github.com/AniketThakur022/Speed-Gym, gh keyring auth, nightly 03:00 auto-commit). Back up `incoming/` somewhere durable (gitignored).
