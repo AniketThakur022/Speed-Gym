@@ -99,6 +99,20 @@ SANDBOX_LABELS = {"SANDBOX", "sandbox", "sandbox_candidate", "trusted_candidate"
 # re-import is a deploy-time event, not a per-request one.
 _quarantined: Optional[set[str]] = None
 _trust_levels: Optional[dict[str, str]] = None
+_cache_loaded_at: float = 0.0
+
+# The caches are per-process, so an admin override or a stage-7 promotion made
+# in one worker is invisible to the others until they reload. A short TTL bounds
+# that staleness to something a human would call "immediate" without adding a
+# cache-invalidation channel. If this ever needs to be exact, the answer is
+# Redis pub/sub, not a longer TTL.
+CACHE_TTL_SECONDS = 60.0
+
+
+def _cache_expired() -> bool:
+    import time
+
+    return (time.monotonic() - _cache_loaded_at) > CACHE_TTL_SECONDS
 
 
 async def trust_levels(pool) -> dict[str, str]:
@@ -113,15 +127,18 @@ async def trust_levels(pool) -> dict[str, str]:
     treats "no opinion" as the default rung, which is what applied before this
     table was populated at all.
     """
-    global _trust_levels
-    if _trust_levels is not None:
+    global _trust_levels, _cache_loaded_at
+    if _trust_levels is not None and not _cache_expired():
         return _trust_levels
     try:
         async with pool.connection() as conn:
             rows = await (
                 await conn.execute("SELECT content_id, trust_level FROM problem_health_scores")
             ).fetchall()
+        import time
+
         _trust_levels = {row[0]: row[1] for row in rows}
+        _cache_loaded_at = time.monotonic()
     except Exception:  # noqa: BLE001
         return {}
     return _trust_levels
@@ -136,7 +153,7 @@ async def quarantined_ids(pool) -> set[str]:
     graph-level filters, so the worst case is the pre-existing behaviour.
     """
     global _quarantined
-    if _quarantined is not None:
+    if _quarantined is not None and not _cache_expired():
         return _quarantined
     try:
         async with pool.connection() as conn:
@@ -153,11 +170,12 @@ async def quarantined_ids(pool) -> set[str]:
 
 
 def reset_quarantine_cache() -> None:
-    """Drop the caches — for tests, and after a factory import or a stage-7
-    promotion writes new rows."""
-    global _quarantined, _trust_levels
+    """Drop the caches — for tests, and immediately after this process writes a
+    trust change so the author of an override sees it take effect at once."""
+    global _quarantined, _trust_levels, _cache_loaded_at
     _quarantined = None
     _trust_levels = None
+    _cache_loaded_at = 0.0
 
 
 class TrustDecision:
