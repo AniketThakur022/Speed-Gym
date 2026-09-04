@@ -236,6 +236,29 @@ def group_tasks(book_filter=None, limit=None):
 
 
 
+
+# Records whose cited pages are known to be solution/Hints pages rather than the
+# question pages, corrected from vision reads 2026-09-04. Keyed by set_id prefix
+# so a whole exercise family is redirected at once.
+QUESTION_PAGE_OVERRIDES = {
+    "sinha_s008x0": [90], "sinha_s027x0": [208], "sinha_s028x0": [214],
+    "sinha_s034x0": [307, 308, 309], "sinha_s036x0": [340], "sinha_s045x0": [380],
+}
+
+
+def question_pages(set_id, pdf_pages):
+    """Prefer a known question page over the record's cited pages.
+
+    A record's pdf_pages often point at where its TEXT was scraped from, and for
+    the fused-prose defect that is the Hints-and-Explanations page — so tasks
+    built from them supply pages on which the questions do not appear at all.
+    """
+    for prefix, pages in QUESTION_PAGE_OVERRIDES.items():
+        if set_id.startswith(prefix):
+            return sorted(set(pages) | set(pdf_pages or []))
+    return sorted(set(pdf_pages or []))
+
+
 def assign_windows(pages, items, width=4, cap=20):
     """Pair items with the pages they are actually likely to be on.
 

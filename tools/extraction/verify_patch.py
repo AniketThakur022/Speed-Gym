@@ -37,6 +37,8 @@ MASTER = ROOT / "data/corpus/MASTER_corpus.jsonl"
 PAGES = ROOT / "data/vision_pass/pages"
 
 ADDITIVE = {"key", "format", "flag", "suspect", "difficulty", "clear_chart_flag"}
+# correct_key intentionally REPLACES a value; it must state what it supersedes.
+CORRECTING = {"correct_key"}
 REWRITE = {"text", "options", "record_tags", "markdown"}
 WORD = re.compile(r"[A-Za-z]{3,}|\d+")
 
@@ -109,6 +111,11 @@ def main():
                 flag("empty answer_key", "%s #%s" % (sid, num))
             if not e.get("key_source"):
                 flag("key without key_source provenance", "%s #%s" % (sid, num))
+        if act == "correct_key":
+            if not e.get("why") or not e.get("key_source"):
+                flag("correct_key without justification/provenance", "%s #%s" % (sid, num))
+            if q.get("answer_key") == e.get("answer_key"):
+                problems["(info) already applied — correction present"] += 1
         if act == "difficulty":
             existing = q.get("difficulty")
             if existing is not None:

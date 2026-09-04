@@ -87,6 +87,17 @@ def main():
                     elif e["action"] == "suspect":
                         q.setdefault("extra", {})["key_suspect"] = e["reason"]
                         flagged += 1
+                    elif e["action"] == "correct_key":
+                        prev = q.get("answer_key")
+                        if prev == e["answer_key"]:
+                            continue
+                        q["answer_key"] = e["answer_key"]
+                        q["key_source"] = e["key_source"]
+                        ex = q.setdefault("extra", {})
+                        ex["key_superseded"] = {"previous": prev,
+                                                "previous_source": e.get("previous_source"),
+                                                "why": e["why"]}
+                        applied += 1
                     elif e["action"] == "difficulty":
                         if q.get("difficulty") is not None:
                             continue          # never overwrite an existing value
