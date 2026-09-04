@@ -141,3 +141,30 @@ def test_mastery_key_is_deterministic_and_never_a_chapter_number(client):
     assert runs[0] == runs[1] == runs[2], "mastery key must be stable across calls"
     for template_id, skill in runs[0].items():
         assert not (skill and structural.match(skill)), f"{template_id} keyed on {skill!r}"
+
+
+STEP_FIELDS = {"solution_steps", "solution", "steps", "worked_solution", "walkthrough"}
+
+
+def test_no_serving_route_emits_solution_steps(client):
+    """Walkthroughs are a measurably less reliable layer than question+answer:
+    an adversarial review of a 60-item sample of the static bank failed 53,
+    dominated by step descriptions that contradict the operations they label.
+
+    static_verified certifies question+answer ONLY, so steps must not ride along
+    under it. 797 :Problem nodes carry non-empty solution_steps, i.e. this is one
+    RETURN field away from happening by accident — hence a test, not a comment.
+    If walkthroughs are ever served they need their own gate keyed on
+    solution_verification.
+    """
+    payloads = [
+        client.get("/api/v1/practice/session", params={"size": 25}).json()["items"],
+        client.get("/api/practice/problems", params={"limit": 25}).json()["problems"],
+    ]
+    for items in payloads:
+        for item in items:
+            leaked = STEP_FIELDS & set(item)
+            assert not leaked, f"step content leaked into a served payload: {leaked}"
+            # And the honest signal must still be present and negative.
+            if "solution_verification" in item:
+                assert item["solution_verification"] == "unverified"
