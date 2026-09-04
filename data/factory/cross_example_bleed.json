@@ -1,0 +1,5286 @@
+{
+ "bank": "data/factory/solvealong_bank_v1_4.jsonl",
+ "multi_example_templates": 485,
+ "templates_with_bleed": 109,
+ "bleeding_steps": 586,
+ "steps_carrying_a_sibling_ANSWER": 1,
+ "share_of_multi_example_templates": 0.2247,
+ "method": "exact string equality of a step's `result` against content owned by a DIFFERENT example in the same template; substantial strings only",
+ "interpretation": "Counts steps whose result duplicates substantial content from a sibling example. Since each example is a different problem, such sharing is suspicious by construction — verified by hand on Bird_Engineering_Math_sa_103, whose example 1 step 1 displays example 0's equation. But the check flags BOTH copies of a shared string and cannot say which example is the victim, so the step count over-states and per-template adjudication is still required. The unambiguous sub-case is a step result equal to a sibling's ANSWER (`steps_carrying_a_sibling_ANSWER`), which has no innocent reading.",
+ "findings": [
+  {
+   "template_id": "Bird_Engineering_Math_sa_103",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Substitute into equation (1): \\[ 3(-7 - 3y) - 2y = 12 \\]",
+   "result": "3x - 2y = 12"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_103",
+   "example": 1,
+   "step_num": 3,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Expand: \\[ -21 - 9y - 2y = 12 \\]",
+   "result": "3x - 2y = 12"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_103",
+   "example": 2,
+   "step_num": 5,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Substitute y = 2 into equation (1): \\[ 3x + 4(2) = 5 \\]",
+   "result": "3x - 2y = 12"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_103",
+   "example": 2,
+   "step_num": 6,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Solve: \\[ 3x = 5 - 8 = -3 \\], so \\[ x = -1 \\]",
+   "result": "3x - 2y = 12"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_103",
+   "example": 2,
+   "step_num": 7,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Check in equation (2): LHS = 2(-1) - 5(2) = -2 - 10 = -12 = RHS",
+   "result": "3x - 2y = 12"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_125",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "$\\log 16 - \\log 2 = \\log\\left(\\frac{16}{2}\\right)$",
+   "result": "\\log\\left(\\frac{A}{B}\\right) = \\log A - \\log B"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_125",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "$= \\log 8$",
+   "result": "\\log(A \\times B) = \\log A + \\log B"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_125",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$2 \\log 3 = \\log 3^2$",
+   "result": "\\log(A \\times B) = \\log A + \\log B"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_125",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$= \\log 9$",
+   "result": "\\log(A \\times B) = \\log A + \\log B"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_125",
+   "example": 3,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$\\frac{1}{2} \\log 25 = \\log 25^{\\frac{1}{2}}$",
+   "result": "\\log\\left(\\frac{A}{B}\\right) = \\log A - \\log B"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_125",
+   "example": 3,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$= \\log \\sqrt{25} = \\log 5$",
+   "result": "\\log(A \\times B) = \\log A + \\log B"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_125",
+   "example": 4,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$\\log 64 - \\log 128 + \\log 32 = \\log 2^6 - \\log 2^7 + \\log 2^5$",
+   "result": "\\log(A \\times B) = \\log A + \\log B"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_125",
+   "example": 4,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$= 6 \\log 2 - 7 \\log 2 + 5 \\log 2$",
+   "result": "\\log(A \\times B) = \\log A + \\log B"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_125",
+   "example": 4,
+   "step_num": 4,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$= 4 \\log 2$",
+   "result": "\\log(A \\times B) = \\log A + \\log B"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_125",
+   "example": 5,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$\\frac{1}{2} \\log 16 + \\frac{1}{3} \\log 27 - 2 \\log 5 = \\log 16^{\\frac",
+   "result": "\\log\\left(\\frac{A}{B}\\right) = \\log A - \\log B"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_125",
+   "example": 5,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$= \\log \\sqrt{16} + \\log \\sqrt[3]{27} - \\log 25$",
+   "result": "\\log(A \\times B) = \\log A + \\log B"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_125",
+   "example": 5,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$= \\log 4 + \\log 3 - \\log 25$",
+   "result": "\\log(A \\times B) = \\log A + \\log B"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_126",
+   "example": 0,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Apply logarithm product rule",
+   "result": "\\log(ab) = \\log a + \\log b"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_126",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "log((8 × ⁴√5)/81) = log 8 + log ⁴√5 − log 81",
+   "result": "\\log(ab) = \\log a + \\log b"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_126",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "= log 2³ + log 5^(1/4) − log 3⁴",
+   "result": "\\log(ab) = \\log a + \\log b"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_126",
+   "example": 1,
+   "step_num": 3,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "i.e. log((8 × ⁴√5)/81) = 3 log 2 + (1/4) log 5 − 4 log 3",
+   "result": "\\log(ab) = \\log a + \\log b"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_126",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "= 2 log 5 − 3 log 5 + (4/2) log 5",
+   "result": "\\log(ab) = \\log a + \\log b"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_126",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "= (1 log 5)/(3 log 5)",
+   "result": "\\log(ab) = \\log a + \\log b"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_126",
+   "example": 3,
+   "step_num": 1,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "LHS = log(x − 1) + log(x + 8) = log(x − 1)(x + 8)",
+   "result": "\\log(ab) = \\log a + \\log b"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_126",
+   "example": 3,
+   "step_num": 2,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "= log(x² + 7x − 8)",
+   "result": "\\log(ab) = \\log a + \\log b"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_126",
+   "example": 3,
+   "step_num": 3,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "RHS = 2 log(x + 2) = log(x + 2)²",
+   "result": "\\log(ab) = \\log a + \\log b"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_126",
+   "example": 3,
+   "step_num": 4,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "= log(x² + 4x + 4)",
+   "result": "\\log(ab) = \\log a + \\log b"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_126",
+   "example": 3,
+   "step_num": 5,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "Hence, log(x² + 7x − 8) = log(x² + 4x + 4)",
+   "result": "\\log(ab) = \\log a + \\log b"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_126",
+   "example": 4,
+   "step_num": 1,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "(1/2) log 4 = log 4^(1/2)",
+   "result": "\\log(ab) = \\log a + \\log b"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_126",
+   "example": 4,
+   "step_num": 2,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "= log √4",
+   "result": "\\log(ab) = \\log a + \\log b"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_126",
+   "example": 4,
+   "step_num": 3,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "Hence, (1/2) log 4 = log x becomes log √4 = log x",
+   "result": "\\log(ab) = \\log a + \\log b"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_126",
+   "example": 4,
+   "step_num": 4,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "i.e. log 2 = log x",
+   "result": "\\log(ab) = \\log a + \\log b"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_128",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Taking logarithms to base 10 of both sides",
+   "result": "\\log_{10} a^b = b\\log_{10} a"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_128",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "$\\log_{10} 2^{x+1} = \\log_{10} 3^{2x-5}$",
+   "result": "\\log_{10} a^b = b\\log_{10} a"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_128",
+   "example": 1,
+   "step_num": 3,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "$(x + 1)\\log_{10} 2 = (2x - 5)\\log_{10} 3$",
+   "result": "\\log_{10} a^b = b\\log_{10} a"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_128",
+   "example": 1,
+   "step_num": 4,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "$x \\log_{10} 2 + \\log_{10} 2 = 2x \\log_{10} 3 - 5 \\log_{10} 3$",
+   "result": "\\log_{10} a^b = b\\log_{10} a"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_128",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Taking logarithms to base 10 of both sides",
+   "result": "\\log_{10} a^b = b\\log_{10} a"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_128",
+   "example": 2,
+   "step_num": 5,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$\\log_{10} x = 0.57040$",
+   "result": "\\log_{10} a^b = b\\log_{10} a"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_128",
+   "example": 2,
+   "step_num": 6,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$x = \\text{antilog } 0.57040 = 10^{0.57040}$",
+   "result": "\\log_{10} a^b = b\\log_{10} a"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_178",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "$84^\\circ 13' - 56^\\circ 39'$",
+   "result": "41^\\circ 29' = 41\\frac{29}{60} = 41.483^\\circ"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_178",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Borrow 1° (60’) from degrees column",
+   "result": "41^\\circ 29' = 41\\frac{29}{60} = 41.483^\\circ"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_178",
+   "example": 1,
+   "step_num": 3,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Compute minutes: $(60' + 13') - 39' = 34'$",
+   "result": "41^\\circ 29' = 41\\frac{29}{60} = 41.483^\\circ"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_178",
+   "example": 1,
+   "step_num": 4,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Compute degrees: $83^\\circ - 56^\\circ = 27^\\circ$",
+   "result": "41^\\circ 29' = 41\\frac{29}{60} = 41.483^\\circ"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_178",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$19^\\circ 51' 47'' + 63^\\circ 27' 34''$",
+   "result": "41^\\circ 29' = 41\\frac{29}{60} = 41.483^\\circ"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_178",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Add minutes: $51' + 27' + 1' = 79' = 1^\\circ 19'$; carry 1° to degrees",
+   "result": "41^\\circ 29' = 41\\frac{29}{60} = 41.483^\\circ"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_178",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Add degrees: $19^\\circ + 63^\\circ + 1^\\circ = 83^\\circ$",
+   "result": "41^\\circ 29' = 41\\frac{29}{60} = 41.483^\\circ"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_179",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "Convert seconds to minutes",
+   "result": "\\begin{aligned}D°M'S'' \\\\ D + M/60 + S/3600\\end{aligned}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_179",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "Convert minutes to degrees",
+   "result": "\\begin{aligned}D°M'S'' \\\\ D + M/60 + S/3600\\end{aligned}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_179",
+   "example": 3,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Convert decimal degrees to minutes",
+   "result": "\\begin{aligned}D°M'S'' \\\\ D + M/60 + S/3600\\end{aligned}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_179",
+   "example": 3,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Convert decimal minutes to seconds",
+   "result": "\\begin{aligned}D°M'S'' \\\\ D + M/60 + S/3600\\end{aligned}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_184",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Identify hypotenuse as side AC (opposite the right angle).",
+   "result": "\\angle A + \\angle B + \\angle C = 180^\\circ"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_184",
+   "example": 1,
+   "step_num": 3,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "With respect to angle θ at A, identify opposite side as BC.",
+   "result": "\\angle A + \\angle B + \\angle C = 180^\\circ"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_184",
+   "example": 1,
+   "step_num": 4,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Identify adjacent side as AB (the remaining side touching angle θ).",
+   "result": "\\angle A + \\angle B + \\angle C = 180^\\circ"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_184",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Note that the triangle is right-angled (right-angle symbol shown).",
+   "result": "\\angle A + \\angle B + \\angle C = 180^\\circ"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_189",
+   "example": 1,
+   "step_num": 4,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Solve for r",
+   "result": "\\frac{a}{d} = \\frac{b}{e} = \\frac{c}{f}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_189",
+   "example": 1,
+   "step_num": 5,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Solve for p",
+   "result": "\\frac{a}{d} = \\frac{b}{e} = \\frac{c}{f}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_189",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Solve for CD",
+   "result": "\\frac{a}{d} = \\frac{b}{e} = \\frac{c}{f}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_189",
+   "example": 2,
+   "step_num": 4,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Solve for BD",
+   "result": "\\frac{a}{d} = \\frac{b}{e} = \\frac{c}{f}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_21",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "$\\frac{13}{4} = 3\\frac{1}{4}$",
+   "result": "\\frac{9}{14}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_21",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$\\frac{28}{5} = 5\\frac{3}{5}$",
+   "result": "\\frac{9}{14}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_21",
+   "example": 3,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$5\\frac{3}{4} = \\frac{23}{4}$",
+   "result": "\\frac{9}{14}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_22",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Convert $\\frac{1}{3}$ to sixths: $\\frac{1 \\times 2}{3 \\times 2} = \\fra",
+   "result": "a\\frac{b}{c} = \\frac{a \\times c + b}{c}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_22",
+   "example": 1,
+   "step_num": 3,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Convert $\\frac{1}{2}$ to sixths: $\\frac{1 \\times 3}{2 \\times 3} = \\fra",
+   "result": "a\\frac{b}{c} = \\frac{a \\times c + b}{c}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_22",
+   "example": 1,
+   "step_num": 4,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Add numerators: $\\frac{2}{6} + \\frac{3}{6} = \\frac{5}{6}$",
+   "result": "a\\frac{b}{c} = \\frac{a \\times c + b}{c}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_22",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Convert $\\frac{3}{4}$ to sixteenths: $\\frac{3 \\times 4}{4 \\times 4} = ",
+   "result": "a\\frac{b}{c} = \\frac{a \\times c + b}{c}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_227",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Calculate r: $r = \\sqrt{5^2 + 12^2}$",
+   "result": "r = \\sqrt{x^2 + y^2}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_227",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Compute $\\alpha = \\tan^{-1} \\frac{12}{5}$",
+   "result": "\\theta = \\tan^{-1}(\\frac{y}{x})"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_227",
+   "example": 1,
+   "step_num": 3,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Calculate θ: $\\theta = 180^\\circ + 67.38^\\circ$ or $\\theta = \\pi + 1.1",
+   "result": "\\theta = \\pi + \\tan^{-1}(\\frac{y}{x})"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_227",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Calculate r: $r = \\sqrt{2^2 + 5^2} = \\sqrt{29}$",
+   "result": "r = \\sqrt{x^2 + y^2}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_227",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Compute $\\alpha = \\tan^{-1} \\frac{5}{2}$",
+   "result": "\\theta = \\tan^{-1}(\\frac{y}{x})"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_227",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Calculate θ: $\\theta = 360^\\circ - 68.20^\\circ$ or $\\theta = 2\\pi - 1.",
+   "result": "\\theta = \\pi + \\tan^{-1}(\\frac{y}{x})"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_228",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "x = r cos θ = 6 cos 137°",
+   "result": "x = r \\cos \\theta"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_228",
+   "example": 1,
+   "step_num": 3,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "y = r sin θ = 6 sin 137°",
+   "result": "y = r \\sin \\theta"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_228",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "x = r cos θ = 4.5 cos 5.16",
+   "result": "x = r \\cos \\theta"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_228",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "y = r sin θ = 4.5 sin 5.16",
+   "result": "y = r \\sin \\theta"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_228",
+   "example": 3,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "x = r cos θ = 4 cos 32°",
+   "result": "x = r \\cos \\theta"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_228",
+   "example": 3,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "y = r sin θ = 4 sin 32°",
+   "result": "y = r \\sin \\theta"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_228",
+   "example": 4,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "x = r cos θ = 6 cos 137° = -4.388",
+   "result": "x = r \\cos \\theta"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_228",
+   "example": 4,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "y = r sin θ = 6 sin 137° = 4.092",
+   "result": "y = r \\sin \\theta"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_228",
+   "example": 5,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "x = r cos θ = 4.5 cos 5.16 = 1.948",
+   "result": "x = r \\cos \\theta"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_228",
+   "example": 5,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "y = r sin θ = 4.5 sin 5.16 = -4.057",
+   "result": "y = r \\sin \\theta"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_23",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Separate into whole and fractional parts: $\\left(7 + \\frac{1}{8}\\right",
+   "result": "\\frac{a}{b} - \\frac{c}{d} = \\frac{ad - bc}{bd}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_23",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Distribute subtraction: $7 + \\frac{1}{8} - 5 - \\frac{3}{7}$",
+   "result": "\\frac{a}{b} - \\frac{c}{d} = \\frac{ad - bc}{bd}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_23",
+   "example": 1,
+   "step_num": 3,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Group terms: $(7 - 5) + \\left(\\frac{1}{8} - \\frac{3}{7}\\right)$",
+   "result": "\\frac{a}{b} - \\frac{c}{d} = \\frac{ad - bc}{bd}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_23",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Separate whole and fractional parts: $(4 - 3 + 1) + \\left(\\frac{5}{8} ",
+   "result": "\\frac{a}{b} - \\frac{c}{d} = \\frac{ad - bc}{bd}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_24",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "$\\left(\\frac{5}{5} + \\frac{3}{5}\\right) \\times \\left(\\frac{6}{3} + \\fr",
+   "result": "\\frac{2}{3} \\times \\frac{4}{7} = \\frac{2 \\times 4}{3 \\times 7} = \\frac"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_24",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "$\\frac{8}{5} \\times \\frac{7}{3} \\times \\frac{24}{7}$",
+   "result": "\\frac{2}{3} \\times \\frac{4}{7} = \\frac{2 \\times 4}{3 \\times 7} = \\frac"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_24",
+   "example": 1,
+   "step_num": 3,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "$\\frac{8 \\times 1 \\times 8}{5 \\times 1 \\times 1} = \\frac{64}{5}$",
+   "result": "\\frac{2}{3} \\times \\frac{4}{7} = \\frac{2 \\times 4}{3 \\times 7} = \\frac"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_24",
+   "example": 1,
+   "step_num": 4,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "$12\\frac{4}{5}$",
+   "result": "\\frac{2}{3} \\times \\frac{4}{7} = \\frac{2 \\times 4}{3 \\times 7} = \\frac"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_24",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$\\frac{2}{3} \\times \\frac{4}{3}$",
+   "result": "\\frac{2}{3} \\times \\frac{4}{7} = \\frac{2 \\times 4}{3 \\times 7} = \\frac"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_24",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$\\frac{8}{9}$",
+   "result": "\\frac{2}{3} \\times \\frac{4}{7} = \\frac{2 \\times 4}{3 \\times 7} = \\frac"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_24",
+   "example": 3,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$\\frac{3}{7} \\times \\frac{21}{8}$",
+   "result": "\\frac{2}{3} \\times \\frac{4}{7} = \\frac{2 \\times 4}{3 \\times 7} = \\frac"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_24",
+   "example": 3,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$\\frac{3}{1} \\times \\frac{3}{8}$",
+   "result": "\\frac{2}{3} \\times \\frac{4}{7} = \\frac{2 \\times 4}{3 \\times 7} = \\frac"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_24",
+   "example": 3,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$\\frac{9}{8} = 1\\frac{1}{8}$",
+   "result": "\\frac{2}{3} \\times \\frac{4}{7} = \\frac{2 \\times 4}{3 \\times 7} = \\frac"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_244",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "0.749 * (180/π)",
+   "result": "1 \\text{ rad} = \\frac{180^\\circ}{\\pi}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_244",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Multiply by π/180",
+   "result": "1 \\text{ rad} = \\frac{180^\\circ}{\\pi}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_245",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Area of a circle = πr² = πd²/4",
+   "result": "\\text{Area of sector} = \\frac{1}{2} r^2 \\theta"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_245",
+   "example": 1,
+   "step_num": 3,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "i.e. area of circular plate = 962 mm²",
+   "result": "\\text{Area of sector} = \\frac{1}{2} r^2 \\theta"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_245",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Area of a circle = πr²",
+   "result": "\\text{Area of sector} = \\frac{1}{2} r^2 \\theta"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_245",
+   "example": 3,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Length of arc, s = rθ, where θ is in radians.",
+   "result": "\\text{Area of sector} = \\frac{1}{2} r^2 \\theta"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_245",
+   "example": 5,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "(a) Length of minor arc, s = rθ = (8.4)(125)(π/180) = 18.3 cm, correct",
+   "result": "\\text{Area of sector} = \\frac{1}{2} r^2 \\theta"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_246",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Floodlit area = area of sector = 1/2 r²θ = 1/2 (55)² (45 × π/180)",
+   "result": "\\text{Area of sector} = \\frac{1}{2} r^2 \\theta"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_246",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Area of sector = 1/2 r²θ, hence 2.5 = 1/2 (1.8)² α",
+   "result": "\\text{Area of sector} = \\frac{1}{2} r^2 \\theta"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_246",
+   "example": 3,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Length BC = 10 mm (i.e. the radius of the circle), and AB = 30 − 10 − ",
+   "result": "\\text{Area of sector} = \\frac{1}{2} r^2 \\theta"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_254",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Volume = $\\frac{1}{2} × 16 × 12 × 40$",
+   "result": "\\frac{1}{2} \\times 16 \\times 12 \\times 40"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_254",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$\\frac{1}{2} × 8 × 6 × 40$",
+   "result": "\\frac{1}{2} \\times 16 \\times 12 \\times 40"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_254",
+   "example": 3,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "volume = 1/2 × 16 × 12 × 40",
+   "result": "\\frac{1}{2} \\times 16 \\times 12 \\times 40"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_254",
+   "example": 4,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Volume = 1/2 bhl = 1/2 × 8 × 6 × 40",
+   "result": "\\frac{1}{2} \\times 16 \\times 12 \\times 40"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_258",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Volume of sphere = $\\frac{4}{3}\\pi r^3 = \\frac{4}{3} \\times \\pi \\times",
+   "result": "\\text{Volume} = \\frac{4}{3}\\pi r^3"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_258",
+   "example": 1,
+   "step_num": 4,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Surface area of sphere = $4\\pi r^2 = 4 \\times \\pi \\times 5^2$",
+   "result": "\\text{total surface area} = \\pi r l + \\pi r^2"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_258",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Surface area of sphere = $4\\pi r^2$",
+   "result": "\\text{total surface area} = \\pi r l + \\pi r^2"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_258",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 5,
+   "is_sibling_answer": false,
+   "operation": "$201.1 = 4 \\times \\pi \\times r^2$",
+   "result": "\\text{volume} = \\frac{1}{3}\\pi r^2 h"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_258",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 5,
+   "is_sibling_answer": false,
+   "operation": "$r^2 = \\frac{201.1}{4 \\times \\pi} = 16.0$",
+   "result": "\\text{volume} = \\frac{1}{3}\\pi r^2 h"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_258",
+   "example": 2,
+   "step_num": 4,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "radius, $r = \\sqrt{16.0} = 4.0$ cm",
+   "result": "l = \\sqrt{h^2 + r^2}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_258",
+   "example": 2,
+   "step_num": 6,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Volume of sphere = $\\frac{4}{3}\\pi r^3 = \\frac{4}{3} \\times \\pi \\times",
+   "result": "\\text{Volume} = \\frac{4}{3}\\pi r^3"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_258",
+   "example": 3,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Volume = 1/3 * pi * r^2 * h",
+   "result": "\\text{Volume} = \\frac{4}{3}\\pi r^3"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_258",
+   "example": 3,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "l = sqrt(12^2 + 5^2) = 13 cm",
+   "result": "l = \\sqrt{h^2 + r^2}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_258",
+   "example": 4,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Volume = 4/3 * pi * r^3",
+   "result": "\\text{Volume} = \\frac{4}{3}\\pi r^3"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_258",
+   "example": 4,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Surface area = 4 * pi * r^2",
+   "result": "\\text{total surface area} = \\pi r l + \\pi r^2"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_258",
+   "example": 5,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "201.1 = 4 * pi * r^2",
+   "result": "\\text{volume} = \\frac{1}{3}\\pi r^2 h"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_258",
+   "example": 5,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "r^2 = 201.1 / (4 * pi) = 16.0",
+   "result": "\\text{volume} = \\frac{1}{3}\\pi r^2 h"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_258",
+   "example": 5,
+   "step_num": 3,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "r = sqrt(16.0) = 4.0 cm",
+   "result": "l = \\sqrt{h^2 + r^2}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_258",
+   "example": 5,
+   "step_num": 5,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Volume = 4/3 * pi * (4.0)^3",
+   "result": "\\text{Volume} = \\frac{4}{3}\\pi r^3"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_260",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "BD = \\sqrt{[3.60² + 5.40²]} = 6.490 cm",
+   "result": "BD = \\sqrt{[3.60^2 + 5.40^2]}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_260",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "EF = \\sqrt{(BF² - EB²)} = \\sqrt{15.0² - 3.245²} = 14.64 cm",
+   "result": "EF = \\sqrt{(BF^2 - EB^2)}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_260",
+   "example": 2,
+   "step_num": 4,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "Volume = \\frac{1}{3}(3.60 × 5.40)(14.64) = 94.87 cm³",
+   "result": "BD = \\sqrt{[3.60^2 + 5.40^2]}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_260",
+   "example": 2,
+   "step_num": 5,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "FG = \\sqrt{[15.0² - 1.80²]} = 14.89 cm",
+   "result": "BD = \\sqrt{[3.60^2 + 5.40^2]}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_260",
+   "example": 2,
+   "step_num": 6,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "Area of triangle ADF = \\frac{1}{2}(3.60)(14.89) = 26.80 cm²",
+   "result": "\\text{Area of triangle} = \\frac{1}{2}(\\text{base})(\\text{height})"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_260",
+   "example": 2,
+   "step_num": 7,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "FH = \\sqrt{15.0² - 2.70²} = 14.75 cm",
+   "result": "BD = \\sqrt{[3.60^2 + 5.40^2]}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_260",
+   "example": 2,
+   "step_num": 8,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "Area of triangle ABF = \\frac{1}{2}(5.40)(14.75) = 39.83 cm²",
+   "result": "\\text{Area of triangle} = \\frac{1}{2}(\\text{base})(\\text{height})"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_260",
+   "example": 3,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "BD = sqrt(3.60^2 + 5.40^2) = 6.490 cm",
+   "result": "BD = \\sqrt{[3.60^2 + 5.40^2]}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_260",
+   "example": 3,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "EB = 1/2 * BD = 3.245 cm",
+   "result": "BD = \\sqrt{[3.60^2 + 5.40^2]}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_260",
+   "example": 3,
+   "step_num": 3,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "EF = sqrt(BF^2 - EB^2) = sqrt(15.0^2 - 3.245^2) = 14.64 cm",
+   "result": "EF = \\sqrt{(BF^2 - EB^2)}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_260",
+   "example": 3,
+   "step_num": 4,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Volume = 1/3 * (3.60 * 5.40) * 14.64",
+   "result": "BD = \\sqrt{[3.60^2 + 5.40^2]}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_260",
+   "example": 3,
+   "step_num": 5,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "FG = sqrt(15.0^2 - 1.80^2) = 14.89 cm",
+   "result": "BD = \\sqrt{[3.60^2 + 5.40^2]}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_260",
+   "example": 3,
+   "step_num": 6,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Area of triangle ADF = 1/2 * (3.60) * (14.89) = 26.80 cm^2",
+   "result": "\\text{Area of triangle} = \\frac{1}{2}(\\text{base})(\\text{height})"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_260",
+   "example": 3,
+   "step_num": 7,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "FH = sqrt(15.0^2 - 2.70^2) = 14.75 cm",
+   "result": "BD = \\sqrt{[3.60^2 + 5.40^2]}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_260",
+   "example": 3,
+   "step_num": 8,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Area of triangle ABF = 1/2 * (5.40) * (14.75) = 39.83 cm^2",
+   "result": "\\text{Area of triangle} = \\frac{1}{2}(\\text{base})(\\text{height})"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_261",
+   "example": 0,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Total surface area = curved surface area + area of circle = ½(surface ",
+   "result": "V_{pyramid} = \\frac{1}{3} \\times \\text{base area} \\times \\text{height}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_261",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "Volume of pyramid = ⅓(area of base)(perpendicular height)",
+   "result": "V_{pyramid} = \\frac{1}{3} \\times \\text{base area} \\times \\text{height}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_261",
+   "example": 1,
+   "step_num": 3,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "144 = ⅓(2.5 × 5)(height)",
+   "result": "V_{pyramid} = \\frac{1}{3} \\times \\text{base area} \\times \\text{height}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_261",
+   "example": 1,
+   "step_num": 4,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "i.e. perpendicular height of pyramid = (144 × 3) / (2.5 × 5) = 34.56 c",
+   "result": "V_{pyramid} = \\frac{1}{3} \\times \\text{base area} \\times \\text{height}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_261",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "Radius of cylindrical head = ½ cm = 0.5 cm and height of cylindrical h",
+   "result": "V_{pyramid} = \\frac{1}{3} \\times \\text{base area} \\times \\text{height}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_273",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Average value of waveform = \\frac{area under curve}{length of base} = ",
+   "result": "\\text{Average value} = \\frac{\\text{area under curve}}{\\text{length of "
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_273",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Area under curve = \\frac{1}{2}\\{(3 - 1)10^{-3}\\}(10)",
+   "result": "\\text{Average value} = \\frac{\\text{area under curve}}{\\text{length of "
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_273",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "= 10 \\times 10^{-3} Vs",
+   "result": "\\text{Area} = \\frac{1}{2} \\times \\text{base} \\times \\text{height}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_273",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Average value of waveform = \\frac{area under curve}{length of base} = ",
+   "result": "\\text{Average value} = \\frac{\\text{area under curve}}{\\text{length of "
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_273",
+   "example": 3,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "= \\frac{1}{2}\\{(4 + 8) \\times 10^{-3}\\}(5 \\times 10^{-3})",
+   "result": "\\text{Area} = \\frac{1}{2} \\times \\text{base} \\times \\text{height}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_273",
+   "example": 3,
+   "step_num": 3,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "= 30 \\times 10^{-6} As",
+   "result": "\\text{Area} = \\frac{1}{2} \\times \\text{base} \\times \\text{height}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_273",
+   "example": 3,
+   "step_num": 4,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Mean value over one cycle = \\frac{area under curve}{length of base} = ",
+   "result": "\\text{Average value} = \\frac{\\text{area under curve}}{\\text{length of "
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_273",
+   "example": 4,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Area under curve = \\frac{1}{2}(3 \\times 10^{-3})(2)",
+   "result": "\\text{Average value} = \\frac{\\text{area under curve}}{\\text{length of "
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_273",
+   "example": 4,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "= 3 \\times 10^{-3} As",
+   "result": "\\text{Area} = \\frac{1}{2} \\times \\text{base} \\times \\text{height}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_273",
+   "example": 4,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Mean value over one cycle = \\frac{area under curve}{length of base} = ",
+   "result": "\\text{Average value} = \\frac{\\text{area under curve}}{\\text{length of "
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_28",
+   "example": 0,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Write decimal as fraction with denominator power of 10",
+   "result": "0.375 = \\frac{375}{1000}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_28",
+   "example": 1,
+   "step_num": 3,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "Dividing both numerator and denominator by 5 gives $\\frac{175}{400} = ",
+   "result": "0.375 = \\frac{375}{1000}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_311",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Mean of middle members",
+   "result": "Median = middle value when data is ordered"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_311",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Identify middle member",
+   "result": "Median = middle value when data is ordered"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_320",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "$\\frac{17}{100} \\times \\frac{10}{99} = \\frac{170}{9900}$",
+   "result": "\\frac{17}{100} \\times \\frac{10}{99} = \\frac{170}{9900} = \\frac{17}{990"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_320",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "$\\frac{170}{9900} = \\frac{17}{990}$",
+   "result": "\\frac{17}{100} \\times \\frac{10}{99} = \\frac{170}{9900} = \\frac{17}{990"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_320",
+   "example": 3,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "(17/100) x (10/99) = 170/9900 = 17/990",
+   "result": "\\frac{17}{100} \\times \\frac{10}{99} = \\frac{170}{9900} = \\frac{17}{990"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_328",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "$\\frac{dy}{dx} = (3)(-2)x^{-2-1} = -6x^{-3} = -\\frac{6}{x^3}$",
+   "result": "\\frac{dy}{dx} = 6x"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_328",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$\\frac{dy}{dx} = (5)\\left(\\frac{1}{2}\\right)x^{\\frac{1}{2}-1} = \\frac{",
+   "result": "\\frac{dy}{dx} = 6x"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_328",
+   "example": 3,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$\\frac{dy}{dx} = (4)(0)x^{0-1} = 0$",
+   "result": "\\frac{dy}{dx} = 6x"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_328",
+   "example": 4,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$\\frac{dy}{dx} = (7)(1)x^{1-1} = 7x^0 = 7$ since $x^0 = 1$",
+   "result": "\\frac{dy}{dx} = 6x"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_328",
+   "example": 5,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$\\frac{dy}{dx} = \\left(\\frac{2}{3}\\right)(4)x^{4-1} - (4)(-3)x^{-3-1} ",
+   "result": "\\frac{dy}{dx} = 6x"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_331",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "(a) dy/dθ = (2)(5 cos 5θ) = 10 cos 5θ",
+   "result": "\\frac{d}{dx}(\\cos x) = -\\sin x"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_331",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "(b) f'(t) = (3)(−2 sin 2t) = −6 sin 2t",
+   "result": "\\frac{d}{dx}(\\cos x) = -\\sin x"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_331",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "(a) f'(θ) = 5[100π cos(100π θ − 0.40)]",
+   "result": "\\frac{d}{dx}(\\cos x) = -\\sin x"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_331",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "= 500π cos(100π θ − 0.40)",
+   "result": "\\frac{d}{dx}(\\cos x) = -\\sin x"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_331",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "(b) f'(t) = 2[−5 sin(5t + 0.20)]",
+   "result": "\\frac{d}{dx}(\\cos x) = -\\sin x"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_331",
+   "example": 2,
+   "step_num": 4,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "= −10 sin(5t + 0.20)",
+   "result": "\\frac{d}{dx}(\\cos x) = -\\sin x"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_331",
+   "example": 3,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "dv/dt = (100)(200 cos 200t) = 20000 cos 200t",
+   "result": "\\frac{d}{dx}(\\cos x) = -\\sin x"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_331",
+   "example": 3,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "(a) When t = 0.005 s, dv/dt = 20000 cos(200 × 0.005) = 20000 cos(1)",
+   "result": "\\frac{d}{dx}(\\cos x) = -\\sin x"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_331",
+   "example": 3,
+   "step_num": 4,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "(b) When t = 0.01 s, dv/dt = 20000 cos(200 × 0.01) = 20000 cos(2)",
+   "result": "\\frac{d}{dx}(\\cos x) = -\\sin x"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_337",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "$\\int \\frac{4}{9}t^3 \\, dt = \\frac{4}{9} \\left( \\frac{t^{3+1}}{3+1} \\r",
+   "result": "\\int ax^n dx = \\frac{ax^{n+1}}{n+1} + c"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_337",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "$= \\frac{4}{9} \\left( \\frac{t^4}{4} \\right) + c$",
+   "result": "\\int ax^n dx = \\frac{ax^{n+1}}{n+1} + c"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_337",
+   "example": 1,
+   "step_num": 3,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "$= \\frac{1}{9}t^4 + c$",
+   "result": "\\int ax^n dx = \\frac{ax^{n+1}}{n+1} + c"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_337",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$\\int \\frac{2}{x^2} \\, dx = \\int 2x^{-2} \\, dx$",
+   "result": "\\int ax^n dx = \\frac{ax^{n+1}}{n+1} + c"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_337",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$= \\frac{2x^{-2+1}}{-2+1} + c$",
+   "result": "\\int ax^n dx = \\frac{ax^{n+1}}{n+1} + c"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_337",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$= \\frac{2x^{-1}}{-1} + c$",
+   "result": "\\int ax^n dx = \\frac{ax^{n+1}}{n+1} + c"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_337",
+   "example": 2,
+   "step_num": 4,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$= -\\frac{2}{x} + c$",
+   "result": "\\int ax^n dx = \\frac{ax^{n+1}}{n+1} + c"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_337",
+   "example": 3,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$\\int \\sqrt{x} \\, dx = \\int x^{\\frac{1}{2}} \\, dx$",
+   "result": "\\int ax^n dx = \\frac{ax^{n+1}}{n+1} + c"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_337",
+   "example": 3,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$= \\frac{x^{\\frac{1}{2}+1}}{\\frac{1}{2}+1} + c$",
+   "result": "\\int ax^n dx = \\frac{ax^{n+1}}{n+1} + c"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_337",
+   "example": 3,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$= \\frac{x^{\\frac{3}{2}}}{\\frac{3}{2}} + c$",
+   "result": "\\int ax^n dx = \\frac{ax^{n+1}}{n+1} + c"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_337",
+   "example": 3,
+   "step_num": 4,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$= \\frac{2}{3}\\sqrt{x^3} + c$",
+   "result": "\\int ax^n dx = \\frac{ax^{n+1}}{n+1} + c"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_337",
+   "example": 4,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$\\int 5 \\, dt = 5t + c$",
+   "result": "\\int ax^n dx = \\frac{ax^{n+1}}{n+1} + c"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_42",
+   "example": 0,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Write the formula for volume of a cone",
+   "result": "V = \\frac{1}{3}\\pi r^2 h"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_42",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "= \\frac{(6.67)(7.36)(15.5)}{(10^{11})(510.76)} = \\frac{1.490}{10^{11}}",
+   "result": "V = \\frac{1}{3}\\pi r^2 h"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_42",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 4,
+   "is_sibling_answer": false,
+   "operation": "t = 2\\pi \\sqrt{\\frac{l}{g}} = (2\\pi) \\sqrt{\\frac{12.9}{9.81}}",
+   "result": "t = 2\\pi \\sqrt{\\frac{l}{g}}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_42",
+   "example": 4,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "I = \\frac{V}{\\sqrt{(R^2 + X^2)}} = \\frac{250}{\\sqrt{(25.0^2 + 18.0^2)}",
+   "result": "t = 2\\pi \\sqrt{\\frac{l}{g}}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_55",
+   "example": 2,
+   "step_num": 5,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "(ii) Hence, a strain of 0.0001 corresponds to \\frac{63}{3} MPa.",
+   "result": "\\text{Unit rate} = \\frac{\\text{total quantity}}{\\text{number of units}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_55",
+   "example": 3,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "(ii) Hence, a volume of 1 litre corresponds to a temperature of \\frac{",
+   "result": "\\text{Unit rate} = \\frac{\\text{total quantity}}{\\text{number of units}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_55",
+   "example": 3,
+   "step_num": 5,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "(ii) Hence, a temperature of 1 K corresponds to a volume of \\frac{2.4}",
+   "result": "\\text{Unit rate} = \\frac{\\text{total quantity}}{\\text{number of units}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_58",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Hence, 3 people would take $\\frac{20}{3}$ hours.",
+   "result": "R \\propto \\frac{1}{A}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_58",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Use $R = \\frac{k}{A}$ so $k = RA$.",
+   "result": "R \\propto \\frac{1}{A}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_58",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "For part (b), use $A = \\frac{k}{R}$ with R=4.",
+   "result": "R \\propto \\frac{1}{A}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_58",
+   "example": 2,
+   "step_num": 4,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$A = \\frac{36}{4} = 9\\text{mm}^2$",
+   "result": "R \\propto \\frac{1}{A}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_58",
+   "example": 3,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Use $V = \\frac{k}{p}$ so $k = pV$.",
+   "result": "R \\propto \\frac{1}{A}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_58",
+   "example": 3,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "For (b), use $V = \\frac{k}{p} = \\frac{0.12 \\times 10^6}{4 \\times 10^6}",
+   "result": "R \\propto \\frac{1}{A}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_74",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "5x + 3y + z + −3x + −4y + 6z",
+   "result": "5x + 3y + z - 3x - 4y + 6z = 2x - y + 7z"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_74",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "= 5x + 3y + z − 3x − 4y + 6z",
+   "result": "5x + 3y + z - 3x - 4y + 6z = 2x - y + 7z"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_74",
+   "example": 1,
+   "step_num": 3,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "= 5x − 3x + 3y − 4y + z + 6z",
+   "result": "5x + 3y + z - 3x - 4y + 6z = 2x - y + 7z"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_74",
+   "example": 1,
+   "step_num": 4,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "= 2x − y + 7z",
+   "result": "5x + 3y + z - 3x - 4y + 6z = 2x - y + 7z"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_74",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "4x² − x − 2y + 5x + 3y = 4x² + 5x − x + 3y − 2y",
+   "result": "5x + 3y + z - 3x - 4y + 6z = 2x - y + 7z"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_74",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "= 4x² + 4x + y",
+   "result": "4x + 3x + -2x + -x = 4x"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_74",
+   "example": 3,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "3xy − 7x + 4xy + 2x = 3xy + 4xy + 2x − 7x",
+   "result": "4x + 3x + -2x + -x = 4x"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_74",
+   "example": 3,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "= 7xy − 5x",
+   "result": "5x + 3y + z - 3x - 4y + 6z = 2x - y + 7z"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_74",
+   "example": 4,
+   "step_num": 1,
+   "bled_from_example": 6,
+   "is_sibling_answer": false,
+   "operation": "bc × abc = a × b × b × c × c",
+   "result": "bc × abc = ab^{2}c^{2}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_74",
+   "example": 4,
+   "step_num": 3,
+   "bled_from_example": 6,
+   "is_sibling_answer": false,
+   "operation": "= ab²c²",
+   "result": "bc × abc = ab^{2}c^{2}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_74",
+   "example": 6,
+   "step_num": 1,
+   "bled_from_example": 4,
+   "is_sibling_answer": false,
+   "operation": "ab × b²c × a = a × a × b × b × b × c",
+   "result": "bc × abc = ab^{2}c^{2}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_74",
+   "example": 7,
+   "step_num": 1,
+   "bled_from_example": 4,
+   "is_sibling_answer": false,
+   "operation": "3ab + 4bc − abc = 3 × a × b + 4 × b × c − a × b × c",
+   "result": "bc × abc = ab^{2}c^{2}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_80",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "(3x + 4y)(x - y) = 3x(x - y) + 4y(x - y)",
+   "result": "(3x + 4y)(x - y) = 3x^2 + xy - 4y^2"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_80",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "= 3x² - 3xy + 4yx - 4y²",
+   "result": "(3x + 4y)(x - y) = 3x^2 + xy - 4y^2"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_80",
+   "example": 1,
+   "step_num": 3,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "= 3x² - 3xy + 4xy - 4y²",
+   "result": "(3x + 4y)(x - y) = 3x^2 + xy - 4y^2"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_80",
+   "example": 1,
+   "step_num": 4,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "= 3x² + xy - 4y²",
+   "result": "(3x + 4y)(x - y) = 3x^2 + xy - 4y^2"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_80",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 5,
+   "is_sibling_answer": false,
+   "operation": "3(2x - 3y) - (3x - y) = 3 × 2x - 3 × 3y - 3x - -y",
+   "result": "3(2x - 3y) - (3x - y) = 3x - 8y"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_80",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "= 6x - 9y - 3x + y",
+   "result": "(3x + 4y)(x - y) = 3x^2 + xy - 4y^2"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_80",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "= 6x - 3x + y - 9y",
+   "result": "(3x + 4y)(x - y) = 3x^2 + xy - 4y^2"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_80",
+   "example": 2,
+   "step_num": 4,
+   "bled_from_example": 5,
+   "is_sibling_answer": false,
+   "operation": "= 3x - 8y",
+   "result": "3(2x - 3y) - (3x - y) = 3x - 8y"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_80",
+   "example": 5,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "(2x - 3y)² = (2x - 3y)(2x - 3y)",
+   "result": "3(2x - 3y) - (3x - y) = 3x - 8y"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_80",
+   "example": 5,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "= 2x(2x - 3y) - 3y(2x - 3y)",
+   "result": "3(2x - 3y) - (3x - y) = 3x - 8y"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_80",
+   "example": 5,
+   "step_num": 3,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "= 2x × 2x + 2x × -3y - 3y × 2x -3y × -3y",
+   "result": "3(2x - 3y) - (3x - y) = 3x - 8y"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_83",
+   "example": 3,
+   "step_num": 1,
+   "bled_from_example": 5,
+   "is_sibling_answer": false,
+   "operation": "$t \\div 2t + 3t - 5t = \\frac{t}{2t} + 3t - 5t$",
+   "result": "x \\div 2t + 3t - 5t = \\frac{t}{2t} + 3t - 5t"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_83",
+   "example": 3,
+   "step_num": 2,
+   "bled_from_example": 5,
+   "is_sibling_answer": false,
+   "operation": "$= \\frac{1}{2} + 3t - 5t$",
+   "result": "x \\div 2t + 3t - 5t = \\frac{t}{2t} + 3t - 5t"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_83",
+   "example": 3,
+   "step_num": 3,
+   "bled_from_example": 5,
+   "is_sibling_answer": false,
+   "operation": "$= \\frac{1}{2} - 2t$",
+   "result": "x \\div 2t + 3t - 5t = \\frac{t}{2t} + 3t - 5t"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_83",
+   "example": 5,
+   "step_num": 2,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "$= \\frac{2y}{4y}$",
+   "result": "x \\div 2t + 3t - 5t = \\frac{t}{2t} + 3t - 5t"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_83",
+   "example": 5,
+   "step_num": 3,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "$= \\frac{1}{2}$",
+   "result": "x \\div 2t + 3t - 5t = \\frac{t}{2t} + 3t - 5t"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_84",
+   "example": 0,
+   "step_num": 7,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "Write the final simplified expression",
+   "result": "6a^2 - 2a + \\frac{1}{2}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_84",
+   "example": 3,
+   "step_num": 4,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "6p × \\frac{5}{-1}",
+   "result": "6a^2 - 2a + \\frac{1}{2}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_88",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 4,
+   "is_sibling_answer": false,
+   "operation": "Cross-multiplying gives \\sqrt{d} = \\frac{8}{2}",
+   "result": "\\frac{\\sqrt{b} + 3}{\\sqrt{b}} = 2"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_88",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Cancelling gives \\sqrt{d} = 4",
+   "result": "\\sqrt{x} = a \\implies x = a^2"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_88",
+   "example": 1,
+   "step_num": 3,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Squaring both sides gives (\\sqrt{d})^2 = (4)^2",
+   "result": "\\sqrt{x} = a \\implies x = a^2"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_88",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Cross-multiplying gives \\sqrt{b} + 3 = 2\\sqrt{b}",
+   "result": "\\sqrt{x} = a \\implies x = a^2"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_88",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Rearranging gives 3 = 2\\sqrt{b} - \\sqrt{b}",
+   "result": "\\sqrt{x} = a \\implies x = a^2"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_88",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "i.e. 3 = \\sqrt{b}",
+   "result": "\\sqrt{x} = a \\implies x = a^2"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_88",
+   "example": 3,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Taking the square root of both sides gives \\sqrt{x^2} = \\sqrt{25}",
+   "result": "\\sqrt{x} = a \\implies x = a^2"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_88",
+   "example": 4,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Dividing both sides by 8 gives \\frac{45}{8} = \\frac{8t^2}{8}",
+   "result": "\\frac{\\sqrt{b} + 3}{\\sqrt{b}} = 2"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_88",
+   "example": 4,
+   "step_num": 5,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Taking the square root of both sides gives \\sqrt{t^2} = \\sqrt{5.625}",
+   "result": "\\sqrt{x} = a \\implies x = a^2"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_95",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "Divide both sides by $f$: $\\frac{f\\lambda}{f} = \\frac{v}{f}$",
+   "result": "I = \\frac{V}{R}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_95",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "Cancel $f$ on numerator and denominator: $\\lambda = \\frac{v}{f}$",
+   "result": "I = \\frac{V}{R}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_95",
+   "example": 3,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Divide both sides by $2g$: $\\frac{v^2}{2g} = h$",
+   "result": "I = \\frac{V}{R}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_96",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "Rearranging gives $\\frac{F}{m} = a$",
+   "result": "h = \\frac{v^2}{2g}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_96",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "Multiplying both sides by $m$ gives $m\\left(\\frac{F}{m}\\right) = m(a)$",
+   "result": "h = \\frac{v^2}{2g}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_96",
+   "example": 1,
+   "step_num": 5,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "Dividing both sides by $a$ gives $\\frac{ma}{a} = \\frac{F}{a}$",
+   "result": "h = \\frac{v^2}{2g}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_96",
+   "example": 1,
+   "step_num": 6,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "i.e. $m = \\frac{F}{a}$",
+   "result": "h = \\frac{v^2}{2g}"
+  },
+  {
+   "template_id": "Bird_Engineering_Math_sa_96",
+   "example": 3,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Dividing both sides by $x$ gives $m = \\frac{y - c}{x}$",
+   "result": "h = \\frac{v^2}{2g}"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_116",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "The probability that 7 will show on a single toss is $p = \\frac{1}{6}$",
+   "result": "\\frac{12}{52} \\cdot \\frac{12}{52} = \\frac{9}{169}"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_116",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Of the 100 000 persons alive at age 10 years, 92 637 are alive at age ",
+   "result": "\\frac{12}{52} \\cdot \\frac{12}{52} = \\frac{9}{169}"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_171",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Determine quadrant: since sin θ > 0 and cos θ < 0, θ is in quadrant II",
+   "result": "\\sin \\theta = y/r"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_171",
+   "example": 1,
+   "step_num": 3,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Compute tan θ = y/x = √3 / -1 = -√3.",
+   "result": "\\tan \\theta = y/x"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_171",
+   "example": 1,
+   "step_num": 5,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Compute cot θ = 1/tan θ = 1/(-√3) = -√3/3.",
+   "result": "\\tan \\theta = y/x"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_171",
+   "example": 1,
+   "step_num": 6,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Compute csc θ = 1/sin θ = 1/(√3/2) = 2/√3 = 2√3/3.",
+   "result": "\\sin \\theta = y/r"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_171",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Since sin θ is negative, θ is in quadrant III or IV.",
+   "result": "\\sin \\theta = y/r"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_171",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Compute cos θ = x/r = -√(n² - m²)/n and tan θ = y/x = m / (-√(n² - m²)",
+   "result": "\\tan \\theta = y/x"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_171",
+   "example": 2,
+   "step_num": 5,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Compute cos θ = x/r = √(n² - m²)/n and tan θ = y/x = m / √(n² - m²).",
+   "result": "\\tan \\theta = y/x"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_177",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Calculate hypotenuse c = √(a² + b²) = √(100 + 225) = √325 = 5√13.",
+   "result": "sin A = opposite/hypotenuse"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_177",
+   "example": 1,
+   "step_num": 3,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Compute all six trigonometric functions using side ratios: sin B = a/c",
+   "result": "sin A = opposite/hypotenuse"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_177",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Construct right triangle ABC with opposite side a=2x, hypotenuse c=3. ",
+   "result": "sin A = opposite/hypotenuse"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_177",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Express all six trig functions in terms of x using side ratios: sin A ",
+   "result": "sin A = opposite/hypotenuse"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_180",
+   "example": 1,
+   "step_num": 4,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Calculate AC = 19.4 cm, so chord AB = 2 × AC = 38.8 cm ≈ 39 cm",
+   "result": "AC = CB \\cot A"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_180",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Let CB = h be height of tree. From point A, cot 20° = AC / h → AC = h ",
+   "result": "AC = CB \\cot A"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_180",
+   "example": 3,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "In triangle ACD, cot α = AC / h → AC = h cot α.",
+   "result": "AC = CB \\cot A"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_180",
+   "example": 3,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Since ABC is right triangle (north-west perpendicularity), AC² + BC² =",
+   "result": "AC = CB \\cot A"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_183",
+   "example": 0,
+   "step_num": 1,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "sin 400° = sin(40° + 360°)",
+   "result": "sin(θ + n360°) = sin θ"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_183",
+   "example": 0,
+   "step_num": 2,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "sin(40° + 360°) = sin 40°",
+   "result": "sin(θ + n360°) = sin θ"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_183",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 4,
+   "is_sibling_answer": false,
+   "operation": "cos 850° = cos(130° + 2·360°)",
+   "result": "cos(−θ) = cos θ"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_183",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 4,
+   "is_sibling_answer": false,
+   "operation": "cos(130° + 2·360°) = cos 130°",
+   "result": "cos(−θ) = cos θ"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_183",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 5,
+   "is_sibling_answer": false,
+   "operation": "tan(−1000°) = tan(80° − 3·360°)",
+   "result": "tan(θ + n360°) = tan θ"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_183",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 5,
+   "is_sibling_answer": false,
+   "operation": "tan(80° − 3·360°) = tan 80°",
+   "result": "tan(θ + n360°) = tan θ"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_183",
+   "example": 3,
+   "step_num": 1,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "sin(−50°) = −sin 50°",
+   "result": "sin(θ + n360°) = sin θ"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_183",
+   "example": 4,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "cos(−30°) = cos 30°",
+   "result": "cos(−θ) = cos θ"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_183",
+   "example": 5,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "tan(−200°) = −tan 200°",
+   "result": "tan(θ + n360°) = tan θ"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_184",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 4,
+   "is_sibling_answer": false,
+   "operation": "cos(θ - 90°) = cos(-90° + θ) = cos(-1 · 90° + θ)",
+   "result": "cot(90° - θ) = tan θ"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_184",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 6,
+   "is_sibling_answer": false,
+   "operation": "= sin θ",
+   "result": "sin(180° - θ) = sin θ"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_184",
+   "example": 3,
+   "step_num": 1,
+   "bled_from_example": 4,
+   "is_sibling_answer": false,
+   "operation": "cos(-180° + θ) = cos(-2 · 90° + θ)",
+   "result": "cos(180° - θ) = -cos θ"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_184",
+   "example": 3,
+   "step_num": 2,
+   "bled_from_example": 4,
+   "is_sibling_answer": false,
+   "operation": "= -cos θ",
+   "result": "cos(180° - θ) = -cos θ"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_184",
+   "example": 4,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "sin(-270° - θ) = sin(-3 · 90° - θ)",
+   "result": "cot(90° - θ) = tan θ"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_184",
+   "example": 4,
+   "step_num": 2,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "= cos θ",
+   "result": "cos(180° - θ) = -cos θ"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_184",
+   "example": 5,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "tan(θ - 360°) = sin(-4 · 90° + θ)",
+   "result": "cot(90° - θ) = tan θ"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_184",
+   "example": 5,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "= tan θ",
+   "result": "cot(90° - θ) = tan θ"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_184",
+   "example": 6,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "sin(540° + θ) = sin(6 · 90° + θ)",
+   "result": "cot(90° - θ) = tan θ"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_184",
+   "example": 6,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "= -sin θ",
+   "result": "sin(180° - θ) = sin θ"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_184",
+   "example": 7,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "tan(720° - θ) = tan(8 · 90° - θ)",
+   "result": "cot(90° - θ) = tan θ"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_184",
+   "example": 7,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "= -tan θ",
+   "result": "cot(90° - θ) = tan θ"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_184",
+   "example": 8,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "tan(720° + θ) = tan(2 · 360° - θ) = tan(-θ)",
+   "result": "cot(90° - θ) = tan θ"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_184",
+   "example": 8,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "= -tan θ",
+   "result": "cot(90° - θ) = tan θ"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_238",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Multiply both sides by cos x: 1 + sin x = 0.",
+   "result": "sin x - 2 sin x cos x = 0"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_238",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Solve for sin x: sin x = -1.",
+   "result": "sin x - 2 sin x cos x = 0"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_238",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Rewrite as sin x = 1 - cos x.",
+   "result": "sin x - 2 sin x cos x = 0"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_238",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Square both sides: sin²x = (1 - cos x)² → sin²x = 1 - 2 cos x + cos²x.",
+   "result": "sin x - 2 sin x cos x = 0"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_238",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Substitute sin²x = 1 - cos²x: 1 - cos²x = 1 - 2 cos x + cos²x.",
+   "result": "sin x - 2 sin x cos x = 0"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_238",
+   "example": 2,
+   "step_num": 4,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Simplify: 2 cos²x - 2 cos x = 0 → 2 cos x (cos x - 1) = 0.",
+   "result": "sin x - 2 sin x cos x = 0"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_238",
+   "example": 2,
+   "step_num": 5,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Solve: cos x = 0 → x = π/2, 3π/2; cos x = 1 → x = 0.",
+   "result": "sin x - 2 sin x cos x = 0"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_320",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Apply Factor Theorem: since x+1 is a factor, divide original polynomia",
+   "result": "x^4 - 9x^2 + 4x + 12 = (x + 1)(x - 2)(x + 3)(x - 2)"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_320",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Use synthetic division with root 2 on cubic x³ − x² − 8x + 12.",
+   "result": "x^4 - 9x^2 + 4x + 12 = (x + 1)(x - 2)(x + 3)(x - 2)"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_320",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Test x=2 via synthetic division: coefficients [2, -1, -11, 4, 12] → qu",
+   "result": "x^4 - 9x^2 + 4x + 12 = (x + 1)(x - 2)(x + 3)(x - 2)"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_390",
+   "example": 0,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Examine convergence when |r| < 1",
+   "result": "\\begin{aligned}\\lim_{n \\to \\infty} r^n = 0 \\\\ |r| < 1\\end{aligned}"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_390",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "For (a): Compute lim sₙ = lim (n+1)/n = lim (1 + 1/n) = 1 ≠ 0.",
+   "result": "\\begin{aligned}\\lim_{n \\to \\infty} r^n = 0 \\\\ |r| < 1\\end{aligned}"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_390",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "For (b): Compute lim sₙ = lim (2ⁿ⁻¹ + 1)/(4⋅2ⁿ⁻¹) = lim (1 + 1/2ⁿ⁻¹)/4",
+   "result": "\\begin{aligned}\\lim_{n \\to \\infty} r^n = 0 \\\\ |r| < 1\\end{aligned}"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_390",
+   "example": 3,
+   "step_num": 1,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "For p = 1: The series is the harmonic series, which is known to diverg",
+   "result": "\\begin{aligned}\\lim_{n \\to \\infty} r^n = 0 \\\\ |r| < 1\\end{aligned}"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_395",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "$R = \\lim_{n \\to \\infty} \\left|\\frac{nx^n}{(n-1)x^{n-1}}\\right| = \\lim",
+   "result": "R = \\lim_{n \\to \\infty} \\left|\\frac{s_{n+1}}{s_n}\\right| = \\lim_{n \\to"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_395",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "$|s_n| = \\left|\\frac{x^{n-1}}{2^{n-1}}\\right|, |s_{n+1}| = \\left|\\frac",
+   "result": "|s_n| = \\left|\\frac{x^{n-1}}{(n-1)!}\\right|"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_395",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$R = \\lim_{n \\to \\infty} \\left|\\frac{x^n}{2^n} \\cdot \\frac{2^{n-1}}{x^",
+   "result": "R = \\lim_{n \\to \\infty} \\left|\\frac{s_{n+1}}{s_n}\\right| = \\lim_{n \\to"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_395",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "The series converges for all $x$ such that $\\frac{1}{2}|x| < 1$, i.e.,",
+   "result": "|s_n| = \\left|\\frac{x^{n-1}}{(n-1)!}\\right|"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_395",
+   "example": 3,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "$|s_n| = \\left|\\frac{n!}{(x+1)^n}\\right|, |s_{n+1}| = \\left|\\frac{(n+1",
+   "result": "|s_n| = \\left|\\frac{x^{n-1}}{(n-1)!}\\right|"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_395",
+   "example": 3,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$R = \\lim_{n \\to \\infty} \\left|\\frac{(n+1)!}{(x+1)^{n+1}} \\cdot \\frac{",
+   "result": "R = \\lim_{n \\to \\infty} \\left|\\frac{s_{n+1}}{s_n}\\right| = \\lim_{n \\to"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_400",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Since $x = r \\cos \\theta$, $y = r \\sin \\theta$, and $x^2 + y^2 = r^2$",
+   "result": "x = r \\cos \\theta"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_400",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "the polar equation is $r^2 - 8r \\cos \\theta + 6r \\sin \\theta - 2 = 0$",
+   "result": "x = r \\cos \\theta"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_400",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Since $(r,\\theta)$ satisfies the equation $r = 4 \\cos \\theta - 2$",
+   "result": "x = r \\cos \\theta"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_400",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$(-r, \\theta + \\pi)$ satisfies the equation $-r = 4 \\cos (\\theta + \\pi",
+   "result": "x = r \\cos \\theta"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_400",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Thus, $r = 4 \\cos \\theta - 2$ and $r = 4 \\cos \\theta + 2$ are equation",
+   "result": "x = r \\cos \\theta"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_404",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Substitute x = r cos θ, y = r sin θ → x² + y² = r².",
+   "result": "\\cos^2\\theta - \\sin^2\\theta = \\cos2\\theta"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_404",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Substitute: (r cos θ)² − (r sin θ)² = r²(cos² θ − sin² θ).",
+   "result": "\\cos^2\\theta - \\sin^2\\theta = \\cos2\\theta"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_417",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 4,
+   "is_sibling_answer": false,
+   "operation": "Go to an 'E' line, enter '2X - 11 = 13'",
+   "result": "2X - 11 = 13"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_417",
+   "example": 4,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "At an 'F' line, enter '2X - 11'",
+   "result": "2X - 11 = 13"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_422",
+   "example": 3,
+   "step_num": 1,
+   "bled_from_example": 4,
+   "is_sibling_answer": false,
+   "operation": "sqrt(2) = 1.4142...",
+   "result": "\\begin{aligned}\\sqrt{-a} = i\\sqrt{a} \\\\ a > 0\\end{aligned}"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_422",
+   "example": 4,
+   "step_num": 1,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "(sqrt(-2))^2 = sqrt(-2) * sqrt(-2)",
+   "result": "\\begin{aligned}\\sqrt{-a} = i\\sqrt{a} \\\\ a > 0\\end{aligned}"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_422",
+   "example": 4,
+   "step_num": 2,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "(i*sqrt(2)) * (i*sqrt(2))",
+   "result": "\\begin{aligned}\\sqrt{-a} = i\\sqrt{a} \\\\ a > 0\\end{aligned}"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_422",
+   "example": 5,
+   "step_num": 1,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "(i*sqrt(2)) * (i*sqrt(3))",
+   "result": "\\begin{aligned}\\sqrt{-a} = i\\sqrt{a} \\\\ a > 0\\end{aligned}"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_422",
+   "example": 5,
+   "step_num": 2,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "i^2 * sqrt(6) = -1 * sqrt(6)",
+   "result": "\\begin{aligned}\\sqrt{-a} = i\\sqrt{a} \\\\ a > 0\\end{aligned}"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_43",
+   "example": 1,
+   "step_num": 3,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "Collect terms: $3x + 3 = 2\\sqrt{3x + 3}$",
+   "result": "3x^2 - 5x + \\sqrt{3x^2 - 5x + 4} = 16"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_43",
+   "example": 1,
+   "step_num": 5,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "For $x = \\frac{1}{3}$: $\\sqrt{6(\\frac{1}{3}) + 7} - \\sqrt{3(\\frac{1}{3",
+   "result": "x = \\frac{3 \\pm \\sqrt{5}}{2}"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_43",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Multiply the numerator and denominator of the fraction by $(\\sqrt{x + ",
+   "result": "x = \\frac{3 \\pm \\sqrt{5}}{2}"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_43",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Then $x - 3 = -\\sqrt{x^2 - 1}$, $x^2 - 6x + 9 = x^2 - 1$, and $x = \\fr",
+   "result": "x = \\frac{3 \\pm \\sqrt{5}}{2}"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_43",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Check: $\\frac{\\sqrt{\\frac{8}{3}} + \\sqrt{\\frac{2}{3}}}{\\sqrt{\\frac{8}{",
+   "result": "x = \\frac{3 \\pm \\sqrt{5}}{2}"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_43",
+   "example": 3,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Note that the unknown appears in the same polynomials in both the expr",
+   "result": "3x^2 - 5x + \\sqrt{3x^2 - 5x + 4} = 16"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_49",
+   "example": 0,
+   "step_num": 1,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "Original inequality",
+   "result": "3x + 4 > 5x + 2"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_49",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "Subtract $7x - 8$ from each member",
+   "result": "2x - 8 < 7x + 12"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_49",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 5,
+   "is_sibling_answer": false,
+   "operation": "Subtract $4x + 5$ from each member",
+   "result": "x^2 > 4x + 5"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_49",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 5,
+   "is_sibling_answer": false,
+   "operation": "Solve the equality $f(x) = x^2 - 4x - 5 = 0$",
+   "result": "x^2 > 4x + 5"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_49",
+   "example": 3,
+   "step_num": 1,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "Subtract 5x + 4 from each member:",
+   "result": "3x + 4 > 5x + 2"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_49",
+   "example": 3,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "-2x > -2",
+   "result": "2x - 8 < 7x + 12"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_49",
+   "example": 4,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Subtract 7x - 8 from each member:",
+   "result": "2x - 8 < 7x + 12"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_49",
+   "example": 4,
+   "step_num": 2,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "-5x < 20",
+   "result": "3x + 4 > 5x + 2"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_49",
+   "example": 5,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Subtract 4x + 5 from each member:",
+   "result": "x^2 > 4x + 5"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_49",
+   "example": 5,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "x^2 - 4x - 5 > 0",
+   "result": "x^2 > 4x + 5"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_49",
+   "example": 5,
+   "step_num": 3,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Solve the equality f(x) = x^2 - 4x - 5 = 0:",
+   "result": "x^2 > 4x + 5"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_81",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "Let d be the common difference, so a + d = l - d → d = \\frac{1}{2}(l -",
+   "result": "S = \\frac{n}{2}(a + l)"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_81",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "Compute mean: a + d = a + \\frac{1}{2}(l - a) = \\frac{1}{2}(a + l)",
+   "result": "S = \\frac{n}{2}(a + l)"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_81",
+   "example": 3,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Identify a = 8, r = \\frac{1}{2}, n = 9",
+   "result": "S = \\frac{n}{2}(a + l)"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_81",
+   "example": 3,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Compute ninth term: l = ar^{n-1} = 8(\\frac{1}{2})^8 = \\frac{1}{32}",
+   "result": "S = \\frac{n}{2}(a + l)"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_90",
+   "example": 0,
+   "step_num": 5,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Apply the sum formula for an infinite geometric series",
+   "result": "S = \\frac{a}{1 - r}"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_90",
+   "example": 1,
+   "step_num": 3,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "Apply $S = \\frac{a}{1 - r} = \\frac{0.72}{1 - 0.01} = \\frac{0.72}{0.99}",
+   "result": "S = \\frac{a}{1 - r}"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_90",
+   "example": 1,
+   "step_num": 4,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "Simplify fraction: $\\frac{72}{99} = \\frac{8}{11}$.",
+   "result": "S = \\frac{a}{1 - r}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_126",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 4,
+   "is_sibling_answer": false,
+   "operation": "Set up Vedic division with dividend coefficients [2, 9, 18, 20], divis",
+   "result": "2x^3 + 9x^2 + 18x + 20"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_126",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 4,
+   "is_sibling_answer": false,
+   "operation": "Perform multiplication and subtraction according to Vedic layout: -4, ",
+   "result": "2x^3 + 9x^2 + 18x + 20"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_126",
+   "example": 4,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Final quotient: -2, -11, -20 → Q = -2x² -11x -20; Remainder: -20, 8, 1",
+   "result": "2x^3 + 9x^2 + 18x + 20"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_130",
+   "example": 1,
+   "step_num": 4,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Final quotient 10, remainder 991.",
+   "result": "Q = quotient"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_130",
+   "example": 2,
+   "step_num": 4,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Final quotient 10, remainder 1019.",
+   "result": "Q = quotient"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_148",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "By eliminating two letters at a time, we get: E=(x+y)(3x−2y), (3x+4z)(",
+   "result": "E=(x+y+4z-2w)(3x-2y+4z+15w)"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_148",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "∴ E=(x+y+4z−2w)(3x−2y+4z+15w)",
+   "result": "E=(x+y+4z-2w)(3x-2y+4z+15w)"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_148",
+   "example": 3,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "=(x−1)(3x+3) and also (2y−1)(2y+3)",
+   "result": "E=(x+y+4z-2w)(3x-2y+4z+15w)"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_148",
+   "example": 3,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "∴ E=(x+2y−1)(3x+2y−3)",
+   "result": "E=(x+y+4z-2w)(3x-2y+4z+15w)"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_157",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Factor both polynomials: x⁴ + x³ - 5x² - 3x + 2 = (x + 1)(x - 2)(x² + ",
+   "result": "2x^{3} + 5x^{2} + 5x - 4 = (2x + 1)(x^{2} + 3x + 4)"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_157",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Apply Vedic method: Subtract (6x⁴ - 10x³ + 14x) from first polynomial ",
+   "result": "2x^{3} + 5x^{2} + 5x - 4 = (2x + 1)(x^{2} + 3x + 4)"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_172",
+   "example": 0,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Observe the equation pattern",
+   "result": "\\frac{3}{3x+1} - \\frac{6}{6x+1} = \\frac{3}{3x+2} - \\frac{2}{2x+1}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_172",
+   "example": 1,
+   "step_num": 3,
+   "bled_from_example": 0,
+   "is_sibling_answer": true,
+   "operation": "Solve for x: \\therefore x = \\frac{1}{12}",
+   "result": "x = -\\frac{5}{12}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_172",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "Simplify to: \\therefore 6x + 8 = 0",
+   "result": "\\frac{3}{3x+1} - \\frac{6}{6x+1} = \\frac{3}{3x+2} - \\frac{2}{2x+1}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_172",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "Solve for x: \\therefore x = -\\frac{4}{3}",
+   "result": "\\frac{3}{3x+1} - \\frac{6}{6x+1} = \\frac{3}{3x+2} - \\frac{2}{2x+1}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_172",
+   "example": 3,
+   "step_num": 1,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "Test coefficient symmetry: \\frac{2}{1} - \\frac{9}{3} = \\frac{4}{1} - \\",
+   "result": "\\frac{3}{3x+1} - \\frac{6}{6x+1} = \\frac{3}{3x+2} - \\frac{2}{2x+1}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_172",
+   "example": 3,
+   "step_num": 3,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "Verify internal symmetry: \\frac{1}{1} + \\frac{3}{3} = \\frac{1}{1} + \\f",
+   "result": "\\frac{3}{3x+1} - \\frac{6}{6x+1} = \\frac{3}{3x+2} - \\frac{2}{2x+1}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_172",
+   "example": 3,
+   "step_num": 4,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "Solve resulting linear equation: \\therefore 6x + 5 = 0 \\therefore x = ",
+   "result": "\\frac{3}{3x+1} - \\frac{6}{6x+1} = \\frac{3}{3x+2} - \\frac{2}{2x+1}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_172",
+   "example": 4,
+   "step_num": 1,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "Transform equation: \\therefore \\frac{1}{x+3} + \\frac{3}{3x-1} = \\frac{",
+   "result": "\\frac{3}{3x+1} - \\frac{6}{6x+1} = \\frac{3}{3x+2} - \\frac{2}{2x+1}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_172",
+   "example": 4,
+   "step_num": 2,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "Apply standard method: \\therefore 6x + 8 = 0",
+   "result": "\\frac{3}{3x+1} - \\frac{6}{6x+1} = \\frac{3}{3x+2} - \\frac{2}{2x+1}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_172",
+   "example": 4,
+   "step_num": 3,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "Solve for x: \\therefore x = -\\frac{4}{3}",
+   "result": "\\frac{3}{3x+1} - \\frac{6}{6x+1} = \\frac{3}{3x+2} - \\frac{2}{2x+1}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_176",
+   "example": 0,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Set 2x - 12 = 0",
+   "result": "\\frac{(x-5)^3}{(x-7)} = \\frac{(x-3)}{(x-9)} \\therefore 2x - 12 = 0 \\th"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_176",
+   "example": 1,
+   "step_num": 3,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "Set 2x − a + b = 0",
+   "result": "\\frac{(x-5)^3}{(x-7)} = \\frac{(x-3)}{(x-9)} \\therefore 2x - 12 = 0 \\th"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_186",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Note 4+9 ≠ 15, so doubt arises; apply L.C.M. method to get: \\frac{12}{",
+   "result": "\\frac{4}{2x+1} + \\frac{9}{3x+2} = \\frac{15}{3x+1}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_186",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Multiply all to common denominator: \\frac{60}{30x-15} + \\frac{90}{30x-",
+   "result": "\\frac{4}{2x+1} + \\frac{9}{3x+2} = \\frac{15}{3x+1}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_186",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Simplify further: \\frac{2}{30x-15} + \\frac{3}{30x-10} = \\frac{5}{30x-6",
+   "result": "\\frac{4}{2x+1} + \\frac{9}{3x+2} = \\frac{15}{3x+1}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_187",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Check ratio sum: $\\frac{4}{5} + \\frac{7}{10} = \\frac{15}{10} = 3/2$",
+   "result": "\\frac{-18}{30x-15} - \\frac{12}{30x-10} = 0"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_187",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Merge: $\\frac{8}{10x+2} + \\frac{7}{10x+1} = \\frac{15}{10x+5}$",
+   "result": "\\frac{-18}{30x-15} - \\frac{12}{30x-10} = 0"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_187",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Verify: $\\frac{7}{7} + \\frac{6}{4} = 2\\frac{1}{2}$ and $\\frac{15}{6} =",
+   "result": "\\frac{-18}{30x-15} - \\frac{12}{30x-10} = 0"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_187",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Merge: $\\frac{84}{84x+12} + \\frac{126}{84x+21} = \\frac{210}{84x+14}$",
+   "result": "\\frac{-18}{30x-15} - \\frac{12}{30x-10} = 0"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_187",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Simplify: $\\frac{2}{84x+12} + \\frac{3}{84x+21} = \\frac{5}{84x+14}$",
+   "result": "\\frac{-18}{30x-15} - \\frac{12}{30x-10} = 0"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_187",
+   "example": 2,
+   "step_num": 4,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Set to zero: $\\frac{-4}{84x+12} + \\frac{21}{94x+21} = 0$",
+   "result": "\\frac{-18}{30x-15} - \\frac{12}{30x-10} = 0"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_192",
+   "example": 0,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Identify the equation",
+   "result": "\\frac{2}{6x+1} + \\frac{2}{2x-1} = \\frac{9}{9x-5} + \\frac{1}{3x+1}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_192",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "Here $\\frac{2}{6} = \\frac{1}{3}$; $\\frac{9}{9} = \\frac{2}{2}$; and the",
+   "result": "\\frac{2}{6x+1} + \\frac{2}{2x-1} = \\frac{9}{9x-5} + \\frac{1}{3x+1}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_192",
+   "example": 1,
+   "step_num": 3,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "∴ $(6x+1)(3x+1) = (9x-5)(2x-1)$",
+   "result": "\\frac{2}{6x+1} + \\frac{2}{2x-1} = \\frac{9}{9x-5} + \\frac{1}{3x+1}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_192",
+   "example": 1,
+   "step_num": 5,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "∴ $28x = 4$ ∴ $x = \\frac{1}{7}$",
+   "result": "\\frac{2}{6x+1} + \\frac{2}{2x-1} = \\frac{9}{9x-5} + \\frac{1}{3x+1}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_192",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "∴ $\\frac{2}{2x+3} - \\frac{1}{x+1} = \\frac{6}{6x+7} - \\frac{3}{3x+2}$",
+   "result": "\\frac{2}{6x+1} + \\frac{2}{2x-1} = \\frac{9}{9x-5} + \\frac{1}{3x+1}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_192",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "(i) By L.C.M. method, $(6x+9)(6x+6) = (6x+7)(6x+4)$",
+   "result": "\\frac{2}{6x+1} + \\frac{2}{2x-1} = \\frac{9}{9x-5} + \\frac{1}{3x+1}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_194",
+   "example": 0,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Identify the structure",
+   "result": "\\frac{1}{2x-1} + \\frac{8}{4x-1} = \\frac{6}{3x-1} + \\frac{3}{6x-1}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_194",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "Cross-multiply to get: $6x^2 + 5x + 1 = 6x^2 - 7x + 2$",
+   "result": "\\frac{1}{2x-1} + \\frac{8}{4x-1} = \\frac{6}{3x-1} + \\frac{3}{6x-1}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_195",
+   "example": 0,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "\\therefore \\frac{15}{15x+6} - \\frac{15}{15x+9} = \\frac{15}{15x+2} - \\f",
+   "result": "\\frac{5}{5x+2} + \\frac{3}{3x+1} = \\frac{5}{5x+3} + \\frac{15}{15x+2}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_195",
+   "example": 0,
+   "step_num": 4,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "\\therefore 15x = \\frac{10-54}{8} = \\frac{-44}{8} \\therefore x = \\frac{",
+   "result": "\\frac{5}{5x+2} + \\frac{3}{3x+1} = \\frac{5}{5x+3} + \\frac{15}{15x+2}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_195",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "\\therefore \\frac{3}{3x+15} + \\frac{3}{3x-10} = \\frac{3}{3x-4} + \\frac{",
+   "result": "\\frac{5}{5x+2} + \\frac{3}{3x+1} = \\frac{5}{5x+3} + \\frac{15}{15x+2}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_195",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "\\therefore \\frac{3}{3x+15} - \\frac{3}{3x+9} = \\frac{3}{3x-4} - \\frac{3",
+   "result": "\\frac{5}{5x+2} + \\frac{3}{3x+1} = \\frac{5}{5x+3} + \\frac{15}{15x+2}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_204",
+   "example": 0,
+   "step_num": 2,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "Find common denominator",
+   "result": "\\frac{-3}{(x+1)(x+3)} + \\frac{-15}{(x+3)(x+5)} + \\frac{-5}{(x+5)(x+1)}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_204",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "∴ (mentally) \\frac{-2}{(x-1)(x-2)} + \\frac{-6}{(x-2)(x-3)} + \\frac{-3}",
+   "result": "\\frac{x-3}{(x-1)(x-2)} + \\frac{x-5}{(x-2)(x-3)} + \\frac{x-4}{(x-3)(x-1"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_204",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "x = \\frac{-6 - 6 - 6}{-2 - 6 - 3}",
+   "result": "\\frac{x-3}{(x-1)(x-2)} + \\frac{x-5}{(x-2)(x-3)} + \\frac{x-4}{(x-3)(x-1"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_204",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "∴ (mentally) \\frac{-3}{(x-1)(x-3)} + \\frac{-18}{(x-3)(x-6)} + \\frac{-6",
+   "result": "\\frac{x-3}{(x-1)(x-2)} + \\frac{x-5}{(x-2)(x-3)} + \\frac{x-4}{(x-3)(x-1"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_204",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "x = \\frac{-18 - 18 - 18}{-3 - 18 - 6}",
+   "result": "\\frac{x-3}{(x-1)(x-2)} + \\frac{x-5}{(x-2)(x-3)} + \\frac{x-4}{(x-3)(x-1"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_204",
+   "example": 3,
+   "step_num": 1,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "∴ (mentally) \\frac{-12}{(x-2)(x-3)} + \\frac{-20}{(x-3)(x-4)} + \\frac{-",
+   "result": "\\frac{-3}{(x+1)(x+3)} + \\frac{-15}{(x+3)(x+5)} + \\frac{-5}{(x+5)(x+1)}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_204",
+   "example": 3,
+   "step_num": 2,
+   "bled_from_example": 4,
+   "is_sibling_answer": false,
+   "operation": "x = \\frac{-48 - 40 - 45}{-12 - 20 - 15}",
+   "result": "x = \\frac{15 + 15 + 15}{-3 - 15 - 5} = \\frac{-45}{23}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_204",
+   "example": 4,
+   "step_num": 1,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "∴ \\left\\{ \\frac{35x^2 - 12x - 23}{(5x-1)(7x-1)} - 1 \\right\\} + \\left\\{",
+   "result": "x = \\frac{15 + 15 + 15}{-3 - 15 - 5} = \\frac{-45}{23}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_204",
+   "example": 4,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "∴ \\frac{3}{(5x-1)(7x-1)} + \\frac{6}{(7x-1)(9x-1)} + \\frac{4}{(9x-1)(5x",
+   "result": "\\frac{x-3}{(x-1)(x-2)} + \\frac{x-5}{(x-2)(x-3)} + \\frac{x-4}{(x-3)(x-1"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_212",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "$\\therefore S_{8} = \\frac{x-w}{(a+x)(a+w)}$",
+   "result": "\\frac{a-b}{(x+a)(x+b)} + \\frac{b-c}{(x+b)(x+c)} + \\frac{c-d}{(x+c)(x+d"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_212",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$\\therefore S_{8} = \\frac{17}{(x+7)(x+24)}$",
+   "result": "\\frac{a-b}{(x+a)(x+b)} + \\frac{b-c}{(x+b)(x+c)} + \\frac{c-d}{(x+c)(x+d"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_212",
+   "example": 3,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$\\therefore S_{4} = \\frac{138}{(x+7)(x+145)}$",
+   "result": "\\frac{a-b}{(x+a)(x+b)} + \\frac{b-c}{(x+b)(x+c)} + \\frac{c-d}{(x+c)(x+d"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_212",
+   "example": 4,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "$\\therefore S_{8} = \\frac{a-d}{(px+a)(px+d)}$",
+   "result": "\\frac{a-b}{(x+a)(x+b)} + \\frac{b-c}{(x+b)(x+c)} + \\frac{c-d}{(x+c)(x+d"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_222",
+   "example": 0,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Identify the equation",
+   "result": "\\frac{2}{x+2}+\\frac{3}{x+3}=\\frac{5}{x+5}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_222",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "Derive simplified equation: $\\frac{2}{x+1}+\\frac{3}{x+3}=\\frac{5}{x+5}",
+   "result": "\\frac{2}{x+2}+\\frac{3}{x+3}=\\frac{5}{x+5}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_222",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "Verify condition: $\\frac{6}{3}+\\frac{4}{2}=\\frac{4}{1}$",
+   "result": "\\frac{2}{x+2}+\\frac{3}{x+3}=\\frac{5}{x+5}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_223",
+   "example": 0,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Identify Samuccaya",
+   "result": "\\frac{a}{x+a} + \\frac{b}{x+b} = \\frac{2c}{x+c}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_223",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "Test x=0: \\(\\frac{a^2-b^2}{a+b} + \\frac{b^2-c^2}{b+c} = \\frac{a^2-c^2}",
+   "result": "\\frac{a}{x+a} + \\frac{b}{x+b} = \\frac{2c}{x+c}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_223",
+   "example": 1,
+   "step_num": 3,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "Apply merger: \\(\\frac{(a-b)(b-c)}{(x+a+b)} + \\frac{(b-c)(b-a)}{x+b+c} ",
+   "result": "\\frac{a}{x+a} + \\frac{b}{x+b} = \\frac{2c}{x+c}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_223",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "Multiply both sides by abc: \\(\\frac{abc}{abcx+bcd} + \\frac{abc}{abcx+a",
+   "result": "\\frac{a}{x+a} + \\frac{b}{x+b} = \\frac{2c}{x+c}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_223",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "Apply merger: \\(\\frac{bcd - abd}{abcx+bcd} + \\frac{acd - abd}{abcx+acd",
+   "result": "\\frac{a}{x+a} + \\frac{b}{x+b} = \\frac{2c}{x+c}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_226",
+   "example": 0,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Identify the cubic equation",
+   "result": "x^3 - 6x^2 + 11x - 6 = 0"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_226",
+   "example": 0,
+   "step_num": 3,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Compare with binomial expansion",
+   "result": "(x-2)^3 = x^3 - 6x^2 + 12x - 8"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_226",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "$\\therefore x^3 + 6x^2 = -11x - 6$",
+   "result": "x^3 - 6x^2 + 11x - 6 = 0"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_226",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "But $(x+2)^3 = x^3 + 6x^2 + 12x + 8 = -11x - 6 + 12x + 8 = x + 2$",
+   "result": "x^3 - 6x^2 + 11x - 6 = 0"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_226",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "$\\therefore (x+2)^3 = x^3 + 6x^2 + 12x + 8 = 49x - 22 = 49(x + 2) - 12",
+   "result": "(x-2)^3 = x^3 - 6x^2 + 12x - 8"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_238",
+   "example": 1,
+   "step_num": 5,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "(ii) Alternative: Subtract equations: [x² - 2xy + y²] - [x² + xy + 2y²",
+   "result": "x^{2} - 2xy + y^{2} = 2x - 2y + 3"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_238",
+   "example": 1,
+   "step_num": 6,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "→ -3xy - y² = -y → 3xy + y² = y → y(3x + y - 1) = 0",
+   "result": "3x^{2} + 2xy - y^{2} = 0"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_238",
+   "example": 1,
+   "step_num": 7,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "∴ y = 0 or 3x + y = 1",
+   "result": "3x^{2} + 2xy - y^{2} = 0"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_238",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Factor first equation: 3x² + 2xy - y² = (3x - y)(x + y) = 0",
+   "result": "3x^{2} + 2xy - y^{2} = 0"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_238",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Substitute into second equation: x² + y² = 2x(y + 2x)",
+   "result": "x^{2} - 2xy + y^{2} = 2x - 2y + 3"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_238",
+   "example": 2,
+   "step_num": 4,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Alternatively, transpose second equation: x² + y² - 2xy - 4x² = 0 → -3",
+   "result": "3x^{2} + 2xy - y^{2} = 0"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_238",
+   "example": 2,
+   "step_num": 5,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Note: -3x² - 2xy + y² = -(3x² + 2xy - y²) → same as negation of first ",
+   "result": "3x^{2} + 2xy - y^{2} = 0"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_275",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Multiply each remainder by 3 (the last digit): 10×3=30, 9×3=27, 12×3=3",
+   "result": "remainder × Caramāṅka = quotient digit"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_275",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Write down only the last digit of each product: 0, 7, 6, 9, 2, 3.",
+   "result": "remainder × Caramāṅka = quotient digit"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_275",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Multiply each remainder by 7 (the Caramāṅka).",
+   "result": "remainder × Caramāṅka = quotient digit"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_275",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Take the last digit of each product to form the quotient digits.",
+   "result": "remainder × Caramāṅka = quotient digit"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_276",
+   "example": 0,
+   "step_num": 4,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Multiply 6 by 3: 6 × 3 = 18; subtract 14: 18 − 14 = 4.",
+   "result": "6 \\times 3 = 18; 18 - 14 = 4"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_276",
+   "example": 1,
+   "step_num": 5,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "Alternative: continue multiplying by 3: 6 × 3 = 18 (rem 4); 4 × 3 = 12",
+   "result": "6 \\times 3 = 18; 18 - 14 = 4"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_293",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "List remainders.",
+   "result": "Sum of any two consecutive remainders = next remainder"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_293",
+   "example": 1,
+   "step_num": 3,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Apply Rule (ii): Relationship between remainders.",
+   "result": "Sum of any two consecutive remainders = next remainder"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_293",
+   "example": 1,
+   "step_num": 4,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Apply Rule (iii): Summation pattern of remainders.",
+   "result": "Sum of any two consecutive remainders = next remainder"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_293",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "List quotient digits and remainders.",
+   "result": "Sum of any two consecutive remainders = next remainder"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_311",
+   "example": 0,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Set up the Vedic division layout with divisor 9314 split as 9 and 314,",
+   "result": "dividend ÷ divisor = quotient"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_311",
+   "example": 0,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Perform successive divisions and subtractions using the flag digit 314",
+   "result": "dividend ÷ divisor = quotient"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_311",
+   "example": 0,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Continue until remainder is smaller than divisor; result is 0.008... w",
+   "result": "dividend ÷ divisor = quotient"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_311",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "Show two possible layouts: one with flag digit 3145 and divisor 2, ano",
+   "result": "dividend ÷ divisor = quotient"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_311",
+   "example": 1,
+   "step_num": 3,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "Apply alternative layout: use flag 145 and divisor 23 to get quotient ",
+   "result": "dividend ÷ divisor = quotient"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_311",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "Compute denominator: 743.2 × 1.242 × 80.04 ≈ 74320 × 1242 × 8004 / 10^",
+   "result": "dividend ÷ divisor = quotient"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_311",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "Set up division with flag digit 432 and divisor 7, applying successive",
+   "result": "dividend ÷ divisor = quotient"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_311",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "Carry out multiple steps to obtain quotient 1.86001 approximately.",
+   "result": "dividend ÷ divisor = quotient"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_318",
+   "example": 5,
+   "step_num": 2,
+   "bled_from_example": 6,
+   "is_sibling_answer": false,
+   "operation": "13\\ 12\\ 3\\ 5\\ 3",
+   "result": "F=\\frac{1400}{1401} \\therefore AF=\\frac{13\\cdot99}{14}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_318",
+   "example": 6,
+   "step_num": 1,
+   "bled_from_example": 5,
+   "is_sibling_answer": false,
+   "operation": "F = \\dot{15}\\ 17\\ 80\\ 13\\ 74\\ 14\\ 11\\ 61\\ 79......",
+   "result": "F=\\frac{1400}{1401} \\therefore AF=\\frac{13\\cdot99}{14}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_319",
+   "example": 1,
+   "step_num": 3,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "OR F = \\frac{403}{1001}, \\frac{\\cdot 402}{1} (with three-digit groups)",
+   "result": "F = \\frac{2743}{7001} \\therefore AF = \\frac{2 \\cdot 742}{7}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_319",
+   "example": 1,
+   "step_num": 4,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "F = \\cdot \\overline{402}/\\overline{597}",
+   "result": "F = \\frac{2743}{7001} \\therefore AF = \\frac{2 \\cdot 742}{7}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_319",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "AF = \\frac{\\cdot 0128}{15} (with three-digit groups)",
+   "result": "F = \\frac{2743}{7001} \\therefore AF = \\frac{2 \\cdot 742}{7}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_319",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "F = \\cdot 001\\ 933\\ 204\\ 453\\ 036\\ \\text{etc., etc.}",
+   "result": "F = \\frac{2743}{7001} \\therefore AF = \\frac{2 \\cdot 742}{7}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_319",
+   "example": 3,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "AF = \\frac{\\cdot 000136}{13} (with 6-digit groups)",
+   "result": "F = \\frac{2743}{7001} \\therefore AF = \\frac{2 \\cdot 742}{7}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_319",
+   "example": 3,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "F = \\cdot 000010 : 538460 : 727810 : 713245\\ \\text{etc., etc.}",
+   "result": "F = \\frac{2743}{7001} \\therefore AF = \\frac{2 \\cdot 742}{7}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_332",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Osculation",
+   "result": "Osculation = (number × osculator) + next_digit"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_332",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Osculation",
+   "result": "Osculation = (number × osculator) + next_digit"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_334",
+   "example": 0,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Osculate 18 with 2 to the left → 38",
+   "result": "osculator = (10k + 1)/d where d is the divisor"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_334",
+   "example": 0,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Since 19 is divisible by 19, conclude 2774 is divisible by 19.",
+   "result": "osculator = (10k + 1)/d where d is the divisor"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_334",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "Osculator for 29 is 3. Apply osculation: 3 2 8 9 6 → 27 8 31 27",
+   "result": "osculator = (10k + 1)/d where d is the divisor"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_334",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "Osculator for 29 is 3. Apply osculation: 9 3 1 4 8 → 29 26 27 28",
+   "result": "osculator = (10k + 1)/d where d is the divisor"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_347",
+   "example": 0,
+   "step_num": 3,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "221 = 13 × 17",
+   "result": "1001 = 7 \\times 11 \\times 13"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_347",
+   "example": 0,
+   "step_num": 4,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "1001 = 7 × 11 × 13",
+   "result": "1001 = 7 \\times 11 \\times 13"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_347",
+   "example": 0,
+   "step_num": 5,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Divisible by 13 but not by 7 or 11",
+   "result": "1001 = 7 \\times 11 \\times 13"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_347",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "Multiply ⋅076923 by 13",
+   "result": "1001 = 7 \\times 11 \\times 13"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_347",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "⋅076923 × 13 = 0⋅76923 / 13 → 999999 = 1",
+   "result": "1001 = 7 \\times 11 \\times 13"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_347",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "x = 1/13",
+   "result": "1001 = 7 \\times 11 \\times 13"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_354",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "13 × 1 = \\left(\\frac{14}{2}\\right)^2 - \\left(\\frac{12}{2}\\right)^2",
+   "result": "9 = \\left(\\frac{9+1}{2}\\right)^2 - \\left(\\frac{9-1}{2}\\right)^2 = 5^2 "
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_354",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "or 4 × 3 = \\left(\\frac{7}{2}\\right)^2 - \\left(\\frac{1}{2}\\right)^2",
+   "result": "9 = \\left(\\frac{9+1}{2}\\right)^2 - \\left(\\frac{9-1}{2}\\right)^2 = 5^2 "
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_354",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "or 12 × 1 = \\left(\\frac{13}{2}\\right)^2 - \\left(\\frac{11}{2}\\right)^2",
+   "result": "9 = \\left(\\frac{9+1}{2}\\right)^2 - \\left(\\frac{9-1}{2}\\right)^2 = 5^2 "
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_354",
+   "example": 3,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "or 16 × 3 = \\left(\\frac{19}{2}\\right)^2 - \\left(\\frac{13}{2}\\right)^2",
+   "result": "9 = \\left(\\frac{9+1}{2}\\right)^2 - \\left(\\frac{9-1}{2}\\right)^2 = 5^2 "
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_354",
+   "example": 3,
+   "step_num": 4,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "or 48 × 1 = \\left(\\frac{49}{2}\\right)^2 - \\left(\\frac{47}{2}\\right)^2",
+   "result": "9 = \\left(\\frac{9+1}{2}\\right)^2 - \\left(\\frac{9-1}{2}\\right)^2 = 5^2 "
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_355",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Set 2n+1 = 35",
+   "result": "n + \\frac{n}{2n+1} = \\left( \\frac{2n(n+1)}{2n+1} \\right)"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_355",
+   "example": 1,
+   "step_num": 3,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Form the fraction: $17\\frac{17}{35} = \\frac{612}{35}$",
+   "result": "n + \\frac{n}{2n+1} = \\left( \\frac{2n(n+1)}{2n+1} \\right)"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_355",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Set 2n+1 = 57",
+   "result": "n + \\frac{n}{2n+1} = \\left( \\frac{2n(n+1)}{2n+1} \\right)"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_355",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Form the fraction: $28\\frac{28}{57} = \\frac{1624}{57}$",
+   "result": "n + \\frac{n}{2n+1} = \\left( \\frac{2n(n+1)}{2n+1} \\right)"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_355",
+   "example": 3,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Set 2n+1 = 141",
+   "result": "n + \\frac{n}{2n+1} = \\left( \\frac{2n(n+1)}{2n+1} \\right)"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_355",
+   "example": 3,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Form the fraction: $70\\frac{70}{141} = \\frac{9940}{141}$",
+   "result": "n + \\frac{n}{2n+1} = \\left( \\frac{2n(n+1)}{2n+1} \\right)"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_357",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Base 100, deviation -13; left part = 87-13=74, right part = (-13)²=169",
+   "result": "a^2 = (a + d)(a - d) + d^2"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_357",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Base 10, deviation +9; left part = 19+9=28, right part = 9²=81",
+   "result": "a^2 = (a + d)(a - d) + d^2"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_357",
+   "example": 3,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Base 100, deviation -9; left part = 91-9=82, right part = 81",
+   "result": "a^2 = (a + d)(a - d) + d^2"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_357",
+   "example": 4,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Base 1000, deviation -35; left part = 965-35=930, right part = (-35)²=",
+   "result": "a^2 = (a + d)(a - d) + d^2"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_357",
+   "example": 5,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Base 100, deviation +13; left part = 113+13=126, right part = 13²=169",
+   "result": "a^2 = (a + d)(a - d) + d^2"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_357",
+   "example": 6,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Base 1000, deviation -4; left part = 996-4=992, right part = 16",
+   "result": "a^2 = (a + d)(a - d) + d^2"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_357",
+   "example": 7,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Base 1000, deviation -2; left part = 998-2=996, right part = 4",
+   "result": "a^2 = (a + d)(a - d) + d^2"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_357",
+   "example": 8,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Base 10000, deviation -3; left part = 9997-3=9994, right part = 9",
+   "result": "a^2 = (a + d)(a - d) + d^2"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_357",
+   "example": 9,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Base 1000, deviation +7; left part = 1007+7=1014, right part = 49",
+   "result": "a^2 = (a + d)(a - d) + d^2"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_357",
+   "example": 10,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Base 10000, deviation -4; left part = 9996-4=9992, right part = 16",
+   "result": "a^2 = (a + d)(a - d) + d^2"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_357",
+   "example": 11,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Base 10000, deviation -1; left part = 9999-1=9998, right part = 1",
+   "result": "a^2 = (a + d)(a - d) + d^2"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_357",
+   "example": 12,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Base 1000, deviation +17; left part = 1017+17=1034, right part = 289",
+   "result": "a^2 = (a + d)(a - d) + d^2"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_362",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 4,
+   "is_sibling_answer": false,
+   "operation": "Apply Duplex for a single digit: square the digit.",
+   "result": "D = a^{2} (for single digit)"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_362",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "Identify equidistant digits: 3 and 4.",
+   "result": "D = 2ab (for two digits)"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_362",
+   "example": 3,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Identify equidistant digits: 7 and 4.",
+   "result": "D = 2ab (for two digits)"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_362",
+   "example": 4,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Break down into outer pair and middle digit: (4,9) and 0.",
+   "result": "D = a^{2} (for single digit)"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_362",
+   "example": 5,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Break into outer pair (0,1) and middle digit 7.",
+   "result": "D = a^{2} (for single digit)"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_362",
+   "example": 6,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Break into outer pair (7,3) and middle digit 1.",
+   "result": "D = a^{2} (for single digit)"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_362",
+   "example": 7,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Break into outer pair (7,4) and middle digit 3.",
+   "result": "D = a^{2} (for single digit)"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_379",
+   "example": 1,
+   "step_num": 3,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "(K) 3L²K=147K (ending in 0) ∴ K=0.",
+   "result": "3L^{2}K + 147K"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_379",
+   "example": 1,
+   "step_num": 5,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Subtracting 441, we have (H) 3L²H + 6LKJ + K³ = 147H + 0 + 0 and ends ",
+   "result": "3L^{2}H + 6LKJ + K^{3} = 147H + 400"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_379",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "(K) 3L²K=3K (ending in 4) ∴ K=8 ∴ Deducting 24.",
+   "result": "3L^{2}K + 147K"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_379",
+   "example": 2,
+   "step_num": 4,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "(J) 3L²J + 3LK² = 3J + 192 (ending in 2) ∴ J=0",
+   "result": "3L^{2}K + 147K"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_379",
+   "example": 2,
+   "step_num": 5,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "(H) 3L²H + 6LKJ + K³ = 3h + 0 + 512 and ends in 3 ∴ h=7",
+   "result": "3L^{2}H + 6LKJ + K^{3} = 147H + 400"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_382",
+   "example": 1,
+   "step_num": 4,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "(J) 3L²J+3LK²=3J+192 and ends in 5 .: J=1 .: Subtracting 195, we have",
+   "result": "3L^2J + 3LK^2 = 3J + 192"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_382",
+   "example": 1,
+   "step_num": 5,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "(H) 3L²H+6 LKJ+K³=3H+48+512=3H+560 and ends in 7 .: H=9",
+   "result": "3L^2H + 6LKJ + K^3 = 3H + 560"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_382",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "3L²J+3LK²=3J+192 and ends in 5 ∴ J=1",
+   "result": "3L^2J + 3LK^2 = 3J + 192"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_382",
+   "example": 2,
+   "step_num": 4,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "3L²H+6 LKJ+K³=3H+48+512=3H+560 and ends in 7 ∴ H=9",
+   "result": "3L^2H + 6LKJ + K^3 = 3H + 560"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_405",
+   "example": 0,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "GD=769 ; and 3bc²=735",
+   "result": "GD=769 ; and 3bc^{2}=735"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_405",
+   "example": 0,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "AD=34",
+   "result": "GD=769 ; and 3bc^{2}=735 ∴ AD=34 ∴ Q_{6}=0 ; & R_{6}=34"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_405",
+   "example": 0,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Q₆=0 ; & R₆=34",
+   "result": "GD=769 ; and 3bc^{2}=735 ∴ AD=34 ∴ Q_{6}=0 ; & R_{6}=34"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_405",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "AD=0",
+   "result": "GD=769 ; and 3bc^{2}=735 ∴ AD=34 ∴ Q_{6}=0 ; & R_{6}=34"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_405",
+   "example": 1,
+   "step_num": 3,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "Q₇=0 and R₇=0",
+   "result": "GD=769 ; and 3bc^{2}=735"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_46",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "Cross-multiply: (3x + 4)(2x + 3) = (x + 1)(6x + 7)",
+   "result": "\\frac{3x + 4}{6x + 7} = \\frac{x + 1}{2x + 3}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_46",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "Expand both sides: 6x² + 17x + 12 = 6x² + 13x + 7",
+   "result": "\\frac{3x + 4}{6x + 7} = \\frac{x + 1}{2x + 3}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_46",
+   "example": 2,
+   "step_num": 5,
+   "bled_from_example": 4,
+   "is_sibling_answer": false,
+   "operation": "Vedic Method: Apply Śūnyam-Samuccaya Sūtra: 4x + 5 = 0 → x = -1¼",
+   "result": "\\frac{4x + 21}{x + 5} + \\frac{5x - 69}{x - 14} = \\frac{3x - 5}{x - 2} "
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_46",
+   "example": 3,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Apply Vedic method: 2x - 9 = 0",
+   "result": "\\frac{3x + 4}{6x + 7} = \\frac{x + 1}{2x + 3}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_46",
+   "example": 4,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Apply Vedic method: 4x - 24 = 0",
+   "result": "\\frac{4x + 21}{x + 5} + \\frac{5x - 69}{x - 14} = \\frac{3x - 5}{x - 2} "
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_81",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "2)42/16",
+   "result": "\\frac{65}{4}=16\\frac{1}{4}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_81",
+   "example": 2,
+   "step_num": 4,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "21/16",
+   "result": "\\frac{65}{4}=16\\frac{1}{4}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_81",
+   "example": 3,
+   "step_num": 3,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "42 / 16",
+   "result": "\\frac{65}{4}=16\\frac{1}{4}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_81",
+   "example": 3,
+   "step_num": 5,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "210 / 16 = 211/6",
+   "result": "\\frac{65}{4}=16\\frac{1}{4}"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_87",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "W. B. 1000/2 = 500",
+   "result": "W. B. 1000/2 = 500"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_87",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "W. B. 1000/2 = 500",
+   "result": "W. B. 1000/2 = 500"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_87",
+   "example": 4,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "W. B. 1000/2 = 500",
+   "result": "W. B. 1000/2 = 500"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_100",
+   "example": 1,
+   "step_num": 6,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Quotient = 12, Remainder = 58",
+   "result": "Dividend = (Quotient × Divisor) + Remainder"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_100",
+   "example": 2,
+   "step_num": 6,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Quotient = 21, Remainder = 85 (sum of RHS)",
+   "result": "Dividend = (Quotient × Divisor) + Remainder"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_14",
+   "example": 0,
+   "step_num": 5,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "(e) Add your favourite single digit number (say, 7) = 257",
+   "result": "Final number = 10(x + 5) + d"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_14",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "Audience provides first number",
+   "result": "Final number = 10(x + 5) + d"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_14",
+   "example": 1,
+   "step_num": 3,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "Audience provides second number",
+   "result": "Final number = 10(x + 5) + d"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_14",
+   "example": 1,
+   "step_num": 4,
+   "bled_from_example": 0,
+   "is_sibling_answer": false,
+   "operation": "Speaker provides third number",
+   "result": "Final number = 10(x + 5) + d"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_17",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Multiply 7 by the next number (8): 7 × 8 = 56",
+   "result": "(n5)^2 = n*(n+1) followed by 25"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_17",
+   "example": 1,
+   "step_num": 3,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Multiply the last digits: 5 × 5 = 25",
+   "result": "(n5)^2 = n*(n+1) followed by 25"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_17",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Multiply 9 by the next number (10): 9 × 10 = 90",
+   "result": "(n5)^2 = n*(n+1) followed by 25"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_17",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Multiply the last digits: 5 × 5 = 25",
+   "result": "(n5)^2 = n*(n+1) followed by 25"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_17",
+   "example": 3,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Multiply 10 by the next number (11): 10 × 11 = 110",
+   "result": "(n5)^2 = n*(n+1) followed by 25"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_17",
+   "example": 3,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Multiply the last digits: 5 × 5 = 25",
+   "result": "(n5)^2 = n*(n+1) followed by 25"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_18",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Multiply the number 10 by the number that follows it (11)",
+   "result": "(10a + b)(10a + (10-b)) = 100a(a+1) + b(10-b) where b + (10-b) = 10"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_18",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Compute 10 × 11 = 110",
+   "result": "(10a + b)(10a + (10-b)) = 100a(a+1) + b(10-b) where b + (10-b) = 10"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_18",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Multiply the number 9 by the number that follows it (10)",
+   "result": "(10a + b)(10a + (10-b)) = 100a(a+1) + b(10-b) where b + (10-b) = 10"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_18",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Compute 9 × 10 = 90",
+   "result": "(10a + b)(10a + (10-b)) = 100a(a+1) + b(10-b) where b + (10-b) = 10"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_19",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Add 25 to the units digit (6)",
+   "result": "For numbers between 50-60: (50 + n)^{2} = (25 + n) || (n^{2})"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_19",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Add 25 to the units digit (2)",
+   "result": "For numbers between 50-60: (50 + n)^{2} = (25 + n) || (n^{2})"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_19",
+   "example": 3,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Add 25 to the units digit (3)",
+   "result": "For numbers between 50-60: (50 + n)^{2} = (25 + n) || (n^{2})"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_22",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Add 4 to 6 and get the answer 10.",
+   "result": "a × 11 = a × (10 + 1)"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_22",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Add 5 to 6 and make it 11. Write down 1 and carry over 1.",
+   "result": "a × 11 = a × (10 + 1)"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_50",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Identify base = 10,000 (4 zeros) → RHS must be 4 digits.",
+   "result": "RHS digits = number of zeros in base"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_50",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Compute differences: 9989 - 10000 = -11, 9995 - 10000 = -5.",
+   "result": "LHS = cross subtraction of differences"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_50",
+   "example": 1,
+   "step_num": 3,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Multiply differences: (-11) × (-5) = 55 → pad to 4 digits: 0055.",
+   "result": "RHS digits = number of zeros in base"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_50",
+   "example": 1,
+   "step_num": 4,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Cross subtract: 9989 - 5 = 9984 or 9995 - 11 = 9984 → place on LHS.",
+   "result": "LHS = cross subtraction of differences"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_50",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Identify base = 1,00,00,000 (7 zeros) → RHS must be 7 digits.",
+   "result": "RHS digits = number of zeros in base"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_50",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Compute differences: 99999999 - 100000000 = -1, 99999999 - 100000000 =",
+   "result": "LHS = cross subtraction of differences"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_50",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Multiply differences: (-1) × (-1) = 1 → pad to 7 digits: 0000001.",
+   "result": "RHS digits = number of zeros in base"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_50",
+   "example": 2,
+   "step_num": 4,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Cross subtract: 99999999 - 1 = 99999998 → place on LHS.",
+   "result": "LHS = cross subtraction of differences"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_52",
+   "example": 1,
+   "step_num": 4,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Carry over: Since RHS has 4 digits but base 1000 allows only 3, carry ",
+   "result": "a \\times b = (base + d_1) \\times (base + d_2)"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_52",
+   "example": 2,
+   "step_num": 4,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Carry over: Since RHS has 4 digits but base 100 allows only 2, carry 2",
+   "result": "a \\times b = (base + d_1) \\times (base + d_2)"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_69",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Identify the maximum number in the grid.",
+   "result": "row_sum = center_number * grid_size"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_69",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Divide the maximum number by 2.",
+   "result": "center_number = ceil(max_number / 2)"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_69",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Determine the maximum number in the grid.",
+   "result": "row_sum = center_number * grid_size"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_69",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Find the center-most number by dividing max by 2 and rounding up.",
+   "result": "center_number = ceil(max_number / 2)"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_69",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Multiply the center-most number by the number of squares per side.",
+   "result": "center_number = ceil(max_number / 2)"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_69",
+   "example": 3,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Determine the maximum number in the grid.",
+   "result": "row_sum = center_number * grid_size"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_69",
+   "example": 3,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Find the center-most number by dividing max by 2 and rounding up.",
+   "result": "center_number = ceil(max_number / 2)"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_69",
+   "example": 3,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Multiply the center-most number by the number of squares per side.",
+   "result": "center_number = ceil(max_number / 2)"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_74",
+   "example": 1,
+   "step_num": 6,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Divide total by 7 and take remainder",
+   "result": "\\text{remainder} = \\text{total} \\mod 7"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_74",
+   "example": 1,
+   "step_num": 7,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Map remainder to day",
+   "result": "\\text{remainder} = \\text{total} \\mod 7"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_74",
+   "example": 2,
+   "step_num": 6,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "76 ÷ 7 = 10 remainder 6",
+   "result": "\\text{remainder} = \\text{total} \\mod 7"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_74",
+   "example": 3,
+   "step_num": 6,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "55 ÷ 7 = 7 remainder 6",
+   "result": "\\text{remainder} = \\text{total} \\mod 7"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_78",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Apply formula: x = \\frac{d - b}{a - c}",
+   "result": "x = \\frac{d - b}{a - c}"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_78",
+   "example": 1,
+   "step_num": 3,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Substitute values: x = \\frac{-2 - 3}{5 - 6}",
+   "result": "x = \\frac{d - b}{a - c}"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_78",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Substitute values: x = \\frac{(-3)(-5) - (1)(3)}{1 + 3 - (-3) - (-5)}",
+   "result": "x = \\frac{d - b}{a - c}"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_78",
+   "example": 2,
+   "step_num": 6,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Calculate: x = \\frac{12}{12} = 1",
+   "result": "x = \\frac{d - b}{a - c}"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_82",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Numerator = 6 - (-40) = 46",
+   "result": "5x + 8y = 40"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_82",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Check ratios: x-coefficients 5:10 = 1:2, constants 40:80 = 1:2",
+   "result": "5x + 8y = 40"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_82",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Substitute y = 0 into first equation: 5x = 40, so x = 8",
+   "result": "5x + 8y = 40"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_98",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Bring down first digit of dividend (7)",
+   "result": "Quotient = First digit of dividend"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_98",
+   "example": 1,
+   "step_num": 3,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Write product 7 below second digit (1)",
+   "result": "Quotient = First digit of dividend"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_98",
+   "example": 1,
+   "step_num": 4,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Add 1 (second digit) and 7 (product) to get 8",
+   "result": "Quotient = First digit of dividend"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_98",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Bring down first digit of dividend (3)",
+   "result": "Quotient = First digit of dividend"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_98",
+   "example": 2,
+   "step_num": 4,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Write 6 below second digit (1); add to get 7",
+   "result": "Quotient = First digit of dividend"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_99",
+   "example": 1,
+   "step_num": 4,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Since remainder equals divisor, increment quotient by 1, remainder = 0",
+   "result": "dividend = (divisor × quotient) + remainder"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_99",
+   "example": 2,
+   "step_num": 4,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Divide 10 by 8 → quotient 1, remainder 2.",
+   "result": "dividend = (divisor × quotient) + remainder"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_99",
+   "example": 2,
+   "step_num": 5,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Final quotient = 4 + 1 = 5, remainder = 2.",
+   "result": "dividend = (divisor × quotient) + remainder"
+  },
+  {
+   "template_id": "Vedic_Secrets_sa_16",
+   "example": 1,
+   "step_num": 2,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "20 / 25",
+   "result": "n5 \\times n5 = n(n+1) / 25"
+  },
+  {
+   "template_id": "Vedic_Secrets_sa_16",
+   "example": 2,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "30 / 25",
+   "result": "n5 \\times n5 = n(n+1) / 25"
+  },
+  {
+   "template_id": "Vedic_Secrets_sa_16",
+   "example": 3,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "90 / 25",
+   "result": "n5 \\times n5 = n(n+1) / 25"
+  },
+  {
+   "template_id": "Vedic_Secrets_sa_16",
+   "example": 4,
+   "step_num": 2,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "132 / 25",
+   "result": "n5 \\times n5 = n(n+1) / 25"
+  },
+  {
+   "template_id": "Vedic_Secrets_sa_18",
+   "example": 1,
+   "step_num": 1,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "24 x 25 / 5 x 5",
+   "result": "245 \\times 245 = 24 \\times 25 / 5 \\times 5 = 600 / 25 = 60025"
+  },
+  {
+   "template_id": "Vedic_Secrets_sa_18",
+   "example": 2,
+   "step_num": 1,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "24 x 25 / 6 x 4",
+   "result": "245 \\times 245 = 24 \\times 25 / 5 \\times 5 = 600 / 25 = 60025"
+  },
+  {
+   "template_id": "Vedic_Secrets_sa_18",
+   "example": 3,
+   "step_num": 1,
+   "bled_from_example": 4,
+   "is_sibling_answer": false,
+   "operation": "35 x (35 + 2)",
+   "result": "35 \\times 37 = (35 \\times 35) + (35 \\times 2) = 1225 + 70 = 1295"
+  },
+  {
+   "template_id": "Vedic_Secrets_sa_18",
+   "example": 3,
+   "step_num": 2,
+   "bled_from_example": 4,
+   "is_sibling_answer": false,
+   "operation": "(35 x 35) + (35 x 2)",
+   "result": "35 \\times 37 = (35 \\times 35) + (35 \\times 2) = 1225 + 70 = 1295"
+  },
+  {
+   "template_id": "Vedic_Secrets_sa_18",
+   "example": 3,
+   "step_num": 3,
+   "bled_from_example": 4,
+   "is_sibling_answer": false,
+   "operation": "1225 + 70",
+   "result": "35 \\times 37 = (35 \\times 35) + (35 \\times 2) = 1225 + 70 = 1295"
+  },
+  {
+   "template_id": "Vedic_Secrets_sa_18",
+   "example": 4,
+   "step_num": 1,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "(33 + 2) x 37",
+   "result": "35 \\times 37 = (35 \\times 35) + (35 \\times 2) = 1225 + 70 = 1295"
+  },
+  {
+   "template_id": "Vedic_Secrets_sa_18",
+   "example": 4,
+   "step_num": 2,
+   "bled_from_example": 3,
+   "is_sibling_answer": false,
+   "operation": "(33 x 37) + (2 x 37)",
+   "result": "35 \\times 37 = (35 \\times 35) + (35 \\times 2) = 1225 + 70 = 1295"
+  },
+  {
+   "template_id": "Vedic_Secrets_sa_35",
+   "example": 1,
+   "step_num": 3,
+   "bled_from_example": 2,
+   "is_sibling_answer": false,
+   "operation": "Calculate remainder = 5 + 3 = 8",
+   "result": "\\begin{aligned}\\frac{ab}{9} = a \\\\ (a+b)\\end{aligned}"
+  },
+  {
+   "template_id": "Vedic_Secrets_sa_35",
+   "example": 2,
+   "step_num": 3,
+   "bled_from_example": 1,
+   "is_sibling_answer": false,
+   "operation": "Calculate remainder: 1 + 3 + 2 = 6",
+   "result": "\\begin{aligned}\\frac{ab}{9} = a \\\\ (a+b)\\end{aligned}"
+  }
+ ]
+}
