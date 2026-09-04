@@ -141,6 +141,9 @@ PROMPTS = {
         "\"markdown\": ..., \"has_figures\": bool, \"confidence\": \"high|medium|low\"}}. "
         "Context: {items}"
     ),
+    "stem_repair": (
+        'SCOPE — read carefully. This is targeted fact extraction for specific numbered exercise items, NOT page transcription. Return ONLY the fields asked for, for ONLY the listed items. Do not transcribe, summarise or reproduce the rest of the page, its narrative, worked solutions or surrounding prose. If an item is not on the page, say so rather than substituting nearby content.\n\nThese exercise items have a VERIFIED answer key already — do not supply an answer. What is damaged is the QUESTION STEM: this scan\'s text layer flattened the mathematics (superscripts and subscripts dropped onto the baseline, fraction bars lost so only one operand survived, radical signs turned into \'v/\' or \'N/\', digits substituted for letters). For EACH item below, read the printed item on the page image and return its stem with the mathematics correct.\n\nItems:\n{items}\n\nNotation: ^ for powers, sqrt() for roots, a/b for fractions, explicit mixed numbers, subscripts as _n. Preserve the item\'s own numbering.\nReturn ONLY a JSON array: [{{"set_id": ..., "number": ..., "stem": ..., "options": [] | [...], "has_figure": bool, "confidence": "high|medium|low", "note": ...}}]. options is [] for an open-answer item — that is expected and correct here, not a failure. Null stem + note if the item is not on these pages.'
+    ),
     "answer_grid": (
         "The attached image is a page from a book's ANSWERS section: numbered answers grouped "
         "under exercise headings (e.g. 'IV. a. Pages 31, 32'). The answers are mathematical "
