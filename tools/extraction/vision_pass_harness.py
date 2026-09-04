@@ -223,7 +223,7 @@ def group_tasks(book_filter=None, limit=None):
         pdf = BOOK_PDFS.get(book)
         if not pages or (book not in PRERENDERED and not (pdf and pdf.exists())):
             continue
-        span = tuple(sorted(set(pages))[:4])
+        span = tuple(sorted(set(pages)))   # never truncate: see assign_windows()
         groups[(klass, book, span)].append({"set_id": sid, **payload})
     tasks = []
     for (klass, book, span), items in sorted(groups.items()):
@@ -233,6 +233,41 @@ def group_tasks(book_filter=None, limit=None):
         if limit and len(tasks) >= limit:
             break
     return tasks
+
+
+
+def assign_windows(pages, items, width=4, cap=20):
+    """Pair items with the pages they are actually likely to be on.
+
+    A record can span dozens of pages (Mosteller 130, H&K Miscellaneous 35).
+    Truncating to the first few silently produced tasks whose declared items
+    were nowhere in their supplied images — the reader then had nothing to find.
+    Items are ordered on the page sequence, so assign each item a window by its
+    proportional position, widened by one page each side for slack, and let the
+    reader report anything it cannot see.
+    """
+    pages = sorted(set(pages))
+    if not pages:
+        return []
+    if len(pages) <= width:
+        return [(tuple(pages), items[i:i + cap]) for i in range(0, len(items), cap)] or [(tuple(pages), items)]
+    out = []
+    n = len(items)
+    nwin = max(1, -(-len(pages) // max(1, width - 1)))       # overlapping windows
+    for w in range(nwin):
+        lo = w * (width - 1)
+        win = tuple(pages[lo:lo + width])
+        if not win:
+            continue
+        share = items[int(n * w / nwin):int(n * (w + 1) / nwin)]
+        # widen the item slice slightly so a boundary item is not lost
+        pad = max(1, len(share) // 4)
+        a = max(0, int(n * w / nwin) - pad)
+        b = min(n, int(n * (w + 1) / nwin) + pad)
+        share = items[a:b]
+        for i in range(0, len(share), cap):
+            out.append((win, share[i:i + cap]))
+    return out
 
 
 def render_task_pages(task):
@@ -290,7 +325,7 @@ def cmd_build(args):
                 continue
             if args.book and r["book"] != args.book:
                 continue
-            pages = tuple(sorted(set(r.get("pdf_pages") or []))[:4])
+            pages = tuple(sorted(set(r.get("pdf_pages") or [])))
             if not pages:
                 continue
             want[(r["book"], pages)].append({
@@ -339,6 +374,17 @@ def cmd_build(args):
         manifest = WORKDIR / "tasks" / ("tasks_%s.jsonl" % (args.book or "all").replace(" ", "_"))
     manifest.parent.mkdir(parents=True, exist_ok=True)
     n_img = 0
+    # Stamp an immutable build id: a consumer sharding by line number cannot
+    # otherwise detect that the file changed under it (this happened 2026-09-04
+    # and split a running batch across two different versions of this file).
+    build_id = "%s-%d" % (manifest.stem, len(tasks))
+    for t in tasks:
+        t["build_id"] = build_id
+    if manifest.exists():
+        prev = manifest.with_suffix(".superseded.jsonl")
+        manifest.replace(prev)
+        print("NOTE: previous %s moved to %s — never rewrite a task file in place"
+              % (manifest.name, prev.name))
     with manifest.open("w") as f:
         for t in tasks:
             imgs = render_task_pages(t)
