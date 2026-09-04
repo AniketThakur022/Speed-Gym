@@ -1,0 +1,192 @@
+{
+ "bank": "data/factory/solvealong_bank_v1_4.jsonl",
+ "examples_scanned": 1948,
+ "findings": 22,
+ "by_class": {
+  "orphan_continuation": 21,
+  "false_root_claim": 1
+ },
+ "by_severity": {
+  "candidate": 21,
+  "confirmed": 1
+ },
+ "note": "CANDIDATES for panel adjudication, not verdicts. Only 'confirmed' severity is proven by construction; the rest have legitimate exceptions and must not be auto-quarantined.",
+ "results": [
+  {
+   "template_id": "Bird_Engineering_Math_sa_256",
+   "example": 1,
+   "class": "orphan_continuation",
+   "severity": "candidate",
+   "detail": "first step describes continuing a process with no antecedent in this example; may be a legitimate cross-example reference",
+   "evidence": "Again recall the volume formula, as this is a new problem with different values."
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_329",
+   "example": 0,
+   "class": "false_root_claim",
+   "severity": "confirmed",
+   "detail": "step 1 claims 2 is a root, but the transformed polynomial's constant term is 3; for y = x - r that constant IS f(r), so f(2) = 3 != 0",
+   "evidence": "y^3 + 2y^2 + 4y + 3 = 0"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_329",
+   "example": 2,
+   "class": "orphan_continuation",
+   "severity": "candidate",
+   "detail": "first step describes continuing a process with no antecedent in this example; may be a legitimate cross-example reference",
+   "evidence": "Multiply and add coefficients for second division pass"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_329",
+   "example": 3,
+   "class": "orphan_continuation",
+   "severity": "candidate",
+   "detail": "first step describes continuing a process with no antecedent in this example; may be a legitimate cross-example reference",
+   "evidence": "Continue process to get final reduced form"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_331",
+   "example": 1,
+   "class": "orphan_continuation",
+   "severity": "candidate",
+   "detail": "first step describes continuing a process with no antecedent in this example; may be a legitimate cross-example reference",
+   "evidence": "Update coefficients with refined estimate for next iteration"
+  },
+  {
+   "template_id": "Schaums_College_Math_sa_331",
+   "example": 2,
+   "class": "orphan_continuation",
+   "severity": "candidate",
+   "detail": "first step describes continuing a process with no antecedent in this example; may be a legitimate cross-example reference",
+   "evidence": "Continue decimal place refinement if needed"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_120",
+   "example": 1,
+   "class": "orphan_continuation",
+   "severity": "candidate",
+   "detail": "first step describes continuing a process with no antecedent in this example; may be a legitimate cross-example reference",
+   "evidence": "Repeat process to handle each digit of the dividend systematically"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_277",
+   "example": 4,
+   "class": "orphan_continuation",
+   "severity": "candidate",
+   "detail": "first step describes continuing a process with no antecedent in this example; may be a legitimate cross-example reference",
+   "evidence": "Continue the pattern from previous remainders"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_301",
+   "example": 1,
+   "class": "orphan_continuation",
+   "severity": "candidate",
+   "detail": "first step describes continuing a process with no antecedent in this example; may be a legitimate cross-example reference",
+   "evidence": "Adjust initial quotient when remainder is too small for next step"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_316",
+   "example": 3,
+   "class": "orphan_continuation",
+   "severity": "candidate",
+   "detail": "first step describes continuing a process with no antecedent in this example; may be a legitimate cross-example reference",
+   "evidence": "Continue division process to get next decimal digits"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_316",
+   "example": 4,
+   "class": "orphan_continuation",
+   "severity": "candidate",
+   "detail": "first step describes continuing a process with no antecedent in this example; may be a legitimate cross-example reference",
+   "evidence": "Repeat until desired precision is achieved"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_318",
+   "example": 4,
+   "class": "orphan_continuation",
+   "severity": "candidate",
+   "detail": "first step describes continuing a process with no antecedent in this example; may be a legitimate cross-example reference",
+   "evidence": "Continue expansion, applying carry-over for digits exceeding 9"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_372",
+   "example": 2,
+   "class": "orphan_continuation",
+   "severity": "candidate",
+   "detail": "first step describes continuing a process with no antecedent in this example; may be a legitimate cross-example reference",
+   "evidence": "Continue subtraction and bringing down digits for next division step."
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_372",
+   "example": 6,
+   "class": "orphan_continuation",
+   "severity": "candidate",
+   "detail": "first step describes continuing a process with no antecedent in this example; may be a legitimate cross-example reference",
+   "evidence": "Continue division process with remainder and next digit."
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_44",
+   "example": 1,
+   "class": "orphan_continuation",
+   "severity": "candidate",
+   "detail": "first step describes continuing a process with no antecedent in this example; may be a legitimate cross-example reference",
+   "evidence": "Continue the division to obtain the next digits of the quotient (3295)."
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_78",
+   "example": 5,
+   "class": "orphan_continuation",
+   "severity": "candidate",
+   "detail": "first step describes continuing a process with no antecedent in this example; may be a legitimate cross-example reference",
+   "evidence": "Final answer combines adjusted left and right parts"
+  },
+  {
+   "template_id": "Tirthaji_Vedic_Math_sa_87",
+   "example": 2,
+   "class": "orphan_continuation",
+   "severity": "candidate",
+   "detail": "first step describes continuing a process with no antecedent in this example; may be a legitimate cross-example reference",
+   "evidence": "Third example: Choose 500 as base (1000/2)"
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_27",
+   "example": 1,
+   "class": "orphan_continuation",
+   "severity": "candidate",
+   "detail": "first step describes continuing a process with no antecedent in this example; may be a legitimate cross-example reference",
+   "evidence": "Repeat ones multiplication to confirm the rightmost digit in the second example."
+  },
+  {
+   "template_id": "Vedic_Made_Easy_sa_41",
+   "example": 1,
+   "class": "orphan_continuation",
+   "severity": "candidate",
+   "detail": "first step describes continuing a process with no antecedent in this example; may be a legitimate cross-example reference",
+   "evidence": "Continue dividing by 5 to simplify"
+  },
+  {
+   "template_id": "Vedic_Secrets_sa_17",
+   "example": 9,
+   "class": "orphan_continuation",
+   "severity": "candidate",
+   "detail": "first step describes continuing a process with no antecedent in this example; may be a legitimate cross-example reference",
+   "evidence": "Final answer is 2016"
+  },
+  {
+   "template_id": "Vedic_Secrets_sa_26",
+   "example": 0,
+   "class": "orphan_continuation",
+   "severity": "candidate",
+   "detail": "first step describes continuing a process with no antecedent in this example; may be a legitimate cross-example reference",
+   "evidence": "Start from the rightmost digits of the multiplicand (4) and multiplier (3). Write 2 as the unit digit of the r"
+  },
+  {
+   "template_id": "Vedic_Secrets_sa_47",
+   "example": 1,
+   "class": "orphan_continuation",
+   "severity": "candidate",
+   "detail": "first step describes continuing a process with no antecedent in this example; may be a legitimate cross-example reference",
+   "evidence": "Continue pattern: multiply each digit by 2 and add carry"
+  }
+ ]
+}
