@@ -1,13 +1,13 @@
 {
  "bank": "data/factory/solvealong_bank_v1_4.jsonl",
  "examples_scanned": 1948,
- "findings": 22,
+ "findings": 19,
  "by_class": {
-  "orphan_continuation": 21,
+  "orphan_continuation": 18,
   "false_root_claim": 1
  },
  "by_severity": {
-  "candidate": 21,
+  "candidate": 18,
   "confirmed": 1
  },
  "note": "CANDIDATES for panel adjudication, not verdicts. Only 'confirmed' severity is proven by construction; the rest have legitimate exceptions and must not be auto-quarantined.",
@@ -46,14 +46,6 @@
   },
   {
    "template_id": "Schaums_College_Math_sa_331",
-   "example": 1,
-   "class": "orphan_continuation",
-   "severity": "candidate",
-   "detail": "first step describes continuing a process with no antecedent in this example; may be a legitimate cross-example reference",
-   "evidence": "Update coefficients with refined estimate for next iteration"
-  },
-  {
-   "template_id": "Schaums_College_Math_sa_331",
    "example": 2,
    "class": "orphan_continuation",
    "severity": "candidate",
@@ -75,14 +67,6 @@
    "severity": "candidate",
    "detail": "first step describes continuing a process with no antecedent in this example; may be a legitimate cross-example reference",
    "evidence": "Continue the pattern from previous remainders"
-  },
-  {
-   "template_id": "Tirthaji_Vedic_Math_sa_301",
-   "example": 1,
-   "class": "orphan_continuation",
-   "severity": "candidate",
-   "detail": "first step describes continuing a process with no antecedent in this example; may be a legitimate cross-example reference",
-   "evidence": "Adjust initial quotient when remainder is too small for next step"
   },
   {
    "template_id": "Tirthaji_Vedic_Math_sa_316",
@@ -171,14 +155,6 @@
    "severity": "candidate",
    "detail": "first step describes continuing a process with no antecedent in this example; may be a legitimate cross-example reference",
    "evidence": "Final answer is 2016"
-  },
-  {
-   "template_id": "Vedic_Secrets_sa_26",
-   "example": 0,
-   "class": "orphan_continuation",
-   "severity": "candidate",
-   "detail": "first step describes continuing a process with no antecedent in this example; may be a legitimate cross-example reference",
-   "evidence": "Start from the rightmost digits of the multiplicand (4) and multiplier (3). Write 2 as the unit digit of the r"
   },
   {
    "template_id": "Vedic_Secrets_sa_47",
