@@ -18,13 +18,12 @@ answer). 297 templates were refused for damage in that layer. See the `legacy-ba
 memory. **For the 522 "repaired", a description that faithfully narrates a contaminated result
 is now fluent and wrong.**
 
-**The audit found the regression it was hunting** (`_audit.json`, 5 shards): 0 corruption, but
-**4 fluent-but-wrong descriptions** — the worst (`Number_Sense_sa_243`) turned a hedged
+**The audit found the regression it was hunting** (`_audit.json`, 5 shards, 235 templates): 0 corruption, but
+**13 fluent-but-wrong descriptions (5.5%)** — the worst (`Number_Sense_sa_243`) turned a hedged
 statement about induction in Peano arithmetic into a confident false claim and propagated it
-into a new common_mistakes entry. Also: 24 steps still misaligned (all in untouched
+into a new common_mistakes entry. Also: 68 steps still misaligned (mostly in untouched
 "unrepairable" content), 1 weak unrepairable call (`Bird_sa_16` could have been re-narrated),
-and **`key_reminders` was never touched — it still carries stringified `{'point': ...}` filler
-throughout**.
+and **`key_reminders` was never touched — 2,357 stringified `{'point': ...}` entries remain**.
 
 ## Recommendation on file
 Do not adopt wholesale. Use the 297 `unrepairable` refusals as a verified demotion list.
