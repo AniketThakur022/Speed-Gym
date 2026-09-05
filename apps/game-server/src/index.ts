@@ -37,10 +37,14 @@ import {
   makeMatchId,
   markDisconnected,
   markReconnected,
+  newHeartbeatLedger,
   opponentOf,
   playerOf,
+  recordHeartbeat,
   resolveAnswer,
   scoreDuel,
+  staleHeartbeats,
+  HEARTBEAT_TIMEOUT_MS,
   type DuelMatch,
 } from "./duel.js";
 
@@ -64,6 +68,7 @@ const turnTimers = new Map<string, NodeJS.Timeout>();
  *  from it may be emitted to a client. */
 const matchBots = new Map<string, BotProfile>();
 const playerAges = new Map<string, number | null>();
+const heartbeats = newHeartbeatLedger();
 let matchSequence = 0;
 
 const httpServer = createServer((req, res) => {
@@ -257,15 +262,35 @@ io.of("/game").on("connection", (socket: AuthedSocket) => {
   socket.on("game:join", ({ match_id }: { match_id: string }) => {
     socket.join(match_id);
     socket.data.matchId = match_id;
+    recordHeartbeat(heartbeats, socket.data.userId!, Date.now());
     const match = matches.get(match_id);
     if (match) markReconnected(match, socket.data.userId!);
   });
 
+  socket.on("game:heartbeat", () => {
+    recordHeartbeat(heartbeats, socket.data.userId!, Date.now());
+    const match = socket.data.matchId ? matches.get(socket.data.matchId) : undefined;
+    // A heartbeat from a player we had marked gone is a reconnect.
+    if (match && !playerOf(match, socket.data.userId!)?.connected) {
+      markReconnected(match, socket.data.userId!);
+    }
+  });
+
   socket.on(
     WS_EVENTS.SUBMIT_GAME_ANSWER,
-    (payload: { match_id: string; problem_id: string; answer: string; client_timestamp_ms: number }, ack?: Function) => {
+    (
+      payload: {
+        match_id: string;
+        problem_id: string;
+        answer: string;
+        client_timestamp_ms: number;
+        keystroke_intervals_ms?: number[];
+      },
+      ack?: Function,
+    ) => {
       const match = matches.get(payload.match_id);
       if (!match) return ack?.({ code: "MATCH_NOT_FOUND" });
+      recordHeartbeat(heartbeats, socket.data.userId!, Date.now());
 
       const expected = answers.get(payload.match_id) ?? "";
       let resolution;
@@ -276,8 +301,12 @@ io.of("/game").on("connection", (socket: AuthedSocket) => {
           payload.answer,
           expected,
           payload.client_timestamp_ms || Date.now(),
+          payload.keystroke_intervals_ms,
         );
       } catch (error) {
+        // NOT_YOUR_TURN, SUB_200MS, MISSING_KEYSTROKES: the round stays open
+        // and the turn timer keeps running — a refused paste costs time, it
+        // does not grant a retry.
         return ack?.({ code: (error as Error).message });
       }
 
@@ -393,6 +422,32 @@ async function finishMatch(
   answers.delete(matchId);
   matchBots.delete(matchId);
 }
+
+// Heartbeat sweep. A half-open socket never emits "disconnect", so silence is
+// the only signal for a phone that fell off WiFi; treating it as a disconnect
+// starts the same 15s grace clock the socket-close path uses.
+setInterval(() => {
+  const now = Date.now();
+  for (const userId of staleHeartbeats(heartbeats, now)) {
+    for (const match of matches.values()) {
+      const player = playerOf(match, userId);
+      if (player && player.connected && match.phase !== "completed") {
+        markDisconnected(match, userId, now);
+        io.of("/game").to(match.matchId).emit("game:player_disconnected", {
+          user_id: userId,
+          grace_period_seconds: DISCONNECT_GRACE_MS / 1000,
+        });
+        setTimeout(() => {
+          const current = matches.get(match.matchId);
+          if (!current || current.phase === "completed") return;
+          const forfeit = checkDisconnectForfeit(current, Date.now());
+          if (forfeit) void finishMatch(current.matchId, forfeit);
+        }, DISCONNECT_GRACE_MS);
+      }
+    }
+    heartbeats.lastSeenMs.delete(userId); // handled; a new heartbeat re-registers
+  }
+}, HEARTBEAT_TIMEOUT_MS / 2).unref();
 
 httpServer.listen(PORT, () => {
   console.log(`vmsg-game-server listening on :${PORT}`);

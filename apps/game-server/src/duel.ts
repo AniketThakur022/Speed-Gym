@@ -62,12 +62,21 @@ export function firstMover(a: { userId: string; thetaU: number }, b: { userId: s
 // ── Anti-cheat (§2.5) ───────────────────────────────────────────────────────
 
 export type AntiCheatFlag = "IMPOSSIBLE_SPEED" | "TIMING_ANOMALY";
+export type RejectReason = "SUB_200MS" | "MISSING_KEYSTROKES";
+
+/** Below this the submission is not accepted at all (SAFE-GATE-01). The
+ *  800ms tier above it only FLAGS — the two specs disagree on the number, and
+ *  layering them honours both: reject the physically impossible, flag the
+ *  merely suspicious. */
+export const HARD_REJECT_MS = 200;
 
 export interface ValidationResult {
   correct: boolean;
   flagged: boolean;
   reason?: AntiCheatFlag;
   solveTimeMs: number;
+  /** Set when the submission is refused outright; `correct` is then meaningless. */
+  rejected?: RejectReason;
 }
 
 export function normalizeAnswer(value: string): string {
@@ -86,10 +95,26 @@ export function validateAnswer(params: {
   thetaU: number;
   problemSentAtMs: number;
   clientTimestampMs: number;
+  /** Gaps between keystrokes while typing the answer, from the client. A
+   *  pasted or scripted answer has none. */
+  keystrokeIntervalsMs?: number[];
 }): ValidationResult {
   const { submitted, expected, thetaU, problemSentAtMs, clientTimestampMs } = params;
   const correct = normalizeAnswer(submitted) === normalizeAnswer(expected);
   const solveTimeMs = clientTimestampMs - problemSentAtMs;
+
+  // Hard rejects come first: a refused submission never reaches scoring.
+  if (solveTimeMs < HARD_REJECT_MS) {
+    return { correct: false, flagged: true, reason: "IMPOSSIBLE_SPEED", solveTimeMs, rejected: "SUB_200MS" };
+  }
+  // A multi-character answer with no keystroke timing was not typed. Single
+  // characters legitimately have no intervals, so they are exempt — otherwise
+  // every "7" would be refused.
+  const typedLength = submitted.trim().length;
+  const intervals = params.keystrokeIntervalsMs ?? [];
+  if (typedLength >= 2 && intervals.length === 0) {
+    return { correct: false, flagged: true, solveTimeMs, rejected: "MISSING_KEYSTROKES" };
+  }
 
   if (solveTimeMs < 800) {
     return { correct, flagged: true, reason: "IMPOSSIBLE_SPEED", solveTimeMs };
@@ -258,13 +283,17 @@ export interface RoundResolution {
   nextActiveUserId?: string;
 }
 
-/** Resolve one submitted answer: correct hands the turn over, wrong ends it. */
+/** Resolve one submitted answer: correct hands the turn over, wrong ends it.
+ *  A REJECTED submission does neither — it throws, the round stays open, and
+ *  the timer keeps running, so refusing a paste costs the player time rather
+ *  than handing them a free retry. */
 export function resolveAnswer(
   match: DuelMatch,
   userId: string,
   submitted: string,
   expected: string,
   clientTimestampMs: number,
+  keystrokeIntervalsMs?: number[],
 ): RoundResolution {
   if (userId !== match.activeUserId) {
     throw new Error("NOT_YOUR_TURN");
@@ -276,7 +305,12 @@ export function resolveAnswer(
     thetaU: player.thetaU,
     problemSentAtMs: match.problemSentAtMs ?? clientTimestampMs,
     clientTimestampMs,
+    keystrokeIntervalsMs,
   });
+
+  if (result.rejected) {
+    throw new Error(result.rejected);
+  }
 
   player.tally.problemsAttempted += 1;
   player.tally.totalTimeMs += Math.max(0, result.solveTimeMs);
@@ -318,6 +352,34 @@ export function expireTurn(match: DuelMatch): RoundResolution {
     correct: false,
     flagged: false,
   };
+}
+
+// ── Heartbeat ───────────────────────────────────────────────────────────────
+// A socket "close" is only one way to lose a player. A phone that drops off
+// WiFi keeps its socket half-open for a long time and never emits close, so
+// without a heartbeat the 15s grace period would never start and the
+// opponent would sit on a frozen match. Silence past HEARTBEAT_TIMEOUT_MS is
+// treated as a disconnect, which then starts the normal grace clock.
+
+export interface HeartbeatLedger {
+  lastSeenMs: Map<string, number>;
+}
+
+export function newHeartbeatLedger(): HeartbeatLedger {
+  return { lastSeenMs: new Map() };
+}
+
+export function recordHeartbeat(ledger: HeartbeatLedger, userId: string, nowMs: number): void {
+  ledger.lastSeenMs.set(userId, nowMs);
+}
+
+/** Players silent for longer than the heartbeat timeout. */
+export function staleHeartbeats(ledger: HeartbeatLedger, nowMs: number): string[] {
+  const stale: string[] = [];
+  for (const [userId, seen] of ledger.lastSeenMs) {
+    if (nowMs - seen > HEARTBEAT_TIMEOUT_MS) stale.push(userId);
+  }
+  return stale;
 }
 
 export function markDisconnected(match: DuelMatch, userId: string, nowMs: number): void {

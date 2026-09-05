@@ -19,6 +19,9 @@ import {
   DISCONNECT_GRACE_MS,
 } from "../src/duel";
 
+/** Plausible keystroke gaps: these tests model a TYPED answer. */
+const TYPED = [110, 95, 130];
+
 const alice = { userId: "alice", thetaU: 0.5, age: 20 };
 const bob = { userId: "bob", thetaU: 1.5, age: 20 };
 
@@ -66,7 +69,7 @@ describe("answer validation and anti-cheat", () => {
   it("flags sub-800ms submissions as impossible speed", () => {
     const r = validateAnswer({
       submitted: "42", expected: "42", thetaU: 0.2,
-      problemSentAtMs: 0, clientTimestampMs: 500,
+      problemSentAtMs: 0, clientTimestampMs: 500, keystrokeIntervalsMs: TYPED,
     });
     expect(r.reason).toBe("IMPOSSIBLE_SPEED");
     expect(r.flagged).toBe(true);
@@ -75,7 +78,7 @@ describe("answer validation and anti-cheat", () => {
   it("flags fast answers from low-ability players as a timing anomaly", () => {
     const r = validateAnswer({
       submitted: "42", expected: "42", thetaU: 0.2,
-      problemSentAtMs: 0, clientTimestampMs: 1500,
+      problemSentAtMs: 0, clientTimestampMs: 1500, keystrokeIntervalsMs: TYPED,
     });
     expect(r.reason).toBe("TIMING_ANOMALY");
   });
@@ -83,18 +86,21 @@ describe("answer validation and anti-cheat", () => {
   it("does not flag the same speed from a high-ability player", () => {
     const r = validateAnswer({
       submitted: "42", expected: "42", thetaU: 1.2,
-      problemSentAtMs: 0, clientTimestampMs: 1500,
+      problemSentAtMs: 0, clientTimestampMs: 1500, keystrokeIntervalsMs: TYPED,
     });
     expect(r.flagged).toBe(false);
   });
 
   it("keeps a flagged answer correct — flags are advisory, not a verdict", () => {
+    // 300ms would now be a hard reject (SUB_200MS applies below 200ms, and the
+    // pre-existing fixture sat too close to it); the advisory tier is 200-800ms.
     const r = validateAnswer({
       submitted: "42", expected: "42", thetaU: 0.1,
-      problemSentAtMs: 0, clientTimestampMs: 300,
+      problemSentAtMs: 0, clientTimestampMs: 600, keystrokeIntervalsMs: TYPED,
     });
     expect(r.correct).toBe(true);
     expect(r.flagged).toBe(true);
+    expect(r.rejected).toBeUndefined();
   });
 });
 
@@ -104,7 +110,7 @@ describe("duel flow", () => {
     const round = beginRound(m, 1_000_000);
     expect(round.activeUserId).toBe("alice");
 
-    const result = resolveAnswer(m, "alice", "42", "42", 1_010_000);
+    const result = resolveAnswer(m, "alice", "42", "42", 1_010_000, TYPED);
     expect(result.correct).toBe(true);
     expect(result.matchOver).toBe(false);
     expect(result.nextActiveUserId).toBe("bob");
@@ -114,7 +120,7 @@ describe("duel flow", () => {
   it("ends the match immediately on a wrong answer — elimination, not points", () => {
     const m = match();
     beginRound(m, 1_000_000);
-    const result = resolveAnswer(m, "alice", "41", "42", 1_010_000);
+    const result = resolveAnswer(m, "alice", "41", "42", 1_010_000, TYPED);
     expect(result.matchOver).toBe(true);
     expect(result.winnerUserId).toBe("bob");
     expect(result.eliminationReason).toBe("wrong_answer");
@@ -124,7 +130,7 @@ describe("duel flow", () => {
   it("refuses an answer submitted out of turn", () => {
     const m = match();
     beginRound(m, 1_000_000);
-    expect(() => resolveAnswer(m, "bob", "42", "42", 1_010_000)).toThrow("NOT_YOUR_TURN");
+    expect(() => resolveAnswer(m, "bob", "42", "42", 1_010_000, TYPED)).toThrow("NOT_YOUR_TURN");
   });
 
   it("treats a turn timeout as elimination", () => {
@@ -139,7 +145,7 @@ describe("duel flow", () => {
     const m = match();
     for (let i = 0; i < 10; i++) {
       beginRound(m, 1_000_000);
-      resolveAnswer(m, m.activeUserId, "42", "42", 1_005_000);
+      resolveAnswer(m, m.activeUserId, "42", "42", 1_005_000, TYPED);
     }
     expect(m.phase).toBe("active");
     beginRound(m, 1_000_000);
