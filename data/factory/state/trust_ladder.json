@@ -231,7 +231,8 @@
    ],
    "judged_at": "2026-09-04T06:30:00Z",
    "spot_check_ids": [],
-   "requires_rejudge_by": "configured_trio"
+   "requires_rejudge_by": "configured_trio",
+   "also_unrepairable_note": "Mixed techniques bundled under one template. Examples (a), (b) and (c) transform a polynomial's roots by substitution and by repeated synthetic division, but the fourth example ('Use the method of successive linear approximation to approximate the irrational roots of f(x) = x^3 + 3x^2 - 2x - 5 = 0')"
   },
   "Tirthaji_Vedic_Math_sa_76": {
    "state": "sandbox",
@@ -315,7 +316,8 @@
    ],
    "judged_at": "2026-09-04T06:30:00Z",
    "spot_check_ids": [],
-   "requires_rejudge_by": "configured_trio"
+   "requires_rejudge_by": "configured_trio",
+   "also_unrepairable_note": "Defect is not in the narration layer. Example 1 works all three rules to completion - trapezoidal 58.75 m, mid-ordinate 58.75 m, Simpson 58.33 m - yet its answer field reads 52.5 m, a value none of its steps produce (the sibling examples correctly record 58.25 m and 58.33 m). The answer contradicts "
   },
   "Tirthaji_Vedic_Math_sa_167": {
    "state": "quarantined",
@@ -329,7 +331,8 @@
    ],
    "judged_at": "2026-09-04T06:30:00Z",
    "spot_check_ids": [],
-   "requires_rejudge_by": "configured_trio"
+   "requires_rejudge_by": "configured_trio",
+   "also_unrepairable_note": "Defect is not in the narration layer. Example 1 has no problem to solve: its problem_statement is the placeholder 'Continuation of a quadratic equation solution...', the steps operate on (2x+1)/(3x+2) = (4x+3)/(5x+4), an equation that appears nowhere in the statement, and its answer is the QC placeh"
   },
   "Number_Sense_sa_184": {
    "state": "quarantined",
@@ -385,7 +388,8 @@
    ],
    "judged_at": "2026-09-04T06:30:00Z",
    "spot_check_ids": [],
-   "requires_rejudge_by": "configured_trio"
+   "requires_rejudge_by": "configured_trio",
+   "also_unrepairable_note": "Not a narration defect. The template bundles two incompatible items: example 1 derives 1/29 through a geometric-series expansion about base 30, while example 2's solution is a contentless outline whose three steps name three different techniques (long division, Vedic method A, Vedic method B), each "
   },
   "Vedic_Made_Easy_sa_36": {
    "state": "quarantined",
@@ -413,7 +417,8 @@
    ],
    "judged_at": "2026-09-04T06:30:00Z",
    "spot_check_ids": [],
-   "requires_rejudge_by": "configured_trio"
+   "requires_rejudge_by": "configured_trio",
+   "also_unrepairable_note": "Defect is outside the narration layer. Example 1 is posed for three sevenths, but its operations report the first remainder as 3 and the first two quotient digits as 1 and 4, which belong to one seventh (three sevenths is 0.428571, first remainder 2). Its protected answer field is stranger still: it"
   },
   "Tirthaji_Vedic_Math_sa_235": {
    "state": "quarantined",
@@ -427,7 +432,8 @@
    ],
    "judged_at": "2026-09-04T06:30:00Z",
    "spot_check_ids": [],
-   "requires_rejudge_by": "configured_trio"
+   "requires_rejudge_by": "configured_trio",
+   "also_unrepairable_note": "Defect is not in the narration. In example 4 (4x-3y=7, xy=12) step 3 gives 8x=32 or -18, so the second root is x=-9/4 and hence y=-16/3, but step 5's operation and the answer both state y=-5 and three eighths, whose product with -2 and a quarter is 12.09375, not the required 12. Step 1 of that same "
   },
   "Tirthaji_Vedic_Math_sa_381": {
    "state": "quarantined",
@@ -441,7 +447,8 @@
    ],
    "judged_at": "2026-09-04T06:30:00Z",
    "spot_check_ids": [],
-   "requires_rejudge_by": "configured_trio"
+   "requires_rejudge_by": "configured_trio",
+   "also_unrepairable_note": "Defect is not in the narration layer: example 1's congruences are incoherent in the result field. Step 5 derives 8J equals 0 modulo 10, whose only solutions are J equals 0 or 5, then concludes J equals 2. Step 6 derives 8H plus 5 equals 0 modulo 10, which has no solution at all because 8H is always "
   },
   "Tirthaji_Vedic_Math_sa_96": {
    "state": "quarantined",
@@ -455,7 +462,8 @@
    ],
    "judged_at": "2026-09-04T06:30:00Z",
    "spot_check_ids": [],
-   "requires_rejudge_by": "configured_trio"
+   "requires_rejudge_by": "configured_trio",
+   "also_unrepairable_note": "Defect is in the verified layer. The single example works four sub-problems and its steps compute 693, 78921, 79799202 and 789999921, all internally consistent, but the template's recorded answer is 776202, which matches none of them and is not any product of the numbers given in the problem stateme"
   },
   "Tirthaji_Vedic_Math_sa_177": {
    "state": "quarantined",
@@ -469,7 +477,8 @@
    ],
    "judged_at": "2026-09-04T06:30:00Z",
    "spot_check_ids": [],
-   "requires_rejudge_by": "configured_trio"
+   "requires_rejudge_by": "configured_trio",
+   "also_unrepairable_note": "Defect is in the verified layer, not narration. Step 6 factors x^4 + 17x^3 + 98x^2 + 236x + 206 as (x+1)^2(3x+17)(x+6), which expands to a leading coefficient of 3 and a constant of 102, matching neither. Step 7 then lists x = -6 as a root while the answer omits it. Contradictory arithmetic between "
   },
   "Tirthaji_Vedic_Math_sa_48": {
    "state": "quarantined",
@@ -539,7 +548,8 @@
    ],
    "judged_at": "2026-09-04T06:30:00Z",
    "spot_check_ids": [],
-   "requires_rejudge_by": "configured_trio"
+   "requires_rejudge_by": "configured_trio",
+   "also_unrepairable_note": "Defect is in the operation layer, not the narration. Example 1's running number contradicts itself: step 4 builds 168421, where doubling 8 writes a 6 and carries 1, but steps 6 and 7 continue as 1388421 and 7388421, replacing that 6 with an 8, so the chain no longer produces the stated answer 0.0526"
   },
   "Number_Sense_sa_294": {
    "state": "quarantined",
@@ -581,7 +591,8 @@
    ],
    "judged_at": "2026-09-04T06:30:00Z",
    "spot_check_ids": [],
-   "requires_rejudge_by": "configured_trio"
+   "requires_rejudge_by": "configured_trio",
+   "also_unrepairable_note": "Not a narration defect. Example 1 bundles three separate extractions into one solution array under a single problem_statement: steps 1-5 extract the cube root of 1728, steps 6-18 extract the cube root of 2, and steps 19-24 redo 1728 again, while the stated problem and the answer (1.2599...) refer on"
   },
   "Tirthaji_Vedic_Math_sa_212": {
    "state": "quarantined",
@@ -609,7 +620,8 @@
    ],
    "judged_at": "2026-09-04T06:30:00Z",
    "spot_check_ids": [],
-   "requires_rejudge_by": "configured_trio"
+   "requires_rejudge_by": "configured_trio",
+   "also_unrepairable_note": "Defect is in the verified layer, not the narration. Example 1 step 9 computes c = 2(-12) - (-8) = -24 + 8 = -4, but -24 + 8 is -16, and that wrong value propagates into the stated answer. Examples 2 and 3 carry results belonging to other problems entirely (example 2 step 1 result is 8x^2+10xy-3y^2-2"
   },
   "Bird_Engineering_Math_sa_39": {
    "state": "quarantined",
@@ -651,7 +663,8 @@
    ],
    "judged_at": "2026-09-04T06:30:00Z",
    "spot_check_ids": [],
-   "requires_rejudge_by": "configured_trio"
+   "requires_rejudge_by": "configured_trio",
+   "also_unrepairable_note": "Defect is below the narration layer. Example 1 runs the same derivation twice (steps 1-6 and again 7-14) with every result field empty, and example 2's results contradict their own operations: step 4's operation writes the asymptote constant as -12 and step 5's as -16, while both results carry the o"
   },
   "Bird_Engineering_Math_sa_285": {
    "state": "quarantined",
@@ -665,7 +678,8 @@
    ],
    "judged_at": "2026-09-04T06:30:00Z",
    "spot_check_ids": [],
-   "requires_rejudge_by": "configured_trio"
+   "requires_rejudge_by": "configured_trio",
+   "also_unrepairable_note": "Defect is not in the narration layer. The verified steps compute a horizontal total of minus 5.829, a vertical total of 21.118, a magnitude of 21.91 metres per second and a direction of 105.43 degrees, but the answer field states 15.91 metres per second at 104.0 degrees. Steps and answer contradict "
   },
   "Tirthaji_Vedic_Math_sa_75": {
    "state": "sandbox",
@@ -735,7 +749,8 @@
    ],
    "judged_at": "2026-09-04T06:30:00Z",
    "spot_check_ids": [],
-   "requires_rejudge_by": "configured_trio"
+   "requires_rejudge_by": "configured_trio",
+   "also_unrepairable_note": "Defect is in the verified layer, not the narration: in example 1 the steps reduce the argument to 150 degrees and step 7's result evaluates the product as -8 root 3 + 8i, but the example's answer field states 8 root 3 - 8i, its negation. Reconciling that would require editing a protected result or a"
   },
   "Number_Sense_sa_125": {
    "state": "quarantined",
@@ -763,7 +778,8 @@
    ],
    "judged_at": "2026-09-04T06:30:00Z",
    "spot_check_ids": [],
-   "requires_rejudge_by": "configured_trio"
+   "requires_rejudge_by": "configured_trio",
+   "also_unrepairable_note": "Defect is not in the narration layer. Four examples from two genuinely different techniques are bundled under one template: (a) and (b) are volume/surface area of a prism with a composite end, while the third and fourth examples are a rectangular-based pyramid (Problem 17), the fourth being a near-d"
   },
   "Number_Sense_sa_148": {
    "state": "quarantined",
@@ -777,7 +793,8 @@
    ],
    "judged_at": "2026-09-04T06:30:00Z",
    "spot_check_ids": [],
-   "requires_rejudge_by": "configured_trio"
+   "requires_rejudge_by": "configured_trio",
+   "also_unrepairable_note": "Defect is structural, not narrative: two examples from genuinely different techniques are bundled under one template. Example 1 teaches whole-number subtraction by counting back and verifying with addition (9 - 3 = 6); example 2 teaches addition of fractions with unlike denominators by converting to"
   },
   "Number_Sense_sa_107": {
    "state": "quarantined",
@@ -833,7 +850,8 @@
    ],
    "judged_at": "2026-09-04T06:30:00Z",
    "spot_check_ids": [],
-   "requires_rejudge_by": "configured_trio"
+   "requires_rejudge_by": "configured_trio",
+   "also_unrepairable_note": "Defect is not in the narration layer. Example 4 (1 July 1944) states in its operation 'Total = 44 + 11 + 0 + 1 = 55', but those four numbers sum to 56; the next step then divides the wrong total (55 / 7 = 7 remainder 6) and the example answers FRIDAY, while the same date worked correctly gives 56, r"
   },
   "Vedic_Made_Easy_sa_32": {
    "state": "quarantined",
@@ -889,7 +907,8 @@
    ],
    "judged_at": "2026-09-04T06:30:00Z",
    "spot_check_ids": [],
-   "requires_rejudge_by": "configured_trio"
+   "requires_rejudge_by": "configured_trio",
+   "also_unrepairable_note": "Genuinely different techniques bundled under one template, so the defect is structural rather than narrational. Example 1 finds 5 squared by hand through repeated addition and an area model, using no calculator at all; examples 2 and 3 are HP 38G Solve-application keystrokes; examples 4 and 5 are HP"
   },
   "Tirthaji_Vedic_Math_sa_184": {
    "state": "quarantined",
@@ -945,7 +964,8 @@
    ],
    "judged_at": "2026-09-04T06:30:00Z",
    "spot_check_ids": [],
-   "requires_rejudge_by": "configured_trio"
+   "requires_rejudge_by": "configured_trio",
+   "also_unrepairable_note": "Defect is not in the narration layer. Example 3 step 4 has operation 'Convert each fraction: 5/8 = 25/40, 1/4 = 10/40, 2/5 = 16/40' carrying a result from an unrelated problem, '3/4 - 7/16 = 12/16 - 7/16 = 5/16'; operation and result contradict each other, so no description can be true of both. Exam"
   },
   "Vedic_Made_Easy_sa_78": {
    "state": "quarantined",
@@ -973,7 +993,8 @@
    ],
    "judged_at": "2026-09-04T06:30:00Z",
    "spot_check_ids": [],
-   "requires_rejudge_by": "configured_trio"
+   "requires_rejudge_by": "configured_trio",
+   "also_unrepairable_note": "Defect is in the operation/result layer, not the narration. The radical axis requires the quadratic terms to cancel, but the combination performed is K2 - (1/4)K1, which leaves (15/4)x^2 + (15/4)y^2 and carries those squared terms intact through steps 5, 6 and 7. Step 8 then asserts the linear equat"
   },
   "Vedic_Made_Easy_sa_91": {
    "state": "quarantined",
@@ -1029,7 +1050,8 @@
    ],
    "judged_at": "2026-09-04T06:30:00Z",
    "spot_check_ids": [],
-   "requires_rejudge_by": "configured_trio"
+   "requires_rejudge_by": "configured_trio",
+   "also_unrepairable_note": "Defect is not in the narration layer, on two counts. First, contradictory arithmetic inside example 1: step 7 computes angle RXZ = 23 + 28 = 51 degrees, step 8 then verifies a triangle sum using that 51 degrees as if it were correct, and step 9 overturns both with 'Correction: angle RXZ = 67 degrees"
   },
   "Schaums_College_Math_sa_146": {
    "state": "sandbox",
@@ -1057,6 +1079,2419 @@
    ],
    "judged_at": "2026-09-04T06:30:00Z",
    "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio",
+   "also_unrepairable_note": "Defect is in the operation/result layer, not the narration. Steps 6 to 13 abandon the verified result and argue with themselves ('Identify error in problem interpretation', 'This still doesn't match the expected answer'), producing three contradictory totals for one solid: 147.6, 145 and a claimed e"
+  },
+  "Bird_Engineering_Math_sa_102": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Unrepairable: the stated problem is x + 2y = -1 and 4x - 3y = 18, but every step's operation and result works a different system, 2x + 3y = 0 and 4x - y = 14. The mismatch lies in the frozen problem_statement/result layer, not in the narration, and cannot be fixed by rewriting descriptions.",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_106": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Unrepairable: the second example stops at step 6 after scaling equation (6) by 6, never performing the elimination, never finding x or y, and its answer field is empty. The defect is a truncated solution in the frozen layer, not misattached prose.",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_109": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Unrepairable: two genuinely different techniques are bundled under one template. The first example finds a gradient and intercept from two points using the slope formula; the second solves a pair of Kirchhoff circuit equations by scaling and adding. No single technique_name or scaffold describes bot",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_112": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Verified layer is self-contradictory: the problem_statement poses equations (2) 2x - y + 3z = 13 and (3) 3x - 2y - 2z = 2, but every step and the answer (x=2, y=-3, z=5) solve a different system, 2x - y + z = 12 and x + 2y - z = -9. The stated system is not satisfied by the stated answer (2x - y + 3",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_118": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Contradictory arithmetic inside the frozen layer. Example 1's problem_statement is 4.6y^2 + 3.5y - 1.75 = 0 but step 1 writes 2y^2 + 3y - 2.4 = 0, a different equation; steps 8 and 9 then compute y = 0.5775 and y = -2.0775, while step 10 claims these round to 0.344 and -1.044. Example 2 restates the",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_125": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Different problems and different techniques are bundled inside one example and one template. Example 1's problem_statement is 'Evaluate log_16 8', but steps 1-4 and then steps 5-9 solve a wholly different problem, log_3 9 = 2, twice over, before steps 10-15 finally address log_16 8. Beyond that, the",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_128": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is in the verified layer, not the narration. Example 1 states 'Solve 2^x = 5' and carries the answer 2.322 (log base 2 of 5), but every operation/result in its solution solves a different equation, 2^(x+1) = 2^(2x-1), and the steps terminate at x = 2 with a verification showing 8 = 8. The ste",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_137": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Contradictory arithmetic inside the verified layer. Steps 10-12 compute theta = ln(1.08) / (1.215e-4) = 0.076961 / 0.0001215 and give the result 633.42, rounded in step 12 to 633 degrees C, but the template's 'answer' field states theta is approximately 614 degrees C. The step results and the answer",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_16": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is structural, not narrational: two genuinely different techniques are bundled under one template. Examples 1 and 2 teach long multiplication (764 x 38, 178 x -46) while examples 3 and 4 teach long division (1834 / 7, 5796 / 12). No single technique_name or visual_scaffold can cover both, and",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_165": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Contradictory arithmetic inside the protected operation/result layer. Steps 6 and 7 derive ln I = 7.313 and I = 1498 mA, and step 8 writes i = 1498 e^(-t/50), which does reproduce the data (at t = 100 ms it gives 203 mA). Steps 9 and 10 then discard that result for i = 203 e^(-t/50) on the false cla",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_178": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "The corruption reaches the protected layer, not just the descriptions. Example 1's problem_statement asks for 43 deg 29 min + 27 deg 43 min and its answer is 71 deg 12 min, but every operation and result in its solution belongs to a different problem: evaluating the inverse sine of 0.949 and convert",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_18": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Two defects outside the narration layer. Different techniques are bundled: examples 1 and 3 compute an LCM by prime factorisation, while example 2 evaluates 5 - 3 x 4 + 24 / (3 + 5) - 3^2 by order of operations, a separate technique needing a separate scaffold. In addition, example 2's results are c",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_180": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "A result contradicts its own operation in the protected layer. In example 3 step 1 the operation is theta + 41 deg = 90 deg, giving theta = 49 deg, which is what the answer states, but the attached result reads '90 deg - 48 deg 39 min = 41 deg 21 min', which is example 1's complementary-angle result",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_187": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. The template contains no congruence work at all: every operation is meta-commentary about the absent Figure 20.35 ('Identify the problem limitation', 'Assess missing information'), so there is nothing for a description to narrate. Step 2 also contradicts the ans",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_190": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer: the step results and the answer contradict each other. Step 5 solves the proportion to x = 0.0833 m and step 6 totals 2 + 0.0833 = 2.0833 m, while the answer field states 2.4 m. The proportion set up in step 3, AB/BC = (BD + EF)/AB with AB = 2.5 and BC = 3, also",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_192": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer: the steps disagree about where the right angle sits. Steps 2 and 3 apply Pythagoras as XY squared plus XZ squared equals YZ squared, which places the right angle at X, and step 4 constructs the perpendicular at X, matching the answer text. Step 5 then verifies a",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_193": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer: the solution and the answer contradict each other arithmetically. Steps 3 to 5 set sin(30 degrees) = BC/20 with sin(30 degrees) = 1/2 and solve to BC = 10 cm, while the answer field states 'a = BC = 5 cm'. Narrating step 5 truthfully as 10 cm would contradict th",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_198": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. In example 1 the frozen result of step 5 states sin 43 degrees 39 minutes = 0.6904 while the frozen answer field states 0.6898 (the true value is 0.6902), so result and answer contradict each other and step 6's reasonableness check rests on the disputed figure. ",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_201": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. Example 1 step 1 places the right angle at A, which would make BC = 12.0 mm the hypotenuse even though AB = 38.0 mm is longer, while step 2 computes AC as the square root of AB squared minus BC squared, which requires the right angle at C. The results then contr",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_203": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. Example 1 is not a worked solution at all: its operations are meta-commentary ('Analysis', 'Verification', 'Conclusion', 'Recommendation') concluding that the problem cannot be determined, so it teaches no technique. Examples 2 and 4 are the same surveyor proble",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_21": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. Every step in examples 2, 3 and 4 carries the same frozen result, the fraction 9/14, which is unrelated to those examples' own operations (13/4 = 3 and 1/4, 28/5 = 5 and 3/5, 5 and 3/4 = 23/4) and to their answers. The corruption sits in the verified result laye",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_212": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Contradictory arithmetic in the verified layer, not the narration: example 1 measures T = 0.01 s and step 4 computes f = 1/0.01 = 100 Hz, while the template's answer field states 50 Hz. One of the two is wrong and both are in the never-modify layer, so no re-narration can make the walkthrough correc",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_218": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Contradictory arithmetic in the verified layer. Example 1 step 3 declares XY opposite angle Z but writes XY/sin Y = YZ/sin X; step 4's own expression 15.2 x sin 67 / sin 51 evaluates to about 18.0, not the stated 16.1, and step 6's 15.2 x sin 62 / sin 51 evaluates to about 17.3, not 14.3. The area i",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_222": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Contradictory results across the verified layer. Both examples carry the identical problem_statement yet record different answers for the jib inclination (20.27 degrees vs 39.73 degrees), and example 1 step 9 computes a third value, 50.27 degrees. Step 8 also asserts 10.0 x sin 39.73 / sin 20.27 = 7",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_223": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "The step chain and the answer field disagree: step 9 solves h squared = 3440.4 to give h of about 58.7 m, while the answer field states 61.7 m. The steps are internally consistent with each other, so the defect sits in the verified operation/result/answer layer rather than the narration. (technique_",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_232": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer: the verified steps solve a + 105 = 180 to give a = 75 degrees, but the example's answer field states a = 45 degrees. Steps and answer contradict, and both are in the protected layer. Content left untouched.",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_237": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. The example has no problem to solve: the statement is only 'Calculate the total area of brickwork' with no dimensions or figure, and the steps are meta-commentary ('Review problem statement', 'Identify missing information', 'Conclusion') rather than mathematical",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_239": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. Two genuinely different techniques are bundled under one template: example 1 finds the area of an annulus (circle areas subtracted) while example 2 finds the area of a regular hexagon by splitting it into equilateral triangles, and the technique_name names a thi",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_26": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. Example 1's step chain ends at 7/3 (11/3 x 7/4 x 4/11 = 7/3, and step 6 states 7/3 = 2 1/3), but the template's answer field is 7/6 - the verified result layer and the answer contradict each other, and neither may be edited. Example 2 is additionally truncated: ",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_263": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. The step chain sums only the cylinder's curved surface (48 pi), the cone's curved surface (15 pi) and one flat circular base (9 pi) to give 72 pi, about 226.2 square metres, but the template's answer is 254.5 square metres, which is 81 pi. The steps are missing ",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_266": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. Example 1's final step states V = (3.6/3) x 121.96 = 1.2 x 121.96 = 140.544 cubic metres, but 1.2 x 121.96 is 146.352, and the template's answer is 146.3 cubic metres. The stated result of the final step contradicts both its own operation and the answer, so the ",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_267": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. Example 1's steps compute a cylinder volume of 21,205.75 cubic metres plus a frustum volume of 28,199.47 cubic metres, total 49,405.22, and then take 60 per cent to get 29,643.13 cubic metres - but the template's answer is 10,509.6 cubic metres. The step chain a",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_275": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. Simpson's rule is never applied to any ordinates: step 3 asserts an area of 34 square centimetres that appears nowhere in the problem statement, and step 5 substitutes an invented base length of 10 cm described as 'a standard indicator diagram length', producing",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_284": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. In the second example (accelerations of 15 and 28 metres per second squared at 90 degrees) the protected result fields of steps 2 and 3 carry expressions from the first example's 15 N and 10 N force problem ('V = 15 sin 0 + 10 sin 90' and 'V = sum of v_i sin the",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_287": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. In the first example steps 10 and 11 compute part (b) as 28.54 units at 194.2 degrees, while the answer field claims 50.16 units at 208.9 degrees for that same part. In addition, the second and third examples are a different problem (accelerations of 1.5 and 2.6",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_302": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. Example 1's problem_statement omits the four distance values the chart is meant to show, so its steps have nothing to plot, and its answer field holds no answer but a note recording that the data are missing and that the stored answer belonged to a different pro",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_303": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. Example 1's verified layer is self-contradictory: steps 2, 6 and 7 all compute Q's allowance as 264 x 0.37 = 97.68 and step 8 declares every amount verified, while the template's answer field states Q: 97.65. Example 2 additionally carries a corrupted result tok",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_314": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is arithmetic, not narration. Step 6 divides the sum of squared deviations by n minus 1, stating 34 / 5 = 6.8, but step 7 takes the square root of that same 6.8 and reports 2.380, which is the root of 34 / 6 = 5.667; the root of 6.8 is 2.608. Steps 6 and 7 therefore use different divisors, an",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_316": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is in the verified layer, not the narration. For part (b) step 6 lists the 8th decile group as the 16th to 20th positions, 28, 29, 30, 32, 37, and step 7's result repeats that five-member set, but the template's answer field gives only 29, 30, 32, 37. The step results and the answer disagree ",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_319": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is structural, not narrational. The third example is a stub: its problem_statement breaks off mid-sentence after 'fails due to excessive temperature and excessive vibration,', its single step has the non-operation 'Incomplete in source', and its answer is the literal string 'Incomplete', so t",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_334": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect: in the second example (y = 2/3 x^3 - 4/x^2 + 1/2x - sqrt(x)) the step 2 result gives dy/dx = 3(-2x^-3) - 2(4 cos 4x) + 2(-e^-x) + 1/x, a first derivative of a completely different function containing cos 4x and e^-x. It contradicts the step 3 result and the stated answer, bot",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_36": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. Example 1 ('Evaluate 2.4^2') is one solution list of 16 steps that is the same five-step calculator procedure spliced in three times over (steps 1-5, 6-10, 11-16), with dangling self-references that no longer match the numbering: step 10 says 'after step 2' and step 15 says '",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_37": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. The final example ('Evaluate 2.4^6 - 1.9^4') begins at step_num 3: steps 1 and 2 are absent, so the solution starts mid-procedure with no entry of the base number, and the missing operations cannot be supplied from the narration layer. The template also bundles genuinely diff",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_58": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. Example 3 states A = 5 mm squared with R = 7.02 ohms in its problem_statement, but its operations substitute R = 7.2 and conclude k = 36; 7.02 times 5 is 35.1, so the protected problem statement, the protected operations and the protected answer (a) 36 contradict one another ",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_60": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. Example 1's problem_statement asks for 3 cubed times 2 squared with answer 108, but every one of its five operations works a different problem (6 cubed over 3 cubed, ending at 4.5 times 8 = 36), so the operation layer itself belongs to another item and contradicts the answer.",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_64": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. Both examples carry the same problem, and their protected answers disagree: example 1 gives 2 to the ninth times 5 squared over 3 to the fifth, while example 2 gives 2 to the ninth over (3 to the fifth times 5), which is the correct value. Example 1 also contradicts itself, s",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_74": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. Nine examples from three different techniques are bundled under one template whose technique_name is the literal string 'None': substituting into the Celsius-to-Fahrenheit formula, collecting like terms, multiplying algebraic terms by the index laws, and numeric",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_76": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. In example 1 the problem_statement is a worked commentary on dividing x^3 + y^3 by x + y, while the solution divides an entirely different polynomial, 4a^3 - 4a^2b - 2ab^2 + 2b^3, by 2a - b; prose cannot reconcile a statement and a solution about different probl",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_95": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer: the template bundles two different techniques. Example 1 evaluates a numeric expression by substituting p, q and r, while examples 2-4 transpose literal formulae to change the subject; no single technique_name or scaffold covers both. Example 1 is also internall",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_96": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is in the verified layer, not the narration. Example 1 asks to rearrange I = V/R to make V the subject, but its steps start from V = IR and derive I = V/R, and its answer field is 'I = V/R' - the worked solution runs opposite to the stated problem, so no description can make the step chain an",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_97": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is in the verified layer. In example 1, item 8 asks for x in y = mx + c and step 12 correctly gives x = (y - c)/m, but steps 13-15 then solve the same formula for m instead, contradicting step 12 and the answer field. Example 4 (kinetic energy, make v the subject) has a single step that only ",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Bird_Engineering_Math_sa_99": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Two defects outside the narration layer. Example 1 states the impedance problem Z = sqrt(R^2 + X^2) and solves it in steps 1-4, then steps 5-9 of the same solution switch to an unrelated sphere-volume problem (V = (2/3)pi r^3, solving for r and evaluating it at V = 32) that no problem statement in t",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Magic_Squares_sa_4x4_durer": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Contradiction between step results, not narration. Step 5 fixes the constructed square as [[16,2,3,13],[5,11,10,8],[9,7,6,12],[4,14,15,1]], whose bottom row is 4, 14, 15, 1; step 10's result asserts the bottom row is '4, 15, 1, 14' to spell 1514. Neither matches: the constructed square reads 14 then",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Magic_Squares_sa_5x5_panchadasi": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Contradictory state in the operation/result layer, not the narration. Step 7's intermediate grid shows 6 at row 0 col 4 while step 6 placed 6 at row 2 col 1 (the number 6 therefore appears twice), shows 2 at row 4 col 1 while step 2 and the completed square both place 2 at row 4 col 3, and shows 10 ",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Number_Sense_sa_108": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "The defect is in the operation/result layer. In example 1 (representing 222) step 4's operation is 'Verify the current answer' and its result quotes 'Symbols for 12, 2, and 25 concatenated' in order to declare it wrong, but that exact string is the verified answer of sibling example 3 (43,345 in bas",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Number_Sense_sa_124": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Two different techniques are bundled under one template. Example 1 answers 'How to refer to numbers beyond 3?' with six steps of base-b positional algebra (digits 0 to b-1, 4 written as 10 in base 4), while examples 2 through 6 answer the same historical question with body-part counting, tally notch",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Number_Sense_sa_140": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is below the narration layer. (a) Contradictory arithmetic: example '54 - 4' carries answer 40 (54 minus 4 is 50) and example '428 - 26' carries answer 302 (428 minus 26 is 402). (b) Incoherent operations: both subtraction examples contain the operation 'Carry 1 to tens/hundreds column' where",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Number_Sense_sa_71": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. Within the first example the operations contradict each other and the stated answer: steps 1-3 conclude the baby infers exactly one object because the trajectory is continuous, while steps 4-7 conclude there must be at least two objects because no continuous pat",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_105": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer: the step results and the stated answer contradict each other arithmetically in three of the seven parts, and both are protected fields. Step 3 gives part (b) as 600 while the answer says 1200; step 6 gives part (e) as 8400 while the answer says 6720 (which is th",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_11": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. Two separate problems. First, examples from genuinely different techniques are bundled under one template: example 1 factors and cancels rational algebraic expressions, while examples 2, 3 and 4 evaluate rational, zero and negative exponents - and the declared t",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_116": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is in the protected result layer, not the narration. In example 2 (two dice tossed six times) the step 1 result reads as the card-problem product 12/52 times 12/52 equals 9/169, which contradicts its own operation p = 1/6 and q = 5/6; example 3 (life-table probabilities) carries that same 9/1",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_117": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is in the protected result layer, not the narration. In example 2, step 3's operation gives a total of 8 as 5 outcomes out of 36 while its result field asserts 6/36 = 1/6; in example 3, step 4's operation gives at least three heads as 16 outcomes out of 32, or one half, while its result field",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_120": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Contradictory arithmetic between the steps and the stated answer, not a narration fault. The final step computes the conditional probability 0.46/0.88 = 0.5227, which is correct for the chain of steps above it, but the template's answer field reads 0.6224 - a different value with no step producing i",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_132": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "A step operation is itself false and the answer contradicts the arithmetic. In example 1, step 5 asserts that the first three-by-three determinant has Row 2 equal to -2 times Row 1 plus Row 3; with the rows (-3, 5, 2), (2, 4, -6) and (13/2, -8, -7/2) that combination gives (12.5, -18, -7.5), not row",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_137": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. In the first example the row reduction ends at the pivot row 0 0 0 1 | -9, which yields the unique solution w = -9, z = 11, y = -4/3, and step 8 then asserts the system is inconsistent; a reduction that terminates in a full set of pivots cannot demonstrate incon",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_14": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer: two genuinely different techniques are bundled under one template. The first example identifies which of four candidate equations reproduces a table of values by testing each option against the data; the second asks for graphical representations of eight inequal",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_148": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer: the step layer and the answer contradict each other in part (d). Steps 6 to 8 derive h = -4 and k = -8 from the condition that T sends (4,1) to (0,-7), and conclude that (1,6) maps to (-3,-2), while the answer field records part (d) as (-3,-1). One of these prot",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_150": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Second example is defective below the narration layer: step 1's operation 'Rot(O) = 0' is incoherent as a rotation, and steps 2 and 3 give contradictory images for the same vertices (step 2 sends both A and B to (0,1), which no rotation can do, while step 3 sends B to (0,-1)). The result column also",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_177": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "The tan B = 1.5 example (and its duplicate later in the template) contains contradictory arithmetic in the operation layer: step 1 assigns opposite a = 10 and adjacent b = 15, which gives tan B = 2/3, not 1.5, and the parenthetical 'scaled down to 2 and 3' reverses the ratio the same way. The stated",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_184": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. Example (f) has an incoherent operation, 'tan(theta - 360) = sin(-4 x 90 + theta)', equating a tangent to a sine; example (i) rewrites tan(720 + theta) as tan(2 x 360 - theta) = tan(-theta), contradictory arithmetic that also drives the stated answer -tan theta ",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_196": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. In example 1 the problem_statement asks for a proof of the three Pythagorean relations while steps 1-5 simplify cos squared theta over (1 - sin theta) and the recorded answer is '1 + sin theta', so statement, steps and answer contradict each other; steps 6-15 th",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_208": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is in the verified layer, not the narration. In example 1, step 9's result states A - B - C = -2B - (C - A). The right side equals A - 2B - C, while the given condition A + B + C = 180 makes A - B - C equal 180 - 2B - 2C; the two differ by B, so the half-angle arguments fed into the sum-to-pr",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_225": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is in the verified layer, not the narration. Steps 8 and 9 derive two angles of the SAME triangle ABC: angle BAC = 180 - 82.14 = 97.86 degrees and angle ABC = 180 - (65.7 + 22.5) = 91.8 degrees. Their sum is 189.66 degrees, which exceeds 180 degrees, so no such triangle exists and no honest d",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_238": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is in the verified operation/result layer, not the narration. (1) Example 1 concatenates three complete redundant passes over the same problem as one 17 step solution: steps 1 to 5, 6 to 13 and 14 to 17 each factor sin x, split the factors and solve the same two cases. (2) In examples 2 and 3",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_243": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Two defects outside the narration layer. (1) Mixed techniques under one template: example 1 solves a simultaneous system in sin x, sin y, cos x, cos y using squaring and sum to product identities, while examples 2 to 4 solve single equations in Arccos by taking cosines; they do not teach one method.",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_244": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is arithmetic in the verified layer. In example 1 the steps are internally consistent and correct: x(2 root 2 + 1) = root(1 - x squared) leads to x squared = 1/(10 + 4 root 2) = (5 - 2 root 2)/34, so step 12 gives x = 0.2527, which does satisfy Arcsin 2x = pi/4 - Arcsin x. The template's answ",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_252": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. Six examples from genuinely different techniques are bundled under one 'De Moivre's Theorem' template: fifth roots, division by rationalizing, equating real and imaginary parts, verifying roots of a quadratic, an algebraic conjugate-of-a-sum proof, and graphical vector additi",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_270": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. Example 1's operation/result layer is self-contradictory: the problem_statement gives x^2/1 + y^2/(25/9) = 1 (an ellipse centred at the origin) while the steps assert a centre of (-2,1); step 3 writes vertices as (-2 plus or minus 1, 1) and then reports them as (3,1) and (-7,",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_274": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. Example 1 terminates in unresolved contradiction: steps 10 and 11 both compute the distance as 6, step 12's operation asserts this contradicts the recorded answer of 4, step 14's result is malformed (an unbalanced fraction that evaluates the same expression to 12) and its own",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_281": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. In example 2 the result fields of steps 1-3 are attached to operations they contradict: step 1's operation completes the square to (x-1)^2 + 4(y-3/2)^2 = 9 but its result is '2x - 3y + 18 = 0', a line carried over from example 1; step 2's operation produces x'^2 + 4y'^2 = 9 b",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_282": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. The template bundles genuinely different techniques under one concept: examples 1, 2 and 5 simplify conics by translation of axes, while examples 3, 4 and 6 apply a 45 degree rotation of axes, a different transformation with different formulas. Renaming the technique cannot c",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_283": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. Example 1's steps contradict its answer: steps 3 to 5 compute x' = 7*sqrt(10)/5 and y' = sqrt(10)/5, while the answer field records x' = 2, y' = 3. Step 2's operation also imports transformation equations x' = (x + 2y)/sqrt(5), y' = (-2x + y)/sqrt(5) that its own description ",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_284": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. Contradictory arithmetic inside the verified layer. Step 5's result adds 369 + 99/25 + 144/25 and reports 396, but that sum is 378.72; the 396 that steps 6, 9 and the answer depend on does not follow from the stated completion of the square. Step 7's result computes x = (1/5)",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_285": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. Example 1 changes conic mid-solution. Steps 6 through 10 reduce the equation to the ellipse 11x''^2 + 36y''^2 = 396, i.e. x''^2/36 + y''^2/11 = 1, but step 12's result and the answer field give the hyperbola (x + sqrt(2))^2/18 - (y - sqrt(2))^2/9 = 1, with a minus sign and de",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_293": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is in the verified operation/result layer, not the narration. Step 4's operation computes c as the determinant of columns 3 and 4 (value -7), but its result field states a = -1, duplicating step 2's result; step 5's operation forms the vector [-1, 10, -7] while its result field states b = 10,",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_294": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Contradictory arithmetic between the verified step results and the verified answer for part (b). Steps 7-9 derive the point of division as x = 14, y = 8, z = -2, and step 10 derives the midpoint (-2, 4, 6), but the answer field states 'Point of division P(14, 2, 10)'. The y and z coordinates in the ",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_297": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Contradictory arithmetic between the verified steps and the verified answer for part (b). Steps 7-8 compute the cross product of AB and AC as -6i - 10j - 22k and step 9 divides by -2 to give [3, 5, 11], but the answer field states '[2, -10, -22] or any scalar multiple (e.g., [1, -5, -11])'. Neither ",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_302": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Contradictory sign pairing between the verified steps and the verified answer in the third example. Step 3 derives y = +/-1 with x = -4y, so x and y take opposite signs, giving (-4, 1) and (4, -1). The answer field states 'x = -/+4, y = -/+1', which reads as (-4, -1) or (4, 1); substituting either i",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_304": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Two defects outside the narration layer. (1) Step 5 introduces the case y = 0 and solves 3x squared = 140 from the first equation only; with y = 0 the second equation forces 5x squared = 84, so no such solution exists, yet the extraneous root x = +/-sqrt(140/3), y = 0 is carried into the answer. (2)",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_31": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. Example 2 is a different technique from example 1 (substitution) and is itself two techniques bundled into one step list: step 1 opens a 'USING EQUATIONS' path, step 2 restarts as 'USING MATRICES' with an augmented matrix, and steps 3 and 4 then apply two mutually exclusive r",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_313": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. Example 1's solution is three concatenated copies of the same derivation with restarting internal numbering: steps 1-5 ('1.' through '5.'), steps 6-12 ('1.' through '7.') and steps 13-17 all build the same table, plot the same points and draw the same two curves. Steps 6 and ",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_314": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. Example 1's verified layer contradicts itself: step 3's result establishes symmetry about the y-axis (replacing x by -x leaves the equation unchanged) and step 5's result gives y greater than 0 for x less than 0, but the answer field states the curve is symmetric about the x-",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_32": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. Contradictory arithmetic between steps. Step 5 applies R3 = R3 - (13/2)R2 to the rows produced in steps 3 and 4, which yields -29/20 and -87/10, but the step 5 result records -1/20 and -1/4. The error propagates: step 6 then reports z = 5, steps 8 and 9 derive y = 13/10 and x",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_330": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Contradictory arithmetic inside the verified layer of the second example. Step 1 states SR = SP/TP times TQ = (1/4)(1) = 0.2, but one quarter of 1 is 0.25; the step then uses 0.2 to reach OR = OS + SR = 1.2, so the operation contradicts itself and no honest description can narrate it. The example th",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_331": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Corrupted operation and result layer in the second example. Its step 3 reads 'update coefficients to 1, 6.3, 8.89; 0.03*6.3=0.189, 0.03*8.89=0.2667 -> new remainder = -0.000663', but adding 0.2667 to the previous remainder -0.333 gives about -0.0663, a hundredfold discrepancy; and the step's result ",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_332": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "The template contains no worked technique to narrate. Its problem_statement is a truncated fragment referring to 'the given equation' that is never stated, its answer is the string 'Cannot be determined from incomplete problem statement', and all five steps are meta-commentary about the missing info",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_335": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Two unrelated techniques bundled under one template. The first example divides 5x^4 - 8x^2 - 15x - 6 by x - 2 with synthetic division, a multiply-and-add procedure; the second and third examples apply Descartes' Rule of Signs to P(x) = 2x^2 + x - 4 and S(x) = x^5 + x^4 + x^3 - x^2 + 1, counting sign",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_337": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Four examples from four different techniques bundled under one template: graphing a cubic from a table of values, proving factorhood with the Factor Theorem without dividing, synthetic division by the non-monic divisors 2x - 1 and 2x + 3, and tabulating f(x) over a range of integers. The first examp",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_34": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect sits below the narration layer. In example 5.3 the operations and results contradict each other: step 4's operation derives 2x = 2 and x = 1 while its result reads 2x + 3y = 3, and steps 5 and 6 both carry the unrelated result 15x + 18y = 12. The final example 5.4 is truncated to two steps wi",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_341": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. The single example's solution interleaves work from a different problem: steps 1-8 divide 2x^4 - 3x^3 - 6x^2 + 11x - 10 by x - 2 and already reach the stated quotient and remainder, steps 9-15 then run synthetic division on an unrelated polynomial with coefficients 1, 5, -7, ",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_35": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. Example 1's own operation/result layer contradicts itself. Step 1 multiplies equation (3) by -4 but carries the result 2x - y + 4z = 6; step 3 multiplies equation (4) by -7 to get 56x - 7y = -21 yet its result repeats -10x + 7y = -2; step 6 substitutes into an 'equation (4)' ",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_36": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. Example 1 contradicts itself in the verified layer: step 6 asserts 9y - 2(1) = -12 gives y = -1 (it gives -10/9), step 8 states outright that the row-reduction solution fails all three equations, and steps 9-18 abandon matrices for substitution and land on x = -1/2, y = -1, z",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_372": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. Example 2 step 4 is internally contradictory: the operation states f'(x) = -162/x^2 + 3 yet reports critical values x = +/-9, which require -162/x^2 + 2 (the correct derivative of 60 + 162/x + 2x). Its step 3 also carries example 1's result, A = x(2400 - 2x), instead of its o",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_373": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. Two unrelated techniques are bundled under one template: example 1 is constrained optimisation of a fenced rectangle, example 2 is rectilinear motion analysis of x = t^3 - 5t^2 + 7t - 3 via velocity and acceleration signs. They share no method, so no single technique_name, sc",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_377": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. The single technique_name is 'None', and the first example's eight frozen operations are three redundant restatements of the same three integrals (steps 1-2, 3-5 and 6-8 each work parts (a), (b), (c) over again), so no honest per-step narration exists for the re",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_384": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Contradictory arithmetic between the frozen layers. The problem_statement lists sequence (a) as 5/2, 3, 19/6, 13/4, which is 7/2 - 1/n, and asserts s_n < 4 with limit 7/2; the solution steps and the frozen answer instead use s_n = 7 - 1/n, bound the sequence above by 7, and conclude the limit is 7. ",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_39": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Two genuinely different techniques bundled under one template. Example 1 solves 3x^2 - 8x - 4 = 0 by completing the square, matching the technique_name; example 2 solves x^4 + x^2 - 12 = 0 by substituting y = x^2, factoring and back-substituting, with no square completed at any step. No single techn",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_390": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Frozen results are transplanted from other examples throughout, so no description can describe both its own operation and its own result. In example 2 the steps identify geometric series with r = 2/3 and r = -3/4 but both carry the frozen result 'sum 1/n^p, p > 1', a p-series criterion; in example 3",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_395": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is in the frozen result layer, not the narration. In examples 2, 3 and 4 the step-2 operation derives a ratio of |x|, of |x|/2, and a limit that does not exist respectively, while all three result fields read R = lim |x/n| = 0, copied from the exponential series in example 1. Examples 3 and 4",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_40": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Contradiction between the frozen problem statement and the frozen operations, not a narration defect. Part (b) is stated as y = 2x^2 + 9x - 9, but step 4 computes x = -9/(2*(-2)) = 9/4 and step 5 evaluates y = -2*(9/4)^2 + 9*(9/4) - 9 = 9/8, both of which require a leading coefficient of minus 2; th",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_400": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect on two counts. First, four unrelated techniques are bundled under one template: locating a polar point and converting it to rectangular form, converting a rectangular circle equation to polar form, showing that two polar equations describe the same curve, and verifying that a ",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_404": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. Example 1 teaches the polar distance formula, a Law of Cosines application; examples 2 and 3 teach rectangular-to-polar transformation, a different technique bundled under the same template. On top of that, the step results in examples 2 and 3 are placeholders unrelated to th",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_413": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is in the verified layer, not the narration. Steps 7 and 8 both evaluate dy/dx to -1 (the factor 1 + root 3 cancels against its negative), and that value is correct for r = 2(1 + cos theta) at theta = pi/6, but the template's answer field reads -root(3)/3. Since operation, result and answer m",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_421": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Three genuinely different techniques bundled under one template. Example 1 compares two fractions via a least common denominator, example 2 expands 4238.75 by positional value, example 3 states the three cases of the Computer's Rule for rounding. They share no procedure, and every step has an empty ",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_422": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Genuinely different techniques bundled under a template named 'percent conversion'. Examples 1 to 3 convert between decimals, fractions and percents; example 4 compares 7/5 and 3/2 against root 2; examples 5 and 6 evaluate products of square roots of negative numbers using i. The last three examples",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_426": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is outside the narration layer. The six steps read the doubling data, fit p(t) = 2^t and verify it against every listed point, but the template's answer field reads 'Cannot be determined without Table A3.1' - it contradicts the derivation it is attached to. Step 1's operation itself is incohe",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_44": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. The five examples teach four different techniques bundled under one 'discriminant' template (character of roots from the discriminant, sum/product of roots by Vieta's formulas, forming a quadratic from given roots, and solving for a parameter k), and example 1's",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_49": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect reaches into the frozen operation/result layer, not just narration. Example 4 step 2 has operation '-2x > -2' carrying result '2x - 8 < 7x + 12', which is a different example's inequality, and example 5 step 2 has operation '-5x < 20' carrying result '3x + 4 > 5x + 2', likewise from a sibling",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_52": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "The two examples are from genuinely different techniques bundled under one template. Example 1 applies the discriminant condition b^2 - 4ac >= 0 to a quadratic in y and then solves a quadratic inequality for x; example 2 describes a locus by splitting the product x(y - x) = 0 into two lines, which u",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_61": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect extends past narration into the protected layer. In example 2, the operation 'Solve: x = 4/3' carries the result 'y - y_1 = (y_2 - y_1)/(x_2 - x_1)(x - x_1)', the two-point slope formula belonging to example 3; no truthful description can be written of that operation and result together, and ",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_74": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer: the verified layer contradicts itself. Part (c) is derived in steps 6-8 as 9m^2 - 14m - 39 = 0 with slopes m = 3 and m = -13/9, yielding 3x - y - 27 = 0 and 13x + 9y - 77 = 0, but the immutable answer field states (c) 7x + y - 53 = 0 and x - 7y - 29 = 0. Neither",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Schaums_College_Math_sa_81": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Two defects outside the narration layer. (1) Different techniques are bundled: the template is arithmetic progression, but the fourth example ('Find the ninth term and the sum of the first nine terms of the geometric progression 8, 4, 2, 1, ...') teaches geometric progression with ratio r and the fo",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_102": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is in the protected verified layer, not the narration. Example 1 step 5 is an operation ('Compare with given answer') whose result imports a degree-10 polynomial in x belonging to a different problem and then asserts the mismatch, and the final example's step 1 carries a result for (3x^2+5x+7",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_106": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Contradictory arithmetic inside the protected layer of example 1. Step 4 takes a left part of 576 minus 72 with no step establishing 72 as a deviation, step 5 concludes 505728, step 6 then asserts 576 times 328 equals 464256, and step 7 asserts 188928, which is the stated answer. Three mutually excl",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_108": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. Example 1 has no coherent problem: its problem_statement is a stranded fragment about splitting a middle term, step 2 invents x equal to 2 feet by admitting the substitution 'isn't clear', and the answer field itself states that the given steps and answer are incorrect and in",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_110": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is below the narration layer. Example 1 (the investment problem) is worked entirely by aliquot parts and simple proportion, not by the Urdhva crosswise method the concept claims and that examples 2 to 4 actually use, so genuinely different techniques are bundled under one template. Its answer",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_114": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is in the operation layer, not the narration. In example 2 the operation of step 3 reads 'Remainder = 8, which is >= divisor 9? No, so proceed to correction step', which asserts the check fails and then applies the correction anyway; step 4 then reasons '8 divided by 9 = 0 remainder 8 -> but ",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_115": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is arithmetic and structural. Example 1 misreads Tirthaji's division notation '9) 1/8' as the fraction one eighth, then multiplies four unrelated exercise results together; its step 10 gives 1/1676 while the answer field gives 1/207792, a direct contradiction. The template also bundles genuin",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_117": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Contradictory arithmetic inside the protected layer. Steps 6 and 7 of example 1 abandon the Nikhilam working, announce quotient 205 remainder 805, and state in their own text that the original solution is in error, while the answer field says quotient 205 remainder 394 and example 2 of the same temp",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_118": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Contradictory arithmetic between steps. Steps 5 and 6 correctly read 02162 as the uncarried digitwise row 0, 2, 16, 2 which resolves to 0362 and yields remainder 0499, and steps 17 and 18 repeat that correctly. But step 11 treats 2 times 0181 as the number 02162, step 12 then computes 20137 + 02162 ",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_120": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Contradictory arithmetic between steps. Step 6 of example 1 reduces the final column total 31 by one divisor to give 8, but step 7 announces remainder 22 and quotient 43, and nothing in the digit chain (quotient figures 1, 3, 10 against working base 20) produces 43. The stated answer 43 remainder 22",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_121": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is below the narration layer. The problem_statement '(30) 23 x 4 = 92)' is a multiplication identity while every step performs a division; step 3's operation is self-admittedly incoherent ('suggesting borrowing or adjustment not fully explained') and its own arithmetic (91x4=364 versus the st",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_126": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Contradictory arithmetic in the protected layer. In example 1, step 6 states R = x - 1 (which is what the subtraction in step 5 actually produces) while the example's answer states R = -3x + 3. Several steps also carry a sibling example's result string (example 2 step 3 result is 'x^3-2x+1', example",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_127": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Operations are themselves incoherent. Example 2's problem_statement and every one of its operations are raw OCR fragments ('$3$ $-1$', '$-9$ $+3$') that name no action, and its answer contains the impossible term 'x^3 -3x^2 times 2.5x'. Example 1 divides x^3-3x^2+3x-1 by the same-degree x^3-2x+1 yet",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_128": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Contradictory arithmetic between steps. In example 1, step 5's operation sets the first quotient digit to 1 - 1 = 0, but step 9 and the answer both require the quotient 11; the multiplier used (-12 as a single number rather than the digitwise -1, -2 that Paravartya calls for) is what drives that bad",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_129": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Answers contradict their own problem statements. Example 3 states 'Divide 112 by 12' but answers '116 remainder 53' (true value 9 remainder 4); example 2 states 'Divide 11203 by 1203' but answers '21421 remainder 6', which needs a dividend near 25,769,469; example 4 answers 12 for 13456 divided by 1",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_130": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Example 2's operation layer is incoherent: it names 11 as the divisor and 1012 as the dividend, while its own complement (0-1-2) and its answer (Q=10, R=991) require divisor 1012 and dividend 11111, and the stated problem 'Divide 1012 by 11' has answer 92, not 10 remainder 991. Examples 1, 3 and 4 a",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_131": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Example 1's steps state outright that the divisor is missing and the problem is unsolvable as stated, yet the example carries the answer '1132 / 1132 = 1'; there is no procedure in the operation layer to narrate. Example 3 asserts 819 / 181 = 2341, and the template bundles Vilokanam, Nikhilam, vincu",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_132": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Impossible arithmetic in the protected layer. Example 2 answers 988 divided by 12 as 'Quotient: 132, Remainder: 1' (true value 82 remainder 4), and example 3 answers 858 divided by 142 as 'Quotient: 8, Remainder: 247' though 142 times 8 already exceeds 858. Most operations are bare digit strings ('7",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_134": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is below the narration layer. Several step operations are themselves incoherent or self-contradictory: example 3 step 3 reads \"Final quotient 12 11, remainder 5?\" with an interrogative hedge inside the operation; example 4 step 3 states \"remainder 2 138? (Layout suggests 7.5 + 2.5 + 6.5 = 16,",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_135": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is below the narration layer. Example 3 step 4 has the operation \"Final: 4138 - 3 = 7138\", which is false arithmetic in the verified layer, and its answer 7138 is a concatenation artefact of quotient 7 and remainder 138 for 1699 divided by 223 rather than a quotient. Example 2 step 3 (\"0 + 1/",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_148": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. In examples 2-5 the verified 'result' fields are transplanted from sibling examples and contradict each example's own answer: the example '2x2+2y2+5xy+2x-5y-12' (answer (x+2y+3)(2x+y-4)) carries results 'E=(x+2y+3z)(2x+3y+z)', and '3x2-8xy+4y2+4y-3' (answer (x+2",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_149": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. Example 1 bundles two different problems under one solution: the stated problem is E = 2x^2+7xy+6y^2+7xz+3z^2+11yz (solved correctly in steps 4-7 as (x+2y+3z)(2x+3y+z)), but steps 1-3 solve 3x^2-4xy+y^2-... and the locked 'answer' field is (x-y-z)(3x-y+2z), whic",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_154": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. Example 3 step 1's operation is itself incoherent - it contains unresolved editorial doubt ('1 + 0 - 7 = -6? Author states S0=0 - possibly refers to...') rather than an instruction a learner can follow. In addition, example 2 steps 2 and 3 carry example 1's resu",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_157": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer: contradictory arithmetic in the locked result layer. Example 1 verifies Q(x) = 2x^3+5x^2+5x-4 = (2x-1)(x^2+3x+4), but examples 2 and 3 carry the result '2x^3+5x^2+5x-4 = (2x+1)(x^2+3x+4)', which is arithmetically false (it expands to 2x^3+7x^2+11x+4) and contrad",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_158": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. In example 2 (problem iii, H.C.F. of 2x^3+x^2-9 and x^4+2x^2+9, answer x^2+2x+3) every step carries example 1's result '6x^4-11x^3+16x^2-22x+8 = (2x-1)(3x-4)(x^2+2)', which is about a different pair of polynomials. Step 4's operation is also incoherent - it prop",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_165": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. In example 2 the result field of step 1 and step 4 carries an equation from a different problem (1/(2x-1) + 1/(3x-1) = 0) while the operations work on (3x+4)/(6x+7) = (x+1)/(2x+3), and step 4's result asserts 5x - 2 = 0, which contradicts both its own operation ",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_170": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. Example 1's steps 11-12 assert x = 5 as a second solution and the answer field records it, but x = 5 makes the term (x-4)/(x-5) of the original equation undefined - it is an extraneous root introduced when the denominators were cleared. That is a contradiction i",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_172": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is in the verified layer, not narration. Example 2 step 3 has operation 'Solve for x: x = 1/12' carrying result 'x = -5/12', and the example's answer is x = 1/12 while the step result states x = -5/12. Examples 2-5 also carry result fields that are verbatim copies of a different example's pro",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_174": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is in the verified layer, not narration. Example 4 mixes two incompatible facts: problem_statement has denominator (x+5) but step 1 cross-multiplies to (x+1)(x+5)^3, and step 3's expansion gives 9x^2 on the right while step 4's cancellation to 16x = -64 requires 90x^2. The template also bundl",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_176": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is in the verified layer, not narration. Example 1's steps derive 2x - 12 = 0 and state 'Solve: x = 6' (its step 3 result also reads x = 6), but the example's answer field is x = -4. Operation chain and answer contradict each other and both are protected. Content left untouched.",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_179": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is in the verified layer, not narration. Example 1 step 4 records -80x on the left and -40x on the right where the stated products give -40x and -10x; steps 8-9 then discuss x = -2.5 and x = -2 although step 7 derived x = -15/8, and the answer field is 'x = -2.5, x = -2'. Example 2 step 1 say",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_265": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is in the verified layer, not the narration. Example 1 step 1's result defines the Ekadhika of 7 as '1/(last digit of denominator) = 1/7 = 0.142857', which is not a multiplier at all and is incoherent as an operation. Step 3 then runs the multiply-and-carry chain 1x3=3, 3x3=9, 9x3=27, 7x3+2=2",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_266": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Contradictory arithmetic across examples, outside the narration layer. Example 2 is stated as 1/7 = 8/98 but its step result is '1/11 = 9/99' and its answer is 0.0434782608695652173913, which is the expansion of 1/23, not of 1/7 or 1/11 -- three different fractions in one example. Example 3 is state",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_271": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "The defect sits in an operation, not in its narration. Step 3's operation is 'Perform division using the multiplier' but its result runs 1x3=3 (write 0.0), 10x3=30 (30/17 = 1 rem 13), 130x3=390 (390/17 = 22 rem 16). A quotient of 22 cannot be a decimal digit, so the stated procedure cannot generate ",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_267": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Example 1 step 6 has an incoherent operation: it compares the computed 142857 against a 'given answer' of 13076923, a value that appears nowhere in this example's problem statement or answer field and is leakage from the 1/13 case (076923) in example 2. The step cannot be narrated truthfully without",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_208": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is in the frozen layer, not the narration. Example 1's steps derive and verify x = -7/3 (both sides come to 80/27), while the template's answer field states x = -7. Separately, every result in example 2 is copied from example 1 - it repeats (x+1)(x+2)/((x+4)(x+5)) = (x+3)/(x+9) = 2/20 for the",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_209": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Frozen layer is self-contradictory. Example 1's steps derive x = -7/3 and verify it, yet the answer field reads 'x = -7/3 or x = -6', and x = -6 fails the equation (left side -60, right side -6). Example 2 compounds this: all three of its results state 1/((x+1)(x+2)) = 1/(x+1) - 1/(x+2), which belon",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_215": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Frozen layer is self-contradictory. Step 2's formula is written as 2x - b equals plus or minus the square root of b squared minus 4ac, and step 3 substitutes b = -5 to reach 2x + 5 equals plus or minus 1, so steps 6 and 7 produce x = -2 and x = -3, while the answer field states x = 2 or x = 3 (the c",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_218": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Frozen layer is self-contradictory. Example 1's steps factor 6x squared minus 5x minus 6 as (3x + 2)(2x - 3) and give the roots x = -2/3 and x = 3/2, and step 8 verifies -2/3 explicitly by computing 5/6, yet the answer field reads 'x = 3/2 or x = -1/3'. The wrong root sits in the answer, which may n",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_220": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Frozen layer is self-contradictory. Example 1's step 10 derives both x = 0 and x = -7/2, and step 11 verifies both (the x = 0 check reduces to 2 = 2), but the answer field lists only x = -7/2. Examples 3 to 5 do carry the described narration defect - 'Observe symmetry and apply Vilokanam' is narrate",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_221": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect: the verified layer contradicts itself. Step 9 factors the equation as -6x(2x+5) = 0, giving x = 0 and x = -5/2, and both roots do satisfy the original equation (at x = -5/2 the left side is -8 + 18 = 10 and the right side is 25/2.5 = 10). Step 11's result nevertheless asserts",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_222": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. Example 1's steps are internally correct and end at x = -5/2 (step 14), but the answer field states x = -4, which satisfies neither the steps nor the original equation. Example 2 is separately broken: its problem_statement is 2/(x+1) + 9/(x+3) = 25/(x+5), while its step 1 ver",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_223": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect: the rule the steps apply is fabricated and its own output contradicts the answer. Step 2 states a supposed Shunyam Saamyasamuccaye formula, x = (AD + BC - 2EF)/(A + C - 2E), which is not a valid identity; carrying it through yields x = (2ab - 4c^2)/(a + b - 4c) at step 7, whi",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_224": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect: contradictory arithmetic inside the derivation. Steps 1 to 18 are sound and reach x = d(a + 2b - 3c)/(2ac + bc - 3ab). Step 19 then claims to factor that denominator as b(2a + c) - 3ab, which expands to bc - ab and is not equal to 2ac + bc - 3ab. Step 20 abandons both and ann",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_229": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect: two genuinely different techniques are bundled under one template. Example 1 is solved entirely by the Rational Root Theorem, trial substitution and polynomial division, with no Vedic step anywhere; example 2 is solved by the Purana route, completing (x-5)^4 and substituting ",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_230": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect: the answer contradicts the steps. Step 5 correctly gives y = (-6 +/- 38)/2 and step 7 correctly concludes a^2 = 16, so a = plus or minus 4, which also checks against the problem, since 5^4 + 3^4 = 625 + 81 = 706. The answer field instead records a = 2 and a = -2, which do not",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_232": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. In example 1 the steps are algebraically correct and terminate at z = 910/629, with x = (455 - 193z)/39 and y = 32z/13, but the answer field states x = 2, y = 4, z = 2, which fails the very first equation (7(4) - 11(2) - 2(2) = 2, not 0). Example 2 is correct and consistent, ",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_233": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration. Example 1's fourteen steps derive and then verify x=2, y=3, z=4 (step 14 checks 7(2)+3(3)-5(4)=3), but the template's answer field reads x=2, y=1, z=2, which fails that same equation (14+3-10=7, not 3). Example 3's step 2 result, '2x-128x-52/17 + 387x-162/17 = 28', is",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_234": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration. Example 1 solves the system correctly to z=3, y=2, x=1 and verifies all three equations, yet the answer field reads x=1, y=3, z=2, which does not satisfy equation A (1+6+6=13, not 14). In example 2 the results are borrowed from a different system: steps whose operatio",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_238": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration. Example 1's case analysis yields x=4y with y=+/-2 giving x=+/-8, and x=-3y with y=+/-sqrt(34/5); the answer field instead pairs y=+/-2 with x=-/+6 and pairs y=+/-sqrt(34/5) with -/+4 sqrt(34/5), branches that fail x^2+y^2=68 (36+4=40). Examples 2 and 3 also carry resu",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_257": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration. Step 9's operation states 'get quotient digit 7 and remainder 3' while its own result computes 10 divided by 7 as 1 remainder 3, so the step contradicts itself. The digits the example actually produces at its division steps are 1, 2, 5 and 1, which the operations labe",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_258": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration. The stated answer is 142857, and multiplying the remainders 3, 2, 6, 4, 5, 1 by 7 and keeping only the units digit of each product does give 1, 4, 2, 8, 5, 7. The template's operations instead add a carry into the next remainder before multiplying: (2+2)x7=28, (6+2)x7",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_277": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is outside the narration layer. Example 1 bundles two complete independent derivations under one solution: steps 1 to 15 carry out the whole expansion of one seventh and steps 16 to 24 restart it from scratch. Its protected answer field then denies that derivation, declaring the problem state",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_278": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is outside the narration layer: the steps contradict each other and the answer. In example 1, step 4 generates the remainder chain 1, 4, 16, 13 repeating with period 4, and step 5 derives the digits 0, 0, 3, 3 from it, yet steps 5 and 6 assert the expansion 0.0588235294117647 and the protecte",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_285": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is outside the narration layer, and the examples are not one technique. Example 1 expands one forty first with an alternating geometric series, not the Ekadhika of the template name, and its step 2 result states a rule for denominators ending in 9 whose form contradicts the correct expansion ",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_287": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is outside the narration layer: the digit generating steps contradict the answer they claim to produce. Steps 3 to 8, taken exactly as written, give write 0 carry 4, then 4 times 4 is 16 write 6, then 1 times 4 is 4 write 4, then 6, then 4, then 6, that is the digits 0, 6, 4, 6, 4, 6, while s",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_288": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. Step 1's operation/result is self-contradictory: it proposes an Ekadhika of 10/7, then 33, then 41/7, then retracts each ('Let me correct', 'Actually...'), and settles on multiplier 33, which no later step ever uses. Steps 2-6 are plain long division by hundreds",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_289": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Contradictory arithmetic in the verified layer. Example 1 declares the Ekadhika of 47 to be 5 while also stating the rule gives 8, then generates quotient digits 0.0216 1... from steps 3-7, which contradict the template's own answer 0.0212765957... Example 2's step 1 result reports an expansion of 1",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_292": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Contradictory arithmetic between steps. The problem statement and step 1 write 0.142857 as 143 x 999 over 999 x 999; step 2 cancels to 143/999, and step 6 asserts 143/999 = 1/7, which is false (the correct denominator is 1001 = 7 x 11 x 13, giving 143/1001 = 1/7). Step 3's factorisation 999 = 27 x 3",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_293": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Two genuinely different techniques are bundled under one template, plus contradictory results. Example 1 converts repeating decimals to fractions by the Ekanyuna/all-nines factorisation; examples 2 and 3 instead analyse remainder patterns for 1/29 and 1/89. Within those examples the result fields co",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_297": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Contradictory arithmetic between steps and against the answer. Example 1 derives quotient digits 3, then 9, then 0 (steps 4-8) but step 10 announces the quotient 5.3287; step 9 gives remainder 26 while the answer states remainder 24 (389 / 73 is 5 remainder 24). Step 4 also treats the leading divide",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_298": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Three techniques and two different dividends are bundled into a single example. Steps 1-2 and 17-20 perform Nikhilam and Paravartya division of 38982 by 73 giving 534 remainder 0; steps 3-16 instead divide 389 by 73 by flag-digit division and run out to 5.328767..., contradicting the stated problem ",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_300": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Mixed methods plus contamination of the immutable result layer. Example 1 is ordinary long division of 529 by 23, while examples 2 and 3 are flag-digit (Dhvajanka) chart fragments; example 3's step 2 operation 'Divisor setup: 12 : 4 11 : 6' does not decode for the divisor 128, and its result field h",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_301": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is below the narration layer. Example 1 (\"Divide 7632 by 94\") derives \"81:18\" in its own steps and 7632/94 is indeed 81 remainder 18, but the frozen answer field reads \"Q=12199, R=29\" - the steps and the answer contradict each other and neither may be edited. Steps 2 and 3 of that example are",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_307": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is below the narration layer: answers are attached to the wrong problems. Example 1 asks for 50x11 divided by 439 (= 1.2528) but its steps conclude \"11.415\" and its answer field reads \"2.621, R=165\", which is the correct value for example 2 (15x61 = 915, 915/349 = 2.6218). Example 2 in turn c",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_308": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is below the narration layer. In example 1 the steps compute 60 x 16231 = 973860 and 975311 - 973860 = 1451, and the verification step confirms 973860 + 1451 = 975311, yet the frozen answer field reads \"Quotient: 60, Remainder: 1471\". The step results and the answer contradict each other by 2",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_309": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is below the narration layer. Example 1 (\"Divide 53247 by 4999 to five places of decimals\") states in its own step 5 \"Final quotient computed as 10.65153\", which is the correct value, but the frozen answer field reads \"0.347\" - an apparent fragment of example 2 answer 3.47003. Steps and answe",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_310": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is below the narration layer. Example 1 runs 22 steps that present three different methods for the same division (Paravartya with base 5000, then a plain digit-by-digit long division whose own figures do not chain - \"53 div 5 = 10 r 3\" followed by \"bring down next digit: 32\" - then a Flag met",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_311": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is below the narration layer. Example 1 (\"Divide 74.5129 by 9314\") states in step 3 \"result is 0.008... with remainder 966\", which matches the true value 0.00800, but its answer field reads \"1.8600\" - the answer belonging to example 3 (137426 divided by 743.2 x 1.242 x 80.04). Steps and answe",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_312": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is below the narration layer on three counts. Example 1 problem_statement bundles three unrelated problems (19, 20 and 21) while its solution works only the first; that solution sums a geometric series to 0.0080 while the answer field reads \"0.0010850\"; and examples 2-5 are not divisions at a",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_316": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is below the narration layer. Example 1 (15/899) is worked as a geometric-series expansion about base 900, a different technique from the auxiliary-fraction Ekadhika digit generation used in examples 2-5, and its step 1 result states an incoherent identity (\"1/a = d/(a(a+d)) where d=1\"). Exam",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_317": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Contradictory arithmetic between steps, not a narration fault. The auxiliary-fraction chain runs 12/3=4 r0, then complement 5 giving 5/3=1 r2, then 28/3=9 r1, then 10/3=3 r1; the next dividend must be the complement 6 of that digit 3 prefixed by remainder 1, i.e. 16/3=5. Step 6 instead repeats 10/3=",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_318": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is in the operation/result layer, not narration. Example 1 derives 1/41 by an explicit geometric-series expansion about base 100, while examples 2 through 8 are auxiliary-fraction digit strings with complement-from-9 carrying: two different techniques bundled under one template. Several steps",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_319": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is in the result layer, not narration. Every step of examples 2, 3 and 4 carries the result 'F = 2743/7001, AF = 2.742/7', restating example 1's fraction instead of its own work, so no step can honestly be narrated against its own result. Example 1 also uses a geometric-series expansion about",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_323": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Example 3's operation layer is itself incoherent. Step 1 sets F = 7/99 and AF = 7/98 described as two below the normal 99, but step 3 and the answer give the digit string 7 5 2 5 7 7 3 1 9 5 8 7 6 2 8 8 6 5 9 7 carrying a stray leading 3, which is the expansion of 73/97, not of 7/99 (0.0707...). The",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_326": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Contradictory arithmetic in the protected layer. 21863/49997 equals 43726/99994 equals 0.4372862371742304..., but step 5's result and the answer both give 0.4372462347740864, and step 6 asserts that this false value multiplied by 49997 returns 21863. Step 2 additionally names Ekadhikena Purvena for ",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_328": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is below the narration layer. Step 22 asserts the expansion of 17/76 repeats with period 6, which its own step 12 contradicts (17/76 = 17/4 x 1/19, and 1/19 has an 18-digit period); the eight remainders listed in steps 14-21 never repeat either. The same single example is also derived three t",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_329": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is below the narration layer. Step 5 states F = 0.2854 with 2618 recurring, which contradicts the template's own answer 0.2854261808726958 (the digits after 0.2854 are 261808726958, not a repeating 2618 block), and step 6 then claims that recurring value multiplied by 59998 returns 17125 exac",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_332": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is below the narration layer. Examples 2 and 3 have answers that belong to different problems: example 2 asks whether 237 is divisible by 8 but answers '79, 79 etc., and is divisible by 79', and example 3 asks about 4321 by 7 but answers with the unrelated chain '439, 106, 52, 19, 64, 34, 31,",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_334": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is below the narration layer. In example 1 the first step's operation, 'Osculate 18 with 2 to the left -> 38', does not follow from 2774 (osculating 18 by 2 gives 17, and no 18 arises anywhere in the chain for 2774), and the second step's operation concludes from 19 while the chain shown prod",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_337": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is below the narration layer. Two genuinely different techniques are bundled: example 1 teaches the positive Ekadhika osculator (14 for 139), while examples 2 and 3 apply the negative osculator (7 osculated by 5 giving -35; 35712 osculated by 4 giving -3563). Steps 13 and 22 also state the qu",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_340": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is below the narration layer. Example 1's problem_statement states the negative osculator for 41 is 4, while its answer states 'The negative osculator for 41 is 37, not 4'; the steps derive 37 from a formula (9n + 1)/10 that does not give a negative osculator, so the protected fields contradi",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_343": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is in the operation/result layer, not narration. In example 1 (210074 osculated by 8 for five-digit bundles) step 1 derives 'Q=1 (since 8x1+2=10)', which is incoherent, and step 3's operation computes '2 x 1 + 10074 = 10076', multiplying the left part by 1 instead of multiplying the right bun",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_347": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Examples from genuinely different techniques are bundled under one template. Example 1 is a divisibility test for 1001 by alternating three-digit groups and prime factorisation; examples 2 and 3 convert recurring decimals (0.142857 and 0.076923) into vulgar fractions by multiplying up to all nines. ",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_349": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Example 1 ('Ascertain the P and the Q for 137') teaches a different method from the rest of the template and is internally contradictory. Its operations apply Nikhilam base deviations, producing P = 37 and Q = 863, while examples 2-4 find osculators from multiples ending in 9 or 1. Step 5's operatio",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_350": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Example 1 ('Find P and Q for 359') is from a different technique than the template: its eleven steps test 359 for primality and conclude P = 1, Q = 359 as factors, whereas examples 2-5 determine osculators P and Q from multiples such as 421 x 19 = 7999. Bundled techniques, not a narration fault; the",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_351": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Contradictory arithmetic inside example 1. Step 1 establishes P4 = 11 for four-digit groups, but steps 3-8 osculate one digit at a time; step 9's result reads '741 / 13 = 57 (since 347 = 13 x 26.692... wait, this needs verification)', an incoherent operation that also invokes a factor 13 that 347 do",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_355": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Contradictory arithmetic between the steps and the answer of example 1. Steps 1-5 derive n = 4 for a = 9 and verify the required quantity as 4 + 4/9 = 40/9, matching the pattern of examples 2-4 (612/35, 1624/57, 9940/141). The answer field instead states the fraction is 4/3, which follows from no st",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_358": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect: in example 2 (13 cubed) the frozen result field of step 3 asserts 11^3 = 1 1 1 1, which contradicts the example's own operation chain and answer of 2197, and that step's operation states the column additions out of order (9 + 18 = 27 then 27 + 0 = 27 with carries applied back",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_372": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. The template bundles two different techniques: examples 1 through 7 are straight division problems (7,064,128 divided by 14, then divisions by 27, .09, .0009, .0039 and so on, each 'to n places'), while the final example is a square-root extraction whose answer ",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_380": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer: the result layer contradicts itself. Step 8's result asserts 2430c plus 10800 equals 59,134,219.216, which forces c to be roughly 24,000, yet the step concludes c equals 5; step 6 likewise divides to 26.33 and takes b equals 2. The place-value scaling of the tri",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_382": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer: example 1's worked solution contradicts its own verified answer. Its final step states the cube root works out to 43,818 and declares the given answer 9,181 incorrect, while the answer field says 9181; neither number cubes to 82,840,362,499,528. That final step ",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_385": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer: the numeric steps contradict one another and the answer. Step 9 brings down '464' when the second group of 262,144 is 144; steps 13 through 15 extract a third digit c equals 4 and leave remainder 1,284, yet step 16 declares the final remainder 0 and the root 64,",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_387": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. The result layer is arithmetically self-contradictory: step 11 asserts 185^3 = 6,334,625 but 185^3 = 6,331,625 (and 6,334,625 is not a perfect cube); step 7 evaluates 3a^2b + 3ab^2 + b^3 at a=10, b=8 as 5312 when the stated expansion gives 4832; step 10 divides 22625 by 97200",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_388": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. The problem_statement asks for the cube root worked by BOTH the First Method and the Second Method (multiplying by 5^3), but only one method's steps are present, so half the template does not exist. The steps also contradict the answer: the final step lands on digit 5 (root 1",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_392": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. Example 1's result layer is false: 84,604,519 is exactly 439^3, yet the answer is given as 439.5 and step 9 asserts 439.5^3 = 84,604,519.875 (the true value is about 84,894,348). Step 5 produces a negative remainder (-49.95) that step 6 patches by changing a digit, and step 8",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_395": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. The solution contradicts its own answer: the steps extract a root beginning 1, 6, 0, 5 for 3,451,232,232, and step 6 states outright that 'the original answer 2247 appears incorrect', while the answer field is 2247. Steps 3 and 4 also reverse an already-placed digit mid-strea",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_396": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. Step 11 claims the final subtraction 8,766,648 - 66,152 leaves remainder 0 and so confirms the root; the true difference is 8,700,496, and 1042^3 = 1,131,366,088, not the given 1,134,510,648 (which is not a perfect cube). Step 10 also reads the digit d=2 from a quotient of ab",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_397": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. The problem_statement names no number ('continued from previous page'), and the steps contradict each other: step 2 assigns c=40 and d=7, while step 4's operation is 'Calculate c^3' with result 7^3 = 343, which is d^3. Steps 2 and 3 additionally compute values (3ac^2 + 3b^2c,",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_398": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. In example 1 the operation layer itself is contaminated: step 9 asserts the cube root is 2247 (and flags itself as belonging to another example) while step 10 asserts 2307, and example 2's steps and answer are raw table fragments carrying a third figure. Contradictory arithme",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_400": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. Two unrelated techniques are bundled: example 1's problem statement is a double-digit cube-root schedule for 76,928,302,277 (root 4253) but its ten steps perform ordinary decimal long division of 769 by 1.81 to reach 425.3, an entirely different method with an unrelated answe",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_402": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. The step arithmetic contradicts itself: step 3 forms the working dividend 12045, while steps 5, 6 and 7 work with 120453 and then 120453312 for the same stage; step 5's result text concludes 'try 7' but step 6's operation uses 0; and step 9 ends with remainder 108,558,400 for",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_404": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. Example 1's steps 1 to 8 are a verbatim duplicate of steps 10 to 16 and extract the cube root of 792,994,249,216 (namely 9256), not of the 1,548,816,893 named in its own problem statement, before switching mid-solution to a third method. Example 2 is stated as the cube root o",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_405": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. Example 3's operations are raw fragments of a printed table - '8 :', ': 355, 045, 312, 441,', '147 : : 12 120', ': 7 : 0 8 1' - which state no operation at all, so no honest description of 'its own operation' exists; writing one would invent the work. Examples 1 and 2 are lik",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_44": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Bundled techniques plus incoherent operations. Example 1 teaches Ekadhikena Purvena for 1/19, while examples 2 and 3 are Urdhva-Tiryak straight division and reciprocal problems. In those two the operations are corrupted fragments rather than steps ('8/1425632).0003147', '3295', '.0000419...'), and t",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_45": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Three examples from two different techniques under one template: example 1 tests divisibility by 139 with Ekadhika-Purva, examples 2 and 3 extract square roots with Urdhva-Tiryak (the template's own key_reminders warn against mixing the two). Every step also has an empty result and an operation that",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_46": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Contradictory arithmetic and bundled techniques. Example 1's steps correctly reach 9989 cubed = 996,703,628,669, but the template's answer field says 997002999269. Examples 2 through 5 are a cube-root extraction and three rational-equation solves, not cubing, and their results are attached to the wr",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_59": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is in the protected operation and result layer, not narration. Step 1 fixes base 20 with deviation 1, but steps 3 and 4 generate digits with a multiplier of 5 (previous digit times 5), and the Ekadhikena multiplier for 1/19 is 2, not 5. Step 5's stated chain (1 times 5 = 5, then 5 times 5 = 2",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_69": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Contradiction lives in the protected layer. The problem statement and answer are about 1/19, but the operations and results are 1/49 work: step 1's result gives .020408163265306122448, which is 1/49; the multiplier 5 is the Ekadhikena multiplier for 49, whereas 19 gives 2; steps 4 and 5 cite the hal",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_77": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Unrepairable: the defect is not in the narration layer. Example 1's problem_statement poses eleven separate multiplications and its 29 operations walk through all of them, yet the example carries the single answer 9603, which belongs only to sub-problem 1; operations 10 and 'Examples:' are not steps",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_78": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Unrepairable: the defect is in the operation and result layer. Example 1 ('12 + 2 over 8 - 2', answer 96) is a Nikhilam item with 12 two above base 10 and 8 two below it, but its six operations evaluate the unrelated arithmetic expression 12 + 2 x 8 - 2 under order of operations and conclude 26, wit",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_81": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Unrepairable: corrupted result fields, which are outside the narration layer and may not be edited. In example 3 ('46 x 46') steps 3 and 4, and in example 4 ('OR 46 x 46') steps 3 and 5, the result reads '65/4 = 16 1/4', a fraction from an unrelated division item; it has no bearing on the operations",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_87": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Unrepairable: example 1 bundles three separate problems and carries a foreign answer. Its problem_statement asks only for 231 x 582 with working base 600, but its 21 operations solve 231 x 582 twice (steps 1-7 and 8-13, and step 8 states the deviation as 231 - 369 = -138, contradicting step 2's -369",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_90": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is in the verified layer, not the narration. In the 29 squared example the operation text itself is incoherent and self-contradicting: step 4 reads 'Carry over: 38 + 8 = 46, leaving 1 to 46/1? But shown as 84/1 - correction needed: likely typo or alternative base', and the recorded answer 84/",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_93": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is in the verified layer. Step 1's result records '27 = 30 - 3' and '23 = 20 + 3', assigning the two factors different bases, while steps 2 through 6 compute with a single common base of 20 and deviations of plus 7 and plus 3 to reach 621. A step 1 description that truthfully narrates its own",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Tirthaji_Vedic_Math_sa_95": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is in the verified layer. In the 7 times 99 example the single operation states 'left = 07 - 1 = 06, right = 99 - 07 = 92', but the recorded answer is 06/93. The complement must be taken from 100, not 99, so the operation's own arithmetic contradicts the answer it is paired with. This cannot ",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Vedic_Made_Easy_sa_100": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Result layer is self-contradictory, not merely mis-narrated. Example 1 (123 divided by 9) fixes the deviation at -1, then step 4 computes 1 x (-1) + 2 = 1 while step 5's result shows the second quotient digit as 3, and step 6 computes 3 x (-1) + 3 = 0 while step 7 and the answer assert remainder 6. ",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Vedic_Made_Easy_sa_104": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. Example 1 bundles five unrelated division problems (a)-(e) under one problem_statement, then repeats all five again in steps 6-40, and its answer field ('Quotient = 111, Remainder = 415') is the answer to example 3 (113968 divided by 1023), not to any part of example 1. The t",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Vedic_Made_Easy_sa_105": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. Example 1 (1999 divided by 180) contains three mutually contradictory derivations in one solution: steps 1-8 use difference -8-0, steps 9-17 assert 'base is 100 and the difference is -2-0 (since 180 - 200 = -20)', which is incoherent (that difference belongs to base 200) and ",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Vedic_Made_Easy_sa_106": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect. Example 1 (14189 divided by 102) has an incoherent operation/result layer: step 5 subtracts 282 from 14189 to get 13907, step 6 then works on 1390 with no derivation, step 8 concludes '1338 divided by 102 = 13 remainder 12' and step 9 gives approximately 139.1078, while the s",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Vedic_Made_Easy_sa_113": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Not a narration defect: two genuinely different techniques are bundled under one template. Example 1 teaches Urdhva-Tiryagbhyam (criss-cross) multiplication of the binomials (a + b) and (a + 3b); example 2 teaches Zeller's rule for finding the day of the week for 4th February 2032. No single techniq",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Vedic_Made_Easy_sa_14": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Two different tricks are bundled as one template. Example 1 is the guess-the-money routine (take the amount, add 5, multiply by 5, double, add a favourite digit) with answer recorded as 'unknown'; example 2 is the five-number sum prediction totalling 2799, which is a separate routine (it also appear",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Vedic_Made_Easy_sa_23": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Example 1 (201432 by 111) is one step short of its own result. Steps 1-7 produce the digits 2, 5, 9, 8, 5, 3, 2, which read as the seven-digit 2358952, while step 8 combines eight digits, 2,2,3,5,8,9,5,2, into 22358952. The millions-place sum (2 + 0) has no step of its own, and step 7 ('Move left an",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Vedic_Made_Easy_sa_30": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. Example 1 is the same five-step 124x355 solution pasted three times as steps 1-16, and example 2 ('Multiply 342 by 2009') carries results that contradict their own operations - a 4-digit zero-padding step whose result reads '(a x d + b x c) for 2-digit multiplic",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Vedic_Made_Easy_sa_31": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Contradictory arithmetic in the verified layer. Example 1 asks for the number of steps in 2-digit multiplication and its answer is '4 steps', while its own solution lists the three criss-cross products (vertical, cross, vertical) and the sibling examples apply the 2n-1 rule, which gives 3 for n=2 (t",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Vedic_Made_Easy_sa_34": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Genuinely different techniques bundled under one template, plus non-operations in the step layer. Example 1 is Urdhva Tiryagbhyam on 23x12 but repeats the same solution three times across steps 1-15 and includes layout fragments ('  23', 'x12') as operations; examples 2 and 3 teach squaring by the (",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Vedic_Made_Easy_sa_44": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is in the operation/result layer, not the narration. Step 6 applies Ekadhikena Purvena to 88, a number for which the sutra does not hold (it requires last digits summing to 10), and its result asserts 'Combine: 72|64 = 7744' when the concatenation 72 followed by 64 is 7264. That contradicts s",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Vedic_Made_Easy_sa_50": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is in the operation/result layer of the third example, not in narration. Its step 1 declares the base as 1,00,00,000 with 7 zeros, but step 2 computes the deviations against 100000000 (8 zeros) and step 3 pads the right-hand side to 7 digits; the stated answer 999999980000001 has 15 digits, w",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Vedic_Made_Easy_sa_56": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is in the operation/result layer, not narration. The final example, 45 times 45, uses actual base 10 with working base 40: its steps give cross-sum 50, deviation product 25 and left part 50 times 4 equal to 200, then state a final answer of 20025, but 45 squared is 2025. With actual base 10 t",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Vedic_Made_Easy_sa_57": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. Example 1 is titled '45 x 45 with working base 40' but steps 1-7 and 17-24 carry out a different problem entirely (27 x 28 with actual base 100 and working base 20, concluding 756), while steps 8-16 do 45 x 45 and conclude 225; the recorded answer is 2025. Three",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Vedic_Made_Easy_sa_62": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. The template bundles three unrelated techniques as sibling examples: example 1 is a mixed drill sheet worked with Ekadhikena Purvena, Yavadunam and the working-base method at once; example 2 is a digit-sum reduction; example 3 is digit-sum verification of a prod",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Vedic_Made_Easy_sa_66": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. The template bundles two genuinely different techniques as sibling examples: example 1 is digit-sum verification used to pick a correct multiple-choice product, while example 2 verifies the rows, columns and diagonals of a 5x5 magic square, which shares no metho",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Vedic_Made_Easy_sa_69": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. In example 1, step 4 establishes the centre of a 3x3 magic square as the magic constant divided by 3, giving 5, but step 5's result asserts that the same centre equals the average of 1 through 9 multiplied by 3, an expression that evaluates to 15, not the 5 it c",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Vedic_Made_Easy_sa_72": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. The template bundles two unrelated techniques: example 1 constructs magic squares from arithmetic progressions, while examples 2, 3 and 4 are calendar problems that find the weekday of a date from a year key, sharing no method with magic squares. Example 1 addit",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Vedic_Made_Easy_sa_82": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Genuinely different techniques bundled under one template. Examples 1 and 2 solve their systems by general cross-multiplication of the coefficients, the determinant or Cramer construction, which is not Suryam Anyat at all; examples 3 and 4 apply the actual Suryam Anyat ratio shortcut, where a variab",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Vedic_Made_Easy_sa_86": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. Example 3 (square root of 65536) is a truncated stub: its single step's operation is the bare word 'Grouping', it has no result, and its answer field reads 'Incomplete on this page' instead of a value. The missing solution cannot be supplied without inventing wo",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Vedic_Made_Easy_sa_88": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. Example 1's answer, 28.1421356237, contradicts the steps above it: steps 4 through 8 produce the root digits 2, 8, 1 and 4 and then test 5624 times 4 = 22496 against the dividend 23900, a path whose next digit is 2 and which converges on 28.14249, the true squar",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Vedic_Made_Easy_sa_92": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is in the operation/result layer, not the narration: contradictory arithmetic between steps. Step 3's first row (125000, 7500, 300, 8) and its Sum row (125000, 22500, 900, 8) do not correspond to the terms of 50 plus 2 cubed, which are 125000, 15000, 600 and 8, and neither row is a geometric ",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Vedic_Secrets_sa_17": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. Example 1 (42 x 48, base 50) has contradictory arithmetic in its verified layer: step 5's operation reads 40 x 100 + 16 = 4000 + 16 = 2016, which is internally false and uses base 100 for a base-50 setup. The remaining nine examples (53 x 57, 63 x 67, 56 x 54, 4",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Vedic_Secrets_sa_18": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer. Example 1's problem_statement asks for 151 x 159 and its answer is 24009, but eight of its thirteen operations compute 42 x 48 = 2016 instead; the operation layer belongs to a different problem, so re-narrating would paper over it. The template also bundles genu",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Vedic_Secrets_sa_29": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer: in example 2 (2456 x 11) the step 4 'result' field holds a different example's worked line, '234 x 11 = 2/ (2+3)/ (3+4)/ 4 = 2574', which contradicts that step's own operation (5 + 6 = 11) and its own problem statement. Correcting it would require editing an imm",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Vedic_Secrets_sa_32": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is not in the narration layer: the immutable problem_statement declares 'a=1, b=2' while step 1's immutable operation and result declare 'a=10, b=2', so the template contradicts itself about what a denotes, and step 3's result string is malformed LaTeX with stray dollar delimiters. Both live ",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Vedic_Secrets_sa_43": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is in the operation layer, not the narration. Example 1 (1236 divided by 121) contradicts itself: step 1 takes the deviation as plus 21 and step 4 adds it (2 plus 21 equals 23), then step 7 subtracts that same 21 back out of 57 to claim a remainder of 36, and step 8 removes a further unexplai",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Vedic_Secrets_sa_44": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is in the operation layer, not the narration. One example carries 34 steps that work 1236 divided by 121 three separate times and then switch to a different problem, 1248 divided by 160 (steps 29 to 34), although the example's answer is 10 r 26. Steps 11 to 15 are not operations at all but fr",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Vedic_Secrets_sa_47": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is in the operation and result layer, not the narration. Step 8's result states that 0.210526315789473684 times 4 equals 0.210526315789473684, multiplying a value by 4 and returning the same value, while steps 2 to 6 build the 1 over 19 expansion starting from numerator 1 even though the prob",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Vedic_Secrets_sa_58": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is in the operation layer, not narration. Example 2 (1236 divided by 160) states its own setup contradictorily: the operation writes 160 as 200 minus 40 while simultaneously using minus 60 as the complement, and step 4 is self-doubting and incoherent ('24 times -60 -> -1440? But shown as /240",
+   "requires_rejudge_by": "configured_trio"
+  },
+  "Vedic_Secrets_sa_59": {
+   "state": "quarantined",
+   "judge_backend": "legacy_bank_repair_pass_2026-09-05",
+   "stage7_interim": true,
+   "target_kind": "template",
+   "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
+   "repair_note": "Defect is contradictory arithmetic between steps, not narration. The step chain (3 + (-12) = -9; -9 + 10 = 1 carry -1; 8 - 1 - 9 = -2; -2 + 10 = 8) yields quotient digits 1, 1, 8, which cannot produce the stated quotient 123, and step 8 introduces an unsourced 36 to reach remainder 43. The correct N",
    "requires_rejudge_by": "configured_trio"
   }
  },
@@ -1065,5 +3500,11 @@
   "deepseek-v4-flash",
   "glm-5.1",
   "kimi-k2.6"
- ]
+ ],
+ "demotion_2026-09-05": {
+  "source": "data/factory/repaired/ (297 unrepairable)",
+  "newly_demoted": 268,
+  "already_quarantined_by_panel": 23,
+  "note": "Demote, not fix: these templates carry cross-example contamination in result fields (see docs/rag/RESULT_LAYER_CONTAMINATION.md)."
+ }
 }
