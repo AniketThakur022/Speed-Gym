@@ -78,7 +78,8 @@ async def user_context(body: UserContextRequest) -> dict:
         row = await (
             await conn.execute(
                 """SELECT u.id, u.age, COALESCE(p.theta, 0) AS theta,
-                          p.behavioral_cluster, e.rating, e.rating_deviation, e.volatility
+                          p.behavioral_cluster, e.rating, e.rating_deviation, e.volatility,
+                          u.account_type, u.taunts_enabled
                    FROM users u
                    LEFT JOIN user_cognitive_profiles p ON p.user_id = u.id
                    LEFT JOIN player_elo_ratings e ON e.user_id = u.id
@@ -89,13 +90,20 @@ async def user_context(body: UserContextRequest) -> dict:
     if row is None:
         raise HTTPException(status_code=404, detail="unknown user")
 
-    _, age, theta, cluster, rating, rd, volatility = row
+    _, age, theta, cluster, rating, rd, volatility, account_type, taunts_ok = row
     theta = float(theta or 0)
+    policy = kids_policy(age, account_type or "standard")
     return {
         "user_id": body.user_id,
         "theta_u": theta,
         "cluster": cluster or "balanced",
-        "age_group": age or 20,
+        # None when unknown: the game server treats unknown age as bot-ineligible
+        # (COPPA gate), and defaulting to an adult here would defeat that.
+        "age_group": age,
+        "account_type": account_type or "standard",
+        "kids_mode": policy["kids_mode"],
+        "bots_allowed": policy["bots_enabled"],
+        "taunts_enabled": policy["taunts_enabled"] and bool(taunts_ok),
         "elo": int(rating) if rating is not None else int(seed_rating(theta).rating),
         "rating_deviation": int(rd) if rd is not None else 350,
         "volatility": float(volatility) if volatility is not None else 0.06,
@@ -286,9 +294,112 @@ async def match_complete(body: MatchCompleteRequest) -> dict:
                     }
                 )
 
+        # Social side-effects (block 5): XP, streak day, achievements, taunt.
+        # Everything here is idempotent on match_id, and nothing about bots
+        # leaves this function except a halved XP award.
+        async with conn.cursor() as cur:
+            social = await _social_after_match(cur, body, human_results, updated)
         await conn.commit()
 
-    return {"match_id": body.match_id, "elo_updates": elo_updates, "persisted": True}
+    return {"match_id": body.match_id, "elo_updates": elo_updates, "persisted": True, "social": social}
+
+
+async def _social_after_match(cur, body: MatchCompleteRequest, human_results: list, ratings: dict) -> dict:
+    from datetime import date
+
+    from ..social import achievements as ach
+    from ..social import xp as xp_mod
+    from ..social.policy import taunt_decision
+    from ..social.taunts import build_context, select_taunt
+
+    any_bot = any(r.is_bot for r in body.results)
+    out: dict[str, dict] = {}
+    for result in human_results:
+        uid = result.user_id
+        won = result.final_rank == 1
+        entry: dict = {"xp_awarded": 0, "achievements_unlocked": [], "taunt": None}
+
+        reason = "duel_win" if won else "duel_loss"
+        delta = xp_mod.XP_RULES[reason] // 2 if any_bot else xp_mod.XP_RULES[reason]
+        entry["xp_awarded"] += await xp_mod.award(cur, uid, reason, body.match_id, delta)
+        day = await xp_mod.record_activity_day(cur, uid, date.today(), result.problems_attempted)
+        if day["new_day"]:
+            entry["xp_awarded"] += await xp_mod.award(cur, uid, "streak_day", date.today().isoformat())
+
+        await cur.execute(
+            """SELECT final_rank FROM player_match_results
+               WHERE user_id = %s::uuid ORDER BY created_at DESC LIMIT 30""",
+            (uid,),
+        )
+        recent = [r[0] for r in await cur.fetchall()]
+        win_streak = 0
+        for rank in recent:
+            if rank == 1:
+                win_streak += 1
+            else:
+                break
+        loss_streak = 0
+        for rank in recent:
+            if rank != 1:
+                loss_streak += 1
+            else:
+                break
+        await cur.execute(
+            "SELECT matches_played, rating FROM player_elo_ratings WHERE user_id = %s::uuid", (uid,)
+        )
+        elo_row = await cur.fetchone()
+        stats = {
+            "won": won, "mode": body.mode, "win_streak": win_streak,
+            "matches_played": int(elo_row[0]) if elo_row else 1,
+            "elo": int(elo_row[1]) if elo_row else 0,
+            "accuracy_pct": float(result.accuracy_pct or 0), "duration_ms": body.duration_ms,
+        }
+        entry["achievements_unlocked"] = await ach.unlock(cur, uid, ach.evaluate(stats))
+
+        # Taunt: SOC-15/16 gates, then a stable pick for this match.
+        await cur.execute(
+            """SELECT u.age, p.behavioral_cluster, u.taunts_enabled, u.display_name
+               FROM users u LEFT JOIN user_cognitive_profiles p ON p.user_id = u.id WHERE u.id = %s::uuid""",
+            (uid,),
+        )
+        prow = await cur.fetchone()
+        age, cluster, opted_in, _name = prow if prow else (None, None, True, None)
+        await cur.execute(
+            """SELECT COUNT(*) FROM player_match_results r
+               WHERE r.user_id = %s::uuid AND r.match_id <> %s
+                 AND r.created_at > COALESCE((SELECT MAX(shown_at) FROM taunt_log WHERE user_id = %s::uuid), '-infinity')""",
+            (uid, body.match_id, uid),
+        )
+        since_last = int((await cur.fetchone())[0])
+        allowed, why = taunt_decision(age, cluster, since_last, loss_streak, bool(opted_in))
+        if allowed:
+            opp = next((r for r in body.results if r.user_id != uid), None)
+            opp_name = "Your opponent"
+            if opp is not None and not opp.is_bot:
+                await cur.execute("SELECT display_name FROM users WHERE id = %s::uuid", (opp.user_id,))
+                nrow = await cur.fetchone()
+                opp_name = (nrow[0] if nrow and nrow[0] else None) or "Your opponent"
+            ctx = build_context(
+                won=won,
+                my_correct=int(result.problems_correct), opp_correct=int(opp.problems_correct) if opp else 0,
+                my_attempted=int(result.problems_attempted),
+                my_time_ms=int(result.avg_time_ms or 0), opp_time_ms=int(opp.avg_time_ms or 0) if opp else 0,
+                my_accuracy=float(result.accuracy_pct or 0), opp_accuracy=float(opp.accuracy_pct or 0) if opp else 0.0,
+                traps_triggered=int(getattr(result, "traps_triggered", 0) or 0),
+                opponent_name=opp_name,
+            )
+            taunt = select_taunt(ctx, body.match_id)
+            if taunt:
+                await cur.execute(
+                    """INSERT INTO taunt_log (user_id, match_id, taunt_id, text) VALUES (%s::uuid, %s, %s, %s)
+                       ON CONFLICT (user_id, match_id) DO NOTHING""",
+                    (uid, body.match_id, taunt["id"], taunt["text"]),
+                )
+                entry["taunt"] = taunt
+        else:
+            entry["taunt_suppressed"] = why
+        out[uid] = entry
+    return out
 
 
 @router.get("/game/leaderboard", dependencies=[Depends(require_internal)])

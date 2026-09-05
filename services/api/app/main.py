@@ -17,11 +17,13 @@ from .routers import (
     auth,
     billing,
     content,
+    dashboard,
     family,
     health,
     internal,
     practice,
     session,
+    social,
     sync,
     webhooks,
 )
@@ -48,6 +50,8 @@ def create_app() -> FastAPI:
     app.include_router(session.router, prefix=settings.api_v1_prefix)
     app.include_router(sync.router, prefix=settings.api_v1_prefix)
     app.include_router(billing.router, prefix=settings.api_v1_prefix)
+    app.include_router(dashboard.router, prefix=settings.api_v1_prefix)
+    app.include_router(social.router, prefix=settings.api_v1_prefix)
     app.include_router(family.router, prefix=settings.api_v1_prefix)
     app.include_router(webhooks.router)
     app.include_router(internal.router)

@@ -68,6 +68,7 @@ const turnTimers = new Map<string, NodeJS.Timeout>();
  *  from it may be emitted to a client. */
 const matchBots = new Map<string, BotProfile>();
 const playerAges = new Map<string, number | null>();
+const botsBlocked = new Map<string, boolean>();
 const heartbeats = newHeartbeatLedger();
 let matchSequence = 0;
 
@@ -137,11 +138,15 @@ io.of("/lobby").on("connection", (socket: AuthedSocket) => {
     if (!playerAges.has(userId)) {
       try {
         const context = (await internalPost("/internal/user/context", { user_id: userId })) as {
-          age_group?: number;
+          age_group?: number | null;
+          bots_allowed?: boolean;
         };
         age = typeof context.age_group === "number" ? context.age_group : null;
+        // The account service's verdict (kids mode) wins over the age table.
+        botsBlocked.set(userId, context.bots_allowed === false);
       } catch {
         age = null; // unknown age -> bots are refused downstream, which is the safe default
+        botsBlocked.set(userId, true);
       }
       playerAges.set(userId, age);
     }
@@ -155,7 +160,11 @@ io.of("/lobby").on("connection", (socket: AuthedSocket) => {
     }
 
     if (decision.type === "bot_fill") {
-      const eligibility = botsAllowedFor({ age, mode: payload?.mode ?? "accuracy_duel" });
+      const eligibility = botsAllowedFor({
+        age,
+        mode: payload?.mode ?? "accuracy_duel",
+        accountBlocksBots: botsBlocked.get(userId) ?? true,
+      });
       if (eligibility.allowed) {
         const waiting = [...queue.values()].map((p) => p.thetaU);
         const bot = makeBot(waiting.length ? waiting : [profile.thetaU], Math.random);

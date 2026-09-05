@@ -17,6 +17,7 @@ ON CONFLICT DO NOTHING rather than double-counting a learner's attempts.
 from __future__ import annotations
 
 import json
+from datetime import datetime, timezone
 from typing import Any, Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Path
@@ -30,7 +31,9 @@ router = APIRouter(prefix="/sync", tags=["sync"])
 
 # The event registry and sampling policy live in app.telemetry; the invariant
 # enforced there is that psychometric events are NEVER sampled (§11.3).
-from ..telemetry import PSYCHOMETRIC_EVENTS, decide  # noqa: E402
+from ..telemetry import PSYCHOMETRIC_EVENTS, SamplingClass, decide  # noqa: E402
+from ..social import xp as xp_mod  # noqa: E402
+from ..social.policy import is_kid  # noqa: E402
 
 
 class SyncEvent(BaseModel):
@@ -45,6 +48,16 @@ class SyncEvent(BaseModel):
 class SyncRequest(BaseModel):
     events: list[SyncEvent] = Field(default_factory=list, max_length=500)
     device_id: Optional[str] = None
+
+
+KIDS_STRIPPED_METADATA = frozenset({"device_fingerprint", "device_id", "ip", "ip_address", "user_agent", "geo"})
+
+
+async def _is_kid_account(conn, user_id: str) -> bool:
+    row = await (
+        await conn.execute("SELECT age, account_type FROM users WHERE id = %s::uuid", (user_id,))
+    ).fetchone()
+    return bool(row and is_kid(row[0]))
 
 
 async def _current_dau(pool) -> int:
@@ -85,11 +98,16 @@ async def sync_events(body: SyncRequest, user: dict = Depends(get_current_user))
 
     accepted = 0
     sampled_out = 0
+    minimized = 0
     unknown_types: set[str] = set()
     session_ends: list[SyncEvent] = []
     dau = await _current_dau(pool)
+    xp_awarded = 0
+    active_days: dict = {}
 
     async with pool.connection() as conn:
+        kid = await _is_kid_account(conn, user["id"])
+        device_id = None if kid else body.device_id
         async with conn.cursor() as cur:
             for event in body.events:
                 decision = decide(event.event_type, user["id"], event.event_id, dau)
@@ -101,6 +119,18 @@ async def sync_events(body: SyncRequest, user: dict = Depends(get_current_user))
                 if decision.sampled_out:
                     sampled_out += 1
                     continue
+                if kid:
+                    # COPPA (FAM-05/SEC-08) "minimise tracking": engagement/UI
+                    # telemetry is never stored for a child; psychometric
+                    # events are the service itself and stay. Device and
+                    # network identifiers are stripped from what is kept.
+                    if decision.sampling is SamplingClass.UI:
+                        minimized += 1
+                        continue
+                    event.metadata = {
+                        k: v for k, v in event.metadata.items()
+                        if k not in KIDS_STRIPPED_METADATA
+                    }
 
                 # PATH A — immutable event stream. event_id makes the resend of
                 # a partially-flushed batch a no-op instead of a double count.
@@ -119,7 +149,20 @@ async def sync_events(body: SyncRequest, user: dict = Depends(get_current_user))
                         json.dumps(event.metadata),
                     ),
                 )
-                accepted += cur.rowcount or 0
+                inserted = (cur.rowcount or 0) == 1
+                accepted += 1 if inserted else 0
+
+                # XP + streak from the SAME accepted events (idempotent on
+                # event_id via the ledger; a resend cannot pay twice).
+                if inserted:
+                    day = datetime.fromtimestamp(event.client_timestamp / 1000, tz=timezone.utc).date()
+                    if event.event_type == "problem_attempt":
+                        active_days[day] = active_days.get(day, 0) + 1
+                        if event.metadata.get("is_correct") is True:
+                            xp_awarded += await xp_mod.award(cur, user["id"], "practice_correct", event.event_id)
+                    elif event.event_type == "session_end":
+                        active_days.setdefault(day, 0)
+                        xp_awarded += await xp_mod.award(cur, user["id"], "session_complete", event.event_id)
 
                 # PATH C — graph writes go through the outbox inside this same
                 # transaction; a worker drains it, so Neo4j being down delays
@@ -134,6 +177,12 @@ async def sync_events(body: SyncRequest, user: dict = Depends(get_current_user))
 
                 if event.event_type == "session_end":
                     session_ends.append(event)
+
+            # Streak days, once per (user, day) per batch.
+            for day, problems in sorted(active_days.items()):
+                state = await xp_mod.record_activity_day(cur, user["id"], day, problems)
+                if state["new_day"]:
+                    xp_awarded += await xp_mod.award(cur, user["id"], "streak_day", day.isoformat())
 
             # PATH B — aggregates. Derived from the events just accepted.
             for event in session_ends:
@@ -156,7 +205,7 @@ async def sync_events(body: SyncRequest, user: dict = Depends(get_current_user))
                     """INSERT INTO bkt_state_snapshots
                            (user_id, session_id, technique_states, snapshot_reason, device_id)
                        VALUES (%s, %s::uuid, %s, 'session_end', %s)""",
-                    (user["id"], event.session_id, json.dumps(states), body.device_id),
+                    (user["id"], event.session_id, json.dumps(states), device_id),
                 )
 
         await conn.commit()
@@ -165,6 +214,8 @@ async def sync_events(body: SyncRequest, user: dict = Depends(get_current_user))
         "accepted": accepted,
         "duplicates": len(body.events) - accepted - sampled_out,
         "sampled_out": sampled_out,
+        "minimized": minimized,
+        "xp_awarded": xp_awarded,
         "psychometric": sum(1 for e in body.events if e.event_type in PSYCHOMETRIC_EVENTS),
         "unknown_event_types": sorted(unknown_types),
         "entitlement": await _offline_entitlement(pool, user["id"], user["tier"]),

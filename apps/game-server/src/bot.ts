@@ -67,9 +67,14 @@ export function botsAllowedFor(params: {
   age?: number | null;
   mode: string;
   isRankedTournament?: boolean;
+  /** The account service said no (kids mode / policy). Overrides everything. */
+  accountBlocksBots?: boolean;
 }): EligibilityResult {
-  const { age, mode, isRankedTournament } = params;
+  const { age, mode, isRankedTournament, accountBlocksBots } = params;
 
+  if (accountBlocksBots) {
+    return { allowed: false, reason: "account policy blocks bots (kids mode)" };
+  }
   if (age === undefined || age === null) {
     return { allowed: false, reason: "age unknown — cannot confirm the COPPA gate" };
   }

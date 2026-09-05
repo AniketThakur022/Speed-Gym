@@ -28,6 +28,7 @@ app = Celery(
         "worker.tasks.factory",
         "worker.tasks.outbox",
         "worker.tasks.billing",
+        "worker.tasks.social",
     ],
 )
 
@@ -72,5 +73,14 @@ app.conf.beat_schedule = {
     "billing-enforce-grace": {
         "task": "billing.enforce_grace_and_expiry",
         "schedule": crontab(minute=0, hour=2),
+    },
+    # Daily challenge for the new UTC day; ghosts expire after 30 days
+    "social-daily-challenge": {
+        "task": "social.generate_daily_challenge",
+        "schedule": crontab(minute=5, hour=0),
+    },
+    "social-expire-ghosts": {
+        "task": "social.expire_ghosts",
+        "schedule": crontab(minute=30, hour=3),
     },
 }
