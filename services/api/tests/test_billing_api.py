@@ -135,8 +135,8 @@ def _stripe_webhook(client, payload: dict, secret=STRIPE_WEBHOOK_SECRET):
     )
 
 
-def _checkout(client, auth, tier="pro", seats=0, provider=None):
-    body = {"tier": tier, "seats_count": seats}
+def _checkout(client, auth, tier="pro", provider=None):
+    body = {"tier": tier}
     if provider:
         body["provider"] = provider
     res = client.post("/api/v1/billing/checkout", json=body, headers=auth)
@@ -443,3 +443,133 @@ def test_remove_seat_reprices_down_and_frees_the_child(client, fakes):
     assert res.status_code == 200
     assert res.json()["seats"] == [] and res.json()["quote"]["total_minor"] == 50_400
     assert ("reprice", sub_ref, 0, 50_400) in fakes["razorpay"].calls
+
+
+# ── review follow-ups (2026-09-05 adversarial pass) ──────────────────────────
+
+
+def test_replaying_checkout_verify_after_halted_does_not_resurrect_the_tier(client, fakes):
+    """CONFIRMED finding: the verify triple is valid forever, so a learner whose
+    subscription was halted could replay it and regain Pro for free."""
+    auth, user_id, _ = _register(client)
+    out = _checkout(client, auth)
+    sub_ref = out["checkout"]["ref"]
+    pay = f"pay_{uuid.uuid4().hex[:8]}"
+    sig = _hex(RZP_KEY_SECRET, f"{pay}|{sub_ref}".encode())
+    triple = {"intent_id": out["intent_id"], "razorpay_payment_id": pay,
+              "razorpay_subscription_id": sub_ref, "razorpay_signature": sig}
+    assert client.post("/api/v1/billing/checkout/verify", json=triple, headers=auth).status_code == 200
+    assert _me_tier(client, auth) == "pro"
+
+    _rzp_webhook(client, "subscription.halted", sub_ref, "halted", {})
+    assert _me_tier(client, auth) == "free"
+
+    replay = client.post("/api/v1/billing/checkout/verify", json=triple, headers=auth)
+    assert replay.status_code == 409
+    assert _me_tier(client, auth) == "free"
+    # a FRESH signature for a new payment id on the same (paid) intent is refused too
+    pay2 = f"pay_{uuid.uuid4().hex[:8]}"
+    fresh = dict(triple, razorpay_payment_id=pay2,
+                 razorpay_signature=_hex(RZP_KEY_SECRET, f"{pay2}|{sub_ref}".encode()))
+    assert client.post("/api/v1/billing/checkout/verify", json=fresh, headers=auth).status_code == 409
+    assert _me_tier(client, auth) == "free"
+
+
+def test_verify_never_downgrades_a_subscription_the_webhook_already_activated(client, fakes):
+    """If subscription.activated arrives before the client posts the triple,
+    the client-originated event must not overwrite 'active' with 'trialing'."""
+    auth, user_id, _ = _register(client)
+    out = _checkout(client, auth)
+    sub_ref = out["checkout"]["ref"]
+    _rzp_webhook(client, "subscription.activated", sub_ref, "active",
+                 {"user_id": user_id, "intent_id": out["intent_id"]},
+                 current_start=int(time.time()), current_end=int(time.time()) + 30 * 86400)
+    res = _verify_rzp(client, auth, out["intent_id"], sub_ref)
+    # intent already paid by the webhook path → replay semantics
+    assert res.status_code == 409
+    sub = client.get("/api/v1/billing/subscription", headers=auth).json()["subscription"]
+    assert sub["status"] == "active"
+
+
+def test_mrr_is_kept_in_usd_cents_for_inr_subscriptions(client, fakes):
+    import psycopg
+
+    auth, user_id, _ = _register(client)
+    out = _checkout(client, auth)
+    _verify_rzp(client, auth, out["intent_id"], out["checkout"]["ref"])
+    with psycopg.connect("postgresql://vmsg:vmsg@localhost:5432/vmsg") as conn:
+        row = conn.execute(
+            "SELECT currency, amount_minor, monthly_recurring_revenue_cents, usd_inr_rate "
+            "FROM subscriptions WHERE user_id = %s::uuid", (user_id,)
+        ).fetchone()
+    assert row[0] == "INR" and row[1] == 50_400
+    assert row[2] == 600            # $6.00, not 50,400 paise
+    assert float(row[3]) == 84.0
+
+
+def test_override_on_a_foreign_child_is_404_even_when_own_children_exist(client, fakes):
+    auth_a, _, _ = _paid_parent(client, fakes)
+    auth_b, _, _ = _paid_parent(client, fakes)
+    kid_a = client.post("/api/v1/family/sub-account/create", json=_child_body(), headers=auth_a).json()["seat"]["child_user_id"]
+    client.post("/api/v1/family/sub-account/create", json=_child_body(), headers=auth_b)
+    res = client.post("/api/v1/family/sub-account/override",
+                      json={"child_user_id": kid_a, "status": "suspended"}, headers=auth_b)
+    assert res.status_code == 404
+    seats_a = client.get("/api/v1/family", headers=auth_a).json()["seats"]
+    assert seats_a[0]["status"] == "active"
+
+
+def test_seat_discounts_follow_rank_after_a_middle_removal(client, fakes):
+    auth, _, sub_ref = _paid_parent(client, fakes)
+    ids = [client.post("/api/v1/family/sub-account/create", json=_child_body(), headers=auth).json()["seat"]["child_user_id"]
+           for _ in range(3)]
+    res = client.post("/api/v1/family/sub-account/remove", json={"child_user_id": ids[1]}, headers=auth)
+    assert res.status_code == 200
+    body = res.json()
+    assert [s["discount_pct"] for s in body["seats"]] == [100, 80]
+    assert body["quote"]["total_minor"] == 141_120
+    assert ("reprice", sub_ref, 2, 141_120) in fakes["razorpay"].calls
+
+
+def test_a_removed_child_can_be_reseated_by_the_same_parent(client, fakes):
+    auth, _, _ = _paid_parent(client, fakes)
+    kid = _child_body()
+    first = client.post("/api/v1/family/sub-account/create", json=kid, headers=auth).json()["seat"]["child_user_id"]
+    client.post("/api/v1/family/sub-account/remove", json={"child_user_id": first}, headers=auth)
+    again = client.post("/api/v1/family/sub-account/create", json=kid, headers=auth)
+    assert again.status_code == 200, again.text
+    assert again.json()["seat"]["child_user_id"] == first
+    assert again.json()["seat"]["effective_tier"] == "pro"
+
+    # ...but nobody else can claim that email
+    other, _, _ = _paid_parent(client, fakes)
+    assert client.post("/api/v1/family/sub-account/create", json=kid, headers=other).status_code == 409
+
+
+def test_seat_change_is_refused_when_the_provider_cannot_be_repriced(client, fakes):
+    auth, _, _ = _paid_parent(client, fakes)
+    set_provider_override("razorpay", FakeProvider("razorpay", configured=False))
+    res = client.post("/api/v1/family/sub-account/create", json=_child_body(), headers=auth)
+    assert res.status_code == 503
+    assert client.get("/api/v1/family", headers=auth).json()["seats"] == []
+
+
+def test_checkout_kill_switch(client, fakes):
+    import psycopg
+    from app import flags as flags_service
+    import asyncio
+
+    auth, _, _ = _register(client)
+    with psycopg.connect("postgresql://vmsg:vmsg@localhost:5432/vmsg") as conn:
+        conn.execute("UPDATE feature_flags SET enabled = FALSE WHERE flag_name = 'billing_checkout'")
+        conn.commit()
+    asyncio.run(flags_service.invalidate())
+    try:
+        res = client.post("/api/v1/billing/checkout", json={"tier": "pro"}, headers=auth)
+        assert res.status_code == 503
+    finally:
+        with psycopg.connect("postgresql://vmsg:vmsg@localhost:5432/vmsg") as conn:
+            conn.execute("UPDATE feature_flags SET enabled = TRUE WHERE flag_name = 'billing_checkout'")
+            conn.commit()
+        asyncio.run(flags_service.invalidate())
+    assert client.post("/api/v1/billing/checkout", json={"tier": "pro"}, headers=auth).status_code == 200

@@ -28,8 +28,15 @@ from ..billing.providers import (
     get_provider,
     verify_razorpay_checkout,
 )
-from ..billing.state import apply_subscription_event, effective_tier, set_user_tier
+from ..billing.state import (
+    apply_subscription_event,
+    effective_tier,
+    mark_payment_event,
+    record_payment_event,
+    set_user_tier,
+)
 from ..config import get_settings
+from ..flags import flag_enabled
 from ..security import get_current_user
 
 router = APIRouter(prefix="/billing", tags=["billing"])
@@ -39,8 +46,11 @@ Provider = Literal["razorpay", "stripe"]
 
 
 class CheckoutRequest(BaseModel):
+    """Seats are NOT purchasable here: a seat exists only when a child account
+    is created through /family, which re-prices the subscription. Billing
+    capacity that no child occupies would drift from what the family shows."""
+
     tier: Tier
-    seats_count: int = Field(default=0, ge=0, le=pricing.MAX_FAMILY_SEATS)
     provider: Optional[Provider] = None
     currency: Optional[Literal["INR", "USD"]] = None
 
@@ -148,12 +158,14 @@ async def subscription(user: dict = Depends(get_current_user)) -> dict:
 @router.post("/checkout")
 async def checkout(body: CheckoutRequest, user: dict = Depends(get_current_user)) -> dict:
     s = get_settings()
+    if not await flag_enabled("billing_checkout", user["id"]):
+        raise HTTPException(status_code=503, detail="checkout is temporarily disabled")
     provider_name = body.provider or s.billing_default_provider
     provider = _provider_or_503(provider_name)
     currency = body.currency or ("INR" if provider_name == "razorpay" else s.billing_default_currency)
 
     try:
-        q = pricing.quote(body.tier, body.seats_count, currency, s.usd_inr_rate)
+        q = pricing.quote(body.tier, 0, currency, s.usd_inr_rate)
     except pricing.PricingError as exc:
         raise HTTPException(status_code=422, detail=str(exc))
 
@@ -231,10 +243,15 @@ async def verify_checkout(body: RazorpayVerifyRequest, user: dict = Depends(get_
             raise HTTPException(status_code=404, detail="unknown checkout intent")
         if row[2] and row[2] != body.razorpay_subscription_id:
             raise HTTPException(status_code=400, detail="subscription id does not match the intent")
+        if row[3] != "pending":
+            # The first successful verify marks the intent paid. A second verify
+            # — same triple or a fresh signature — is a replay, never a new sale.
+            raise HTTPException(status_code=409, detail=f"checkout intent already {row[3]}")
 
+        event_id = f"checkout-verify:{body.razorpay_payment_id}"
         ev = SubscriptionEvent(
             provider="razorpay",
-            event_id=f"checkout-verify:{body.razorpay_payment_id}",
+            event_id=event_id,
             event_type="checkout.verified",
             subscription_ref=body.razorpay_subscription_id,
             status="trialing" if row[4] > 0 else "active",
@@ -242,8 +259,24 @@ async def verify_checkout(body: RazorpayVerifyRequest, user: dict = Depends(get_
             intent_id=str(row[0]),
         )
         async with conn.cursor() as cur:
+            # Same ledger as the webhooks: a payment id is applied once, ever.
+            fresh = await record_payment_event(
+                cur, "razorpay", event_id, "checkout.verified", body.model_dump()
+            )
+            if not fresh:
+                await conn.commit()
+                raise HTTPException(status_code=409, detail="payment already applied")
             summary = await apply_subscription_event(cur, ev)
+            await mark_payment_event(
+                cur, "razorpay", event_id,
+                handled=bool(summary.get("handled")), user_id=user["id"],
+                note=summary.get("reason") or f"{summary.get('status')}→{summary.get('tier')}",
+            )
         await conn.commit()
+        if not summary.get("handled"):
+            raise HTTPException(
+                status_code=409, detail=f"cannot apply payment: {summary.get('reason')}"
+            )
         sub_row = await _live_subscription_row(conn, user["id"])
         entitlement = await entitlement_for(conn, user["id"], summary.get("tier", user["tier"]))
 
@@ -326,9 +359,10 @@ async def change_tier(body: ChangeTierRequest, user: dict = Depends(get_current_
         async with conn.cursor() as cur:
             await cur.execute(
                 """UPDATE subscriptions SET tier = %s, amount_minor = %s,
+                       monthly_recurring_revenue_cents = %s,
                        provider_plan_ref = COALESCE(%s, provider_plan_ref), updated_at = NOW()
                    WHERE id = %s""",
-                (body.tier, q.total_minor, plan_ref, row[0]),
+                (body.tier, q.total_minor, pricing.to_usd_cents(q.total_minor, row[5], rate), plan_ref, row[0]),
             )
             await set_user_tier(cur, user["id"], effective_tier(body.tier, row[3]))
         await conn.commit()

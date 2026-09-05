@@ -38,8 +38,18 @@ one statement. Children cannot check out or manage a family. Age < 13 is flagged
 `kids_mode` for block 5 (COPPA) to gate on.
 
 Adding/removing a seat re-prices with the provider (new Razorpay plan +
-`PATCH /subscriptions`, or a new Stripe price on the subscription item).
-Suspending does not re-price: it is a parental control, not a refund.
+`PATCH /subscriptions`, or a new Stripe price on the subscription item). The
+re-price is never skipped silently: an unconfigured provider (503) or a missing
+provider reference (409) refuses the seat change, because a seat granted but not
+billed is a leak no webhook would ever notice. Suspending does not re-price: it is
+a parental control, not a refund.
+
+Seat discounts follow the seat's RANK among the family's seats, and the stored
+`discount_pct` is recomputed on every change, so after removing the middle of three
+seats the remaining two show 100/80 and bill 100/80. A removed child keeps the
+account (free tier) and can be re-seated by the same parent with the same email;
+nobody else can claim that email. Creating a seat records `parental_consent_at/by`
+(the paid-card creation is the verifiable consent act).
 
 ## Client surface (`/api/v1`)
 
@@ -47,8 +57,8 @@ Suspending does not re-price: it is a parental control, not a refund.
 | --- | --- | --- |
 | `GET /billing/plans` | none | catalogue in USD + INR, providers available, seat curve |
 | `GET /billing/subscription` | user | live subscription + signed entitlement |
-| `POST /billing/checkout` | user | `{tier, seats_count?, provider?, currency?}` → intent + provider checkout payload |
-| `POST /billing/checkout/verify` | user | Razorpay handler result; HMAC over `payment_id|subscription_id`; grants tier NOW (PAY-04) |
+| `POST /billing/checkout` | user | `{tier, provider?, currency?}` → intent + provider checkout payload. Seats are never bought here; they exist only through `/family`, which re-prices. Gated by the `billing_checkout` kill-switch (503 when off) |
+| `POST /billing/checkout/verify` | user | Razorpay handler result; HMAC over `payment_id|subscription_id`; grants tier NOW (PAY-04). Refused with 409 unless the intent is still `pending`, and the payment id goes through the same `payment_events` ledger as webhooks — a replayed triple can never resurrect a halted/cancelled subscription |
 | `POST /billing/cancel` | user | cancel at period end; tier kept until the period closes |
 | `POST /billing/resume` | user | undo a scheduled cancel (Stripe only; Razorpay answers 409) |
 | `POST /billing/change` | user | move to another paid tier, seats kept and re-priced |
@@ -86,6 +96,16 @@ dunning/grace window); `unpaid` and `cancelled` drop to free immediately. One
 function, `apply_subscription_event`, is the only path that changes a tier, used by
 both webhooks and checkout-verify, so the processors cannot drift.
 
+**Client-originated events** (the checkout-verify triple) may create a subscription
+but never change the status of one that exists; only a provider webhook moves a
+row out of `unpaid`/`cancelled`. An event that names a user other than the
+subscription's owner is applied to nobody (`user_mismatch`).
+
+**Money bookkeeping:** `amount_minor` is what the provider bills in `currency`;
+`monthly_recurring_revenue_cents` and `total_revenue_cents` are always USD cents,
+converted with the `usd_inr_rate` frozen on the row, so `mrr_live` is correct for
+INR subscriptions and a rate change cannot rewrite history.
+
 An event that cannot be tied to a learner (no subscription ref, no intent, no
 user id in notes/metadata) is acknowledged with `handled=false` and logged — never
 applied to a guessed account.
@@ -107,6 +127,15 @@ sync. UX only: the server re-validates tier on every online action.
 - Overdue trials with no provider signal → counted, NOT downgraded (a webhook outage
   must not punish learners; the provider owns that transition).
 - Pending checkout intents older than 24 h → `expired`.
+
+## Review trail
+
+The 2026-09-05 adversarial pass confirmed one high finding (verify replay
+resurrecting a halted subscription) and surfaced six unverified candidates; four
+were real (MRR stored in paise, silent reprice skip, rank/slot discount drift,
+foreign-child override returning 200) and two were design gaps (stranded removed
+child, seats billed at checkout but never provisioned). All are fixed above with
+regression tests in `test_billing_api.py`.
 
 ## Not done here
 

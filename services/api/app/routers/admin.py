@@ -18,6 +18,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query, Request
 from pydantic import BaseModel, Field
 
 from .. import db
+from .. import flags as flags_service
 from ..content import reset_quarantine_cache
 from ..security import get_current_user
 from ..telemetry import DAU_SAMPLING_THRESHOLD, UI_SAMPLE_KEEP_ONE_IN, registry_snapshot
@@ -53,18 +54,14 @@ async def runtime_config() -> dict:
     that cannot read the config must not conclude that a dark-launched feature
     is enabled.
     """
-    try:
-        pool = await db.get_pg()
-        async with pool.connection() as conn:
-            rows = await (
-                await conn.execute(
-                    "SELECT flag_name, enabled, rollout_pct FROM feature_flags ORDER BY flag_name"
-                )
-            ).fetchall()
-        flags = {row[0]: {"enabled": row[1], "rollout_pct": row[2]} for row in rows}
-    except Exception:  # noqa: BLE001
-        return {"flags": {}, "degraded": True}
-    return {"flags": flags, "degraded": False}
+    snap, degraded = await flags_service.snapshot()
+    return {
+        "flags": {
+            name: {"enabled": f["enabled"], "rollout_pct": f["rollout_pct"]}
+            for name, f in sorted(snap.items())
+        },
+        "degraded": degraded,
+    }
 
 
 # ── Content trust admin ─────────────────────────────────────────────────────
@@ -270,6 +267,8 @@ async def set_flag(flag_name: str, body: FlagUpdate, admin: dict = Depends(requi
             (body.enabled, body.rollout_pct, admin["email"], flag_name),
         )
         await conn.commit()
+    # The kill-switch must bite within seconds: drop the caches now.
+    await flags_service.invalidate()
     return {"flag_name": flag_name, "enabled": body.enabled}
 
 
@@ -289,6 +288,15 @@ async def refresh_kpi(_: dict = Depends(require_admin)) -> dict:
         await conn.commit()
         rows = await (await conn.execute("SELECT metric, value FROM kpi_dashboard_core")).fetchall()
     return {"refreshed": True, "metrics": {r[0]: float(r[1]) if r[1] is not None else None for r in rows}}
+
+
+@router.get("/api/admin/kpi")
+async def read_kpi(_: dict = Depends(require_admin)) -> dict:
+    """Current KPI matview values (refreshed by Celery every 15 min)."""
+    pool = await db.get_pg()
+    async with pool.connection() as conn:
+        rows = await (await conn.execute("SELECT metric, value FROM kpi_dashboard_core")).fetchall()
+    return {"metrics": {r[0]: float(r[1]) if r[1] is not None else None for r in rows}}
 
 
 @router.get("/api/admin/telemetry/registry")

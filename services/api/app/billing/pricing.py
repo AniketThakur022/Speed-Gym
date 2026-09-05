@@ -48,6 +48,19 @@ def usd_cents_to_minor(usd_cents: int, currency: str, usd_inr_rate: float) -> in
     raise PricingError(f"unsupported currency: {currency}")
 
 
+def to_usd_cents(amount_minor: int, currency: str, usd_inr_rate) -> int:
+    """Inverse of usd_cents_to_minor, for MRR/revenue bookkeeping in USD cents.
+    INR needs the rate that was frozen at sale time — never the current one."""
+    if currency == "USD":
+        return int(amount_minor)
+    if currency == "INR":
+        rate = float(usd_inr_rate or 0)
+        if rate <= 0:
+            raise PricingError("usd_inr_rate required to convert INR to USD cents")
+        return _round_half_up(Decimal(amount_minor) / Decimal(str(rate)))
+    raise PricingError(f"unsupported currency: {currency}")
+
+
 def seat_discount_pct(seat_number: int) -> int:
     try:
         return SEAT_DISCOUNT_PCT[seat_number]
