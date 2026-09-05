@@ -6,7 +6,7 @@ redelivered match result pays once. Streaks are calendar-day based (UTC).
 
 from __future__ import annotations
 
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta, timezone
 from typing import Optional
 
 XP_RULES: dict[str, int] = {
@@ -21,6 +21,11 @@ XP_RULES: dict[str, int] = {
     "friend_added": 10,
 }
 LEVEL_XP = 500
+
+
+def utc_today() -> date:
+    """The one calendar the streak, the daily challenge and Postgres share."""
+    return datetime.now(timezone.utc).date()
 
 
 def level_for(xp: int) -> int:

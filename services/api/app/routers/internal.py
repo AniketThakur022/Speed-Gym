@@ -20,6 +20,7 @@ from .. import db
 from ..config import get_settings
 from ..content import extract_numeric_answer, quarantined_ids
 from ..glicko2 import Rating, seed_rating, update_match
+from ..social.policy import kids_policy
 
 router = APIRouter(prefix="/internal", tags=["internal"])
 
@@ -305,8 +306,6 @@ async def match_complete(body: MatchCompleteRequest) -> dict:
 
 
 async def _social_after_match(cur, body: MatchCompleteRequest, human_results: list, ratings: dict) -> dict:
-    from datetime import date
-
     from ..social import achievements as ach
     from ..social import xp as xp_mod
     from ..social.policy import taunt_decision
@@ -322,9 +321,9 @@ async def _social_after_match(cur, body: MatchCompleteRequest, human_results: li
         reason = "duel_win" if won else "duel_loss"
         delta = xp_mod.XP_RULES[reason] // 2 if any_bot else xp_mod.XP_RULES[reason]
         entry["xp_awarded"] += await xp_mod.award(cur, uid, reason, body.match_id, delta)
-        day = await xp_mod.record_activity_day(cur, uid, date.today(), result.problems_attempted)
+        day = await xp_mod.record_activity_day(cur, uid, xp_mod.utc_today(), result.problems_attempted)
         if day["new_day"]:
-            entry["xp_awarded"] += await xp_mod.award(cur, uid, "streak_day", date.today().isoformat())
+            entry["xp_awarded"] += await xp_mod.award(cur, uid, "streak_day", xp_mod.utc_today().isoformat())
 
         await cur.execute(
             """SELECT final_rank FROM player_match_results

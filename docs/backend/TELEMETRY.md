@@ -34,6 +34,18 @@ nowhere in the v5.2 corpus, so the registry's `tel_hint` is a stable ordinal ove
 the taxonomy in `telemetry_architecture.md` §9.2 — not a citation. If the RFP is
 recovered, map the ids in; do not renumber the ordinal.
 
+## Event metadata contract (consumed by the dashboard, XP and streaks)
+
+- `problem_attempt`: `{skill, problem_id, is_correct, time_ms, domain, difficulty?, trap_id?}`
+  (`technique_id` and `total_time_ms` accepted as aliases). A correct attempt earns XP
+  once per `event_id`; any attempt marks the UTC day active for the streak.
+- `session_end`: `{problems_attempted, problems_correct, session_type, domain, technique_states}`
+  — `technique_states` feeds the BKT snapshot (Path D) and the dashboard's topics.
+
+Kids accounts (age < 13): UI-class events are never stored (`minimized` in the sync
+response) and `device_fingerprint`/`device_id`/`ip`/`user_agent`/`geo` are stripped
+from what is kept; `bkt_state_snapshots.device_id` is null for them.
+
 ## Unknown event types
 
 A client shipping an event ahead of the registry is **ingested at 100 %** into

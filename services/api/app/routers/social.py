@@ -243,11 +243,17 @@ async def qr_redeem(body: QrRedeem, user: dict = Depends(require_flag("social_fr
     pool = await db.get_pg()
     async with pool.connection() as conn:
         await _require_not_kid(conn, user["id"], "QR pairing")
-        owner = await db.get_redis().getdel(f"friend:pair:{body.code}")
+        redis = db.get_redis()
+        key = f"friend:pair:{body.code}"
+        owner = await redis.get(key)
         if not owner:
             raise HTTPException(status_code=410, detail="code expired or already used")
         if owner == user["id"]:
+            # Rejected WITHOUT consuming the code: scanning your own QR by
+            # mistake must not burn it for the friend standing next to you.
             raise HTTPException(status_code=400, detail="that is your own code")
+        if (await redis.delete(key)) == 0:
+            raise HTTPException(status_code=410, detail="code expired or already used")
         async with conn.cursor() as cur:
             out = await _befriend(cur, owner, user["id"], "qr")
         await conn.commit()
@@ -382,7 +388,7 @@ class DailySubmit(BaseModel):
 async def _today(conn) -> dict:
     pool = await db.get_pg()
     try:
-        challenge = await daily_mod.ensure_today(conn, db.get_neo4j(), await quarantined_ids(pool), date.today())
+        challenge = await daily_mod.ensure_today(conn, db.get_neo4j(), await quarantined_ids(pool), xp_mod.utc_today())
     except Exception as exc:  # noqa: BLE001
         raise HTTPException(status_code=503, detail=f"daily challenge unavailable: {type(exc).__name__}")
     if challenge is None:
@@ -399,7 +405,7 @@ async def daily(user: dict = Depends(require_flag("daily_challenge"))) -> dict:
             await conn.execute(
                 """SELECT problems_correct, problems_total, total_time_ms, score, submitted_at
                    FROM daily_challenge_attempts WHERE user_id = %s::uuid AND challenge_date = %s""",
-                (user["id"], date.today()),
+                (user["id"], xp_mod.utc_today()),
             )
         ).fetchone()
     return {
@@ -414,7 +420,7 @@ async def daily(user: dict = Depends(require_flag("daily_challenge"))) -> dict:
 
 @router.post("/daily/submit")
 async def daily_submit(body: DailySubmit, user: dict = Depends(require_flag("daily_challenge"))) -> dict:
-    today = date.today()
+    today = xp_mod.utc_today()
     pool = await db.get_pg()
     async with pool.connection() as conn:
         ch = await _today(conn)
@@ -463,7 +469,7 @@ async def daily_submit(body: DailySubmit, user: dict = Depends(require_flag("dai
 
 @router.get("/daily/leaderboard")
 async def daily_leaderboard(user: dict = Depends(require_flag("daily_challenge"))) -> dict:
-    today = date.today()
+    today = xp_mod.utc_today()
     pool = await db.get_pg()
     async with pool.connection() as conn:
         p = await _profile(conn, user["id"])

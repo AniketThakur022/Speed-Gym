@@ -110,7 +110,7 @@ async def radar(user: dict = Depends(get_current_user)) -> list[dict]:
         rows = await _attempts(conn, user["id"], None, WINDOW_DAYS)
         sessions = await _sessions(conn, user["id"], None, 20)
         async with conn.cursor() as cur:
-            streak = await xp_mod.streak_state(cur, user["id"], date.today())
+            streak = await xp_mod.streak_state(cur, user["id"], xp_mod.utc_today())
     times = [float(r[1]) for r in rows if r[1] is not None and float(r[1]) > 0]
     total = len(rows)
     correct = sum(1 for r in rows if r[0])
@@ -165,7 +165,7 @@ async def stats(domain: Optional[str] = Query(default=None), user: dict = Depend
 
 @router.get("/streak")
 async def streak(user: dict = Depends(get_current_user)) -> dict:
-    today = date.today()
+    today = xp_mod.utc_today()
     pool = await db.get_pg()
     async with pool.connection() as conn:
         async with conn.cursor() as cur:
@@ -178,7 +178,7 @@ async def streak(user: dict = Depends(get_current_user)) -> dict:
 @router.get("/events")
 async def events(domain: Optional[str] = Query(default=None), user: dict = Depends(get_current_user)) -> list[dict]:
     """Upcoming: the daily challenge (until submitted) and pending friend requests."""
-    today = date.today()
+    today = xp_mod.utc_today()
     pool = await db.get_pg()
     out: list[dict] = []
     async with pool.connection() as conn:

@@ -228,13 +228,26 @@ def test_match_complete_awards_xp_achievements_and_taunt(client):
     _, again = _complete_match(client, w_id, l_id, match_id=match_id)
     assert again["social"][w_id]["xp_awarded"] == 0
 
-    # third match for the sprinter → taunt shows, and it is readable back
-    for _ in range(2):
-        mid, out = _complete_match(client, w_id, l_id)
-    taunt = out["social"][l_id]["taunt"]
-    assert taunt and taunt["id"] == "self_deprecating_loss"
-    assert client.get(f"/api/v1/social/taunts/{mid}", headers=l_auth).json()["taunt"]["id"] == "self_deprecating_loss"
-    assert "bot" not in str(out).lower() or "is_bot" not in str(out["social"])
+    # 2nd match: still lost, still too early (every 3rd) — and a 3rd straight
+    # loss would trip SOC-16 instead, so the sprinter WINS the 3rd match.
+    _, out2 = _complete_match(client, w_id, l_id)
+    assert out2["social"][l_id]["taunt_suppressed"] == "frequency"
+    mid, out3 = _complete_match(client, l_id, w_id)
+    taunt = out3["social"][l_id]["taunt"]
+    assert taunt and taunt["id"] == "blowout_winner", out3["social"][l_id]
+    assert client.get(f"/api/v1/social/taunts/{mid}", headers=l_auth).json()["taunt"]["id"] == "blowout_winner"
+    assert "is_bot" not in str(out3["social"])
+
+
+def test_three_straight_losses_silence_taunts(client):
+    w_auth, w_id, _ = _register(client, age=22)
+    _, l_id, _ = _register(client, age=23)
+    with psycopg.connect(DSN) as conn:
+        conn.execute("INSERT INTO user_cognitive_profiles (user_id, behavioral_cluster) VALUES (%s::uuid, 'sprinter') ON CONFLICT (user_id) DO UPDATE SET behavioral_cluster = 'sprinter'", (l_id,))
+        conn.commit()
+    for _ in range(3):
+        _, out = _complete_match(client, w_id, l_id)
+    assert out["social"][l_id]["taunt"] is None and out["social"][l_id]["taunt_suppressed"] == "loss_streak"
 
 
 def test_bot_rounds_pay_half_xp_and_kids_never_get_taunts(client):
@@ -310,7 +323,7 @@ def test_daily_challenge_get_submit_rank(client):
     assert len(body["problems"]) == 10 and all("answer" not in p for p in body["problems"])
     assert body["submitted"] is None
     with psycopg.connect(DSN) as conn:
-        answers = conn.execute("SELECT answers FROM daily_challenges WHERE challenge_date = CURRENT_DATE").fetchone()[0]
+        answers = conn.execute("SELECT answers FROM daily_challenges WHERE challenge_date = %s", (body["date"],)).fetchone()[0]
     submit = client.post("/api/v1/social/daily/submit", json={"answers": [str(a) for a in answers], "total_time_ms": 120_000}, headers=a_auth)
     assert submit.status_code == 200, submit.text
     s = submit.json()
