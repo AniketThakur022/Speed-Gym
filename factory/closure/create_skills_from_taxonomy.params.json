@@ -1,0 +1,143 @@
+{
+ "params": {
+  "skills": [
+   {
+    "name": "Number Systems",
+    "topic": "Arithmetic",
+    "display_label": "Number Systems",
+    "questions": 612
+   },
+   {
+    "name": "Geometry and Mensuration",
+    "topic": "Geometry",
+    "display_label": "Geometry and Mensuration",
+    "questions": 422
+   },
+   {
+    "name": "Profit and Loss",
+    "topic": "Arithmetic",
+    "display_label": "Profit and Loss",
+    "questions": 281
+   },
+   {
+    "name": "Reading Comprehension",
+    "topic": "Verbal",
+    "display_label": "Reading Comprehension",
+    "questions": 210
+   },
+   {
+    "name": "Vector Spaces",
+    "topic": "Algebra",
+    "display_label": "Vector Spaces",
+    "questions": 206
+   },
+   {
+    "name": "Time, Speed and Distance",
+    "topic": "Arithmetic",
+    "display_label": "Time, Speed and Distance",
+    "questions": 195
+   },
+   {
+    "name": "Interest",
+    "topic": "Arithmetic",
+    "display_label": "Interest",
+    "questions": 192
+   },
+   {
+    "name": "Time and Work",
+    "topic": "Arithmetic",
+    "display_label": "Time and Work",
+    "questions": 191
+   },
+   {
+    "name": "Eigenvalues and Eigenvectors",
+    "topic": "Algebra",
+    "display_label": "Eigenvalues and Eigenvectors",
+    "questions": 183
+   },
+   {
+    "name": "Progressions",
+    "topic": "Algebra",
+    "display_label": "Progressions",
+    "questions": 168
+   },
+   {
+    "name": "Text Completions",
+    "topic": "Verbal",
+    "display_label": "Text Completions",
+    "questions": 166
+   },
+   {
+    "name": "Sentence Equivalence",
+    "topic": "Verbal",
+    "display_label": "Sentence Equivalence",
+    "questions": 148
+   },
+   {
+    "name": "Quadratic and Other Equations",
+    "topic": "Algebra",
+    "display_label": "Quadratic and Other Equations",
+    "questions": 146
+   },
+   {
+    "name": "Ratio, Proportion and Variation",
+    "topic": "Arithmetic",
+    "display_label": "Ratio, Proportion and Variation",
+    "questions": 140
+   },
+   {
+    "name": "Orthogonality",
+    "topic": "Algebra",
+    "display_label": "Orthogonality",
+    "questions": 133
+   },
+   {
+    "name": "Theory of Equations",
+    "topic": "Algebra",
+    "display_label": "Theory of Equations",
+    "questions": 127
+   },
+   {
+    "name": "Miscellaneous Equations",
+    "topic": "Algebra",
+    "display_label": "Miscellaneous Equations",
+    "questions": 121
+   },
+   {
+    "name": "Binomial Coefficients",
+    "topic": "Algebra",
+    "display_label": "Binomial Coefficients",
+    "questions": 114
+   },
+   {
+    "name": "Special Numbers",
+    "topic": "NumberTheory",
+    "display_label": "Special Numbers",
+    "questions": 95
+   },
+   {
+    "name": "Elementary Algebra",
+    "topic": "Algebra",
+    "display_label": "Elementary Algebra",
+    "questions": 91
+   },
+   {
+    "name": "Linear Transformations",
+    "topic": "Algebra",
+    "display_label": "Linear Transformations",
+    "questions": 74
+   },
+   {
+    "name": "Averages and Alligations",
+    "topic": "Arithmetic",
+    "display_label": "Averages and Alligations",
+    "questions": 40
+   }
+  ]
+ },
+ "impact": {
+  "new_skills": 22,
+  "questions_that_become_joinable": 4055,
+  "note": "These questions are resolved-but-unjoinable today (graph_backed:false). Creating the skills makes corpus labels BKT-joinable once the corpus->graph Q-matrix edges exist."
+ }
+}
