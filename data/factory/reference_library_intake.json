@@ -1,0 +1,22 @@
+{
+ "pages": 43,
+ "stats": {
+  "status_needs_human_review": 39,
+  "arith_ok": 14,
+  "arith_unchecked": 27,
+  "status_complete": 4,
+  "arith_WRONG": 2,
+  "applicability_remapped": 1
+ },
+ "latex_fixes": [
+  "anurupyena: escaped underscore in \\text{working_base}",
+  "anurupyena: escaped underscore in \\text{working_base}",
+  "anurupyena: escaped underscore in \\text{working_base}",
+  "anurupyena: escaped underscore in \\text{working_base}"
+ ],
+ "content_defects": {
+  "ekanyunena_purvena": 1,
+  "seshanyakena_caramena": 1
+ },
+ "note": "content_status recomputed by the spec's rule; content defects are annotated in metadata_json, never edited"
+}
