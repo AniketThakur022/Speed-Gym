@@ -69,9 +69,13 @@ async def razorpay_webhook(request: Request) -> dict:
         payload = json.loads(raw)
     except ValueError:
         raise HTTPException(status_code=400, detail="malformed json")
-    # Razorpay sends x-razorpay-event-id; fall back to a body digest so a
-    # missing header can never make the same delivery count twice.
-    event_id = request.headers.get("X-Razorpay-Event-Id") or f"body:{hashlib.sha256(raw).hexdigest()}"
+    # The ledger key is derived ONLY from the signed bytes. Razorpay's
+    # X-Razorpay-Event-Id header is not covered by the signature, so keying on
+    # it would let one captured body be replayed once per header value (and
+    # pre-claim arbitrary keys); it is kept for audit only. Razorpay's own
+    # redeliveries carry an identical body, so they still dedupe.
+    event_id = f"body:{hashlib.sha256(raw).hexdigest()}"
+    payload["_razorpay_event_id"] = request.headers.get("X-Razorpay-Event-Id")
     ev = parse_razorpay_event(payload, event_id)
     return await _ingest("razorpay", event_id, ev.event_type or "unknown", payload, ev)
 

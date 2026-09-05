@@ -29,6 +29,12 @@ from ..config import get_settings
 from .pricing import Quote
 
 PROVIDERS = ("razorpay", "stripe")
+CHECKOUT_LINK_TTL_SECONDS = 24 * 3600
+# REST responses are parsed against the pre-basil shapes below; pin so an
+# account default of 2025-03-31.basil or later cannot change field locations
+# under us. Webhook payloads use the endpoint's own version, so the parser
+# reads BOTH shapes.
+STRIPE_API_VERSION = "2024-06-20"
 
 
 class ProviderError(Exception):
@@ -153,10 +159,11 @@ def parse_razorpay_event(payload: dict, event_id: str) -> SubscriptionEvent:
     if ev.status == "trialing":
         ev.trial_end = start_at
         ev.period_end = ev.period_end or start_at
-    ev.cancel_at_period_end = (
-        True if str(entity.get("status")) == "active" and entity.get("has_scheduled_changes")
-        and entity.get("end_at") else None
-    )
+    # Razorpay exposes no cancel-at-cycle-end flag on the entity
+    # (`has_scheduled_changes` means a PLAN change is scheduled; `end_at` is set
+    # on every subscription). The locally set flag from POST /billing/cancel is
+    # authoritative; the provider only ever tells us via subscription.cancelled.
+    ev.cancel_at_period_end = None
     ev.user_id = notes.get("user_id") if isinstance(notes, dict) else None
     ev.intent_id = notes.get("intent_id") if isinstance(notes, dict) else None
     payment = ((payload.get("payload") or {}).get("payment") or {}).get("entity") or {}
@@ -228,8 +235,12 @@ def parse_stripe_event(payload: dict) -> SubscriptionEvent:
         ev.subscription_ref = obj.get("id")
         ev.customer_ref = obj.get("customer")
         ev.status = STRIPE_STATUS.get(str(obj.get("status", "")), None)
-        ev.period_start = _ts(obj.get("current_period_start"))
-        ev.period_end = _ts(obj.get("current_period_end"))
+        # 2025-03-31.basil moved current_period_* onto items.data[].
+        items = ((obj.get("items") or {}).get("data")) or []
+        item_starts = [_ts(i.get("current_period_start")) for i in items if isinstance(i, dict)]
+        item_ends = [_ts(i.get("current_period_end")) for i in items if isinstance(i, dict)]
+        ev.period_start = _ts(obj.get("current_period_start")) or min((s for s in item_starts if s), default=None)
+        ev.period_end = _ts(obj.get("current_period_end")) or max((e for e in item_ends if e), default=None)
         ev.trial_end = _ts(obj.get("trial_end"))
         ev.cancel_at_period_end = bool(obj.get("cancel_at_period_end", False))
         ev.user_id = meta.get("user_id")
@@ -237,8 +248,11 @@ def parse_stripe_event(payload: dict) -> SubscriptionEvent:
         return ev
 
     if event_type in ("invoice.paid", "invoice.payment_failed"):
-        ev.subscription_ref = obj.get("subscription")
+        # basil: invoice.subscription → invoice.parent.subscription_details.subscription
+        parent = ((obj.get("parent") or {}).get("subscription_details")) or {}
+        ev.subscription_ref = obj.get("subscription") or parent.get("subscription")
         ev.customer_ref = obj.get("customer")
+        ev.user_id = (parent.get("metadata") or {}).get("user_id")
         ev.status = "active" if event_type == "invoice.paid" else "past_due"
         ev.amount_minor = obj.get("amount_paid") if event_type == "invoice.paid" else None
         ev.currency = (obj.get("currency") or "").upper() or None
@@ -344,6 +358,10 @@ class RazorpayProvider(PaymentProvider):
         }
         if trial_days > 0:
             body["start_at"] = int(time.time()) + trial_days * 86_400
+        # The intent expires server-side after 24 h; make Razorpay expire the
+        # authorisation link at the same time, so a stale short_url cannot
+        # charge a mandate we would then have to reconcile.
+        body["expire_by"] = int(time.time()) + CHECKOUT_LINK_TTL_SECONDS
         data = _raise_for(await self._http().post("/subscriptions", json=body), "razorpay subscription")
         sub_id = str(data["id"])
         return CheckoutPayload(
@@ -404,7 +422,10 @@ class StripeProvider(PaymentProvider):
             s = get_settings()
             self._client = httpx.AsyncClient(
                 base_url=s.stripe_api_base,
-                headers={"Authorization": f"Bearer {s.stripe_secret_key}"},
+                headers={
+                    "Authorization": f"Bearer {s.stripe_secret_key}",
+                    "Stripe-Version": STRIPE_API_VERSION,
+                },
                 timeout=20.0,
             )
         return self._client

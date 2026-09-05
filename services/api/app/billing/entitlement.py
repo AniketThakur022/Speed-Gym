@@ -49,7 +49,7 @@ def verify_entitlement(user_id: str, expires_at: int, signature: str) -> bool:
 async def _live_subscription(conn, user_id: str):
     return await (
         await conn.execute(
-            """SELECT tier, status, current_period_end, trial_ends_at
+            """SELECT tier, status, current_period_end, trial_ends_at, past_due_since
                FROM subscriptions
                WHERE user_id = %s::uuid AND status IN ('active', 'trialing', 'past_due')
                ORDER BY updated_at DESC LIMIT 1""",
@@ -81,8 +81,13 @@ async def entitlement_for(conn, user_id: str, user_tier: str) -> dict:
         # or a lifetime ad-free unlock): re-signed each sync for one grace window.
         return sign_entitlement(user_id, user_tier, now + timedelta(days=settings.billing_grace_days))
 
-    _tier, status, period_end, trial_end = sub
+    _tier, status, period_end, trial_end, past_due_since = sub
     horizon: Optional[datetime] = period_end or trial_end
+    if status == "past_due":
+        # Stripe advances current_period_end at the failed renewal; the offline
+        # horizon must be the dunning grace, not the whole unpaid month.
+        dunning_end = (past_due_since or now) + timedelta(days=settings.billing_grace_days)
+        horizon = min(horizon, dunning_end) if horizon else dunning_end
     if status not in TIER_GRANTING_STATUSES or horizon is None:
         horizon = now + timedelta(days=settings.billing_grace_days)
     return sign_entitlement(user_id, user_tier, horizon)

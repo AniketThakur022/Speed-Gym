@@ -36,7 +36,13 @@ from .providers import SubscriptionEvent
 
 TIER_GRANTING_STATUSES = frozenset({"active", "trialing", "past_due"})
 TERMINAL_STATUSES = frozenset({"cancelled", "unpaid"})
+REACTIVATING_STATUSES = frozenset({"active", "trialing"})
 CLIENT_ORIGINATED_EVENTS = frozenset({"checkout.verified"})
+# Payment signals that carry no subscription status of their own. They may
+# refine a LIVE row (revenue, period) but never revive a terminal one: Stripe
+# does not guarantee ordering, and an invoice.paid retried after
+# customer.subscription.deleted must not hand the tier back.
+NON_SNAPSHOT_EVENTS = frozenset({"invoice.paid", "invoice.payment_failed"})
 
 
 def effective_tier(tier: str, status: Optional[str]) -> str:
@@ -79,7 +85,7 @@ async def _find_subscription(cur, provider: str, subscription_ref: Optional[str]
     column = "razorpay_subscription_id" if provider == "razorpay" else "stripe_subscription_id"
     await cur.execute(
         f"""SELECT id, user_id, tier, status, seats_count, current_period_end, trial_ends_at,
-                   currency, usd_inr_rate
+                   currency, usd_inr_rate, past_due_since
             FROM subscriptions WHERE {column} = %s""",
         (subscription_ref,),
     )
@@ -90,7 +96,7 @@ async def _find_intent(cur, provider: str, intent_id: Optional[str], user_id: Op
     """The pending intent this event settles: by id first, else the user's
     latest pending intent on this provider."""
     columns = """id, user_id, tier, seats_count, currency, amount_minor, trial_days,
-                 provider_plan_ref, status, usd_inr_rate"""
+                 provider_plan_ref, status, usd_inr_rate, provider_ref"""
     if intent_id:
         await cur.execute(
             f"SELECT {columns} FROM checkout_intents WHERE id = %s::uuid AND provider = %s",
@@ -132,13 +138,32 @@ async def apply_subscription_event(cur, ev: SubscriptionEvent) -> dict[str, Any]
         if intent is None:
             return {"handled": False, "reason": "unresolved_subscription"}
         (intent_id, user_id, tier, seats, currency, amount, trial_days,
-         plan_ref, istatus, rate) = intent
+         plan_ref, istatus, rate, intent_ref) = intent
         user_id = str(user_id)
 
         if istatus != "pending":
-            # Already settled (paid/failed/expired): a second creation attempt is
-            # a replay, not a new sale.
-            return {"handled": False, "reason": f"intent_{istatus}", "user_id": user_id}
+            # paid/failed are settled, and a client triple can never re-open
+            # anything. An EXPIRED intent was abandoned only on OUR side: the
+            # provider's subscription may still be paid late (Stripe retries a
+            # failed delivery for days), so a provider event naming the very
+            # subscription this intent was issued for is a late real sale —
+            # refusing it would leave a charged learner with no tier.
+            late_provider_sale = (
+                not client_originated and istatus == "expired"
+                and ev.subscription_ref and intent_ref == ev.subscription_ref
+            )
+            if not late_provider_sale:
+                return {"handled": False, "reason": f"intent_{istatus}", "user_id": user_id}
+
+        # Explicit one-live-per-user guard (the partial unique index would
+        # otherwise turn this into a 500 and a provider retry loop).
+        await cur.execute(
+            """SELECT id, status FROM subscriptions
+               WHERE user_id = %s::uuid AND status IN ('active', 'trialing', 'past_due')""",
+            (user_id,),
+        )
+        if await cur.fetchone():
+            return {"handled": False, "reason": "user_has_live_subscription", "user_id": user_id}
 
         # A cancellation for something we never activated: settle the intent, no tier.
         if ev.status in TERMINAL_STATUSES:
@@ -170,6 +195,10 @@ async def apply_subscription_event(cur, ev: SubscriptionEvent) -> dict[str, Any]
             ),
         )
         sub_id = (await cur.fetchone())[0]
+        if status == "past_due":
+            await cur.execute(
+                "UPDATE subscriptions SET past_due_since = %s WHERE id = %s", (now, sub_id)
+            )
         await cur.execute(
             """UPDATE checkout_intents SET status = 'paid', completed_at = NOW(),
                    provider_ref = COALESCE(provider_ref, %s)
@@ -179,7 +208,7 @@ async def apply_subscription_event(cur, ev: SubscriptionEvent) -> dict[str, Any]
         created = True
     else:
         (sub_id, user_id, tier, status, seats, cur_period_end, cur_trial_end,
-         row_currency, row_rate) = sub
+         row_currency, row_rate, past_due_since) = sub
         user_id = str(user_id)
         # The provider ref is authoritative, but an event that ALSO names a
         # different learner is a mis-link (or a forged notes field): apply it
@@ -199,18 +228,36 @@ async def apply_subscription_event(cur, ev: SubscriptionEvent) -> dict[str, Any]
                 "tier": effective_tier(tier, status), "reason": "already_linked",
             }
 
-        if ev.status is not None:
+        previous_status = status
+        # A terminal row is only ever LIFTED by a genuine reactivation snapshot
+        # (subscription.activated/resumed, customer.subscription.* active/
+        # trialing). Late or out-of-order failure signals (pending, paused,
+        # invoice.payment_failed) and non-snapshot payment signals
+        # (invoice.paid) are recorded but change neither status nor period —
+        # past_due grants the tier, so re-opening the dunning window from
+        # unpaid/cancelled would be a free resurrection.
+        frozen = status in TERMINAL_STATUSES and (
+            ev.event_type in NON_SNAPSHOT_EVENTS or ev.status not in REACTIVATING_STATUSES
+        )
+        if ev.status is not None and not frozen:
             status = ev.status
         sets = ["status = %s", "last_event_at = %s", "updated_at = NOW()"]
         params: list[Any] = [status, now]
-        if ev.period_start is not None:
-            sets.append("current_period_start = %s"); params.append(ev.period_start)
-        if ev.period_end is not None:
-            sets.append("current_period_end = %s"); params.append(ev.period_end)
-        if ev.trial_end is not None:
-            sets.append("trial_ends_at = %s"); params.append(ev.trial_end)
-        if ev.cancel_at_period_end is not None:
-            sets.append("cancel_at_period_end = %s"); params.append(ev.cancel_at_period_end)
+        if not frozen:
+            if ev.period_start is not None:
+                sets.append("current_period_start = %s"); params.append(ev.period_start)
+            if ev.period_end is not None:
+                sets.append("current_period_end = %s"); params.append(ev.period_end)
+            if ev.trial_end is not None:
+                sets.append("trial_ends_at = %s"); params.append(ev.trial_end)
+            if ev.cancel_at_period_end is not None:
+                sets.append("cancel_at_period_end = %s"); params.append(ev.cancel_at_period_end)
+        # Dunning clock: starts on the FIRST entry into past_due (retries of
+        # the failure event must not reset it), clears on any other status.
+        if status == "past_due":
+            sets.append("past_due_since = COALESCE(past_due_since, %s)"); params.append(now)
+        elif status != previous_status or status in REACTIVATING_STATUSES:
+            sets.append("past_due_since = NULL")
         if ev.customer_ref:
             sets.append(f"{cust_col} = COALESCE({cust_col}, %s)"); params.append(ev.customer_ref)
         if status in TERMINAL_STATUSES:

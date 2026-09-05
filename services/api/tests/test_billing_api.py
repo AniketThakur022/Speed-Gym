@@ -12,6 +12,7 @@ import socket
 import time
 import uuid
 
+import psycopg
 import pytest
 from fastapi.testclient import TestClient
 
@@ -253,13 +254,14 @@ def test_razorpay_webhook_activates_via_notes_and_is_idempotent(client, fakes):
     notes = {"user_id": user_id, "intent_id": out["intent_id"]}
 
     # Unique per run: the idempotency ledger persists in the dev DB across runs.
-    event_id = f"evt_same_{uuid.uuid4().hex[:8]}"
-    res = _rzp_webhook(client, "subscription.activated", sub_ref, "active", notes, event_id=event_id,
-                       current_start=int(time.time()), current_end=int(time.time()) + 30 * 86400)
+    period = {"current_start": int(time.time()), "current_end": int(time.time()) + 30 * 86400}
+    res = _rzp_webhook(client, "subscription.activated", sub_ref, "active", notes, event_id="evt_first", **period)
     assert res.status_code == 200 and res.json()["handled"] is True
     assert _me_tier(client, auth) == "bundle_2"
 
-    dup = _rzp_webhook(client, "subscription.activated", sub_ref, "active", notes, event_id=event_id)
+    # Razorpay redelivers the identical body; the header may differ and is not
+    # signed, so the digest of the body is what makes this a duplicate.
+    dup = _rzp_webhook(client, "subscription.activated", sub_ref, "active", notes, event_id="evt_other", **period)
     assert dup.json()["status"] == "duplicate"
 
 
@@ -485,8 +487,9 @@ def test_verify_never_downgrades_a_subscription_the_webhook_already_activated(cl
                  {"user_id": user_id, "intent_id": out["intent_id"]},
                  current_start=int(time.time()), current_end=int(time.time()) + 30 * 86400)
     res = _verify_rzp(client, auth, out["intent_id"], sub_ref)
-    # intent already paid by the webhook path → replay semantics
-    assert res.status_code == 409
+    # the webhook won the race: the verify succeeds against the existing row
+    # and must not overwrite 'active' with the client-derived 'trialing'
+    assert res.status_code == 200, res.text
     sub = client.get("/api/v1/billing/subscription", headers=auth).json()["subscription"]
     assert sub["status"] == "active"
 
@@ -573,3 +576,145 @@ def test_checkout_kill_switch(client, fakes):
             conn.commit()
         asyncio.run(flags_service.invalidate())
     assert client.post("/api/v1/billing/checkout", json={"tier": "pro"}, headers=auth).status_code == 200
+
+
+# ── review round 2 (2026-09-06): the three lenses that had died ──────────────
+
+
+def _stripe_sub_event(client, event_type, sub_ref, status, user_id, **obj):
+    return _stripe_webhook(client, {"id": f"evt_{uuid.uuid4().hex[:8]}", "type": event_type,
+                                    "data": {"object": {"id": sub_ref, "status": status,
+                                             "metadata": {"user_id": user_id}, **obj}}})
+
+
+def _stripe_activate(client, auth, user_id):
+    out = _checkout(client, auth, provider="stripe")
+    sub_ref = f"sub_st_{uuid.uuid4().hex[:8]}"
+    _stripe_webhook(client, {"id": f"evt_{uuid.uuid4().hex[:8]}", "type": "checkout.session.completed",
+                             "data": {"object": {"id": out["checkout"]["ref"], "subscription": sub_ref,
+                                      "client_reference_id": user_id, "metadata": {"intent_id": out["intent_id"]}}}})
+    assert _me_tier(client, auth) == "pro"
+    return sub_ref
+
+
+def test_late_invoice_paid_never_revives_a_cancelled_subscription(client, fakes):
+    auth, user_id, _ = _register(client)
+    sub_ref = _stripe_activate(client, auth, user_id)
+    _stripe_sub_event(client, "customer.subscription.deleted", sub_ref, "canceled", user_id)
+    assert _me_tier(client, auth) == "free"
+    res = _stripe_webhook(client, {"id": f"evt_{uuid.uuid4().hex[:8]}", "type": "invoice.paid",
+                                   "data": {"object": {"subscription": sub_ref, "amount_paid": 600, "currency": "usd",
+                                            "lines": {"data": [{"period": {"start": int(time.time()), "end": int(time.time()) + 30 * 86400}}]}}}})
+    assert res.status_code == 200
+    assert _me_tier(client, auth) == "free"
+    assert client.get("/api/v1/billing/subscription", headers=auth).json()["subscription"] is None
+
+
+def test_late_payment_failed_never_reopens_dunning_on_an_unpaid_row(client, fakes):
+    auth, user_id, _ = _register(client)
+    sub_ref = _stripe_activate(client, auth, user_id)
+    _stripe_sub_event(client, "customer.subscription.updated", sub_ref, "unpaid", user_id)
+    assert _me_tier(client, auth) == "free"
+    _stripe_webhook(client, {"id": f"evt_{uuid.uuid4().hex[:8]}", "type": "invoice.payment_failed",
+                             "data": {"object": {"subscription": sub_ref}}})
+    assert _me_tier(client, auth) == "free"
+    with psycopg.connect("postgresql://vmsg:vmsg@localhost:5432/vmsg") as conn:
+        row = conn.execute("SELECT status FROM subscriptions WHERE stripe_subscription_id = %s", (sub_ref,)).fetchone()
+    assert row[0] == "unpaid"
+
+
+def test_razorpay_pending_after_halted_stays_unpaid_but_activated_reactivates(client, fakes):
+    auth, user_id, _ = _register(client)
+    out = _checkout(client, auth)
+    sub_ref = out["checkout"]["ref"]
+    _verify_rzp(client, auth, out["intent_id"], sub_ref)
+    _rzp_webhook(client, "subscription.halted", sub_ref, "halted", {})
+    assert _me_tier(client, auth) == "free"
+    _rzp_webhook(client, "subscription.pending", sub_ref, "pending", {})       # stale failure signal
+    assert _me_tier(client, auth) == "free"
+    _rzp_webhook(client, "subscription.activated", sub_ref, "active", {},      # genuine reactivation snapshot
+                 current_start=int(time.time()), current_end=int(time.time()) + 30 * 86400)
+    assert _me_tier(client, auth) == "pro"
+
+
+def test_razorpay_ledger_key_is_the_signed_body_not_the_header(client, fakes):
+    auth, user_id, _ = _register(client)
+    out = _checkout(client, auth)
+    sub_ref = out["checkout"]["ref"]
+    notes = {"user_id": user_id, "intent_id": out["intent_id"]}
+    first = _rzp_webhook(client, "subscription.activated", sub_ref, "active", notes, event_id="evt_A")
+    assert first.json()["status"] == "ok"
+    replay = _rzp_webhook(client, "subscription.activated", sub_ref, "active", notes, event_id="evt_B")
+    assert replay.json()["status"] == "duplicate"
+
+
+def test_verify_after_the_webhook_won_the_race_is_a_success(client, fakes):
+    auth, user_id, _ = _register(client)
+    out = _checkout(client, auth)
+    sub_ref = out["checkout"]["ref"]
+    _rzp_webhook(client, "subscription.authenticated", sub_ref, "authenticated",
+                 {"user_id": user_id, "intent_id": out["intent_id"]}, start_at=int(time.time()) + 7 * 86400)
+    assert _me_tier(client, auth) == "pro"
+    res = _verify_rzp(client, auth, out["intent_id"], sub_ref)
+    assert res.status_code == 200, res.text
+    assert res.json()["subscription"]["status"] == "trialing"
+    # ...but a different subscription id against that paid intent is still a replay
+    other = _verify_rzp(client, auth, out["intent_id"], "sub_other")
+    assert other.status_code in (400, 409)
+
+
+def test_expired_intent_settled_by_a_provider_event_for_its_own_subscription(client, fakes):
+    auth, user_id, _ = _register(client)
+    out = _checkout(client, auth)
+    sub_ref = out["checkout"]["ref"]
+    with psycopg.connect("postgresql://vmsg:vmsg@localhost:5432/vmsg") as conn:
+        conn.execute("UPDATE checkout_intents SET status = 'expired' WHERE id = %s::uuid", (out["intent_id"],))
+        conn.commit()
+    res = _rzp_webhook(client, "subscription.charged", sub_ref, "active", {"user_id": user_id, "intent_id": out["intent_id"]},
+                       current_start=int(time.time()), current_end=int(time.time()) + 30 * 86400)
+    assert res.json()["handled"] is True
+    assert _me_tier(client, auth) == "pro"
+    # a client triple can never settle an expired intent
+    auth2, user2, _ = _register(client)
+    out2 = _checkout(client, auth2)
+    with psycopg.connect("postgresql://vmsg:vmsg@localhost:5432/vmsg") as conn:
+        conn.execute("UPDATE checkout_intents SET status = 'expired' WHERE id = %s::uuid", (out2["intent_id"],))
+        conn.commit()
+    assert _verify_rzp(client, auth2, out2["intent_id"], out2["checkout"]["ref"]).status_code == 409
+
+
+def test_stripe_basil_shapes_are_parsed(client, fakes):
+    auth, user_id, _ = _register(client)
+    sub_ref = _stripe_activate(client, auth, user_id)
+    end = int(time.time()) + 30 * 86400
+    _stripe_sub_event(client, "customer.subscription.updated", sub_ref, "active", user_id,
+                      items={"data": [{"id": "si_1", "current_period_start": int(time.time()), "current_period_end": end}]})
+    sub = client.get("/api/v1/billing/subscription", headers=auth).json()["subscription"]
+    assert sub["current_period_end"] is not None
+    # invoice with the basil parent hash resolves the subscription
+    res = _stripe_webhook(client, {"id": f"evt_{uuid.uuid4().hex[:8]}", "type": "invoice.paid",
+                                   "data": {"object": {"parent": {"subscription_details": {"subscription": sub_ref}},
+                                            "amount_paid": 600, "currency": "usd"}}})
+    assert res.json()["handled"] is True
+
+
+def test_past_due_since_starts_once_and_bounds_the_offline_horizon(client, fakes):
+    auth, user_id, _ = _register(client)
+    out = _checkout(client, auth)
+    sub_ref = out["checkout"]["ref"]
+    _verify_rzp(client, auth, out["intent_id"], sub_ref)
+    far = int(time.time()) + 40 * 86400
+    _rzp_webhook(client, "subscription.pending", sub_ref, "pending", {}, current_end=far)
+    with psycopg.connect("postgresql://vmsg:vmsg@localhost:5432/vmsg") as conn:
+        first = conn.execute("SELECT past_due_since FROM subscriptions WHERE razorpay_subscription_id = %s", (sub_ref,)).fetchone()[0]
+    assert first is not None
+    _rzp_webhook(client, "subscription.pending", sub_ref, "pending", {}, current_end=far, event_id="second")
+    with psycopg.connect("postgresql://vmsg:vmsg@localhost:5432/vmsg") as conn:
+        again = conn.execute("SELECT past_due_since FROM subscriptions WHERE razorpay_subscription_id = %s", (sub_ref,)).fetchone()[0]
+    assert again == first
+    ent = client.post("/api/v1/sync", json={"events": []}, headers=auth).json()["entitlement"]
+    assert ent["expires_at"] <= int(time.time()) + 3 * 86400 + 60      # dunning grace, not the 40-day period
+    _rzp_webhook(client, "subscription.activated", sub_ref, "active", {}, current_end=far)
+    with psycopg.connect("postgresql://vmsg:vmsg@localhost:5432/vmsg") as conn:
+        cleared = conn.execute("SELECT past_due_since FROM subscriptions WHERE razorpay_subscription_id = %s", (sub_ref,)).fetchone()[0]
+    assert cleared is None

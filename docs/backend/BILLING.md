@@ -106,6 +106,21 @@ subscription's owner is applied to nobody (`user_mismatch`).
 converted with the `usd_inr_rate` frozen on the row, so `mrr_live` is correct for
 INR subscriptions and a rate change cannot rewrite history.
 
+**Terminal rows are only lifted by a reactivation snapshot** (`subscription.activated/resumed`,
+`customer.subscription.*` with status active/trialing). Late or out-of-order failure
+signals (`subscription.pending/paused`, `invoice.payment_failed`) and non-snapshot payment
+signals (`invoice.paid`) are recorded but change neither status nor period on an
+`unpaid`/`cancelled` row — past_due grants the tier, so re-opening dunning from a terminal
+state would be a free resurrection. An intent that we expired can still be settled by a
+provider event naming the very subscription it was issued for (a late real sale must not
+leave a charged learner with no tier); a client triple never can. Razorpay's ledger key is
+a digest of the SIGNED body only (the event-id header is unsigned, audit-only).
+Stripe REST calls pin `Stripe-Version: 2024-06-20`; the webhook parser reads both the
+classic and the 2025-03-31.basil field locations. Dunning grace is measured from
+`past_due_since` (first entry into past_due), never from `current_period_end`, which
+Stripe advances at the failed renewal; the offline entitlement horizon is bounded the
+same way.
+
 An event that cannot be tied to a learner (no subscription ref, no intent, no
 user id in notes/metadata) is acknowledged with `handled=false` and logged — never
 applied to a guessed account.
@@ -136,6 +151,13 @@ were real (MRR stored in paise, silent reprice skip, rank/slot discount drift,
 foreign-child override returning 200) and two were design gaps (stranded removed
 child, seats billed at checkout but never provisioned). All are fixed above with
 regression tests in `test_billing_api.py`.
+
+Round 2 (2026-09-06, the three lenses that had died): eight confirmed — Stripe
+invoice events and stale failure signals reviving terminal rows (high), Stripe basil
+field locations (high), expired intents refusing a late real sale (high), the
+Razorpay ledger keyed on an unsigned header, the grace window keyed on an advanced
+period end, abandoned Razorpay links staying payable, and the webhook-before-verify
+race answering 409. All fixed with regression tests. Two claims were refuted.
 
 ## Not done here
 

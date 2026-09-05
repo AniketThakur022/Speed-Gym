@@ -3,7 +3,9 @@
 Providers tell us about failed charges and cancellations; this task closes the
 windows they leave open:
 
-* `past_due` older than the grace window → `unpaid`, tier dropped (SUB-10).
+* `past_due` for longer than the grace window (measured from `past_due_since`,
+  the FIRST entry into dunning — never from current_period_end, which Stripe
+  advances at the failed renewal) → `unpaid`, tier dropped (SUB-10).
 * `cancel_at_period_end` whose period has closed → `cancelled`, tier dropped.
 * `trialing` past trial end with no provider signal for a grace window →
   logged, NOT downgraded (the provider owns the trial-to-paid transition; a
@@ -50,7 +52,7 @@ def enforce_grace_and_expiry() -> dict:
                    cancellation_reason = COALESCE(cancellation_reason, 'grace_exhausted'),
                    updated_at = NOW()
                WHERE status = 'past_due'
-                 AND COALESCE(current_period_end, updated_at) + make_interval(days => %s) < NOW()
+                 AND COALESCE(past_due_since, updated_at) + make_interval(days => %s) < NOW()
                RETURNING user_id""",
             (GRACE_DAYS,),
         ).fetchall()

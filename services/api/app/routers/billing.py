@@ -243,9 +243,14 @@ async def verify_checkout(body: RazorpayVerifyRequest, user: dict = Depends(get_
             raise HTTPException(status_code=404, detail="unknown checkout intent")
         if row[2] and row[2] != body.razorpay_subscription_id:
             raise HTTPException(status_code=400, detail="subscription id does not match the intent")
-        if row[3] != "pending":
-            # The first successful verify marks the intent paid. A second verify
-            # — same triple or a fresh signature — is a replay, never a new sale.
+        # The webhook often wins the race on mobile (subscription.authenticated
+        # lands before the Checkout handler posts the triple): that intent is
+        # already 'paid' and linked to THIS subscription id, and the state
+        # machine answers with the existing row rather than a second grant.
+        linked_by_webhook = row[3] == "paid" and row[2] == body.razorpay_subscription_id
+        if row[3] != "pending" and not linked_by_webhook:
+            # Otherwise a non-pending intent — same triple, a fresh signature,
+            # or a different subscription id — is a replay, never a new sale.
             raise HTTPException(status_code=409, detail=f"checkout intent already {row[3]}")
 
         event_id = f"checkout-verify:{body.razorpay_payment_id}"
