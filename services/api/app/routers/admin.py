@@ -20,6 +20,7 @@ from pydantic import BaseModel, Field
 from .. import db
 from ..content import reset_quarantine_cache
 from ..security import get_current_user
+from ..telemetry import DAU_SAMPLING_THRESHOLD, UI_SAMPLE_KEEP_ONE_IN, registry_snapshot
 
 router = APIRouter(tags=["admin"])
 
@@ -288,3 +289,24 @@ async def refresh_kpi(_: dict = Depends(require_admin)) -> dict:
         await conn.commit()
         rows = await (await conn.execute("SELECT metric, value FROM kpi_dashboard_core")).fetchall()
     return {"refreshed": True, "metrics": {r[0]: float(r[1]) if r[1] is not None else None for r in rows}}
+
+
+@router.get("/api/admin/telemetry/registry")
+async def telemetry_registry(_: dict = Depends(require_admin)) -> dict:
+    """The event registry and the sampling policy, as the ingest path applies it.
+
+    Read-only by design: the policy is code, not config, so nobody can flip
+    psychometric events into the sampleable class from a dashboard.
+    """
+    return {
+        "policy": {
+            "dau_sampling_threshold": DAU_SAMPLING_THRESHOLD,
+            "ui_sample_keep_one_in": UI_SAMPLE_KEEP_ONE_IN,
+            "never_sampled_classes": [
+                "psychometric_never_sampled",
+                "conversion_never_sampled",
+                "ops_never_sampled",
+            ],
+        },
+        "events": registry_snapshot(),
+    }

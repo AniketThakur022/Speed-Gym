@@ -29,16 +29,9 @@ from ..security import get_current_user
 
 router = APIRouter(prefix="/sync", tags=["sync"])
 
-# Events that drive mastery are never sampled or dropped (architecture §11.3).
-PSYCHOMETRIC_EVENTS = {
-    "problem_attempt",
-    "problem_solved",
-    "trap_triggered",
-    "bkt_state_snapshot",
-    "session_start",
-    "session_end",
-    "calibration_completed",
-}
+# The event registry and sampling policy live in app.telemetry; the invariant
+# enforced there is that psychometric events are NEVER sampled (§11.3).
+from ..telemetry import PSYCHOMETRIC_EVENTS, decide  # noqa: E402
 
 
 class SyncEvent(BaseModel):
@@ -53,6 +46,20 @@ class SyncEvent(BaseModel):
 class SyncRequest(BaseModel):
     events: list[SyncEvent] = Field(default_factory=list, max_length=500)
     device_id: Optional[str] = None
+
+
+async def _current_dau(pool) -> int:
+    """DAU from the KPI matview. Any failure returns 0, which DISABLES UI
+    sampling — losing a little UI volume is the safe direction; sampling on a
+    wrong number is not."""
+    try:
+        async with pool.connection() as conn:
+            row = await (
+                await conn.execute("SELECT value FROM kpi_dashboard_core WHERE metric = 'dau'")
+            ).fetchone()
+        return int(row[0]) if row and row[0] is not None else 0
+    except Exception:  # noqa: BLE001
+        return 0
 
 
 def _offline_entitlement(user_id: str, tier: str) -> dict:
@@ -85,11 +92,24 @@ async def sync_events(body: SyncRequest, user: dict = Depends(get_current_user))
 
     pool = await db.get_pg()
     accepted = 0
+    sampled_out = 0
+    unknown_types: set[str] = set()
     session_ends: list[SyncEvent] = []
+    dau = await _current_dau(pool)
 
     async with pool.connection() as conn:
         async with conn.cursor() as cur:
             for event in body.events:
+                decision = decide(event.event_type, user["id"], event.event_id, dau)
+                if not decision.known:
+                    unknown_types.add(event.event_type)
+                    # Ingested at 100% but marked, so the registry gap is
+                    # visible in the ledger rather than silently swallowed.
+                    event.metadata = {**event.metadata, "_registry_unknown": True}
+                if decision.sampled_out:
+                    sampled_out += 1
+                    continue
+
                 # PATH A — immutable event stream. event_id makes the resend of
                 # a partially-flushed batch a no-op instead of a double count.
                 await cur.execute(
@@ -151,8 +171,10 @@ async def sync_events(body: SyncRequest, user: dict = Depends(get_current_user))
 
     return {
         "accepted": accepted,
-        "duplicates": len(body.events) - accepted,
+        "duplicates": len(body.events) - accepted - sampled_out,
+        "sampled_out": sampled_out,
         "psychometric": sum(1 for e in body.events if e.event_type in PSYCHOMETRIC_EVENTS),
+        "unknown_event_types": sorted(unknown_types),
         "entitlement": _offline_entitlement(user["id"], user["tier"]),
     }
 

@@ -144,3 +144,67 @@ def test_content_feedback_replay_is_stored(client, auth):
 def test_unknown_sync_keys_are_refused_rather_than_silently_dropped(client, auth):
     res = client.post("/api/v1/sync/content/unknown-thing", json={"templateId": "x"}, headers=auth)
     assert res.status_code == 404
+
+
+# ── sampling policy, proven through the real ingest path ─────────────────────
+
+
+@pytest.fixture
+def high_dau(monkeypatch):
+    """Pretend the KPI matview reports 50k DAU so UI sampling engages."""
+    from app.routers import sync as sync_module
+
+    async def fake_dau(_pool):
+        return 50_000
+
+    monkeypatch.setattr(sync_module, "_current_dau", fake_dau)
+
+
+def test_ui_events_are_sampled_above_the_dau_threshold(client, auth, high_dau):
+    events = [_event("page_view", metadata={}) for _ in range(200)]
+    body = client.post("/api/v1/sync", json={"events": events}, headers=auth).json()
+    assert body["sampled_out"] > 0
+    assert body["accepted"] + body["sampled_out"] + body["duplicates"] == 200
+    # roughly one in ten survives
+    assert 5 <= body["accepted"] <= 40
+
+
+def test_psychometric_events_survive_high_dau_untouched(client, auth, high_dau):
+    """The whole point of block 2: mastery evidence is never thinned."""
+    events = [_event() for _ in range(60)] + [_event("session_start") for _ in range(20)]
+    body = client.post("/api/v1/sync", json={"events": events}, headers=auth).json()
+    assert body["accepted"] == 80
+    assert body["sampled_out"] == 0
+    assert body["psychometric"] == 80
+
+
+def test_ui_events_are_not_sampled_below_the_threshold(client, auth):
+    """Dev DB has no DAU row (or a tiny one), so the sampler must stay off."""
+    events = [_event("page_view", metadata={}) for _ in range(50)]
+    body = client.post("/api/v1/sync", json={"events": events}, headers=auth).json()
+    assert body["accepted"] == 50
+    assert body["sampled_out"] == 0
+
+
+def test_unknown_event_types_are_stored_and_marked(client, auth, high_dau):
+    import psycopg
+
+    event = _event("some_future_client_event", metadata={"x": 1})
+    body = client.post("/api/v1/sync", json={"events": [event]}, headers=auth).json()
+    assert body["accepted"] == 1
+    assert body["unknown_event_types"] == ["some_future_client_event"]
+
+    with psycopg.connect("postgresql://vmsg:vmsg@localhost:5432/vmsg") as conn:
+        row = conn.execute(
+            "SELECT metadata FROM raw_events WHERE event_id = %s", (event["event_id"],)
+        ).fetchone()
+    assert row is not None
+    assert row[0]["_registry_unknown"] is True
+    assert row[0]["x"] == 1
+
+
+def test_admin_can_read_the_registry_but_not_change_it(client, auth):
+    """Non-admin gets 403; the endpoint is GET-only so no one can reclassify."""
+    res = client.get("/api/admin/telemetry/registry", headers=auth)
+    assert res.status_code == 403
+    assert client.post("/api/admin/telemetry/registry", headers=auth).status_code == 405
