@@ -36,5 +36,21 @@ Upserted into `topic_browser_subtopics` with `techniques_by_difficulty` normalis
 
 - The two content defects need a human editor; the ekanyunena one is a one-line fix but it is a *fix to mathematics*, so it is not mine to make silently.
 - `applicability_type` needs a controlled vocabulary; 28 spellings for 40 pages is a taxonomy problem, and it belongs with the taxonomy work.
-- `techniques_by_difficulty` carries `template_count` but no template ids, so the `topic_browser_subtopic_templates` junction cannot be populated from the pages themselves. It needs the bank/generated tiers joined by sub-topic, which is factory work.
 - `gunaka_samuccayah` is a Vedic sutra with no sutra name on its page — the other 24 nameless pages are non-Vedic subtopics where the field legitimately does not apply.
+- `yavadunam_tavadunam` duplicates the human-approved `yavadunam` page (same sutra). Retire or merge it; the join routes everything to the approved page.
+
+## Templates joined to pages (`factory/reference/join_templates_to_pages.py`)
+
+The junction `topic_browser_subtopic_templates` needed template ids the pages do not carry, so the join runs from the factory side. It is an **explicit alias table, not string similarity**: the first attempt was a token-overlap join and it filed the bank's 41 *Ekadhikena* Purvena templates (one MORE than the previous, squaring numbers ending in 5) under the *Ekanyunena* Purvena page (one LESS, the ×99 rule) because the two share "purvena" and "previous". A fuzzy join cannot be trusted with two sutras that differ by one syllable, so every mapping is written out and everything unmapped is declined with a reason.
+
+| bank templates (v1.4) | 823 |
+|---|---|
+| joined, exact sub-topic match — **loaded** | 424 → 15 pages, tab = bank difficulty L1–L5 |
+| topic-level candidates (e.g. "Triangles" → `geometry_basics`) — reported, **not loaded** | 170 |
+| declined | 229 |
+
+Declines, by reason: "Basic Operations" bucket needs a per-template operation split across four pages (63); no Calculus page (52); Ekadhikena has no page and is *not* Ekanyunena (41); no Statistics page (25); Paravartya Yojayet no page (18); Dhvajanka no page (18); the rest are singletons, including one bank template that is not mathematics at all (neuropsychology).
+
+Generator patterns: `mult_near_base` and `nikhilam_complement` → `nikhilam_sutra`, `square_near_base` → `yavadunam`, `urdhva_2x2` → `urdhva_tiryak`; `mult_by_11` and `ekadhikena_square_5` have no page. Generated instances are run-stamped, so the generator side is recorded as pattern→page in the report rather than as junction rows; the junction gets generated rows when the factory's DB sink writes a promoted batch.
+
+The biggest content gap the join exposes is the same one the bank has: **Ekadhikena Purvena has no reference page** despite 41 bank templates and a generator pattern. That is an authoring item, not a join item.
