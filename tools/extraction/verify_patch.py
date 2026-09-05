@@ -39,7 +39,7 @@ PAGES = ROOT / "data/vision_pass/pages"
 ADDITIVE = {"key", "format", "flag", "suspect", "difficulty", "clear_chart_flag", "clear_needs_vision", "options_check"}
 # correct_key intentionally REPLACES a value; it must state what it supersedes.
 CORRECTING = {"correct_key"}
-REWRITE = {"text", "options", "record_tags", "markdown"}
+REWRITE = {"text", "options", "record_tags", "markdown", "directions"}
 WORD = re.compile(r"[A-Za-z]{3,}|\d+")
 
 
@@ -108,6 +108,11 @@ def main():
         if rec is None:
             flag("set_id not in MASTER", sid); continue
         if num == "*":
+            if act == "directions":
+                if (rec.get("directions") or "").strip():
+                    flag("CONFLICT: record already has directions", sid)
+                if not e.get("directions_source"):
+                    flag("directions without provenance", sid)
             continue
         q = next((x for x in (rec.get("questions") or [])
                   if str(x.get("number")) == num), None)
@@ -233,7 +238,7 @@ def main():
                 ref.update(toks(t))
         if not ref:
             continue
-        out = toks(e.get("text") or e.get("markdown") or " ".join(e.get("options") or []))
+        out = toks(e.get("text") or e.get("markdown") or e.get("directions") or " ".join(e.get("options") or []))
         if not out:
             continue
         missing = sum(c for t, c in out.items() if t not in ref)

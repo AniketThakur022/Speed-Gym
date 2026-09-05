@@ -61,6 +61,13 @@ def main():
                 r.setdefault("extra", {})["tags"] = rec_e["tags"]
                 r["extra"]["tags_source"] = rec_e["tags_source"]
                 applied += 1
+            rec_d = patch.get((r.get("set_id"), "*"))
+            if rec_d is not None and rec_d["action"] == "directions":
+                # fills an EMPTY directions field only (record level)
+                if not (r.get("directions") or "").strip():
+                    r["directions"] = rec_d["directions"]
+                    r.setdefault("extra", {})["directions_source"] = rec_d["directions_source"]
+                    applied += 1
             rec_c = patch.get((r.get("set_id"), "*"))
             if rec_c is not None and rec_c["action"] == "clear_chart_flag":
                 ex = r.setdefault("extra", {})

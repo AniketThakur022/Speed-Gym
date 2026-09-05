@@ -16,10 +16,15 @@ source page OCR) and a spot-check before any patch touches MASTER.
 | `tasks_Sinha.jsonl` | 10 | — | Chart transcription; delivered, flags cleared (all false positives). |
 | `tasks_fact_requestion_v2.jsonl` | 23 | 73 | **v2 (2026-09-05).** Items of the six Sinha families whose cited pages were Hints pages (`QUESTION_PAGE_OVERRIDES`), re-issued against their question pages. Supersedes those items in the two fact batches; everything else in them stands. |
 
-**Held, not applied.** `data/corpus/patches/2026-09-05_options_recovery_HELD.jsonl`
-holds 10 recovered option lists that failed Gate 2 (five are Venn-diagram
-options described in words — image options; five are function-property
-statements absent from the page OCR). They need a look at the page image.
+**The 10 held lists — resolved 2026-09-05 from the page images.** Five were
+the shared directions block for a group of plotted-graph items (Arun Sharma
+Quant p664 #36–38, p677 #33–34): applied with provenance, but each item IS a
+graph with no stem text, so it stays blocked until a figure asset exists.
+Five were verbal descriptions of printed Venn diagrams (p879 #38–42): the
+descriptions are accurate against the image and were applied with provenance,
+together with the set's missing directions preamble, but `question_format`
+stays `options_are_images` — serving a described diagram in place of the
+picture is a product decision for the consumers, not an extraction call.
 
 **Immutability.** Delivered task files are never regenerated in place: each
 carries a `build_id`, and a rebuild moves the old file to `.superseded.jsonl`.
