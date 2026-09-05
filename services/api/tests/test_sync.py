@@ -60,7 +60,7 @@ def test_sync_requires_authentication(client):
 def test_empty_batch_still_returns_entitlement(client, auth):
     body = client.post("/api/v1/sync", json={"events": []}, headers=auth).json()
     assert body["accepted"] == 0
-    assert set(body["entitlement"]) == {"tier", "expires_at", "signature"}
+    assert {"tier", "expires_at", "signature", "grace_days"} <= set(body["entitlement"])
 
 
 def test_events_are_accepted_and_counted(client, auth):

@@ -40,6 +40,31 @@ class Settings(BaseSettings):
         "capacitor://localhost,http://localhost,https://examarena.com"
     )
 
+    # ── Billing ────────────────────────────────────────────────────────────
+    # Razorpay is PRIMARY (owner decision 2026-09-04), Stripe secondary for
+    # international cards. Tier prices are USD-denominated in the RFP; INR is
+    # derived at the configured rate, never hardcoded. Every secret below is
+    # owner-supplied through .env (gitignored). Empty = provider not
+    # configured: checkout answers 503 and webhooks are REJECTED, never
+    # accepted unsigned.
+    billing_default_provider: str = "razorpay"
+    billing_default_currency: str = "INR"
+    usd_inr_rate: float = 84.0
+    trial_days: int = 7
+    billing_grace_days: int = 3          # SUB-10 / PAY-05 offline + dunning grace
+    razorpay_key_id: str = ""
+    razorpay_key_secret: str = ""
+    razorpay_webhook_secret: str = ""
+    razorpay_api_base: str = "https://api.razorpay.com/v1"
+    stripe_secret_key: str = ""
+    stripe_publishable_key: str = ""
+    stripe_webhook_secret: str = ""
+    stripe_api_base: str = "https://api.stripe.com/v1"
+    stripe_checkout_success_url: str = (
+        "https://examarena.com/billing/success?session_id={CHECKOUT_SESSION_ID}"
+    )
+    stripe_checkout_cancel_url: str = "https://examarena.com/billing/cancel"
+
     @property
     def cors_origins(self) -> list[str]:
         return [origin.strip() for origin in self.cors_allow_origins.split(",") if origin.strip()]

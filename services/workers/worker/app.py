@@ -27,6 +27,7 @@ app = Celery(
         "worker.tasks.maintenance",
         "worker.tasks.factory",
         "worker.tasks.outbox",
+        "worker.tasks.billing",
     ],
 )
 
@@ -66,5 +67,10 @@ app.conf.beat_schedule = {
     "raw-events-partition-maintenance": {
         "task": "worker.tasks.maintenance.maintain_raw_events_partitions",
         "schedule": crontab(minute=0, hour=3),
+    },
+    # Billing safety net: dunning grace, closed cancellations, stale intents
+    "billing-enforce-grace": {
+        "task": "billing.enforce_grace_and_expiry",
+        "schedule": crontab(minute=0, hour=2),
     },
 }

@@ -17,14 +17,13 @@ ON CONFLICT DO NOTHING rather than double-counting a learner's attempts.
 from __future__ import annotations
 
 import json
-from datetime import datetime, timedelta, timezone
-from typing import Any, Literal, Optional
+from typing import Any, Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Path
 from pydantic import BaseModel, Field
 
 from .. import db
-from ..config import get_settings
+from ..billing.entitlement import entitlement_for
 from ..security import get_current_user
 
 router = APIRouter(prefix="/sync", tags=["sync"])
@@ -62,35 +61,28 @@ async def _current_dau(pool) -> int:
         return 0
 
 
-def _offline_entitlement(user_id: str, tier: str) -> dict:
-    """HMAC-signed entitlement the client verifies locally with a 3-day grace.
+async def _offline_entitlement(pool, user_id: str, tier: str) -> dict:
+    """HMAC-signed entitlement the client verifies locally with a grace window.
 
-    UX only — the server re-validates on every online action, so a forged token
-    buys nothing but a broken client.
+    The horizon is the real subscription period end (billing.entitlement), so a
+    paid learner offline for a week keeps Pro. UX only — the server re-validates
+    on every online action, so a forged token buys nothing but a broken client.
     """
-    import hashlib
-    import hmac
-
-    settings = get_settings()
-    expires_at = int((datetime.now(timezone.utc) + timedelta(days=3)).timestamp())
-    payload = f"{user_id}:{expires_at}"
-    signature = hmac.new(
-        settings.offline_token_secret.encode(), payload.encode(), hashlib.sha256
-    ).hexdigest()
-    return {"tier": tier, "expires_at": expires_at, "signature": signature}
+    async with pool.connection() as conn:
+        return await entitlement_for(conn, user_id, tier)
 
 
 @router.post("")
 async def sync_events(body: SyncRequest, user: dict = Depends(get_current_user)) -> dict:
     """Ingest a batch of client events (4-path write) and re-sign entitlement."""
+    pool = await db.get_pg()
     if not body.events:
         return {
             "accepted": 0,
             "duplicates": 0,
-            "entitlement": _offline_entitlement(user["id"], user["tier"]),
+            "entitlement": await _offline_entitlement(pool, user["id"], user["tier"]),
         }
 
-    pool = await db.get_pg()
     accepted = 0
     sampled_out = 0
     unknown_types: set[str] = set()
@@ -175,7 +167,7 @@ async def sync_events(body: SyncRequest, user: dict = Depends(get_current_user))
         "sampled_out": sampled_out,
         "psychometric": sum(1 for e in body.events if e.event_type in PSYCHOMETRIC_EVENTS),
         "unknown_event_types": sorted(unknown_types),
-        "entitlement": _offline_entitlement(user["id"], user["tier"]),
+        "entitlement": await _offline_entitlement(pool, user["id"], user["tier"]),
     }
 
 

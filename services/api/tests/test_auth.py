@@ -185,7 +185,10 @@ def test_firebase_routes_exist_but_are_not_configured(client):
         assert res.status_code == 501
 
 
-def test_payment_webhooks_are_provider_agnostic_shells(client):
+def test_payment_webhooks_never_accept_unsigned_bodies(client):
+    """Block 4 replaced the 501 shells. With no webhook secret configured the
+    routes answer 503; with one, a body lacking a valid signature is 400.
+    Either way an unsigned webhook is never applied."""
     for path in ("/api/webhooks/stripe", "/api/webhooks/razorpay"):
         res = client.post(path, json={})
-        assert res.status_code == 501
+        assert res.status_code in (400, 503)
