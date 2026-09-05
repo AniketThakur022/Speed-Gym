@@ -69,3 +69,52 @@ package root (or point it at `incoming/topic_browser_full_package/cat_data`).
 Known pipeline gotcha: any non-`--resume` partial run overwrites
 `page_manifest.json` with just that run's pages — fix with
 `rebuild_page_manifest.py`.
+
+## Corpus patch tooling (added 2026-09-02 → 2026-09-05)
+
+Every change to `data/corpus/MASTER_corpus.jsonl` is a patch file under
+`data/corpus/patches/`, gated by `verify_patch.py` and applied by
+`apply_key_patch.py`. Patches are idempotent and replayable; never edit
+MASTER by hand.
+
+```bash
+python3 tools/extraction/verify_patch.py data/corpus/patches/<patch>.jsonl && \
+python3 tools/extraction/apply_key_patch.py data/corpus/patches/<patch>.jsonl
+```
+
+Actions (one JSON row per `(set_id, number)`; `number: "*"` = record level):
+
+| action | writes | overwrites? | required provenance |
+|---|---|---|---|
+| `key` | `answer_key`, `key_source` | never | `key_source` |
+| `correct_key` | replaces `answer_key`; keeps the old one in `extra.key_superseded` | **yes, on purpose** | `key_source`, `why`, `previous_source` |
+| `options` | `options`, `extra.options_source` | never (empty list only) | `options_source`, `book`, `pdf_pages` (Gate 2 reference) |
+| `options_check` | `extra.options_check` = `confirmed: …` / `disputed: …` | additive | statement |
+| `format` | `question_format`, `extra.format_source` | fills `unclassified` only | `format_source` |
+| `difficulty` | `difficulty`, `extra.difficulty_source` | never | `difficulty_source` |
+| `flag` / `suspect` | `extra.needs_reextraction` / `extra.key_suspect` | additive | `reason` |
+| `clear_needs_vision` | `extra.needs_vision=False`, `extra.needs_vision_resolution` | additive | `resolution` |
+| `clear_chart_flag` | record `extra.needs_chart_vision=False` | additive | `resolution` |
+| `record_tags` | record `extra.tags` | rewrite (Gate 2 checks concept set) | `tags_source` |
+
+Gates: **Gate 1 validity** (targets exist, additive actions never clobber a
+different value, provenance present) and **Gate 2 preservation** (rewriting
+rows are token-bag-diffed against the source page OCR; the verifier refuses to
+certify a rewrite without a reference). `PAGE_STORES` in `verify_patch.py`
+maps MASTER book names to page stores (Sinha's lives in `incoming/`).
+
+Twin-number caveat: 12 Sinha records hold two entries under one number; a row
+addressed to that number lands on both. The export blocks the whole twin group
+(`duplicate_question_number_in_record`), so this is contained, but it is why
+applied counts can exceed row counts.
+
+### A method failure worth remembering (2026-09-04)
+
+`sinha_s034x0_q01_25` was keyed from a printed grid 22 pages away because a
+fingerprint agreed 4/0 with existing keys while the adjacent grid showed 1/3.
+The four agreements were with hint-derived keys that were themselves wrong:
+corrupt priors selected the wrong grid and made the right one look wrong.
+Nine keys were wrong; corrected by `correct_key` from the page image.
+Rule now: fingerprint validation is only as strong as the keys it validates
+against, and a large page distance outranks it. Independent vision reads of
+the true question pages are the tie-breaker.

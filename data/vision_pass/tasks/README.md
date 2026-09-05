@@ -14,6 +14,16 @@ source page OCR) and a spot-check before any patch touches MASTER.
 | `tasks_convertible_all.jsonl` | 558 | 2,402 | Superset of the two fact batches, grouped by page. |
 | `tasks_digitize_Arun_Sharma.jsonl` | 123 | — | **Source-limited.** See `tasks_digitize_Arun_Sharma.BLOCKED.md`: 343 of 466 pages are Google Books placeholders. |
 | `tasks_Sinha.jsonl` | 10 | — | Chart transcription; delivered, flags cleared (all false positives). |
+| `tasks_fact_requestion_v2.jsonl` | 23 | 73 | **v2 (2026-09-05).** Items of the six Sinha families whose cited pages were Hints pages (`QUESTION_PAGE_OVERRIDES`), re-issued against their question pages. Supersedes those items in the two fact batches; everything else in them stands. |
+
+**Held, not applied.** `data/corpus/patches/2026-09-05_options_recovery_HELD.jsonl`
+holds 10 recovered option lists that failed Gate 2 (five are Venn-diagram
+options described in words — image options; five are function-property
+statements absent from the page OCR). They need a look at the page image.
+
+**Immutability.** Delivered task files are never regenerated in place: each
+carries a `build_id`, and a rebuild moves the old file to `.superseded.jsonl`.
+Re-targeted work goes out as a new versioned file (as `_v2` above).
 
 **Priority.** `options_recovery` first — 2,401 questions, every one already
 carrying a verified answer key, so a successful read converts each straight to

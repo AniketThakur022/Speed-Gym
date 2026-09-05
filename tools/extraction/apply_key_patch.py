@@ -98,6 +98,25 @@ def main():
                                                 "previous_source": e.get("previous_source"),
                                                 "why": e["why"]}
                         applied += 1
+                    elif e["action"] == "options":
+                        # fills an EMPTY option list only; a recovered list never
+                        # displaces one the extraction pipeline captured
+                        if q.get("options"):
+                            continue
+                        q["options"] = e["options"]
+                        q.setdefault("extra", {})["options_source"] = e["options_source"]
+                        applied += 1
+                    elif e["action"] == "options_check":
+                        # additive: records that an independent read AGREED with
+                        # the stored options; never changes them
+                        q.setdefault("extra", {})["options_check"] = e["options_check"]
+                        applied += 1
+                    elif e["action"] == "clear_needs_vision":
+                        ex = q.setdefault("extra", {})
+                        if ex.get("needs_vision"):
+                            ex["needs_vision"] = False
+                            ex["needs_vision_resolution"] = e["resolution"]
+                            applied += 1
                     elif e["action"] == "difficulty":
                         if q.get("difficulty") is not None:
                             continue          # never overwrite an existing value

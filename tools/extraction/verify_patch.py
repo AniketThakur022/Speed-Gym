@@ -36,7 +36,7 @@ ROOT = Path(__file__).resolve().parents[2]
 MASTER = ROOT / "data/corpus/MASTER_corpus.jsonl"
 PAGES = ROOT / "data/vision_pass/pages"
 
-ADDITIVE = {"key", "format", "flag", "suspect", "difficulty", "clear_chart_flag"}
+ADDITIVE = {"key", "format", "flag", "suspect", "difficulty", "clear_chart_flag", "clear_needs_vision", "options_check"}
 # correct_key intentionally REPLACES a value; it must state what it supersedes.
 CORRECTING = {"correct_key"}
 REWRITE = {"text", "options", "record_tags", "markdown"}
@@ -57,8 +57,26 @@ def load_master():
     return recs
 
 
+# MASTER book name -> page-store directory. Sinha's store predates the shared
+# layout and lives with the recovered package; everything else follows the
+# page_ocr_pipeline artifact shape under data/vision_pass/pages/.
+PAGE_STORES = {
+    "Sinha": ROOT / "incoming/topic_browser_full_package/cat_data/CAT_DI_LR_Nishit_K_Sinha/pages",
+    "Arun Sharma Quant": PAGES / "Arun_Sharma_Quant",
+    "Arun Sharma": PAGES / "Arun_Sharma",
+    "Hall & Knight": PAGES / "Hall_&_Knight",
+    "Tyra": PAGES / "Tyra", "Bird": PAGES / "Bird", "Bhatia": PAGES / "Bhatia",
+    "Manhattan 5 lb": PAGES / "Manhattan_5_lb",
+    "Manhattan GMAT Verbal": PAGES / "Manhattan_GMAT_Verbal",
+    "Manhattan Logic Games": PAGES / "Manhattan_Logic_Games",
+    "Manhattan Quant": PAGES / "Manhattan_Quant",
+    "Hogg": PAGES / "Hogg", "Schaum": PAGES / "Schaum", "ETS GRE": PAGES / "ETS_GRE",
+}
+
+
 def page_text(book, page):
-    p = PAGES / book / ("%04d_ocr.md" % int(page))
+    store = PAGE_STORES.get(book, PAGES / book)
+    p = store / ("%04d_ocr.md" % int(page))
     if not p.exists():
         return None
     return "\n".join(l for l in p.read_text().splitlines() if not l.startswith("<!--"))
@@ -116,6 +134,26 @@ def main():
                 flag("correct_key without justification/provenance", "%s #%s" % (sid, num))
             if q.get("answer_key") == e.get("answer_key"):
                 problems["(info) already applied — correction present"] += 1
+        if act == "options":
+            have = q.get("options") or []
+            if have:
+                if list(have) == list(e.get("options") or []):
+                    problems["(info) already applied — identical options present"] += 1
+                else:
+                    flag("CONFLICT: would overwrite a DIFFERENT option list",
+                         "%s #%s: have %r" % (sid, num, have[:2]))
+            if len(e.get("options") or []) < 2:
+                flag("options list shorter than 2", "%s #%s" % (sid, num))
+            if not e.get("options_source"):
+                flag("options without provenance", "%s #%s" % (sid, num))
+            qx = q.get("extra") or {}
+            if qx.get("needs_reextraction") or qx.get("key_suspect"):
+                flag("options onto a question whose stem/key is itself flagged",
+                     "%s #%s" % (sid, num))
+        if act == "options_check" and not e.get("options_check"):
+            flag("options_check without a statement", "%s #%s" % (sid, num))
+        if act == "clear_needs_vision" and not e.get("resolution"):
+            flag("clear_needs_vision without a stated resolution", "%s #%s" % (sid, num))
         if act == "difficulty":
             existing = q.get("difficulty")
             if existing is not None:
@@ -180,7 +218,7 @@ def main():
         print("  n/a — this patch is purely additive (%s)"
               % ", ".join(sorted({e.get("action", "?") for e in rows})))
         return 0 if not fails else 1
-    if not args.pages_book:
+    if not args.pages_book and not all(e.get("book") in PAGE_STORES for e in rw):
         print("  SKIPPED — rewriting rows present but no --pages-book reference given.")
         print("  Refusing to certify a content rewrite without a preservation reference.")
         return 1
@@ -190,7 +228,7 @@ def main():
         pages = e.get("pdf_pages") or ([e["pdf_page"]] if e.get("pdf_page") else [])
         ref = collections.Counter()
         for p in pages:
-            t = page_text(args.pages_book, p)
+            t = page_text(e.get("book") or args.pages_book, p)
             if t:
                 ref.update(toks(t))
         if not ref:

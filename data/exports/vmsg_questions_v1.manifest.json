@@ -6,36 +6,36 @@
  "row_key": "question_id = <set_id>#<number> (unique)",
  "counts": {
   "questions": 19619,
-  "playable": 12014,
-  "not_playable": 7605,
+  "playable": 12984,
+  "not_playable": 6635,
   "taxonomy_declined": 7424,
   "taxonomy_resolved": 7926,
   "taxonomy_via_book_chapter_rule": 7694,
-  "playable_and_resolved": 5138,
+  "playable_and_resolved": 5389,
   "taxonomy_bkt_joinable": 3736,
   "taxonomy_via_label_match": 232
  },
  "playable_blockers": {
   "no_answer_key": 4412,
-  "needs_vision": 4384,
-  "format_unclassified": 2835,
+  "needs_vision": 3509,
+  "format_unclassified": 2552,
   "text_too_short": 782,
-  "option_format_without_options": 420,
+  "option_format_without_options": 346,
   "format_options_are_images": 299,
-  "text_is_misextracted": 244,
+  "text_is_misextracted": 256,
   "duplicate_question_number_in_record": 53,
   "errata_key_is_raster_image": 37,
+  "key_suspect": 30,
   "errata_confirmed_book_erratum": 5,
-  "key_suspect": 3,
   "errata_proven_wrong": 1
  },
  "answer_provenance": {
-  "printed_grid": 8507,
+  "printed_grid": 8510,
   "uncited": 3678,
   "printed_inline_answer": 2359,
   "other_cited": 421,
   "hint_verdict_derivation": 132,
-  "solution_note_derivation": 110
+  "solution_note_derivation": 107
  },
  "resolution_modes": {
   "book_chapter_rule": "matched a taxonomy_v1.1 chapter_rule keyed on (book, chapter) — the preferred path, since one chapter title can mean different things in different books",

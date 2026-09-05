@@ -261,6 +261,9 @@ def main():
                     "pdf_pages": r.get("pdf_pages") or [],
                     "text": q.get("text"),
                     "options": opts,
+                    # independent-read verdict on the option list, when one exists:
+                    # "confirmed: ..." / "disputed: ..." — provenance, not a blocker
+                    "options_check": qex.get("options_check"),
                     "question_format": fmt,
                     "format_source": qex.get("format_source"),
                     "directions": r.get("directions"),

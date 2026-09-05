@@ -223,7 +223,7 @@ def group_tasks(book_filter=None, limit=None):
         pdf = BOOK_PDFS.get(book)
         if not pages or (book not in PRERENDERED and not (pdf and pdf.exists())):
             continue
-        span = tuple(sorted(set(pages)))   # never truncate: see assign_windows()
+        span = tuple(question_pages(sid, pages))   # never truncate: see assign_windows()
         groups[(klass, book, span)].append({"set_id": sid, **payload})
     tasks = []
     for (klass, book, span), items in sorted(groups.items()):
@@ -348,7 +348,7 @@ def cmd_build(args):
                 continue
             if args.book and r["book"] != args.book:
                 continue
-            pages = tuple(sorted(set(r.get("pdf_pages") or [])))
+            pages = tuple(question_pages(r["set_id"], r.get("pdf_pages")))
             if not pages:
                 continue
             want[(r["book"], pages)].append({
@@ -367,6 +367,38 @@ def cmd_build(args):
             tasks = tasks[:args.limit]
         manifest = WORKDIR / "tasks" / ("tasks_convertible_%s.jsonl"
                                         % (args.book or "all").replace(" ", "_"))
+    elif args.requestion:
+        # Items in families whose cited pages were Hints pages (QUESTION_PAGE_OVERRIDES),
+        # re-issued against their question pages. A separate versioned file: the
+        # delivered fact batches are immutable inputs to results already collected.
+        src = [WORKDIR / "tasks" / "tasks_fact_needs_reextraction.jsonl",
+               WORKDIR / "tasks" / "tasks_fact_options_recovery.jsonl"]
+        regroup = collections.defaultdict(list)
+        seen = set()
+        for f in src:
+            if not f.exists():
+                continue
+            for line in f.open():
+                t = json.loads(line)
+                for it in t.get("items") or []:
+                    sid = it.get("set_id", "")
+                    if not any(sid.startswith(pfx) for pfx in QUESTION_PAGE_OVERRIDES):
+                        continue
+                    k = (sid, str(it.get("number")))
+                    if k in seen:
+                        continue
+                    seen.add(k)
+                    pages = tuple(question_pages(sid, t.get("pages")))
+                    regroup[(t["class"], t["book"], pages)].append(it)
+        tasks = []
+        for (klass, book, pages), items in sorted(regroup.items()):
+            for win, share in assign_windows(list(pages), items):
+                tasks.append({"task_id": "requestion__%s__%s__p%s" % (
+                                  klass, book.replace(" ", "_"), "-".join(map(str, win))),
+                              "class": klass, "book": book, "pages": list(win),
+                              "items": share,
+                              "note": "v2: pages re-targeted from Hints pages to the question pages"})
+        manifest = WORKDIR / "tasks" / "tasks_fact_requestion_v2.jsonl"
     elif args.render_flagged:
         # tasks for every needs_render page in a book's station-1 store
         book = args.render_flagged
@@ -540,6 +572,7 @@ def main():
     b = sub.add_parser("build")
     b.add_argument("--book"), b.add_argument("--limit", type=int)
     b.add_argument("--answer-grid", dest="answer_grid", metavar="BOOK:FIRST-LAST")
+    b.add_argument("--requestion", action="store_true", help="re-issue items of QUESTION_PAGE_OVERRIDES families against their question pages (new versioned file)")
     b.add_argument("--render-flagged", dest="render_flagged", metavar="BOOK")
     b.add_argument("--convertible", action="store_true",
                    help="target questions the export says vision can make playable")
