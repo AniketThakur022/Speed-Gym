@@ -27,3 +27,24 @@ and outside the practice loop.
   `chat_log` are the cost dashboard.
 
 Never in a response: the answer, the final step, retrieved passages.
+
+## Review fixes (blocks 5–9 adversarial pass, 2026-09-06)
+
+Both findings defeated the block's whole contract — hints only, never answers.
+
+- **Unparseable answer keys are redacted.** 80.6% of live `:Problem` nodes with
+  an `answer_key` do not parse to a single number — multi-part
+  (`a = 12 and b = 0.4`), with units or currency (`£2,556`, `117.5 cm³`), or
+  several parts. `answer_forms` returned only the verbatim key for those, and
+  since no hint or model output ever contains the whole key, `redact` was a
+  no-op and the bare answer number reached the learner with
+  `leak_redacted: false`. Every numeric literal in the key is now a form too;
+  bare 0 and 1 are excluded so ordinary prose is not shredded.
+- **Page-level steps are segmented per worked example.** `steps_preview` is
+  page-level and concatenates several examples — `step_num` restarts in 491 of
+  791 nodes (62.1%) — so dropping `steps[-1]` withheld only the LAST example's
+  answer and handed the model every earlier example's answer-bearing step under
+  the prompt line "the final step is deliberately withheld". `segment_steps`
+  splits on the restarts, the final step of EVERY segment is withheld, any
+  remaining step containing an answer form is dropped, and the steps are
+  redacted once more before they enter the prompt.

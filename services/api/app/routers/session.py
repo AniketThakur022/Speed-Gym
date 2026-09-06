@@ -21,10 +21,11 @@ from __future__ import annotations
 import json
 from typing import Any, Optional
 
-from fastapi import APIRouter, HTTPException, Query
+from fastapi import APIRouter, Depends, HTTPException, Query
 
 from .. import db
 from ..content import extract_numeric_answer, quarantined_ids, servable_trust, trust_levels
+from ..security import get_current_user
 
 router = APIRouter(prefix="/practice", tags=["practice"])
 
@@ -258,3 +259,24 @@ async def build_session(
             "withheld": withheld,
         },
     }
+
+
+@router.get("/mastery")
+async def mastery(user: dict = Depends(get_current_user)) -> dict:
+    """The learner's persisted BKT state, for the client to hydrate from.
+
+    Without this the practice screen started every session from pInit, so a
+    session_end snapshot — which is the WHOLE mastery picture to every server
+    reader — replaced weeks of evidence with the few skills just practised.
+    """
+    pool = await db.get_pg()
+    async with pool.connection() as conn:
+        row = await (
+            await conn.execute(
+                """SELECT technique_states, created_at FROM bkt_state_snapshots
+                   WHERE user_id = %s::uuid ORDER BY created_at DESC LIMIT 1""",
+                (user["id"],),
+            )
+        ).fetchone()
+    states = row[0] if row and isinstance(row[0], dict) else {}
+    return {"technique_states": states, "as_of": row[1].isoformat() if row and row[1] else None}

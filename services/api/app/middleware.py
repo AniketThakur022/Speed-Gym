@@ -44,9 +44,30 @@ def _client_key(request: Request) -> str:
             return "u:" + str(decode_access_token(auth.removeprefix("Bearer ").strip())["sub"])
         except Exception:  # noqa: BLE001 — expired/invalid: fall back to the IP bucket
             pass
+    return "ip:" + client_ip(request)
+
+
+def client_ip(request: Request) -> str:
+    """The peer address, believing X-Forwarded-For ONLY from a configured proxy.
+
+    The header is attacker-supplied on any direct connection: uvicorn does not
+    run with --proxy-headers and Traefik APPENDS rather than replaces, so the
+    leftmost entry is whatever the client typed. Trusting it let one client
+    rotate `X-Forwarded-For` into a fresh rate-limit bucket per request (and
+    key requests onto a victim's bucket). When the peer IS a trusted proxy we
+    take the RIGHTMOST entry — the address that proxy actually observed —
+    rather than the leftmost, which the client still controls.
+    """
+    peer = request.client.host if request.client else "unknown"
+    trusted = get_settings().trusted_proxy_ips
+    if not trusted or peer not in trusted:
+        return peer
     forwarded = request.headers.get("X-Forwarded-For", "")
-    ip = forwarded.split(",")[0].strip() if forwarded else (request.client.host if request.client else "unknown")
-    return "ip:" + ip
+    hops = [h.strip() for h in forwarded.split(",") if h.strip()]
+    for hop in reversed(hops):
+        if hop not in trusted:
+            return hop
+    return peer
 
 
 class RateLimitMiddleware(BaseHTTPMiddleware):

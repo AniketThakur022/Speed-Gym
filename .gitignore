@@ -18,3 +18,6 @@ data/vision_pass/results/
 *.tsbuildinfo
 next-env.d.ts
 out/
+# Database dumps — must never be committed (see scripts/backup.sh)
+backups/
+*.pgdump

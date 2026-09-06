@@ -21,7 +21,7 @@ from pathlib import Path
 from typing import Any, Optional, Protocol
 
 from .. import db
-from ..content import extract_numeric_answer, quarantined_ids
+from ..content import extract_numeric_answer, format_answer, quarantined_ids, servable_trust, trust_levels
 from .blueprints import Section
 
 POOLS_DIR = Path(__file__).resolve().parents[4] / "data" / "mocks" / "pools"
@@ -72,6 +72,11 @@ class GraphSource:
     async def fetch(self, section: Section, count: int, seed: str) -> list[dict[str, Any]]:
         pool = await db.get_pg()
         excluded = await quarantined_ids(pool)
+        # The quarantine rung alone is WEAKER than the practice loop: content.py
+        # and session.py both state that SANDBOX content "never feeds BKT or
+        # mock exams", so a stage-7 SANDBOX verdict has to exclude an item here
+        # too. Reading the whole ladder is what makes the review observable.
+        ladder = await trust_levels(pool)
         async with db.get_neo4j().session() as neo:
             result = await neo.run(self.CYPHER, excluded=sorted(excluded))
             rows = [dict(r) async for r in result]
@@ -80,9 +85,12 @@ class GraphSource:
             ans = extract_numeric_answer(r.get("answer_key"))
             if ans is None or not r.get("problem_id"):
                 continue
+            verdict = ladder.get(r["problem_id"])
+            if verdict is not None and not servable_trust(verdict).feeds_mastery:
+                continue
             candidates.append({
                 "question_id": r["problem_id"], "kind": "numeric", "text": r["text"],
-                "options": None, "correct_answer": ("%g" % ans), "skill": r.get("skill"),
+                "options": None, "correct_answer": format_answer(ans), "skill": r.get("skill"),
                 "difficulty": float(r.get("difficulty") or 1),
             })
         rng = random.Random(int(hashlib.sha256(seed.encode()).hexdigest(), 16))

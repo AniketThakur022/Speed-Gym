@@ -188,3 +188,37 @@ def test_blueprints_report_pool_availability(client, pools):
     assert all(s["available"] for s in cat["sections"])
     gmat = next(b for b in bps if b["key"] == "gmat")
     assert next(s for s in gmat["sections"] if s["key"] == "verbal")["available"] is False
+
+
+def test_results_never_call_a_late_discarded_answer_correct(client, pools):
+    """Regression (blocks 5–9 review): /results graded the stored row blind, so
+    an answer the scorer discarded as late came back attempted-and-correct
+    while the section counts on the same payload said unattempted."""
+    auth, _ = _register(client)
+    m = _configure(client, auth, sections=["qa"], mode="sectional")
+    q = next(x for x in m["sections"][0]["questions"] if x["kind"] == "numeric")
+    n = int(q["text"].split()[1].split("+")[0])
+
+    # Backdate the attempt so anything submitted now is past the deadline.
+    with psycopg.connect(DSN) as conn:
+        conn.execute(
+            "UPDATE mock_exam_attempts SET started_at = NOW() - INTERVAL '3 hours' WHERE mock_id = %s",
+            (m["mock_id"],),
+        )
+        conn.commit()
+
+    assert client.post("/api/v1/mocks/submit-answer", json={
+        "mock_id": m["mock_id"], "question_id": q["question_id"], "answer": str(2 * n), "time_ms": 30000,
+    }, headers=auth).status_code == 200
+
+    body = client.post("/api/v1/mocks/submit", json={"mock_id": m["mock_id"], "section_times": {"qa": 9000}},
+                       headers=auth).json()
+    assert body["late_answers_discarded"] == 1
+    section = body["score"]["sections"][0]
+    assert section["correct"] == 0 and section["raw"] == 0.0
+
+    row = next(r for r in client.get(f"/api/v1/mocks/results/{m['mock_id']}", headers=auth).json()["review"]
+               if r["question_id"] == q["question_id"])
+    assert row["late"] is True and row["counted"] is False
+    assert row["verdict"] is False, "a discarded answer must never be reported correct"
+    assert row["your_answer"] == str(2 * n)   # still shown, just not counted

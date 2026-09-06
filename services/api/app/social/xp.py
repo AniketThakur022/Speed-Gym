@@ -62,6 +62,13 @@ async def total_xp(cur, user_id: str) -> int:
 async def record_activity_day(cur, user_id: str, day: date, problems: int = 0) -> dict:
     """Mark `day` active; extend/reset the streak. Returns the streak state and
     whether the day was new (so the caller can award streak XP once)."""
+    # A device clock ahead of real time (dead RTC, or a user shifting the date
+    # to game a trial) used to write a FUTURE last_activity_date, and the
+    # backfill guard below then treated every real day as older — so the streak
+    # froze permanently and streak XP never paid again. Clamp to today.
+    today = datetime.now(timezone.utc).date()
+    if day > today:
+        day = today
     await cur.execute(
         """INSERT INTO streak_days (user_id, activity_date, problems) VALUES (%s::uuid, %s, %s)
            ON CONFLICT (user_id, activity_date) DO UPDATE
@@ -107,6 +114,10 @@ async def streak_state(cur, user_id: str, today: date) -> dict:
     current, longest, last = row
     # A streak that skipped yesterday is over, even before the next activity.
     if last is not None and last < today - timedelta(days=1):
+        current = 0
+    # Self-heal a row written from a skewed clock before days were clamped: a
+    # future last_activity_date is not evidence of a live streak.
+    if last is not None and last > today:
         current = 0
     return {"current": int(current), "longest": int(longest), "last_activity_date": last.isoformat() if last else None}
 

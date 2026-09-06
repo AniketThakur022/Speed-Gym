@@ -46,10 +46,25 @@ export default function BillingPage() {
         description: out.checkout.description,
         prefill: { email: out.checkout.prefill?.email ?? email },
         handler: async (r: { razorpay_payment_id: string; razorpay_subscription_id: string; razorpay_signature: string }) => {
-          const v = await verifyRazorpay({ intent_id: out.intent_id, ...r });
-          setEntitlement(v.entitlement);
-          setNotice(`You're on ${v.tier}. Trial for ${plans.data?.trial_days ?? 7} days.`);
-          void qc.invalidateQueries({ queryKey: ["billing-subscription"] });
+          // Razorpay ignores this promise, so an unhandled rejection here is
+          // invisible: the learner has PAID and the page would look untouched.
+          // Every failure has to surface, with the payment id to quote.
+          try {
+            const v = await verifyRazorpay({ intent_id: out.intent_id, ...r });
+            setEntitlement(v.entitlement);
+            setNotice(`You're on ${v.tier}. Trial for ${plans.data?.trial_days ?? 7} days.`);
+            void qc.invalidateQueries({ queryKey: ["billing-subscription"] });
+          } catch (err) {
+            setNotice(
+              `Your payment went through, but we could not confirm it here ` +
+                `(${err instanceof Error ? err.message : "unknown error"}). ` +
+                `It usually completes on its own within a minute — reload this page. ` +
+                `If it does not, quote payment ${r.razorpay_payment_id}.`,
+            );
+            void qc.invalidateQueries({ queryKey: ["billing-subscription"] });
+          } finally {
+            setBusy(null);
+          }
         },
         modal: { ondismiss: () => setBusy(null) },
       });

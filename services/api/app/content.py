@@ -188,6 +188,25 @@ class TrustDecision:
         self.reason = reason
 
 
+def format_answer(value: float) -> str:
+    """Canonical stored form of a numeric answer: plain decimal, never exponential.
+
+    `"%g"` switches to 6-significant-digit exponential notation at 1e6, so an
+    answer of 99900024 was stored as "9.99e+07" — which `extract_numeric_answer`
+    cannot parse back (its PLAIN_NUMBER regex has no exponent branch), so
+    grading silently fell through to a string compare and marked the CORRECT
+    answer wrong. It also collapsed distinct answers onto one string. Any path
+    that persists an answer for later grading must use this.
+    """
+    value = float(value)
+    if value.is_integer() and abs(value) < 1e15:
+        return str(int(value))
+    text = repr(value)
+    if "e" in text or "E" in text:
+        text = f"{value:.12f}".rstrip("0").rstrip(".") or "0"
+    return text
+
+
 def servable_trust(label: Optional[str]) -> TrustDecision:
     """Decide whether content may be served, and whether it may drive mastery.
 

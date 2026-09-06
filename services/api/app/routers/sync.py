@@ -155,7 +155,12 @@ async def sync_events(body: SyncRequest, user: dict = Depends(get_current_user))
                 # XP + streak from the SAME accepted events (idempotent on
                 # event_id via the ledger; a resend cannot pay twice).
                 if inserted:
-                    day = datetime.fromtimestamp(event.client_timestamp / 1000, tz=timezone.utc).date()
+                    # client_timestamp is unvalidated device time; never let it
+                    # run the streak into the future (see xp.record_activity_day).
+                    day = min(
+                        datetime.fromtimestamp(event.client_timestamp / 1000, tz=timezone.utc).date(),
+                        datetime.now(timezone.utc).date(),
+                    )
                     if event.event_type == "problem_attempt":
                         active_days[day] = active_days.get(day, 0) + 1
                         if event.metadata.get("is_correct") is True:

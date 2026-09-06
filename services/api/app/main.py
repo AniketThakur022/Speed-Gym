@@ -41,14 +41,22 @@ async def lifespan(app: FastAPI):
 def create_app() -> FastAPI:
     settings = get_settings()
     app = FastAPI(title=settings.app_name, version=settings.version, lifespan=lifespan)
+    # Order matters: Starlette runs the LAST-added middleware outermost, so CORS
+    # is installed after the hardening stack. Added first, it sat innermost and
+    # the 429/413 responses that RateLimit/BodyLimit short-circuit never passed
+    # through it — the browser dropped them for a missing Access-Control-Allow-
+    # Origin and surfaced a generic network error instead of the rate limit.
+    middleware.install(app)
     app.add_middleware(
         CORSMiddleware,
         allow_origins=settings.cors_origins,
         allow_credentials=True,
         allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
         allow_headers=["Authorization", "Content-Type", "X-Device-Fingerprint"],
+        # Without this the PWA cannot read its own rate-limit budget: browsers
+        # hide every non-safelisted response header from cross-origin JS.
+        expose_headers=["X-RateLimit-Limit", "X-RateLimit-Remaining", "Retry-After", "X-Request-Id"],
     )
-    middleware.install(app)
     app.include_router(health.router)
     app.include_router(auth.router, prefix=settings.api_v1_prefix)
     app.include_router(session.router, prefix=settings.api_v1_prefix)

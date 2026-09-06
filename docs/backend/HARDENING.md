@@ -25,3 +25,31 @@ Code: `services/api/app/middleware.py` (installed first in `main.py`), settings
 
 Still open: OWASP ZAP baseline scan and container image signing (GATE-02) need the
 deployed host; Traefik TLS termination config lives with the droplet, not here.
+
+## Review fixes (blocks 5–9 adversarial pass, 2026-09-06)
+
+- **Backups never land in the repo.** `scripts/backup.sh` defaults to
+  `$HOME/vmsg-backups` and REFUSES any destination inside the working tree that
+  git does not ignore; `backups/` and `*.pgdump` are gitignored. The nightly
+  `tools/daily_commit.sh` runs `git add -A && git push`, so the old `./backups`
+  default would have published every `users` row (emails, scrypt hashes,
+  kids-mode ages) and `refresh_tokens` to GitHub. Nothing had been dumped yet —
+  verified: no `backups/` in any commit and no dump in history.
+- **Prod secrets actually come from `.env`.** Compose gives `environment:`
+  precedence over `env_file:` and MERGES the two files' maps, so the base
+  compose's dev literals (`JWT_SECRET: dev-only-change-me`, `POSTGRES_PASSWORD:
+  vmsg`, …) silently won and prod would have signed JWTs with a secret that is
+  public in this repo. `docker-compose.prod.yml` now restates each secret as
+  `${VAR:?}`, so it is taken from `.env` and compose refuses to start without it.
+- **Rate limiting no longer trusts a forged `X-Forwarded-For`.** The header is
+  client-supplied on a direct connection (uvicorn runs without
+  `--proxy-headers`; Traefik appends), so rotating it gave every request its own
+  bucket and password-spraying `/auth/login` was unbounded. `TRUSTED_PROXIES`
+  (empty by default = trust nothing) lists the proxies whose header is believed,
+  and the RIGHTMOST hop is taken — the address the proxy actually observed.
+- **CORS wraps the hardening stack.** Starlette runs the last-added middleware
+  outermost, so CORS added first sat innermost and the 429/413 responses that
+  RateLimit/BodyLimit short-circuit carried no `Access-Control-Allow-Origin` —
+  browsers dropped them and the PWA saw a generic network error, then retried
+  into the limiter. `expose_headers` now publishes `X-RateLimit-*`,
+  `Retry-After` and `X-Request-Id` so the client can read its own budget.

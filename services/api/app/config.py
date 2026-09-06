@@ -77,7 +77,16 @@ class Settings(BaseSettings):
 
     # ── Hardening (block 9) ────────────────────────────────────────────────
     rate_limit_per_minute: int = 300          # per learner (or IP); 0 disables
+    # Reverse proxies whose X-Forwarded-For may be believed, comma-separated.
+    # EMPTY = trust nothing: the limiter keys on the real peer address. An
+    # unverified XFF is attacker-controlled, and keying on it lets one client
+    # rotate the header into unlimited buckets (or forge a victim's).
+    trusted_proxies: str = ""
     behind_tls: bool = False                  # True in prod (Traefik terminates TLS) → HSTS
+
+    @property
+    def trusted_proxy_ips(self) -> set[str]:
+        return {p.strip() for p in self.trusted_proxies.split(",") if p.strip()}
 
     @property
     def cors_origins(self) -> list[str]:

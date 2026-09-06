@@ -19,12 +19,13 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import {
   bktToMastery,
+  classifyState,
   freshState,
   processAttempt,
   type TechniqueState,
 } from "@vmsg/psychometrics";
 
-import { getPracticeSession, type PracticeItem } from "@/services/practice";
+import { getMastery, getPracticeSession, type PracticeItem } from "@/services/practice";
 import { checkAnswer, type CheckOutcome } from "@/lib/answer-check";
 import { MathText } from "@/components/math-text";
 import { flushEvents, queueEvent } from "@/services/telemetry";
@@ -57,11 +58,53 @@ export default function PracticePage() {
   // whole screen, a problem_attempt per check, one session_end at the end.
   const sessionId = useMemo(() => uuid(), []);
   const sessionStartedAt = useMemo(() => Date.now(), []);
-  const counters = useRef({ attempted: 0, correct: 0 });
+  const counters = useRef({ attempted: 0, correct: 0, deferred: 0 });
   const startedRef = useRef(false);
   const endedRef = useRef(false);
   const [hint, setHint] = useState<HintOut | null>(null);
   const [hintBusy, setHintBusy] = useState(false);
+
+  // Mastery is hydrated from the server's latest snapshot. Without this the
+  // screen recomputed every skill from pInit and the session_end snapshot —
+  // which every server reader treats as the WHOLE mastery picture — replaced
+  // the learner's history with just the skills touched in this one session.
+  const { data: persisted } = useQuery({
+    queryKey: ["practice-mastery"],
+    queryFn: getMastery,
+    staleTime: Infinity,
+  });
+  const hydratedRef = useRef(false);
+  useEffect(() => {
+    if (!persisted || hydratedRef.current) return;
+    hydratedRef.current = true;
+    setStates((previous) => {
+      const seeded: Record<string, TechniqueState> = {};
+      for (const [id, raw] of Object.entries(persisted.technique_states ?? {})) {
+        const base = freshState(id);
+        const pLearned = typeof raw?.pLearned === "number" ? raw.pLearned : base.pLearned;
+        const masteryScore = typeof raw?.masteryScore === "number"
+          ? raw.masteryScore
+          : Math.round(pLearned * 100);
+        const consecutiveCorrect = raw?.consecutiveCorrect ?? base.consecutiveCorrect;
+        const consecutiveErrors = raw?.consecutiveErrors ?? base.consecutiveErrors;
+        seeded[id] = {
+          ...base,
+          pLearned,
+          masteryScore,
+          accuracyScore: raw?.accuracyScore ?? base.accuracyScore,
+          consecutiveCorrect,
+          consecutiveErrors,
+          totalAttempts: raw?.totalAttempts ?? base.totalAttempts,
+          totalCorrect: raw?.totalCorrect ?? base.totalCorrect,
+          // Older snapshots stored only {pLearned, state}; recompute rather than
+          // trusting a label that may not match the numbers we just restored.
+          state: classifyState({ masteryScore, consecutiveCorrect, consecutiveErrors }),
+        };
+      }
+      // Anything already updated in this session wins over the snapshot.
+      return { ...seeded, ...previous };
+    });
+  }, [persisted]);
 
   const items = data?.items ?? [];
   const item: PracticeItem | undefined = items[index];
@@ -85,7 +128,11 @@ export default function PracticePage() {
   }, [data, sessionId]);
 
   const submit = useCallback(() => {
-    if (!item || verdict) return;
+    // An `unparsable` verdict is a prompt to type a number, NOT a graded
+    // attempt: it must stay re-submittable. Treating it like a real verdict
+    // deadlocked the button, and the only escape (Enter) silently skipped the
+    // problem without recording anything.
+    if (!item || (verdict && verdict.outcome !== "unparsable")) return;
 
     const result = checkAnswer(answer, item.expected_answer, item.answer_check);
     if (result.outcome === "unparsable") {
@@ -95,6 +142,7 @@ export default function PracticePage() {
 
     counters.current.attempted += 1;
     if (result.outcome === "correct") counters.current.correct += 1;
+    if (result.outcome === "deferred") counters.current.deferred += 1;
     void queueEvent(
       "problem_attempt",
       {
@@ -106,6 +154,10 @@ export default function PracticePage() {
         difficulty: item.difficulty,
         feeds_mastery: item.feeds_mastery,
         answer_check: item.answer_check,
+        // A server-checked item is graded later, off this device — so the
+        // typed answer has to travel with the event. Dropping it made the
+        // attempt permanently ungradable while still counting as attempted.
+        submitted_answer: result.outcome === "deferred" ? answer.trim() : undefined,
         hint_level: hint?.level ?? 0,
       },
       { session_id: sessionId, session_elapsed_ms: Date.now() - sessionStartedAt },
@@ -150,9 +202,10 @@ export default function PracticePage() {
   useEffect(() => {
     if (isLoading || !items.length || index < items.length || endedRef.current) return;
     endedRef.current = true;
-    const technique_states = Object.fromEntries(
-      Object.entries(states).map(([id, s]) => [id, { pLearned: s.pLearned, state: s.state }]),
-    );
+    // The whole state, not just {pLearned, state}: this snapshot is what the
+    // next session hydrates from, and a lossy one would reset the counters
+    // that classifyState depends on.
+    const technique_states = states;
     void queueEvent(
       "session_end",
       {
@@ -160,6 +213,9 @@ export default function PracticePage() {
         session_type: "practice",
         problems_attempted: counters.current.attempted,
         problems_correct: counters.current.correct,
+        // Attempted but not graded on-device; the server must not score these
+        // out of the attempted total.
+        problems_deferred: counters.current.deferred,
         technique_states,
       },
       { session_id: sessionId, session_elapsed_ms: Date.now() - sessionStartedAt },
@@ -272,8 +328,15 @@ export default function PracticePage() {
         className="mt-5 w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground outline-none focus:border-primary"
         placeholder="Your answer"
         value={answer}
-        onChange={(event) => setAnswer(event.target.value)}
-        onKeyDown={(event) => event.key === "Enter" && (verdict ? next() : submit())}
+        onChange={(event) => {
+          setAnswer(event.target.value);
+          // Typing is the fix for "enter a number", so clear that prompt.
+          setVerdict((v) => (v && v.outcome === "unparsable" ? null : v));
+        }}
+        onKeyDown={(event) =>
+          event.key === "Enter" &&
+          (verdict && verdict.outcome !== "unparsable" ? next() : submit())
+        }
         autoFocus
       />
 

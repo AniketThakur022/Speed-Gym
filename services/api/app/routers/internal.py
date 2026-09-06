@@ -18,7 +18,7 @@ from pydantic import BaseModel, Field
 
 from .. import db
 from ..config import get_settings
-from ..content import extract_numeric_answer, quarantined_ids
+from ..content import extract_numeric_answer, format_answer, quarantined_ids
 from ..glicko2 import Rating, seed_rating, update_match
 from ..social.policy import kids_policy
 
@@ -169,7 +169,9 @@ async def problem_batch(body: ProblemBatchRequest) -> dict:
             {
                 "problem_id": candidate["problem_id"],
                 "problem_text": candidate["problem_text"],
-                "answer": ("%g" % answer),
+                # Plain decimal, never exponential: the game server compares
+                # this string, so "%g" would make every answer >= 1e6 unwinnable.
+                "answer": format_answer(answer),
                 "difficulty": float(difficulty),
                 "renderer_type": "latex",
             }

@@ -113,8 +113,12 @@ async def radar(user: dict = Depends(get_current_user)) -> list[dict]:
             streak = await xp_mod.streak_state(cur, user["id"], xp_mod.utc_today())
     times = [float(r[1]) for r in rows if r[1] is not None and float(r[1]) > 0]
     total = len(rows)
-    correct = sum(1 for r in rows if r[0])
-    accuracy = correct / total if total else 0.0
+    # Server-checked (deferred) attempts arrive with is_correct = NULL. They are
+    # not yet graded, so they belong in the volume but NOT in the accuracy
+    # denominator — counting SQL NULL as wrong understated a perfect session.
+    graded = [r for r in rows if r[0] is not None]
+    correct = sum(1 for r in graded if r[0])
+    accuracy = correct / len(graded) if graded else 0.0
     median = statistics.median(times) if times else 0.0
     p25 = sorted(times)[len(times) // 4] if times else 0.0
     focus = (sum(1 for t in times if t <= 1.5 * median) / len(times)) if times else 0.0
@@ -137,8 +141,8 @@ async def metrics(user: dict = Depends(get_current_user)) -> list[dict]:
         rows = await _attempts(conn, user["id"], None, WINDOW_DAYS)
     times = [float(r[1]) for r in rows if r[1] is not None and float(r[1]) > 0]
     median = statistics.median(times) if times else 0.0
-    total = len(rows)
-    accuracy = (sum(1 for r in rows if r[0]) / total) if total else 0.0
+    graded = [r for r in rows if r[0] is not None]     # ungraded != wrong
+    accuracy = (sum(1 for r in graded if r[0]) / len(graded)) if graded else 0.0
     return [
         {"label": "Action Delay", "value": f"{int(median)}ms", "icon": "Zap"},
         {"label": "Focus Density", "value": f"{int(round(accuracy * 100))}%", "icon": "TrendingUp"},
@@ -150,15 +154,24 @@ async def stats(domain: Optional[str] = Query(default=None), user: dict = Depend
     pool = await db.get_pg()
     async with pool.connection() as conn:
         rows = await _attempts(conn, user["id"], domain, None)
+        age, _ = await _profile(conn, user["id"])
+        # The anxiety guard has to hold on EVERY surface exposing the ranking,
+        # not just /leaderboard: the stat tiles sit on the same screen, so
+        # serving the percentile here defeated `hidden` entirely — that mode
+        # exists precisely because for a mostly-FRACTURED learner even the
+        # number is too much.
+        mode, _reason = await leaderboard_mode(conn, user["id"], is_kid(age))
         async with conn.cursor() as cur:
             _top, me, total_users = await xp_mod.leaderboard(cur, user["id"], 1)
     total = len(rows)
-    correct = sum(1 for r in rows if r[0])
+    graded = [r for r in rows if r[0] is not None]     # ungraded != wrong
+    correct = sum(1 for r in graded if r[0])
     times = [float(r[1]) for r in rows if r[1] is not None and float(r[1]) > 0]
     return {
-        "accuracy": int(round(100 * correct / total)) if total else 0,
+        "accuracy": int(round(100 * correct / len(graded))) if graded else 0,
         "questions": total,
-        "percentile": xp_mod.percentile(me["rank"] if me else None, total_users),
+        "percentile": (0 if mode == "hidden"
+                       else xp_mod.percentile(me["rank"] if me else None, total_users)),
         "speed": int(round(sum(times) / len(times) / 1000)) if times else 0,
     }
 
@@ -239,5 +252,8 @@ async def recent_activity(domain: Optional[str] = Query(default=None), user: dic
         kind = str(meta.get("session_type") or "Practice").replace("_", " ").title()
         attempted = int(meta.get("problems_attempted") or 0)
         correct = int(meta.get("problems_correct") or 0)
-        out.append({"label": f"{kind} session", "score": f"{correct}/{attempted}", "time": _relative(int(ts))})
+        # Deferred items were attempted but never graded; scoring them out of the
+        # attempted total would render a perfect session as "7/10".
+        graded = max(0, attempted - int(meta.get("problems_deferred") or 0))
+        out.append({"label": f"{kind} session", "score": f"{correct}/{graded}", "time": _relative(int(ts))})
     return out

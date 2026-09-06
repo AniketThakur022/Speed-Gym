@@ -331,5 +331,10 @@ def test_daily_challenge_get_submit_rank(client):
     assert s["xp_awarded"] >= 50 + 100
     assert client.post("/api/v1/social/daily/submit", json={"answers": ["1"] * 10, "total_time_ms": 5}, headers=a_auth).status_code == 409
     board = client.get("/api/v1/social/daily/leaderboard", headers=a_auth).json()
-    assert board["me"]["rank"] == s["rank"] and any(e["name"] == "You" for e in board["entries"])
+    # The dev DB accumulates attempts across runs, so "You" is only in the
+    # top-10 slice when the rank actually is top-10.
+    assert board["me"]["rank"] == s["rank"]
+    assert len(board["entries"]) <= 10
+    if s["rank"] <= 10:
+        assert any(e["name"] == "You" for e in board["entries"])
     assert client.get("/api/v1/social/daily", headers=a_auth).json()["submitted"]["score"] == s["score"]

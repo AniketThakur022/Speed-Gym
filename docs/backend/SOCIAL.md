@@ -87,3 +87,29 @@ parental consent is the paid-card seat creation (`family_seats.parental_consent_
 
 Parent-managed friend approval for children (a `/family` endpoint), the referral
 ladder REF-01..10 (flag `referral_ladder`, dark), clan/hub achievements (Phase 2).
+
+## Review fixes (blocks 5–9 adversarial pass, 2026-09-06)
+
+- **A clip never reveals a bot opponent.** `internal.py` stores `user_id = NULL`
+  for a bot row, so marking a bot-opponent clip instantly `ready` with
+  `opponent_consent: true` made the create response a reliable bot oracle —
+  the one thing that must not cross the API boundary. Every clip now starts
+  `pending` with `opponent_consent: false`; a bot simply never consents, which
+  is indistinguishable from a human who declines. Opponent stats are populated
+  in both cases (omitting them would leak the same bit) and come from the
+  resolved opponent rather than `others[0]`.
+- **A future device clock cannot freeze a streak.** `client_timestamp` is
+  unvalidated device time; a date set forward wrote a future
+  `streaks.last_activity_date`, after which the backfill guard treated every
+  real day as older — the streak froze permanently and streak XP never paid
+  again. Activity days are clamped to today at both the sync edge and in
+  `xp.record_activity_day`, and `streak_state` self-heals a row already poisoned.
+- **The anxiety guard holds on every ranking surface.** `/dashboard/stats`
+  served the raw XP percentile with no guard call, so a mostly-FRACTURED learner
+  saw the number on the same screen where `/dashboard/leaderboard` correctly
+  returned `[]`. `hidden` now zeroes the percentile too.
+- **An ungraded attempt is not a wrong one.** Server-checked (`server_sympy`)
+  attempts arrive with `is_correct: null`; SQL folded NULL in as wrong, so a
+  perfect session reported 70%. Accuracy in `/stats`, `/metrics` and `/radar` is
+  computed over graded attempts only, `questions` still counts all of them, and
+  `/recent-activity` scores out of `attempted - problems_deferred`.

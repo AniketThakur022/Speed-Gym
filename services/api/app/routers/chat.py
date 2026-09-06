@@ -17,7 +17,15 @@ from pydantic import BaseModel, Field
 
 from .. import db
 from ..chat import budget as budget_mod
-from ..chat.hints import ProblemContext, answer_forms, ladder, max_level, parse_steps, redact, usable_steps
+from ..chat.hints import (
+    ProblemContext,
+    answer_forms,
+    ladder,
+    max_level,
+    parse_step_records,
+    redact,
+    usable_steps,
+)
 from ..chat.llm import LLMUnavailable, get_llm
 from ..config import get_settings
 from ..flags import flag_enabled, require_flag
@@ -60,10 +68,13 @@ async def load_problem(template_id: str) -> Optional[ProblemContext]:
         )).single()
     if rec is None or not rec["text"]:
         return None
-    steps = parse_steps(rec["steps"]) or parse_steps(rec["preview"])
+    steps, step_numbers = parse_step_records(rec["steps"])
+    if not steps:
+        steps, step_numbers = parse_step_records(rec["preview"])
     return ProblemContext(
         template_id=template_id, question_text=rec["text"], technique=rec["technique"] or rec["skill"],
-        sutra=rec["sutra"], topic=rec["topic"], steps=steps, answer_key=rec["answer"],
+        sutra=rec["sutra"], topic=rec["topic"], steps=steps, step_numbers=step_numbers,
+        answer_key=rec["answer"],
     )
 
 
@@ -117,7 +128,11 @@ async def query(body: ChatQuery, user: dict = Depends(require_flag("chatbot"))) 
                 method = ctx.technique or ctx.sutra or ctx.topic
                 try:
                     res = await get_llm().hint(
-                        problem_text=ctx.question_text, method=method, steps=usable_steps(ctx),
+                        problem_text=ctx.question_text, method=method,
+                        # Redacted before they leave the server: the prompt calls
+                        # these "verified working", so anything that slips an
+                        # answer form through would be authoritative to the model.
+                        steps=[redact(st, forms)[0] for st in usable_steps(ctx)],
                         prior_hint=body.prior_hint, user_message=body.message.strip(),
                     )
                 except LLMUnavailable:

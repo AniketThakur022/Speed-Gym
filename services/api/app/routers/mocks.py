@@ -336,19 +336,32 @@ async def results(mock_id: str, user: dict = Depends(require_flag("mock_exams"))
         served = await _served(conn, att[0])
         rows = await (
             await conn.execute(
-                "SELECT question_id, answer, time_ms FROM mock_exam_answers WHERE attempt_id = %s", (att[0],)
+                "SELECT question_id, answer, time_ms, submitted_at FROM mock_exam_answers WHERE attempt_id = %s",
+                (att[0],),
             )
         ).fetchall()
-    mine = {r[0]: (r[1], r[2]) for r in rows}
+    mine = {r[0]: (r[1], r[2], r[3]) for r in rows}
+    # Review has to apply the SAME cutoff /submit scored with. Grading the
+    # stored row blind reported a late answer as attempted and correct while
+    # the section counts above it said unattempted — the same screen
+    # contradicting itself.
+    started_at, time_limit, timers_suppressed = att[4], att[6], att[7]
+    deadline = (started_at + timedelta(seconds=(time_limit or 0) + LATE_GRACE_SECONDS)) if started_at else None
     review = []
     for key, qs in served.items():
         for q in qs:
-            ans, tms = mine.get(q["question_id"], (None, None))
+            ans, tms, at = mine.get(q["question_id"], (None, None, None))
+            late = bool(
+                ans is not None and not timers_suppressed and deadline is not None
+                and at is not None and at > deadline
+            )
             review.append({
                 "section": key, "position": q["position"], "question_id": q["question_id"], "kind": q["kind"],
                 "text": q["text"], "options": q["options"], "skill": q["skill"],
                 "your_answer": ans, "correct_answer": q["correct_answer"],
-                "verdict": scoring.grade(q, ans), "time_ms": tms,
+                # A discarded answer is never a correct one; `counted` says why.
+                "verdict": False if late else scoring.grade(q, ans),
+                "counted": not late, "late": late, "time_ms": tms,
             })
     return {
         "mock_id": mock_id, "exam": att[1], "sections": att[2],

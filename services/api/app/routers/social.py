@@ -577,20 +577,32 @@ async def clip_create(body: ClipCreate, user: dict = Depends(require_flag("socia
             raise HTTPException(status_code=404, detail="you did not play that match")
         others = [r for r in rows if not (r[0] and str(r[0]) == user["id"])]
         opponent = next((r for r in others if r[0] and not r[1]), None)
-        # A human opponent must consent; otherwise nothing is disclosed and the
-        # clip is ready at once (never say why).
         opp_id = str(opponent[0]) if opponent else None
+
+        # A clip ALWAYS starts pending, whether or not a human opponent exists.
+        # Marking a bot-opponent clip instantly `ready` with `opponent_consent:
+        # true` made the response a reliable bot oracle — the one thing that must
+        # never cross the API boundary — because internal.py stores a NULL
+        # user_id for every bot row. A bot simply never consents, which is
+        # indistinguishable from a human who declines, so the observable shape is
+        # identical in both cases.
+        #
+        # The stats come from the resolved opponent when there is one and from
+        # the remaining player otherwise: omitting them for a bot match would
+        # reintroduce the same oracle in the payload.
+        stats_row = opponent or (others[0] if others else None)
         payload = {
             "match_id": body.match_id,
             "you": {"rank": mine[2], "correct": mine[3], "attempted": mine[4], "avg_time_ms": mine[5]},
-            "opponent": {"rank": others[0][2], "correct": others[0][3], "attempted": others[0][4]} if others else None,
+            "opponent": ({"rank": stats_row[2], "correct": stats_row[3], "attempted": stats_row[4]}
+                         if stats_row else None),
         }
         try:
             row = await (
                 await conn.execute(
                     """INSERT INTO clips (match_id, owner_id, opponent_id, opponent_consent, status, payload)
-                       VALUES (%s, %s::uuid, %s::uuid, %s, %s, %s) RETURNING id""",
-                    (body.match_id, user["id"], opp_id, opp_id is None, "pending" if opp_id else "ready", json.dumps(payload)),
+                       VALUES (%s, %s::uuid, %s::uuid, FALSE, 'pending', %s) RETURNING id""",
+                    (body.match_id, user["id"], opp_id, json.dumps(payload)),
                 )
             ).fetchone()
         except Exception:  # noqa: BLE001

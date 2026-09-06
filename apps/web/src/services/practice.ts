@@ -52,3 +52,26 @@ export async function getPracticeSession(params: {
   query.set("size", String(params.size ?? 10));
   return apiGet<PracticeSession>(`/practice/session?${query.toString()}`);
 }
+
+/** The persisted BKT state, so a session resumes from real evidence rather
+ *  than restarting every skill at pInit. */
+export type MasteryOut = {
+  technique_states: Record<string, Partial<TechniqueStateLike> & { pLearned?: number; state?: string }>;
+  as_of: string | null;
+};
+
+type TechniqueStateLike = {
+  techniqueId: string;
+  state: string;
+  masteryScore: number;
+  accuracyScore: number;
+  consecutiveCorrect: number;
+  consecutiveErrors: number;
+  totalAttempts: number;
+  totalCorrect: number;
+  pLearned: number;
+};
+
+export async function getMastery(): Promise<MasteryOut> {
+  return apiGet<MasteryOut>("/practice/mastery");
+}

@@ -26,6 +26,21 @@ def monkeypatch_module():
     p.undo()
 
 
+def _reset_rate_limit_buckets() -> None:
+    """The limiter keys unauthenticated requests on the client IP, and every
+    TestClient in the suite shares "testclient" — so one module's traffic used
+    to exhaust another's budget depending on file order. Clear the bucket for
+    this process before asserting on limits."""
+    try:
+        import redis as _redis
+
+        r = _redis.Redis.from_url("redis://localhost:6379/0")
+        for key in r.scan_iter("ratelimit:*"):
+            r.delete(key)
+    except Exception:  # noqa: BLE001 — no Redis: the limiter fails open anyway
+        pass
+
+
 @pytest.fixture(scope="module")
 def client(monkeypatch_module):
     from app.config import get_settings
@@ -33,6 +48,7 @@ def client(monkeypatch_module):
     monkeypatch_module.setenv("RATE_LIMIT_PER_MINUTE", "5")
     monkeypatch_module.setenv("BEHIND_TLS", "true")
     get_settings.cache_clear()
+    _reset_rate_limit_buckets()
     with TestClient(create_app()) as c:
         yield c
     get_settings.cache_clear()

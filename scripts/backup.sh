@@ -9,10 +9,32 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 export PATH="/Applications/Docker.app/Contents/Resources/bin:$PATH"
 
-BACKUP_DIR="${BACKUP_DIR:-./backups}"
+# NEVER default inside the working tree: tools/daily_commit.sh runs `git add -A`
+# at 03:00 and pushes, so a dump written under the repo would publish every
+# users row (emails, password hashes, kids-mode ages) and refresh_tokens to
+# GitHub. Default outside the repo, and refuse any destination the nightly
+# commit could pick up.
+BACKUP_DIR="${BACKUP_DIR:-$HOME/vmsg-backups}"
 STAMP="$(date -u +%Y%m%dT%H%M%SZ)"
 DEST="$BACKUP_DIR/$STAMP"
+
+REPO_ROOT="$(pwd -P)"
+mkdir -p "$BACKUP_DIR"
+BACKUP_ABS="$(cd "$BACKUP_DIR" && pwd -P)"
+case "$BACKUP_ABS/" in
+  "$REPO_ROOT"/*)
+    # Inside the repo: only allowed if git actually ignores it.
+    if ! git check-ignore -q "$BACKUP_ABS" 2>/dev/null; then
+      echo "REFUSING: BACKUP_DIR ($BACKUP_ABS) is inside the repo and is NOT gitignored." >&2
+      echo "The nightly auto-commit would push the database dump to GitHub." >&2
+      echo "Set BACKUP_DIR to a path outside $REPO_ROOT (e.g. an external disk)." >&2
+      exit 1
+    fi
+    ;;
+esac
+
 mkdir -p "$DEST"
+chmod 700 "$BACKUP_ABS" "$DEST" 2>/dev/null || true
 
 echo "-> Postgres"
 docker compose exec -T postgres pg_dump -U vmsg -d vmsg --no-owner --format=custom > "$DEST/vmsg.pgdump"

@@ -50,3 +50,22 @@ sinking skills deferred, phase transitions muted. Telemetry: `mock_exam_started`
 `mock_problem_attempt`, `mock_exam_submitted`, `deferred_workout_*` are psychometric
 (never sampled). Damage-control (ML-predicted score) and the frequency curve are
 client/DE concerns, not built here.
+
+## Review fixes (blocks 5–9 adversarial pass, 2026-09-06)
+
+- **Answers round-trip.** The graph source stored the correct answer with
+  `"%g"`, which switches to 6-significant-digit exponential at 1e6 — so
+  `99900024` became `"9.99e+07"`, which `extract_numeric_answer` cannot parse
+  back, and grading fell through to a string compare that marked the CORRECT
+  answer wrong. Two live problems even collapsed onto the same string. All
+  persisted answers now use `content.format_answer` (plain decimal, never
+  exponential). The duel path in `internal.py` had the identical defect and is
+  fixed with it.
+- **The whole trust ladder applies, not just quarantine.** The graph source read
+  only `quarantined_ids`, so a stage-7 SANDBOX verdict had no effect here even
+  though `content.servable_trust` and `session.py` both state that sandbox
+  content "never feeds BKT or mock exams". `trust_levels` is now applied.
+- **`/results` honours the late cutoff.** Review graded the stored row blind, so
+  an answer the scorer discarded as late came back attempted-and-correct while
+  the section counts in the same payload said unattempted. Rows now carry
+  `counted` and `late`, and a discarded answer is never reported correct.
