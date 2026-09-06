@@ -1,0 +1,11 @@
+{
+  "appId": "com.amhsolutions.examarena",
+  "appName": "Exam Arena",
+  "webDir": "out",
+  "server": {
+    "androidScheme": "https"
+  },
+  "plugins": {
+    "SplashScreen": { "launchAutoHide": true }
+  }
+}

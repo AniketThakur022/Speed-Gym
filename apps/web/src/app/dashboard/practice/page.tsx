@@ -15,7 +15,7 @@
  *     rather than guessed at locally.
  */
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import {
   bktToMastery,
@@ -27,6 +27,11 @@ import {
 import { getPracticeSession, type PracticeItem } from "@/services/practice";
 import { checkAnswer, type CheckOutcome } from "@/lib/answer-check";
 import { MathText } from "@/components/math-text";
+import { flushEvents, queueEvent } from "@/services/telemetry";
+import { askHint, type HintOut } from "@/services/chat";
+import { uuid } from "@/lib/telemetry-core";
+
+const DOMAIN = "vedic-math";
 
 type Verdict = { outcome: CheckOutcome; expected: number | null };
 
@@ -48,6 +53,15 @@ export default function PracticePage() {
   const [verdict, setVerdict] = useState<Verdict | null>(null);
   const [startedAt, setStartedAt] = useState(() => Date.now());
   const [states, setStates] = useState<Record<string, TechniqueState>>({});
+  // Telemetry contract (docs/backend/TELEMETRY.md): one session id for the
+  // whole screen, a problem_attempt per check, one session_end at the end.
+  const sessionId = useMemo(() => uuid(), []);
+  const sessionStartedAt = useMemo(() => Date.now(), []);
+  const counters = useRef({ attempted: 0, correct: 0 });
+  const startedRef = useRef(false);
+  const endedRef = useRef(false);
+  const [hint, setHint] = useState<HintOut | null>(null);
+  const [hintBusy, setHintBusy] = useState(false);
 
   const items = data?.items ?? [];
   const item: PracticeItem | undefined = items[index];
@@ -60,6 +74,16 @@ export default function PracticePage() {
     setStartedAt(Date.now());
   }, [index]);
 
+  useEffect(() => {
+    if (!data || startedRef.current) return;
+    startedRef.current = true;
+    void queueEvent(
+      "session_start",
+      { domain: DOMAIN, session_type: "practice", requested: data.summary.requested, served: data.summary.served },
+      { session_id: sessionId },
+    );
+  }, [data, sessionId]);
+
   const submit = useCallback(() => {
     if (!item || verdict) return;
 
@@ -68,6 +92,24 @@ export default function PracticePage() {
       setVerdict({ outcome: result.outcome, expected: item.expected_answer });
       return;
     }
+
+    counters.current.attempted += 1;
+    if (result.outcome === "correct") counters.current.correct += 1;
+    void queueEvent(
+      "problem_attempt",
+      {
+        skill: skillId,
+        problem_id: item.template_id,
+        is_correct: result.outcome === "correct" ? true : result.outcome === "incorrect" ? false : null,
+        time_ms: Date.now() - startedAt,
+        domain: DOMAIN,
+        difficulty: item.difficulty,
+        feeds_mastery: item.feeds_mastery,
+        answer_check: item.answer_check,
+        hint_level: hint?.level ?? 0,
+      },
+      { session_id: sessionId, session_elapsed_ms: Date.now() - sessionStartedAt },
+    );
 
     // Only locally-graded items on trusted content with a resolvable skill may
     // move mastery: a deferred item has no verdict, sandbox content is excluded
@@ -89,11 +131,12 @@ export default function PracticePage() {
     }
 
     setVerdict({ outcome: result.outcome, expected: item.expected_answer });
-  }, [answer, item, startedAt, skillId, verdict]);
+  }, [answer, item, startedAt, skillId, verdict, hint, sessionId, sessionStartedAt]);
 
   const next = useCallback(() => {
     setAnswer("");
     setVerdict(null);
+    setHint(null);
     setIndex((i) => Math.min(i + 1, items.length));
   }, [items.length]);
 
@@ -101,6 +144,40 @@ export default function PracticePage() {
     const state = skillId ? states[skillId] : undefined;
     return state ? Math.round(bktToMastery(state.pLearned)) : null;
   }, [states, skillId]);
+
+  // session_end once, when the last item is passed; then flush so the
+  // dashboard reflects this session as soon as we are online.
+  useEffect(() => {
+    if (isLoading || !items.length || index < items.length || endedRef.current) return;
+    endedRef.current = true;
+    const technique_states = Object.fromEntries(
+      Object.entries(states).map(([id, s]) => [id, { pLearned: s.pLearned, state: s.state }]),
+    );
+    void queueEvent(
+      "session_end",
+      {
+        domain: DOMAIN,
+        session_type: "practice",
+        problems_attempted: counters.current.attempted,
+        problems_correct: counters.current.correct,
+        technique_states,
+      },
+      { session_id: sessionId, session_elapsed_ms: Date.now() - sessionStartedAt },
+    ).then(() => flushEvents());
+  }, [isLoading, items.length, index, states, sessionId, sessionStartedAt]);
+
+  const requestHint = useCallback(async () => {
+    if (!item || hintBusy) return;
+    setHintBusy(true);
+    try {
+      const out = await askHint(item.template_id, (hint?.level ?? 0) + 1, undefined, hint?.hint);
+      setHint(out);
+    } catch {
+      setHint({ mode: "hint_ladder", level: hint?.level ?? 0, max_level: hint?.max_level ?? 0, hint: "Hints need a connection.", answer_withheld: true, budget_remaining: 0 });
+    } finally {
+      setHintBusy(false);
+    }
+  }, [item, hint, hintBusy]);
 
   if (isLoading) {
     return <Shell><p className="text-muted-foreground">Loading session…</p></Shell>;
@@ -177,6 +254,19 @@ export default function PracticePage() {
         {!item.feeds_mastery && <Tag>sandbox · not scored</Tag>}
         {item.answer_check === "server_sympy" && <Tag>server-checked</Tag>}
       </div>
+
+      {hint && (
+        <p className="mt-3 rounded-lg bg-accent p-3 text-fluid-sm">
+          <span className="text-fluid-xs uppercase tracking-wide text-muted-foreground">Hint {hint.level}/{hint.max_level} · answer withheld</span>
+          <br />
+          <MathText>{hint.hint}</MathText>
+        </p>
+      )}
+      {!verdict && (!hint || hint.level < hint.max_level) && (
+        <button type="button" onClick={requestHint} disabled={hintBusy} className="mt-3 text-fluid-sm text-muted-foreground underline">
+          {hintBusy ? "Thinking…" : hint ? "Next hint" : "Need a hint?"}
+        </button>
+      )}
 
       <input
         className="mt-5 w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground outline-none focus:border-primary"

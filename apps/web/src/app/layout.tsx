@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import "katex/dist/katex.min.css";
 import "./globals.css";
 import { CapacitorInit } from "./capacitor-init";
+import { SessionBoot } from "./session-boot";
 import { AppEntry } from "@/components/ui/app-entry";
 import { OnlineProvider } from "@/providers/online-provider";
 import { QueryProvider } from "@/providers/query-provider";
@@ -31,6 +32,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <ThemeProvider>
             <OnlineProvider>
               <CapacitorInit />
+              <SessionBoot />
               <AppEntry>{children}</AppEntry>
             </OnlineProvider>
           </ThemeProvider>
