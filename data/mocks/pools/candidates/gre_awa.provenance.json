@@ -1,0 +1,975 @@
+[
+ {
+  "question_id": "gre_aw_issue_001",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_002",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_003",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_004",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_005",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_006",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_007",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_008",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_009",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_010",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_011",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_012",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_013",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_014",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_015",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_016",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_017",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_018",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_019",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_020",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_021",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_022",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_023",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_024",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_025",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_026",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_027",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_028",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_029",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_031",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_032",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_033",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_034",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_035",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_036",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_037",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_038",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_039",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_040",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_041",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_042",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_043",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_044",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_045",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_046",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_047",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_050",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_051",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_052",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_053",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_054",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_055",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_056",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_057",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_058",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_059",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_060",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_061",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_062",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_063",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_064",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_065",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_066",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_067",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_068",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_070",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_072",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_073",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_075",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_077",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_078",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_079",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_080",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_082",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_083",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_085",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_086",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_087",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_088",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_089",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_091",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_092",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_093",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_094",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_095",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_096",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_097",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_098",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_100",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_101",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_103",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_104",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_105",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_106",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_107",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_108",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_110",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_111",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_112",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_113",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_114",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_115",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_116",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_117",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_118",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_119",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_121",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_122",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_123",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_124",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_125",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_126",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_127",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_128",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_129",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_130",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_132",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_133",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_134",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_135",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_136",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_137",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_139",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_140",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_141",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_142",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_143",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_147",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_148",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_149",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_150",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_151",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_152",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_153",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_154",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_155",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_156",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_157",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ },
+ {
+  "question_id": "gre_aw_issue_158",
+  "book": "ETS GRE Writing Pool",
+  "task_type": "Analyze an Issue",
+  "has_instruction": true,
+  "source_url": "https://www.ets.org/pdfs/gre/issue-pool.pdf"
+ }
+]

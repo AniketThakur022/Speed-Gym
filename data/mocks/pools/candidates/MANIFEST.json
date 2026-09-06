@@ -1,0 +1,153 @@
+{
+ "generated_from": "data/exports/vmsg_questions_v1.jsonl",
+ "status": "CANDIDATE — not bound. Binding is the owner's serving-path decision; wiring is a move into the parent directory (data/mocks/pools/).",
+ "contract": "[{question_id, kind, text, options?, correct_answer, skill?, difficulty?}] — services/api/app/mocks/sources.py::StaticPoolSource",
+ "answer_convention": "mcq correct_answer is the lowercase option LETTER, and the emitted options are re-indexed so letter == position, which is what the engine assumes (chr(ord('a') + i)). Printed tags are stripped so the client does not render '(a)' twice. tita/numeric correct_answer is a bare number.",
+ "excluded_always": [
+  "rows the export marks not playable",
+  "twin/duplicate-numbered rows",
+  "rows whose option list an independent read disputed",
+  "any question whose answer key cannot be resolved to exactly one option"
+ ],
+ "skill_note": "`skill` is the corpus taxonomy skill_key and is used by scoring.py ONLY to group a finished mock's per-skill accuracy breakdown. It is not a BKT join — bkt_joinable is what mastery gates on, and only about half of the resolved rows are graph-backed. GraphSource emits graph :Skill names for the same field, so the two vocabularies can appear in one result.",
+ "difficulty_note": "difficulty is present on ~17% of rows; the engine's easy/hard ramp treats a missing value as easy (1), so the curve is weak until the difficulty backfill widens.",
+ "pools": {
+  "cat_dilr": {
+   "count": 1138,
+   "why": "CAT Data Interpretation & Logical Reasoning. Sinha and Arun Sharma DI/LR are CAT DI/LR books written for this exact section; Manhattan Logic Games is LSAT analytical reasoning, the same ordering/grouping puzzle form CAT LR uses.",
+   "kinds": [
+    "mcq",
+    "tita"
+   ],
+   "books": [
+    "Arun Sharma",
+    "Manhattan Logic Games",
+    "Sinha"
+   ],
+   "dropped": {
+    "format short_answer not served by this section": 172,
+    "numeric answer not a bare number": 128,
+    "set pages jump — questions may be from another exercise": 127,
+    "needs a figure (bar_chart); pool contract has no figure field": 108,
+    "needs a figure (line_chart); pool contract has no figure field": 99,
+    "reading-comprehension stem with no passage": 97,
+    "names a figure whose data is not in the text": 53,
+    "needs a figure (pie_chart); pool contract has no figure field": 42,
+    "stimulus truncated before its constraints end": 28,
+    "option tags not a clean sequence": 26,
+    "fewer than 4 options": 8,
+    "needs a figure (stacked_bar); pool contract has no figure field": 8
+   }
+  },
+  "cat_varc": {
+   "count": 0,
+   "why": "UNSERVABLE — see the manifest. No CAT verbal source is inside the 25-book corpus scope; GRE/GMAT verbal is a different exam and is deliberately NOT substituted.",
+   "kinds": [],
+   "books": [],
+   "dropped": {}
+  },
+  "gmat_verbal": {
+   "count": 30,
+   "why": "GMAT Verbal Reasoning. Manhattan GMAT Verbal is a GMAT verbal book (critical reasoning + sentence correction chapters).",
+   "kinds": [
+    "mcq"
+   ],
+   "books": [
+    "Manhattan GMAT Verbal"
+   ],
+   "dropped": {
+    "chapter is not on the current exam": 3,
+    "stimulus truncated before its constraints end": 3
+   }
+  },
+  "gmat_di": {
+   "count": 100,
+   "why": "GMAT Data Insights — APPROXIMATE, review before binding. Data Insights (data sufficiency, two-part analysis, multi-source reasoning) has no direct source in this corpus. These are Sinha/Arun Sharma items built on a printed DATA TABLE, which is the table-analysis form of Data Insights and the only part of the section this corpus can honestly serve; neither book carries chapter metadata, so the table is the signal, not a chapter name.",
+   "kinds": [
+    "mcq"
+   ],
+   "books": [
+    "Arun Sharma"
+   ],
+   "dropped": {
+    "not data interpretation (no data table in the stimulus)": 1392,
+    "format numeric_entry not served by this section": 192,
+    "format short_answer not served by this section": 152,
+    "stimulus truncated before its constraints end": 4,
+    "fewer than 4 options": 1
+   }
+  },
+  "gre_verbal": {
+   "count": 275,
+   "why": "GRE Verbal Reasoning. ETS GRE Verbal is the official verbal guide; ETS GRE and Manhattan 5 lb contribute only their verbal chapters (RC / Text Completion / Sentence Equivalence), never their quant ones.",
+   "kinds": [
+    "mcq"
+   ],
+   "books": [
+    "ETS GRE",
+    "ETS GRE Verbal",
+    "Manhattan 5 lb"
+   ],
+   "dropped": {
+    "format quantitative_comparison not served by this section": 427,
+    "answer unresolvable: unresolvable key": 182,
+    "format numeric_entry not served by this section": 166,
+    "format text_completion not served by this section": 151,
+    "format multi_select not served by this section": 83,
+    "reading-comprehension stem with no passage": 64,
+    "not a verbal chapter (Data Interpretation)": 49,
+    "not a verbal chapter (Functions, Formulas, and Sequences)": 47,
+    "not a verbal chapter (8 Practice Test 1)": 46,
+    "not a verbal chapter (9 Practice Test 2)": 44,
+    "stimulus truncated before its constraints end": 44,
+    "not a verbal chapter (Ratios)": 43
+   }
+  },
+  "quant": {
+   "count": 4015,
+   "why": "Quantitative pool — an ALTERNATIVE binding only. This tag is currently served by GraphSource (the Vedic graph); this file is the 25-book corpus candidate for the same tag, for the serving-path decision. NOTE: source_for() hardcodes tag=='quant' to GraphSource, so dropping this file into the pools directory does NOTHING until that branch changes — unlike every other tag, binding it is a code change, not a file move.",
+   "kinds": [
+    "mcq",
+    "numeric"
+   ],
+   "books": [
+    "Arun Sharma Quant",
+    "Bhatia",
+    "Hall & Knight",
+    "Manhattan 5 lb",
+    "Manhattan Quant",
+    "Tyra"
+   ],
+   "dropped": {
+    "format short_answer not served by this section": 2721,
+    "format quantitative_comparison not served by this section": 523,
+    "verbal chapter excluded from a quant pool": 500,
+    "numeric answer not a bare number": 401,
+    "stimulus truncated before its constraints end": 377,
+    "names a figure whose data is not in the text": 221,
+    "answer unresolvable: unresolvable key": 93,
+    "format text_completion not served by this section": 89,
+    "answer unresolvable: ambiguous ordinal vs value (number-tagged options)": 83,
+    "option tags not a clean sequence": 79,
+    "answer unresolvable: key names more than one answer (multi-select mis-typed)": 51,
+    "reading-comprehension stem with no passage": 23
+   }
+  },
+  "gre_awa": {
+   "count": 139,
+   "why": "GRE Analytical Writing — official-pool prompts RESTRICTED to \"Analyze an Issue\". The shorter GRE (Sept 2023+) this blueprint models retired the Argument task, so those prompts go to gre_awa_argument_retired.json instead of being served. Each prompt carries its instruction line, without which the bare claim does not state the task. The section is auto_scored=False: recorded for review, never machine-scored.",
+   "kinds": [
+    "essay"
+   ],
+   "books": [
+    "ETS GRE Writing Pool"
+   ],
+   "dropped": {
+    "Analyze an Argument — retired from the GRE in 2023": 185,
+    "duplicate prompt text": 19,
+    "no task_type — cannot confirm it is an Issue task": 8
+   }
+  }
+ },
+ "excluded_twin_rows": 0
+}
