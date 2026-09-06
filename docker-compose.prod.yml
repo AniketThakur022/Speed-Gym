@@ -30,13 +30,18 @@ services:
     env_file: .env
   worker:
     profiles: ["app"]
-    build: ./services/api
-    command: ["celery", "-A", "worker.app", "worker", "--beat", "--loglevel=info"]
-    working_dir: /workspace
+    build:
+      context: .
+      dockerfile: services/workers/Dockerfile
     volumes:
       - ./:/workspace
     env_file: .env
+    environment:
+      DATABASE_URL: postgresql://vmsg:vmsg@postgres:5432/vmsg
+      NEO4J_URI: bolt://neo4j:7687
+      REDIS_URL: redis://redis:6379/0
     restart: unless-stopped
     depends_on:
       - redis
       - postgres
+      - neo4j
