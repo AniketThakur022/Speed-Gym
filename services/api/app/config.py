@@ -65,6 +65,16 @@ class Settings(BaseSettings):
     )
     stripe_checkout_cancel_url: str = "https://examarena.com/billing/cancel"
 
+    # ── Study chatbot (block 7) ────────────────────────────────────────────
+    # Hints only, never answers; NO RAG (owner, 2026-09-02); online-only and
+    # outside the game loop. The LLM path is optional: the ONE owner-supplied
+    # Anthropic key lives in .env, never in the repo; empty = ladder only.
+    anthropic_api_key: str = ""
+    chat_model: str = "claude-opus-5"
+    chat_max_output_tokens: int = 600
+    chat_daily_token_budget: int = 20_000       # per learner, input+output, UTC day
+    chat_llm_timeout_seconds: float = 30.0
+
     @property
     def cors_origins(self) -> list[str]:
         return [origin.strip() for origin in self.cors_allow_origins.split(",") if origin.strip()]

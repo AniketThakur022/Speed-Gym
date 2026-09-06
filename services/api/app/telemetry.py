@@ -80,6 +80,14 @@ _EVENTS: list[EventSpec] = [
     EventSpec("fatigue_index_computed", _P, 6),
     EventSpec("clr_mode_activated", _P, 7),
     EventSpec("behavioral_profile_computed", _P, 6),
+    # mock exams (user journey §11.5) — attempts feed BKT/IRT, never sampled
+    EventSpec("mock_exam_started", _P, 7),
+    EventSpec("mock_problem_attempt", _P, 5),
+    EventSpec("mock_exam_submitted", _P, 9),
+    EventSpec("deferred_workout_started", _P, 6),
+    EventSpec("deferred_workout_completed", _P, 7),
+    # chatbot (hints only; RAG-EXP-01/02 gate)
+    EventSpec("chat_hint_requested", _U, 2),
     # ── conversion / funnel ─────────────────────────────────────────────
     EventSpec("subscription_purchased", _C, 10),
     EventSpec("subscription_cancelled", _C, 10),

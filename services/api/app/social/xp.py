@@ -19,6 +19,7 @@ XP_RULES: dict[str, int] = {
     "daily_challenge_correct": 10,
     "ghost_race_win": 30,
     "friend_added": 10,
+    "mock_completed": 75,
 }
 LEVEL_XP = 500
 
