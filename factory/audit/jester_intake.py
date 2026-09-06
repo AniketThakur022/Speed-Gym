@@ -24,6 +24,11 @@ MAX_PROMOTION = "sandbox"          # hard ceiling for any non-configured backend
 CONFIGURED_TRIO = {"glm-5.1", "kimi-k2.6", "deepseek-v4-flash"}
 LADDER_STATE = Path("data/factory/state/trust_ladder.json")
 
+# What a recorded ladder state implies the panel that set it concluded. Held
+# states imply nothing — they are an absence of verdict, not a verdict.
+IMPLIED_RESULT = {"quarantined": "fail", "sandbox": "pass",
+                  "trusted": "pass", "live": "pass"}
+
 
 def validate(v: dict) -> list[str]:
     """Returns a list of problems; empty means the verdict is admissible."""
@@ -129,22 +134,62 @@ def main() -> int:
                 continue
             if v["result"] == "fail":
                 new_state = "quarantined"
-                stats["quarantined_by_panel"] += 1
             else:
                 # The ceiling: a deviating backend cannot reach trusted/live.
                 new_state = MAX_PROMOTION if interim else "trusted"
-                stats[f"promoted_to_{new_state}"] += 1
+            lenses = [p["lens"] for p in v["panel"]]
             entry = {
                 "state": new_state, "judge_backend": backend,
                 "stage7_interim": interim,
                 "target_kind": v["target_kind"],
-                "panel_lenses": [p["lens"] for p in v["panel"]],
+                "panel_lenses": lenses,
                 "judged_at": v.get("judged_at"),
                 "spot_check_ids": v.get("spot_check_ids") or [],
                 "requires_rejudge_by": "configured_trio" if interim else None,
             }
-            state["targets"][v["target_id"]] = entry
-            promoted.append({"target_id": v["target_id"], "state": new_state,
+
+            # TWO PANELS, ONE TARGET. Writing the ladder used to be a blind
+            # overwrite, so when two panels judge the same template the one that
+            # runs intake second wins and the other's verdict vanishes with no
+            # trace. That is the worst possible way to resolve a disagreement:
+            # silently, by file ordering. Concurrent panels on the converted tier
+            # made this reachable rather than theoretical.
+            prior = state["targets"].get(tid)
+            prior_result = IMPLIED_RESULT.get((prior or {}).get("state"))
+            same_panel = bool(prior) and sorted(prior.get("panel_lenses") or []) == sorted(lenses) \
+                and prior.get("judge_backend") == backend
+            if prior and prior_result and not same_panel and prior_result != v["result"]:
+                stats["held_panel_disagreement"] += 1
+                state["targets"][tid] = {
+                    "state": "quarantined_pending_consensus",
+                    "held_reason": "two panels with different lens sets disagree; a "
+                                   "disagreement is evidence, not noise, and is not "
+                                   "resolved by whichever intake ran last",
+                    "target_kind": v["target_kind"],
+                    "disagreement": [
+                        {"result": prior_result, "judge_backend": prior.get("judge_backend"),
+                         "panel_lenses": prior.get("panel_lenses"), "judged_at": prior.get("judged_at")},
+                        {"result": v["result"], "judge_backend": backend,
+                         "panel_lenses": lenses, "judged_at": v.get("judged_at")},
+                    ],
+                    "requires_rejudge_by": "configured_trio",
+                }
+                continue
+            if prior and prior_result == v["result"] and not same_panel:
+                # Independent corroboration by a panel looking through different
+                # lenses. Recorded because it is real evidence — and explicitly
+                # does NOT lift the SANDBOX ceiling: two panels on the same base
+                # model share blind spots, which is the whole reason the cap
+                # exists. Only the configured trio moves an item past sandbox.
+                entry["corroborated_by"] = (prior.get("corroborated_by") or []) + [
+                    {"judge_backend": prior.get("judge_backend"),
+                     "panel_lenses": prior.get("panel_lenses")}]
+                entry["state"] = prior["state"] if prior.get("state") == "trusted" else new_state
+                stats["corroborated_by_second_panel"] += 1
+            stats["quarantined_by_panel" if new_state == "quarantined"
+                  else f"promoted_to_{new_state}"] += 1
+            state["targets"][tid] = entry
+            promoted.append({"target_id": tid, "state": new_state,
                              "interim": interim})
 
     state["ceiling_note"] = (
