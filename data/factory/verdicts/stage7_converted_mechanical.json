@@ -1,0 +1,3549 @@
+[
+ {
+  "id": "conv_gre5lb_advancedquant_40",
+  "answer_source": "(A)",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_advancedquant_47",
+  "answer_source": "36.6",
+  "answer_agreement": "match",
+  "steps": 7,
+  "empty_operations": [],
+  "hint_levels_available": 6,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_algebra_20",
+  "answer_source": "9",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_algebra_23",
+  "answer_source": "13",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_algebra_34",
+  "answer_source": "(C)",
+  "answer_agreement": "match",
+  "steps": 7,
+  "empty_operations": [],
+  "hint_levels_available": 6,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_algebra_52",
+  "answer_source": "(D)",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_arithmetic_11",
+  "answer_source": "147",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_arithmetic_2",
+  "answer_source": "(B)",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_arithmetic_30",
+  "answer_source": "144 kilometers",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_averagesweightedaveragesmedianandmod_5",
+  "answer_source": "90.4",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_circlesandcylinders_26",
+  "answer_source": "16",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [
+   2
+  ],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_coordinategeometry_11",
+  "answer_source": "(B)",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_divisibilityandprimes_36",
+  "answer_source": "0",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_fractionsanddecimals_13",
+  "answer_source": "13/15 (or any equivalent fraction)",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_fractionsanddecimals_20",
+  "answer_source": "13/40 (or any equivalent fraction)",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_fractionsanddecimals_25",
+  "answer_source": "(A)",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_fractionsanddecimals_34",
+  "answer_source": "11/14 (or any equivalent fraction)",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_functionsformulasandsequences_16",
+  "answer_source": "I, II, and III",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_functionsformulasandsequences_20",
+  "answer_source": "(A)",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_functionsformulasandsequences_69",
+  "answer_source": "(B)",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_inequalitiesandabsolutevalues_19",
+  "answer_source": "(D)",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_logicbasedreadingcomprehension_12",
+  "answer_source": "(B)",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [
+   3
+  ],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_logicbasedreadingcomprehension_16",
+  "answer_source": "(D)",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_logicbasedreadingcomprehension_26",
+  "answer_source": "(B)",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [
+   3
+  ],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_mathdiagnostictest_13",
+  "answer_source": "917",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [
+   1
+  ],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_numberproperties_14",
+  "answer_source": "(B)",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_numberproperties_40",
+  "answer_source": "(B)",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_numberproperties_49",
+  "answer_source": "(C)",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_percents_13",
+  "answer_source": "20% increase",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_percents_44",
+  "answer_source": "(A)",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_percents_73",
+  "answer_source": "(C)",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_polygonsandrectangularsolids_18",
+  "answer_source": "64",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_polygonsandrectangularsolids_7",
+  "answer_source": "4",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_polygonsandrectangularsolids_8",
+  "answer_source": "30",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_probabilitycombinatoricsandoverlappi_10",
+  "answer_source": "720",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_probabilitycombinatoricsandoverlappi_30",
+  "answer_source": "1,000",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_probabilitycombinatoricsandoverlappi_7",
+  "answer_source": "8/19",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_ratesandwork_10",
+  "answer_source": "20 minutes",
+  "answer_agreement": "match",
+  "steps": 7,
+  "empty_operations": [],
+  "hint_levels_available": 6,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_ratesandwork_12",
+  "answer_source": "(C)",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_ratesandwork_18",
+  "answer_source": "66 days",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_ratesandwork_30",
+  "answer_source": "5 hours",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_ratesandwork_6",
+  "answer_source": "60 golf clubs per hour",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_ratios_8",
+  "answer_source": "30 cups",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_ratios_9",
+  "answer_source": "40 tulip plants",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_standarddeviationandnormaldistributi_46",
+  "answer_source": "I only",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_standarddeviationandnormaldistributi_5",
+  "answer_source": "(D)",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_textcompletions_103",
+  "answer_source": "Perquisites, abide",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_textcompletions_108",
+  "answer_source": "Heuristic, represent",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_textcompletions_109",
+  "answer_source": "Technical, diffident",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_textcompletions_112",
+  "answer_source": "Nominally, indifferent, common cause",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_textcompletions_120",
+  "answer_source": "Rife with contention, critical, seasoned practitioners",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_textcompletions_123",
+  "answer_source": "Initially, given teeth",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_textcompletions_129",
+  "answer_source": "Basis, sop, moot",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_textcompletions_137",
+  "answer_source": "Scrutiny, sequelae",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_textcompletions_17",
+  "answer_source": "Roundly, panned",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_textcompletions_19",
+  "answer_source": "Inundated",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_textcompletions_26",
+  "answer_source": "Rail against, moralists, utilitarians",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_textcompletions_29",
+  "answer_source": "Tremulous, chary of",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_textcompletions_35",
+  "answer_source": "A risible",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_textcompletions_57",
+  "answer_source": "Sangfroid, mercurial",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_textcompletions_6",
+  "answer_source": "Cited, correct, tangential",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_textcompletions_62",
+  "answer_source": "Debauchment, derogated from",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_textcompletions_65",
+  "answer_source": "An arcadian, hinterland, spartan",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_textcompletions_83",
+  "answer_source": "Detractors, fealty, tantamount to",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_textcompletions_91",
+  "answer_source": "Glib",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_textcompletions_95",
+  "answer_source": "Land, a plum",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_triangles_42",
+  "answer_source": "(C)",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_twovariablewordproblems_21",
+  "answer_source": "28",
+  "answer_agreement": "match",
+  "steps": 8,
+  "empty_operations": [],
+  "hint_levels_available": 7,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_verbalpracticesection1easy_4",
+  "answer_source": "Anachronistic, shunned",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_verbalpracticesection3hard_11",
+  "answer_source": "(A)",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [
+   4
+  ],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gre5lb_wordproblems_21",
+  "answer_source": "(B)",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gmat_verbal_ch03_mid_chapter_quiz_1",
+  "answer_source": "B",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gmat_verbal_ch03_mid_chapter_quiz_2",
+  "answer_source": "A",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [
+   1
+  ],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gmat_verbal_ch03_mid_chapter_quiz_3",
+  "answer_source": "B",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gmat_verbal_ch18_problem_set_2",
+  "answer_source": "D",
+  "answer_agreement": "match",
+  "steps": 8,
+  "empty_operations": [],
+  "hint_levels_available": 7,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gmat_verbal_ch18_problem_set_5",
+  "answer_source": "E",
+  "answer_agreement": "match",
+  "steps": 8,
+  "empty_operations": [],
+  "hint_levels_available": 7,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gmat_verbal_ch18_problem_set_6",
+  "answer_source": "B",
+  "answer_agreement": "match",
+  "steps": 11,
+  "empty_operations": [],
+  "hint_levels_available": 10,
+  "answer_form_appears_in_non_final_operation": [
+   9
+  ],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gmat_verbal_ch20_problem_set_1",
+  "answer_source": "A",
+  "answer_agreement": "match",
+  "steps": 8,
+  "empty_operations": [],
+  "hint_levels_available": 7,
+  "answer_form_appears_in_non_final_operation": [
+   4
+  ],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gmat_verbal_ch20_problem_set_2",
+  "answer_source": "D",
+  "answer_agreement": "match",
+  "steps": 8,
+  "empty_operations": [],
+  "hint_levels_available": 7,
+  "answer_form_appears_in_non_final_operation": [
+   7
+  ],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gmat_verbal_ch20_problem_set_3",
+  "answer_source": "D",
+  "answer_agreement": "match",
+  "steps": 9,
+  "empty_operations": [],
+  "hint_levels_available": 8,
+  "answer_form_appears_in_non_final_operation": [
+   8
+  ],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gmat_verbal_ch20_problem_set_5",
+  "answer_source": "A",
+  "answer_agreement": "match",
+  "steps": 9,
+  "empty_operations": [],
+  "hint_levels_available": 8,
+  "answer_form_appears_in_non_final_operation": [
+   5
+  ],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gmat_verbal_ch20_problem_set_8",
+  "answer_source": "D",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gmat_verbal_ch21_problem_set_1",
+  "answer_source": "E",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gmat_verbal_ch21_problem_set_5",
+  "answer_source": "B",
+  "answer_agreement": "match",
+  "steps": 9,
+  "empty_operations": [],
+  "hint_levels_available": 8,
+  "answer_form_appears_in_non_final_operation": [
+   6
+  ],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gmat_verbal_ch22_problem_set_1",
+  "answer_source": "C",
+  "answer_agreement": "match",
+  "steps": 9,
+  "empty_operations": [],
+  "hint_levels_available": 8,
+  "answer_form_appears_in_non_final_operation": [
+   8
+  ],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gmat_verbal_ch22_problem_set_2",
+  "answer_source": "D",
+  "answer_agreement": "match",
+  "steps": 8,
+  "empty_operations": [],
+  "hint_levels_available": 7,
+  "answer_form_appears_in_non_final_operation": [
+   7
+  ],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gmat_verbal_ch22_problem_set_5",
+  "answer_source": "C",
+  "answer_agreement": "match",
+  "steps": 9,
+  "empty_operations": [],
+  "hint_levels_available": 8,
+  "answer_form_appears_in_non_final_operation": [
+   7
+  ],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_gmat_verbal_ch22_problem_set_6",
+  "answer_source": "B",
+  "answer_agreement": "match",
+  "steps": 9,
+  "empty_operations": [],
+  "hint_levels_available": 8,
+  "answer_form_appears_in_non_final_operation": [
+   6
+  ],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_algebraictranslationscheckyourskillschec_493_4",
+  "answer_source": "J > 2K",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_circlesandcylindersproblemsetproblemset_814_13",
+  "answer_source": "(C)",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_combinatoricsproblemsetproblemset_1047_9",
+  "answer_source": "(B)",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_commonfactorscheckyourskillscheckyourski_352_7",
+  "answer_source": "7",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_datainterpretationcheckyourskillscheckyo_663_6",
+  "answer_source": "(A) Jan",
+  "answer_agreement": "match",
+  "steps": 8,
+  "empty_operations": [],
+  "hint_levels_available": 7,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_datainterpretationproblemsetproblemseta_685_2",
+  "answer_source": "(C) Two",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_datainterpretationproblemsetproblemsetb_688_11",
+  "answer_source": "(B) 2,928",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_datainterpretationproblemsetproblemsetb_688_9",
+  "answer_source": "(E) 3,000",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_developyournumbersensecheckyourskillsche_43_3",
+  "answer_source": "Two tick marks to the right of 20",
+  "answer_agreement": "match",
+  "steps": 2,
+  "empty_operations": [],
+  "hint_levels_available": 1,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_developyournumbersenseproblemsetproblems_58_13",
+  "answer_source": "(A) Integer × Integer; (C) Integer + Integer; (D) Integer − Integer;",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_developyournumbersenseproblemsetproblems_58_15",
+  "answer_source": "(A) 2; (B) 3; (C) 6; (E) 18",
+  "answer_agreement": "match",
+  "steps": 8,
+  "empty_operations": [],
+  "hint_levels_available": 7,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_divisibilitycheckyourskillscheckyourskil_319_19",
+  "answer_source": "(A) a − b is divisible by 6; (C) a × b is divisible by 18",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_divisibilitycheckyourskillscheckyourskil_322_20",
+  "answer_source": "(A) the product is a multiple of 3; (B) the sum is a multiple of 3; (D)",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_divisibilityproblemsetproblemset_336_1",
+  "answer_source": "Yes",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_equationsproblemsetproblemset_150_6",
+  "answer_source": "(a) (52)",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_formulasandfunctionsproblemsetproblemset_216_1",
+  "answer_source": "37",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_formulasandfunctionsproblemsetproblemset_216_4",
+  "answer_source": "(D) 16",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_fractionsdecimalspercentsandratiosproble_601_17",
+  "answer_source": "(B)",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_inequalitiesandsystemsofequationsproblem_258_10",
+  "answer_source": "(A) AB",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_inequalitiesandsystemsofequationsproblem_258_8",
+  "answer_source": "(B) −3; (C) 0; (D) 5",
+  "answer_agreement": "DIFFERS",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_inequalitiesandsystemsofequationsproblem_258_9",
+  "answer_source": "(A)",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_linesandanglesproblemsetproblemset_836_6",
+  "answer_source": "65°",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_numberpropertiescheckyourskillscheckyour_78_7",
+  "answer_source": "(C) x2 > y2",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_numberpropertiescheckyourskillscheckyour_87_13",
+  "answer_source": "(A) x + 3 is even",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_numberpropertiescheckyourskillscheckyour_87_14",
+  "answer_source": "(B) p + q is even",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_optimizationcheckyourskillscheckyourskil_1100_5",
+  "answer_source": "(D) 180; (E) 190",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_optimizationproblemsetproblemset_1108_5",
+  "answer_source": "160 feet",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_optimizationproblemsetproblemset_1108_8",
+  "answer_source": "200 square units",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_percentscheckyourskillscheckyourskills_518_6",
+  "answer_source": "28%",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_percentscheckyourskillscheckyourskills_526_10",
+  "answer_source": "100%",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_percentsproblemsetproblemset_533_13",
+  "answer_source": "(B)",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_percentsproblemsetproblemset_533_4",
+  "answer_source": "1.28y",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_polygonsproblemsetproblemset_786_1",
+  "answer_source": "(C)",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_quadraticequationscheckyourskillscheckyo_442_12",
+  "answer_source": "(x + 11y)2 = 0",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_quantitativecomparisonpicknumbersproblem_122_2",
+  "answer_source": "(D)",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_quantitativecomparisonpicknumbersproblem_122_4",
+  "answer_source": "(D)",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_quantitativecomparisonpicknumbersproblem_122_6",
+  "answer_source": "(D)",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_quantitativecomparisonpicknumbersproblem_122_7",
+  "answer_source": "(A)",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_ratesproblemsetproblemset_969_1",
+  "answer_source": "60 seconds",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_ratesproblemsetproblemset_969_6",
+  "answer_source": "(C) 1 × 107",
+  "answer_agreement": "DIFFERS",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_ratesproblemsetproblemset_969_9",
+  "answer_source": "44.4 miles per hour",
+  "answer_agreement": "match",
+  "steps": 7,
+  "empty_operations": [],
+  "hint_levels_available": 6,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_ratiosproblemsetproblemset_567_11",
+  "answer_source": "(B) 4; (D) 8",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_sequencesandpatternscheckyourskillscheck_1012_16",
+  "answer_source": "40",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_sequencesandpatternscheckyourskillscheck_994_5",
+  "answer_source": "457",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_statisticsproblemsetproblemset_636_10",
+  "answer_source": "210",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_statisticsproblemsetproblemset_636_11",
+  "answer_source": "60",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_statisticsproblemsetproblemset_636_3",
+  "answer_source": "2",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_thecoordinateplanecheckyourskillscheckyo_870_9",
+  "answer_source": "False",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_thecoordinateplaneproblemsetproblemset_889_6",
+  "answer_source": "Quadrant II",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greqnt_thecoordinateplaneproblemsetproblemset_889_7",
+  "answer_source": "Quadrants II and IV",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greets_mixedpracticepracticeset1_16",
+  "answer_source": "Choice B: competing; AND Choice E: contending",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greets_mixedpracticepracticeset1_3",
+  "answer_source": "Choice B: sanguine",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greets_mixedpracticepracticeset2_14",
+  "answer_source": "Choice A: fixated on AND Choice B: obsessed with",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greets_mixedpracticepracticeset2_17",
+  "answer_source": "Choice C: nonspecialists AND Choice F: laypersons",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greets_mixedpracticepracticeset2_3",
+  "answer_source": "Choice A: provincial; Choice F: kept abreast of",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greets_mixedpracticepracticeset2_5",
+  "answer_source": "Choice C: noxious; Choice E: rejected; Choice I: nonchalantly",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greets_mixedpracticepracticeset2_6",
+  "answer_source": "Choice B: loquacious; Choice E: stanched; Choice G: taciturnity",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greets_mixedpracticepracticeset3_15",
+  "answer_source": "Choice C: pressing AND Choice F: critical",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greets_mixedpracticepracticeset3_2",
+  "answer_source": "Choice A: mercurial",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greets_mixedpracticepracticeset3_4",
+  "answer_source": "Choice C: prescience; Choice F: foresight",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greets_mixedpracticepracticeset3_6",
+  "answer_source": "Choice A: wide application of; Choice D: marginalized; Choice I: increasing",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greets_sentenceequivalencepracticeset1eas_2",
+  "answer_source": "Choice B: doubted; AND Choice F: disbelieved",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greets_sentenceequivalencepracticeset1eas_3",
+  "answer_source": "Choice B: recognize; AND Choice E: can make out",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greets_sentenceequivalencepracticeset1eas_5",
+  "answer_source": "Choice D: a homogeneous; AND Choice E: a uniform",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greets_sentenceequivalencepracticeset2med_3",
+  "answer_source": "Choice C: kindred; AND Choice D: affiliated",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greets_sentenceequivalencepracticeset2med_4",
+  "answer_source": "Choice A: rallying behind; AND Choice F: coalescing around",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greets_sentenceequivalencepracticeset2med_5",
+  "answer_source": "Choice A: iconoclastic; AND Choice D: heterodox",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greets_sentenceequivalencepracticeset2med_7",
+  "answer_source": "Choice B: acute; AND Choice D: severe",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greets_sentenceequivalencepracticeset2med_8",
+  "answer_source": "Choice C: prolix; AND Choice E: long-winded",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greets_sentenceequivalencepracticeset3har_1",
+  "answer_source": "Choice A: mitigate; AND Choice E: ameliorate",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greets_sentenceequivalencepracticeset3har_2",
+  "answer_source": "Choice C: obsolete; AND Choice F: outmoded",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greets_sentenceequivalencepracticeset3har_5",
+  "answer_source": "Choice A: cursory; AND Choice C: perfunctory",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greets_sentenceequivalencepracticeset3har_6",
+  "answer_source": "Choice D: efficacy; AND Choice F: usefulness",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greets_textcompletionpracticeset1easy_3",
+  "answer_source": "Choice C: susceptible to",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greets_textcompletionpracticeset1easy_5",
+  "answer_source": "Choice A: a pivotal; Choice F: morbid",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greets_textcompletionpracticeset1easy_8",
+  "answer_source": "Choice A: exploiting; Choice D: invisible; Choice G: detected",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greets_textcompletionpracticeset1easy_9",
+  "answer_source": "Choice A: reinventing; Choice D: undoing; Choice I: introducing",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greets_textcompletionpracticeset2medium_4",
+  "answer_source": "Choice A: exacted a toll; AND Choice E: tepid",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greets_textcompletionpracticeset2medium_6",
+  "answer_source": "Choice A: track; Choice D: advances; Choice G: incorporate data only",
+  "answer_agreement": "match",
+  "steps": 7,
+  "empty_operations": [],
+  "hint_levels_available": 6,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greets_textcompletionpracticeset2medium_7",
+  "answer_source": "Choice A: factual; Choice F: contradicted; Choice I: reliable",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greets_textcompletionpracticeset2medium_8",
+  "answer_source": "Choice A: inhibiting; Choice F: restrain; Choice I: used up in",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greets_textcompletionpracticeset3hard_2",
+  "answer_source": "Choice C: impecunious",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greets_textcompletionpracticeset3hard_5",
+  "answer_source": "Choice B: adverse; AND Choice E: transgressions",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greets_textcompletionpracticeset3hard_7",
+  "answer_source": "Choice C: ignore; Choice D: sacrifice; Choice I: centrally embedded in",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greets_textcompletionpracticeset3hard_8",
+  "answer_source": "Choice C: overstated; Choice D: penchant for; Choice H: investment in",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p091_level_of_difficulty_i_148",
+  "answer_source": "C annot be determined",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p091_level_of_difficulty_i_154",
+  "answer_source": "10 and 11",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p091_level_of_difficulty_i_158",
+  "answer_source": "1",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p091_level_of_difficulty_i_172",
+  "answer_source": "X + Y",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p091_level_of_difficulty_i_174",
+  "answer_source": "B ≥ A > D ≥ C",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p099_level_of_difficulty_ii_117",
+  "answer_source": "0",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p099_level_of_difficulty_ii_124",
+  "answer_source": "295",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p099_level_of_difficulty_ii_125",
+  "answer_source": "4",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [
+   2
+  ],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p099_level_of_difficulty_ii_126",
+  "answer_source": "8",
+  "answer_agreement": "match",
+  "steps": 9,
+  "empty_operations": [],
+  "hint_levels_available": 8,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p099_level_of_difficulty_ii_56",
+  "answer_source": "may be 2 or 3 depending upon the numbers",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p099_level_of_difficulty_ii_58",
+  "answer_source": "greatest → 35 least 3/7",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p106_level_of_difficulty_iii_64",
+  "answer_source": "1",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p106_level_of_difficulty_iii_68",
+  "answer_source": "9723",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p106_level_of_difficulty_iii_76",
+  "answer_source": "(d)",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p148_level_of_difficulty_i_56",
+  "answer_source": "A.P.",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p151_level_of_difficulty_ii_42",
+  "answer_source": "214",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p151_level_of_difficulty_ii_59",
+  "answer_source": "1770",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p154_level_of_difficulty_iii_44",
+  "answer_source": "A > B",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p154_level_of_difficulty_iii_49",
+  "answer_source": "¾",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p154_level_of_difficulty_iii_50",
+  "answer_source": "reciprocals are in H.P",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p175_taste_of_the_examsblock_i_29",
+  "answer_source": "(b)",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p175_taste_of_the_examsblock_i_97",
+  "answer_source": "11",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p212_level_of_difficulty_i_94",
+  "answer_source": "9",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p217_level_of_difficulty_ii_54",
+  "answer_source": "120",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p237_level_of_difficulty_i_13",
+  "answer_source": "(c)",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p262_level_of_difficulty_i_47",
+  "answer_source": "(b)",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p266_level_of_difficulty_ii_10",
+  "answer_source": "265.6",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p271_level_of_difficulty_iii_24",
+  "answer_source": "(b)",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p299_level_of_difficulty_ii_22",
+  "answer_source": "(b)",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p342_level_of_difficulty_ii_50",
+  "answer_source": "20",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p364_level_of_difficulty_i_28",
+  "answer_source": "(c)",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p368_level_of_difficulty_ii_1",
+  "answer_source": "(a)",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p368_level_of_difficulty_ii_37",
+  "answer_source": "3 minutes 49 seconds",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p389_level_of_difficulty_i_53",
+  "answer_source": "(b)",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p487_practice_exercise_4",
+  "answer_source": "(b)",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p518_level_of_difficulty_ii_69",
+  "answer_source": "(c)",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p526_level_of_difficulty_i_57",
+  "answer_source": "376.75 cm^2",
+  "answer_agreement": "match",
+  "steps": 8,
+  "empty_operations": [],
+  "hint_levels_available": 7,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p526_level_of_difficulty_i_68",
+  "answer_source": "9240 cm^2",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p530_level_of_difficulty_ii_13",
+  "answer_source": "(a)",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p530_level_of_difficulty_ii_50",
+  "answer_source": "4096 cm^2",
+  "answer_agreement": "match",
+  "steps": 7,
+  "empty_operations": [],
+  "hint_levels_available": 6,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p530_level_of_difficulty_ii_59",
+  "answer_source": "408cm",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p732_level_of_difficulty_i_12",
+  "answer_source": "(b)",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_as_quant_p787_taste_of_the_examsblock_v_68",
+  "answer_source": "1",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_lsat_lg_drill_p0226_exercise_4_2",
+  "answer_source": "4TH",
+  "answer_agreement": "match",
+  "steps": 2,
+  "empty_operations": [],
+  "hint_levels_available": 1,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_lsat_lg_p0452_detectives_investigating_a_18",
+  "answer_source": "D",
+  "answer_agreement": "match",
+  "steps": 8,
+  "empty_operations": [],
+  "hint_levels_available": 7,
+  "answer_form_appears_in_non_final_operation": [
+   7
+  ],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_lsat_lg_p0576_during_a_single_16",
+  "answer_source": "A",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_lsat_lg_p0630_a_radio_talk_7",
+  "answer_source": "E",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_lsat_lg_p0636_the_six_messages_7",
+  "answer_source": "A",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_lsat_lg_p0742_one_or_more_6",
+  "answer_source": "C",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [
+   4
+  ],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_lsat_lg_p0885_six_doctors_haddad_2",
+  "answer_source": "C",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_lsat_lg_p0885_six_doctors_haddad_3",
+  "answer_source": "E",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [
+   3
+  ],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_lsat_lg_p0917_on_a_field_12",
+  "answer_source": "C",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [
+   4
+  ],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_lsat_lg_p1120_gutierrez_hoffman_imamura_17",
+  "answer_source": "B",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_lsat_lg_p1154_a_photographer_will_5",
+  "answer_source": "E",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_lsat_lg_p1203_exactly_six_piano_21",
+  "answer_source": "A",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_sinha_s002x2_loose_12",
+  "answer_source": "(b)",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_sinha_s005x1_loose_3",
+  "answer_source": "(d)",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_sinha_s032x1_q08_12_11",
+  "answer_source": "(b)",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_sinha_s041x1_q06_10_10",
+  "answer_source": "(b)",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_sinha_s042x1_q06_10_6",
+  "answer_source": "(d)",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_all_p456_exercise_20",
+  "answer_source": "12",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_approx_p0660_ex6_Ex__6",
+  "answer_source": "1) 1340",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_approx_p0660_mult_intro_illustration_Ex",
+  "answer_source": "2) 1,15,000",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_cal_p0711_ex1_4",
+  "answer_source": "3",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [
+   2
+  ],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_ci_p0416_ex5_Ex__5",
+  "answer_source": "200%",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_ci_p0416_ex8_Ex__8",
+  "answer_source": "Rs 100",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_ci_p0428_exercises_8",
+  "answer_source": "t/2 = 3/2 (i.e. 1½ years; 3 half-yearly periods)",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_da_p0734_ex01_4",
+  "answer_source": "e",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_da_p0737_ex03_1",
+  "answer_source": "c",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_da_p0740_ex04_5",
+  "answer_source": "a",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_da_p0763_worker_pies_q1_5_5",
+  "answer_source": "60 workers; 9 degrees",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_ds_p0686_3s_ex06_Ex_6",
+  "answer_source": "4",
+  "answer_agreement": "match",
+  "steps": 7,
+  "empty_operations": [],
+  "hint_levels_available": 6,
+  "answer_form_appears_in_non_final_operation": [
+   2
+  ],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_ds_p0703_ex_q31_38_35",
+  "answer_source": "1",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_elemalg_p0156_exercises_11",
+  "answer_source": "5 (None of these; the value is 7)",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_elemalg_p0156_exercises_14",
+  "answer_source": "3 (18)",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_elemalg_p0156_exercises_20",
+  "answer_source": "2 (2/3)",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_fractions_p0100_combined_ops_ex1_3_Ex__2",
+  "answer_source": "2/7",
+  "answer_agreement": "match",
+  "steps": 2,
+  "empty_operations": [],
+  "hint_levels_available": 1,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_hcflcm_p0083_a_Ex___concrete_quantities_",
+  "answer_source": "5 gm",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_hcflcm_p0090_c_Ex__9",
+  "answer_source": "119",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_log_p0727_exercise_2",
+  "answer_source": "4",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [
+   1,
+   2
+  ],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_mens2_p0624_ex30_Ex_30",
+  "answer_source": "4 : 25",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_mult_p0027_b_Ex_1",
+  "answer_source": "63888",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_mult_p0033_d_Ex__9___1_",
+  "answer_source": "105 / 06 = 10506",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_mult_p0034_a_Ex__10__2_",
+  "answer_source": "961 / 374 = 961374",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_ns_p0195_exercise_37",
+  "answer_source": "1",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_numsys_p0177_cnt_solved4__4_",
+  "answer_source": "676",
+  "answer_agreement": "match",
+  "steps": 2,
+  "empty_operations": [],
+  "hint_levels_available": 1,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_numsys_p0184_misc_ex24_Ex_24",
+  "answer_source": "7/12",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_pct_p0288_ex1_7_Ex__3",
+  "answer_source": "37 1/2 %",
+  "answer_agreement": "match",
+  "steps": 2,
+  "empty_operations": [],
+  "hint_levels_available": 1,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_pct_p0291_ex14_18_Ex__18",
+  "answer_source": "2400% (more)",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_pct_p0304_ex45_48_Ex__46",
+  "answer_source": "12% decrease",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_pl_p0338_ex5_Ex_5",
+  "answer_source": "gain 2 3/11 %",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_prob_p0229_ex5_Ex_5",
+  "answer_source": "(i) 2/7 (ii) 1/7",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_ratio_p0268_exercise_13",
+  "answer_source": "26 men",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_rp_p0240_ex9_Ex_9",
+  "answer_source": "7 1/2 days",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_series_p0637_step1_Ex__i_",
+  "answer_source": "-132 (as printed; see notes -- should be -128)",
+  "answer_agreement": "match",
+  "steps": 2,
+  "empty_operations": [],
+  "hint_levels_available": 1,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_series_p0637_step1_Ex__ii_",
+  "answer_source": "64",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_surds_p0162_ex_division_Ex___unnumbered__under__Division_of_Surds__",
+  "answer_source": "4 × 2^⅙",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_td_p0532_exercises_3",
+  "answer_source": "7 1/5 km/hr",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_td_p0532_exercises_4",
+  "answer_source": "5 : 4",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_trains_p0560_ex29_Ex__29",
+  "answer_source": "3 seconds",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [
+   1
+  ],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_tyra_ww_p0494_ex1_Ex_1",
+  "answer_source": "Rs 120",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_Thakur_Essentials_pr_108_1",
+  "answer_source": "2172 × 1111 = 2413092",
+  "answer_agreement": "match",
+  "steps": 13,
+  "empty_operations": [],
+  "hint_levels_available": 12,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_Thakur_Essentials_pr_149_1",
+  "answer_source": "Final quotient digits: 1, 3, 8, 1 with corresponding remainders at each step.",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_Thakur_Essentials_pr_151_1",
+  "answer_source": "Quotient digits: 8,9,8,7; Final remainder: 13",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_Thakur_Essentials_pr_207_1",
+  "answer_source": "Example 5: Cube root of 84604519 = 439; Example 6: Cube root of 279726264 has R=4 (incomplete solution in this chunk)",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_Thakur_Essentials_pr_211_1",
+  "answer_source": "The cube root of 7738893352 is 1978, obtained by first dividing by 8 to get 967361669, then applying the Beejank method to find its cube root as 989, and finally multiplying by 2.",
+  "answer_agreement": "match",
+  "steps": 8,
+  "empty_operations": [],
+  "hint_levels_available": 7,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_Thakur_Essentials_pr_218_1",
+  "answer_source": "The fourth power of 11 is 14641, calculated using Vedic Mathematics tabular method with multipliers 3, 5, and 3 applied to columns.",
+  "answer_agreement": "match",
+  "steps": 10,
+  "empty_operations": [],
+  "hint_levels_available": 9,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_Thakur_Essentials_pr_219_1",
+  "answer_source": "The fourth power of 14 is computed via tabular method yielding 38,416 after carry transfers (implied final step).",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_Thakur_Essentials_pr_248_1",
+  "answer_source": "First equation has two possible solutions: x = -10/3 or x = -5/3. Second equation can be solved by equating x/(x+1)=12/5 or 5/12, giving corresponding x values.",
+  "answer_agreement": "match",
+  "steps": 12,
+  "empty_operations": [],
+  "hint_levels_available": 11,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_Thakur_Essentials_pr_249_1",
+  "answer_source": "First equation solution: x = 5/7. Second equation approach: Decompose 56/45 into 9/5 - 5/9, then equate corresponding terms from LHS to solve for x.",
+  "answer_agreement": "match",
+  "steps": 7,
+  "empty_operations": [],
+  "hint_levels_available": 6,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_Thakur_Essentials_pr_253_1",
+  "answer_source": "The two roots are x = -5/4 and x = 1, found using Sunyam Sam Samuchchaya sutra with conditions N1+N2 = D1+D2 and N1-D1 = N2-D2.",
+  "answer_agreement": "match",
+  "steps": 7,
+  "empty_operations": [],
+  "hint_levels_available": 6,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_Thakur_Essentials_pr_42_1",
+  "answer_source": "459876 - 389924 = 069952 using Vedic subtraction with complement method",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_Thakur_Essentials_pr_61_1",
+  "answer_source": "122 × 98 = 11956",
+  "answer_agreement": "match",
+  "steps": 7,
+  "empty_operations": [],
+  "hint_levels_available": 6,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_Thakur_Essentials_pr_70_1",
+  "answer_source": "251 × 252 = 63252 using working base method with theoretical base 1000, working base 250, deviations +1 and +2, resulting in intermediate 253|2, then 63¼ quotient with fractional conversion 250 added to RHS to get 63252",
+  "answer_agreement": "match",
+  "steps": 10,
+  "empty_operations": [],
+  "hint_levels_available": 9,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_4verbalreasoni_set1discretequestionse_4",
+  "answer_source": "Choice A: surprising; Choice E: justifies",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_4verbalreasoni_set1discretequestionse_5",
+  "answer_source": "Choice A: activism; Choice E: indifferent to",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_4verbalreasoni_set1discretequestionse_6",
+  "answer_source": "Choice A: deteriorate; AND Choice D: decline",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_4verbalreasoni_set3discretequestionsm_4",
+  "answer_source": "Choice C: come through; Choice E: aside from supporting; Choice H: protect",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_4verbalreasoni_set3discretequestionsm_5",
+  "answer_source": "Choice A: presumed verifiable; Choice F: debunking; Choice H: bogus",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_4verbalreasoni_set3discretequestionsm_6",
+  "answer_source": "Choice A: exacting; AND Choice F: meticulous",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_4verbalreasoni_set3discretequestionsm_7",
+  "answer_source": "Choice C: frugality; AND Choice F: thrift",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_4verbalreasoni_set4readingcomprehensi_2",
+  "answer_source": "Choice B: To elaborate on how A Dream fulfills the author’s childhood criteria for a pleasurable book",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_4verbalreasoni_set4readingcomprehensi_7",
+  "answer_source": "Choice A: past experience is less helpful in ensuring survival",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_4verbalreasoni_set5discretequestionsh_2",
+  "answer_source": "Choice B: cherished tradition; Choice F: rejected",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_4verbalreasoni_set5discretequestionsh_4",
+  "answer_source": "Choice C: near impenetrability; Choice D: penitential austerity; Choice H: volubility",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_4verbalreasoni_set5discretequestionsh_5",
+  "answer_source": "Choice B: bolster; Choice D: uncritically accept; Choice I: peripheral",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_6quantitativep_set1discretequestionse_12",
+  "answer_source": "10",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_6quantitativep_set1discretequestionse_13",
+  "answer_source": "13",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_6quantitativep_set1discretequestionse_4",
+  "answer_source": "Choice D: The relationship cannot be determined from the information given.",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_6quantitativep_set1discretequestionse_8",
+  "answer_source": "Choice D: 12",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_6quantitativep_set2discretequestionsm_11",
+  "answer_source": "216",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [
+   5
+  ],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_6quantitativep_set2discretequestionsm_2",
+  "answer_source": "Choice B: Quantity B is greater.",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_6quantitativep_set2discretequestionsm_3",
+  "answer_source": "Choice D: The relationship cannot be determined from the information given.",
+  "answer_agreement": "match",
+  "steps": 7,
+  "empty_operations": [],
+  "hint_levels_available": 6,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_6quantitativep_set3discretequestionsh_13",
+  "answer_source": "1.29",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_6quantitativep_set3discretequestionsh_4",
+  "answer_source": "Choice A: Quantity A is greater.",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_6quantitativep_set4datainterpretation_1",
+  "answer_source": "Choice A: 8 to 1",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_8practicetest1_section3verbalreasonin_10",
+  "answer_source": "Choice B: Stores more energy as body reserves than on other days",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_8practicetest1_section3verbalreasonin_17",
+  "answer_source": "Choice C: strategic; Choice D: brandish; Choice H: deeply felt moral code",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_8practicetest1_section3verbalreasonin_21",
+  "answer_source": "Choice A: innocuous AND Choice F: benign",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_8practicetest1_section3verbalreasonin_22",
+  "answer_source": "Choice A: antedated AND Choice D: preceded",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_8practicetest1_section3verbalreasonin_25",
+  "answer_source": "Choice C: thrilled about AND Choice E: elated by",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_8practicetest1_section3verbalreasonin_7",
+  "answer_source": "Choice B: lionization; Choice D: foreground",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_8practicetest1_section4verbalreasonin_10",
+  "answer_source": "Choice B: extravagance; Choice F: profligate",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_8practicetest1_section4verbalreasonin_11",
+  "answer_source": "Choice B: complacency; Choice D: embrace only a portion of the truth; Choice G: erroneous",
+  "answer_agreement": "match",
+  "steps": 7,
+  "empty_operations": [],
+  "hint_levels_available": 6,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_8practicetest1_section4verbalreasonin_18",
+  "answer_source": "Choice A: undermines; Choice E: inimical",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_8practicetest1_section4verbalreasonin_19",
+  "answer_source": "Choice A: peculiarity; Choice E: assertive",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_8practicetest1_section4verbalreasonin_2",
+  "answer_source": "Choice A: diversity AND Choice C: variety",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_8practicetest1_section4verbalreasonin_4",
+  "answer_source": "Choice B: intransigent AND Choice F: resolute",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_8practicetest1_section5quantitativere_1",
+  "answer_source": "Choice B: Quantity B is greater.",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_8practicetest1_section5quantitativere_12",
+  "answer_source": "121",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_8practicetest1_section5quantitativere_7",
+  "answer_source": "Choice C: The two quantities are equal.",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_8practicetest1_section6quantitativere_14",
+  "answer_source": "13",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_8practicetest1_section6quantitativere_9",
+  "answer_source": "Choice D: The relationship cannot be determined from the information given.",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_9practicetest2_section3verbalreasonin_16",
+  "answer_source": "Choice D: disagreement AND Choice E: divergence",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_9practicetest2_section3verbalreasonin_17",
+  "answer_source": "Choice A: reined in AND Choice E: manacled",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_9practicetest2_section3verbalreasonin_18",
+  "answer_source": "Choice A: bridling AND Choice D: inhibiting",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_9practicetest2_section3verbalreasonin_19",
+  "answer_source": "Choice A: disaffection with AND Choice F: estrangement from",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_9practicetest2_section3verbalreasonin_20",
+  "answer_source": "Choice B: If a planet’s orbit is disturbed, the planet can be drawn by gravity toward the star it is orbiting.",
+  "answer_agreement": "match",
+  "steps": 7,
+  "empty_operations": [],
+  "hint_levels_available": 6,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_9practicetest2_section3verbalreasonin_24",
+  "answer_source": "Choice B: nuances",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_9practicetest2_section3verbalreasonin_4",
+  "answer_source": "Choice B: heed; Choice F: compromise",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_9practicetest2_section3verbalreasonin_5",
+  "answer_source": "Choice C: flawlessness; Choice D: wrong",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_9practicetest2_section4verbalreasonin_11",
+  "answer_source": "Choice D: local climatic variation in the environment of the southwestern United States",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_9practicetest2_section4verbalreasonin_15",
+  "answer_source": "Choice B: ecstatic AND Choice E: euphoric",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_9practicetest2_section4verbalreasonin_4",
+  "answer_source": "Choice E: superfluous",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_9practicetest2_section4verbalreasonin_6",
+  "answer_source": "Choice B: habit; Choice E: ploddingly",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_9practicetest2_section4verbalreasonin_7",
+  "answer_source": "Choice B: different in its effect; Choice F: entails; Choice G: permanent",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_9practicetest2_section5quantitativere_11",
+  "answer_source": "17.5",
+  "answer_agreement": "match",
+  "steps": 3,
+  "empty_operations": [],
+  "hint_levels_available": 2,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_9practicetest2_section5quantitativere_14",
+  "answer_source": "Choice B: − 7, − 4, − 2, 1, 13 AND Choice D: 2, 3, 5, 15, 19, 22 AND Choice E: 4, 5, 6, 24",
+  "answer_agreement": "match",
+  "steps": 9,
+  "empty_operations": [],
+  "hint_levels_available": 8,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_9practicetest2_section5quantitativere_18",
+  "answer_source": "Choice B: 8",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_9practicetest2_section5quantitativere_25",
+  "answer_source": "13",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_9practicetest2_section6quantitativere_10",
+  "answer_source": "Choice D: 1",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_9practicetest2_section6quantitativere_12",
+  "answer_source": "156",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_9practicetest2_section6quantitativere_14",
+  "answer_source": "30",
+  "answer_agreement": "match",
+  "steps": 4,
+  "empty_operations": [],
+  "hint_levels_available": 3,
+  "answer_form_appears_in_non_final_operation": [
+   1,
+   2,
+   3
+  ],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_9practicetest2_section6quantitativere_4",
+  "answer_source": "Choice C: The two quantities are equal.",
+  "answer_agreement": "match",
+  "steps": 6,
+  "empty_operations": [],
+  "hint_levels_available": 5,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ },
+ {
+  "id": "conv_greog_9practicetest2_section6quantitativere_7",
+  "answer_source": "Choice C: The two quantities are equal.",
+  "answer_agreement": "match",
+  "steps": 5,
+  "empty_operations": [],
+  "hint_levels_available": 4,
+  "answer_form_appears_in_non_final_operation": [],
+  "step_numbering_sequential": true
+ }
+]

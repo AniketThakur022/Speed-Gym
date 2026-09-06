@@ -1,0 +1,389 @@
+{
+ "generated_by": "factory/mocks/section_pool_map.py",
+ "export": "data/exports/vmsg_questions_v1.jsonl",
+ "join_key_finding": {
+  "proposed": "taxonomy.skill_key",
+  "pool_eligible": 12984,
+  "resolved_to_skill_key": 5389,
+  "resolution_rate": 0.415,
+  "verdict": "skill_key is an ENRICHMENT, not the membership join — it would drop 58% of pool-eligible questions. Membership: book + chapter. skill_key fills the contract's optional `skill` field where present."
+ },
+ "sections": {
+  "cat_varc": {
+   "blueprint": "cat",
+   "section": "varc",
+   "questions": 24,
+   "exam": "CAT",
+   "sources": [
+    {
+     "book": "manhattan_gre_5lb",
+     "validity": "cross_exam",
+     "note": "GRE passage reasoning standing in for CAT RC. Transfers reasonably; CAT's para-jumble and para-summary item types are absent from every book in the corpus and cannot be served at all.",
+     "chapters": [
+      "Logic-Based Reading Comprehension",
+      "Reading Comprehension"
+     ],
+     "eligible": 241,
+     "with_skill_key": 175,
+     "needs_figure_or_stimulus": 0,
+     "formats": {
+      "multiple_choice": 241
+     }
+    },
+    {
+     "book": "ets_gre_verbal",
+     "validity": "cross_exam",
+     "note": "Official GRE RC. Same caveat as above.",
+     "chapters": [
+      "Reading Comprehension"
+     ],
+     "eligible": 30,
+     "with_skill_key": 30,
+     "needs_figure_or_stimulus": 30,
+     "formats": {
+      "multiple_choice": 28,
+      "multi_select": 2
+     }
+    }
+   ],
+   "eligible_total_recommended": 271,
+   "native_eligible": 0,
+   "cross_exam_eligible": 271,
+   "with_skill_key": 205,
+   "distinct_mocks_before_repeats": 11,
+   "supply": "absent",
+   "supply_if_cross_exam_allowed": "ample",
+   "eligible_by_exam_scope": {
+    "CAT": 271
+   },
+   "absent_reason": null
+  },
+  "cat_dilr": {
+   "blueprint": "cat",
+   "section": "dilr",
+   "questions": 20,
+   "exam": "CAT",
+   "sources": [
+    {
+     "book": "sinha_lrdi",
+     "validity": "native",
+     "note": "Native CAT LR/DI. The largest genuinely CAT-shaped non-quant source there is.",
+     "chapters": null,
+     "eligible": 1231,
+     "with_skill_key": 0,
+     "needs_figure_or_stimulus": 132,
+     "formats": {
+      "multiple_choice": 1231
+     }
+    },
+    {
+     "book": "arun_sharma_di_lr",
+     "validity": "native",
+     "note": "Native CAT DI, but every one of its questions carries a figure or stimulus and its pages have no text layer — this is the book whose 466 pages sit in extraction's vision queue. Bind only the rows whose chart data survived extraction, or a learner gets a question about an invisible chart.",
+     "chapters": null,
+     "eligible": 660,
+     "with_skill_key": 0,
+     "needs_figure_or_stimulus": 660,
+     "formats": {
+      "multiple_choice": 316,
+      "numeric_entry": 192,
+      "short_answer": 152
+     }
+    },
+    {
+     "book": "manhattan_lsat_logic_games",
+     "validity": "cross_exam",
+     "note": "LSAT ordering/grouping games are close cousins of CAT LR set puzzles. Defensible substitute; label it so results are not read as CAT-native.",
+     "chapters": null,
+     "eligible": 212,
+     "with_skill_key": 0,
+     "needs_figure_or_stimulus": 192,
+     "formats": {
+      "multiple_choice": 192,
+      "short_answer": 20
+     }
+    }
+   ],
+   "eligible_total_recommended": 2103,
+   "native_eligible": 1891,
+   "cross_exam_eligible": 212,
+   "with_skill_key": 0,
+   "distinct_mocks_before_repeats": 105,
+   "supply": "ample",
+   "supply_if_cross_exam_allowed": "ample",
+   "eligible_by_exam_scope": {
+    "CAT": 2103
+   },
+   "absent_reason": null
+  },
+  "quant": {
+   "blueprint": "cat/gmat/gre",
+   "section": "qa/quant/quant",
+   "questions": 27,
+   "exam": "SHARED",
+   "sources": [
+    {
+     "book": "arun_sharma_quant",
+     "validity": "native",
+     "exam_scope": "CAT",
+     "note": "Native CAT quant, and by volume the backbone of any CAT mock.",
+     "chapters": null,
+     "eligible": 3526,
+     "with_skill_key": 2783,
+     "needs_figure_or_stimulus": 2452,
+     "formats": {
+      "multiple_choice": 3136,
+      "numeric_entry": 357,
+      "short_answer": 33
+     }
+    },
+    {
+     "book": "tyra_quicker_maths",
+     "validity": "native",
+     "exam_scope": "CAT",
+     "note": "Speed-method quant; fits CAT timing pressure.",
+     "chapters": null,
+     "eligible": 1823,
+     "with_skill_key": 793,
+     "needs_figure_or_stimulus": 145,
+     "formats": {
+      "short_answer": 987,
+      "numeric_entry": 591,
+      "multiple_choice": 245
+     }
+    },
+    {
+     "book": "manhattan_gre_quant",
+     "validity": "native",
+     "exam_scope": "GRE",
+     "note": "Native GRE quant.",
+     "chapters": null,
+     "eligible": 612,
+     "with_skill_key": 242,
+     "needs_figure_or_stimulus": 0,
+     "formats": {
+      "numeric_entry": 223,
+      "short_answer": 169,
+      "quantitative_comparison": 149,
+      "multiple_choice": 50,
+      "multi_select": 21
+     }
+    },
+    {
+     "book": "manhattan_gre_5lb",
+     "validity": "native",
+     "exam_scope": "GRE",
+     "note": "The 5 lb book's quant chapters — everything outside its verbal and DI chapters.",
+     "chapters": "all chapters except the verbal and DI lists",
+     "eligible": 1075,
+     "with_skill_key": 264,
+     "needs_figure_or_stimulus": 82,
+     "formats": {
+      "multiple_choice": 530,
+      "quantitative_comparison": 374,
+      "numeric_entry": 154,
+      "short_answer": 17
+     }
+    },
+    {
+     "book": "ets_gre_official_guide",
+     "validity": "native",
+     "exam_scope": "GRE",
+     "note": "Official GRE quant.",
+     "chapters": [
+      "6 Quantitative Practice"
+     ],
+     "eligible": 39,
+     "with_skill_key": 0,
+     "needs_figure_or_stimulus": 0,
+     "formats": {
+      "quantitative_comparison": 17,
+      "multiple_choice": 14,
+      "numeric_entry": 4,
+      "multi_select": 4
+     }
+    },
+    {
+     "book": "bird_basic_engineering_math",
+     "validity": "cross_exam",
+     "exam_scope": "NONE",
+     "note": "Engineering maths. Correct mathematics, wrong exam: no admissions test asks these. Recommended DECLINE for mocks; fine for practice.",
+     "chapters": null,
+     "eligible": 1094,
+     "with_skill_key": 351,
+     "needs_figure_or_stimulus": 0,
+     "formats": {
+      "short_answer": 727,
+      "numeric_entry": 367
+     }
+    },
+    {
+     "book": "hall_knight_higher_algebra",
+     "validity": "cross_exam",
+     "exam_scope": "NONE",
+     "note": "Classical higher algebra, well above CAT/GRE/GMAT level. Recommended DECLINE for mocks.",
+     "chapters": null,
+     "eligible": 817,
+     "with_skill_key": 267,
+     "needs_figure_or_stimulus": 155,
+     "formats": {
+      "short_answer": 775,
+      "numeric_entry": 42
+     }
+    }
+   ],
+   "eligible_total_recommended": 7075,
+   "native_eligible": 7075,
+   "cross_exam_eligible": 0,
+   "with_skill_key": 4082,
+   "distinct_mocks_before_repeats": 262,
+   "supply": "ample",
+   "supply_if_cross_exam_allowed": "ample",
+   "eligible_by_exam_scope": {
+    "CAT": 5349,
+    "GRE": 1726
+   },
+   "absent_reason": null
+  },
+  "gmat_verbal": {
+   "blueprint": "gmat",
+   "section": "verbal",
+   "questions": 23,
+   "exam": "GMAT",
+   "sources": [
+    {
+     "book": "manhattan_gmat_verbal",
+     "validity": "native",
+     "note": "The only GMAT-native verbal source in the corpus.",
+     "chapters": null,
+     "eligible": 36,
+     "with_skill_key": 0,
+     "needs_figure_or_stimulus": 0,
+     "formats": {
+      "multiple_choice": 36
+     }
+    }
+   ],
+   "eligible_total_recommended": 36,
+   "native_eligible": 36,
+   "cross_exam_eligible": 0,
+   "with_skill_key": 0,
+   "distinct_mocks_before_repeats": 1,
+   "supply": "thin",
+   "supply_if_cross_exam_allowed": "thin",
+   "eligible_by_exam_scope": {
+    "GMAT": 36
+   },
+   "absent_reason": null
+  },
+  "gmat_di": {
+   "blueprint": "gmat",
+   "section": "di",
+   "questions": 20,
+   "exam": "GMAT",
+   "sources": [],
+   "eligible_total_recommended": 0,
+   "native_eligible": 0,
+   "cross_exam_eligible": 0,
+   "with_skill_key": 0,
+   "distinct_mocks_before_repeats": 0,
+   "supply": "absent",
+   "supply_if_cross_exam_allowed": "absent",
+   "eligible_by_exam_scope": {},
+   "absent_reason": "GMAT Data Insights has no source in the corpus. Its item types — data sufficiency, multi-source reasoning, two-part analysis, table analysis — are GMAT-specific and appear in no book here. CAT DI is a different instrument and must not be substituted: data sufficiency asks whether a question CAN be answered, which no CAT DI item does. This section cannot be served without new content."
+  },
+  "gre_verbal": {
+   "blueprint": "gre",
+   "section": "verbal",
+   "questions": 27,
+   "exam": "GRE",
+   "sources": [
+    {
+     "book": "manhattan_gre_5lb",
+     "validity": "native",
+     "chapters": [
+      "Logic-Based Reading Comprehension",
+      "Reading Comprehension",
+      "Sentence Equivalence",
+      "Text Completions",
+      "Verbal Diagnostic Test",
+      "Verbal Practice Section 1: Easy",
+      "Verbal Practice Section 2: Medium",
+      "Verbal Practice Section 3: Hard"
+     ],
+     "eligible": 590,
+     "with_skill_key": 444,
+     "needs_figure_or_stimulus": 0,
+     "formats": {
+      "multiple_choice": 501,
+      "text_completion": 89
+     }
+    },
+    {
+     "book": "ets_gre_verbal",
+     "validity": "native",
+     "note": "Official ETS verbal practice — the highest-fidelity verbal source available.",
+     "chapters": null,
+     "eligible": 150,
+     "with_skill_key": 75,
+     "needs_figure_or_stimulus": 150,
+     "formats": {
+      "multiple_choice": 78,
+      "multi_select": 40,
+      "text_completion": 32
+     }
+    },
+    {
+     "book": "ets_gre_official_guide",
+     "validity": "native",
+     "chapters": [
+      "4 Verbal Reasoning Practice"
+     ],
+     "eligible": 47,
+     "with_skill_key": 0,
+     "needs_figure_or_stimulus": 0,
+     "formats": {
+      "multiple_choice": 25,
+      "text_completion": 11,
+      "multi_select": 11
+     }
+    }
+   ],
+   "eligible_total_recommended": 787,
+   "native_eligible": 787,
+   "cross_exam_eligible": 0,
+   "with_skill_key": 519,
+   "distinct_mocks_before_repeats": 29,
+   "supply": "ample",
+   "supply_if_cross_exam_allowed": "ample",
+   "eligible_by_exam_scope": {
+    "GRE": 787
+   },
+   "absent_reason": null
+  },
+  "gre_awa": {
+   "blueprint": "gre",
+   "section": "awa",
+   "questions": 1,
+   "exam": "GRE",
+   "sources": [],
+   "eligible_total_recommended": 0,
+   "native_eligible": 0,
+   "cross_exam_eligible": 0,
+   "with_skill_key": 0,
+   "distinct_mocks_before_repeats": 0,
+   "supply": "absent",
+   "supply_if_cross_exam_allowed": "absent",
+   "eligible_by_exam_scope": {},
+   "absent_reason": "Zero essay prompts exist anywhere in the corpus or the export — verified by scanning every question of all 4,805 records for the AWA task wordings. The section is not auto-scored, so it needs only a prompt, but it needs one. Two public ETS pools exist and would have to be licensed or authored."
+  }
+ },
+ "recommendations": [
+  "Split the shared `quant` tag into cat_quant / gmat_quant / gre_quant before binding. One tag across three exams makes a GRE mock indistinguishable from a CAT one, and the corpus has enough native material to keep them apart for CAT and GRE.",
+  "GMAT quant has NO native source: with `quant` split, gmat_quant is absent, not thin. GRE quant is the closest substitute and should be labelled cross_exam if used.",
+  "gmat_di and gre_awa cannot be served at all. Answer 503 honestly rather than substituting CAT DI for Data Insights — they test different things.",
+  "gmat_verbal has 36 eligible questions against a 23-question section: barely one mock, and a second attempt repeats most of it. Treat as thin, not ready.",
+  "Bind arun_sharma_di_lr only after extraction's vision pass — every question there depends on a figure, so an un-rendered row is an unanswerable question.",
+  "Pool membership joins on book + chapter; carry taxonomy.skill_key into the contract's `skill` field where it resolves, and leave it null where it does not, rather than dropping the question."
+ ]
+}
