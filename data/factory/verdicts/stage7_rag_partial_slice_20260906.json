@@ -1,0 +1,432 @@
+{
+ "my_partial_slice": {
+  "conv_gre5lb_advancedquant_40": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": "none"
+  },
+  "conv_gre5lb_advancedquant_47": {
+   "final": "fail",
+   "votes": {
+    "grounding": "pass",
+    "followability": "fail",
+    "coherence": "fail"
+   },
+   "hint": "certain"
+  },
+  "conv_gre5lb_algebra_20": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": "possible"
+  },
+  "conv_gre5lb_algebra_23": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": "none"
+  },
+  "conv_gre5lb_algebra_34": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": "possible"
+  },
+  "conv_gre5lb_algebra_52": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": "possible"
+  },
+  "conv_gre5lb_arithmetic_11": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "fail",
+    "coherence": "pass"
+   },
+   "hint": "none"
+  },
+  "conv_gre5lb_arithmetic_2": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": "certain"
+  },
+  "conv_gre5lb_arithmetic_30": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": "none"
+  },
+  "conv_gre5lb_averagesweightedaveragesmedianandmod_5": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": "none"
+  },
+  "conv_gre5lb_circlesandcylinders_26": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": "possible"
+  },
+  "conv_gre5lb_coordinategeometry_11": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": "none"
+  },
+  "conv_gre5lb_divisibilityandprimes_36": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": "none"
+  },
+  "conv_gre5lb_fractionsanddecimals_13": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": "none"
+  },
+  "conv_gre5lb_fractionsanddecimals_20": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": "possible"
+  },
+  "conv_gre5lb_fractionsanddecimals_25": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": "certain"
+  },
+  "conv_gre5lb_fractionsanddecimals_34": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": "certain"
+  },
+  "conv_gre5lb_functionsformulasandsequences_16": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": "certain"
+  },
+  "conv_gre5lb_functionsformulasandsequences_20": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": "possible"
+  },
+  "conv_gre5lb_functionsformulasandsequences_69": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": "possible"
+  },
+  "conv_gre5lb_inequalitiesandabsolutevalues_19": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": "none"
+  },
+  "conv_gre5lb_logicbasedreadingcomprehension_12": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": "certain"
+  },
+  "conv_gre5lb_logicbasedreadingcomprehension_16": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": "possible"
+  },
+  "conv_gre5lb_logicbasedreadingcomprehension_26": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": "certain"
+  },
+  "conv_gre5lb_mathdiagnostictest_13": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": "none"
+  },
+  "conv_gre5lb_numberproperties_14": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": "certain"
+  },
+  "conv_gre5lb_numberproperties_40": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": "certain"
+  },
+  "conv_gre5lb_numberproperties_49": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": "certain"
+  },
+  "conv_gre5lb_percents_13": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": "possible"
+  },
+  "conv_gre5lb_percents_44": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "fail",
+    "coherence": "pass"
+   },
+   "hint": "possible"
+  },
+  "conv_gre5lb_percents_73": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": "possible"
+  },
+  "conv_gre5lb_polygonsandrectangularsolids_18": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": "none"
+  },
+  "conv_gre5lb_polygonsandrectangularsolids_7": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": "possible"
+  },
+  "conv_gre5lb_polygonsandrectangularsolids_8": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": "none"
+  },
+  "conv_gre5lb_probabilitycombinatoricsandoverlappi_10": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": "none"
+  },
+  "conv_gre5lb_probabilitycombinatoricsandoverlappi_30": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": "none"
+  },
+  "conv_gre5lb_probabilitycombinatoricsandoverlappi_7": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": "possible"
+  },
+  "conv_gre5lb_ratesandwork_10": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": "none"
+  },
+  "conv_gre5lb_ratesandwork_12": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": "none"
+  },
+  "conv_gre5lb_ratesandwork_18": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": "certain"
+  },
+  "conv_gre5lb_ratesandwork_30": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": null
+  },
+  "conv_gre5lb_ratesandwork_6": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": null
+  },
+  "conv_gre5lb_ratios_8": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": null
+  },
+  "conv_gre5lb_ratios_9": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass",
+    "coherence": "pass"
+   },
+   "hint": null
+  },
+  "conv_gre5lb_standarddeviationandnormaldistributi_46": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass"
+   },
+   "hint": null
+  },
+  "conv_gre5lb_standarddeviationandnormaldistributi_5": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass"
+   },
+   "hint": null
+  },
+  "conv_gre5lb_textcompletions_103": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass"
+   },
+   "hint": null
+  },
+  "conv_gre5lb_textcompletions_108": {
+   "final": "pass",
+   "votes": {
+    "grounding": "pass",
+    "followability": "pass"
+   },
+   "hint": null
+  }
+ }
+}

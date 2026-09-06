@@ -1,0 +1,421 @@
+{
+ "method": "only levels 2-3 ship (level 1 is a framing hint), so only steps 1-2 are ever shown; checks whether a shown value rounds to the answer or two shown values combine to it — both invisible to the answer-form redactor",
+ "max_levels": 3,
+ "stats": {
+  "templates_with_shipped_hints": 348,
+  "non_numeric_answer": 285,
+  "TWO_VALUES_COMBINE": 19,
+  "redaction_fires_on_shipped_hint": 11
+ },
+ "findings": [
+  {
+   "id": "conv_gre5lb_polygonsandrectangularsolids_7",
+   "answer": "4",
+   "shipped_hints": [
+    "\\triangle ACD: 6\\text{-}8\\text{-}10 \\Rightarrow CD = 6",
+    "\\text{Area}_{ABCD} = AD \\times CD = 8 \\times 6"
+   ],
+   "rounds_to_answer": [],
+   "combines": [
+    [
+     10.0,
+     6.0,
+     "-"
+    ],
+    [
+     10.0,
+     6.0,
+     "-"
+    ]
+   ]
+  },
+  {
+   "id": "conv_gre5lb_polygonsandrectangularsolids_8",
+   "answer": "30",
+   "shipped_hints": [
+    "12^2 + (AB)^2 = 15^2 \\;\\Rightarrow\\; 144 + (AB)^2 = 225",
+    "(AB)^2 = 225 - 144 = 81 \\;\\Rightarrow\\; AB = 9"
+   ],
+   "rounds_to_answer": [],
+   "combines": [
+    [
+     2.0,
+     15.0,
+     "*"
+    ],
+    [
+     2.0,
+     15.0,
+     "*"
+    ],
+    [
+     15.0,
+     2.0,
+     "*"
+    ]
+   ]
+  },
+  {
+   "id": "conv_greog_9practicetest2_section6quantitativere_14",
+   "answer": "30",
+   "shipped_hints": [
+    "\\text{red flash times} = 6, 12, 18, 24, 30, 36, 42, 48, 54, 60, \\ldots",
+    "\\text{blue flash times} = 10, 20, 30, 40, 50, 60, 70, 80, 90, \\ldots"
+   ],
+   "rounds_to_answer": [],
+   "combines": [
+    [
+     6.0,
+     24.0,
+     "+"
+    ],
+    [
+     12.0,
+     18.0,
+     "+"
+    ],
+    [
+     10.0,
+     20.0,
+     "+"
+    ]
+   ]
+  },
+  {
+   "id": "conv_as_quant_p099_level_of_difficulty_ii_125",
+   "answer": "4",
+   "shipped_hints": [
+    "9^n + 11^n \\ \\text{mod } 10",
+    "6^n + 4^n \\ \\text{mod } 10"
+   ],
+   "rounds_to_answer": [],
+   "combines": [
+    [
+     10.0,
+     6.0,
+     "-"
+    ]
+   ]
+  },
+  {
+   "id": "conv_as_quant_p099_level_of_difficulty_ii_126",
+   "answer": "8",
+   "shipped_hints": [
+    "9^x \\Rightarrow \\text{units digit } 9 \\text{ (x odd)}, \\; 1 \\text{ (x even)}",
+    "6^y \\Rightarrow \\text{units digit } 6"
+   ],
+   "rounds_to_answer": [],
+   "combines": [
+    [
+     9.0,
+     1.0,
+     "-"
+    ],
+    [
+     9.0,
+     1.0,
+     "-"
+    ]
+   ]
+  },
+  {
+   "id": "conv_as_quant_p099_level_of_difficulty_ii_117",
+   "answer": "0",
+   "shipped_hints": [
+    "Apply the cyclicity principle to the units digits of the factors",
+    "Units digits of 1^7, 2^7, \\dots, 9^7 repeat once for every block of ten numbers"
+   ],
+   "rounds_to_answer": [],
+   "combines": [
+    [
+     7.0,
+     7.0,
+     "-"
+    ],
+    [
+     7.0,
+     7.0,
+     "-"
+    ],
+    [
+     7.0,
+     7.0,
+     "-"
+    ]
+   ]
+  },
+  {
+   "id": "conv_Thakur_Essentials_pr_108_1",
+   "answer": "2172 × 1111 = 2413092",
+   "shipped_hints": [
+    "Write 2172 with leading zeros as 0 0 2 1 7 2 and set the multiplier 1111 to mean 'sum four consecutive digits'",
+    "0 + 0 + 0 + 2"
+   ],
+   "rounds_to_answer": [],
+   "combines": [
+    [
+     2172.0,
+     1111.0,
+     "*"
+    ]
+   ]
+  },
+  {
+   "id": "conv_tyra_mult_p0034_a_Ex__10__2_",
+   "answer": "961 / 374 = 961374",
+   "shipped_hints": [
+    "978 - 1000 = -22",
+    "983 - 1000 = -17"
+   ],
+   "rounds_to_answer": [],
+   "combines": [
+    [
+     978.0,
+     983.0,
+     "*"
+    ]
+   ]
+  },
+  {
+   "id": "conv_tyra_ns_p0195_exercise_37",
+   "answer": "1",
+   "shipped_hints": [
+    "\\frac{x}{y} = \\frac{3}{4} \\Rightarrow \\frac{y-x}{y+x} = \\frac{4-3}{4+3}",
+    "\\frac{4-3}{4+3} = \\frac{1}{7}"
+   ],
+   "rounds_to_answer": [],
+   "combines": [
+    [
+     4.0,
+     -3.0,
+     "+"
+    ],
+    [
+     4.0,
+     3.0,
+     "-"
+    ],
+    [
+     4.0,
+     -3.0,
+     "+"
+    ]
+   ]
+  },
+  {
+   "id": "conv_tyra_mult_p0033_d_Ex__9___1_",
+   "answer": "105 / 06 = 10506",
+   "shipped_hints": [
+    "102 - 100 = +2, \\quad 103 - 100 = +3",
+    "102 + 3 = 105 \\quad \\text{or} \\quad 103 + 2 = 105"
+   ],
+   "rounds_to_answer": [],
+   "combines": [
+    [
+     102.0,
+     103.0,
+     "*"
+    ],
+    [
+     102.0,
+     103.0,
+     "*"
+    ],
+    [
+     103.0,
+     102.0,
+     "*"
+    ]
+   ]
+  },
+  {
+   "id": "conv_greog_6quantitativep_set1discretequestionse_13",
+   "answer": "13",
+   "shipped_hints": [
+    "\\text{mean} = 8, \\quad \\text{standard deviation} = 2.5",
+    "(2)(2.5) = 5"
+   ],
+   "rounds_to_answer": [],
+   "combines": [
+    [
+     8.0,
+     5.0,
+     "+"
+    ]
+   ]
+  },
+  {
+   "id": "conv_greog_6quantitativep_set2discretequestionsm_11",
+   "answer": "216",
+   "shipped_hints": [
+    "18 \\times 12",
+    "18 + 2(3)"
+   ],
+   "rounds_to_answer": [],
+   "combines": [
+    [
+     18.0,
+     12.0,
+     "*"
+    ],
+    [
+     12.0,
+     18.0,
+     "*"
+    ]
+   ]
+  },
+  {
+   "id": "conv_tyra_ci_p0416_ex5_Ex__5",
+   "answer": "200%",
+   "shipped_hints": [
+    "9x = x\\left(1 + \\tfrac{r}{100}\\right)^2",
+    "9 = \\left(1 + \\tfrac{r}{100}\\right)^2"
+   ],
+   "rounds_to_answer": [],
+   "combines": [
+    [
+     100.0,
+     2.0,
+     "*"
+    ],
+    [
+     100.0,
+     100.0,
+     "+"
+    ],
+    [
+     100.0,
+     2.0,
+     "*"
+    ]
+   ]
+  },
+  {
+   "id": "conv_gre5lb_divisibilityandprimes_36",
+   "answer": "0",
+   "shipped_hints": [
+    "\\text{remainder of } N \\div 10 = \\text{units digit of } N",
+    "13^{17} + 17^{13} \\rightarrow 3^{17} + 7^{13}"
+   ],
+   "rounds_to_answer": [],
+   "combines": [
+    [
+     13.0,
+     13.0,
+     "-"
+    ],
+    [
+     13.0,
+     13.0,
+     "-"
+    ],
+    [
+     17.0,
+     17.0,
+     "-"
+    ]
+   ]
+  },
+  {
+   "id": "conv_greog_8practicetest1_section6quantitativere_14",
+   "answer": "13",
+   "shipped_hints": [
+    "plot (-6, -7) as the center, (-6, 5) inside C, and (8, -7) outside C",
+    "\\text{distance from } (-6,-7) \\text{ to } (-6,5) = 7 + 5 = 12"
+   ],
+   "rounds_to_answer": [],
+   "combines": [
+    [
+     5.0,
+     8.0,
+     "+"
+    ],
+    [
+     8.0,
+     5.0,
+     "+"
+    ],
+    [
+     8.0,
+     5.0,
+     "+"
+    ]
+   ]
+  },
+  {
+   "id": "conv_tyra_ds_p0686_3s_ex06_Ex_6",
+   "answer": "4",
+   "shipped_hints": [
+    "6 - 5 = 1 \\ \\text{ratio unit} = 2000",
+    "4 \\times 2000"
+   ],
+   "rounds_to_answer": [],
+   "combines": [
+    [
+     5.0,
+     1.0,
+     "-"
+    ]
+   ]
+  },
+  {
+   "id": "conv_Thakur_Essentials_pr_61_1",
+   "answer": "122 × 98 = 11956",
+   "shipped_hints": [
+    "\\text{base} = 100",
+    "122 - 100 = +22, \\quad 98 - 100 = -2"
+   ],
+   "rounds_to_answer": [],
+   "combines": [
+    [
+     122.0,
+     98.0,
+     "*"
+    ]
+   ]
+  },
+  {
+   "id": "conv_tyra_series_p0637_step1_Ex__ii_",
+   "answer": "64",
+   "shipped_hints": [
+    "4 - 1 = 3,\\; 9 - 4 = 5,\\; 16 - 9 = 7,\\; 25 - 16 = 9,\\; 36 - 25 = 11,\\; 49 - 36 = 13",
+    "13 + 2 = 15"
+   ],
+   "rounds_to_answer": [],
+   "combines": [
+    [
+     4.0,
+     16.0,
+     "*"
+    ],
+    [
+     4.0,
+     16.0,
+     "*"
+    ],
+    [
+     4.0,
+     16.0,
+     "*"
+    ]
+   ]
+  },
+  {
+   "id": "conv_as_quant_p106_level_of_difficulty_iii_64",
+   "answer": "1",
+   "shipped_hints": [
+    "5! = 120,\\ 6! = 720,\\ \\ldots \\Rightarrow \\text{units digit} = 0",
+    "1 - 2 + 6 - 4"
+   ],
+   "rounds_to_answer": [],
+   "combines": [
+    [
+     5.0,
+     4.0,
+     "-"
+    ]
+   ]
+  }
+ ]
+}

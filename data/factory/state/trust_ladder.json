@@ -3493,6 +3493,846 @@
    "reason": "unrepairable: damage reaches the arithmetic (result) layer; verified list from the re-narration pass",
    "repair_note": "Defect is contradictory arithmetic between steps, not narration. The step chain (3 + (-12) = -9; -9 + 10 = 1 carry -1; 8 - 1 - 9 = -2; -2 + 10 = 8) yields quotient digits 1, 1, 8, which cannot produce the stated quotient 123, and step 8 introduces an unsourced 36 to reach remainder 43. The correct N",
    "requires_rejudge_by": "configured_trio"
+  },
+  "conv_greets_textcompletionpracticeset1easy_8": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_gre5lb_textcompletions_57": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_tyra_numsys_p0177_cnt_solved4__4_": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_tyra_hcflcm_p0090_c_Ex__9": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_gre5lb_fractionsanddecimals_25": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_tyra_mult_p0033_d_Ex__9___1_": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_as_quant_p526_level_of_difficulty_i_68": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_lsat_lg_p1154_a_photographer_will_5": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_greets_mixedpracticepracticeset3_2": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_gre5lb_ratesandwork_30": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_Thakur_Essentials_pr_248_1": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_gre5lb_functionsformulasandsequences_69": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_as_quant_p212_level_of_difficulty_i_94": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_tyra_ci_p0428_exercises_8": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_greog_6quantitativep_set4datainterpretation_1": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_tyra_series_p0637_step1_Ex__i_": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_gmat_verbal_ch21_problem_set_5": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_greog_9practicetest2_section3verbalreasonin_19": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_tyra_ratio_p0268_exercise_13": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_as_quant_p530_level_of_difficulty_ii_13": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_gre5lb_polygonsandrectangularsolids_8": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_greog_4verbalreasoni_set1discretequestionse_6": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_gre5lb_advancedquant_40": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_tyra_trains_p0560_ex29_Ex__29": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_gre5lb_textcompletions_109": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_gre5lb_numberproperties_14": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_greets_textcompletionpracticeset2medium_8": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_greets_mixedpracticepracticeset2_14": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_gmat_verbal_ch22_problem_set_5": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_greog_8practicetest1_section4verbalreasonin_11": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_as_quant_p106_level_of_difficulty_iii_64": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_greqnt_ratesproblemsetproblemset_969_6": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_greets_sentenceequivalencepracticeset3har_5": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_gmat_verbal_ch20_problem_set_8": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_greog_4verbalreasoni_set3discretequestionsm_5": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_lsat_lg_p0636_the_six_messages_7": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_tyra_series_p0637_step1_Ex__ii_": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_as_quant_p530_level_of_difficulty_ii_59": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_greog_9practicetest2_section3verbalreasonin_20": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_greqnt_percentsproblemsetproblemset_533_4": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_greog_4verbalreasoni_set5discretequestionsh_5": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_sinha_s042x1_q06_10_6": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_greog_8practicetest1_section4verbalreasonin_19": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_lsat_lg_p0452_detectives_investigating_a_18": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_lsat_lg_p0885_six_doctors_haddad_2": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_greqnt_equationsproblemsetproblemset_150_6": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_as_quant_p732_level_of_difficulty_i_12": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_greqnt_commonfactorscheckyourskillscheckyourski_352_7": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_gre5lb_textcompletions_129": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_gre5lb_twovariablewordproblems_21": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_greog_9practicetest2_section4verbalreasonin_6": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_greqnt_statisticsproblemsetproblemset_636_11": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_greog_6quantitativep_set2discretequestionsm_11": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_greqnt_circlesandcylindersproblemsetproblemset_814_13": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_as_quant_p237_level_of_difficulty_i_13": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_greqnt_linesandanglesproblemsetproblemset_836_6": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_Thakur_Essentials_pr_211_1": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_greog_8practicetest1_section6quantitativere_14": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_gre5lb_textcompletions_35": {
+   "state": "quarantined",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
+  },
+  "conv_greqnt_percentsproblemsetproblemset_533_13": {
+   "state": "sandbox",
+   "judge_backend": "claude-session-panel",
+   "stage7_interim": true,
+   "target_kind": "item",
+   "panel_lenses": [
+    "grounding-fidelity",
+    "learner-followability",
+    "metadata-honesty"
+   ],
+   "judged_at": "2026-09-06T13:30:00Z",
+   "spot_check_ids": [],
+   "requires_rejudge_by": "configured_trio"
   }
  },
  "ceiling_note": "Any judge_backend outside the configured trio is capped at 'sandbox' — it never feeds BKT mastery or mock exams. See docs/rag/STAGE7_SESSION_PANEL_INTAKE.md.",
