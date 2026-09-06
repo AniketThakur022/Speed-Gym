@@ -1,0 +1,1662 @@
+{
+  "workstream": "backend",
+  "generated_at": "2026-09-06T13:12:59.227626+00:00",
+  "finished_at": "2026-09-06T13:13:20.012666+00:00",
+  "run_id": "7b7ecc4d",
+  "base_url": "http://127.0.0.1:8010",
+  "everything_here_was_executed": true,
+  "checks_passed": 59,
+  "checks_total": 59,
+  "headline_numbers": {
+    "api_route_count": 77,
+    "dbs_healthy": 3,
+    "practice_items_served": 10,
+    "practice_items_withheld_quarantined": 2624,
+    "bkt_p_before": 0.35,
+    "bkt_p_after": 0.8247191011235955,
+    "bkt_band_before": "FRACTURED",
+    "bkt_band_after": "FRAGILE",
+    "sync_first_accepted": 2,
+    "sync_replay_duplicates": 2,
+    "sync_xp_first": 55,
+    "sync_xp_replay": 0,
+    "dashboard_mastery_pct": 82,
+    "dashboard_reads_200": 8,
+    "mock_total_raw": 36.0,
+    "mock_max_raw": 66.0,
+    "mock_percentile": 96,
+    "mock_peers": 97,
+    "cat_mcq_raw": 24.0,
+    "chat_hint_levels": 3,
+    "usd_inr_rate": 84.0,
+    "pro_inr_paise": 50400,
+    "flags_total": 23,
+    "flags_on": 8,
+    "flags_dark": 15,
+    "content_trust_totals": {
+      "QUARANTINED_HARD": 3,
+      "QUARANTINED_SOFT": 35
+    },
+    "rate_limit_per_minute": 300,
+    "rate_limit_429_at_request": 300,
+    "pytest_passed": 310,
+    "pytest_failed": 0,
+    "pytest_failed_ids": [],
+    "vitest_files": 17,
+    "vitest_tests": 148
+  },
+  "steps": [
+    {
+      "step": "API selected",
+      "ok": true,
+      "base_url": "http://127.0.0.1:8010",
+      "routes": 77,
+      "survey": [
+        {
+          "base": "http://127.0.0.1:8000",
+          "reachable": true,
+          "route_count": 30,
+          "full_surface": false,
+          "missing_routes": [
+            "/api/v1/dashboard/stats",
+            "/api/v1/mocks/configure",
+            "/api/v1/chat/query"
+          ]
+        },
+        {
+          "base": "http://127.0.0.1:8010",
+          "reachable": true,
+          "route_count": 77,
+          "full_surface": true,
+          "missing_routes": []
+        }
+      ]
+    },
+    {
+      "step": "health + readiness (3/3 DBs)",
+      "ok": true,
+      "health_status": 200,
+      "health": {
+        "status": "ok",
+        "service": "vmsg-api",
+        "version": "0.1.0"
+      },
+      "ready_status": 200,
+      "ready": {
+        "status": "ready",
+        "checks": {
+          "postgres": "healthy",
+          "neo4j": "healthy",
+          "redis": "healthy"
+        }
+      }
+    },
+    {
+      "step": "register (201)",
+      "ok": true,
+      "status": 201,
+      "user": {
+        "id": "870d4150-3f30-486c-8013-c1a7478c8c79",
+        "name": "Demo Learner",
+        "email": "vmsg.demo.learner.7b7ecc4d@example.com",
+        "role": "user",
+        "tier": "free"
+      }
+    },
+    {
+      "step": "duplicate register refused (409)",
+      "ok": true,
+      "status": 409,
+      "detail": {
+        "detail": "email already registered"
+      }
+    },
+    {
+      "step": "login (200)",
+      "ok": true,
+      "status": 200,
+      "token_prefix": "eyJhbGciOiJIUzI1NiIsInR5…"
+    },
+    {
+      "step": "wrong password refused (401)",
+      "ok": true,
+      "status": 401,
+      "detail": {
+        "detail": "invalid credentials"
+      }
+    },
+    {
+      "step": "GET /auth/me (200)",
+      "ok": true,
+      "status": 200,
+      "me": {
+        "user": {
+          "id": "870d4150-3f30-486c-8013-c1a7478c8c79",
+          "name": "Demo Learner",
+          "email": "vmsg.demo.learner.7b7ecc4d@example.com",
+          "role": "user",
+          "tier": "free"
+        }
+      }
+    },
+    {
+      "step": "unauthenticated /auth/me refused (401)",
+      "ok": true,
+      "status": 401,
+      "detail": {
+        "detail": "missing bearer token"
+      }
+    },
+    {
+      "step": "refresh rotates the token",
+      "ok": true,
+      "status": 200,
+      "old_token_tail": "rz8LXEdZ",
+      "new_token_tail": "TN-Yd4vB",
+      "rotated": true
+    },
+    {
+      "step": "REPLAYED refresh token refused (401)",
+      "ok": true,
+      "status": 401,
+      "detail": {
+        "detail": "refresh token replay detected; device session revoked"
+      }
+    },
+    {
+      "step": "replay revoked the whole device session (401)",
+      "ok": true,
+      "status": 401,
+      "detail": {
+        "detail": "refresh token revoked"
+      },
+      "note": "rotation_replay revokes every live refresh token on that device fingerprint"
+    },
+    {
+      "step": "logout (200)",
+      "ok": true,
+      "status": 200,
+      "body": {
+        "status": "logged_out"
+      }
+    },
+    {
+      "step": "Firebase /auth/google declared-not-configured (501)",
+      "ok": true,
+      "status": 501,
+      "detail": {
+        "detail": "Google idToken exchange not configured (owner decision: email/password + QR ship first)"
+      }
+    },
+    {
+      "step": "Firebase /auth/phone declared-not-configured (501)",
+      "ok": true,
+      "status": 501,
+      "detail": {
+        "detail": "Phone idToken exchange not configured (owner decision: email/password + QR ship first)"
+      }
+    },
+    {
+      "step": "generate pairing code",
+      "ok": true,
+      "status": 200,
+      "expires_in": 300,
+      "code_prefix": "DyQIX1CV…",
+      "sig_prefix": "1ec110223164e3fb…"
+    },
+    {
+      "step": "poll before approval → pending",
+      "ok": true,
+      "status": 200,
+      "body": {
+        "status": "pending"
+      }
+    },
+    {
+      "step": "tampered QR signature refused (400)",
+      "ok": true,
+      "status": 400,
+      "detail": {
+        "detail": "bad QR signature"
+      }
+    },
+    {
+      "step": "wrong poll token refused (403)",
+      "ok": true,
+      "status": 403,
+      "detail": {
+        "detail": "bad poll token"
+      }
+    },
+    {
+      "step": "phone approves the pairing",
+      "ok": true,
+      "status": 200,
+      "body": {
+        "status": "approved"
+      }
+    },
+    {
+      "step": "scanner collects a real session",
+      "ok": true,
+      "status": 200,
+      "status_field": "approved",
+      "user": {
+        "id": "870d4150-3f30-486c-8013-c1a7478c8c79",
+        "name": "Demo Learner",
+        "email": "vmsg.demo.learner.7b7ecc4d@example.com",
+        "role": "user",
+        "tier": "free"
+      }
+    },
+    {
+      "step": "nonce burns after collection (410)",
+      "ok": true,
+      "status": 410,
+      "detail": {
+        "detail": "pairing code expired or used"
+      }
+    },
+    {
+      "step": "GET /practice/session",
+      "ok": true,
+      "status": 200,
+      "summary": {
+        "requested": 10,
+        "served": 10,
+        "tier1_static": 10,
+        "tier2_generated": 0,
+        "client_checkable": 5,
+        "server_checkable": 5,
+        "feeds_mastery": 10,
+        "withheld": {
+          "quarantined (quarantined_pending_consensus)": 2624
+        }
+      },
+      "sample_items": [
+        {
+          "template_id": "Bird_Engineering_Math_sa_13",
+          "source": "tier1_static",
+          "skill": "Basic number sense",
+          "trust": "static_verified",
+          "feeds_mastery": true,
+          "answer_verification": "verified",
+          "solution_verification": "unverified",
+          "answer_check": "client_extract",
+          "expected_answer": 902.0,
+          "difficulty": 1
+        },
+        {
+          "template_id": "Bird_Engineering_Math_sa_24",
+          "source": "tier1_static",
+          "skill": "Basic Operations (+, -, ×, ÷)",
+          "trust": "static_verified",
+          "feeds_mastery": true,
+          "answer_verification": "verified",
+          "solution_verification": "unverified",
+          "answer_check": "client_extract",
+          "expected_answer": 0.38095238095238093,
+          "difficulty": 1
+        },
+        {
+          "template_id": "Bird_Engineering_Math_sa_34",
+          "source": "tier1_static",
+          "skill": "Basic Operations (+, -, ×, ÷)",
+          "trust": "static_verified",
+          "feeds_mastery": true,
+          "answer_verification": "verified",
+          "solution_verification": "unverified",
+          "answer_check": "server_sympy",
+          "expected_answer": null,
+          "difficulty": 1
+        }
+      ],
+      "trust_contract": {
+        "trust=static_verified": "book content: the QUESTION and its ANSWER are verified; the worked solution is NOT",
+        "solution_verification=unverified": "no stage-7 jester has passed on the walkthrough",
+        "feeds_mastery": "false for SANDBOX content and for anything with no :Skill edge — playable, but never moves BKT",
+        "withheld": "factory-QUARANTINED templates are never served; the count is reported so an empty page is explainable"
+      }
+    },
+    {
+      "step": "client-side BKT engine: 0.35 FRACTURED → 0.8247 FRAGILE",
+      "ok": true,
+      "before": {
+        "pL": 0.35,
+        "mastery_pct": 35,
+        "band": "FRACTURED",
+        "classify": "learning"
+      },
+      "after": {
+        "pL": 0.8247191011235955,
+        "mastery_pct": 82,
+        "band": "FRAGILE",
+        "classify": "proficient",
+        "is_fluid": false
+      },
+      "arithmetic": "posterior=0.70786517; learn step P(T)=0.40 -> 0.70786517 + (1-0.70786517)*0.40 = 0.82471910",
+      "counterfactual_wrong": 0.4378378378378378,
+      "params": {
+        "pInit": 0.35,
+        "pTransit": 0.14,
+        "pSlip": 0.1,
+        "pGuess": 0.2,
+        "pForget": 0.007
+      }
+    },
+    {
+      "step": "same event_id sent twice → stored once",
+      "ok": true,
+      "first_send": {
+        "accepted": 2,
+        "duplicates": 0,
+        "sampled_out": 0,
+        "minimized": 0,
+        "xp_awarded": 55,
+        "psychometric": 2,
+        "unknown_event_types": [],
+        "entitlement": {
+          "tier": "free",
+          "expires_at": 1788700380,
+          "grace_days": 3,
+          "signature": "27211f32bebd9eea3ba326dab29e68b5f191617d4c7cc40b5b7870e2a1279f76"
+        }
+      },
+      "replay_send": {
+        "accepted": 0,
+        "duplicates": 2,
+        "sampled_out": 0,
+        "minimized": 0,
+        "xp_awarded": 0,
+        "psychometric": 2,
+        "unknown_event_types": [],
+        "entitlement": {
+          "tier": "free",
+          "expires_at": 1788700380,
+          "grace_days": 3,
+          "signature": "27211f32bebd9eea3ba326dab29e68b5f191617d4c7cc40b5b7870e2a1279f76"
+        }
+      },
+      "rows_in_raw_events": 2,
+      "contract": {
+        "key": "event_id (uuid)",
+        "mechanism": "INSERT … ON CONFLICT DO NOTHING",
+        "paths": "A raw_events · B session aggregates · C sync_outbox → Neo4j · D bkt_state_snapshots",
+        "xp": "awarded only on a freshly-inserted event, so a resend cannot pay twice"
+      }
+    },
+    {
+      "step": "queued offline mutation replays (content/feedback)",
+      "ok": true,
+      "status": 200,
+      "body": {
+        "status": "accepted",
+        "key": "content/feedback"
+      }
+    },
+    {
+      "step": "unknown sync key refused, not silently swallowed (404)",
+      "ok": true,
+      "status": 404,
+      "detail": {
+        "detail": "unknown sync key: does/not/exist"
+      }
+    },
+    {
+      "step": "offline entitlement re-signed on every flush",
+      "ok": true,
+      "entitlement": {
+        "tier": "free",
+        "expires_at": 1788700380,
+        "grace_days": 3,
+        "signature": "27211f32bebd9eea3ba326dab29e68b5f191617d4c7cc40b5b7870e2a1279f76"
+      }
+    },
+    {
+      "step": "8/8 dashboard reads 200 and reflect the synced session",
+      "ok": true,
+      "reads": {
+        "topics": {
+          "status": 200,
+          "body": [
+            {
+              "name": "Basic Operations (+, -, ×, ÷)",
+              "value": 82,
+              "color": "primary"
+            }
+          ]
+        },
+        "radar": {
+          "status": 200,
+          "body": [
+            {
+              "label": "Speed",
+              "value": 0.93
+            },
+            {
+              "label": "Logic",
+              "value": 1.0
+            },
+            {
+              "label": "Stamina",
+              "value": 0.0
+            },
+            {
+              "label": "Focus",
+              "value": 1.0
+            },
+            {
+              "label": "Memory",
+              "value": 0.14
+            },
+            {
+              "label": "Reflex",
+              "value": 0.79
+            }
+          ]
+        },
+        "metrics": {
+          "status": 200,
+          "body": [
+            {
+              "label": "Action Delay",
+              "value": "4200ms",
+              "icon": "Zap"
+            },
+            {
+              "label": "Focus Density",
+              "value": "100%",
+              "icon": "TrendingUp"
+            }
+          ]
+        },
+        "stats": {
+          "status": 200,
+          "body": {
+            "accuracy": 100,
+            "questions": 1,
+            "percentile": 44,
+            "speed": 4
+          }
+        },
+        "streak": {
+          "status": 200,
+          "body": {
+            "current": 1,
+            "xp": 55,
+            "days": [
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              true
+            ],
+            "labels": [
+              "M",
+              "T",
+              "W",
+              "T",
+              "F",
+              "S",
+              "S"
+            ]
+          }
+        },
+        "events": {
+          "status": 200,
+          "body": [
+            {
+              "title": "Daily Challenge",
+              "time": "Today",
+              "tag": "LIVE"
+            }
+          ]
+        },
+        "leaderboard": {
+          "status": 200,
+          "body": [
+            {
+              "rank": 1,
+              "name": "Learner",
+              "xp": 620
+            },
+            {
+              "rank": 1,
+              "name": "Learner",
+              "xp": 620
+            },
+            {
+              "rank": 1,
+              "name": "Learner",
+              "xp": 620
+            },
+            {
+              "rank": 1,
+              "name": "Learner",
+              "xp": 620
+            },
+            {
+              "rank": 1,
+              "name": "Learner",
+              "xp": 620
+            },
+            {
+              "rank": 1,
+              "name": "Learner",
+              "xp": 620
+            },
+            {
+              "rank": 1,
+              "name": "Learner",
+              "xp": 620
+            },
+            {
+              "rank": 1,
+              "name": "Learner",
+              "xp": 620
+            },
+            {
+              "rank": 1,
+              "name": "Learner",
+              "xp": 620
+            },
+            {
+              "rank": 1,
+              "name": "Learner",
+              "xp": 620
+            },
+            {
+              "rank": 494,
+              "name": "You",
+              "xp": 55,
+              "me": true,
+              "percentile": 44
+            }
+          ]
+        },
+        "recent-activity": {
+          "status": 200,
+          "body": [
+            {
+              "label": "Practice session",
+              "score": "0/0",
+              "time": "Just now"
+            }
+          ]
+        }
+      },
+      "mastery_from_bkt_snapshot": 82,
+      "note": "dashboard/topics reads the BKT snapshot the client shipped — 0.8247 → 82 %"
+    },
+    {
+      "step": "GET /mocks/blueprints (CAT / GMAT / GRE)",
+      "ok": true,
+      "status": 200,
+      "pools": {
+        "cat": [
+          {
+            "section": "varc",
+            "pool": "cat_varc",
+            "available": false,
+            "questions": 24
+          },
+          {
+            "section": "dilr",
+            "pool": "cat_dilr",
+            "available": false,
+            "questions": 20
+          },
+          {
+            "section": "qa",
+            "pool": "quant",
+            "available": true,
+            "questions": 22
+          }
+        ],
+        "gmat": [
+          {
+            "section": "quant",
+            "pool": "quant",
+            "available": true,
+            "questions": 21
+          },
+          {
+            "section": "verbal",
+            "pool": "gmat_verbal",
+            "available": false,
+            "questions": 23
+          },
+          {
+            "section": "di",
+            "pool": "gmat_di",
+            "available": false,
+            "questions": 20
+          }
+        ],
+        "gre": [
+          {
+            "section": "verbal",
+            "pool": "gre_verbal",
+            "available": false,
+            "questions": 27
+          },
+          {
+            "section": "quant",
+            "pool": "quant",
+            "available": true,
+            "questions": 27
+          },
+          {
+            "section": "awa",
+            "pool": "gre_awa",
+            "available": false,
+            "questions": 1
+          }
+        ]
+      },
+      "note": "GMAT/GRE scaled scores are approximate linear scalings, not official concordances."
+    },
+    {
+      "step": "configure CAT sectional (QA) — answers withheld from the client",
+      "ok": true,
+      "mock_id": "cat_20260906_c3e96fe6",
+      "time_limit_seconds": 2400,
+      "rules": {
+        "negative_marking": true,
+        "ads": "disabled",
+        "sinking_skills": "deferred",
+        "phase_transitions": "muted",
+        "scaled_scores_approximate": false
+      },
+      "questions_served": 22,
+      "answer_keys_in_payload": 0,
+      "sample_question": {
+        "question_id": "Vedic_Made_Easy_sa_41",
+        "kind": "numeric",
+        "text": "Find the cube root of 64 using the traditional prime factorization method.",
+        "options": null,
+        "skill": "NumberTheory",
+        "difficulty": 2.0,
+        "position": 1
+      }
+    },
+    {
+      "step": "results withheld before submit (409)",
+      "ok": true,
+      "status": 409,
+      "detail": {
+        "detail": "mock not submitted yet; answers are withheld"
+      }
+    },
+    {
+      "step": "server-scored submit (client never scored itself)",
+      "ok": true,
+      "status": 200,
+      "mock_id": "cat_20260906_c3e96fe6",
+      "section": {
+        "key": "qa",
+        "questions": 22,
+        "attempted": 18,
+        "correct": 12,
+        "wrong": 6,
+        "unattempted": 4,
+        "raw": 36.0,
+        "max_raw": 66.0,
+        "accuracy": 0.6667,
+        "scaled": null,
+        "time_seconds": 1800
+      },
+      "total": 36.0,
+      "max_raw": 66.0,
+      "percentile": 96,
+      "peers": 97,
+      "weak_areas": [
+        {
+          "skill": "Set Theory",
+          "questions": 1,
+          "correct": 0,
+          "accuracy": 0.0
+        },
+        {
+          "skill": "Exponents",
+          "questions": 1,
+          "correct": 0,
+          "accuracy": 0.0
+        },
+        {
+          "skill": "Algebra",
+          "questions": 1,
+          "correct": 0,
+          "accuracy": 0.0
+        },
+        {
+          "skill": "Finding LCM for Fraction Addition/Subtraction",
+          "questions": 1,
+          "correct": 0,
+          "accuracy": 0.0
+        },
+        {
+          "skill": "Prime Numbers",
+          "questions": 1,
+          "correct": 0,
+          "accuracy": 0.0
+        },
+        {
+          "skill": "Number Bases",
+          "questions": 1,
+          "correct": 0,
+          "accuracy": 0.0
+        },
+        {
+          "skill": "NumberTheory",
+          "questions": 3,
+          "correct": 1,
+          "accuracy": 0.333
+        },
+        {
+          "skill": "Arithmetic",
+          "questions": 6,
+          "correct": 4,
+          "accuracy": 0.667
+        }
+      ],
+      "deferred_sinking_skills": [
+        "Set Theory",
+        "Exponents",
+        "Algebra",
+        "Finding LCM for Fraction Addition/Subtraction",
+        "Prime Numbers",
+        "Number Bases",
+        "NumberTheory",
+        "Arithmetic"
+      ],
+      "xp_awarded": 75,
+      "arithmetic": "12 correct × +3 = 36; 6 wrong × 0 (TITA/numeric carries NO negative under CAT rules) = 0; 4 blank = 0  →  36.0 / 66.0"
+    },
+    {
+      "step": "double submit refused (409)",
+      "ok": true,
+      "status": 409,
+      "detail": {
+        "detail": "already submitted"
+      }
+    },
+    {
+      "step": "results reveal the key only after submit",
+      "ok": true,
+      "status": 200,
+      "review_rows": 22,
+      "sample_review": {
+        "section": "qa",
+        "position": 1,
+        "question_id": "Vedic_Made_Easy_sa_41",
+        "kind": "numeric",
+        "text": "Find the cube root of 64 using the traditional prime factorization method.",
+        "options": null,
+        "skill": "NumberTheory",
+        "your_answer": "4",
+        "correct_answer": "4",
+        "verdict": true,
+        "time_ms": 30000
+      }
+    },
+    {
+      "step": "GET /mocks/history",
+      "ok": true,
+      "status": 200,
+      "attempts": 1
+    },
+    {
+      "step": "CAT −1 MCQ arithmetic (real scoring engine)",
+      "ok": true,
+      "engine": "services/api/app/mocks/scoring.py (the same code the live submit ran)",
+      "blueprint": "cat",
+      "section": "varc",
+      "questions": 24,
+      "marks_correct": 3.0,
+      "marks_wrong_mcq": -1.0,
+      "marks_wrong_tita": 0.0,
+      "result": {
+        "key": "varc",
+        "questions": 24,
+        "attempted": 16,
+        "correct": 10,
+        "wrong": 6,
+        "unattempted": 8,
+        "raw": 24.0,
+        "max_raw": 72.0,
+        "accuracy": 0.625,
+        "scaled": null,
+        "time_seconds": null
+      },
+      "arithmetic": "10 correct x (+3.0) + 6 wrong x (-1.0) + 8 blank x 0 = 24.0 out of 72.0",
+      "why_not_in_the_live_mock": "no MCQ pool is bound to a CAT section yet (the parked serving-path decision), so the live mock serves numeric/TITA items — which correctly carry no negative marking"
+    },
+    {
+      "step": "GET /chat/policy (hints_only, rag=false)",
+      "ok": true,
+      "status": 200,
+      "policy": {
+        "hints_only": true,
+        "rag": false,
+        "llm_enabled": false,
+        "model": null,
+        "daily_token_budget": 20000,
+        "budget_remaining": 20000,
+        "usage_today": {
+          "requests": 0,
+          "hint_requests": 0,
+          "llm_requests": 0,
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "step": "hint ladder L1→L3, and the final answer is refused",
+      "ok": true,
+      "template_id": "Bird_Engineering_Math_sa_13",
+      "ladder": [
+        {
+          "level": 1,
+          "status": 200,
+          "mode": "hint_ladder",
+          "hint": "Think about which method fits: this is a integers problem. Start by identifying the base or structure the method works from — don't compute yet.",
+          "answer_withheld": true,
+          "max_level": 3
+        },
+        {
+          "level": 2,
+          "status": 200,
+          "mode": "hint_ladder",
+          "hint": "Step 1: 5 + 7 = 12. Place 2 in units (U) column. Carry 1 in the tens (T) column.",
+          "answer_withheld": true,
+          "max_level": 3
+        },
+        {
+          "level": 3,
+          "status": 200,
+          "mode": "hint_ladder",
+          "hint": "Step 2: 3 + 6 + 1 (carried) = 10. Place the 0 in the tens column. Carry the 1 in the hundreds (H) column.",
+          "answer_withheld": true,
+          "max_level": 3
+        }
+      ],
+      "asked_for_the_answer": {
+        "status": 200,
+        "mode": "hint_ladder",
+        "hint": "Step 2: 3 + 6 + 1 (carried) = 10. Place the 0 in the tens column. Carry the 1 in the hundreds (H) column.",
+        "answer_withheld": true,
+        "fallback": "llm_disabled"
+      },
+      "withheld_answer_key": "$735 + 167 = 902$",
+      "leaked_hints": 0,
+      "policy_note": "no RAG, no LLM in the game loop; the LLM path is dark (chatbot_llm flag off + no owner key), so the deterministic ladder answers and every response is redacted against the answer key"
+    },
+    {
+      "step": "GET /billing/plans — USD→INR derived, never hardcoded",
+      "ok": true,
+      "status": 200,
+      "default_provider": "razorpay",
+      "default_currency": "INR",
+      "providers_available": [],
+      "usd_inr_rate": 84.0,
+      "trial_days": 7,
+      "plans": [
+        {
+          "tier": "free",
+          "lanes": 1,
+          "usd_cents": 0,
+          "inr_paise": 0,
+          "trial_days": 0,
+          "ad_free": false
+        },
+        {
+          "tier": "pro",
+          "lanes": 1,
+          "usd_cents": 600,
+          "inr_paise": 50400,
+          "trial_days": 7,
+          "ad_free": true
+        },
+        {
+          "tier": "bundle_2",
+          "lanes": 2,
+          "usd_cents": 960,
+          "inr_paise": 80640,
+          "trial_days": 7,
+          "ad_free": true
+        },
+        {
+          "tier": "bundle_3",
+          "lanes": 3,
+          "usd_cents": 1260,
+          "inr_paise": 105840,
+          "trial_days": 7,
+          "ad_free": true
+        }
+      ],
+      "family": {
+        "max_seats": 3,
+        "seat_discount_pct": {
+          "1": 100,
+          "2": 80,
+          "3": 60
+        }
+      },
+      "arithmetic": "pro: 600 US cents × 84.0 = 50400 paise (₹504.00)"
+    },
+    {
+      "step": "GET /billing/subscription (free tier, signed entitlement)",
+      "ok": true,
+      "status": 200,
+      "body": {
+        "tier": "free",
+        "subscription": null,
+        "entitlement": {
+          "tier": "free",
+          "expires_at": 1788700381,
+          "grace_days": 3,
+          "signature": "b2250552313ba4321666f7ea282baa365a4a32df6d3f3f6add317c80d8bb335d"
+        }
+      }
+    },
+    {
+      "step": "POST /billing/checkout — honest 503, owner keys absent",
+      "ok": true,
+      "status": 503,
+      "detail": {
+        "detail": "razorpay is not configured on this server (owner supplies keys via .env)"
+      },
+      "note": "no RAZORPAY_KEY_ID/SECRET in .env on this host, so no provider call is attempted and no intent is charged"
+    },
+    {
+      "step": "POST /billing/checkout/verify — forged signature never grants a tier",
+      "ok": true,
+      "status": 503,
+      "detail": {
+        "detail": "razorpay is not configured on this server (owner supplies keys via .env)"
+      }
+    },
+    {
+      "step": "webhook on this host: unsigned is never accepted",
+      "ok": true,
+      "status": 503,
+      "detail": {
+        "detail": "razorpay webhook secret not configured"
+      }
+    },
+    {
+      "step": "bad sig 400 · tampered body 400 · valid 200 · redelivery deduped",
+      "ok": true,
+      "forged_signature": {
+        "status": 400,
+        "body": {
+          "detail": "invalid razorpay signature"
+        }
+      },
+      "tampered_body_valid_sig": {
+        "status": 400,
+        "body": {
+          "detail": "invalid razorpay signature"
+        }
+      },
+      "valid_signature": {
+        "status": 200,
+        "body": {
+          "status": "ok",
+          "event_id": "body:c8a957ec708fa8848e8473d682217817524b5bb16b041013c2d42ee63167d03a",
+          "handled": false,
+          "reason": "unresolved_subscription"
+        }
+      },
+      "redelivery": {
+        "status": 200,
+        "body": {
+          "status": "duplicate",
+          "event_id": "body:c8a957ec708fa8848e8473d682217817524b5bb16b041013c2d42ee63167d03a"
+        }
+      },
+      "note": "the ledger key is sha256 of the SIGNED BYTES, not the unsigned X-Razorpay-Event-Id header; handled=false because sub_DEMO_* matches no subscription — the event is recorded, never guessed at"
+    },
+    {
+      "step": "GET /api/config — unauthenticated kill-switch read",
+      "ok": true,
+      "status": 200,
+      "total": 23,
+      "enabled": [
+        "billing_checkout",
+        "chatbot",
+        "daily_challenge",
+        "mock_exams",
+        "social_friends",
+        "social_ghosts",
+        "social_leaderboards",
+        "social_taunts"
+      ],
+      "dark": [
+        "ad_engine",
+        "boss_battle",
+        "chatbot_llm",
+        "churn_gbt",
+        "dina_live",
+        "glicko2_live",
+        "hirt",
+        "irt_3pl_live",
+        "location_gamification",
+        "referral_ladder",
+        "relay_race",
+        "social_clips",
+        "thompson_mab",
+        "tournament",
+        "virtual_hubs"
+      ],
+      "degraded": false,
+      "note": "unauthenticated by design: it must answer during an incident, and it exposes flag STATES only (no thresholds, no secrets); if the DB is unreachable it fails to all-off, never all-on"
+    },
+    {
+      "step": "non-admin refused (403)",
+      "ok": true,
+      "status": 403,
+      "detail": {
+        "detail": "admin access required"
+      }
+    },
+    {
+      "step": "grant admin to the demo account (own row only)",
+      "ok": true,
+      "sql": "UPDATE users SET is_admin=true WHERE email=<demo>"
+    },
+    {
+      "step": "GET /api/admin/flags — full operator view",
+      "ok": true,
+      "status": 200,
+      "count": 23,
+      "sample": [
+        {
+          "flag_name": "ad_engine",
+          "enabled": false,
+          "rollout_pct": 100,
+          "description": "Ad engine master switch (kill-switch capable)",
+          "updated_by": "admin-926cf378c077@vsg.com",
+          "updated_at": "2026-09-06T13:11:16.400656+00:00"
+        },
+        {
+          "flag_name": "billing_checkout",
+          "enabled": true,
+          "rollout_pct": 100,
+          "description": "Kill-switch for NEW checkouts; webhooks and entitlement unaffected",
+          "updated_by": null,
+          "updated_at": "2026-09-05T11:28:19.680551+00:00"
+        },
+        {
+          "flag_name": "boss_battle",
+          "enabled": false,
+          "rollout_pct": 100,
+          "description": "Phase-2 game mode: Boss Battle (SOC-01..04)",
+          "updated_by": null,
+          "updated_at": "2026-09-02T09:53:00.347476+00:00"
+        },
+        {
+          "flag_name": "chatbot",
+          "enabled": true,
+          "rollout_pct": 100,
+          "description": "Study chatbot: deterministic hint ladder from solution steps (block 7)",
+          "updated_by": null,
+          "updated_at": "2026-09-05T23:57:13.575451+00:00"
+        }
+      ]
+    },
+    {
+      "step": "GET /api/admin/content/trust — the ladder that gates serving",
+      "ok": true,
+      "status": 200,
+      "totals": {
+        "QUARANTINED_HARD": 3,
+        "QUARANTINED_SOFT": 35
+      },
+      "sample": [
+        {
+          "content_id": "Bird_Engineering_Math_sa_17",
+          "trust_level": "QUARANTINED_SOFT",
+          "health_score": null,
+          "exposure_count": 0,
+          "updated_at": "2026-09-06T13:11:16.202362+00:00"
+        },
+        {
+          "content_id": "Bird_Engineering_Math_sa_264",
+          "trust_level": "QUARANTINED_SOFT",
+          "health_score": null,
+          "exposure_count": 0,
+          "updated_at": "2026-09-04T01:52:27.032517+00:00"
+        },
+        {
+          "content_id": "Bird_Engineering_Math_sa_48",
+          "trust_level": "QUARANTINED_SOFT",
+          "health_score": null,
+          "exposure_count": 0,
+          "updated_at": "2026-09-04T01:52:27.032517+00:00"
+        }
+      ]
+    },
+    {
+      "step": "GET one content-trust record",
+      "ok": true,
+      "status": 200,
+      "content_id": "Bird_Engineering_Math_sa_17",
+      "record": {
+        "content_id": "Bird_Engineering_Math_sa_17",
+        "trust_level": "QUARANTINED_SOFT",
+        "updated_at": "2026-09-06T13:11:16.202362+00:00",
+        "overrides": [
+          {
+            "from": "SANDBOX",
+            "to": "QUARANTINED_SOFT",
+            "reason": "test teardown",
+            "at": "2026-09-06T13:11:16.202362+00:00"
+          },
+          {
+            "from": "QUARANTINED_SOFT",
+            "to": "SANDBOX",
+            "reason": "manual review: walkthrough repaired",
+            "at": "2026-09-06T13:11:16.184629+00:00"
+          },
+          {
+            "from": "SANDBOX",
+            "to": "QUARANTINED_SOFT",
+            "reason": "test teardown",
+            "at": "2026-09-06T13:09:13.355515+00:00"
+          },
+          {
+            "from": "QUARANTINED_SOFT",
+            "to": "SANDBOX",
+            "reason": "manual review: walkthrough repaired",
+            "at": "2026-09-06T13:09:13.340524+00:00"
+          },
+          {
+            "from": "SANDBOX",
+            "to": "QUARANTINED_SOFT",
+            "reason": "test teardown",
+            "at": "2026-09-06T13:08:49.540152+00:00"
+          },
+          {
+            "from": "QUARANTINED_SOFT",
+            "to": "SANDBOX",
+            "reason": "manual review: walkthrough repaired",
+            "at": "2026-09-06T13:08:49.528585+00:00"
+          },
+          {
+            "from": "SANDBOX",
+            "to": "QUARANTINED_SOFT",
+            "reason": "test teardown",
+            "at": "2026-09-06T13:07:22.237191+00:00"
+          },
+          {
+            "from": "QUARANTINED_SOFT",
+            "to": "SANDBOX",
+            "reason": "manual review: walkthrough repaired",
+            "at": "2026-09-06T13:07:22.220594+00:00"
+          },
+          {
+            "from": "SANDBOX",
+            "to": "QUARANTINED_SOFT",
+            "reason": "test teardown",
+            "at": "2026-09-06T13:07:16.838690+00:00"
+          },
+          {
+            "from": "QUARANTINED_SOFT",
+            "to": "SANDBOX",
+            "reason": "manual review: walkthrough repaired",
+            "at": "2026-09-06T13:07:16.825592+00:00"
+          },
+          {
+            "from": "SANDBOX",
+            "to": "QUARANTINED_SOFT",
+            "reason": "test teardown",
+            "at": "2026-09-06T13:05:31.133347+00:00"
+          },
+          {
+            "from": "QUARANTINED_SOFT",
+            "to": "SANDBOX",
+            "reason": "manual review: walkthrough repaired",
+            "at": "2026-09-06T13:05:31.121716+00:00"
+          },
+          {
+            "from": "SANDBOX",
+            "to": "QUARANTINED_SOFT",
+            "reason": "test teardown",
+            "at": "2026-09-06T13:04:48.012064+00:00"
+          },
+          {
+            "from": "QUARANTINED_SOFT",
+            "to": "SANDBOX",
+            "reason": "manual review: walkthrough repaired",
+            "at": "2026-09-06T13:04:47.994862+00:00"
+          },
+          {
+            "from": "SANDBOX",
+            "to": "QUARANTINED_SOFT",
+            "reason": "test teardown",
+            "at": "2026-09-06T13:04:19.576935+00:00"
+          },
+          {
+            "from": "QUARANTINED_SOFT",
+            "to": "SANDBOX",
+            "reason": "manual review: walkthrough repaired",
+            "at": "2026-09-06T13:04:19.565782+00:00"
+          },
+          {
+            "from": "SANDBOX",
+            "to": "QUARANTINED_SOFT",
+            "reason": "test teardown",
+            "at": "2026-09-06T13:01:51.902354+00:00"
+          },
+          {
+            "from": "QUARANTINED_SOFT",
+            "to": "SANDBOX",
+            "reason": "manual review: walkthrough repaired",
+            "at": "2026-09-06T13:01:51.889819+00:00"
+          },
+          {
+            "from": "SANDBOX",
+            "to": "QUARANTINED_SOFT",
+            "reason": "test teardown",
+            "at": "2026-09-06T12:57:25.342274+00:00"
+          },
+          {
+            "from": "QUARANTINED_SOFT",
+            "to": "SANDBOX",
+            "reason": "manual review: walkthrough repaired",
+            "at": "2026-09-06T12:57:25.331478+00:00"
+          },
+          {
+            "from": "SANDBOX",
+            "to": "QUARANTINED_SOFT",
+            "reason": "test teardown",
+            "at": "2026-09-06T08:08:00.331692+00:00"
+          },
+          {
+            "from": "QUARANTINED_SOFT",
+            "to": "SANDBOX",
+            "reason": "manual review: walkthrough repaired",
+            "at": "2026-09-06T08:08:00.318706+00:00"
+          },
+          {
+            "from": "SANDBOX",
+            "to": "QUARANTINED_SOFT",
+            "reason": "test teardown",
+            "at": "2026-09-06T07:51:49.711962+00:00"
+          },
+          {
+            "from": "QUARANTINED_SOFT",
+            "to": "SANDBOX",
+            "reason": "manual review: walkthrough repaired",
+            "at": "2026-09-06T07:51:49.687319+00:00"
+          },
+          {
+            "from": "SANDBOX",
+            "to": "QUARANTINED_SOFT",
+            "reason": "test teardown",
+            "at": "2026-09-06T00:10:07.082085+00:00"
+          },
+          {
+            "from": "QUARANTINED_SOFT",
+            "to": "SANDBOX",
+            "reason": "manual review: walkthrough repaired",
+            "at": "2026-09-06T00:10:07.070659+00:00"
+          },
+          {
+            "from": "SANDBOX",
+            "to": "QUARANTINED_SOFT",
+            "reason": "test teardown",
+            "at": "2026-09-06T00:06:54.287041+00:00"
+          },
+          {
+            "from": "QUARANTINED_SOFT",
+            "to": "SANDBOX",
+            "reason": "manual review: walkthrough repaired",
+            "at": "2026-09-06T00:06:54.271033+00:00"
+          },
+          {
+            "from": "SANDBOX",
+            "to": "QUARANTINED_SOFT",
+            "reason": "test teardown",
+            "at": "2026-09-06T00:00:47.701128+00:00"
+          },
+          {
+            "from": "QUARANTINED_SOFT",
+            "to": "SANDBOX",
+            "reason": "manual review: walkthrough repaired",
+            "at": "2026-09-06T00:00:47.693156+00:00"
+          },
+          {
+            "from": "SANDBOX",
+            "to": "QUARANTINED_SOFT",
+            "reason": "test teardown",
+            "at": "2026-09-05T23:59:06.993341+00:00"
+          },
+          {
+            "from": "QUARANTINED_SOFT",
+            "to": "SANDBOX",
+            "reason": "manual review: walkthrough repaired",
+            "at": "2026-09-05T23:59:06.984172+00:00"
+          },
+          {
+            "from": "SANDBOX",
+            "to": "QUARANTINED_SOFT",
+            "reason": "test teardown",
+            "at": "2026-09-05T23:57:15.188670+00:00"
+          },
+          {
+            "from": "QUARANTINED_SOFT",
+            "to": "SANDBOX",
+            "reason": "manual review: walkthrough repaired",
+            "at": "2026-09-05T23:57:15.179496+00:00"
+          },
+          {
+            "from": "SANDBOX",
+            "to": "QUARANTINED_SOFT",
+            "reason": "test teardown",
+            "at": "2026-09-05T23:46:40.731957+00:00"
+          },
+          {
+            "from": "QUARANTINED_SOFT",
+            "to": "SANDBOX",
+            "reason": "manual review: walkthrough repaired",
+            "at": "2026-09-05T23:46:40.723117+00:00"
+          },
+          {
+            "from": "SANDBOX",
+            "to": "QUARANTINED_SOFT",
+            "reason": "test teardown",
+            "at": "2026-09-05T23:44:07.469871+00:00"
+          },
+          {
+            "from": "QUARANTINED_SOFT",
+            "to": "SANDBOX",
+            "reason": "manual review: walkthrough repaired",
+            "at": "2026-09-05T23:44:07.453672+00:00"
+          },
+          {
+            "from": "SANDBOX",
+            "to": "QUARANTINED_SOFT",
+            "reason": "test teardown",
+            "at": "2026-09-05T11:28:21.396988+00:00"
+          },
+          {
+            "from": "QUARANTINED_SOFT",
+            "to": "SANDBOX",
+            "reason": "manual review: walkthrough repaired",
+            "at": "2026-09-05T11:28:21.386155+00:00"
+          },
+          {
+            "from": "SANDBOX",
+            "to": "QUARANTINED_SOFT",
+            "reason": "test teardown",
+            "at": "2026-09-05T06:40:41.403229+00:00"
+          },
+          {
+            "from": "QUARANTINED_SOFT",
+            "to": "SANDBOX",
+            "reason": "manual review: walkthrough repaired",
+            "at": "2026-09-05T06:40:41.394215+00:00"
+          },
+          {
+            "from": "SANDBOX",
+            "to": "QUARANTINED_SOFT",
+            "reason": "test teardown",
+            "at": "2026-09-05T06:39:23.081595+00:00"
+          },
+          {
+            "from": "QUARANTINED_SOFT",
+            "to": "SANDBOX",
+            "reason": "manual review: walkthrough repaired",
+            "at": "2026-09-05T06:39:23.062315+00:00"
+          },
+          {
+            "from": "SANDBOX",
+            "to": "QUARANTINED_SOFT",
+            "reason": "test teardown",
+            "at": "2026-09-05T06:38:20.936592+00:00"
+          },
+          {
+            "from": "QUARANTINED_SOFT",
+            "to": "SANDBOX",
+            "reason": "manual review: walkthrough repaired",
+            "at": "2026-09-05T06:38:20.927262+00:00"
+          },
+          {
+            "from": "SANDBOX",
+            "to": "QUARANTINED_SOFT",
+            "reason": "test teardown",
+            "at": "2026-09-05T06:25:10.969373+00:00"
+          },
+          {
+            "from": "QUARANTINED_SOFT",
+            "to": "SANDBOX",
+            "reason": "manual review: walkthrough repaired",
+            "at": "2026-09-05T06:25:10.950273+00:00"
+          },
+          {
+            "from": "SANDBOX",
+            "to": "QUARANTINED_SOFT",
+            "reason": "test teardown",
+            "at": "2026-09-05T06:24:59.033598+00:00"
+          },
+          {
+            "from": "QUARANTINED_SOFT",
+            "to": "SANDBOX",
+            "reason": "manual review: walkthrough repaired",
+            "at": "2026-09-05T06:24:59.024567+00:00"
+          }
+        ],
+        "gate_history": [
+          {
+            "gate": "trap_taxonomy",
+            "passed": false,
+            "details": {
+              "bank": "solvealong_bank_v1_4.jsonl",
+              "reasons": [
+                "empty_solution"
+              ]
+            },
+            "verifier_version": "solvealong_bank_v1_4",
+            "at": "2026-09-04T01:52:13.083782+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "step": "GET /api/admin/telemetry/registry — psychometric events are never sampled",
+      "ok": true,
+      "status": 200,
+      "policy": {
+        "dau_sampling_threshold": 10000,
+        "ui_sample_keep_one_in": 10,
+        "never_sampled_classes": [
+          "psychometric_never_sampled",
+          "conversion_never_sampled",
+          "ops_never_sampled"
+        ]
+      },
+      "events": 44
+    },
+    {
+      "step": "GET /api/admin/kpi",
+      "ok": true,
+      "status": 200,
+      "metrics": {
+        "dau": 0.0,
+        "mau": 0.0,
+        "avg_session_length": null
+      }
+    },
+    {
+      "step": "kill-switch write path is audited (value restated, not changed)",
+      "ok": true,
+      "status": 200,
+      "response": {
+        "flag_name": "ad_engine",
+        "enabled": false
+      },
+      "before": {
+        "flag_name": "ad_engine",
+        "enabled": false,
+        "rollout_pct": 100,
+        "description": "Ad engine master switch (kill-switch capable)",
+        "updated_by": "admin-926cf378c077@vsg.com",
+        "updated_at": "2026-09-06T13:11:16.400656+00:00"
+      },
+      "after": {
+        "flag_name": "ad_engine",
+        "enabled": false,
+        "rollout_pct": 100,
+        "description": "Ad engine master switch (kill-switch capable)",
+        "updated_by": "vmsg.demo.admin.7b7ecc4d@example.com",
+        "updated_at": "2026-09-06T13:13:03.068999+00:00"
+      },
+      "note": "ad_engine stays OFF; the demo writes back its own value so updated_by/updated_at record the operator without changing behaviour for anyone"
+    },
+    {
+      "step": "inventing a flag refused (404)",
+      "ok": true,
+      "status": 404,
+      "detail": {
+        "detail": "unknown flag: not_a_real_flag"
+      }
+    },
+    {
+      "step": "social_friends ON → 200 · social_clips dark → 404",
+      "ok": true,
+      "friends": {
+        "status": 200,
+        "body": {
+          "friends": [],
+          "incoming": [],
+          "outgoing": []
+        }
+      },
+      "clips": {
+        "status": 404,
+        "body": {
+          "detail": "not found"
+        }
+      },
+      "policy": {
+        "status": 200,
+        "body": {
+          "kids_mode": false,
+          "account_type": "standard",
+          "age_known": false,
+          "ads_enabled": true,
+          "bots_enabled": false,
+          "taunts_enabled": false,
+          "timers_suppressed": false,
+          "session_cap_minutes": null,
+          "tracking_minimized": false,
+          "leaderboard": "full",
+          "clips_enabled": true,
+          "friends": "open",
+          "parental_consent_required": false
+        }
+      },
+      "note": "404 not 403: a dark-launched feature must look like it does not exist, so the response never confirms what is being rolled out"
+    },
+    {
+      "step": "burst → 429 with Retry-After; headers on every response",
+      "ok": true,
+      "limit": "300",
+      "hit_429_at_request": 300,
+      "retry_after": "56",
+      "trace": [
+        {
+          "request": 1,
+          "status": 200,
+          "remaining": "298"
+        },
+        {
+          "request": 2,
+          "status": 200,
+          "remaining": "297"
+        },
+        {
+          "request": 3,
+          "status": 200,
+          "remaining": "296"
+        },
+        {
+          "request": 100,
+          "status": 200,
+          "remaining": "199"
+        },
+        {
+          "request": 200,
+          "status": 200,
+          "remaining": "99"
+        },
+        {
+          "request": 300,
+          "status": 429,
+          "remaining": "0",
+          "retry_after": "56"
+        }
+      ],
+      "security_headers": {
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY",
+        "referrer-policy": "no-referrer",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(self)",
+        "x-request-id": "23f4fc62b87746af9940f839885c8e4f"
+      },
+      "note": "fixed one-minute Redis window keyed on the JWT subject (IP when anonymous); this burst only consumed the throwaway demo user's own bucket. Redis down = fail OPEN."
+    },
+    {
+      "step": "kill-switch config exempt from the limit",
+      "ok": true,
+      "status": 200,
+      "note": "/health, /ready, /api/config, webhooks and the loopback internal API are never rate limited"
+    },
+    {
+      "step": "pytest — services/api",
+      "ok": true,
+      "passed": 310,
+      "failed": 0,
+      "failed_tests": [],
+      "exit_code": 0,
+      "tail": "310 passed in 13.24s",
+      "note": "the dev Postgres/Redis are shared, so a few tests carry state between runs: the rate-limit test burns its 5-request bucket if the suite is run twice inside one minute, and the daily-challenge leaderboard test assumes the caller lands in the visible top slice. Re-run once per minute for a clean read."
+    },
+    {
+      "step": "vitest — game server, psychometrics, vedic-math, web",
+      "ok": true,
+      "test_files": 17,
+      "tests": 148,
+      "exit_code": 0,
+      "suites": [
+        "✓ apps/game-server/tests/matchmaking.test.ts  (17 tests) 4ms",
+        "✓ apps/game-server/tests/duel.test.ts  (20 tests) 9ms",
+        "✓ apps/game-server/tests/anticheat-queue-heartbeat.test.ts  (11 tests) 8ms",
+        "✓ apps/game-server/tests/bot.test.ts  (18 tests) 26ms",
+        "✓ packages/psychometrics/tests/bkt.test.ts  (12 tests) 5ms",
+        "✓ packages/vedic-math/tests/sutras-extended.test.ts  (12 tests) 18ms",
+        "✓ apps/game-server/tests/lobby-integration.test.ts  (4 tests) 54ms",
+        "✓ packages/psychometrics/tests/scheduler.test.ts  (6 tests) 15ms",
+        "✓ apps/web/tests/telemetry-queue.test.ts  (6 tests) 17ms",
+        "✓ packages/vedic-math/tests/generators.test.ts  (5 tests) 20ms",
+        "✓ packages/psychometrics/tests/allocator.test.ts  (8 tests) 3ms",
+        "✓ packages/vedic-math/tests/sutras.test.ts  (8 tests) 4ms",
+        "✓ packages/psychometrics/tests/runtime.test.ts  (3 tests) 4ms",
+        "✓ apps/game-server/tests/kids-gate.test.ts  (4 tests) 3ms",
+        "✓ packages/psychometrics/tests/calibration.test.ts  (4 tests) 2ms",
+        "✓ apps/web/tests/entitlement.test.ts  (3 tests) 2ms",
+        "✓ apps/web/tests/math-text.test.ts  (7 tests) 7ms"
+      ]
+    }
+  ],
+  "failures": [],
+  "environment_findings": [
+    "http://127.0.0.1:8000 answers but runs STALE code: 3 Phase-1 routes absent (/api/v1/dashboard/stats, /api/v1/mocks/configure, /api/v1/chat/query) — that uvicorn predates the current tree."
+  ]
+}

@@ -1,0 +1,1258 @@
+{
+ "corpus_scale": {
+  "master_path": "/Users/harshahirrao/Speed gym/data/corpus/MASTER_corpus.jsonl",
+  "records": 4805,
+  "questions": 19619,
+  "books": 25,
+  "master_bytes": 23755298,
+  "export_path": "/Users/harshahirrao/Speed gym/data/exports/vmsg_questions_v1.jsonl",
+  "export_rows": 19619,
+  "export_bytes": 42244599,
+  "content_types": {
+   "question_set": 2760,
+   "front_matter": 2,
+   "explainer": 1526,
+   "skip": 23,
+   "reference": 8,
+   "essay_prompt": 351,
+   "essay_sample": 55,
+   "reader_commentary": 69,
+   "essay_sample_fragment": 4,
+   "scoring_guide": 7
+  },
+  "questions_per_book": {
+   "Arun Sharma": 694,
+   "Sinha": 1944,
+   "Thakur": 33,
+   "ETS GRE": 297,
+   "ETS GRE Verbal": 150,
+   "Manhattan 5 lb": 1790,
+   "Manhattan Quant": 765,
+   "Lewis": 0,
+   "Mosteller": 56,
+   "Hogg": 542,
+   "Knuth": 587,
+   "Strang": 1356,
+   "Manhattan GMAT Verbal": 173,
+   "Manhattan Logic Games": 303,
+   "Hall & Knight": 1874,
+   "Bird": 1340,
+   "Schaum": 1117,
+   "Bhatia": 221,
+   "Vedic Secrets": 100,
+   "Dehaene": 0,
+   "ETS GRE Writing Pool": 0,
+   "Arun Sharma Quant": 4283,
+   "RS Aggarwal": 0,
+   "CAT LR Bank": 0,
+   "Tyra": 1994
+  },
+  "records_per_book": {
+   "Arun Sharma": 129,
+   "Sinha": 499,
+   "Thakur": 289,
+   "ETS GRE": 104,
+   "ETS GRE Verbal": 80,
+   "Manhattan 5 lb": 36,
+   "Manhattan Quant": 196,
+   "Lewis": 2,
+   "Mosteller": 1,
+   "Hogg": 69,
+   "Knuth": 53,
+   "Strang": 50,
+   "Manhattan GMAT Verbal": 22,
+   "Manhattan Logic Games": 56,
+   "Hall & Knight": 592,
+   "Bird": 141,
+   "Schaum": 162,
+   "Bhatia": 77,
+   "Vedic Secrets": 49,
+   "Dehaene": 15,
+   "ETS GRE Writing Pool": 346,
+   "Arun Sharma Quant": 94,
+   "RS Aggarwal": 572,
+   "CAT LR Bank": 36,
+   "Tyra": 1135
+  }
+ },
+ "answer_keys": {
+  "method": "baseline = current keyed minus `action: key` patch rows whose value is the value now in MASTER; every figure computed live",
+  "total_questions": 19619,
+  "keyed_now": 15207,
+  "pct_now": 77.5,
+  "keyed_at_restart": 13444,
+  "pct_at_restart": 68.5,
+  "keys_recovered": 1763,
+  "key_patch_rows": 1769,
+  "key_rows_not_landed": 6,
+  "per_book": {
+   "Arun Sharma Quant": {
+    "questions": 4283,
+    "keyed_now": 4023,
+    "pct_now": 93.9,
+    "keyed_at_restart": 4023,
+    "pct_at_restart": 93.9,
+    "keys_recovered": 0
+   },
+   "Tyra": {
+    "questions": 1994,
+    "keyed_now": 1985,
+    "pct_now": 99.5,
+    "keyed_at_restart": 1985,
+    "pct_at_restart": 99.5,
+    "keys_recovered": 0
+   },
+   "Sinha": {
+    "questions": 1944,
+    "keyed_now": 1700,
+    "pct_now": 87.4,
+    "keyed_at_restart": 1245,
+    "pct_at_restart": 64.0,
+    "keys_recovered": 455
+   },
+   "Hall & Knight": {
+    "questions": 1874,
+    "keyed_now": 1308,
+    "pct_now": 69.8,
+    "keyed_at_restart": 0,
+    "pct_at_restart": 0.0,
+    "keys_recovered": 1308
+   },
+   "Manhattan 5 lb": {
+    "questions": 1790,
+    "keyed_now": 1771,
+    "pct_now": 98.9,
+    "keyed_at_restart": 1771,
+    "pct_at_restart": 98.9,
+    "keys_recovered": 0
+   },
+   "Strang": {
+    "questions": 1356,
+    "keyed_now": 0,
+    "pct_now": 0.0,
+    "keyed_at_restart": 0,
+    "pct_at_restart": 0.0,
+    "keys_recovered": 0
+   },
+   "Bird": {
+    "questions": 1340,
+    "keyed_now": 1329,
+    "pct_now": 99.2,
+    "keyed_at_restart": 1329,
+    "pct_at_restart": 99.2,
+    "keys_recovered": 0
+   },
+   "Schaum": {
+    "questions": 1117,
+    "keyed_now": 403,
+    "pct_now": 36.1,
+    "keyed_at_restart": 403,
+    "pct_at_restart": 36.1,
+    "keys_recovered": 0
+   },
+   "Manhattan Quant": {
+    "questions": 765,
+    "keyed_now": 667,
+    "pct_now": 87.2,
+    "keyed_at_restart": 667,
+    "pct_at_restart": 87.2,
+    "keys_recovered": 0
+   },
+   "Arun Sharma": {
+    "questions": 694,
+    "keyed_now": 666,
+    "pct_now": 96.0,
+    "keyed_at_restart": 666,
+    "pct_at_restart": 96.0,
+    "keys_recovered": 0
+   },
+   "Knuth": {
+    "questions": 587,
+    "keyed_now": 0,
+    "pct_now": 0.0,
+    "keyed_at_restart": 0,
+    "pct_at_restart": 0.0,
+    "keys_recovered": 0
+   },
+   "Hogg": {
+    "questions": 542,
+    "keyed_now": 276,
+    "pct_now": 50.9,
+    "keyed_at_restart": 276,
+    "pct_at_restart": 50.9,
+    "keys_recovered": 0
+   },
+   "Manhattan Logic Games": {
+    "questions": 303,
+    "keyed_now": 217,
+    "pct_now": 71.6,
+    "keyed_at_restart": 217,
+    "pct_at_restart": 71.6,
+    "keys_recovered": 0
+   },
+   "ETS GRE": {
+    "questions": 297,
+    "keyed_now": 292,
+    "pct_now": 98.3,
+    "keyed_at_restart": 292,
+    "pct_at_restart": 98.3,
+    "keys_recovered": 0
+   },
+   "Bhatia": {
+    "questions": 221,
+    "keyed_now": 219,
+    "pct_now": 99.1,
+    "keyed_at_restart": 219,
+    "pct_at_restart": 99.1,
+    "keys_recovered": 0
+   },
+   "Manhattan GMAT Verbal": {
+    "questions": 173,
+    "keyed_now": 68,
+    "pct_now": 39.3,
+    "keyed_at_restart": 68,
+    "pct_at_restart": 39.3,
+    "keys_recovered": 0
+   },
+   "ETS GRE Verbal": {
+    "questions": 150,
+    "keyed_now": 150,
+    "pct_now": 100.0,
+    "keyed_at_restart": 150,
+    "pct_at_restart": 100.0,
+    "keys_recovered": 0
+   },
+   "Vedic Secrets": {
+    "questions": 100,
+    "keyed_now": 100,
+    "pct_now": 100.0,
+    "keyed_at_restart": 100,
+    "pct_at_restart": 100.0,
+    "keys_recovered": 0
+   },
+   "Mosteller": {
+    "questions": 56,
+    "keyed_now": 0,
+    "pct_now": 0.0,
+    "keyed_at_restart": 0,
+    "pct_at_restart": 0.0,
+    "keys_recovered": 0
+   },
+   "Thakur": {
+    "questions": 33,
+    "keyed_now": 33,
+    "pct_now": 100.0,
+    "keyed_at_restart": 33,
+    "pct_at_restart": 100.0,
+    "keys_recovered": 0
+   }
+  },
+  "per_patch_file": {
+   "2026-09-02_sinha_grid_keys.patch.jsonl": {
+    "key_rows": 354,
+    "landed": 354
+   },
+   "2026-09-02_sinha_grid_keys_round2.patch.jsonl": {
+    "key_rows": 92,
+    "landed": 92
+   },
+   "2026-09-02_sinha_grid_keys_round2b.patch.jsonl": {
+    "key_rows": 15,
+    "landed": 9
+   },
+   "2026-09-03_hk_grid_keys.patch.jsonl": {
+    "key_rows": 317,
+    "landed": 317
+   },
+   "2026-09-03_hk_grid_keys_b.patch.jsonl": {
+    "key_rows": 182,
+    "landed": 182
+   },
+   "2026-09-03_hk_grid_keys_c.patch.jsonl": {
+    "key_rows": 186,
+    "landed": 186
+   },
+   "2026-09-03_hk_grid_keys_d.patch.jsonl": {
+    "key_rows": 92,
+    "landed": 92
+   },
+   "2026-09-03_hk_grid_keys_e.patch.jsonl": {
+    "key_rows": 144,
+    "landed": 144
+   },
+   "2026-09-03_hk_grid_keys_f.patch.jsonl": {
+    "key_rows": 199,
+    "landed": 199
+   },
+   "2026-09-03_hk_grid_keys_g.patch.jsonl": {
+    "key_rows": 188,
+    "landed": 188
+   }
+  },
+  "key_provenance_buckets": {
+   "uncited": 3678,
+   "other_cited": 3339,
+   "printed_grid": 5796,
+   "printed_inline": 2394
+  }
+ },
+ "playability": {
+  "rebuilt_from": "/Users/harshahirrao/Speed gym/data/corpus/MASTER_corpus.jsonl",
+  "rebuild_seconds": 0.59,
+  "demo_export": "/Users/harshahirrao/Speed gym/demo/output/_scratch/extraction/vmsg_questions_demo.jsonl",
+  "counts": {
+   "questions": 19619,
+   "playable": 12872,
+   "not_playable": 6747,
+   "taxonomy_declined": 7424,
+   "taxonomy_resolved": 7926,
+   "taxonomy_via_book_chapter_rule": 7694,
+   "playable_and_resolved": 5345,
+   "taxonomy_bkt_joinable": 3736,
+   "taxonomy_via_label_match": 232
+  },
+  "blockers": {
+   "no_answer_key": 4412,
+   "needs_vision": 3509,
+   "format_unclassified": 2552,
+   "text_too_short": 782,
+   "text_is_misextracted": 368,
+   "option_format_without_options": 346,
+   "format_options_are_images": 299,
+   "duplicate_question_number_in_record": 53,
+   "errata_key_is_raster_image": 37,
+   "key_suspect": 30,
+   "errata_confirmed_book_erratum": 5,
+   "errata_proven_wrong": 1
+  },
+  "answer_provenance": {
+   "printed_grid": 8510,
+   "uncited": 3678,
+   "printed_inline_answer": 2359,
+   "other_cited": 421,
+   "hint_verdict_derivation": 132,
+   "solution_note_derivation": 107
+  },
+  "shipped_manifest_counts": {
+   "questions": 19619,
+   "playable": 12984,
+   "not_playable": 6635,
+   "taxonomy_declined": 7424,
+   "taxonomy_resolved": 7926,
+   "taxonomy_via_book_chapter_rule": 7694,
+   "playable_and_resolved": 5389,
+   "taxonomy_bkt_joinable": 3736,
+   "taxonomy_via_label_match": 232
+  }
+ },
+ "export_drift": {
+  "playable": {
+   "shipped": 12984,
+   "live": 12872
+  },
+  "not_playable": {
+   "shipped": 6635,
+   "live": 6747
+  },
+  "playable_and_resolved": {
+   "shipped": 5389,
+   "live": 5345
+  },
+  "blocker:text_is_misextracted": {
+   "shipped": 256,
+   "live": 368
+  }
+ },
+ "taxonomy": {
+  "source": "/Users/harshahirrao/Speed gym/demo/output/_scratch/extraction/vmsg_questions_demo.jsonl",
+  "rows": 19619,
+  "status_counts": {
+   "unresolved": 4269,
+   "declined": 7424,
+   "resolved": 7926
+  },
+  "bkt_joinable": 3736,
+  "graph_backed": 3736,
+  "resolved_by": {
+   "book_chapter_rule": 7694,
+   "label_match": 232
+  },
+  "samples": {
+   "RESOLVED + JOINABLE": {
+    "question_id": "gre5lb_arithmetic#1",
+    "book": "Manhattan 5 lb",
+    "chapter": "Arithmetic",
+    "raw_label": "Arithmetic",
+    "taxonomy_id": "vmsg.skill.arithmetic.arithmetic",
+    "skill_key": "Arithmetic",
+    "graph_backed": true,
+    "bkt_joinable": true,
+    "taxonomy_status": "resolved",
+    "decline_reason": null,
+    "resolved_by": "book_chapter_rule",
+    "text": "Quantity A Quantity B 39 - (25 - 17) 39 - 25 - 17"
+   },
+   "RESOLVED, NOT JOINABLE": {
+    "question_id": "greets_readingcomprehensionpracticeset1ea#1",
+    "book": "ETS GRE Verbal",
+    "chapter": "Reading Comprehension",
+    "raw_label": "Reading Comprehension",
+    "taxonomy_id": "vmsg.skill.verbal.reading_comprehension",
+    "skill_key": "Reading Comprehension",
+    "graph_backed": false,
+    "bkt_joinable": false,
+    "taxonomy_status": "resolved",
+    "decline_reason": null,
+    "resolved_by": "book_chapter_rule",
+    "text": "The passage suggests that the proliferation of ragwort was particularly ill-timed because it"
+   },
+   "UNRESOLVED (honest)": {
+    "question_id": "as5_xy_fig4_01#1",
+    "book": "Arun Sharma",
+    "chapter": null,
+    "raw_label": null,
+    "taxonomy_id": null,
+    "skill_key": null,
+    "graph_backed": null,
+    "bkt_joinable": false,
+    "taxonomy_status": "unresolved",
+    "decline_reason": null,
+    "resolved_by": null,
+    "text": "Which month showed the highest absolute difference in the Consumer Price Index (CPI) over the previous month?"
+   },
+   "DECLINED (a decision)": {
+    "question_id": "greog_4verbalreasoni_set1discretequestionse#1",
+    "book": "ETS GRE",
+    "chapter": "4 Verbal Reasoning Practice",
+    "raw_label": "4 Verbal Reasoning Practice",
+    "taxonomy_id": null,
+    "skill_key": null,
+    "graph_backed": null,
+    "bkt_joinable": false,
+    "taxonomy_status": "declined",
+    "decline_reason": "no taxonomy entry or :Skill matches this chapter subject",
+    "resolved_by": null,
+    "text": "Dominant interests often benefit most from ______ of governmental interference in business, since they are able to take "
+   }
+  },
+  "contract": "skill_key mirrors the live Neo4j :Skill name and is the BKT join key; display_label is owner-changeable with zero migration."
+ },
+ "verifier": {
+  "good_patch": "data/corpus/patches/2026-09-05_options_recovery_clean.patch.jsonl",
+  "good_exit": 0,
+  "good_verdict": "ACCEPTED",
+  "good_output": "GATE 1 validity: 219 rows\n  info (info) already applied \u2014 identical options present   219   \n  pass \u2014 all targets exist, no silent overwrites, provenance present\n\nGATE 2 preservation: 219 rewriting rows\n  compared 213 rewrites against page OCR\n  median off-page token rate: 0.0%\n  worst offenders (inspect these \u2014 tokens on neither the page nor OCR):\n      39.2%  tyra_ds_p0670_ex04 #Ex 4  ['alone', 'although', 'cannot', 'from', 'itself', 'more']\n      39.2%  tyra_ds_p0670_ex03 #Ex 3  ['alone', 'although', 'cannot', 'from', 'itself', 'more']\n      39.2%  tyra_ds_p0670_ex02 #Ex 2  ['alone', 'although', 'cannot', 'from', 'itself', 'more']\n      39.2%  tyra_ds_p0670_ex01 #Ex 1  ['alone', 'although', 'cannot', 'from', 'itself', 'more']\n      24.3%  tyra_ds_p0674_ex24 #Ex 24  ['alone', 'although', 'cannot', 'itself', 'more', 'neither']",
+  "corrupted_patch": "/Users/harshahirrao/Speed gym/demo/output/CORRUPTED_demo.patch.jsonl",
+  "corruptions_injected": [
+   "target set_id does not exist in MASTER",
+   "question number absent from its record",
+   "options row with the provenance field stripped",
+   "option list shorter than 2 entries",
+   "FABRICATED option text \u2014 words that appear nowhere on the cited page",
+   "would overwrite an EXISTING, different option list"
+  ],
+  "corrupted_exit": 1,
+  "corrupted_verdict": "REFUSED",
+  "corrupted_output": "GATE 1 validity: 6 rows\n  FAIL CONFLICT: would overwrite a DIFFERENT option list     3   [\"as_quant_p664_level_of_difficulty_i #27: have ['(a) f(\u2013x) = f(x)', '(b) f(\u2013x) = \u2013f(x)']\", \"as_quant_p664_level_of_difficulty_i #28: have ['(a) f(\u2013x) = f(x)', '(b) f(\u2013x) = \u2013f(x)']\"]\n  FAIL set_id not in MASTER                              1   ['set_that_does_not_exist_demo']\n  FAIL question number not in record                     1   ['as_quant_p664_level_of_difficulty_i #99999']\n  info (info) already applied \u2014 identical options present     1   \n  FAIL options without provenance                        1   ['as_quant_p664_level_of_difficulty_i #26']\n  FAIL options list shorter than 2                       1   ['as_quant_p664_level_of_difficulty_i #27']\n\nGATE 2 preservation: 6 rewriting rows\n  compared 6 rewrites against page OCR\n  median off-page token rate: 0.0%\n  worst offenders (inspect these \u2014 tokens on neither the page nor OCR):\n      90.0%  as_quant_p664_level_of_difficulty_i #28  ['accordion', 'entanglement', 'marsupials', 'photosynthesis', 'quantum', 'treaty']\n       8.3%  as_quant_p664_level_of_difficulty_i #29  ['tampered']\n       0.0%  set_that_does_not_exist_demo #20  []\n       0.0%  as_quant_p664_level_of_difficulty_i #99999  []\n       0.0%  as_quant_p664_level_of_difficulty_i #27  []",
+  "no_reference_exit": 1,
+  "no_reference_verdict": "REFUSED",
+  "no_reference_output": "GATE 1 validity: 1 rows\n  info (info) already applied \u2014 identical options present     1   \n  pass \u2014 all targets exist, no silent overwrites, provenance present\n\nGATE 2 preservation: 1 rewriting rows\n  SKIPPED \u2014 rewriting rows present but no --pages-book reference given.\n  Refusing to certify a content rewrite without a preservation reference."
+ },
+ "patch_ledger": {
+  "files": [
+   {
+    "file": "2026-09-02_sinha_grid_keys.patch.jsonl",
+    "rows": 524,
+    "actions": {
+     "flag": 170,
+     "key": 354
+    }
+   },
+   {
+    "file": "2026-09-02_sinha_grid_keys_round2.patch.jsonl",
+    "rows": 122,
+    "actions": {
+     "key": 92,
+     "flag": 27,
+     "suspect": 3
+    }
+   },
+   {
+    "file": "2026-09-02_sinha_grid_keys_round2b.patch.jsonl",
+    "rows": 63,
+    "actions": {
+     "key": 15,
+     "flag": 48
+    }
+   },
+   {
+    "file": "2026-09-03_difficulty_backfill.patch.jsonl",
+    "rows": 3297,
+    "actions": {
+     "difficulty": 3297
+    }
+   },
+   {
+    "file": "2026-09-03_format_classification_rules.patch.jsonl",
+    "rows": 2723,
+    "actions": {
+     "format": 2723
+    }
+   },
+   {
+    "file": "2026-09-03_hk_grid_keys.patch.jsonl",
+    "rows": 317,
+    "actions": {
+     "key": 317
+    }
+   },
+   {
+    "file": "2026-09-03_hk_grid_keys_b.patch.jsonl",
+    "rows": 182,
+    "actions": {
+     "key": 182
+    }
+   },
+   {
+    "file": "2026-09-03_hk_grid_keys_c.patch.jsonl",
+    "rows": 186,
+    "actions": {
+     "key": 186
+    }
+   },
+   {
+    "file": "2026-09-03_hk_grid_keys_d.patch.jsonl",
+    "rows": 92,
+    "actions": {
+     "key": 92
+    }
+   },
+   {
+    "file": "2026-09-03_hk_grid_keys_e.patch.jsonl",
+    "rows": 144,
+    "actions": {
+     "key": 144
+    }
+   },
+   {
+    "file": "2026-09-03_hk_grid_keys_f.patch.jsonl",
+    "rows": 199,
+    "actions": {
+     "key": 199
+    }
+   },
+   {
+    "file": "2026-09-03_hk_grid_keys_g.patch.jsonl",
+    "rows": 188,
+    "actions": {
+     "key": 188
+    }
+   },
+   {
+    "file": "2026-09-03_sinha_chart_flag_clear.patch.jsonl",
+    "rows": 13,
+    "actions": {
+     "clear_chart_flag": 13
+    }
+   },
+   {
+    "file": "2026-09-03_tag_normalization.patch.jsonl",
+    "rows": 352,
+    "actions": {
+     "record_tags": 352
+    }
+   },
+   {
+    "file": "2026-09-04_key_disputed_flag.patch.jsonl",
+    "rows": 14,
+    "actions": {
+     "suspect": 14
+    }
+   },
+   {
+    "file": "2026-09-04_s046x2_table_rows.patch.jsonl",
+    "rows": 3,
+    "actions": {
+     "flag": 3
+    }
+   },
+   {
+    "file": "2026-09-04_sinha_mistexted_flag.patch.jsonl",
+    "rows": 9,
+    "actions": {
+     "flag": 9
+    }
+   },
+   {
+    "file": "2026-09-04_sinha_s034x0_key_correction.patch.jsonl",
+    "rows": 9,
+    "actions": {
+     "correct_key": 9
+    }
+   },
+   {
+    "file": "2026-09-04_source_printing_errata.patch.jsonl",
+    "rows": 2,
+    "actions": {
+     "suspect": 2
+    }
+   },
+   {
+    "file": "2026-09-05_graph_items_shared_options.patch.jsonl",
+    "rows": 5,
+    "actions": {
+     "options": 5
+    }
+   },
+   {
+    "file": "2026-09-05_hk_open_answer_format.patch.jsonl",
+    "rows": 283,
+    "actions": {
+     "format": 283
+    }
+   },
+   {
+    "file": "2026-09-05_open_answer_needs_vision_clear.patch.jsonl",
+    "rows": 875,
+    "actions": {
+     "clear_needs_vision": 875
+    }
+   },
+   {
+    "file": "2026-09-05_options_confirmed.patch.jsonl",
+    "rows": 176,
+    "actions": {
+     "options_check": 176
+    }
+   },
+   {
+    "file": "2026-09-05_options_disputed.patch.jsonl",
+    "rows": 193,
+    "actions": {
+     "options_check": 193
+    }
+   },
+   {
+    "file": "2026-09-05_options_key_inconsistent.patch.jsonl",
+    "rows": 9,
+    "actions": {
+     "suspect": 9
+    }
+   },
+   {
+    "file": "2026-09-05_options_recovery_clean.patch.jsonl",
+    "rows": 219,
+    "actions": {
+     "options": 219
+    }
+   },
+   {
+    "file": "2026-09-05_s013x0_key_unverifiable.patch.jsonl",
+    "rows": 1,
+    "actions": {
+     "suspect": 1
+    }
+   },
+   {
+    "file": "2026-09-05_venn_described_options.patch.jsonl",
+    "rows": 6,
+    "actions": {
+     "directions": 1,
+     "options": 5
+    }
+   },
+   {
+    "file": "2026-09-06_unusable_option_lists.patch.jsonl",
+    "rows": 112,
+    "actions": {
+     "flag": 112
+    }
+   }
+  ],
+  "action_totals": {
+   "flag": 369,
+   "key": 1769,
+   "suspect": 29,
+   "difficulty": 3297,
+   "format": 3006,
+   "clear_chart_flag": 13,
+   "record_tags": 352,
+   "correct_key": 9,
+   "options": 229,
+   "clear_needs_vision": 875,
+   "options_check": 369,
+   "directions": 1
+  },
+  "patch_files": 29,
+  "total_rows": 10318
+ },
+ "arun_sharma_audit": {
+  "book": "Arun Sharma",
+  "total_pages": 466,
+  "placeholder_pages": 343,
+  "unique_content_pages": 123,
+  "method": "md5 grouping; any hash shared by >=5 pages = Google Books viewing-limit placeholder",
+  "top_placeholder_groups": [
+   {
+    "hash": "360456b0fa2568690aa2b62ce541d71c",
+    "count": 343
+   }
+  ],
+  "content_page_list": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17,
+   18,
+   19,
+   20,
+   21,
+   22,
+   23,
+   24,
+   25,
+   26,
+   27,
+   28,
+   29,
+   30,
+   31,
+   32,
+   33,
+   34,
+   35,
+   36,
+   37,
+   38,
+   39,
+   40,
+   41,
+   42,
+   43,
+   44,
+   45,
+   46,
+   47,
+   48,
+   49,
+   50,
+   51,
+   52,
+   53,
+   54,
+   55,
+   56,
+   57,
+   58,
+   59,
+   60,
+   61,
+   62,
+   63,
+   64,
+   65,
+   66,
+   67,
+   68,
+   69,
+   70,
+   71,
+   72,
+   73,
+   74,
+   75,
+   76,
+   77,
+   78,
+   79,
+   80,
+   81,
+   82,
+   83,
+   84,
+   85,
+   86,
+   87,
+   88,
+   89,
+   90,
+   91,
+   92,
+   93,
+   94,
+   95,
+   96,
+   97,
+   98,
+   99,
+   100,
+   101,
+   103,
+   104,
+   105,
+   106,
+   109,
+   110,
+   111,
+   113,
+   114,
+   115,
+   116,
+   117,
+   120,
+   146,
+   174,
+   190,
+   202,
+   214,
+   218,
+   395,
+   396,
+   466
+  ]
+ },
+ "page_stores": {
+  "stores": {
+   "Arun_Sharma": {
+    "png": 466,
+    "ocr_md": 466,
+    "meta_json": 466,
+    "path": "/Users/harshahirrao/Speed gym/data/vision_pass/pages/Arun_Sharma"
+   },
+   "Arun_Sharma_Quant": {
+    "png": 175,
+    "ocr_md": 920,
+    "meta_json": 920,
+    "path": "/Users/harshahirrao/Speed gym/data/vision_pass/pages/Arun_Sharma_Quant"
+   },
+   "Bhatia": {
+    "png": 17,
+    "ocr_md": 130,
+    "meta_json": 130,
+    "path": "/Users/harshahirrao/Speed gym/data/vision_pass/pages/Bhatia"
+   },
+   "Bird": {
+    "png": 90,
+    "ocr_md": 377,
+    "meta_json": 377,
+    "path": "/Users/harshahirrao/Speed gym/data/vision_pass/pages/Bird"
+   },
+   "Dehaene": {
+    "png": 0,
+    "ocr_md": 339,
+    "meta_json": 339,
+    "path": "/Users/harshahirrao/Speed gym/data/vision_pass/pages/Dehaene"
+   },
+   "ETS_GRE": {
+    "png": 30,
+    "ocr_md": 670,
+    "meta_json": 670,
+    "path": "/Users/harshahirrao/Speed gym/data/vision_pass/pages/ETS_GRE"
+   },
+   "ETS_GRE_Verbal": {
+    "png": 0,
+    "ocr_md": 254,
+    "meta_json": 254,
+    "path": "/Users/harshahirrao/Speed gym/data/vision_pass/pages/ETS_GRE_Verbal"
+   },
+   "Hall_&_Knight": {
+    "png": 169,
+    "ocr_md": 592,
+    "meta_json": 592,
+    "path": "/Users/harshahirrao/Speed gym/data/vision_pass/pages/Hall_&_Knight"
+   },
+   "Hogg": {
+    "png": 101,
+    "ocr_md": 452,
+    "meta_json": 452,
+    "path": "/Users/harshahirrao/Speed gym/data/vision_pass/pages/Hogg"
+   },
+   "Knuth": {
+    "png": 0,
+    "ocr_md": 670,
+    "meta_json": 670,
+    "path": "/Users/harshahirrao/Speed gym/data/vision_pass/pages/Knuth"
+   },
+   "Manhattan_5_lb": {
+    "png": 68,
+    "ocr_md": 1453,
+    "meta_json": 1453,
+    "path": "/Users/harshahirrao/Speed gym/data/vision_pass/pages/Manhattan_5_lb"
+   },
+   "Manhattan_GMAT_Verbal": {
+    "png": 12,
+    "ocr_md": 799,
+    "meta_json": 799,
+    "path": "/Users/harshahirrao/Speed gym/data/vision_pass/pages/Manhattan_GMAT_Verbal"
+   },
+   "Manhattan_Logic_Games": {
+    "png": 9,
+    "ocr_md": 1501,
+    "meta_json": 1501,
+    "path": "/Users/harshahirrao/Speed gym/data/vision_pass/pages/Manhattan_Logic_Games"
+   },
+   "Manhattan_Quant": {
+    "png": 93,
+    "ocr_md": 1185,
+    "meta_json": 1185,
+    "path": "/Users/harshahirrao/Speed gym/data/vision_pass/pages/Manhattan_Quant"
+   },
+   "Mosteller": {
+    "png": 0,
+    "ocr_md": 142,
+    "meta_json": 142,
+    "path": "/Users/harshahirrao/Speed gym/data/vision_pass/pages/Mosteller"
+   },
+   "Schaum": {
+    "png": 106,
+    "ocr_md": 433,
+    "meta_json": 433,
+    "path": "/Users/harshahirrao/Speed gym/data/vision_pass/pages/Schaum"
+   },
+   "Strang": {
+    "png": 0,
+    "ocr_md": 584,
+    "meta_json": 584,
+    "path": "/Users/harshahirrao/Speed gym/data/vision_pass/pages/Strang"
+   },
+   "Tirthaji": {
+    "png": 0,
+    "ocr_md": 425,
+    "meta_json": 425,
+    "path": "/Users/harshahirrao/Speed gym/data/vision_pass/pages/Tirthaji"
+   },
+   "Tyra": {
+    "png": 31,
+    "ocr_md": 768,
+    "meta_json": 768,
+    "path": "/Users/harshahirrao/Speed gym/data/vision_pass/pages/Tyra"
+   },
+   "Vedic_Secrets": {
+    "png": 4,
+    "ocr_md": 60,
+    "meta_json": 60,
+    "path": "/Users/harshahirrao/Speed gym/data/vision_pass/pages/Vedic_Secrets"
+   },
+   "Sinha (in incoming/)": {
+    "png": 396,
+    "ocr_md": 396,
+    "meta_json": 396,
+    "path": "/Users/harshahirrao/Speed gym/incoming/topic_browser_full_package/cat_data/CAT_DI_LR_Nishit_K_Sinha/pages"
+   }
+  },
+  "total_png": 1767,
+  "total_ocr_md": 12616,
+  "total_meta": 12616,
+  "books_with_store": 21
+ },
+ "options_recovery": {
+  "file": "data/vision_pass/results/claude_session/options_recovery_consolidated.jsonl",
+  "result_rows": 1910,
+  "rows_with_options": 664,
+  "distinct_targets": 664,
+  "key_consistent": {
+   "True": 647,
+   "False": 17
+  },
+  "key_consistency_rate_pct": 97.4,
+  "confidence": {
+   "high": 541,
+   "medium": 122,
+   "low": 1
+  },
+  "dispositions": {
+   "new_lists_applied": 219,
+   "confirmed": 176,
+   "disputed": 193,
+   "key_inconsistent_flagged": 9,
+   "described_or_shared_applied": 10,
+   "flagged_unusable": 112
+  }
+ },
+ "key_discrepancies": {
+  "file": "data/vision_pass/results/claude_session/key_discrepancies.json",
+  "total_suspect_items": 23,
+  "recovered_items": 745,
+  "method": "items where options were successfully read AND either key_consistent=False or the reader noted the book's own printed key/solution naming a different letter",
+  "interpretation": "clusters of 3+ in one set indicate a systematic letter-shift in whatever produced those keys, not isolated reader error; single hits may be reader error and need independent check",
+  "clusters": {
+   "sinha_s034x0_q01_25": 9,
+   "sinha_s042x0_q11_15": 3,
+   "sinha_s008x0_q13_15": 2,
+   "sinha_s028x0_q22_25": 2,
+   "sinha_s030x2_q15_18": 1,
+   "sinha_s011x1_q02_05": 1,
+   "sinha_s032x0_q01_07": 1,
+   "sinha_s032x0_q08_12": 1,
+   "sinha_s036x0_q18_20": 1,
+   "as_quant_p604_taste_of_the_examsblock_iv": 1,
+   "sinha_s028x0_q17_21": 1
+  },
+  "status": "EVIDENCE FOR REVIEW \u2014 not asserted as fact",
+  "disposition": {
+   "keys_corrected": 9,
+   "questions_with_key_superseded": 9,
+   "questions_flagged_key_suspect": 30
+  },
+  "sample_items": [
+   {
+    "set_id": "sinha_s030x2_q15_18",
+    "number": 17,
+    "options": [
+     "V, W, X, Y, Z",
+     "T, U, X, Y, Z",
+     "T, V, X, Y, Z",
+     "U, V, W, X, Y"
+    ],
+    "key_consistent": false,
+    "source_pages": [
+     230
+    ],
+    "confidence": "high",
+    "reader_note": "key mismatch: supplied answer_key (d); the book's printed ANSWER KEYS block on page 230 and the explanation on page 233 both give 17.(c) = 'T, V, X, Y, Z'. Options read verbatim, neither adjusted. Question is on page 230, not on the supplied pages 229/233 (page 229 last prints 14; page 233 is explanations only)."
+   },
+   {
+    "set_id": "sinha_s011x1_q02_05",
+    "number": 2,
+    "options": [
+     "88, 67, 35, 11, 88, 67, 23",
+     "88, 67, 35, 25, 08, 11, 23",
+     "88, 11, 23, 25, 35, 67, 23",
+     "88, 67, 35, 25, 23, 08, 11"
+    ],
+    "key_consistent": true,
+    "source_pages": [
+     125
+    ],
+    "confidence": "high",
+    "reader_note": null
+   },
+   {
+    "set_id": "sinha_s042x0_q11_15",
+    "number": "12",
+    "options": [
+     "527",
+     "25",
+     "111",
+     "236",
+     "19"
+    ],
+    "key_consistent": false,
+    "source_pages": [
+     367
+    ],
+    "confidence": "medium",
+    "reader_note": null
+   }
+  ]
+ },
+ "task_queues": {
+  "files": [
+   {
+    "file": "tasks_Sinha.jsonl",
+    "classes": {
+     "chart_vision": 10
+    },
+    "tasks": 10,
+    "items": 13,
+    "pages": 23
+   },
+   {
+    "file": "tasks_answer_grid_HK_targeted.jsonl",
+    "classes": {
+     "answer_grid": 4
+    },
+    "tasks": 4,
+    "items": 4,
+    "pages": 4
+   },
+   {
+    "file": "tasks_answer_grid_Hall_&_Knight.jsonl",
+    "classes": {
+     "answer_grid": 33
+    },
+    "tasks": 33,
+    "items": 33,
+    "pages": 33
+   },
+   {
+    "file": "tasks_convertible_all.jsonl",
+    "classes": {
+     "needs_vision": 558
+    },
+    "tasks": 558,
+    "items": 2402,
+    "pages": 1245
+   },
+   {
+    "file": "tasks_digitize_Arun_Sharma.jsonl",
+    "classes": {
+     "page_digitization": 123
+    },
+    "tasks": 123,
+    "items": 123,
+    "pages": 123
+   },
+   {
+    "file": "tasks_fact_needs_reextraction.jsonl",
+    "classes": {
+     "needs_reextraction": 89
+    },
+    "tasks": 89,
+    "items": 244,
+    "pages": 186
+   },
+   {
+    "file": "tasks_fact_options_recovery.jsonl",
+    "classes": {
+     "needs_vision": 241
+    },
+    "tasks": 241,
+    "items": 1096,
+    "pages": 611
+   },
+   {
+    "file": "tasks_fact_requestion_v2.jsonl",
+    "classes": {
+     "needs_reextraction": 7,
+     "needs_vision": 16
+    },
+    "tasks": 23,
+    "items": 73,
+    "pages": 69
+   },
+   {
+    "file": "tasks_fact_stem_repair.jsonl",
+    "classes": {
+     "stem_repair": 333
+    },
+    "tasks": 333,
+    "items": 1305,
+    "pages": 694
+   }
+  ],
+  "total_tasks": 1414,
+  "total_items": 5293,
+  "superseded_files": []
+ },
+ "dashboards": {
+  "inventory": [
+   {
+    "file": "cat.html",
+    "bytes": 13224
+   },
+   {
+    "file": "explorer.html",
+    "bytes": 71733
+   },
+   {
+    "file": "index.html",
+    "bytes": 7884
+   },
+   {
+    "file": "page_view.html",
+    "bytes": 23443
+   },
+   {
+    "file": "problem_view.html",
+    "bytes": 2672424
+   }
+  ],
+  "served": true,
+  "port": 8888,
+  "checks": [
+   {
+    "page": "index.html",
+    "url": "http://127.0.0.1:8888/dashboards/index.html",
+    "status": 200,
+    "bytes": 7884,
+    "loads": true
+   },
+   {
+    "page": "cat.html",
+    "url": "http://127.0.0.1:8888/dashboards/cat.html",
+    "status": 200,
+    "bytes": 13224,
+    "loads": true
+   },
+   {
+    "page": "explorer.html",
+    "url": "http://127.0.0.1:8888/dashboards/explorer.html",
+    "status": 200,
+    "bytes": 71733,
+    "loads": true
+   },
+   {
+    "page": "page_view.html",
+    "url": "http://127.0.0.1:8888/dashboards/page_view.html",
+    "status": 200,
+    "bytes": 23443,
+    "loads": true
+   },
+   {
+    "page": "problem_view.html",
+    "url": "http://127.0.0.1:8888/dashboards/problem_view.html",
+    "status": 200,
+    "bytes": 2672424,
+    "loads": true
+   },
+   {
+    "page": "cat_data/CAT_DI_LR_Nishit_K_Sinha/page_manifest.json",
+    "status": 200,
+    "manifest_entries": 396,
+    "loads": true
+   }
+  ],
+  "known_limits": [
+   "page_view.html: page-OCR data exists for Sinha only (pages 1-305 of 396)",
+   "page_view.html page-type chips are a keyword heuristic and over-fire",
+   "index.html / cat.html show frozen 2026-07-08 snapshot stats, not live counts"
+  ]
+ },
+ "headline_numbers": {
+  "corpus_records": 4805,
+  "corpus_questions": 19619,
+  "books": 25,
+  "answer_key_pct_at_restart": 68.5,
+  "answer_key_pct_now": 77.5,
+  "keys_recovered": 1763,
+  "hall_knight_pct_at_restart": 0.0,
+  "hall_knight_pct_now": 69.8,
+  "sinha_pct_at_restart": 64.0,
+  "sinha_pct_now": 87.4,
+  "playable_questions": 12872,
+  "playable_pct": 65.6,
+  "taxonomy_resolved": 7926,
+  "taxonomy_bkt_joinable": 3736,
+  "ocr_pages_on_disk": 12616,
+  "option_lists_recovered": 664,
+  "option_key_consistency_pct": 97.4,
+  "suspected_key_shifts_for_review": 23,
+  "corpus_patches": 29,
+  "verifier_good_patch": "ACCEPTED",
+  "verifier_corrupted_patch": "REFUSED",
+  "dashboard_checks_passing": "6/6"
+ },
+ "_meta": {
+  "generated": "2026-09-06T18:24:58",
+  "repo": "/Users/harshahirrao/Speed gym",
+  "script": "/Users/harshahirrao/Speed gym/demo/demo_extraction.py",
+  "runtime_seconds": 3.58,
+  "workstream": "data extraction",
+  "every_number_computed_live": true
+ },
+ "failures": []
+}
