@@ -1,0 +1,42 @@
+# Production overrides:
+#   docker compose -f docker-compose.yml -f docker-compose.prod.yml --profile app up -d --build
+# DB ports are NOT published; secrets come from .env (gitignored); everything restarts.
+services:
+  postgres:
+    ports: []
+    restart: unless-stopped
+  neo4j:
+    ports: []
+    restart: unless-stopped
+  redis:
+    ports: []
+    restart: unless-stopped
+  pgbouncer:
+    ports: []
+    restart: unless-stopped
+  api:
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      BEHIND_TLS: "true"
+      DEBUG: "false"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:8000/health || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+  game-server:
+    restart: unless-stopped
+    env_file: .env
+  worker:
+    profiles: ["app"]
+    build: ./services/api
+    command: ["celery", "-A", "worker.app", "worker", "--beat", "--loglevel=info"]
+    working_dir: /workspace
+    volumes:
+      - ./:/workspace
+    env_file: .env
+    restart: unless-stopped
+    depends_on:
+      - redis
+      - postgres

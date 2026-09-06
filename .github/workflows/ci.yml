@@ -19,6 +19,9 @@ jobs:
         run: npm run typecheck
       - name: Unit tests (46-test parity suite)
         run: npx vitest run
+      - name: PWA typecheck
+        working-directory: apps/web
+        run: npx tsc --noEmit
 
   api:
     runs-on: ubuntu-latest
@@ -32,6 +35,19 @@ jobs:
       - name: API tests (CI-safe, no DBs)
         working-directory: services/api
         run: python -m pytest -q
+
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pip-audit && pip-audit -r services/api/requirements.txt --strict || true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci --no-audit --no-fund && npm audit --audit-level=high || true
 
   # Content-audit gate: needs the gitignored incoming/ exports, so it runs
   # only where a runner provides them (self-hosted / manual). Kept visible

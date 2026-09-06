@@ -12,6 +12,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from .config import get_settings
 from . import db
+from . import middleware
 from .routers import (
     admin,
     auth,
@@ -47,6 +48,7 @@ def create_app() -> FastAPI:
         allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
         allow_headers=["Authorization", "Content-Type", "X-Device-Fingerprint"],
     )
+    middleware.install(app)
     app.include_router(health.router)
     app.include_router(auth.router, prefix=settings.api_v1_prefix)
     app.include_router(session.router, prefix=settings.api_v1_prefix)

@@ -2,7 +2,7 @@
 
 VENV ?= .venv/bin
 
-.PHONY: db-up db-down migrate seed verify-files verify-db test test-api typecheck api-dev game-dev
+.PHONY: db-up db-down migrate seed verify-files verify-db test test-api typecheck api-dev game-dev backup smoke prod-up
 
 db-up:
 	docker compose up -d postgres neo4j redis
@@ -36,3 +36,12 @@ api-dev:
 
 game-dev:
 	cd apps/game-server && npm run dev
+
+backup:
+	./scripts/backup.sh
+
+smoke:
+	k6 run -e API=$${API:-http://localhost:8000} scripts/load/smoke.js
+
+prod-up:
+	docker compose -f docker-compose.yml -f docker-compose.prod.yml --profile app up -d --build

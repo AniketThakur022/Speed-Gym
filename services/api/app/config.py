@@ -75,6 +75,10 @@ class Settings(BaseSettings):
     chat_daily_token_budget: int = 20_000       # per learner, input+output, UTC day
     chat_llm_timeout_seconds: float = 30.0
 
+    # ── Hardening (block 9) ────────────────────────────────────────────────
+    rate_limit_per_minute: int = 300          # per learner (or IP); 0 disables
+    behind_tls: bool = False                  # True in prod (Traefik terminates TLS) → HSTS
+
     @property
     def cors_origins(self) -> list[str]:
         return [origin.strip() for origin in self.cors_allow_origins.split(",") if origin.strip()]
