@@ -7541,7 +7541,7 @@
   "question_id": "greqnt_developyournumbersensecheckyourskillsche_43#2",
   "kind": "numeric",
   "text": "What is the value of y on the number line?",
-  "correct_answer": "−50",
+  "correct_answer": "-50",
   "set_id": "greqnt_developyournumbersensecheckyourskillsche_43"
  },
  {
@@ -7630,7 +7630,7 @@
   "question_id": "greqnt_equationscheckyourskillscheckyourskills_141#6",
   "kind": "numeric",
   "text": "3(x + 4)3 − 5 = 19",
-  "correct_answer": "−2",
+  "correct_answer": "-2",
   "set_id": "greqnt_equationscheckyourskillscheckyourskills_141",
   "skill": "Equations"
  },
@@ -7638,7 +7638,7 @@
   "question_id": "greqnt_equationscheckyourskillscheckyourskills_141#8",
   "kind": "numeric",
   "text": "Equation Clean-up Moves How would you solve for x in the following equation? Now x appears in multiple parts of the equation. The first move is to get variables out of the denominator. Multiply both sides of the equation by the entire denominator: When you multiply a fraction by its denominator, the entire denominator is canceled out, leaving you with this: 5x − 3(4 − x) = 20x What should you do next? At some point, you’re going to have to get all the terms that contain an x together. Right now, however, that x sitting inside the parentheses seems pretty tough to get to. To make that x more accessible, simplify grouped terms within the equation. The 3 on the outside of the parentheses can be distributed to the terms inside, so you could distribute it. Multiply the 3 by each term inside the parentheses, one at a time: 3(4 − x) 12 − 3x The full equation now looks like this: 5x − (12 − 3x) = 20x Next, subtract what’s in the parentheses from 5x to get rid of the parentheses altogether. Just as you distributed the 3 to both terms inside the parentheses, distribute the subtraction sign to each term: Because subtracting a negative number is the same as adding a positive number, the two negative signs turn into a positive. Finally, combine like terms. “Like terms” are terms with the same variables and exponents (if any). For example, 3x and 5x are like terms because they both have a single power of x, so they can be added to get 8x. Likewise, 2x2 and 3x2 are like terms, because they both contain x-squared, so they can be added to get 5x2. Back to the problem. The expressions 5x and 3x are like terms and are on the same side of the equation already, so combine them: 8x − 12 = 20x Now put the 8x and the 20x on the same side of the equation. Which one should you move? The best move on this problem is to move the 8x to the right side of the equation, so that one side of the equation will contain only numbers (−12) and the other side will have all of the terms that contain variables (8x and 20x). It’s also generally easier to subtract smaller values from larger ones: Ultimately, all of the PEMDAS operations and simplification moves have one goal: to get a variable by itself so you can determine its value. This problem began with four terms in the equation: 5x, −12, 3x, and 20x. The goal is to get all of the terms containing an x on one side of the equation and all of the terms that only contain numbers on the other side of the equation. Strategy Tip: Use these moves to simplify an equation: 1. Get variables out of the denominator by multiplying both sides by the entire denominator. 2. Simplify grouped terms by multiplying or distributing. 3. Combine like terms.",
-  "correct_answer": "−6",
+  "correct_answer": "-6",
   "set_id": "greqnt_equationscheckyourskillscheckyourskills_141",
   "skill": "Equations"
  },
@@ -7654,7 +7654,7 @@
   "question_id": "greqnt_equationsproblemsetproblemset_150#1",
   "kind": "numeric",
   "text": "Simplify: 66 ÷ (−33) × |−9|",
-  "correct_answer": "−18",
+  "correct_answer": "-18",
   "set_id": "greqnt_equationsproblemsetproblemset_150",
   "skill": "Equations"
  },
@@ -7662,7 +7662,7 @@
   "question_id": "greqnt_equationsproblemsetproblemset_150#3",
   "kind": "numeric",
   "text": "Simplify: (4 + 12 ÷ 3 − 18) − [−11 − (−4)]",
-  "correct_answer": "−3",
+  "correct_answer": "-3",
   "set_id": "greqnt_equationsproblemsetproblemset_150",
   "skill": "Equations"
  },
@@ -7678,7 +7678,7 @@
   "question_id": "greqnt_equationsproblemsetproblemset_150#8",
   "kind": "numeric",
   "text": "If 2 (2 − 3x) − (4 + x) = 7, what is x ?",
-  "correct_answer": "−1",
+  "correct_answer": "-1",
   "set_id": "greqnt_equationsproblemsetproblemset_150",
   "skill": "Equations"
  },
@@ -7745,7 +7745,7 @@
   "question_id": "greqnt_exponentsandrootscheckyourskillscheckyou_176#17",
   "kind": "numeric",
   "text": "If x3 = −27, what is x ?",
-  "correct_answer": "−3",
+  "correct_answer": "-3",
   "set_id": "greqnt_exponentsandrootscheckyourskillscheckyou_176"
  },
  {
@@ -7766,7 +7766,7 @@
   "question_id": "greqnt_exponentsandrootsproblemsetproblemset_192#15",
   "kind": "numeric",
   "text": "If , what is the value of x ?",
-  "correct_answer": "−27",
+  "correct_answer": "-27",
   "set_id": "greqnt_exponentsandrootsproblemsetproblemset_192"
  },
  {
@@ -8956,7 +8956,7 @@
   "question_id": "greqnt_sequencesandpatternscheckyourskillscheck_993#3",
   "kind": "numeric",
   "text": "Bn = (−1)n × n + 3 for all integers n ≥ 1. What is the 9th term of the sequence?",
-  "correct_answer": "−6",
+  "correct_answer": "-6",
   "set_id": "greqnt_sequencesandpatternscheckyourskillscheck_993"
  },
  {
@@ -9033,7 +9033,7 @@
   "question_id": "greqnt_sequencesandpatternsproblemsetproblemset_1019#3",
   "kind": "numeric",
   "text": "What is A11 − A9?",
-  "correct_answer": "−16",
+  "correct_answer": "-16",
   "set_id": "greqnt_sequencesandpatternsproblemsetproblemset_1019"
  },
  {
@@ -9188,7 +9188,7 @@
   "question_id": "greqnt_optimizationcheckyourskillscheckyourskil_1094#2",
   "kind": "numeric",
   "text": "If −1 ≤ a ≤ 4 and −6 ≤ b ≤ −2, what is the minimum value for b − a ?",
-  "correct_answer": "−10",
+  "correct_answer": "-10",
   "set_id": "greqnt_optimizationcheckyourskillscheckyourskil_1094",
   "skill": "Optimization"
  },
@@ -50297,7 +50297,7 @@
   "question_id": "tyra_elemalg_p0155_ex33#Ex. 33",
   "kind": "numeric",
   "text": "If x+y+z = 0, then find the value of (x+y) (y+z) (z+x)/xyz",
-  "correct_answer": "−1",
+  "correct_answer": "-1",
   "set_id": "tyra_elemalg_p0155_ex33",
   "skill": "Elementary Algebra"
  },

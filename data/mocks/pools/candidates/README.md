@@ -85,7 +85,13 @@ maps options to letters **by position** (`chr(ord('a') + i)`). So:
   re-emitted with their printed tags stripped so that **letter == index**. This grades
   correctly whether the client submits the letter or the option text.
 - `tita` / `numeric` → `correct_answer` is a bare number, verified to survive
-  `extract_numeric_answer()`.
+  `extract_numeric_answer()`. Negative answers are normalised from the corpus's
+  Unicode MINUS SIGN (U+2212) to an ASCII hyphen, because `extract_numeric_answer`
+  cannot parse U+2212 — a learner typing `-50` would have been string-compared against
+  `−50` and **marked wrong while correct**. Note that self-grading cannot detect this
+  class of bug: with both sides equally unparseable the string compare succeeds against
+  itself. **Suggested backend fix:** normalise U+2212 inside `extract_numeric_answer`
+  as well, so no future pool or graph answer can reintroduce it from the other side.
 - `essay` → `correct_answer` is `null`; the GRE AWA section is `auto_scored=False`.
 
 Verified by loading every pool through the real `scoring.py`: **all 7,237 items grade

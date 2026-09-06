@@ -363,6 +363,18 @@ def build():
                 if not NUMERIC.match(val):
                     drops[tag]["numeric answer not a bare number"] += 1
                     continue
+                # The corpus writes some negatives with a Unicode MINUS SIGN
+                # (U+2212). extract_numeric_answer() cannot parse that, so
+                # grade() would fall through to a string compare and mark a
+                # learner who typed an ASCII "-50" WRONG against "−50".
+                # Self-grading never catches this: both sides are equally
+                # unparseable, so the string compare succeeds against itself.
+                val = val.replace("\u2212", "-").replace("\u2013", "-")
+                try:
+                    float(val)
+                except ValueError:
+                    drops[tag]["numeric answer does not parse as a number"] += 1
+                    continue
                 item["correct_answer"] = val
 
             if chart:
