@@ -166,13 +166,35 @@ async def _load_tier1(
     # difficulty is populated on every graph :Problem (spread 10/110/315/260/112),
     # so coalesce() here is only a guard for future rows; template_id breaks ties
     # so a page is stable rather than ordered arbitrarily among equal difficulties.
-    # 757 of the served problems have 2-7 skill parents, so ONE of them becomes
+    # 746 of the served problems have 2-7 skill parents, so ONE of them becomes
     # the mastery key. collect() has no ordering guarantee, and this key joins a
     # learner's history — an unstable choice would silently split mastery across
-    # two keys. Ordering before collect() makes the pick deterministic, and the
-    # CASE demotes structural names ("Chapter 11" is a real :Skill in this graph)
-    # so a chapter number never becomes a mastery key while a concept is
-    # available. Cleaning up those names is a separate scheduled migration.
+    # two keys.
+    #
+    # THE PIN IS AUTHORITATIVE. p.mastery_key was frozen by
+    # scripts/migrate_skill_vocabulary.py; the sorted pick below is only the
+    # fallback for problems ingested since. That ordering is NOT a stable
+    # identifier: it is a codepoint sort over sibling names, so recasing or
+    # merging ANY skill can move the key of a problem that skill does not even
+    # key today. Measured on the vocabulary migration: of 21 keys that would
+    # have moved, 2 moved because an unrelated sibling was recased — one of them
+    # jumping to a different skill entirely (Bird_Engineering_Math_sa_45,
+    # 'Fractions and Decimals' -> 'Decimals'), and one key vanished whose node
+    # was never touched at all ('Angle and Side Relationships'). A name->name
+    # remap cannot express that; a pin can. Renaming
+    # 'Basic Operations (+, -, ×, ÷)' alone could otherwise capture 183 problems
+    # it does not currently key — 36% of the servable pool — in one edit.
+    #
+    # So: never reintroduce the bare sorted pick as the key, and when a new
+    # problem is ingested, pin it (the migration is idempotent and re-runnable
+    # for exactly that purpose).
+    #
+    # The CASE still demotes structural names. The vocabulary migration deleted
+    # the five that existed, but this stays as the guard for future ingests —
+    # note it only matches WHOLE strings, so it never caught
+    # 'Chapter 11 on simple equations'; the migration removes such names by
+    # explicit allowlist rather than by widening this regex, because a regex
+    # loose enough to catch them also catches 'Unit Circle' and 'Unit Conversion'.
     params["structural_skill"] = (
         r"(?i)^\s*(chapter|ch\.?|section|sec\.?|unit|part|exercise|ex\.?|lesson)\s*[0-9ivxl.]*\s*$|^\s*[0-9.]+\s*$"
     )
@@ -181,7 +203,7 @@ async def _load_tier1(
         + " AND ".join(filters)
         + """ WITH p, s
               ORDER BY (CASE WHEN s.name =~ $structural_skill THEN 1 ELSE 0 END), s.name
-              WITH p, head(collect(s.name)) AS skill
+              WITH p, coalesce(p.mastery_key, head(collect(s.name))) AS skill
               RETURN p.template_id AS template_id, p.question_text AS question_text,
                      p.answer_key AS answer_key, p.difficulty AS difficulty,
                      p.technique AS technique, p.topic AS topic, p.sub_topic AS sub_topic,

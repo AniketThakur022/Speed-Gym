@@ -122,25 +122,97 @@ def test_tier1_does_not_claim_the_factory_trust_ladder(client):
 
 
 def test_mastery_key_is_deterministic_and_never_a_chapter_number(client):
-    """757 of the served problems have 2-7 skill parents, so one is chosen as the
+    """746 of the served problems have 2-7 skill parents, so one is chosen as the
     mastery key. collect() has no ordering guarantee and this key joins a
     learner's history, so an unstable pick would split mastery across two keys.
-    The graph also contains structural names ('Chapter 11'), which must never win
-    over a real concept."""
+
+    This assertion used to be double-blind: it compiled a regex BYTE-IDENTICAL to
+    the one in session.py, so any structural name production missed the test
+    missed too — and it inspected only the first 50 items, which happened to
+    exclude both problems that were in fact keyed on a chapter/band heading
+    ('Chapter 11 on simple equations' and 'Advance Level' each won their pick).
+    It passed while the defect it was written to catch was live.
+
+    So: check the WHOLE served pool, and detect structural names by a criterion
+    independent of production's — a leading structural word anywhere in the name,
+    with an explicit allowlist for the concepts that legitimately start with one.
+    """
     import re
 
-    structural = re.compile(
-        r"(?i)^\s*(chapter|ch\.?|section|sec\.?|unit|part|exercise|ex\.?|lesson)\s*[0-9ivxl.]*\s*$"
-        r"|^\s*[0-9.]+\s*$"
+    # Deliberately BROADER than session.py's whole-string regex, so this test can
+    # fail on something production's demotion misses. 'Unit Circle' and
+    # 'Unit Conversion' are real concepts, not structure — hence the allowlist.
+    leading_structural = re.compile(
+        r"(?i)^\s*(chapter|ch\.|section|sec\.|unit|part|exercise|ex\.|lesson|"
+        r"appendix|preface|advance level|basic level|previous)\b"
     )
+    LEGITIMATE = {"Unit Circle", "Unit Conversion", "Unit Circle Definitions",
+                  "Partial Fractions", "Particle Motion"}
+    bare_number = re.compile(r"^\s*[0-9.]+\s*$")
+
     runs = []
     for _ in range(3):
         res = client.get("/api/v1/practice/session", params={"size": 50})
         runs.append({i["template_id"]: i["skill"] for i in res.json()["items"]})
-
     assert runs[0] == runs[1] == runs[2], "mastery key must be stable across calls"
+
+    # The page is only 50 items; the defect lived outside it. Assert over every
+    # servable problem, and assert the served key IS the pin.
+    from neo4j import GraphDatabase
+
+    from app.config import get_settings
+
+    settings = get_settings()
+
+    driver = GraphDatabase.driver(
+        settings.neo4j_uri, auth=(settings.neo4j_user, settings.neo4j_password)
+    )
+    try:
+        with driver.session() as neo:
+            keys = [
+                (r["tid"], r["key"])
+                for r in neo.run(
+                    "MATCH (p:Problem) WHERE p.mastery_key IS NOT NULL "
+                    "RETURN p.template_id AS tid, p.mastery_key AS key"
+                )
+            ]
+            unpinned = neo.run(
+                "MATCH (:Skill)-[:PREREQUISITE_OF]->(p:Problem) "
+                "WHERE p.mastery_key IS NULL RETURN count(DISTINCT p) AS n"
+            ).single()["n"]
+            dangling = neo.run(
+                "MATCH (p:Problem) WHERE p.mastery_key IS NOT NULL AND NOT EXISTS "
+                "{ MATCH (:Skill {name: p.mastery_key}) } RETURN count(p) AS n"
+            ).single()["n"]
+            dupes = [
+                r["names"]
+                for r in neo.run(
+                    "MATCH (s:Skill) WITH toLower(s.name) AS k, collect(s.name) AS names "
+                    "WHERE size(names) > 1 RETURN names"
+                )
+            ]
+    finally:
+        driver.close()
+
+    assert keys, "seeded graph should have pinned mastery keys"
+    assert unpinned == 0, f"{unpinned} problems have a skill parent but no pinned key"
+    assert dangling == 0, f"{dangling} pinned keys name a :Skill that no longer exists"
+    assert dupes == [], f"case-duplicate :Skill names are back: {dupes[:5]}"
+
+    for template_id, key in keys:
+        assert not bare_number.match(key), f"{template_id} keyed on {key!r}"
+        assert key in LEGITIMATE or not leading_structural.match(key), (
+            f"{template_id} keyed on structural name {key!r}"
+        )
+
+    # The served key must be the pin, not a fresh sort — that is what stops a
+    # future rename silently re-attributing a learner's history.
+    pinned = dict(keys)
     for template_id, skill in runs[0].items():
-        assert not (skill and structural.match(skill)), f"{template_id} keyed on {skill!r}"
+        if template_id in pinned:
+            assert skill == pinned[template_id], (
+                f"{template_id} served {skill!r} but is pinned to {pinned[template_id]!r}"
+            )
 
 
 STEP_FIELDS = {"solution_steps", "solution", "steps", "worked_solution", "walkthrough"}
