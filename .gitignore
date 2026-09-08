@@ -18,3 +18,6 @@ data/vision_pass/results/
 *.tsbuildinfo
 next-env.d.ts
 out/
+
+# transient dry-run manifests; the applied record is committed
+data/migrations/skill_vocabulary_dry_run_*.json
