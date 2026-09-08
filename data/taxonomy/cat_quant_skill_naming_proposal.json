@@ -1,0 +1,153 @@
+{
+ "artifact": "CAT quant skill naming — corpus-side canonical names, for RAG before the :Skill nodes are created",
+ "written_by": "Speed Gym data extraction",
+ "date": "2026-09-09",
+ "why": "RAG is creating ~7 CAT quant :Skill nodes and asked for better canonical names from the corpus side BEFORE creation. taxonomy.skill_key in data/exports/vmsg_questions_v1.jsonl is the join key, so a name that does not match a skill_key joins zero questions.",
+ "headline": "'Ratio and Proportion' does NOT exist in this corpus. The canonical label is 'Ratio, Proportion and Variation' (140 rows / 135 playable) and it already has an entry with aliases in taxonomy_v1_1. Creating 'Ratio and Proportion' would join nothing.",
+ "naming_trap": "Do not name-match on substrings: 'Mensuration' CONTAINS 'ratio', so a LIKE '%ratio%' match pulls 422 Geometry and Mensuration rows into Ratio/Proportion. Match on the exact skill_key, or use word boundaries. This bit us while preparing this file.",
+ "do_not_normalise": {
+  "labels": [
+   "fractions",
+   "decimals",
+   "NumberTheory"
+  ],
+  "why": "These look like house-style violations (lowercase / missing space) but they are the LIVE GRAPH's own :Skill names — provenance neo4j_skill_nonstub, graph_backed true. Rewriting skill_key to Title Case would break the BKT join. If the presentation is wrong, fix display_label, which is owner-changeable; skill_key must keep matching the graph."
+ },
+ "skills": {
+  "Number Systems": {
+   "canonical_skill_key": "Number Systems",
+   "exists_in_corpus": true,
+   "graph_backed_today": false,
+   "rows_exact": 612,
+   "playable_exact": 517,
+   "alias_candidates": [
+    {
+     "skill_key": "NumberTheory",
+     "rows": 74,
+     "playable": 0,
+     "note": "adds no playable questions today — alias for correctness, not coverage"
+    },
+    {
+     "skill_key": "Special Numbers",
+     "rows": 95,
+     "playable": 0,
+     "note": "adds no playable questions today — alias for correctness, not coverage"
+    },
+    {
+     "skill_key": "HCF and LCM",
+     "rows": 66,
+     "playable": 66,
+     "note": "adds playable coverage"
+    }
+   ],
+   "rows_with_aliases": 847,
+   "playable_with_aliases": 583
+  },
+  "Geometry and Mensuration": {
+   "canonical_skill_key": "Geometry and Mensuration",
+   "exists_in_corpus": true,
+   "graph_backed_today": false,
+   "rows_exact": 422,
+   "playable_exact": 242,
+   "alias_candidates": [
+    {
+     "skill_key": "Coordinate Geometry",
+     "rows": 113,
+     "playable": 100,
+     "note": "adds playable coverage"
+    },
+    {
+     "skill_key": "Triangles",
+     "rows": 55,
+     "playable": 48,
+     "note": "adds playable coverage"
+    },
+    {
+     "skill_key": "Polygons",
+     "rows": 26,
+     "playable": 21,
+     "note": "adds playable coverage"
+    }
+   ],
+   "rows_with_aliases": 616,
+   "playable_with_aliases": 411
+  },
+  "Profit and Loss": {
+   "canonical_skill_key": "Profit and Loss",
+   "exists_in_corpus": true,
+   "graph_backed_today": false,
+   "rows_exact": 281,
+   "playable_exact": 280,
+   "alias_candidates": [],
+   "rows_with_aliases": 281,
+   "playable_with_aliases": 280
+  },
+  "Interest": {
+   "canonical_skill_key": "Interest",
+   "exists_in_corpus": true,
+   "graph_backed_today": false,
+   "rows_exact": 192,
+   "playable_exact": 192,
+   "alias_candidates": [],
+   "rows_with_aliases": 192,
+   "playable_with_aliases": 192
+  },
+  "Progressions": {
+   "canonical_skill_key": "Progressions",
+   "exists_in_corpus": true,
+   "graph_backed_today": false,
+   "rows_exact": 168,
+   "playable_exact": 157,
+   "alias_candidates": [
+    {
+     "skill_key": "Series",
+     "rows": 53,
+     "playable": 53,
+     "note": "adds playable coverage"
+    },
+    {
+     "skill_key": "Summation of Series",
+     "rows": 64,
+     "playable": 14,
+     "note": "adds playable coverage"
+    }
+   ],
+   "rows_with_aliases": 285,
+   "playable_with_aliases": 224
+  },
+  "Ratio, Proportion and Variation": {
+   "canonical_skill_key": "Ratio, Proportion and Variation",
+   "exists_in_corpus": true,
+   "graph_backed_today": false,
+   "rows_exact": 140,
+   "playable_exact": 135,
+   "alias_candidates": [],
+   "rows_with_aliases": 140,
+   "playable_with_aliases": 135
+  },
+  "Averages": {
+   "canonical_skill_key": "Averages",
+   "exists_in_corpus": true,
+   "graph_backed_today": true,
+   "rows_exact": 197,
+   "playable_exact": 195,
+   "alias_candidates": [
+    {
+     "skill_key": "Averages and Alligations",
+     "rows": 40,
+     "playable": 40,
+     "note": "adds playable coverage"
+    }
+   ],
+   "rows_with_aliases": 237,
+   "playable_with_aliases": 235
+  }
+ },
+ "totals": {
+  "rows_exact_names_only": 2012,
+  "playable_exact_names_only": 1718,
+  "rows_with_aliases": 2598,
+  "playable_with_aliases": 2060,
+  "note": "Aliasing is worth 586 extra rows (342 playable). Without it those questions keep a skill_key that matches no :Skill and stay unjoinable."
+ }
+}
