@@ -54,6 +54,12 @@ def main() -> int:
     ap.add_argument("--exports", default="incoming/topic_browser_full_package/db_exports")
     ap.add_argument("--templates", default="incoming/topic_browser_full_package/content_data/templates/solve_along")
     ap.add_argument("--registry", default="incoming/topic_browser_full_package/schemas_and_taxonomy/ontology_registry.yaml")
+    ap.add_argument("--vocabulary-merge",
+                    default="data/migrations/skill_vocabulary_applied_2026-09-08.json",
+                    help="applied skill-vocabulary migration record. The exports this builder "
+                         "reads predate that migration, so without it the builder derives edges "
+                         "against 470 skill names of which 48 no longer exist. Pass '' to build "
+                         "against the raw export vocabulary.")
     ap.add_argument("--out-dir", default="data/factory")
     args = ap.parse_args()
     exports, out_dir = Path(args.exports), Path(args.out_dir)
@@ -75,6 +81,43 @@ def main() -> int:
             roots.add(name)
 
     alias_map = load_registry_aliases(Path(args.registry))
+
+    # --- vocabulary merge (2026-09-08) ---
+    # The db_exports snapshot predates the skill-vocabulary migration, so it still
+    # carries the 24 case duplicates, 16 namespaced `Topic: Concept` variants, the
+    # 3 Basic Operations variants and 5 structural non-skills that the migration
+    # removed. Folding the merge map into the resolver is what makes `support` a
+    # real recount rather than a name substitution: two variants of one skill
+    # collapse to a single (S, M) key and their evidence ADDS UP, which is exactly
+    # what a name-level rewrite of the emitted file cannot do. The previous
+    # rewrite kept whichever of the two colliding values was written last — an
+    # ordering artefact, not a policy — and on three edges that discarded the
+    # larger count (Nikhilam->Basic Operations 53 vs 2, Urdhva->Basic Operations
+    # 47 vs 2, Paravartya->Linear Equations 5 vs 3).
+    merged_away: dict[str, str] = {}
+    if args.vocabulary_merge:
+        mig = json.loads(Path(args.vocabulary_merge).read_text())
+        merged_away = dict(mig.get("merges") or {})
+        for loser, survivor in merged_away.items():
+            skills.pop(loser, None)
+            alias_map[norm(loser)] = survivor
+        # structural names are not skills at all — they must resolve to nothing,
+        # never to a nearest match
+        structural = {d["name"] if isinstance(d, dict) else d
+                      for d in (mig.get("structural_deletes") or [])}
+        for name in structural:
+            skills.pop(name, None)
+            roots.discard(name)
+        norm_to_name = {}
+        for name in skills:
+            norm_to_name.setdefault(norm(name), name)
+            if skills[name].get("name_norm"):
+                norm_to_name.setdefault(norm(skills[name]["name_norm"]), name)
+        for loser, survivor in merged_away.items():
+            if survivor in skills:
+                norm_to_name[norm(loser)] = survivor
+        print(f"vocabulary merge applied: {len(merged_away)} names folded, "
+              f"{len(structural)} structural names dropped -> {len(skills)} skills")
 
     def resolve(s: str | None) -> str | None:
         if not s:
@@ -150,6 +193,18 @@ def main() -> int:
                 continue
             support[(S, M)] += 1
 
+    # curated and next_topic pairs come straight off the export's raw keys, so they
+    # carry pre-migration names too; canonicalise them through the same resolver.
+    def canon_pairs(pairs):
+        out = []
+        for a, b in pairs:
+            ra, rb = resolve(a), resolve(b)
+            if ra and rb and ra != rb:
+                out.append((ra, rb))
+        return out
+
+    curated = canon_pairs(curated)
+    next_topic = canon_pairs(next_topic)
     curated_set = set(curated)
     next_set = set(next_topic) - curated_set
     derived, dropped = [], Counter()

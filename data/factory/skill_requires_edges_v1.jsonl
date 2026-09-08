@@ -16,25 +16,25 @@
 {"from": "Basic Operations (+, -, ×, ÷)", "to": "Arithmetic", "source": "chain_derived", "support": 21}
 {"from": "Basic Operations (+, -, ×, ÷)", "to": "Basic arithmetic operations", "source": "chain_derived", "support": 3}
 {"from": "Basic Operations (+, -, ×, ÷)", "to": "Decimal Operations", "source": "chain_derived", "support": 2}
-{"from": "Basic Operations (+, -, ×, ÷)", "to": "Exponents", "source": "chain_derived", "support": 2}
-{"from": "Basic Operations (+, -, ×, ÷)", "to": "Fractions and Decimals", "source": "chain_derived", "support": 7}
+{"from": "Basic Operations (+, -, ×, ÷)", "to": "Exponents", "source": "chain_derived", "support": 3}
+{"from": "Basic Operations (+, -, ×, ÷)", "to": "Fractions and Decimals", "source": "chain_derived", "support": 8}
 {"from": "Basic Operations (+, -, ×, ÷)", "to": "Long Division", "source": "chain_derived", "support": 2}
 {"from": "Basic Operations (+, -, ×, ÷)", "to": "Mental calculation strategies", "source": "chain_derived", "support": 2}
-{"from": "Basic Operations (+, -, ×, ÷)", "to": "Multiplication Tables", "source": "chain_derived", "support": 4}
+{"from": "Basic Operations (+, -, ×, ÷)", "to": "Multiplication Tables", "source": "chain_derived", "support": 6}
 {"from": "Basic Operations (+, -, ×, ÷)", "to": "Number Bases", "source": "chain_derived", "support": 3}
-{"from": "Basic Operations (+, -, ×, ÷)", "to": "Number Sense", "source": "chain_derived", "support": 3}
+{"from": "Basic Operations (+, -, ×, ÷)", "to": "Number Sense", "source": "chain_derived", "support": 9}
 {"from": "Basic Operations (+, -, ×, ÷)", "to": "Number Properties", "source": "chain_derived", "support": 2}
 {"from": "Basic Operations (+, -, ×, ÷)", "to": "NumberTheory", "source": "chain_derived", "support": 14}
-{"from": "Basic Operations (+, -, ×, ÷)", "to": "Divisibility Rules", "source": "chain_derived", "support": 3}
-{"from": "Basic Operations (+, -, ×, ÷)", "to": "Place Value", "source": "chain_derived", "support": 4}
-{"from": "Basic Operations (+, -, ×, ÷)", "to": "Place Value System", "source": "chain_derived", "support": 2}
+{"from": "Basic Operations (+, -, ×, ÷)", "to": "Divisibility Rules", "source": "chain_derived", "support": 5}
+{"from": "Basic Operations (+, -, ×, ÷)", "to": "Place Value", "source": "chain_derived", "support": 5}
+{"from": "Basic Operations (+, -, ×, ÷)", "to": "Place Value System", "source": "chain_derived", "support": 4}
 {"from": "Basic Operations (+, -, ×, ÷)", "to": "Scientific Notation", "source": "chain_derived", "support": 2}
 {"from": "Circles", "to": "Algebra", "source": "chain_derived", "support": 2}
 {"from": "Circles", "to": "Coordinate Geometry", "source": "chain_derived", "support": 2}
 {"from": "Complex Numbers", "to": "Coordinate Geometry", "source": "chain_derived", "support": 2}
 {"from": "Complex Numbers", "to": "Polynomials and Factoring", "source": "chain_derived", "support": 2}
 {"from": "Conic Sections (Parabola, Ellipse, Hyperbola)", "to": "Algebra", "source": "chain_derived", "support": 9}
-{"from": "Conic Sections (Parabola, Ellipse, Hyperbola)", "to": "Functions and Graphs", "source": "chain_derived", "support": 2}
+{"from": "Conic Sections (Parabola, Ellipse, Hyperbola)", "to": "Functions and Graphs", "source": "chain_derived", "support": 3}
 {"from": "Conic Sections (Parabola, Ellipse, Hyperbola)", "to": "Coordinate Geometry", "source": "chain_derived", "support": 10}
 {"from": "Conic Sections (Parabola, Ellipse, Hyperbola)", "to": "Polar Coordinates", "source": "chain_derived", "support": 2}
 {"from": "Conic Sections (Parabola, Ellipse, Hyperbola)", "to": "Trigonometry", "source": "chain_derived", "support": 4}
@@ -46,7 +46,7 @@
 {"from": "Coordinate Geometry", "to": "Coordinate System", "source": "chain_derived", "support": 2}
 {"from": "Coordinate Geometry", "to": "Functions and Graphs", "source": "chain_derived", "support": 6}
 {"from": "Coordinate Geometry", "to": "Linear Algebra", "source": "chain_derived", "support": 2}
-{"from": "Coordinate Geometry", "to": "Linear Equations", "source": "chain_derived", "support": 6}
+{"from": "Coordinate Geometry", "to": "Linear Equations", "source": "chain_derived", "support": 7}
 {"from": "Coordinate Geometry", "to": "Reflections", "source": "chain_derived", "support": 3}
 {"from": "Coordinate Geometry", "to": "Transformations", "source": "chain_derived", "support": 6}
 {"from": "Coordinate Geometry", "to": "Trigonometry", "source": "chain_derived", "support": 9}
@@ -65,7 +65,7 @@
 {"from": "Division", "to": "Basic Operations (+, -, ×, ÷)", "source": "chain_derived", "support": 19}
 {"from": "Division", "to": "Multiplication Tables", "source": "chain_derived", "support": 19}
 {"from": "Ekadhikena Purvena (One More than the Previous)", "to": "Arithmetic", "source": "chain_derived", "support": 36}
-{"from": "Ekadhikena Purvena (One More than the Previous)", "to": "Basic Operations (+, -, ×, ÷)", "source": "chain_derived", "support": 9}
+{"from": "Ekadhikena Purvena (One More than the Previous)", "to": "Basic Operations (+, -, ×, ÷)", "source": "chain_derived", "support": 10}
 {"from": "Ekadhikena Purvena (One More than the Previous)", "to": "Divisibility Rules", "source": "chain_derived", "support": 7}
 {"from": "Ekadhikena Purvena (One More than the Previous)", "to": "Division", "source": "chain_derived", "support": 5}
 {"from": "Ekadhikena Purvena (One More than the Previous)", "to": "Fractions and Decimals", "source": "chain_derived", "support": 9}
@@ -86,7 +86,7 @@
 {"from": "Fractions and Decimals", "to": "NumberTheory", "source": "chain_derived", "support": 5}
 {"from": "Functions and Graphs", "to": "Algebra", "source": "chain_derived", "support": 2}
 {"from": "HCF and LCM (Advanced)", "to": "Algebra", "source": "chain_derived", "support": 2}
-{"from": "HCF and LCM (Advanced)", "to": "Basic Operations (+, -, ×, ÷)", "source": "chain_derived", "support": 2}
+{"from": "HCF and LCM (Advanced)", "to": "Basic Operations (+, -, ×, ÷)", "source": "chain_derived", "support": 3}
 {"from": "Heights and Distances", "to": "Pythagorean Theorem", "source": "chain_derived", "support": 2}
 {"from": "Heights and Distances", "to": "Right Triangle Trigonometry", "source": "chain_derived", "support": 2}
 {"from": "Heights and Distances", "to": "Trigonometric Ratios", "source": "chain_derived", "support": 6}
@@ -126,17 +126,17 @@
 {"from": "Mensuration (Area/Volume)", "to": "Algebra", "source": "chain_derived", "support": 10}
 {"from": "Mensuration (Area/Volume)", "to": "Arithmetic", "source": "chain_derived", "support": 14}
 {"from": "Mensuration (Area/Volume)", "to": "Basic Geometry", "source": "chain_derived", "support": 2}
-{"from": "Mensuration (Area/Volume)", "to": "Circles", "source": "chain_derived", "support": 2}
+{"from": "Mensuration (Area/Volume)", "to": "Circles", "source": "chain_derived", "support": 3}
 {"from": "Mensuration (Area/Volume)", "to": "Pythagoras' theorem", "source": "chain_derived", "support": 5}
 {"from": "Mensuration (Area/Volume)", "to": "Triangles", "source": "chain_derived", "support": 2}
-{"from": "Mensuration (Area/Volume)", "to": "Unit Conversion", "source": "chain_derived", "support": 2}
+{"from": "Mensuration (Area/Volume)", "to": "Unit Conversion", "source": "chain_derived", "support": 4}
 {"from": "Modular Arithmetic", "to": "Arithmetic", "source": "chain_derived", "support": 5}
 {"from": "Modular Arithmetic", "to": "Basic Operations (+, -, ×, ÷)", "source": "chain_derived", "support": 3}
 {"from": "Modular Arithmetic", "to": "Number Bases", "source": "chain_derived", "support": 2}
 {"from": "Modular Arithmetic", "to": "NumberTheory", "source": "chain_derived", "support": 2}
 {"from": "Nikhilam Navatashcaramam (All from 9, Last from 10)", "to": "Algebra", "source": "chain_derived", "support": 9}
 {"from": "Nikhilam Navatashcaramam (All from 9, Last from 10)", "to": "Arithmetic", "source": "chain_derived", "support": 99}
-{"from": "Nikhilam Navatashcaramam (All from 9, Last from 10)", "to": "Basic Operations (+, -, ×, ÷)", "source": "chain_derived", "support": 2}
+{"from": "Nikhilam Navatashcaramam (All from 9, Last from 10)", "to": "Basic Operations (+, -, ×, ÷)", "source": "chain_derived", "support": 55}
 {"from": "Nikhilam Navatashcaramam (All from 9, Last from 10)", "to": "Basic Division", "source": "chain_derived", "support": 2}
 {"from": "Nikhilam Navatashcaramam (All from 9, Last from 10)", "to": "Divisibility Rules", "source": "chain_derived", "support": 3}
 {"from": "Nikhilam Navatashcaramam (All from 9, Last from 10)", "to": "Division", "source": "chain_derived", "support": 8}
@@ -146,14 +146,14 @@
 {"from": "Nikhilam Navatashcaramam (All from 9, Last from 10)", "to": "Number Bases", "source": "chain_derived", "support": 14}
 {"from": "Nikhilam Navatashcaramam (All from 9, Last from 10)", "to": "NumberTheory", "source": "chain_derived", "support": 72}
 {"from": "Number Bases", "to": "Arithmetic", "source": "chain_derived", "support": 8}
-{"from": "Number Bases", "to": "Basic Operations (+, -, ×, ÷)", "source": "chain_derived", "support": 3}
+{"from": "Number Bases", "to": "Basic Operations (+, -, ×, ÷)", "source": "chain_derived", "support": 4}
 {"from": "Number Bases", "to": "Basic number sense", "source": "chain_derived", "support": 2}
 {"from": "Paravartya Yojayet (Transpose and Apply)", "to": "Algebra", "source": "chain_derived", "support": 12}
-{"from": "Paravartya Yojayet (Transpose and Apply)", "to": "Linear Equations", "source": "chain_derived", "support": 3}
+{"from": "Paravartya Yojayet (Transpose and Apply)", "to": "Linear Equations", "source": "chain_derived", "support": 8}
 {"from": "Paravartya Yojayet (Transpose and Apply)", "to": "Arithmetic", "source": "chain_derived", "support": 4}
 {"from": "Paravartya Yojayet (Transpose and Apply)", "to": "Basic Operations (+, -, ×, ÷)", "source": "chain_derived", "support": 4}
-{"from": "Paravartya Yojayet (Transpose and Apply)", "to": "Fractions and Decimals", "source": "chain_derived", "support": 7}
-{"from": "Paravartya Yojayet (Transpose and Apply)", "to": "Polynomials and Factoring", "source": "chain_derived", "support": 3}
+{"from": "Paravartya Yojayet (Transpose and Apply)", "to": "Fractions and Decimals", "source": "chain_derived", "support": 8}
+{"from": "Paravartya Yojayet (Transpose and Apply)", "to": "Polynomials and Factoring", "source": "chain_derived", "support": 4}
 {"from": "Percentages", "to": "Basic Operations (+, -, ×, ÷)", "source": "chain_derived", "support": 3}
 {"from": "Permutations and Combinations", "to": "Algebra", "source": "chain_derived", "support": 3}
 {"from": "Permutations and Combinations", "to": "Arithmetic", "source": "chain_derived", "support": 6}
@@ -199,13 +199,13 @@
 {"from": "Ratios and Proportions", "to": "Fractions and Decimals", "source": "chain_derived", "support": 5}
 {"from": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "to": "Algebra", "source": "chain_derived", "support": 29}
 {"from": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "to": "Arithmetic", "source": "chain_derived", "support": 11}
-{"from": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "to": "Basic Operations (+, -, ×, ÷)", "source": "chain_derived", "support": 5}
+{"from": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "to": "Basic Operations (+, -, ×, ÷)", "source": "chain_derived", "support": 6}
 {"from": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "to": "Fractions", "source": "chain_derived", "support": 2}
 {"from": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "to": "Fractions and Decimals", "source": "chain_derived", "support": 10}
-{"from": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "to": "Linear Equations", "source": "chain_derived", "support": 10}
+{"from": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "to": "Linear Equations", "source": "chain_derived", "support": 12}
 {"from": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "to": "NumberTheory", "source": "chain_derived", "support": 5}
-{"from": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "to": "Polynomials and Factoring", "source": "chain_derived", "support": 12}
-{"from": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "to": "Quadratic Equations", "source": "chain_derived", "support": 5}
+{"from": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "to": "Polynomials and Factoring", "source": "chain_derived", "support": 14}
+{"from": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "to": "Quadratic Equations", "source": "chain_derived", "support": 6}
 {"from": "Triangles", "to": "Algebra", "source": "chain_derived", "support": 5}
 {"from": "Triangles", "to": "Angle Measurement", "source": "chain_derived", "support": 2}
 {"from": "Triangles", "to": "Arithmetic", "source": "chain_derived", "support": 7}
@@ -233,17 +233,17 @@
 {"from": "Trigonometric Ratios", "to": "Vector Addition", "source": "chain_derived", "support": 3}
 {"from": "Urdhva Tiryagbhyam (Vertically and Crosswise)", "to": "Algebra", "source": "chain_derived", "support": 22}
 {"from": "Urdhva Tiryagbhyam (Vertically and Crosswise)", "to": "Arithmetic", "source": "chain_derived", "support": 59}
-{"from": "Urdhva Tiryagbhyam (Vertically and Crosswise)", "to": "Basic Operations (+, -, ×, ÷)", "source": "chain_derived", "support": 2}
+{"from": "Urdhva Tiryagbhyam (Vertically and Crosswise)", "to": "Basic Operations (+, -, ×, ÷)", "source": "chain_derived", "support": 49}
 {"from": "Urdhva Tiryagbhyam (Vertically and Crosswise)", "to": "Coordinate Geometry", "source": "chain_derived", "support": 2}
 {"from": "Urdhva Tiryagbhyam (Vertically and Crosswise)", "to": "Exponents", "source": "chain_derived", "support": 7}
 {"from": "Urdhva Tiryagbhyam (Vertically and Crosswise)", "to": "Exponents and Radicals", "source": "chain_derived", "support": 5}
-{"from": "Urdhva Tiryagbhyam (Vertically and Crosswise)", "to": "Fractions and Decimals", "source": "chain_derived", "support": 2}
+{"from": "Urdhva Tiryagbhyam (Vertically and Crosswise)", "to": "Fractions and Decimals", "source": "chain_derived", "support": 3}
 {"from": "Urdhva Tiryagbhyam (Vertically and Crosswise)", "to": "Geometry", "source": "chain_derived", "support": 2}
 {"from": "Urdhva Tiryagbhyam (Vertically and Crosswise)", "to": "Multiplication", "source": "chain_derived", "support": 4}
 {"from": "Urdhva Tiryagbhyam (Vertically and Crosswise)", "to": "Number Bases", "source": "chain_derived", "support": 5}
 {"from": "Urdhva Tiryagbhyam (Vertically and Crosswise)", "to": "NumberTheory", "source": "chain_derived", "support": 15}
-{"from": "Urdhva Tiryagbhyam (Vertically and Crosswise)", "to": "Place Value System", "source": "chain_derived", "support": 3}
-{"from": "Urdhva Tiryagbhyam (Vertically and Crosswise)", "to": "Polynomials and Factoring", "source": "chain_derived", "support": 3}
+{"from": "Urdhva Tiryagbhyam (Vertically and Crosswise)", "to": "Place Value System", "source": "chain_derived", "support": 5}
+{"from": "Urdhva Tiryagbhyam (Vertically and Crosswise)", "to": "Polynomials and Factoring", "source": "chain_derived", "support": 4}
 {"from": "Urdhva Tiryagbhyam (Vertically and Crosswise)", "to": "Quadratic Equations", "source": "chain_derived", "support": 2}
 {"from": "VedicMath", "to": "Algebra", "source": "curated", "support": 1}
 {"from": "VedicMath", "to": "Arithmetic", "source": "curated", "support": 1}

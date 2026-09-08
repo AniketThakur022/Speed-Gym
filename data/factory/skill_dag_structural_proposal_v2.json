@@ -1,0 +1,114 @@
+{
+ "status": "PROPOSAL — not applied",
+ "why": "Re-deriving the DAG under the merged vocabulary combines evidence that was split across name variants. That moves 13 pairs above MIN_SUPPORT=2 and changes which edge the cycle-breaker drops in 4 two-cycles. Support corrections were applied (unambiguous repair, no structural change); these STRUCTURAL changes alter the prerequisite DAG that orders learning, so they need review before they ship.",
+ "review_flags": [
+  "'Triangles -> Isosceles Triangles' and 'Trigonometric Identities -> Negative Angle Identities' read backwards pedagogically (special case as prerequisite of the general case). Evidence-derived, but direction deserves a human look.",
+  "'Divisibility Rules -> Basic Operations' is REMOVED because the recount made the opposite direction stronger (5 vs 3) and the cycle-breaker drops the weaker arm. That is the breaker working correctly on truer counts, but it removes an edge a reader would expect to exist."
+ ],
+ "would_add": [
+  {
+   "from": "Trigonometric Identities",
+   "to": "Negative Angle Identities",
+   "source": "chain_derived",
+   "support": 2
+  },
+  {
+   "from": "Coordinate Geometry",
+   "to": "Basic Operations (+, -, ×, ÷)",
+   "source": "chain_derived",
+   "support": 4
+  },
+  {
+   "from": "Exponents and Radicals",
+   "to": "Laws of Indices",
+   "source": "chain_derived",
+   "support": 2
+  },
+  {
+   "from": "Mensuration (Area/Volume)",
+   "to": "Fractions and Decimals",
+   "source": "chain_derived",
+   "support": 2
+  },
+  {
+   "from": "Basic Operations (+, -, ×, ÷)",
+   "to": "Perfect Squares",
+   "source": "chain_derived",
+   "support": 2
+  },
+  {
+   "from": "Mensuration (Area/Volume)",
+   "to": "Basic Operations (+, -, ×, ÷)",
+   "source": "chain_derived",
+   "support": 2
+  },
+  {
+   "from": "Mensuration (Area/Volume)",
+   "to": "Area Calculations",
+   "source": "chain_derived",
+   "support": 2
+  },
+  {
+   "from": "Trigonometric Ratios",
+   "to": "Triangles",
+   "source": "chain_derived",
+   "support": 2
+  },
+  {
+   "from": "HCF and LCM (Advanced)",
+   "to": "Polynomials and Factoring",
+   "source": "chain_derived",
+   "support": 2
+  },
+  {
+   "from": "Conic Sections (Parabola, Ellipse, Hyperbola)",
+   "to": "Trigonometric Ratios",
+   "source": "chain_derived",
+   "support": 2
+  },
+  {
+   "from": "Triangles",
+   "to": "Isosceles Triangles",
+   "source": "chain_derived",
+   "support": 2
+  },
+  {
+   "from": "Mensuration (Area/Volume)",
+   "to": "Basic Algebra",
+   "source": "chain_derived",
+   "support": 2
+  },
+  {
+   "from": "Triangles",
+   "to": "Parallel Lines",
+   "source": "chain_derived",
+   "support": 2
+  }
+ ],
+ "would_remove": [
+  {
+   "from": "Basic Operations (+, -, ×, ÷)",
+   "to": "Number Bases",
+   "source": "chain_derived",
+   "support": 3
+  },
+  {
+   "from": "Divisibility Rules",
+   "to": "Basic Operations (+, -, ×, ÷)",
+   "source": "chain_derived",
+   "support": 3
+  },
+  {
+   "from": "Divisibility Rules",
+   "to": "Modular Arithmetic",
+   "source": "chain_derived",
+   "support": 3
+  },
+  {
+   "from": "Modular Arithmetic",
+   "to": "Number Bases",
+   "source": "chain_derived",
+   "support": 2
+  }
+ ]
+}
