@@ -2,6 +2,12 @@
 #   docker compose -f docker-compose.yml -f docker-compose.prod.yml --profile app up -d --build
 # DB ports are NOT published; secrets come from .env (gitignored); everything restarts.
 #
+# `ports: !override []` and not `ports: []`: compose MERGES port sequences across
+# files, so a plain empty list left the base file's 0.0.0.0 bindings in place and
+# a prod bring-up published Postgres, Neo4j (browser included), pgbouncer and an
+# unauthenticated Redis to the internet. !override replaces the list instead.
+# Verified by tests/test_deployment_config.py, which renders the real config.
+#
 # WHY EVERY SECRET IS RESTATED HERE: compose merges `environment:` maps and gives
 # them precedence over `env_file:`. The base docker-compose.yml pins dev literals
 # (JWT_SECRET: dev-only-change-me, POSTGRES_PASSWORD: vmsg, …), so an env_file
@@ -11,26 +17,65 @@
 # to start if it is missing, instead of falling back to a dev default.
 services:
   postgres:
-    ports: []
+    ports: !override []
     restart: unless-stopped
     environment:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+    # shared_buffers <=1G (architecture §3.2). Held at 640M so the three data
+    # services fit a 4 GiB droplet with real headroom for the OS and dockerd —
+    # see the budget table in docs/backend/DEPLOYMENT.md. pgbouncer pools in
+    # transaction mode, so few backends are ever live and max_connections is a
+    # ceiling rather than a working set.
+    command:
+      - postgres
+      - -c
+      - shared_buffers=640MB
+      - -c
+      - effective_cache_size=1GB
+      - -c
+      - work_mem=8MB
+      - -c
+      - maintenance_work_mem=128MB
+      - -c
+      - max_connections=100
+    mem_limit: 960m
   neo4j:
-    ports: []
+    ports: !override []
     restart: unless-stopped
+    # SELF-HOSTED (owner decision 2026-09-09), not AuraDB Free. The closure
+    # design's OOM analysis exists only because of Aura Free's fixed JVM
+    # ceiling; owning the JVM means the caps are ours to set, and the graph
+    # stays on infrastructure we control. Caps are architecture §3.2's for
+    # Droplet B (heap <=1G, page cache <=1G) — see docs/backend/DEPLOYMENT.md
+    # for why page cache runs at 512m rather than the 1G ceiling.
     environment:
       NEO4J_AUTH: neo4j/${NEO4J_PASSWORD:?set NEO4J_PASSWORD in .env}
+      NEO4J_server_memory_heap_initial__size: 1G
+      NEO4J_server_memory_heap_max__size: 1G
+      NEO4J_server_memory_pagecache_size: 512m
+    # A hard limit, so a JVM that overruns is killed instead of starving
+    # Postgres and Redis on the same 4 GB box.
+    mem_limit: 2g
   redis:
-    ports: []
+    ports: !override []
     restart: unless-stopped
+    # maxmemory 512m + allkeys-lru comes from the base file (architecture §3.2);
+    # the limit leaves room for Redis's own copy-on-write overhead.
+    mem_limit: 640m
   pgbouncer:
-    ports: []
+    ports: !override []
     restart: unless-stopped
     environment:
       DB_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
   api:
     restart: unless-stopped
     env_file: .env
+    # Loopback only: the TLS proxy is the sole public entrance (Droplet A is
+    # "80/443 only"). Published on 0.0.0.0 the API was directly reachable on
+    # :8000, bypassing TLS, HSTS and whatever the proxy enforces. Set
+    # APP_BIND_IP to the VPC address only if the proxy runs on another host.
+    ports: !override
+      - "${APP_BIND_IP:-127.0.0.1}:8000:8000"
     environment:
       BEHIND_TLS: "true"
       DEBUG: "false"
@@ -48,6 +93,10 @@ services:
   game-server:
     restart: unless-stopped
     env_file: .env
+    # Same reasoning as the API: the proxy terminates TLS and upgrades the
+    # WebSocket; nothing else should reach :3001.
+    ports: !override
+      - "${APP_BIND_IP:-127.0.0.1}:3001:3001"
     environment:
       JWT_SECRET: ${JWT_SECRET:?set JWT_SECRET in .env}
       INTERNAL_API_KEY: ${INTERNAL_API_KEY:?set INTERNAL_API_KEY in .env}

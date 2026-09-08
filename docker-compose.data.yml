@@ -1,0 +1,32 @@
+# Droplet B (data) — architecture §3.2. Postgres + Neo4j + Redis ONLY.
+#
+#   DATA_BIND_IP=<vpc-private-ip> \
+#     docker compose -f docker-compose.yml -f docker-compose.prod.yml \
+#                    -f docker-compose.data.yml up -d
+#
+# No --profile app here, so the app services never start on this host.
+#
+# DATA_BIND_IP MUST be the VPC-private address (INF-SEQ-01: "bind DB/Redis to
+# VPC-local IPs only"). Never 0.0.0.0 and never the public interface — that
+# publishes the Ledger, the graph and the session store to the internet. There
+# is deliberately no default: an unset value fails the command rather than
+# quietly binding everywhere.
+#
+# Neo4j's HTTP browser (7474) is NOT published. Bolt (7687) is all the app needs;
+# the browser is reached over an SSH tunnel when an operator needs it.
+services:
+  postgres:
+    # !override, not a bare list: compose merges port sequences, so without it
+    # the base file's 0.0.0.0 binding survives alongside this one.
+    ports: !override
+      - "${DATA_BIND_IP:?set DATA_BIND_IP to the VPC-private address of this droplet}:5432:5432"
+  neo4j:
+    # !override, not a bare list: compose merges port sequences, so without it
+    # the base file's 0.0.0.0 binding survives alongside this one.
+    ports: !override
+      - "${DATA_BIND_IP:?set DATA_BIND_IP to the VPC-private address of this droplet}:7687:7687"
+  redis:
+    # !override, not a bare list: compose merges port sequences, so without it
+    # the base file's 0.0.0.0 binding survives alongside this one.
+    ports: !override
+      - "${DATA_BIND_IP:?set DATA_BIND_IP to the VPC-private address of this droplet}:6379:6379"

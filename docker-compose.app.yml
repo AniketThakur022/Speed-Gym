@@ -1,0 +1,31 @@
+# Droplet A (edge + app) — architecture §3.2. FastAPI + game server + worker.
+#
+#   DATA_HOST=<droplet-b-vpc-ip> \
+#     docker compose -f docker-compose.yml -f docker-compose.prod.yml \
+#                    -f docker-compose.app.yml --profile app \
+#                    up -d --no-deps api game-server worker
+#
+# `--no-deps` matters: the base file's api depends_on postgres/neo4j, so without
+# it compose would start a SECOND, empty copy of the databases on this droplet.
+# Naming the services explicitly plus --no-deps keeps the data tier on Droplet B.
+#
+# TLS: nothing in this compose terminates it. BEHIND_TLS=true (set in
+# docker-compose.prod.yml) only tells the API to send HSTS — it assumes a proxy
+# in front. Put Traefik/Caddy/nginx on this droplet, terminate there, and set
+# TRUSTED_PROXIES to that proxy's address so the rate limiter can believe its
+# X-Forwarded-For (see docs/backend/HARDENING.md).
+services:
+  api:
+    environment:
+      DATABASE_URL: postgresql://vmsg:${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}@${DATA_HOST:?set DATA_HOST to Droplet B's VPC address}:5432/vmsg
+      NEO4J_URI: bolt://${DATA_HOST:?set DATA_HOST to Droplet B's VPC address}:7687
+      REDIS_URL: redis://${DATA_HOST:?set DATA_HOST to Droplet B's VPC address}:6379/0
+    mem_limit: 1g
+  game-server:
+    mem_limit: 512m
+  worker:
+    environment:
+      DATABASE_URL: postgresql://vmsg:${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}@${DATA_HOST:?set DATA_HOST to Droplet B's VPC address}:5432/vmsg
+      NEO4J_URI: bolt://${DATA_HOST:?set DATA_HOST to Droplet B's VPC address}:7687
+      REDIS_URL: redis://${DATA_HOST:?set DATA_HOST to Droplet B's VPC address}:6379/0
+    mem_limit: 768m

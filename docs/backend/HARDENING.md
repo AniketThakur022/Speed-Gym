@@ -53,3 +53,21 @@ deployed host; Traefik TLS termination config lives with the droplet, not here.
   browsers dropped them and the PWA saw a generic network error, then retried
   into the limiter. `expose_headers` now publishes `X-RateLimit-*`,
   `Retry-After` and `X-Request-Id` so the client can read its own budget.
+
+## Prod port exposure (found 2026-09-09 while wiring the self-hosted data tier)
+
+`docker-compose.prod.yml` carried `ports: []` for the data services under a
+comment saying "DB ports are NOT published". **It did not unpublish them.**
+Compose MERGES port sequences across files, so the base file's bindings
+survived and a production bring-up would have published Postgres 5432, Neo4j
+7474 **and** 7687, pgbouncer 6432 and an unauthenticated Redis 6379 on
+`0.0.0.0` — the Ledger, the graph and the session store on the public internet.
+Same family as the `env_file` precedence defect above: an override that reads
+correctly but loses to compose's merge rules.
+
+Fixed with `ports: !override []`, which replaces the list instead of merging.
+The API and game server now bind to `127.0.0.1` (override with `APP_BIND_IP`)
+so the TLS proxy is the only public entrance. `tests/test_deployment_config.py`
+renders the real `docker compose config` and fails if any data service is
+published, or if anything binds to all interfaces — reading the YAML would not
+have caught this, because the YAML looked right.
