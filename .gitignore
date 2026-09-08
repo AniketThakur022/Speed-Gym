@@ -21,3 +21,4 @@ out/
 # Database dumps — must never be committed (see scripts/backup.sh)
 backups/
 *.pgdump
+demo/output/_scratch/

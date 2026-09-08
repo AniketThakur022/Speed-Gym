@@ -1,0 +1,379 @@
+<title>Speed Gym Systems Readout</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --ground:#0A0C09; --panel:#12160F; --panel-2:#171C15; --line:#242A22;
+  --ink:#E9EFE4; --muted:#8C978B; --dim:#5F6A5E;
+  --lime:#C8FF5A; --amber:#F0B429; --rose:#FF7A70;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;
+  --disp:"Archivo","IBM Plex Sans",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);
+  font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+a{color:var(--lime)}
+h1,h2,h3{font-family:var(--disp);text-wrap:balance;margin:0}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+
+/* header */
+header{border-bottom:1px solid var(--line);padding:56px 0 40px;background:
+  radial-gradient(1200px 300px at 12% -10%, rgba(200,255,90,.07), transparent 70%)}
+h1{font-size:clamp(30px,4.6vw,50px);font-weight:700;letter-spacing:-.02em;line-height:1.05;margin:14px 0 0}
+.sub{color:var(--muted);max-width:64ch;margin:16px 0 0;font-size:16px}
+.metastrip{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:26px;font-family:var(--mono);font-size:12px;color:var(--dim)}
+.metastrip b{color:var(--ink);font-weight:500}
+
+/* verification banner */
+.verify{margin:36px 0 0;border:1px solid var(--line);border-left:3px solid var(--amber);
+  background:var(--panel);border-radius:3px;padding:20px 22px}
+.verify h3{font-size:14px;font-weight:600;letter-spacing:.01em}
+.verify p{margin:8px 0 0;color:var(--muted);font-size:14px;max-width:82ch}
+.vgrid{display:flex;gap:26px;margin-top:14px;flex-wrap:wrap;font-family:var(--mono);font-size:12px}
+.vgrid span{color:var(--dim)}
+.vgrid b{font-size:19px;font-weight:600;display:block;line-height:1.2}
+.v-ok b{color:var(--lime)} .v-bad b{color:var(--rose)} .v-un b{color:var(--amber)}
+
+/* sections */
+section{padding:52px 0;border-bottom:1px solid var(--line)}
+.shead{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+.shead h2{font-size:26px;font-weight:600;letter-spacing:-.01em}
+.chip{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  padding:4px 9px;border-radius:2px;border:1px solid;white-space:nowrap}
+.chip.live{color:var(--lime);border-color:rgba(200,255,90,.4);background:rgba(200,255,90,.07)}
+.chip.blocked{color:var(--amber);border-color:rgba(240,180,41,.4);background:rgba(240,180,41,.07)}
+.lede{color:var(--muted);max-width:76ch;margin:14px 0 0}
+
+/* metric grid */
+.metrics{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:1px;
+  background:var(--line);border:1px solid var(--line);border-radius:3px;margin:28px 0 0;overflow:hidden}
+.m{background:var(--panel);padding:15px 16px}
+.m .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--dim);
+  display:block;margin-bottom:7px;line-height:1.35}
+.m .v{font-family:var(--mono);font-size:23px;font-weight:600;letter-spacing:-.01em;
+  font-variant-numeric:tabular-nums;line-height:1}
+.m .v.good{color:var(--lime)} .m .v.warn{color:var(--amber)} .m .v.bad{color:var(--rose)}
+.m .note{font-size:11.5px;color:var(--dim);margin-top:6px;line-height:1.45}
+
+/* evidence list */
+.ev{margin:30px 0 0;display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.ev article{background:var(--panel);padding:18px 20px}
+.ev h4{font-family:var(--disp);font-size:15px;font-weight:600;margin:0 0 6px;color:var(--ink)}
+.ev p{margin:0;color:var(--muted);font-size:14px;max-width:88ch}
+.ev code{font-family:var(--mono);font-size:12.5px;color:var(--ink);background:var(--panel-2);
+  padding:1px 5px;border-radius:2px;border:1px solid var(--line)}
+.out{font-family:var(--mono);font-size:12.5px;color:var(--lime);background:#0D110C;
+  border:1px solid var(--line);border-left:2px solid var(--lime);border-radius:2px;
+  padding:10px 13px;margin:11px 0 0;overflow-x:auto;white-space:pre;line-height:1.65}
+.out.warn{color:var(--amber);border-left-color:var(--amber)}
+.out.bad{color:var(--rose);border-left-color:var(--rose)}
+
+/* limits */
+.limits{margin:30px 0 0;border:1px solid var(--line);border-radius:3px;background:var(--panel);overflow:hidden}
+.limits summary{cursor:pointer;padding:14px 20px;font-family:var(--mono);font-size:12px;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--amber);list-style:none;
+  display:flex;align-items:center;gap:10px}
+.limits summary::-webkit-details-marker{display:none}
+.limits summary::before{content:"›";font-size:16px;transition:transform .18s;display:inline-block}
+.limits[open] summary::before{transform:rotate(90deg)}
+.limits summary:focus-visible{outline:2px solid var(--lime);outline-offset:-2px}
+.limits ul{margin:0;padding:4px 20px 18px 40px;color:var(--muted);font-size:13.5px}
+.limits li{margin:9px 0;max-width:92ch}
+.limits li b{color:var(--ink);font-weight:500}
+
+/* blocked */
+.blockgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:26px}
+.bk{border:1px solid var(--line);border-left:3px solid var(--amber);background:var(--panel);
+  border-radius:3px;padding:17px 19px}
+.bk h4{font-family:var(--disp);font-size:15px;font-weight:600;margin:0 0 7px}
+.bk p{margin:0;color:var(--muted);font-size:13.5px}
+.bk .who{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--amber);display:block;margin-bottom:8px}
+
+/* run */
+.runbox{background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:22px;margin-top:24px}
+.runbox pre{font-family:var(--mono);font-size:13px;color:var(--lime);margin:0;overflow-x:auto;
+  white-space:pre;line-height:1.8}
+.runbox .cm{color:var(--dim)}
+footer{padding:38px 0 60px;color:var(--dim);font-size:13px}
+footer b{color:var(--muted);font-weight:500}
+@media (max-width:640px){ .metrics{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))} }
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<header>
+  <div class="wrap">
+    <span class="eyebrow">Vedic Math Speed Gym · Exam Arena · Systems readout</span>
+    <h1>Everything built, running live</h1>
+    <p class="sub">Three workstreams, driven against the running stack and captured as they actually
+      behaved — then checked by an adversarial pass whose only job was to find numbers that were
+      written rather than measured. It found two. They are corrected below.</p>
+    <div class="metastrip">
+      <span>Captured <b>6 Sep 2026</b></span>
+      <span>Rebuild day <b>5</b> after total data loss</span>
+      <span>Stack <b>Postgres · Neo4j · Redis · FastAPI</b></span>
+      <span>Demo checks <b>59/59 passed</b></span>
+    </div>
+
+    <div class="verify">
+      <h3>This readout audited itself</h3>
+      <p>An independent agent re-ran the underlying commands for a sample of every headline claim.
+        Thirty-five reproduced exactly. Two were wrong — both from files changing under the capture,
+        not from invention — and both are stated in place rather than quietly fixed. Six claims are
+        unreproducible by nature: the factory samples parameters randomly, so a re-run lands on
+        different numbers by design.</p>
+      <div class="vgrid">
+        <div class="v-ok"><b>35</b><span>claims reproduced</span></div>
+        <div class="v-bad"><b>2</b><span>found false — corrected</span></div>
+        <div class="v-un"><b>6</b><span>non-reproducible by design</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="shead"><h2>Backend</h2>
+      <span class="chip live">API live</span><span class="chip live">310 + 148 tests green</span>
+      <span class="chip blocked">Provider keys absent</span></div>
+    <p class="lede">The complete learner journey exercised over HTTP against the running API —
+      account, practice, mastery, sync, mocks, chatbot, billing, admin — plus the operational
+      surfaces a team actually needs on day one.</p>
+
+    <div class="metrics">
+      <div class="m"><span class="k">API routes</span><span class="v">78</span><span class="note">corrected from 77 by the audit</span></div>
+      <div class="m"><span class="k">Python tests</span><span class="v good">310</span><span class="note">0 failed</span></div>
+      <div class="m"><span class="k">TS tests</span><span class="v good">148</span><span class="note">17 files</span></div>
+      <div class="m"><span class="k">Mastery move</span><span class="v good">35→82%</span><span class="note">exact pre-loss parity</span></div>
+      <div class="m"><span class="k">Answer leaks</span><span class="v good">0</span><span class="note">across every hint level</span></div>
+      <div class="m"><span class="k">Quarantined held back</span><span class="v warn">2,624</span><span class="note">counted, not hidden</span></div>
+    </div>
+
+    <div class="ev">
+      <article><h4>A stolen session token kills the whole device session</h4>
+        <p>Refreshing issues a new token. Replaying the old one doesn't just fail — it revokes the
+          session, so the freshly issued token dies too. An attacker holding a copied token gains nothing
+          and the real user is logged out rather than silently shadowed.</p>
+        <div class="out warn">replay old refresh  → 401 refresh token replay detected; device session revoked
+use new refresh    → 401 refresh token revoked</div></article>
+
+      <article><h4>The learning engine moves exactly as it did before the crash</h4>
+        <p>The real client-side engine, run against a correct answer on a difficulty-1 item: the same
+          numbers the pre-loss build produced in July. This is the evidence the psychometrics were
+          rebuilt faithfully, not approximated.</p>
+        <div class="out">P(L) 0.35 FRACTURED → posterior 0.70787 → learn step → 0.8247 FRAGILE</div></article>
+
+      <article><h4>Offline work syncs once, even when the phone sends it twice</h4>
+        <p>A batch of two events is accepted and scores XP. The byte-identical resend is accepted as
+          zero, awards nothing, and the database still holds exactly two rows — verified directly in
+          Postgres, not inferred from the API response.</p>
+        <div class="out">first send  accepted=2 duplicates=0 xp=55
+resend      accepted=0 duplicates=2 xp=0
+psql raw_events → 2 rows</div></article>
+
+      <article><h4>Dark features answer 404, not 403</h4>
+        <p>A feature that is switched off is indistinguishable from one that never existed. A 403 would
+          confirm to anyone probing that something unreleased is there; 404 tells them nothing.</p>
+        <div class="out">social_friends ON  → 200      social_clips dark → 404</div></article>
+
+      <article><h4>A forged payment signature never grants anything</h4>
+        <p>Verified on a throwaway server so the shared one was never reconfigured: forged and tampered
+          webhooks are rejected, a correctly signed one is accepted, and a redelivery of the same bytes
+          is recognised as a duplicate — because the ledger key is a hash of the <em>signed</em> body,
+          not the unsigned header a caller can freely change.</p>
+        <div class="out">forged sig → 400   tampered body → 400   valid → 200   redelivery → duplicate</div></article>
+
+      <article><h4>Prices are derived, not hardcoded</h4>
+        <p>The pro tier is stored in USD cents and converted at the configured rate, so a rate change
+          moves every price coherently instead of leaving stale rupee literals scattered in code.</p>
+        <div class="out">600 US cents × 84.0 → 50,400 paise (₹504.00)</div></article>
+    </div>
+
+    <details class="limits"><summary>What did not work, stated plainly</summary>
+      <ul>
+        <li><b>The API process on :8000 is running stale code.</b> It serves 30 routes; the current tree
+          has 78. Six whole routers — dashboard, mocks, chat, billing, social, family — are missing from
+          that process. The demo detected this and drove a current build instead rather than reporting
+          a passing demo against an old server. <b>Restart that uvicorn before showing anyone.</b></li>
+        <li><b>The audit caught the capture's own staleness.</b> It reported 77 routes; a server booted
+          from the current commit serves 78. The demo's chosen target was itself five hours behind HEAD —
+          it failed the very test it had applied to :8000. No other number was affected; a fresh build
+          returned byte-identical results for practice, billing and chat.</li>
+        <li><b>No real payment was attempted.</b> Provider keys are absent, so checkout returns an honest
+          503 naming what is missing. Signature verification was proven separately.</li>
+        <li><b>CAT's −1 penalty could not be shown over HTTP</b> — only the quant pool is bound, and it
+          yields numeric answers, which correctly carry no penalty. The arithmetic was demonstrated by
+          calling the real scoring engine directly: <code>10×(+3) + 6×(−1) + 8×0 = 24.0/72.0</code>.
+          Honest, but an engine call rather than a round trip.</li>
+        <li><b>No generated content is servable yet.</b> Every factory item is quarantined pending the
+          judge models, so the generated tier is empty in every session. The API reports this rather
+          than hiding it.</li>
+      </ul>
+    </details>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="shead"><h2>Content factory</h2>
+      <span class="chip live">Nightly run green</span><span class="chip live">Zero tokens</span>
+      <span class="chip blocked">Judges key-blocked</span></div>
+    <p class="lede">A real nightly run, end to end: generate, audit through seven stages, refuse to
+      promote, and write to the live database and cache. The refusal is the point — nothing reaches a
+      learner that a panel of judges has not seen, and the judges need a key that has not arrived.</p>
+
+    <div class="metrics">
+      <div class="m"><span class="k">Candidates audited</span><span class="v">934</span><span class="note">one real run</span></div>
+      <div class="m"><span class="k">Delivered</span><span class="v good">326</span><span class="note">in 0.46 seconds</span></div>
+      <div class="m"><span class="k">AI tokens spent</span><span class="v good">0</span><span class="note">generation is parametric</span></div>
+      <div class="m"><span class="k">Schema valid</span><span class="v good">326/326</span><span class="note">frontend's own zod</span></div>
+      <div class="m"><span class="k">Formulas checked</span><span class="v good">1,682</span><span class="note">0 render failures</span></div>
+      <div class="m"><span class="k">Injected defects caught</span><span class="v good">10/10</span><span class="note">each at the right stage</span></div>
+    </div>
+
+    <div class="ev">
+      <article><h4>Ten deliberate defects, ten catches, each at the correct stage</h4>
+        <p>Broken candidates were constructed one per failure class and fed through the real auditor —
+          a missing answer, an abandoned walkthrough, unrenderable notation, arithmetic that does not
+          hold, a duplicate. Every one was stopped, and the stage that stopped it was the stage that
+          should have.</p>
+        <div class="out">10 injected → 10 rejected → 0 reached the pool</div></article>
+
+      <article><h4>Everything generated tonight is quarantined, by design</h4>
+        <p>With no judge keys, the seventh stage votes “pending” for every item, so all 326 terminate
+          in quarantine and none can be promoted. This is the safety property working, not an outage:
+          content cannot reach a learner by default, only by passing.</p>
+        <div class="out warn">326 delivered → 326 quarantined_pending_consensus → 0 promoted</div></article>
+
+      <article><h4>A malformed verdict cannot smuggle content through</h4>
+        <p>The intake refuses verdicts that don't survive scrutiny — a stated result that contradicts
+          its own panel's votes, three identical reviewers dressed as a panel, an unattributable
+          verdict with no backend named. The gate distrusts the paperwork, not just the content.</p>
+        <div class="out bad">4 malformed verdicts → 4 refused, each with a reason</div></article>
+
+      <article><h4>“Read-only” proven by checksum, not asserted</h4>
+        <p>The dry run hashes the trust-ladder state before and after itself and prints both, so the
+          claim that nothing was mutated is evidence a reader can check rather than a promise.</p>
+        <div class="out">sha256 before == sha256 after — 4 state files unchanged</div></article>
+    </div>
+
+    <details class="limits"><summary>What did not work, stated plainly</summary>
+      <ul>
+        <li><b>The judge panel is key-blocked</b> — no keys for the three configured models, so nothing
+          can ever leave quarantine today. Every downstream “0 promoted” follows from this one fact.</li>
+        <li><b>The demo found a real gap in the auditor it was demonstrating.</b> KaTeX has no metrics
+          for the rupee sign, and the auditor's character lists omit it, so four formulas pass the
+          render stage and still draw a wrong glyph. The renderer only warns on stderr, so nothing
+          downstream can see it. Deliberately reported, not patched from inside a demo script.</li>
+        <li><b>The run's exact counts cannot be reproduced.</b> Parameter sampling is random against a
+          growing deduplication window; a re-run audited 950 and delivered 319. The mechanism is real
+          and the run's own artefacts on disk carry precisely the reported figures.</li>
+      </ul>
+    </details>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="shead"><h2>Data extraction</h2>
+      <span class="chip live">Read-only, 3.4s</span><span class="chip live">Baseline derived</span>
+      <span class="chip blocked">Vision pass needs keys</span></div>
+    <p class="lede">The corpus, measured from the files themselves — and the recovery story rebuilt
+      from the evidence rather than quoted from a document.</p>
+
+    <div class="metrics">
+      <div class="m"><span class="k">Questions</span><span class="v">19,619</span><span class="note">25 books</span></div>
+      <div class="m"><span class="k">Answer keys</span><span class="v good">77.5%</span><span class="note">from 68.5% at restart</span></div>
+      <div class="m"><span class="k">Hall &amp; Knight</span><span class="v good">0 → 69.8%</span><span class="note">+1,308 keys</span></div>
+      <div class="m"><span class="k">Playable</span><span class="v">12,872</span><span class="note">65.6%, blockers named</span></div>
+      <div class="m"><span class="k">Option lists recovered</span><span class="v good">664</span><span class="note">97.4% key-consistent</span></div>
+      <div class="m"><span class="k">OCR pages on disk</span><span class="v">12,616</span><span class="note">21 book stores</span></div>
+    </div>
+
+    <div class="ev">
+      <article><h4>The “before” number is reconstructed, not quoted</h4>
+        <p>Rather than trusting the documented 68.5%, the demo replays every key ever added as a patch,
+          checks which actually landed, and subtracts them. The reconstruction lands on 68.5% exactly —
+          independently corroborating the figure — and produces the per-book recovery table as a
+          by-product.</p>
+        <div class="out">replay 1,769 key rows → subtract → 68.5% at restart → 77.5% now (+1,763)</div></article>
+
+      <article><h4>A fabricated answer is caught before it can be written</h4>
+        <p>A corrupted patch was built with six injected faults, including an invented option list. The
+          preservation gate compares proposed text against the cited page's own OCR and rejects it at a
+          90% off-page token rate. Exit code 1 means the apply step never runs.</p>
+        <div class="out bad">fabricated row → 90.0% off-page tokens → REFUSED (exit 1)
+rewrite with no page citation → REFUSED: no preservation reference</div></article>
+
+      <article><h4>Suspected errors are presented as evidence, not verdicts</h4>
+        <p>Twenty-three answer keys where the book appears to disagree with our stored value are shown
+          for review — including the admission that the largest cluster turned out to be our own method
+          error rather than the book's. Nine were corrected after checking the page images, with the
+          superseded value kept.</p>
+        <div class="out warn">23 flagged for review → 9 corrected → 30 marked suspect → old values retained</div></article>
+
+      <article><h4>Unknown is a state, distinct from decided</h4>
+        <p>A topic that reviewers considered and rejected is not the same as one nobody has mapped. The
+          export carries both separately, and a further flag marks which resolved topics can actually
+          drive mastery tracking — so no fabricated identifier ever reaches the learning engine.</p>
+        <div class="out">7,926 resolved · 7,424 declined-with-reason · 4,269 unresolved · 3,736 usable for mastery</div></article>
+    </div>
+
+    <details class="limits"><summary>What did not work, stated plainly</summary>
+      <ul>
+        <li><b>The audit caught a drifted number here too.</b> The recorded export file size was 28KB
+          behind by the time it was checked — the file was regenerated ninety seconds after the capture.
+          Row count was unaffected.</li>
+        <li><b>The vision pass is key-blocked.</b> 3,509 questions need a model to read their figures,
+          and the batches are built and waiting.</li>
+        <li><b>One book cannot be fixed by any pipeline.</b> 343 of 466 pages in the Arun Sharma DI
+          source are Google Books placeholders, not content. It needs a real copy.</li>
+      </ul>
+    </details>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 style="font-size:26px;font-weight:600">What is waiting on a decision or a key</h2>
+    <p class="lede">Nothing below is unbuilt. Each is finished code waiting on something only the
+      owner can supply.</p>
+    <div class="blockgrid">
+      <div class="bk"><span class="who">Owner decision</span><h4>Which content the app serves</h4>
+        <p>The app serves a 6-book graph; the enriched 25-book corpus has no route to a learner. This
+          now also blocks mock-exam pools — candidates are staged and binding is a rename.</p></div>
+      <div class="bk"><span class="who">Owner key</span><h4>Judge models</h4>
+        <p>Until keys land, every generated item stays quarantined and the generated tier is empty for
+          learners. This is the single largest unlock in the project.</p></div>
+      <div class="bk"><span class="who">Owner key</span><h4>Payments &amp; vision</h4>
+        <p>Razorpay and Stripe keys turn checkout from an honest 503 into a live purchase. A vision key
+          releases 3,509 blocked questions.</p></div>
+      <div class="bk"><span class="who">Environment</span><h4>Native shells</h4>
+        <p>Android and iOS builds need a machine with Android Studio and Xcode. Everything up to that
+          point is configured.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 style="font-size:26px;font-weight:600">Run it yourself</h2>
+    <p class="lede">Every number above came from these scripts. They are read-only against project
+      data, idempotent, and each writes its captured output as JSON.</p>
+    <div class="runbox"><pre><span class="cm"># bring the stack up, then:</span>
+./demo/run_all.sh                 <span class="cm"># all three, with a preflight</span>
+./demo/run_all.sh backend         <span class="cm"># or one at a time</span>
+
+<span class="cm"># captured output lands here</span>
+demo/output/{backend,rag,extraction}.json</pre></div>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  Captured 6 September 2026 against the live development stack.
+  <b>Every figure is a measurement</b>, and the two that were not are named where they appear.
+  Demo scripts and captured JSON are committed in <code style="font-family:var(--mono)">demo/</code>.
+</div></footer>
