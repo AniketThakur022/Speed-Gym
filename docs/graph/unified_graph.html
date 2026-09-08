@@ -1,0 +1,290 @@
+<title>Unified Content Graph</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&display=swap">
+<style>
+:root{--ground:#0A0C09;--panel:#12160F;--panel2:#171C15;--line:#242A22;
+--ink:#E9EFE4;--muted:#8C978B;--dim:#5F6A5E;
+--skill:#C8FF5A;--q:#6BC5FF;--solve:#FFB86B;--explain:#C58BFF;--trap:#FF7A70;
+--sutra:#F0D264;--book:#93A08F;--topic:#FF9ECF;--chunk:#7FE3C4;--amber:#F0B429;
+--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;--sans:"IBM Plex Sans",system-ui,sans-serif;
+--disp:"Archivo","IBM Plex Sans",system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.62;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+h1,h2,h3,h4{font-family:var(--disp);margin:0;text-wrap:balance}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+header{border-bottom:1px solid var(--line);padding:54px 0 40px;background:radial-gradient(1100px 300px at 8% -20%,rgba(107,197,255,.08),transparent 70%)}
+h1{font-size:clamp(30px,4.4vw,48px);font-weight:700;letter-spacing:-.02em;line-height:1.06;margin:13px 0 0}
+.sub{color:var(--muted);max-width:66ch;margin:15px 0 0;font-size:16px}
+.growth{display:flex;gap:34px;flex-wrap:wrap;margin-top:26px;font-family:var(--mono)}
+.growth div span{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);display:block}
+.growth div b{font-size:24px;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+.growth div i{font-style:normal;color:var(--q);font-size:13px;margin-left:7px}
+section{padding:50px 0;border-bottom:1px solid var(--line)}
+h2{font-size:25px;font-weight:600;letter-spacing:-.01em}
+.lede{color:var(--muted);max-width:78ch;margin:13px 0 0}
+.diagram{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:8px;overflow-x:auto;margin-top:28px}
+svg{display:block;width:100%;height:auto;min-width:860px}
+figcaption{font-family:var(--mono);font-size:11.5px;color:var(--dim);margin-top:12px}
+.census{display:grid;grid-template-columns:repeat(auto-fill,minmax(146px,1fr));gap:1px;background:var(--line);
+ border:1px solid var(--line);border-radius:4px;margin-top:26px;overflow:hidden}
+.c{background:var(--panel);padding:13px 15px}
+.c .lab{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);display:block;margin-bottom:6px}
+.c .n{font-family:var(--mono);font-size:21px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1}
+.c .tag{font-size:10.5px;color:var(--dim);margin-top:5px;display:block}
+.new{border-left:2px solid var(--q)}
+.old{border-left:2px solid var(--skill)}
+.chain{margin-top:28px;background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:22px 24px;overflow-x:auto}
+.chain .row{font-family:var(--mono);font-size:13px;white-space:nowrap;line-height:2.4}
+.chain .row b{color:var(--ink);font-weight:500}
+.chain .a{color:var(--dim);margin:0 8px}
+.chain .n1{color:var(--book)}.chain .n2{color:var(--q)}.chain .n3{color:var(--skill)}
+.chain .n4{color:var(--solve)}.chain .n5{color:var(--trap)}
+.chain p{font-family:var(--sans);color:var(--muted);font-size:13.5px;margin:14px 0 0;white-space:normal}
+.reach{margin-top:28px}
+.rbar{display:grid;grid-template-columns:210px 1fr 96px;gap:14px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line)}
+.rbar .lb{font-size:13.5px;color:var(--ink)}
+.rbar .lb i{font-style:normal;display:block;font-size:11.5px;color:var(--dim);margin-top:2px}
+.rbar .track{height:9px;background:var(--panel2);border-radius:1px;overflow:hidden}
+.rbar .fill{height:100%;display:block}
+.rbar .pc{font-family:var(--mono);font-size:13px;text-align:right;font-variant-numeric:tabular-nums;color:var(--muted)}
+.finding{margin-top:30px;border:1px solid var(--line);border-left:3px solid var(--amber);background:var(--panel);border-radius:4px;padding:22px 24px}
+.finding h3{font-size:17px;font-weight:600;color:var(--amber)}
+.finding p{color:var(--muted);margin:10px 0 0;max-width:84ch;font-size:14.5px}
+.finding p b{color:var(--ink);font-weight:500}
+.fam{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:13px;margin-top:26px}
+.f{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:17px 19px;border-top:2px solid}
+.f h4{font-size:14.5px;font-weight:600;margin-bottom:5px}
+.f .cnt{font-family:var(--mono);font-size:11px;color:var(--dim);letter-spacing:.05em}
+.f p{margin:9px 0 0;color:var(--muted);font-size:13px}
+table{width:100%;border-collapse:collapse;margin-top:22px;font-size:13.5px}
+th{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);text-align:left;padding:0 12px 9px;font-weight:500;border-bottom:1px solid var(--line)}
+td{padding:10px 12px;border-bottom:1px solid var(--line);color:var(--muted)}
+td:first-child{color:var(--ink)}
+td.num{font-family:var(--mono);text-align:right;font-variant-numeric:tabular-nums;color:var(--ink)}
+footer{padding:36px 0 58px;color:var(--dim);font-size:13px}
+code{font-family:var(--mono);font-size:12.5px;background:var(--panel2);padding:1px 5px;border-radius:2px;border:1px solid var(--line);color:var(--ink)}
+@media(max-width:720px){.rbar{grid-template-columns:1fr;gap:5px}.rbar .pc{text-align:left}}
+</style>
+
+<header><div class="wrap">
+  <span class="eyebrow">Vedic Math Speed Gym · unified graph · loaded 9 September 2026</span>
+  <h1>Every data source, one graph</h1>
+  <p class="sub">The 25-book exam corpus, the verbatim chunk store, the converted templates and the
+    original serving graph are now a single connected structure — loaded additively in 26 seconds, with
+    the serving graph verified byte-identical before and after.</p>
+  <div class="growth">
+    <div><span>Nodes</span><b>28,861</b><i>from 3,542</i></div>
+    <div><span>Relationships</span><b>58,667</b><i>from 8,685</i></div>
+    <div><span>Node types</span><b>14</b><i>from 7</i></div>
+    <div><span>Load time</span><b>26.5s</b><i>idempotent</i></div>
+  </div>
+</div></header>
+
+<section><div class="wrap">
+  <h2>The chain, end to end</h2>
+  <p class="lede">A question in a book now reaches the skill it exercises, that skill's prerequisites, the
+    problems already teaching it, their walkthroughs, and the misconceptions each one traps. Traced live:</p>
+
+  <div class="chain">
+    <div class="row"><span class="n1">Vedic_Secrets</span><span class="a">─ OF_BOOK ─</span><span class="n1">"10. Division"</span><span class="a">─ IN_CHAPTER ─</span><span class="n2">vms_exercises_38_44#42</span></div>
+    <div class="row"><span class="a">└─ EXERCISES →</span><span class="n3">Division</span><span class="a">─ REQUIRES →</span><span class="n3">Arithmetic · Multiplication Tables · Basic Operations</span></div>
+    <div class="row"><span class="a">&nbsp;&nbsp;&nbsp;└─ PREREQUISITE_OF →</span><span class="n4">19 problems</span><span class="a">─ TRAPS_PRESENT →</span><span class="n5">15 misconceptions</span></div>
+    <p>Before today that corpus question was a row in a file with no path to anything. It now sits six
+      hops from the prerequisite chain the adaptive engine reads.</p>
+  </div>
+
+  <figure><div class="diagram">
+  <svg viewBox="0 0 1000 470" role="img" aria-label="Unified graph schema: corpus layer joined to the serving graph">
+    <defs><marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5F6A5E"/></marker>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6BC5FF"/></marker>
+    <marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#C8FF5A"/></marker></defs>
+    <style>
+      .b{fill:#12160F;stroke-width:1.6;rx:4}.t{font-family:Archivo,sans-serif;font-size:13px;font-weight:600;fill:#E9EFE4}
+      .s{font-family:"IBM Plex Mono",monospace;font-size:10.5px;fill:#8C978B}
+      .e{font-family:"IBM Plex Mono",monospace;font-size:10px;fill:#8C978B}
+      .z{font-family:"IBM Plex Mono",monospace;font-size:9.5px;fill:#5F6A5E;letter-spacing:.14em}
+      .l{stroke:#3A4238;stroke-width:1.3;fill:none;marker-end:url(#a1)}
+      .lb{stroke:#6BC5FF;stroke-width:2;fill:none;marker-end:url(#a2)}
+      .lg{stroke:#C8FF5A;stroke-width:2;fill:none;marker-end:url(#a3)}
+    </style>
+    <text class="z" x="14" y="26">NEW — CORPUS LAYER</text>
+    <text class="z" x="620" y="26">EXISTING — SERVING GRAPH (untouched)</text>
+    <line x1="580" y1="8" x2="580" y2="462" stroke="#242A22" stroke-dasharray="5 5"/>
+
+    <rect class="b" x="30" y="48" width="132" height="46" style="stroke:#93A08F"/>
+    <text class="t" x="44" y="70">CorpusBook</text><text class="s" x="44" y="86">16</text>
+
+    <rect class="b" x="30" y="130" width="132" height="46" style="stroke:#93A08F"/>
+    <text class="t" x="44" y="152">Chapter</text><text class="s" x="44" y="168">371</text>
+
+    <rect class="b" x="30" y="234" width="132" height="52" style="stroke:#7FE3C4"/>
+    <text class="t" x="44" y="256">Chunk</text><text class="s" x="44" y="272">4,943 verbatim</text>
+
+    <rect class="b" x="30" y="330" width="132" height="52" style="stroke:#FFB86B"/>
+    <text class="t" x="44" y="352">Converted</text><text class="s" x="44" y="368">348 templates</text>
+
+    <rect class="b" x="230" y="120" width="180" height="72" style="stroke:#6BC5FF;stroke-width:2.4"/>
+    <text class="t" x="248" y="146" style="font-size:15px">Question</text>
+    <text class="s" x="248" y="164">19,619 · the corpus</text>
+    <text class="s" x="248" y="180" style="fill:#5F6A5E">12,872 playable</text>
+
+    <rect class="b" x="230" y="300" width="180" height="56" style="stroke:#FF9ECF"/>
+    <text class="t" x="248" y="324">ExamTopic</text>
+    <text class="s" x="248" y="341">22 · no skill exists</text>
+
+    <rect class="b" x="640" y="120" width="170" height="72" style="stroke:#C8FF5A;stroke-width:2.4"/>
+    <text class="t" x="658" y="146" style="font-size:15px">Skill</text>
+    <text class="s" x="658" y="164">422 · the spine</text>
+    <text class="s" x="658" y="180" style="fill:#5F6A5E">REQUIRES DAG 255</text>
+
+    <rect class="b" x="850" y="120" width="126" height="72" style="stroke:#6BC5FF"/>
+    <text class="t" x="866" y="146">Problem</text><text class="s" x="866" y="164">807</text>
+    <text class="s" x="866" y="180" style="fill:#5F6A5E">+SolveAlong</text>
+
+    <rect class="b" x="850" y="248" width="126" height="46" style="stroke:#FF7A70"/>
+    <text class="t" x="866" y="270">Trap</text><text class="s" x="866" y="286">908</text>
+
+    <rect class="b" x="640" y="248" width="170" height="46" style="stroke:#C58BFF"/>
+    <text class="t" x="658" y="270">Explainer</text><text class="s" x="658" y="286">590 · Sutra 16 · Book 6</text>
+
+    <path class="l" d="M96 94 L 96 128"/>
+    <path class="l" d="M162 152 L 228 150"/><text class="e" x="168" y="142">IN_CHAPTER 16,671</text>
+    <path class="l" d="M162 60 C 200 60, 210 110, 228 132"/><text class="e" x="176" y="106">FROM_BOOK</text>
+    <path class="l" d="M162 250 C 200 250, 210 200, 228 176"/><text class="e" x="168" y="222">24,562 total</text>
+    <path class="l" d="M162 348 C 210 348, 300 300, 312 194"/><text class="e" x="196" y="392">DERIVED_FROM 348</text>
+
+    <path class="lb" d="M412 148 L 636 148"/>
+    <text class="e" x="446" y="138" style="fill:#6BC5FF">EXERCISES 4,121</text>
+    <text class="e" x="446" y="166" style="fill:#5F6A5E">direct skill match — 21% of the corpus</text>
+
+    <path class="l" d="M330 300 L 330 196" style="stroke:#FF9ECF"/>
+    <text class="e" x="336" y="252" style="fill:#FF9ECF">EXERCISES_TOPIC 3,805</text>
+
+    <path class="l" d="M412 322 C 520 322, 600 240, 690 196" style="stroke:#FF9ECF;stroke-dasharray:4 4"/>
+    <text class="e" x="440" y="352" style="fill:#FF9ECF">BRIDGES_TO 18 — domain only, not prerequisite</text>
+
+    <path class="lg" d="M812 152 L 846 152"/>
+    <path class="l" d="M900 194 L 900 246"/>
+    <path class="l" d="M724 194 L 724 246"/>
+  </svg></div>
+  <figcaption>Loaded additively. Every pre-existing label and relationship count re-verified unchanged after the load.</figcaption></figure>
+
+  <div class="census">
+    <div class="c new"><span class="lab">Question</span><span class="n" style="color:#6BC5FF">19,619</span><span class="tag">new · corpus</span></div>
+    <div class="c new"><span class="lab">Chunk</span><span class="n" style="color:#7FE3C4">4,943</span><span class="tag">new · verbatim</span></div>
+    <div class="c old"><span class="lab">Trap</span><span class="n">908</span><span class="tag">existing</span></div>
+    <div class="c old"><span class="lab">Problem</span><span class="n">807</span><span class="tag">existing</span></div>
+    <div class="c old"><span class="lab">SolveAlong</span><span class="n">791</span><span class="tag">existing</span></div>
+    <div class="c old"><span class="lab">Explainer</span><span class="n">590</span><span class="tag">existing</span></div>
+    <div class="c old"><span class="lab">Skill</span><span class="n" style="color:#C8FF5A">422</span><span class="tag">existing · spine</span></div>
+    <div class="c new"><span class="lab">Chapter</span><span class="n">371</span><span class="tag">new</span></div>
+    <div class="c new"><span class="lab">Converted</span><span class="n" style="color:#FFB86B">348</span><span class="tag">new · templates</span></div>
+    <div class="c new"><span class="lab">ExamTopic</span><span class="n" style="color:#FF9ECF">22</span><span class="tag">new · unmatched</span></div>
+    <div class="c new"><span class="lab">CorpusBook</span><span class="n">16</span><span class="tag">new</span></div>
+    <div class="c old"><span class="lab">Sutra</span><span class="n" style="color:#F0D264">16</span><span class="tag">existing</span></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>How much of the corpus actually reaches the engine</h2>
+  <p class="lede">The chain exists. The honest question is how many of the 19,619 questions travel it far
+    enough to be useful — and the answer narrows sharply at every hop.</p>
+
+  <div class="reach">
+    <div class="rbar"><div class="lb">Loaded into the graph<i>every row, with book provenance</i></div>
+      <div class="track"><span class="fill" style="width:100%;background:#6BC5FF"></span></div><div class="pc">100%</div></div>
+    <div class="rbar"><div class="lb">Placed in a chapter<i>the fallback routing signal</i></div>
+      <div class="track"><span class="fill" style="width:85%;background:#6BC5FF"></span></div><div class="pc">85.0%</div></div>
+    <div class="rbar"><div class="lb">Any route to a live skill<i>including weak domain bridges</i></div>
+      <div class="track"><span class="fill" style="width:37.7%;background:#F0B429"></span></div><div class="pc">37.7%</div></div>
+    <div class="rbar"><div class="lb">Direct skill match<i>the join that actually carries meaning</i></div>
+      <div class="track"><span class="fill" style="width:21%;background:#C8FF5A"></span></div><div class="pc">21.0%</div></div>
+    <div class="rbar"><div class="lb">Lands on a skill that owns problems<i>joins a populated pool</i></div>
+      <div class="track"><span class="fill" style="width:14%;background:#C8FF5A"></span></div><div class="pc">14.0%</div></div>
+    <div class="rbar"><div class="lb">Has a prerequisite chain<i>usable by the frontier band</i></div>
+      <div class="track"><span class="fill" style="width:6.4%;background:#FF7A70"></span></div><div class="pc">6.4%</div></div>
+  </div>
+
+  <div class="finding">
+    <h3>The bottleneck is missing taxonomy, not fuzzy names</h3>
+    <p>The obvious hypothesis — that the corpus and the graph simply spell things differently — was tested
+      and is wrong. Relaxing the matcher from exact to fully fuzzy (case, punctuation, word order,
+      stopwords) moves attachment by <b>3 percentage points</b>, from 18.0% to 21.0%. What actually blocks
+      it is that <b>11,693 rows (59.6%) carry no topic label at all</b>, and the whole corpus only ever
+      names <b>63 distinct topics against a 422-skill vocabulary</b> — it is tagged at chapter level, not
+      skill level. No matcher can fix that; it is content work.</p>
+    <p>Quality of what does attach is also thin: <b>43% land on stub skills</b> (real names with no
+      metadata), and <b>33% land on skills that own no existing problems</b> — those questions would be the
+      first content under their skill rather than joining a pool.</p>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>The 22 topics with nowhere to attach</h2>
+  <p class="lede">3,805 questions name a topic the skill graph has never had. They are not one problem —
+    they are three, and only one of them is worth solving now.</p>
+  <div class="fam">
+    <div class="f" style="border-top-color:#C8FF5A"><h4>CAT quant syllabus</h4>
+      <span class="cnt">7 topics · ~1,855 questions · mostly playable</span>
+      <p>Number Systems 612, Geometry and Mensuration 422, Profit and Loss 281, Interest 192, Progressions
+        168, Ratio and Proportion 140, Averages 40. Real exam mathematics the Vedic-first graph never
+        covered. <b>This is the family worth building skills for</b> — it is on-band, in-demand and playable.</p></div>
+    <div class="f" style="border-top-color:#FF9ECF"><h4>GRE verbal</h4>
+      <span class="cnt">3 topics · 524 questions</span>
+      <p>Reading Comprehension 210, Text Completions 166, Sentence Equivalence 148. Not mathematics at all.
+        These need a separate vocabulary and a different mastery model — folding them into a maths skill
+        tree would be a category error.</p></div>
+    <div class="f" style="border-top-color:#5F6A5E"><h4>University mathematics</h4>
+      <span class="cnt">9 topics · 1,188 questions · <b style="color:#FF7A70">0 playable</b></span>
+      <p>Vector Spaces, Eigenvalues, Orthogonality, Linear Transformations (Strang); Binomial Coefficients,
+        Special Numbers (Knuth); Probability Distributions (Hogg); Theory of Equations (Hall &amp; Knight).
+        Above the app's band, and not one of them is playable today. Creating skills here buys nothing.</p></div>
+  </div>
+
+  <table>
+    <thead><tr><th>Also found while measuring</th><th style="text-align:right">Impact</th></tr></thead>
+    <tbody>
+      <tr><td>The export's own <code>graph_backed</code> flag is stale in both directions — it marks
+        <code>Introduction</code> as graph-backed when no such skill has ever existed, and misses
+        <code>Time and Work</code> and <code>Time, Speed and Distance</code>, which do exist</td>
+        <td class="num">±386 rows</td></tr>
+      <tr><td>Two topic pairs are the same CAT subject written in different word order
+        (<code>Time, Speed and Distance</code> ↔ <code>Speed, Time, Distance</code>) — recoverable only by
+        order-insensitive matching, and unambiguous</td><td class="num">386 rows</td></tr>
+      <tr><td>Domain bridges from exam topics collapse into just 5 root skills, so they express
+        “belongs to algebra”, not “needs this first” — they are labelled, not counted as reach</td>
+        <td class="num">18 edges</td></tr>
+      <tr><td>The shared scratchpad was being written by concurrent sessions mid-measurement; the run was
+        redone in isolation with hard assertions on the row and skill counts</td><td class="num">re-run</td></tr>
+    </tbody>
+  </table>
+</div></section>
+
+<section><div class="wrap">
+  <h2>What this unlocks, and what it does not</h2>
+  <p class="lede">The integration is real and non-destructive. It also makes the remaining gap precise
+    enough to plan against rather than argue about.</p>
+  <div class="fam">
+    <div class="f" style="border-top-color:#C8FF5A"><h4>Now possible</h4><span class="cnt">today</span>
+      <p>Every question is queryable by book, chapter, format, difficulty and playability in the same graph
+        as the skills. Mock pools can be assembled by traversal instead of file joins. The 348 converted
+        templates link back to the exact questions they came from.</p></div>
+    <div class="f" style="border-top-color:#F0B429"><h4>Needs skills built</h4><span class="cnt">next</span>
+      <p>Creating ~7 CAT quant skills with prerequisite edges would give roughly 1,855 questions a real
+        home — the single highest-value content action available, and it also splits the overloaded
+        Arithmetic and Algebra keys the adaptive engine is currently blind inside.</p></div>
+    <div class="f" style="border-top-color:#FF7A70"><h4>Still blocked</h4><span class="cnt">owner</span>
+      <p>Serving-path decision (whether these questions may reach learners at all), judge keys (nothing
+        promotes out of quarantine without them), and the unmerged migration branch that leaves
+        <code>main</code>'s edge files inconsistent with the live graph.</p></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  Loaded by <code>scripts/build_unified_graph.py</code> (idempotent, <code>--dry-run</code> and
+  <code>--stats</code> modes) into the live Neo4j on 9 September 2026. Serving-graph integrity re-verified
+  independently after the load: all 7 original labels and all 12 original relationship types unchanged.
+  Full before/after tables in <code>data/graph/unified_graph_report.json</code>.
+</div></footer>
