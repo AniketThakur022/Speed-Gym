@@ -25,7 +25,7 @@
 {"skill_name": "Fractions and Decimals", "template_id": "Bird_Engineering_Math_sa_32"}
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Bird_Engineering_Math_sa_32"}
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Bird_Engineering_Math_sa_34"}
-{"skill_name": "Arithmetic: Fractions and Decimals", "template_id": "Bird_Engineering_Math_sa_35"}
+{"skill_name": "Fractions and Decimals", "template_id": "Bird_Engineering_Math_sa_35"}
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Bird_Engineering_Math_sa_35"}
 {"skill_name": "Exponents and Radicals", "template_id": "Bird_Engineering_Math_sa_36"}
 {"skill_name": "Fractions and Decimals", "template_id": "Bird_Engineering_Math_sa_36"}
@@ -41,8 +41,8 @@
 {"skill_name": "Exponents and Radicals", "template_id": "Bird_Engineering_Math_sa_42"}
 {"skill_name": "Fractions and Decimals", "template_id": "Bird_Engineering_Math_sa_42"}
 {"skill_name": "Percentages", "template_id": "Bird_Engineering_Math_sa_42"}
-{"skill_name": "decimals", "template_id": "Bird_Engineering_Math_sa_45"}
-{"skill_name": "fractions", "template_id": "Bird_Engineering_Math_sa_45"}
+{"skill_name": "Decimals", "template_id": "Bird_Engineering_Math_sa_45"}
+{"skill_name": "Fractions", "template_id": "Bird_Engineering_Math_sa_45"}
 {"skill_name": "Fractions and Decimals", "template_id": "Bird_Engineering_Math_sa_45"}
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Bird_Engineering_Math_sa_48"}
 {"skill_name": "Fractions and Decimals", "template_id": "Bird_Engineering_Math_sa_48"}
@@ -98,7 +98,6 @@
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Bird_Engineering_Math_sa_88"}
 {"skill_name": "Fractions and Decimals", "template_id": "Bird_Engineering_Math_sa_88"}
 {"skill_name": "Simple Equations", "template_id": "Bird_Engineering_Math_sa_95"}
-{"skill_name": "Chapter 11 on simple equations", "template_id": "Bird_Engineering_Math_sa_95"}
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Bird_Engineering_Math_sa_96"}
 {"skill_name": "Fractions and Decimals", "template_id": "Bird_Engineering_Math_sa_96"}
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Bird_Engineering_Math_sa_97"}
@@ -111,7 +110,7 @@
 {"skill_name": "Rational Expressions", "template_id": "Bird_Engineering_Math_sa_99"}
 {"skill_name": "Simple Equations", "template_id": "Bird_Engineering_Math_sa_102"}
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Bird_Engineering_Math_sa_102"}
-{"skill_name": "Algebra: Linear Equations", "template_id": "Bird_Engineering_Math_sa_102"}
+{"skill_name": "Linear Equations", "template_id": "Bird_Engineering_Math_sa_102"}
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Bird_Engineering_Math_sa_103"}
 {"skill_name": "Fractions and Decimals", "template_id": "Bird_Engineering_Math_sa_103"}
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Bird_Engineering_Math_sa_104"}
@@ -144,7 +143,6 @@
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Bird_Engineering_Math_sa_112"}
 {"skill_name": "Fractions and Decimals", "template_id": "Bird_Engineering_Math_sa_112"}
 {"skill_name": "Polynomials and Factoring", "template_id": "Bird_Engineering_Math_sa_114"}
-{"skill_name": "Chapter 11", "template_id": "Bird_Engineering_Math_sa_114"}
 {"skill_name": "Exponents and Radicals", "template_id": "Bird_Engineering_Math_sa_117"}
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Bird_Engineering_Math_sa_117"}
 {"skill_name": "Polynomials and Factoring", "template_id": "Bird_Engineering_Math_sa_117"}
@@ -165,7 +163,7 @@
 {"skill_name": "Powers and Indices", "template_id": "Bird_Engineering_Math_sa_123"}
 {"skill_name": "Exponents", "template_id": "Bird_Engineering_Math_sa_125"}
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Bird_Engineering_Math_sa_125"}
-{"skill_name": "laws of indices", "template_id": "Bird_Engineering_Math_sa_125"}
+{"skill_name": "Laws of Indices", "template_id": "Bird_Engineering_Math_sa_125"}
 {"skill_name": "Logarithms", "template_id": "Bird_Engineering_Math_sa_126"}
 {"skill_name": "Exponents", "template_id": "Bird_Engineering_Math_sa_126"}
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Bird_Engineering_Math_sa_126"}
@@ -209,7 +207,6 @@
 {"skill_name": "Coordinate Geometry", "template_id": "Bird_Engineering_Math_sa_155"}
 {"skill_name": "Linear Equations", "template_id": "Bird_Engineering_Math_sa_159"}
 {"skill_name": "Graphing Techniques", "template_id": "Bird_Engineering_Math_sa_159"}
-{"skill_name": "Algebra: Linear Equations", "template_id": "Bird_Engineering_Math_sa_159"}
 {"skill_name": "Exponents and Logarithms", "template_id": "Bird_Engineering_Math_sa_165"}
 {"skill_name": "Linear Equations", "template_id": "Bird_Engineering_Math_sa_165"}
 {"skill_name": "Graph Analysis", "template_id": "Bird_Engineering_Math_sa_165"}
@@ -237,11 +234,11 @@
 {"skill_name": "Angle Properties", "template_id": "Bird_Engineering_Math_sa_184"}
 {"skill_name": "Arithmetic", "template_id": "Bird_Engineering_Math_sa_184"}
 {"skill_name": "Angles in a triangle", "template_id": "Bird_Engineering_Math_sa_185"}
-{"skill_name": "Parallel lines", "template_id": "Bird_Engineering_Math_sa_185"}
-{"skill_name": "Isosceles triangles", "template_id": "Bird_Engineering_Math_sa_185"}
+{"skill_name": "Parallel Lines", "template_id": "Bird_Engineering_Math_sa_185"}
+{"skill_name": "Isosceles Triangles", "template_id": "Bird_Engineering_Math_sa_185"}
 {"skill_name": "Arithmetic", "template_id": "Bird_Engineering_Math_sa_185"}
 {"skill_name": "Basic triangle properties", "template_id": "Bird_Engineering_Math_sa_187"}
-{"skill_name": "Angle measurement", "template_id": "Bird_Engineering_Math_sa_187"}
+{"skill_name": "Angle Measurement", "template_id": "Bird_Engineering_Math_sa_187"}
 {"skill_name": "Basic Properties of Triangles", "template_id": "Bird_Engineering_Math_sa_187"}
 {"skill_name": "Angle and Side Relationships", "template_id": "Bird_Engineering_Math_sa_187"}
 {"skill_name": "Congruent Triangles", "template_id": "Bird_Engineering_Math_sa_188"}
@@ -262,14 +259,14 @@
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Bird_Engineering_Math_sa_191"}
 {"skill_name": "Measurement", "template_id": "Bird_Engineering_Math_sa_191"}
 {"skill_name": "Basic geometric construction", "template_id": "Bird_Engineering_Math_sa_191"}
-{"skill_name": "Angle measurement", "template_id": "Bird_Engineering_Math_sa_191"}
+{"skill_name": "Angle Measurement", "template_id": "Bird_Engineering_Math_sa_191"}
 {"skill_name": "Use of compass and protractor", "template_id": "Bird_Engineering_Math_sa_191"}
 {"skill_name": "Basic geometric constructions", "template_id": "Bird_Engineering_Math_sa_192"}
 {"skill_name": "Compass and straightedge techniques", "template_id": "Bird_Engineering_Math_sa_192"}
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Bird_Engineering_Math_sa_192"}
 {"skill_name": "Coordinate Geometry", "template_id": "Bird_Engineering_Math_sa_192"}
-{"skill_name": "Geometry:Triangles", "template_id": "Bird_Engineering_Math_sa_193"}
-{"skill_name": "Arithmetic:Basic Operations (+, -, ×, ÷)", "template_id": "Bird_Engineering_Math_sa_193"}
+{"skill_name": "Triangles", "template_id": "Bird_Engineering_Math_sa_193"}
+{"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Bird_Engineering_Math_sa_193"}
 {"skill_name": "Arithmetic", "template_id": "Bird_Engineering_Math_sa_193"}
 {"skill_name": "Geometry", "template_id": "Bird_Engineering_Math_sa_193"}
 {"skill_name": "Arithmetic", "template_id": "Bird_Engineering_Math_sa_194"}
@@ -287,16 +284,16 @@
 {"skill_name": "Arithmetic", "template_id": "Bird_Engineering_Math_sa_201"}
 {"skill_name": "Geometry", "template_id": "Bird_Engineering_Math_sa_201"}
 {"skill_name": "Trigonometric Ratios", "template_id": "Bird_Engineering_Math_sa_203"}
-{"skill_name": "Geometry: Triangles", "template_id": "Bird_Engineering_Math_sa_203"}
+{"skill_name": "Triangles", "template_id": "Bird_Engineering_Math_sa_203"}
 {"skill_name": "Basic Geometry Concepts", "template_id": "Bird_Engineering_Math_sa_203"}
 {"skill_name": "Trigonometric Ratios", "template_id": "Bird_Engineering_Math_sa_204"}
 {"skill_name": "Right Triangle Properties", "template_id": "Bird_Engineering_Math_sa_204"}
 {"skill_name": "Right Triangle Geometry", "template_id": "Bird_Engineering_Math_sa_204"}
 {"skill_name": "Arithmetic", "template_id": "Bird_Engineering_Math_sa_207"}
 {"skill_name": "Geometry", "template_id": "Bird_Engineering_Math_sa_207"}
-{"skill_name": "Angles and their measurement", "template_id": "Bird_Engineering_Math_sa_207"}
-{"skill_name": "Unit circle", "template_id": "Bird_Engineering_Math_sa_207"}
-{"skill_name": "Basic trigonometric functions", "template_id": "Bird_Engineering_Math_sa_207"}
+{"skill_name": "Angles and Their Measurement", "template_id": "Bird_Engineering_Math_sa_207"}
+{"skill_name": "Unit Circle", "template_id": "Bird_Engineering_Math_sa_207"}
+{"skill_name": "Basic Trigonometric Functions", "template_id": "Bird_Engineering_Math_sa_207"}
 {"skill_name": "Trigonometric Ratios", "template_id": "Bird_Engineering_Math_sa_210"}
 {"skill_name": "Unit Circle", "template_id": "Bird_Engineering_Math_sa_210"}
 {"skill_name": "Quadrant Sign Rules", "template_id": "Bird_Engineering_Math_sa_210"}
@@ -323,7 +320,7 @@
 {"skill_name": "Pythagorean Theorem", "template_id": "Bird_Engineering_Math_sa_223"}
 {"skill_name": "Pythagoras’ Theorem", "template_id": "Bird_Engineering_Math_sa_223"}
 {"skill_name": "Pythagoras' theorem", "template_id": "Bird_Engineering_Math_sa_226"}
-{"skill_name": "Trigonometric ratios", "template_id": "Bird_Engineering_Math_sa_226"}
+{"skill_name": "Trigonometric Ratios", "template_id": "Bird_Engineering_Math_sa_226"}
 {"skill_name": "Trigonometry", "template_id": "Bird_Engineering_Math_sa_226"}
 {"skill_name": "Algebra", "template_id": "Bird_Engineering_Math_sa_226"}
 {"skill_name": "Trigonometry", "template_id": "Bird_Engineering_Math_sa_227"}
@@ -385,11 +382,11 @@
 {"skill_name": "Units and Measurements", "template_id": "Bird_Engineering_Math_sa_257"}
 {"skill_name": "Algebra", "template_id": "Bird_Engineering_Math_sa_257"}
 {"skill_name": "Pythagoras' theorem", "template_id": "Bird_Engineering_Math_sa_258"}
-{"skill_name": "Unit conversion", "template_id": "Bird_Engineering_Math_sa_258"}
-{"skill_name": "Basic algebra", "template_id": "Bird_Engineering_Math_sa_258"}
+{"skill_name": "Unit Conversion", "template_id": "Bird_Engineering_Math_sa_258"}
+{"skill_name": "Basic Algebra", "template_id": "Bird_Engineering_Math_sa_258"}
 {"skill_name": "Arithmetic", "template_id": "Bird_Engineering_Math_sa_258"}
 {"skill_name": "Pythagoras' theorem", "template_id": "Bird_Engineering_Math_sa_260"}
-{"skill_name": "Area calculations", "template_id": "Bird_Engineering_Math_sa_260"}
+{"skill_name": "Area Calculations", "template_id": "Bird_Engineering_Math_sa_260"}
 {"skill_name": "Volume calculations", "template_id": "Bird_Engineering_Math_sa_260"}
 {"skill_name": "Area of rectangle", "template_id": "Bird_Engineering_Math_sa_260"}
 {"skill_name": "Area of semicircle", "template_id": "Bird_Engineering_Math_sa_260"}
@@ -404,14 +401,14 @@
 {"skill_name": "Algebra", "template_id": "Bird_Engineering_Math_sa_262"}
 {"skill_name": "Pythagoras' theorem", "template_id": "Bird_Engineering_Math_sa_263"}
 {"skill_name": "Area and volume formulas", "template_id": "Bird_Engineering_Math_sa_263"}
-{"skill_name": "Unit conversion", "template_id": "Bird_Engineering_Math_sa_263"}
+{"skill_name": "Unit Conversion", "template_id": "Bird_Engineering_Math_sa_263"}
 {"skill_name": "Arithmetic", "template_id": "Bird_Engineering_Math_sa_263"}
 {"skill_name": "Algebra", "template_id": "Bird_Engineering_Math_sa_263"}
 {"skill_name": "Arithmetic", "template_id": "Bird_Engineering_Math_sa_264"}
 {"skill_name": "Algebra", "template_id": "Bird_Engineering_Math_sa_264"}
-{"skill_name": "Geometry: Circles", "template_id": "Bird_Engineering_Math_sa_264"}
-{"skill_name": "Arithmetic: Basic Operations (+, -, ×, ÷)", "template_id": "Bird_Engineering_Math_sa_264"}
-{"skill_name": "Arithmetic: Fractions and Decimals", "template_id": "Bird_Engineering_Math_sa_264"}
+{"skill_name": "Circles", "template_id": "Bird_Engineering_Math_sa_264"}
+{"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Bird_Engineering_Math_sa_264"}
+{"skill_name": "Fractions and Decimals", "template_id": "Bird_Engineering_Math_sa_264"}
 {"skill_name": "Pythagoras' theorem", "template_id": "Bird_Engineering_Math_sa_265"}
 {"skill_name": "Area of circles", "template_id": "Bird_Engineering_Math_sa_265"}
 {"skill_name": "Surface area of cones", "template_id": "Bird_Engineering_Math_sa_265"}
@@ -566,7 +563,7 @@
 {"skill_name": "NumberTheory", "template_id": "Number_Sense_sa_54"}
 {"skill_name": "Basic Set Theory", "template_id": "Number_Sense_sa_54"}
 {"skill_name": "Cognitive Development", "template_id": "Number_Sense_sa_54"}
-{"skill_name": "Number sense", "template_id": "Number_Sense_sa_71"}
+{"skill_name": "Number Sense", "template_id": "Number_Sense_sa_71"}
 {"skill_name": "Counting principles", "template_id": "Number_Sense_sa_71"}
 {"skill_name": "Basic number sense", "template_id": "Number_Sense_sa_83"}
 {"skill_name": "Understanding of ratios", "template_id": "Number_Sense_sa_83"}
@@ -575,8 +572,8 @@
 {"skill_name": "Basic number sense", "template_id": "Number_Sense_sa_89"}
 {"skill_name": "Numerical cognition", "template_id": "Number_Sense_sa_89"}
 {"skill_name": "Arithmetic", "template_id": "Number_Sense_sa_107"}
-{"skill_name": "Arithmetic: Basic Operations (+, -, ×, ÷)", "template_id": "Number_Sense_sa_107"}
-{"skill_name": "Arithmetic: Basic Operations (+, -, ×, ÷)", "template_id": "Number_Sense_sa_108"}
+{"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Number_Sense_sa_107"}
+{"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Number_Sense_sa_108"}
 {"skill_name": "Arithmetic", "template_id": "Number_Sense_sa_108"}
 {"skill_name": "NumberTheory", "template_id": "Number_Sense_sa_117"}
 {"skill_name": "Number Sense", "template_id": "Number_Sense_sa_117"}
@@ -587,20 +584,20 @@
 {"skill_name": "Arithmetic", "template_id": "Number_Sense_sa_124"}
 {"skill_name": "Arithmetic", "template_id": "Number_Sense_sa_125"}
 {"skill_name": "Logic", "template_id": "Number_Sense_sa_125"}
-{"skill_name": "Number sense", "template_id": "Number_Sense_sa_131"}
+{"skill_name": "Number Sense", "template_id": "Number_Sense_sa_131"}
 {"skill_name": "Counting", "template_id": "Number_Sense_sa_131"}
 {"skill_name": "Number representation", "template_id": "Number_Sense_sa_133"}
 {"skill_name": "Memory and learning", "template_id": "Number_Sense_sa_133"}
 {"skill_name": "NumberTheory", "template_id": "Number_Sense_sa_135"}
 {"skill_name": "Arithmetic", "template_id": "Number_Sense_sa_138"}
 {"skill_name": "NumberTheory", "template_id": "Number_Sense_sa_138"}
-{"skill_name": "Number sense", "template_id": "Number_Sense_sa_139"}
-{"skill_name": "Place value", "template_id": "Number_Sense_sa_139"}
+{"skill_name": "Number Sense", "template_id": "Number_Sense_sa_139"}
+{"skill_name": "Place Value", "template_id": "Number_Sense_sa_139"}
 {"skill_name": "Place Value", "template_id": "Number_Sense_sa_140"}
 {"skill_name": "Number Sense", "template_id": "Number_Sense_sa_140"}
 {"skill_name": "Multiplication Tables", "template_id": "Number_Sense_sa_143"}
 {"skill_name": "Commutative Property", "template_id": "Number_Sense_sa_143"}
-{"skill_name": "Number bases", "template_id": "Number_Sense_sa_147"}
+{"skill_name": "Number Bases", "template_id": "Number_Sense_sa_147"}
 {"skill_name": "Mental calculation strategies", "template_id": "Number_Sense_sa_147"}
 {"skill_name": "Fractions and Decimals", "template_id": "Number_Sense_sa_148"}
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Number_Sense_sa_148"}
@@ -614,10 +611,10 @@
 {"skill_name": "Basic cognitive functions", "template_id": "Number_Sense_sa_184"}
 {"skill_name": "Brain anatomy", "template_id": "Number_Sense_sa_184"}
 {"skill_name": "Scientific method", "template_id": "Number_Sense_sa_184"}
-{"skill_name": "Number sense", "template_id": "Number_Sense_sa_196"}
+{"skill_name": "Number Sense", "template_id": "Number_Sense_sa_196"}
 {"skill_name": "Rote memorization", "template_id": "Number_Sense_sa_196"}
 {"skill_name": "Mental calculation strategies", "template_id": "Number_Sense_sa_196"}
-{"skill_name": "Number sense", "template_id": "Number_Sense_sa_200"}
+{"skill_name": "Number Sense", "template_id": "Number_Sense_sa_200"}
 {"skill_name": "Concrete vs abstract thinking", "template_id": "Number_Sense_sa_200"}
 {"skill_name": "Arithmetic", "template_id": "Number_Sense_sa_206"}
 {"skill_name": "NumberTheory", "template_id": "Number_Sense_sa_206"}
@@ -627,11 +624,11 @@
 {"skill_name": "Divisibility Rules", "template_id": "Number_Sense_sa_243"}
 {"skill_name": "Logic", "template_id": "Number_Sense_sa_243"}
 {"skill_name": "Arithmetic", "template_id": "Number_Sense_sa_243"}
-{"skill_name": "Number sense", "template_id": "Number_Sense_sa_268"}
+{"skill_name": "Number Sense", "template_id": "Number_Sense_sa_268"}
 {"skill_name": "Spatial reasoning", "template_id": "Number_Sense_sa_268"}
 {"skill_name": "NumberTheory", "template_id": "Number_Sense_sa_268"}
 {"skill_name": "Arithmetic", "template_id": "Number_Sense_sa_280"}
-{"skill_name": "Arithmetic: Basic Operations (+, -, ×, ÷)", "template_id": "Number_Sense_sa_280"}
+{"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Number_Sense_sa_280"}
 {"skill_name": "Number Sense", "template_id": "Number_Sense_sa_294"}
 {"skill_name": "Approximate Number System", "template_id": "Number_Sense_sa_294"}
 {"skill_name": "Matrix Operations", "template_id": "Schaums_College_Math_sa_32"}
@@ -727,8 +724,8 @@
 {"skill_name": "Algebra", "template_id": "Schaums_College_Math_sa_90"}
 {"skill_name": "Algebra", "template_id": "Schaums_College_Math_sa_93"}
 {"skill_name": "NumberTheory", "template_id": "Schaums_College_Math_sa_93"}
-{"skill_name": "Algebra: Polynomials and Factoring", "template_id": "Schaums_College_Math_sa_94"}
-{"skill_name": "Arithmetic: Basic Operations (+, -, ×, ÷)", "template_id": "Schaums_College_Math_sa_94"}
+{"skill_name": "Polynomials and Factoring", "template_id": "Schaums_College_Math_sa_94"}
+{"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Schaums_College_Math_sa_94"}
 {"skill_name": "Algebra", "template_id": "Schaums_College_Math_sa_94"}
 {"skill_name": "Arithmetic", "template_id": "Schaums_College_Math_sa_94"}
 {"skill_name": "Exponents and Radicals", "template_id": "Schaums_College_Math_sa_97"}
@@ -905,7 +902,6 @@
 {"skill_name": "Negative Angle Identities", "template_id": "Schaums_College_Math_sa_202"}
 {"skill_name": "Special Angles", "template_id": "Schaums_College_Math_sa_202"}
 {"skill_name": "Addition formulas for sine and cosine", "template_id": "Schaums_College_Math_sa_202"}
-{"skill_name": "Negative angle identities", "template_id": "Schaums_College_Math_sa_202"}
 {"skill_name": "Trigonometric values for special angles", "template_id": "Schaums_College_Math_sa_202"}
 {"skill_name": "Trigonometric Ratios", "template_id": "Schaums_College_Math_sa_204"}
 {"skill_name": "Basic Trigonometric Identities", "template_id": "Schaums_College_Math_sa_204"}
@@ -990,14 +986,13 @@
 {"skill_name": "Trigonometry", "template_id": "Schaums_College_Math_sa_254"}
 {"skill_name": "Arithmetic", "template_id": "Schaums_College_Math_sa_254"}
 {"skill_name": "Coordinate Geometry", "template_id": "Schaums_College_Math_sa_261"}
-{"skill_name": "Algebra: Quadratic Equations", "template_id": "Schaums_College_Math_sa_261"}
+{"skill_name": "Quadratic Equations", "template_id": "Schaums_College_Math_sa_261"}
 {"skill_name": "Algebra", "template_id": "Schaums_College_Math_sa_261"}
 {"skill_name": "Coordinate Geometry", "template_id": "Schaums_College_Math_sa_263"}
 {"skill_name": "Algebra", "template_id": "Schaums_College_Math_sa_263"}
-{"skill_name": "Algebra: Functions and Graphs", "template_id": "Schaums_College_Math_sa_263"}
+{"skill_name": "Functions and Graphs", "template_id": "Schaums_College_Math_sa_263"}
 {"skill_name": "Coordinate Geometry", "template_id": "Schaums_College_Math_sa_266"}
 {"skill_name": "Functions and Graphs", "template_id": "Schaums_College_Math_sa_266"}
-{"skill_name": "Algebra: Functions and Graphs", "template_id": "Schaums_College_Math_sa_266"}
 {"skill_name": "Coordinate Geometry", "template_id": "Schaums_College_Math_sa_270"}
 {"skill_name": "Algebra", "template_id": "Schaums_College_Math_sa_270"}
 {"skill_name": "Coordinate Geometry", "template_id": "Schaums_College_Math_sa_274"}
@@ -1019,8 +1014,8 @@
 {"skill_name": "Algebra", "template_id": "Schaums_College_Math_sa_284"}
 {"skill_name": "Coordinate Geometry", "template_id": "Schaums_College_Math_sa_285"}
 {"skill_name": "Trigonometry", "template_id": "Schaums_College_Math_sa_285"}
-{"skill_name": "Algebra: Polynomials and Factoring", "template_id": "Schaums_College_Math_sa_285"}
-{"skill_name": "Trigonometry: Trigonometric Ratios", "template_id": "Schaums_College_Math_sa_285"}
+{"skill_name": "Polynomials and Factoring", "template_id": "Schaums_College_Math_sa_285"}
+{"skill_name": "Trigonometric Ratios", "template_id": "Schaums_College_Math_sa_285"}
 {"skill_name": "Cartesian Plane", "template_id": "Schaums_College_Math_sa_288"}
 {"skill_name": "3D Space", "template_id": "Schaums_College_Math_sa_288"}
 {"skill_name": "Algebra", "template_id": "Schaums_College_Math_sa_288"}
@@ -1358,11 +1353,10 @@
 {"skill_name": "NumberTheory", "template_id": "Tirthaji_Vedic_Math_sa_84"}
 {"skill_name": "Arithmetic", "template_id": "Tirthaji_Vedic_Math_sa_87"}
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Tirthaji_Vedic_Math_sa_87"}
-{"skill_name": "Arithmetic: Basic Operations (+, -, ×, ÷)", "template_id": "Tirthaji_Vedic_Math_sa_88"}
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Tirthaji_Vedic_Math_sa_88"}
 {"skill_name": "Number Bases", "template_id": "Tirthaji_Vedic_Math_sa_88"}
-{"skill_name": "Algebra: Exponents and Radicals", "template_id": "Tirthaji_Vedic_Math_sa_89"}
-{"skill_name": "Arithmetic: Basic Operations (+, -, ×, ÷)", "template_id": "Tirthaji_Vedic_Math_sa_89"}
+{"skill_name": "Exponents and Radicals", "template_id": "Tirthaji_Vedic_Math_sa_89"}
+{"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Tirthaji_Vedic_Math_sa_89"}
 {"skill_name": "Arithmetic", "template_id": "Tirthaji_Vedic_Math_sa_89"}
 {"skill_name": "Algebra", "template_id": "Tirthaji_Vedic_Math_sa_89"}
 {"skill_name": "Arithmetic", "template_id": "Tirthaji_Vedic_Math_sa_90"}
@@ -1472,7 +1466,7 @@
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Tirthaji_Vedic_Math_sa_131"}
 {"skill_name": "Number Bases", "template_id": "Tirthaji_Vedic_Math_sa_131"}
 {"skill_name": "Non-decimal number systems", "template_id": "Tirthaji_Vedic_Math_sa_132"}
-{"skill_name": "Place value system", "template_id": "Tirthaji_Vedic_Math_sa_132"}
+{"skill_name": "Place Value System", "template_id": "Tirthaji_Vedic_Math_sa_132"}
 {"skill_name": "Arithmetic", "template_id": "Tirthaji_Vedic_Math_sa_132"}
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Tirthaji_Vedic_Math_sa_132"}
 {"skill_name": "Arithmetic", "template_id": "Tirthaji_Vedic_Math_sa_134"}
@@ -1560,10 +1554,9 @@
 {"skill_name": "Basic Equations", "template_id": "Tirthaji_Vedic_Math_sa_164"}
 {"skill_name": "Algebra", "template_id": "Tirthaji_Vedic_Math_sa_165"}
 {"skill_name": "Equations", "template_id": "Tirthaji_Vedic_Math_sa_165"}
-{"skill_name": "Algebra: Quadratic Equations", "template_id": "Tirthaji_Vedic_Math_sa_166"}
-{"skill_name": "Arithmetic: Basic Operations (+, -, ×, ÷)", "template_id": "Tirthaji_Vedic_Math_sa_166"}
-{"skill_name": "Algebra", "template_id": "Tirthaji_Vedic_Math_sa_166"}
 {"skill_name": "Quadratic Equations", "template_id": "Tirthaji_Vedic_Math_sa_166"}
+{"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Tirthaji_Vedic_Math_sa_166"}
+{"skill_name": "Algebra", "template_id": "Tirthaji_Vedic_Math_sa_166"}
 {"skill_name": "Algebra", "template_id": "Tirthaji_Vedic_Math_sa_167"}
 {"skill_name": "Quadratic Equations", "template_id": "Tirthaji_Vedic_Math_sa_167"}
 {"skill_name": "Arithmetic", "template_id": "Tirthaji_Vedic_Math_sa_167"}
@@ -1614,7 +1607,7 @@
 {"skill_name": "Linear Equations", "template_id": "Tirthaji_Vedic_Math_sa_184"}
 {"skill_name": "Fractions and Decimals", "template_id": "Tirthaji_Vedic_Math_sa_184"}
 {"skill_name": "Algebra", "template_id": "Tirthaji_Vedic_Math_sa_184"}
-{"skill_name": "Algebra: Linear Equations", "template_id": "Tirthaji_Vedic_Math_sa_185"}
+{"skill_name": "Linear Equations", "template_id": "Tirthaji_Vedic_Math_sa_185"}
 {"skill_name": "Algebra: Fractions and Rational Expressions", "template_id": "Tirthaji_Vedic_Math_sa_185"}
 {"skill_name": "Algebra", "template_id": "Tirthaji_Vedic_Math_sa_185"}
 {"skill_name": "Fractions and Decimals", "template_id": "Tirthaji_Vedic_Math_sa_185"}
@@ -1638,10 +1631,9 @@
 {"skill_name": "Arithmetic", "template_id": "Tirthaji_Vedic_Math_sa_190"}
 {"skill_name": "Algebra", "template_id": "Tirthaji_Vedic_Math_sa_191"}
 {"skill_name": "Fractions and Decimals", "template_id": "Tirthaji_Vedic_Math_sa_191"}
-{"skill_name": "Algebra: Linear Equations", "template_id": "Tirthaji_Vedic_Math_sa_192"}
-{"skill_name": "Arithmetic: Fractions and Decimals", "template_id": "Tirthaji_Vedic_Math_sa_192"}
-{"skill_name": "Algebra", "template_id": "Tirthaji_Vedic_Math_sa_192"}
+{"skill_name": "Linear Equations", "template_id": "Tirthaji_Vedic_Math_sa_192"}
 {"skill_name": "Fractions and Decimals", "template_id": "Tirthaji_Vedic_Math_sa_192"}
+{"skill_name": "Algebra", "template_id": "Tirthaji_Vedic_Math_sa_192"}
 {"skill_name": "Algebra", "template_id": "Tirthaji_Vedic_Math_sa_193"}
 {"skill_name": "Fractions and Decimals", "template_id": "Tirthaji_Vedic_Math_sa_193"}
 {"skill_name": "Linear Equations", "template_id": "Tirthaji_Vedic_Math_sa_193"}
@@ -1670,8 +1662,8 @@
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Tirthaji_Vedic_Math_sa_201"}
 {"skill_name": "Solving Linear Equations", "template_id": "Tirthaji_Vedic_Math_sa_201"}
 {"skill_name": "Arithmetic", "template_id": "Tirthaji_Vedic_Math_sa_201"}
-{"skill_name": "Algebra: Linear Equations", "template_id": "Tirthaji_Vedic_Math_sa_202"}
-{"skill_name": "Algebra: Polynomials and Factoring", "template_id": "Tirthaji_Vedic_Math_sa_202"}
+{"skill_name": "Linear Equations", "template_id": "Tirthaji_Vedic_Math_sa_202"}
+{"skill_name": "Polynomials and Factoring", "template_id": "Tirthaji_Vedic_Math_sa_202"}
 {"skill_name": "Algebra", "template_id": "Tirthaji_Vedic_Math_sa_202"}
 {"skill_name": "Fractions and Decimals", "template_id": "Tirthaji_Vedic_Math_sa_202"}
 {"skill_name": "Polynomials and Factoring", "template_id": "Tirthaji_Vedic_Math_sa_204"}
@@ -1679,10 +1671,9 @@
 {"skill_name": "Arithmetic Operations", "template_id": "Tirthaji_Vedic_Math_sa_204"}
 {"skill_name": "Algebra", "template_id": "Tirthaji_Vedic_Math_sa_204"}
 {"skill_name": "Partial Fractions", "template_id": "Tirthaji_Vedic_Math_sa_204"}
-{"skill_name": "Algebra: Polynomials and Factoring", "template_id": "Tirthaji_Vedic_Math_sa_205"}
-{"skill_name": "Algebra: Linear Equations", "template_id": "Tirthaji_Vedic_Math_sa_205"}
-{"skill_name": "Algebra", "template_id": "Tirthaji_Vedic_Math_sa_205"}
+{"skill_name": "Polynomials and Factoring", "template_id": "Tirthaji_Vedic_Math_sa_205"}
 {"skill_name": "Linear Equations", "template_id": "Tirthaji_Vedic_Math_sa_205"}
+{"skill_name": "Algebra", "template_id": "Tirthaji_Vedic_Math_sa_205"}
 {"skill_name": "Algebra", "template_id": "Tirthaji_Vedic_Math_sa_206"}
 {"skill_name": "Arithmetic Progression (AP)", "template_id": "Tirthaji_Vedic_Math_sa_206"}
 {"skill_name": "Arithmetic Progression", "template_id": "Tirthaji_Vedic_Math_sa_206"}
@@ -1915,7 +1906,7 @@
 {"skill_name": "Exposition of vulgar fractions and decimal fractions", "template_id": "Tirthaji_Vedic_Math_sa_312"}
 {"skill_name": "Ekādhika Pūrva", "template_id": "Tirthaji_Vedic_Math_sa_312"}
 {"skill_name": "Vulgar fractions", "template_id": "Tirthaji_Vedic_Math_sa_312"}
-{"skill_name": "Decimal fractions", "template_id": "Tirthaji_Vedic_Math_sa_312"}
+{"skill_name": "Decimal Fractions", "template_id": "Tirthaji_Vedic_Math_sa_312"}
 {"skill_name": "Ekādhika Pūrva sutra", "template_id": "Tirthaji_Vedic_Math_sa_312"}
 {"skill_name": "Arithmetic", "template_id": "Tirthaji_Vedic_Math_sa_314"}
 {"skill_name": "NumberTheory", "template_id": "Tirthaji_Vedic_Math_sa_314"}
@@ -2009,8 +2000,8 @@
 {"skill_name": "NumberTheory", "template_id": "Tirthaji_Vedic_Math_sa_351"}
 {"skill_name": "Modular Arithmetic", "template_id": "Tirthaji_Vedic_Math_sa_351"}
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Tirthaji_Vedic_Math_sa_351"}
-{"skill_name": "Algebra: Polynomials and Factoring", "template_id": "Tirthaji_Vedic_Math_sa_354"}
-{"skill_name": "Arithmetic: Basic Operations (+, -, ×, ÷)", "template_id": "Tirthaji_Vedic_Math_sa_354"}
+{"skill_name": "Polynomials and Factoring", "template_id": "Tirthaji_Vedic_Math_sa_354"}
+{"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Tirthaji_Vedic_Math_sa_354"}
 {"skill_name": "Algebra", "template_id": "Tirthaji_Vedic_Math_sa_354"}
 {"skill_name": "Arithmetic", "template_id": "Tirthaji_Vedic_Math_sa_354"}
 {"skill_name": "Arithmetic", "template_id": "Tirthaji_Vedic_Math_sa_355"}
@@ -2029,7 +2020,7 @@
 {"skill_name": "Arithmetic", "template_id": "Tirthaji_Vedic_Math_sa_359"}
 {"skill_name": "Exponents", "template_id": "Tirthaji_Vedic_Math_sa_359"}
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Tirthaji_Vedic_Math_sa_359"}
-{"skill_name": "Algebra: Polynomials and Factoring", "template_id": "Tirthaji_Vedic_Math_sa_360"}
+{"skill_name": "Polynomials and Factoring", "template_id": "Tirthaji_Vedic_Math_sa_360"}
 {"skill_name": "Algebra", "template_id": "Tirthaji_Vedic_Math_sa_360"}
 {"skill_name": "NumberTheory", "template_id": "Tirthaji_Vedic_Math_sa_360"}
 {"skill_name": "Arithmetic", "template_id": "Tirthaji_Vedic_Math_sa_362"}
@@ -2132,10 +2123,9 @@
 {"skill_name": "Coordinate Geometry", "template_id": "Tirthaji_Vedic_Math_sa_408"}
 {"skill_name": "VedicMath", "template_id": "Tirthaji_Vedic_Math_sa_408"}
 {"skill_name": "Pythagoras Theorem", "template_id": "Tirthaji_Vedic_Math_sa_408"}
-{"skill_name": "Algebra: Linear Equations", "template_id": "Tirthaji_Vedic_Math_sa_411"}
-{"skill_name": "Arithmetic: Basic Operations (+, -, ×, ÷)", "template_id": "Tirthaji_Vedic_Math_sa_411"}
-{"skill_name": "Coordinate Geometry", "template_id": "Tirthaji_Vedic_Math_sa_411"}
 {"skill_name": "Linear Equations", "template_id": "Tirthaji_Vedic_Math_sa_411"}
+{"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Tirthaji_Vedic_Math_sa_411"}
+{"skill_name": "Coordinate Geometry", "template_id": "Tirthaji_Vedic_Math_sa_411"}
 {"skill_name": "Coordinate Geometry", "template_id": "Tirthaji_Vedic_Math_sa_412"}
 {"skill_name": "Linear Equations", "template_id": "Tirthaji_Vedic_Math_sa_412"}
 {"skill_name": "Algebra", "template_id": "Tirthaji_Vedic_Math_sa_415"}
@@ -2147,7 +2137,7 @@
 {"skill_name": "Arithmetic", "template_id": "Vedic_Made_Easy_sa_13"}
 {"skill_name": "NumberTheory", "template_id": "Vedic_Made_Easy_sa_13"}
 {"skill_name": "Basic arithmetic operations", "template_id": "Vedic_Made_Easy_sa_14"}
-{"skill_name": "Number properties", "template_id": "Vedic_Made_Easy_sa_14"}
+{"skill_name": "Number Properties", "template_id": "Vedic_Made_Easy_sa_14"}
 {"skill_name": "Arithmetic", "template_id": "Vedic_Made_Easy_sa_14"}
 {"skill_name": "Arithmetic", "template_id": "Vedic_Made_Easy_sa_15"}
 {"skill_name": "NumberTheory", "template_id": "Vedic_Made_Easy_sa_15"}
@@ -2176,11 +2166,10 @@
 {"skill_name": "normal multiplication", "template_id": "Vedic_Made_Easy_sa_29"}
 {"skill_name": "2-digit multiplication", "template_id": "Vedic_Made_Easy_sa_29"}
 {"skill_name": "multiplication of single-digit numbers", "template_id": "Vedic_Made_Easy_sa_29"}
-{"skill_name": "place value system", "template_id": "Vedic_Made_Easy_sa_29"}
+{"skill_name": "Place Value System", "template_id": "Vedic_Made_Easy_sa_29"}
 {"skill_name": "carry-over in addition", "template_id": "Vedic_Made_Easy_sa_29"}
-{"skill_name": "Arithmetic: Basic Operations (+, -, ×, ÷)", "template_id": "Vedic_Made_Easy_sa_30"}
-{"skill_name": "Arithmetic: Place Value System", "template_id": "Vedic_Made_Easy_sa_30"}
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Vedic_Made_Easy_sa_30"}
+{"skill_name": "Place Value System", "template_id": "Vedic_Made_Easy_sa_30"}
 {"skill_name": "Arithmetic", "template_id": "Vedic_Made_Easy_sa_31"}
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Vedic_Made_Easy_sa_31"}
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Vedic_Made_Easy_sa_32"}
@@ -2191,23 +2180,23 @@
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Vedic_Made_Easy_sa_35"}
 {"skill_name": "Polynomials and Factoring", "template_id": "Vedic_Made_Easy_sa_35"}
 {"skill_name": "Exponents and Radicals", "template_id": "Vedic_Made_Easy_sa_35"}
-{"skill_name": "Algebra: Polynomials and Factoring", "template_id": "Vedic_Made_Easy_sa_36"}
+{"skill_name": "Polynomials and Factoring", "template_id": "Vedic_Made_Easy_sa_36"}
 {"skill_name": "Arithmetic", "template_id": "Vedic_Made_Easy_sa_36"}
 {"skill_name": "Algebra", "template_id": "Vedic_Made_Easy_sa_36"}
 {"skill_name": "Arithmetic", "template_id": "Vedic_Made_Easy_sa_41"}
 {"skill_name": "NumberTheory", "template_id": "Vedic_Made_Easy_sa_41"}
-{"skill_name": "Perfect squares", "template_id": "Vedic_Made_Easy_sa_43"}
-{"skill_name": "Multiplication tables", "template_id": "Vedic_Made_Easy_sa_43"}
+{"skill_name": "Perfect Squares", "template_id": "Vedic_Made_Easy_sa_43"}
+{"skill_name": "Multiplication Tables", "template_id": "Vedic_Made_Easy_sa_43"}
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Vedic_Made_Easy_sa_43"}
-{"skill_name": "NumberTheory:Divisibility Rules", "template_id": "Vedic_Made_Easy_sa_44"}
-{"skill_name": "Arithmetic:Basic Operations", "template_id": "Vedic_Made_Easy_sa_44"}
+{"skill_name": "Divisibility Rules", "template_id": "Vedic_Made_Easy_sa_44"}
+{"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Vedic_Made_Easy_sa_44"}
 {"skill_name": "Arithmetic", "template_id": "Vedic_Made_Easy_sa_44"}
 {"skill_name": "Prime Numbers", "template_id": "Vedic_Made_Easy_sa_46"}
 {"skill_name": "Multiplication Tables", "template_id": "Vedic_Made_Easy_sa_46"}
 {"skill_name": "Arithmetic", "template_id": "Vedic_Made_Easy_sa_46"}
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Vedic_Made_Easy_sa_46"}
-{"skill_name": "NumberTheory:Divisibility Rules", "template_id": "Vedic_Made_Easy_sa_47"}
-{"skill_name": "Arithmetic:Exponents", "template_id": "Vedic_Made_Easy_sa_47"}
+{"skill_name": "Divisibility Rules", "template_id": "Vedic_Made_Easy_sa_47"}
+{"skill_name": "Exponents", "template_id": "Vedic_Made_Easy_sa_47"}
 {"skill_name": "NumberTheory", "template_id": "Vedic_Made_Easy_sa_47"}
 {"skill_name": "Powers of 10", "template_id": "Vedic_Made_Easy_sa_49"}
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Vedic_Made_Easy_sa_49"}
@@ -2227,9 +2216,8 @@
 {"skill_name": "NumberTheory", "template_id": "Vedic_Made_Easy_sa_55"}
 {"skill_name": "Arithmetic", "template_id": "Vedic_Made_Easy_sa_56"}
 {"skill_name": "NumberTheory", "template_id": "Vedic_Made_Easy_sa_56"}
-{"skill_name": "Arithmetic: Basic Operations (+, -, ×, ÷)", "template_id": "Vedic_Made_Easy_sa_57"}
-{"skill_name": "Arithmetic: Fractions and Decimals", "template_id": "Vedic_Made_Easy_sa_57"}
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Vedic_Made_Easy_sa_57"}
+{"skill_name": "Fractions and Decimals", "template_id": "Vedic_Made_Easy_sa_57"}
 {"skill_name": "Number Bases", "template_id": "Vedic_Made_Easy_sa_57"}
 {"skill_name": "Arithmetic", "template_id": "Vedic_Made_Easy_sa_58"}
 {"skill_name": "NumberTheory", "template_id": "Vedic_Made_Easy_sa_58"}
@@ -2239,7 +2227,7 @@
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Vedic_Made_Easy_sa_59"}
 {"skill_name": "Number Bases", "template_id": "Vedic_Made_Easy_sa_59"}
 {"skill_name": "Basic arithmetic operations", "template_id": "Vedic_Made_Easy_sa_62"}
-{"skill_name": "Number properties", "template_id": "Vedic_Made_Easy_sa_62"}
+{"skill_name": "Number Properties", "template_id": "Vedic_Made_Easy_sa_62"}
 {"skill_name": "Arithmetic", "template_id": "Vedic_Made_Easy_sa_62"}
 {"skill_name": "Modular Arithmetic", "template_id": "Vedic_Made_Easy_sa_63"}
 {"skill_name": "Number Bases", "template_id": "Vedic_Made_Easy_sa_63"}
@@ -2272,10 +2260,9 @@
 {"skill_name": "Fractions and Decimals", "template_id": "Vedic_Made_Easy_sa_78"}
 {"skill_name": "Arithmetic", "template_id": "Vedic_Made_Easy_sa_78"}
 {"skill_name": "Algebra", "template_id": "Vedic_Made_Easy_sa_78"}
-{"skill_name": "Algebra:Polynomials and Factoring", "template_id": "Vedic_Made_Easy_sa_79"}
-{"skill_name": "Algebra:Linear Equations", "template_id": "Vedic_Made_Easy_sa_79"}
-{"skill_name": "Algebra", "template_id": "Vedic_Made_Easy_sa_79"}
+{"skill_name": "Polynomials and Factoring", "template_id": "Vedic_Made_Easy_sa_79"}
 {"skill_name": "Linear Equations", "template_id": "Vedic_Made_Easy_sa_79"}
+{"skill_name": "Algebra", "template_id": "Vedic_Made_Easy_sa_79"}
 {"skill_name": "Basic Equations", "template_id": "Vedic_Made_Easy_sa_80"}
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Vedic_Made_Easy_sa_80"}
 {"skill_name": "Polynomials and Factoring", "template_id": "Vedic_Made_Easy_sa_80"}
@@ -2284,15 +2271,14 @@
 {"skill_name": "Ratios and Proportions", "template_id": "Vedic_Made_Easy_sa_82"}
 {"skill_name": "Linear Equations", "template_id": "Vedic_Made_Easy_sa_82"}
 {"skill_name": "Algebra", "template_id": "Vedic_Made_Easy_sa_82"}
-{"skill_name": "Basic division", "template_id": "Vedic_Made_Easy_sa_86"}
-{"skill_name": "Multiplication tables", "template_id": "Vedic_Made_Easy_sa_86"}
-{"skill_name": "Place value system", "template_id": "Vedic_Made_Easy_sa_86"}
+{"skill_name": "Basic Division", "template_id": "Vedic_Made_Easy_sa_86"}
+{"skill_name": "Multiplication Tables", "template_id": "Vedic_Made_Easy_sa_86"}
+{"skill_name": "Place Value System", "template_id": "Vedic_Made_Easy_sa_86"}
 {"skill_name": "Arithmetic", "template_id": "Vedic_Made_Easy_sa_86"}
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Vedic_Made_Easy_sa_86"}
-{"skill_name": "NumberTheory:Divisibility Rules", "template_id": "Vedic_Made_Easy_sa_87"}
-{"skill_name": "Arithmetic:Basic Operations (+, -, ×, ÷)", "template_id": "Vedic_Made_Easy_sa_87"}
-{"skill_name": "Arithmetic", "template_id": "Vedic_Made_Easy_sa_87"}
+{"skill_name": "Divisibility Rules", "template_id": "Vedic_Made_Easy_sa_87"}
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Vedic_Made_Easy_sa_87"}
+{"skill_name": "Arithmetic", "template_id": "Vedic_Made_Easy_sa_87"}
 {"skill_name": "Perfect Squares", "template_id": "Vedic_Made_Easy_sa_88"}
 {"skill_name": "Long Division", "template_id": "Vedic_Made_Easy_sa_88"}
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Vedic_Made_Easy_sa_88"}
@@ -2349,8 +2335,6 @@
 {"skill_name": "Geometry", "template_id": "Vedic_Made_Easy_sa_115"}
 {"skill_name": "Binomial Theorem", "template_id": "Vedic_Made_Easy_sa_117"}
 {"skill_name": "Exponents and Radicals", "template_id": "Vedic_Made_Easy_sa_117"}
-{"skill_name": "Advance Level", "template_id": "Vedic_Made_Easy_sa_117"}
-{"skill_name": "Chapter on Cubing Numbers", "template_id": "Vedic_Made_Easy_sa_117"}
 {"skill_name": "Linear Equations", "template_id": "Vedic_Made_Easy_sa_118"}
 {"skill_name": "Basic Coordinate System", "template_id": "Vedic_Made_Easy_sa_118"}
 {"skill_name": "Coordinate Geometry", "template_id": "Vedic_Made_Easy_sa_118"}
@@ -2386,7 +2370,6 @@
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Vedic_Secrets_sa_14"}
 {"skill_name": "Arithmetic", "template_id": "Vedic_Secrets_sa_14"}
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Vedic_Secrets_sa_16"}
-{"skill_name": "Arithmetic: Basic Operations (+, -, ×, ÷)", "template_id": "Vedic_Secrets_sa_16"}
 {"skill_name": "Ekadhikena Purvena (One More than the Previous)", "template_id": "Vedic_Secrets_sa_17"}
 {"skill_name": "Nikhilam Navatashcaramam (All from 9, Last from 10)", "template_id": "Vedic_Secrets_sa_17"}
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Vedic_Secrets_sa_17"}
@@ -2396,7 +2379,6 @@
 {"skill_name": "Multiplication Tables up to 12x12", "template_id": "Vedic_Secrets_sa_18"}
 {"skill_name": "Arithmetic", "template_id": "Vedic_Secrets_sa_19"}
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Vedic_Secrets_sa_19"}
-{"skill_name": "Previous sutras (referencing crosswise subtraction)", "template_id": "Vedic_Secrets_sa_19"}
 {"skill_name": "Arithmetic", "template_id": "Vedic_Secrets_sa_20"}
 {"skill_name": "NumberTheory", "template_id": "Vedic_Secrets_sa_20"}
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Vedic_Secrets_sa_20"}
@@ -2411,7 +2393,7 @@
 {"skill_name": "Arithmetic", "template_id": "Vedic_Secrets_sa_24"}
 {"skill_name": "Arithmetic", "template_id": "Vedic_Secrets_sa_25"}
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Vedic_Secrets_sa_25"}
-{"skill_name": "VedicMath: Urdhva Tiryagbhyam (Vertically and Crosswise)", "template_id": "Vedic_Secrets_sa_25"}
+{"skill_name": "Urdhva Tiryagbhyam (Vertically and Crosswise)", "template_id": "Vedic_Secrets_sa_25"}
 {"skill_name": "Arithmetic", "template_id": "Vedic_Secrets_sa_26"}
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Vedic_Secrets_sa_26"}
 {"skill_name": "Basic Operations (+, -, ×, ÷)", "template_id": "Vedic_Secrets_sa_28"}

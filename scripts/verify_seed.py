@@ -122,12 +122,17 @@ def verify_db(exports: Path) -> None:
                 n = session.run(f"MATCH (n:`{label}`) RETURN count(n) AS n").single()["n"]
                 if label == "Skill":
                     # Seeding deliberately adds 3 post-export skills (Dhvajanka
-                    # Sutra Level 1-3, prereq for RAG's derived-REQUIRES load).
+                    # Sutra Level 1-3, prereq for RAG's derived-REQUIRES load),
+                    # and scripts/migrate_skill_vocabulary.py then removed 48:
+                    # 24 case duplicates, 16 resolvable namespaced variants,
+                    # 3 Basic Operations variants and 5 structural names.
+                    # 467 + 3 - 48 = 422.
                     dh = session.run(
                         "MATCH (s:Skill) WHERE s.name STARTS WITH 'Dhvajanka Sutra Level' "
                         "RETURN count(s) AS n"
                     ).single()["n"]
-                    check("neo4j :Skill (export + 3 Dhvajanka)", n, expected + 3)
+                    check("neo4j :Skill (export + 3 Dhvajanka - 48 vocabulary)", n,
+                          expected + 3 - 48)
                     check("neo4j Dhvajanka L1-3 present", dh, 3)
                     continue
                 check(f"neo4j :{label}", n, expected)
@@ -136,7 +141,27 @@ def verify_db(exports: Path) -> None:
             # Post-MERGE-window deltas (RAG's derived skill DAG, 2026-09-02):
             # REQUIRES grew 11 → 294 (201 chain_derived + 82 next_topic +
             # 11 curated, provenance in r.source). Manifest value is pre-MERGE.
-            rel_overrides = {"REQUIRES": 294}
+            # Then 294 → 262 when the next_topic tier was retracted on
+            # 2026-09-04 (a table of contents is not a prerequisite ordering) —
+            # this expectation was left stale and verify_seed --db had been
+            # failing on it ever since. Then 262 → 255 when
+            # scripts/migrate_skill_vocabulary.py merged the skill vocabulary:
+            # 7 edges collapsed onto pairs the survivor already had.
+            # PREREQUISITE_OF, TEACHES and EXPLAINS moved for the same reason
+            # (dedup onto the survivor plus the 5 structural deletions), so they
+            # are pinned to the post-migration contract too.
+            # Each of these was verified against the pre-migration snapshot as
+            # the EXACT image of the old edge set under the merge map — 0 edges
+            # missing, 0 unexpected, and FRONTIER_OF still 100% reciprocal.
+            # The drops are dedup onto the survivor, self-loop removal, and the
+            # 5 structural deletions; no adjacency was lost.
+            rel_overrides = {
+                "REQUIRES": 255,
+                "PREREQUISITE_OF": 2439,
+                "TEACHES": 307,
+                "EXPLAINS": 147,
+                "FRONTIER_OF": 2486,
+            }
             for rtype, expected in manifest["relationships_by_type"].items():
                 n = session.run(f"MATCH ()-[r:`{rtype}`]->() RETURN count(r) AS n").single()["n"]
                 if rtype in rel_overrides:
