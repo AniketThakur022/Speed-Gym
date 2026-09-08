@@ -1,0 +1,237 @@
+<title>Phase 1 Build Checklist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&display=swap">
+<style>
+:root{--ground:#0A0C09;--panel:#12160F;--panel2:#171C15;--line:#242A22;
+--ink:#E9EFE4;--muted:#8C978B;--dim:#5F6A5E;
+--done:#C8FF5A;--key:#F0B429;--decide:#6BC5FF;--env:#C58BFF;--build:#FF9ECF;--content:#7FE3C4;--gate:#FF7A70;
+--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;--sans:"IBM Plex Sans",system-ui,sans-serif;
+--disp:"Archivo","IBM Plex Sans",system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1060px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--disp);margin:0;text-wrap:balance}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+header{border-bottom:1px solid var(--line);padding:52px 0 36px;background:radial-gradient(1000px 280px at 10% -20%,rgba(200,255,90,.07),transparent 70%)}
+h1{font-size:clamp(29px,4.2vw,45px);font-weight:700;letter-spacing:-.02em;line-height:1.07;margin:12px 0 0}
+.sub{color:var(--muted);max-width:64ch;margin:14px 0 0}
+.tally{display:flex;gap:30px;flex-wrap:wrap;margin-top:26px;font-family:var(--mono)}
+.tally div span{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);display:block;margin-bottom:4px}
+.tally div b{font-size:26px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1}
+.t1 b{color:var(--done)}.t2 b{color:var(--key)}.t3 b{color:var(--ink)}
+.progress{margin-top:22px;height:10px;background:var(--panel2);border-radius:2px;overflow:hidden;display:flex}
+.progress i{display:block;height:100%}
+.plegend{display:flex;gap:20px;flex-wrap:wrap;margin-top:9px;font-family:var(--mono);font-size:11px;color:var(--dim)}
+.plegend em{font-style:normal;display:inline-block;width:8px;height:8px;border-radius:1px;margin-right:5px}
+section{padding:46px 0;border-bottom:1px solid var(--line)}
+h2{font-size:23px;font-weight:600;letter-spacing:-.01em;display:flex;align-items:baseline;gap:13px;flex-wrap:wrap}
+h2 .cnt{font-family:var(--mono);font-size:12px;font-weight:400;color:var(--dim);letter-spacing:.05em}
+.lede{color:var(--muted);max-width:76ch;margin:11px 0 0;font-size:14.5px}
+.grp{margin-top:26px}
+.grp h3{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--dim);
+ padding-bottom:9px;border-bottom:1px solid var(--line);font-weight:500}
+ul{list-style:none;margin:0;padding:0}
+li{display:grid;grid-template-columns:22px 1fr;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);align-items:start}
+li:last-child{border-bottom:none}
+.bx{font-family:var(--mono);font-size:13px;line-height:1.5;padding-top:1px}
+.bx.d{color:var(--done)}.bx.o{color:var(--dim)}
+li .txt{font-size:14px}
+li .txt b{font-weight:500;color:var(--ink)}
+li .txt i{font-style:normal;color:var(--muted)}
+li .txt .m{font-family:var(--mono);font-size:11.5px;color:var(--dim);display:block;margin-top:3px}
+.blk{display:inline-block;font-family:var(--mono);font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;
+ padding:2px 7px;border-radius:2px;border:1px solid;margin-left:8px;vertical-align:1px;white-space:nowrap}
+.b-key{color:var(--key);border-color:rgba(240,180,41,.45)}
+.b-dec{color:var(--decide);border-color:rgba(107,197,255,.45)}
+.b-env{color:var(--env);border-color:rgba(197,139,255,.45)}
+.b-bld{color:var(--build);border-color:rgba(255,158,207,.45)}
+.b-con{color:var(--content);border-color:rgba(127,227,196,.45)}
+.callout{margin-top:26px;border:1px solid var(--line);border-left:3px solid var(--key);background:var(--panel);
+ border-radius:4px;padding:19px 21px}
+.callout h4{font-family:var(--disp);font-size:15.5px;font-weight:600;color:var(--key);margin:0 0 8px}
+.callout p{margin:0;color:var(--muted);font-size:14px;max-width:84ch}
+.callout p b{color:var(--ink);font-weight:500}
+.gates{display:grid;grid-template-columns:repeat(auto-fit,minmax(224px,1fr));gap:11px;margin-top:24px}
+.g{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:14px 16px}
+.g .s{font-family:var(--mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;display:block;margin-bottom:6px}
+.g.ok .s{color:var(--done)}.g.part .s{color:var(--key)}.g.no .s{color:var(--dim)}
+.g h4{font-family:var(--disp);font-size:14px;font-weight:600;margin:0 0 4px}
+.g p{margin:0;color:var(--muted);font-size:12.5px}
+footer{padding:34px 0 56px;color:var(--dim);font-size:13px}
+code{font-family:var(--mono);font-size:12.5px;background:var(--panel2);padding:1px 5px;border-radius:2px;border:1px solid var(--line);color:var(--ink)}
+@media(max-width:600px){li{grid-template-columns:18px 1fr;gap:9px}}
+</style>
+
+<header><div class="wrap">
+  <span class="eyebrow">Vedic Math Speed Gym · Phase 1 · 9 September 2026</span>
+  <h1>What is done, and what is left</h1>
+  <p class="sub">Eight days after the disk failure that destroyed the original build. Every item below was
+    checked against the repository, the live databases or a test run — not against a plan.</p>
+  <div class="tally">
+    <div class="t1"><span>Complete</span><b>71</b></div>
+    <div class="t2"><span>Blocked on owner</span><b>11</b></div>
+    <div class="t3"><span>Remaining engineering</span><b>23</b></div>
+  </div>
+  <div class="progress">
+    <i style="width:67%;background:#C8FF5A"></i><i style="width:10%;background:#F0B429"></i><i style="width:23%;background:#242A22"></i>
+  </div>
+  <div class="plegend">
+    <span><em style="background:#C8FF5A"></em>built &amp; verified</span>
+    <span><em style="background:#F0B429"></em>waiting on a key or a decision</span>
+    <span><em style="background:#242A22"></em>not started</span>
+  </div>
+</div></header>
+
+<section><div class="wrap">
+  <h2>Recovery <span class="cnt">complete — 2 items unrecovered by choice or absence</span></h2>
+  <div class="grp"><h3>From the 2026-09-01 data loss</h3><ul>
+    <li><span class="bx d">✓</span><span class="txt"><b>All specification documents</b> <i>— architecture corpus, client brief, content readiness, RAG factory spec</i></span></li>
+    <li><span class="bx d">✓</span><span class="txt"><b>53 source book PDFs</b> <i>— every pillar</i></span></li>
+    <li><span class="bx d">✓</span><span class="txt"><b>Extraction toolchain and dashboards</b> <i>— OCR pipeline, page view, explorer, problem view</i></span></li>
+    <li><span class="bx d">✓</span><span class="txt"><b>Database exports re-seeded</b> <span class="m">graph and vector store restored from files, not rebuilt from scratch</span></span></li>
+    <li><span class="bx d">✓</span><span class="txt"><b>70 frontend sources</b> <i>— recovered from the APK's dev-build chunks</i></span></li>
+    <li><span class="bx d">✓</span><span class="txt"><b>Git remote live with nightly checkpoints</b> <span class="m">148 commits · the failure mode that killed the first build cannot recur</span></span></li>
+    <li><span class="bx o">○</span><span class="txt"><b>RFP v7.2</b> <i>— never found; specification IDs remain unverifiable</i><span class="blk b-dec">search email / WhatsApp</span></span></li>
+    <li><span class="bx o">○</span><span class="txt"><b>Original backend source</b> <i>— deliberately not chased; rebuilt from specification instead, and rebuilt further</i></span></li>
+  </ul></div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Backend <span class="cnt">all nine blocks built · 310 Python + 148 TypeScript tests green</span></h2>
+  <div class="grp"><h3>Platform</h3><ul>
+    <li><span class="bx d">✓</span><span class="txt"><b>Dual-database foundation</b> <i>— Postgres + pgvector, Neo4j, Redis, migrations, seeding</i></span></li>
+    <li><span class="bx d">✓</span><span class="txt"><b>Authentication</b> <i>— JWT, refresh rotation with replay detection that kills the device session, QR pairing</i></span></li>
+    <li><span class="bx d">✓</span><span class="txt"><b>Practice loop end to end</b> <span class="m">trust ladder enforced server-side; withheld content counted, not hidden</span></span></li>
+    <li><span class="bx d">✓</span><span class="txt"><b>Offline sync, four-path write</b> <i>— idempotent by event id, verified in the database</i></span></li>
+    <li><span class="bx d">✓</span><span class="txt"><b>Telemetry registry</b> <span class="m">39 events, four sampling classes, psychometric events never sampled at any scale</span></span></li>
+  </ul></div>
+  <div class="grp"><h3>Product surfaces</h3><ul>
+    <li><span class="bx d">✓</span><span class="txt"><b>Game server</b> <i>— full event lifecycle, Glicko-2, anti-cheat, heartbeat→grace→forfeit, bots with COPPA gate</i></span></li>
+    <li><span class="bx d">✓</span><span class="txt"><b>Billing</b> <i>— Razorpay primary, Stripe secondary, family seats, entitlement tokens</i> <span class="m">two adversarial review rounds, 13 findings fixed including a free-subscription replay hole</span></span></li>
+    <li><span class="bx d">✓</span><span class="txt"><b>Social and gamification</b> <i>— friends, QR, ghosts, daily challenge, 28 achievements, leaderboards</i></span></li>
+    <li><span class="bx d">✓</span><span class="txt"><b>COPPA kids mode</b> <i>— enforced server-side, not in the client; deliberately not a feature flag</i></span></li>
+    <li><span class="bx d">✓</span><span class="txt"><b>Mock exams</b> <i>— pool-independent scoring, blueprints authored, CAT −1 penalty</i></span></li>
+    <li><span class="bx d">✓</span><span class="txt"><b>Study chatbot</b> <i>— hint ladder from verified steps minus the last; no retrieval, by construction</i></span></li>
+    <li><span class="bx d">✓</span><span class="txt"><b>Admin, feature flags, kill-switch</b> <span class="m">fail-closed: database unreachable means every gated feature goes dark</span></span></li>
+    <li><span class="bx d">✓</span><span class="txt"><b>PWA on the live API</b> <i>— offline queue, practice, plans, mock centre, leaderboard, friends</i></span></li>
+    <li><span class="bx d">✓</span><span class="txt"><b>Hardening</b> <i>— rate limits, security headers, request ids, backups, production compose, CI security job</i></span></li>
+    <li><span class="bx d">✓</span><span class="txt"><b>Adversarial review of blocks 5–9</b> <i>— 16 findings confirmed and fixed, three of them security</i></span></li>
+  </ul></div>
+  <div class="grp"><h3>Learning engine</h3><ul>
+    <li><span class="bx d">✓</span><span class="txt"><b>Mastery tracking at pre-loss parity</b> <span class="m">reproduces the July build's numbers exactly on the same input</span></span></li>
+    <li><span class="bx d">✓</span><span class="txt"><b>Session composer, scheduler, calibration</b> <i>— 60/20/20 with persona and age handling</i></span></li>
+    <li><span class="bx d">✓</span><span class="txt"><b>All 16 Vedic techniques</b> <i>— up from 5 before the loss; self-verifying generators</i></span></li>
+  </ul></div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Content factory <span class="cnt">pipeline complete · output quarantined pending judges</span></h2>
+  <div class="grp"><h3>Built</h3><ul>
+    <li><span class="bx d">✓</span><span class="txt"><b>Nightly and hourly generation lanes</b> <i>— parametric, zero AI tokens</i></span></li>
+    <li><span class="bx d">✓</span><span class="txt"><b>Seven-stage auditor</b> <span class="m">ten deliberate defects injected, ten caught at the correct stage</span></span></li>
+    <li><span class="bx d">✓</span><span class="txt"><b>Trust ladder with adversarial intake</b> <i>— malformed verdicts refused; nothing promotes by default</i></span></li>
+    <li><span class="bx d">✓</span><span class="txt"><b>Skill DAG and prerequisite closure</b> <i>— matched an independent offline computation exactly</i></span></li>
+    <li><span class="bx d">✓</span><span class="txt"><b>Template bank v1.4</b> <i>— 99.66% renderer-valid after three normalisation passes</i></span></li>
+    <li><span class="bx d">✓</span><span class="txt"><b>Taxonomy v1.1 and vocabulary merge</b> <i>— 470 skills → 422, zero mastery migration required</i></span></li>
+    <li><span class="bx d">✓</span><span class="txt"><b>Verbatim chunk store</b> <i>— 12,540 chunks across 20 books, replacing summary paraphrases</i></span></li>
+    <li><span class="bx d">✓</span><span class="txt"><b>348 corpus-converted templates</b> <i>— 30% of candidates refused rather than fabricated</i></span></li>
+    <li><span class="bx d">✓</span><span class="txt"><b>Interim judge panels</b> <i>— defect rates measured: legacy bank 88%, converted 47%, generated 21%</i></span></li>
+  </ul></div>
+  <div class="grp"><h3>Remaining</h3><ul>
+    <li><span class="bx o">○</span><span class="txt"><b>Judge models online</b> <i>— nothing can leave quarantine until keys exist</i><span class="blk b-key">owner key</span></span></li>
+    <li><span class="bx o">○</span><span class="txt"><b>Embed the verbatim chunks</b> <i>— 12,540 chunks and 17 ontology entries waiting</i><span class="blk b-key">owner key</span></span></li>
+    <li><span class="bx o">○</span><span class="txt"><b>Legacy bank: adopt repaired or regenerate</b> <span class="m">evidence favours regeneration — the damage reaches the arithmetic layer</span><span class="blk b-dec">decision</span></span></li>
+    <li><span class="bx o">○</span><span class="txt"><b>Reference library</b> <i>— 25 of 28 technique pages unwritten</i><span class="blk b-con">content</span></span></li>
+  </ul></div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Data extraction <span class="cnt">corpus complete and verified · enrichment ongoing</span></h2>
+  <div class="grp"><h3>Built</h3><ul>
+    <li><span class="bx d">✓</span><span class="txt"><b>19,619 questions across 25 books</b> <i>— canonical corpus with full provenance</i></span></li>
+    <li><span class="bx d">✓</span><span class="txt"><b>Answer keys 68.5% → 77.5%</b> <span class="m">Hall &amp; Knight 0% → 69.8% · Sinha 64% → 87.4% · baseline derived from the patch ledger, not quoted</span></span></li>
+    <li><span class="bx d">✓</span><span class="txt"><b>Difficulty backfilled where evidence exists</b> <i>— 3,297 questions; the rest left honestly null</i></span></li>
+    <li><span class="bx d">✓</span><span class="txt"><b>Format classification and taxonomy mapping</b></span></li>
+    <li><span class="bx d">✓</span><span class="txt"><b>Flattened question export</b> <i>— separate fields for answer-checked, derivation-checked and mastery-joinable</i></span></li>
+    <li><span class="bx d">✓</span><span class="txt"><b>Two-gate patch verifier</b> <span class="m">refuses a fabricated row at a 90% off-page token rate; refuses any rewrite lacking a source citation</span></span></li>
+    <li><span class="bx d">✓</span><span class="txt"><b>Page store</b> <i>— 12,616 OCR pages across 21 books</i></span></li>
+    <li><span class="bx d">✓</span><span class="txt"><b>664 option lists recovered</b> <i>— 97.4% key-consistent</i></span></li>
+    <li><span class="bx d">✓</span><span class="txt"><b>Verification dashboards running</b> <i>— page view, explorer, problem view</i></span></li>
+    <li><span class="bx d">✓</span><span class="txt"><b>Candidate mock pools staged</b> <i>— binding is a rename once the serving path is decided</i></span></li>
+  </ul></div>
+  <div class="grp"><h3>Remaining</h3><ul>
+    <li><span class="bx o">○</span><span class="txt"><b>Vision pass</b> <i>— 3,509 questions need a model to read their figures; batches built and waiting</i><span class="blk b-key">owner key</span></span></li>
+    <li><span class="bx o">○</span><span class="txt"><b>Verify 23 suspected answer-key shifts</b> <i>— clustered, so likely systematic rather than isolated</i><span class="blk b-con">content</span></span></li>
+    <li><span class="bx o">○</span><span class="txt"><b>Reclassify short-answer questions mis-typed as multiple choice</b> <i>— converts more to playable than option recovery did</i><span class="blk b-con">content</span></span></li>
+    <li><span class="bx o">○</span><span class="txt"><b>Arun Sharma DI source</b> <i>— 343 of 466 pages are placeholders; needs a real copy</i><span class="blk b-env">owner</span></span></li>
+  </ul></div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Unified graph <span class="cnt">built 9 September · 28,861 nodes</span></h2>
+  <div class="grp"><ul>
+    <li><span class="bx d">✓</span><span class="txt"><b>Every data source joined into one graph</b> <span class="m">corpus, chapters, exam topics, converted templates and chunks loaded additively; serving graph verified unchanged</span></span></li>
+    <li><span class="bx o">○</span><span class="txt"><b>Build CAT quant skills</b> <i>— roughly 1,855 on-band questions currently have no skill to attach to</i><span class="blk b-con">highest content value</span></span></li>
+    <li><span class="bx o">○</span><span class="txt"><b>Split the three overloaded mastery keys</b> <span class="m">three keys hold 599 of 794 problems — the engine cannot distinguish learners inside them</span><span class="blk b-con">content</span></span></li>
+    <li><span class="bx o">○</span><span class="txt"><b>Extend prerequisites beyond 40 of 422 skills</b> <i>— the frontier band has nothing to reason about elsewhere</i><span class="blk b-con">content</span></span></li>
+    <li><span class="bx o">○</span><span class="txt"><b>Decide how GRE verbal is modelled</b> <i>— 524 questions that are not mathematics</i><span class="blk b-dec">decision</span></span></li>
+  </ul></div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Not started</h2>
+  <p class="lede">Scoped in the original plan, no work begun. The team modes were specified as
+    “built in Phase 1, switched off until Phase 2” — they are currently referenced in achievements and
+    events but have no implementation.</p>
+  <div class="grp"><h3>Phase-2 features due to ship dark</h3><ul>
+    <li><span class="bx o">○</span><span class="txt"><b>Boss battles</b><span class="blk b-bld">engineering</span></span></li>
+    <li><span class="bx o">○</span><span class="txt"><b>Relay races</b><span class="blk b-bld">engineering</span></span></li>
+    <li><span class="bx o">○</span><span class="txt"><b>Swiss tournaments</b><span class="blk b-bld">engineering</span></span></li>
+    <li><span class="bx o">○</span><span class="txt"><b>Virtual hubs and location check-ins</b><span class="blk b-bld">engineering</span></span></li>
+  </ul></div>
+  <div class="grp"><h3>Revenue and growth</h3><ul>
+    <li><span class="bx o">○</span><span class="txt"><b>Referral ladder</b> <i>— verification rules specified, flag seeded dark, unimplemented</i><span class="blk b-bld">engineering</span></span></li>
+    <li><span class="bx o">○</span><span class="txt"><b>Ad engine</b> <i>— placement rules and offline impression queue specified</i><span class="blk b-bld">engineering</span></span></li>
+    <li><span class="bx o">○</span><span class="txt"><b>Parent-managed friend approval</b><span class="blk b-bld">engineering</span></span></li>
+  </ul></div>
+  <div class="grp"><h3>Release</h3><ul>
+    <li><span class="bx o">○</span><span class="txt"><b>Native shells</b> <i>— needs a machine with Android Studio and Xcode</i><span class="blk b-env">environment</span></span></li>
+    <li><span class="bx o">○</span><span class="txt"><b>Store listings and submission</b><span class="blk b-env">environment</span></span></li>
+    <li><span class="bx o">○</span><span class="txt"><b>Closed beta with 100+ testers</b><span class="blk b-env">environment</span></span></li>
+    <li><span class="bx o">○</span><span class="txt"><b>Deployment target and hosting decision</b> <i>— droplet versus managed Neo4j</i><span class="blk b-dec">decision</span></span></li>
+    <li><span class="bx o">○</span><span class="txt"><b>Security scan on the deployed host</b> <i>— cannot run against localhost</i><span class="blk b-env">environment</span></span></li>
+  </ul></div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>The eight launch gates</h2>
+  <p class="lede">From the client brief. These are the go/no-go criteria, not a wish list.</p>
+  <div class="gates">
+    <div class="g ok"><span class="s">● passing</span><h4>Code quality</h4><p>458 tests across API, game server and web; CI enforces them.</p></div>
+    <div class="g part"><span class="s">◐ partial</span><h4>Security scan</h4><p>Headers, rate limits and CI job in place; external scan needs a deployed host.</p></div>
+    <div class="g part"><span class="s">◐ partial</span><h4>Speed under load</h4><p>Load-test harness written; no run against production-shaped infrastructure yet.</p></div>
+    <div class="g no"><span class="s">○ not started</span><h4>Device coverage</h4><p>Requires native shells and a device matrix.</p></div>
+    <div class="g no"><span class="s">○ not started</span><h4>Accessibility</h4><p>Audit not yet run against the built PWA.</p></div>
+    <div class="g ok"><span class="s">● passing</span><h4>Integration</h4><p>Every route exercised end to end by the live demo; 59 of 59 checks passed.</p></div>
+    <div class="g no"><span class="s">○ not started</span><h4>Stable beta</h4><p>Blocked behind native shells and store submission.</p></div>
+    <div class="g no"><span class="s">○ trigger</span><h4>5,000 daily users</h4><p>The Phase-2 activation trigger, not a Phase-1 task.</p></div>
+  </div>
+
+  <div class="callout">
+    <h4>Three things unlock the most, and all three are yours</h4>
+    <p><b>1. The serving-path decision.</b> It blocks the exam corpus reaching learners, the mock-exam
+      question pools, and the corpus-to-graph mapping — three separate workstreams waiting on one word.
+      <b>2. API keys in <code>.env</code>.</b> The judge models are the single largest unlock in the
+      project: without them every generated item stays quarantined and the generated tier is empty for
+      learners. Vision and embedding keys release a further 3,509 questions and the chunk store.
+      <b>3. A machine with Android Studio and Xcode</b>, which is the only thing standing between the
+      built PWA and a real device.</p>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  Verified against the repository, the live databases and test runs on 9 September 2026 — 148 commits,
+  eight days after the data loss. Counts exclude the Phase-2 activation work, which was always scheduled
+  after the 5,000-user trigger.
+</div></footer>
