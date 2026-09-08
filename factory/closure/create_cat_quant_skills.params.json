@@ -1,0 +1,219 @@
+{
+ "new_skills": [
+  {
+   "name": "Number Systems",
+   "topic": "CAT Quant",
+   "display_label": "Number Systems",
+   "evidence_questions": 612,
+   "naming_ruling": "DEFECT -- near-duplicate, but the analyst's recommended remedy of merging is worse than the defect, so the ruling is: create the node, but not under this name unqualified, and escalate before promotion. Two collisions exist in the 96-name vocabulary. (1) \"Number Bases\" (line 127) is the narrow base-conversion skill; in CS-flavoured material \"number systems\" is the standard title for exactly that topic, so two learner-facing labels will read as the same thing while covering different content. The new node's scope must be documented as explicitly EXCLUDING base conversion, which \"Number Bases\" already owns. (2) \"NumberTheory\" (line 128) is the more serious overlap: divisibility, primes, factorial prime-counting and remainders are precisely what a NumberTheory node covers, and this is the duplication pattern the 2026-09-08 merge of 48 duplicate names was meant to end. HOWEVER, do NOT resolve it by mapping Number Systems onto NumberTheory. NumberTheory is used in the existing graph as an upstream FOUNDATION node -- \"Basic Operations (+, -, x, /) REQUIRES NumberTheory\", \"Fractions and Decimals REQUIRES NumberTheory\", \"Modular Arithmetic REQUIRES NumberTheory\", \"Polynomials and Factoring REQUIRES NumberTheory\", \"Urdhva Tiryagbhyam REQUIRES NumberTheory\". Merging would put 612 advanced CAT questions (157! by 18^n) upstream of Fractions and Decimals, and it would create a hard cycle: the upheld edge becomes NumberTheory -> Prime Numbers, and the graph already contains Prime Numbers -> Basic Operations and Basic Operations -> NumberTheory, closing NumberTheory -> Prime Numbers -> Basic Operations -> NumberTheory. So: create_new_skill=true is correct, topic=\"CAT Quant\" is correct, maps_to_existing_skill=null is correct. The bare name \"Number Systems\" is the defect. Give the node a name that cannot be confused with either neighbour (the display label should make the exam chapter explicit) and record in the taxonomy memory that NumberTheory is a foundation node, not the chapter node, so the next pass does not re-merge them."
+  },
+  {
+   "name": "Geometry and Mensuration",
+   "topic": "CAT Quantitative Aptitude",
+   "display_label": "Geometry and Mensuration",
+   "evidence_questions": 422,
+   "naming_ruling": "REJECT create_new_skill=true. \"Geometry and Mensuration\" is a near-duplicate — in fact a portmanteau — of TWO entries already in EXISTING_SKILL_VOCABULARY: \"Geometry\" and \"Mensuration (Area/Volume)\". This is precisely the defect the 2026-09-08 vocabulary merge (48 duplicate names collapsed, :Skill 470 to 422) was run to remove, and creating it re-opens that wound. Three independent confirmations: (1) the proposed dependency signature nearly reproduces an existing node's — \"Mensuration (Area/Volume) REQUIRES Triangles\" and \"REQUIRES Circles\" already exist, so the new node would sit beside an old node with the same parents; (2) the name is a chapter heading (\"Ch 11: Geometry and Mensuration\" from arun_sharma_quant), not a skill — it names where the questions were printed, not what a learner must know, and chapter-shaped nodes are unusable for BKT because mastery of \"Geometry and Mensuration\" is not one latent trait; (3) the sample contradicts the name — nine of fourteen items are polygon angle/diagonal facts and five are triangle theory, while ZERO are mensuration in the \"Area/Volume\" sense (no solids, no volumes; q10's triangle area is the lone area item). Recommendation: do not mint this node. Route the 422 questions to the existing skills the evidence names — \"Polygon Properties\" (q0-q8), \"Triangles\" (q9-q13), \"Circles\" (q12), \"Mensuration (Area/Volume)\" (q10) — and if a container is genuinely needed for the chapter, attach it to the existing \"Geometry\" skill or carry it as a topic/chapter attribute rather than as a new :Skill. Note that if the node is minted anyway, the upheld edges above still stand as written and the maps_to_existing_skill=null in the input file is wrong: it should read \"Geometry\"."
+  },
+  {
+   "name": "Profit and Loss",
+   "topic": "CAT Quant / Arithmetic",
+   "display_label": "Profit and Loss",
+   "evidence_questions": 281,
+   "naming_ruling": "UPHELD - create_new_skill=true, name=\"Profit and Loss\", topic=\"CAT Quant / Arithmetic\" is correct and is not a duplicate. I checked the proposed name against all 96 entries in EXISTING_SKILL_VOCABULARY: there is no \"Profit and Loss\", no \"Profit\", no \"Discount\", no \"Cost Price\", and no commercial-arithmetic entry of any kind. The nearest neighbours in the same family are \"Percentages\", \"Ratios and Proportions\" and \"Simple and Compound Interest\", none of which is a near-duplicate - each names a distinct competence, and Simple and Compound Interest already establishes the precedent that a commercial-arithmetic application gets its own :Skill rather than being folded into Percentages. maps_to_existing_skill is null, consistent with that check. The topic string \"CAT Quant / Arithmetic\" is a grouping field, not a skill name, so its use of the word \"Arithmetic\" does not collide with the root :Skill \"Arithmetic\". No 48-duplicate-merge regression risk here. One housekeeping note, not a defect in this proposal: the chapter sources are arun_sharma_quant \"Ch 6: Profit & Loss\" and tyra_quicker_maths \"Profit and Loss\" - the ampersand form must NOT be created as a second node; canonicalise on the spelled-out \"Profit and Loss\"."
+  }
+ ],
+ "edges": [
+  {
+   "from": "Number Systems",
+   "to": "Prime Numbers",
+   "source": "cat_quant_panel_2026-09-09",
+   "confidence": "high",
+   "evidence": "Q3: \"perfectly divisible by 2520^n\" and Q4: \"perfectly divisible by 12600^n\". Neither question can be started until the divisor is broken into primes (2520 = 2^3*3^2*5*7; 12600 = 2^3*3^2*5^2*7); the composite itself carries no countable information. Q6 pushes the same requirement onto the dividend: \"42 x 57 x 92 x 91 x 52 x 62 x 63 x 64 x 65 x 66 x 67 is perfectly divisible by 42^n\" forces prime-f",
+   "upheld_reason": "UPHELD. Verbatim in vocabulary (line 135). I confirmed this independently: 10 of the 14 sampled questions are highest-power-of-a-divisor problems whose first move is decomposing a composite divisor into primes, and there is no alternative route. Q5 'Find the maximum value of n such that 50! is perfe"
+  },
+  {
+   "from": "Number Systems",
+   "to": "Exponents and Radicals",
+   "source": "cat_quant_panel_2026-09-09",
+   "confidence": "high",
+   "evidence": "Q2: \"divisible by 18^n\" requires rewriting 18^n as 2^n * 3^(2n) and then dividing the AVAILABLE exponent by the required multiplicity: 157! holds 3^75, so the 3s cap n at floor(75/2) = 37, not 75. Getting this wrong is the standard error on the whole block, and it is an exponent-law step, not a counting step. Q1 (\"12^n\", = 2^(2n)*3^n) and Q5 (\"720^n\", = 2^(4n)*3^(2n)*5^n) repeat it. Q11: \"1^1 x 2^",
+   "upheld_reason": "UPHELD, on narrower grounds than claimed. Verbatim in vocabulary (line 104). The load-bearing step is the power-of-a-product / power-of-a-power law, and I confirmed it is decisive, not cosmetic: for Q3 (157! by 18^n) the available exponents are 2^152 and 3^75 (I computed both by Legendre), and 18^n "
+  },
+  {
+   "from": "Number Systems",
+   "to": "Remainders",
+   "source": "cat_quant_panel_2026-09-09",
+   "confidence": "high",
+   "evidence": "Q12: \"Find the remainder when 73 + 75 + 78 + 57 + 197 is divided by 34.\" Q13: \"Find the remainder when 73 x 75 x 78 x 57 x 197 is divided by 34.\" These two ask for a remainder in the question text itself; the concept of a remainder is the object being tested, not an incidental step. This is the one edge in the set justified by the questions' literal wording rather than by their solution path.",
+   "upheld_reason": "UPHELD. Verbatim in vocabulary (line 142). Q13 'Find the remainder when 73 + 75 + 78 + 57 + 197 is divided by 34' and Q14 'Find the remainder when 73 x 75 x 78 x 57 x 197 is divided by 34' name the object being tested in the question stem; a learner with no concept of a remainder cannot produce an a"
+  },
+  {
+   "from": "Geometry and Mensuration",
+   "to": "Polygon Properties",
+   "source": "cat_quant_panel_2026-09-09",
+   "confidence": "high",
+   "evidence": "Eight of the fourteen sampled questions are pure regular-polygon angle/diagonal facts and are unattemptable without them. q0: \"Each interior angle of a regular polygon is 140^o. Then the number of sides is:\" needs (n-2)*180/n. q2: \"The sum of the interior angles of a polygon is 1440^o\" needs the (n-2)*180 sum. q5: \"the measure of an angle of a regular octagon to the measure of its exterior angle\" ",
+   "upheld_reason": "UPHELD (verbatim in vocabulary; no cycle — 'Polygon Properties' appears nowhere in EXISTING_REQUIRES_EDGES, so it has no path back). Independently confirmed and in fact under-counted by the analyst: nine of fourteen samples, not eight, are polygon items (q0-q8). Hard blocks I verified by attempting "
+  },
+  {
+   "from": "Geometry and Mensuration",
+   "to": "Triangles",
+   "source": "cat_quant_panel_2026-09-09",
+   "confidence": "high",
+   "evidence": "The whole non-polygon half of the sample is triangle theory. q11: \"If AD, BE, CF are medians of a triangle ABC and O is the centroid ... area of AOF is 36 cm^2\" is solved only by the centroid-divides-into-six-equal-areas property. q13: \"ABC, angle B = 90 deg, BD perpendicular AC then BD = ?\" requires the similar-triangles/altitude-on-hypotenuse relation BD = (AB*BC)/AC. q10: \"area of a triangle wh",
+   "upheld_reason": "UPHELD (verbatim; no cycle — Triangles' own prerequisites are Algebra, Arithmetic, Basic Operations, Similar Triangles, Coordinate Geometry, Angle Measurement, none of which reach this subject; and the existing 'Mensuration (Area/Volume) REQUIRES Triangles' runs the same direction). Verified on the "
+  },
+  {
+   "from": "Geometry and Mensuration",
+   "to": "Ratios and Proportions",
+   "source": "cat_quant_panel_2026-09-09",
+   "confidence": "high",
+   "evidence": "Three sampled questions are stated as ratios and cannot be set up without ratio manipulation. q6: \"Ratio between, the number of sides of two regular polygons is 2:3 and the ratio between their interior angles is 3:4\" requires representing the sides as 2x and 3x and equating a ratio of two interior-angle expressions. q4: \"If the ratio of interior and exterior angles of a regular polygon is 2:1\". q5",
+   "upheld_reason": "UPHELD, but on narrower evidence than claimed (verbatim; no cycle — Ratios and Proportions requires only Basic Operations and Fractions and Decimals). q6 'Ratio between the number of sides of two regular polygons is 2:3 and the ratio between their interior angles is 3:4' is a genuine hard block: it "
+  },
+  {
+   "from": "Geometry and Mensuration",
+   "to": "Circles",
+   "source": "cat_quant_panel_2026-09-09",
+   "confidence": "medium",
+   "evidence": "Two questions turn on circle facts that no amount of triangle knowledge supplies. q9: \"If we draw a triangle ABC inside a circle (A, B, C are on the circumference of a circle). Then area of the triangle ABC is maximum when:\" -- the learner must reason about a fixed circumcircle. q12: \"If three sides of a triangle are 5, 12, 13 then the circumradius of the triangle is:\" requires the circumradius/an",
+   "upheld_reason": "UPHELD at medium, on q12 only (verbatim; no cycle — Circles requires Algebra and Coordinate Geometry). q12 'If three sides of a triangle are 5, 12, 13 then the circumradius of the triangle is' is hard-blocked: the learner must know what a circumradius is and that the hypotenuse of a right triangle i"
+  },
+  {
+   "from": "Geometry and Mensuration",
+   "to": "Linear Equations",
+   "source": "cat_quant_panel_2026-09-09",
+   "confidence": "medium",
+   "evidence": "Several polygon items are only half geometry; the other half is forming and solving a one-unknown equation. q0: \"Each interior angle of a regular polygon is 140^o\" requires solving (n-2)*180/n = 140, i.e. clearing a variable from a denominator. q2: \"The sum of the interior angles of a polygon is 1440^o\" requires solving (n-2)*180 = 1440. q3 requires solving a two-equation supplementary/difference ",
+   "upheld_reason": "UPHELD at medium (verbatim; no cycle — the chain runs Geometry and Mensuration -> Linear Equations -> Ratios and Proportions -> Basic Operations, never returning). This is not arithmetic adjacency: q0 requires clearing an unknown out of a denominator, 180n-360=140n so 40n=360, and a learner who hold"
+  },
+  {
+   "from": "Profit and Loss",
+   "to": "Percentages",
+   "source": "cat_quant_panel_2026-09-09",
+   "confidence": "high",
+   "evidence": "idx 0: 'By selling a watch for Rs 560, a shopkeeper incurs a loss of 20%. Find the cost price' - the learner must invert a percentage applied to an unknown base (CP = 560/0.80), not take 20% of the given 560. idx 3 asks for 'its cost price as a percentage of its selling price', i.e. re-basing a percentage from CP onto SP. idx 4 'sold goods for Rs 1800 and made a profit of 20% ... Find his profit p",
+   "upheld_reason": "UPHELD. Verbatim in EXISTING_SKILL_VOCABULARY; no cycle (the only existing edge out of Percentages is Percentages -> Basic Operations, so no path back to Profit and Loss). Every quoted fragment appears verbatim in the sample and shows what it claims. Independently confirmed on the questions themselv"
+  },
+  {
+   "from": "Profit and Loss",
+   "to": "Fractions and Decimals",
+   "source": "cat_quant_panel_2026-09-09",
+   "confidence": "high",
+   "evidence": "idx 9 is stated with no percent sign at all: 'Sales tax accounts for one-fifth of this and profit one-third of the remainder' - it is pure fraction-of-a-quantity work (1/5 of 150, then 1/3 of the remainder). idx 6 'a loss of 11.11%' is unusable as a decimal and must be recognised as 1/9 to get CP = 6400 / (8/9); idx 1 'a man gains 6.25%' likewise only resolves cleanly as 1/16 (29.75 / (17/16)). id",
+   "upheld_reason": "UPHELD, but on narrower grounds than the analyst gave. The decisive item is idx 9, quoted correctly and containing no percent sign at all: 'A feeding bottle is sold for Rs 150. Sales tax accounts for one-fifth of this and profit one-third of the remainder.' A learner with Percentages alone but no fr"
+  },
+  {
+   "from": "Simple and Compound Interest",
+   "to": "Percentages",
+   "source": "cat_quant_panel_2026-09-09",
+   "confidence": "high",
+   "evidence": "Q0: 'lent out at 5% per annum simple interest' — the rate is a percent operator on the principal; the first move in every sampled item is 5% of 1200. Q1: 'Find the rate percent' — inverts it, expressing 1500 as a rate on 5000. Q8: 'the rate of interest for the first 3 years is 8% per annum and for the last 2 years is 7.5% per annum' — two percent-of-principal computations summed. Q13: '16 2/3 % pe",
+   "upheld_reason": "UPHELD. Verified verbatim: Q0 'lent out at 5% per annum simple interest', Q1 'Find the rate percent', Q8 'first 3 years is 8% per annum and for the last 2 years is 7.5% per annum', Q10 'compound interest is calculated at 20% and simple interest is calculated at 23%', Q13 '16 2/3 % per annum'. Every "
+  },
+  {
+   "from": "Simple and Compound Interest",
+   "to": "Linear Equations",
+   "source": "cat_quant_panel_2026-09-09",
+   "confidence": "high",
+   "evidence": "These four give the interest and withhold a different variable each time, so the learner must set up and solve a one-unknown equation rather than evaluate a formula. Q6: 'After how many years will a sum of ₹ 12,500 become ₹ 17,500 at the rate of 10% per annum?' — 5000 = 1250t. Q1: 'Interest obtained on a sum of ₹ 5000 for 3 years is ₹ 1500. Find the rate percent.' Q5: 'Find the rate of interest if",
+   "upheld_reason": "UPHELD, but on two of the four cited items, not four. Q1 ('Interest obtained on a sum of Rs 5000 for 3 years is Rs 1500. Find the rate percent') and Q6 ('After how many years will a sum of Rs 12,500 become Rs 17,500 at the rate of 10% per annum?') each collapse to a single division (1500/15000, 5000"
+  },
+  {
+   "from": "Simple and Compound Interest",
+   "to": "Fractions and Decimals",
+   "source": "cat_quant_panel_2026-09-09",
+   "confidence": "medium",
+   "evidence": "Q13: '16 2/3 % per annum' — the whole question turns on reading a mixed-fraction percent as 1/6 and carrying 7/6 exactly; decimal work (16.667%) will not land on 144 cleanly. Q8: '7.5% per annum' is a non-integer rate on ₹700. Q11: '20% per annum ... for 18 months ... compounded half-yearly' requires halving the rate and thirding the term into commensurate units. This is fraction fluency, not expo",
+   "upheld_reason": "UPHELD at medium, on Q13 primarily. 'Find the principal if compound interest is charged on the principal at the rate of 16 2/3 % per annum for two years and the sum becomes Rs 196' -- the mixed-fraction percent must be read as 1/6 and carried as the exact multiplier 7/6, then divided out twice (196 "
+  },
+  {
+   "from": "Sequences and Series",
+   "to": "Linear Equations",
+   "source": "cat_quant_panel_2026-09-09",
+   "confidence": "high",
+   "evidence": "Q0 'Which term of this AP is 65?' — the learner must set 11+(n-1)*2 = 65 and solve a linear equation for the unknown position n; the AP fact alone gives the equation, not the answer. Q3 'The 6th and 20th terms of an AP are 8 and -20 respectively' — this is a 2x2 simultaneous linear system a+5d=8, a+19d=-20 that must be solved for a and d before the 30th term exists. Q9 'whose first term and third ",
+   "upheld_reason": "UPHELD. Name is verbatim in EXISTING_SKILL_VOCABULARY. No cycle: the forward closure of Linear Equations (Arithmetic, Basic Operations, Algebra, Fractions/Decimals, Ratios and Proportions, Systems of Equations, Matrices, Divisibility Rules, Modular Arithmetic, NumberTheory) never reaches Sequences a"
+  },
+  {
+   "from": "Sequences and Series",
+   "to": "Exponents and Radicals",
+   "source": "cat_quant_panel_2026-09-09",
+   "confidence": "high",
+   "evidence": "Every GP item in the sample turns on reading and undoing integer powers. Q5 'Find the number of terms of the series 1/27, 1/9, 1/3,... 729' requires seeing 1/27 = 3^-3 and 729 = 3^6 — negative exponents and perfect-power recognition, not just the GP formula. Q6 'the fifth term of a G.P. is 80 and first term is 5' reduces to r^4 = 16, i.e. taking a fourth root. Q13 'The 3rd and 8th term of a GP are",
+   "upheld_reason": "UPHELD. Verbatim in vocabulary; no cycle (its closure runs to Arithmetic, Basic Operations, Exponents, Exponential Functions, Inverse Functions, Logarithms, Fractions and Decimals, Functions and Graphs, none of which reach Sequences and Series). Verified against the actual arithmetic. Q5 'Find the n"
+  },
+  {
+   "from": "Sequences and Series",
+   "to": "Quadratic Equations",
+   "source": "cat_quant_panel_2026-09-09",
+   "confidence": "medium",
+   "evidence": "Q2 'after how many years will his savings be more than Rs.100000 altogether?' — the AP sum n/2*[4000+(n-1)400] pushed against 100000 gives a quadratic in n (n^2+9n-500 > 0); there is no linear route to the answer. Q10 'divided into three parts which are in A.P. and the sum of their squares is 515' — the standard (a-d), a, (a+d) setup expands to 3a^2+2d^2 = 515, so the learner must expand squares o",
+   "upheld_reason": "UPHELD, but on half the claimed evidence. Verbatim in vocabulary; no cycle (closure: Algebra, Basic Operations, Coordinate Geometry, Exponents and Radicals, Functions and Graphs, Polynomials and Factoring - none reach Sequences and Series). Q2 survives and I reproduced it: sum = n/2[4000+(n-1)400] ="
+  },
+  {
+   "from": "Averages",
+   "to": "Percentages",
+   "source": "cat_quant_panel_2026-09-09",
+   "confidence": "high",
+   "evidence": "q1: \"50% of the boys and 90% of the girls cleared\" ... \"total percentage of qualifying students is 60%\"; q0: \"contains 25% water\" ... \"increase the percentage of water to 40%\"; q6: \"selling the mixture at Rs 480 per kg, there may be a gain of 20%\"",
+   "upheld_reason": "CONFIRMED. All three quotes appear verbatim in the sample and each shows what it claims. q1 (800 students) is unsolvable without percentages: the solver must turn '60%' of 800 into 480 qualifiers and treat '50% of the boys' and '90% of the girls' as the two ingredient rates before any alligation ste"
+  },
+  {
+   "from": "Averages",
+   "to": "Ratios and Proportions",
+   "source": "cat_quant_panel_2026-09-09",
+   "confidence": "high",
+   "evidence": "q13: \"In what ratio should two qualities of tea\" ... \"be mixed\"; q8: \"Find the proportion of water and wine in the resulting mixture\"; q5: \"the amount of the first type of milk in the mixture is 20 kg\"",
+   "upheld_reason": "CONFIRMED. Quotes are verbatim and load-bearing. q13 ('In what ratio should two qualities of tea ... be mixed') has a ratio as its ANSWER - a learner lacking ratio fluency cannot express the solution at all, let alone derive 5:5. q5 requires forming 1.20:0.80 from the rate gaps, reducing it to 2:3, "
+  },
+  {
+   "from": "Averages",
+   "to": "Simple and Compound Interest",
+   "source": "cat_quant_panel_2026-09-09",
+   "confidence": "low",
+   "evidence": "q7: \"lends Rs 1000 on simple interest\" ... \"for a period of 5 years\" ... \"a part of the amount at 2% interest and the rest at 8%\"",
+   "upheld_reason": "CONFIRMED, narrowly, on a single question - uphold at low weight. q7 is quoted accurately ('lends Rs 1000 on simple interest', 'for a period of 5 years', 'a part of the amount at 2% interest and the rest at 8%'). The alligation step needs a mean rate, and getting it requires the simple-interest mode"
+  },
+  {
+   "from": "Speed, Time, Distance",
+   "to": "Ratios and Proportions",
+   "source": "cat_quant_panel_2026-09-09",
+   "confidence": "high",
+   "evidence": "Q1: 'Walking at 3/4 of his normal speed, Abhishek is 16 minutes late' — at fixed distance speed and time are INVERSELY proportional, so 3/4 speed forces 4/3 time and the 16 minutes is the 1/3 extra part; without inverse proportionality there is no bridge from a speed ratio to a time ratio. Q7 is the same instrument: 'Walking at 3/4 of his normal speed, a man takes 2(1/2) hours more'. Q0: 'the sum ",
+   "upheld_reason": "UPHELD. Verbatim in EXISTING_SKILL_VOCABULARY; no cycle (no existing edge has 'Speed, Time, Distance' on either side, and Ratios and Proportions' own prerequisites are only Basic Operations and Fractions and Decimals). I independently confirm the demand on Q1 and Q7. Q1: 'Walking at 3/4 of his norma"
+  },
+  {
+   "from": "Speed, Time, Distance",
+   "to": "Linear Equations",
+   "source": "cat_quant_panel_2026-09-09",
+   "confidence": "high",
+   "evidence": "Q2: 'Ram and Bharat travel the same distance at the rate of 6 km per hour and 10 km per hour respectively. If Ram takes 30 minutes longer than Bharat, the distance travelled by each is' — the only route is naming the unknown distance d and solving d/6 - d/10 = 1/2, a linear equation with fractional coefficients. Q8: 'takes a total time of 6 hours 45 minutes. He would have gained 2 hours by driving",
+   "upheld_reason": "UPHELD. Verbatim in vocabulary; no cycle (Linear Equations' listed prerequisites are Arithmetic, Basic Operations, Determinants, Fractions, Fractions and Decimals, Matrices, Matrix Operations, Simple Equations, Systems of Equations, Algebra, Ratios and Proportions - none is this subject). Confirmed "
+  },
+  {
+   "from": "Work and Time",
+   "to": "Fractions and Decimals",
+   "source": "cat_quant_panel_2026-09-09",
+   "confidence": "high",
+   "evidence": "Q2 'A can do a piece of work in 20 days and B can do it in 15 days. How long will they take if both work together?' - the only route is 1/20 + 1/15 = 7/60 then reciprocate to 60/7; a learner who cannot add unlike fractions or invert one cannot start. Q4 'Nishu and Archana can do a piece of work in 10 days and Nishu alone can do it in 12 days' - requires the subtraction 1/10 - 1/12 = 1/60. Q8 'With",
+   "upheld_reason": "UPHELD. Verified against the sample, not just the analyst's summary. Q2 ('A can do a piece of work in 20 days and B can do it in 15 days. How long will they take if both work together?') is unsolvable without adding unlike fractions and inverting the sum: 1/20+1/15 = 7/60 -> 60/7 days. The answer it"
+  },
+  {
+   "from": "Work and Time",
+   "to": "Ratios and Proportions",
+   "source": "cat_quant_panel_2026-09-09",
+   "confidence": "high",
+   "evidence": "Q1 '6 men can do a piece of work in 12 days. How many men are needed to do the work in 18 days.' - pure inverse proportion between men and days; nothing else in the question to compute. Q5 'the total wages for the work is Rs 50. How much should Baba be paid' and Q10 'How much should C be paid for his contribution?' - wages must be divided in the ratio of the workers' rates (3:2 in Q5), which is ra",
+   "upheld_reason": "UPHELD, and the strongest single-question case in the set. Q1 ('6 men can do a piece of work in 12 days. How many men are needed to do the work in 18 days.') contains nothing but an inverse proportion: 6x12 = M x 18, M = 4. There is no fraction to add, no equation to solve, no rate to compose - stri"
+  },
+  {
+   "from": "Work and Time",
+   "to": "Linear Equations",
+   "source": "cat_quant_panel_2026-09-09",
+   "confidence": "medium",
+   "evidence": "Q6 '4 men and 3 women finish a job in 6 days, and 5 men and 7 women can do the same job in 4 days' - forces a 2x2 simultaneous system in the unknown man-rate and woman-rate; there is no proportion or fraction shortcut because neither rate is given. Q11 'After how many days should 5 workers leave the job so that the work is completed in 35 days?' - the unknown is the switchover day x, recovered onl",
+   "upheld_reason": "UPHELD - and I would rate it higher than the analyst's 'medium'. Q6 ('4 men and 3 women finish a job in 6 days, and 5 men and 7 women can do the same job in 4 days') gives neither individual rate, so there is no proportion or fraction route at all: the learner must set m and w as unknown rates, writ"
+  }
+ ]
+}

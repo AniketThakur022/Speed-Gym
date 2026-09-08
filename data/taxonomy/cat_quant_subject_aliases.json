@@ -1,0 +1,35 @@
+{
+ "taxonomy_subject_to_existing_skill": [
+  {
+   "taxonomy_subject": "Interest",
+   "existing_skill": "Simple and Compound Interest",
+   "evidence_questions": 192
+  },
+  {
+   "taxonomy_subject": "Progressions",
+   "existing_skill": "Sequences and Series",
+   "evidence_questions": 168
+  },
+  {
+   "taxonomy_subject": "Ratio, Proportion and Variation",
+   "existing_skill": "Ratios and Proportions",
+   "evidence_questions": 140
+  },
+  {
+   "taxonomy_subject": "Averages and Alligations",
+   "existing_skill": "Averages",
+   "evidence_questions": 40
+  },
+  {
+   "taxonomy_subject": "Time, Speed and Distance",
+   "existing_skill": "Speed, Time, Distance",
+   "evidence_questions": 195
+  },
+  {
+   "taxonomy_subject": "Time and Work",
+   "existing_skill": "Work and Time",
+   "evidence_questions": 191
+  }
+ ],
+ "note": "These six subjects need a taxonomy alias, NOT a new :Skill node."
+}
