@@ -1,0 +1,355 @@
+<title>Content Graph &amp; Adaptive Engine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#0A0C09;--panel:#12160F;--panel2:#171C15;--line:#242A22;
+  --ink:#E9EFE4;--muted:#8C978B;--dim:#5F6A5E;
+  --skill:#C8FF5A;--problem:#6BC5FF;--solve:#FFB86B;--explain:#C58BFF;
+  --trap:#FF7A70;--sutra:#F0D264;--book:#93A08F;--amber:#F0B429;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,sans-serif;
+  --disp:"Archivo","IBM Plex Sans",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.62;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+h1,h2,h3,h4{font-family:var(--disp);margin:0;text-wrap:balance}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+header{border-bottom:1px solid var(--line);padding:54px 0 38px;background:radial-gradient(1100px 280px at 10% -20%,rgba(200,255,90,.07),transparent 70%)}
+h1{font-size:clamp(30px,4.4vw,48px);font-weight:700;letter-spacing:-.02em;line-height:1.06;margin:13px 0 0}
+.sub{color:var(--muted);max-width:66ch;margin:15px 0 0;font-size:16px}
+.stamp{font-family:var(--mono);font-size:12px;color:var(--dim);margin-top:22px}
+.stamp b{color:var(--ink);font-weight:500}
+section{padding:50px 0;border-bottom:1px solid var(--line)}
+h2{font-size:25px;font-weight:600;letter-spacing:-.01em}
+.lede{color:var(--muted);max-width:78ch;margin:13px 0 0}
+figure{margin:30px 0 0}
+figcaption{font-family:var(--mono);font-size:11.5px;color:var(--dim);margin-top:12px;letter-spacing:.02em}
+.diagram{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:8px;overflow-x:auto}
+svg{display:block;width:100%;height:auto;min-width:720px}
+.legend{display:flex;flex-wrap:wrap;gap:7px 18px;margin-top:16px;font-family:var(--mono);font-size:11.5px}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px;vertical-align:middle}
+.legend span{color:var(--muted)}
+.layers{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;margin-top:28px}
+.L{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:19px 21px;border-top:2px solid}
+.L h3{font-size:16px;font-weight:600;margin-bottom:4px}
+.L .cnt{font-family:var(--mono);font-size:11.5px;color:var(--dim);letter-spacing:.05em}
+.L p{color:var(--muted);font-size:13.5px;margin:11px 0 0}
+.L .never{margin-top:11px;padding-top:11px;border-top:1px dashed var(--line);color:var(--trap);font-size:12.5px}
+.L .never b{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;display:block;margin-bottom:3px;color:var(--trap)}
+.flow{margin-top:28px;display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.step{background:var(--panel);padding:19px 22px;display:grid;grid-template-columns:34px 1fr;gap:18px}
+.step .n{font-family:var(--mono);font-size:12px;color:var(--skill);font-weight:600;padding-top:3px;font-variant-numeric:tabular-nums}
+.step h4{font-size:15.5px;font-weight:600;margin-bottom:5px}
+.step p{margin:0;color:var(--muted);font-size:14px;max-width:86ch}
+.step .q{font-family:var(--mono);font-size:12.5px;background:#0D110C;border:1px solid var(--line);
+  border-left:2px solid var(--skill);border-radius:2px;padding:9px 12px;margin-top:11px;
+  color:var(--skill);overflow-x:auto;white-space:pre;line-height:1.65}
+.step .q.b{border-left-color:var(--problem);color:var(--problem)}
+.step .q.o{border-left-color:var(--solve);color:var(--solve)}
+.step .q.a{border-left-color:var(--amber);color:var(--amber)}
+table{width:100%;border-collapse:collapse;margin-top:24px;font-size:14px}
+th{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);
+  text-align:left;padding:0 14px 9px;font-weight:500;border-bottom:1px solid var(--line)}
+td{padding:11px 14px;border-bottom:1px solid var(--line);color:var(--muted)}
+td:first-child{color:var(--ink)}
+td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;color:var(--ink)}
+.bar{height:7px;border-radius:1px;background:var(--skill);display:block;min-width:2px}
+.bar.warn{background:var(--amber)} .bar.bad{background:var(--trap)}
+.finding{margin-top:30px;border:1px solid var(--line);border-left:3px solid var(--amber);
+  background:var(--panel);border-radius:4px;padding:22px 24px}
+.finding h3{font-size:17px;font-weight:600;color:var(--amber)}
+.finding p{color:var(--muted);margin:10px 0 0;max-width:84ch;font-size:14.5px}
+.finding p b{color:var(--ink);font-weight:500}
+.fix{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:13px;margin-top:26px}
+.fx{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:17px 19px}
+.fx .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--skill);display:block;margin-bottom:7px}
+.fx h4{font-size:14.5px;font-weight:600;margin-bottom:6px}
+.fx p{margin:0;color:var(--muted);font-size:13px}
+footer{padding:36px 0 58px;color:var(--dim);font-size:13px}
+code{font-family:var(--mono);font-size:12.5px;background:var(--panel2);padding:1px 5px;border-radius:2px;border:1px solid var(--line);color:var(--ink)}
+@media(max-width:640px){.step{grid-template-columns:1fr;gap:8px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<header><div class="wrap">
+  <span class="eyebrow">Vedic Math Speed Gym · live graph · 9 September 2026</span>
+  <h1>The content graph, and what it can actually teach</h1>
+  <p class="sub">Every node type and every relationship in the live database — then the mechanism that
+    turns them into an adaptive solve-along session, and the one measurement that decides how adaptive
+    it can really be today.</p>
+  <p class="stamp">Queried live from <b>bolt://localhost:7687</b> · post vocabulary-merge · 3,542 nodes · 8,684 relationships</p>
+</div></header>
+
+<section><div class="wrap">
+  <h2>The whole graph</h2>
+  <p class="lede">Seven node types in three functional bands. The middle band is the spine — everything
+    else either orders it, attaches to it, or hangs teaching material off it.</p>
+
+  <figure><div class="diagram">
+  <svg viewBox="0 0 980 560" role="img" aria-label="Complete content graph schema showing seven node types and their relationships">
+    <defs>
+      <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#5F6A5E"/></marker>
+      <marker id="arL" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#C8FF5A"/></marker>
+      <marker id="arB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#6BC5FF"/></marker>
+    </defs>
+    <style>
+      .nb{fill:#12160F;stroke-width:1.5;rx:4}
+      .nl{font-family:Archivo,sans-serif;font-size:14px;font-weight:600;fill:#E9EFE4}
+      .nc{font-family:"IBM Plex Mono",monospace;font-size:11px;fill:#8C978B}
+      .el{font-family:"IBM Plex Mono",monospace;font-size:10.5px;fill:#8C978B}
+      .en{font-family:"IBM Plex Mono",monospace;font-size:10px;fill:#5F6A5E}
+      .band{font-family:"IBM Plex Mono",monospace;font-size:10px;fill:#5F6A5E;letter-spacing:.14em}
+      .ed{stroke:#3A4238;stroke-width:1.3;fill:none;marker-end:url(#ar)}
+      .edL{stroke:#C8FF5A;stroke-width:1.8;fill:none;marker-end:url(#arL)}
+      .edB{stroke:#6BC5FF;stroke-width:1.8;fill:none;marker-end:url(#arB)}
+      .dash{stroke-dasharray:4 4}
+    </style>
+
+    <!-- band labels -->
+    <text class="band" x="16" y="48">ORDERING</text>
+    <text class="band" x="16" y="238">SPINE</text>
+    <text class="band" x="16" y="430">TEACHING MATERIAL</text>
+    <line x1="0" y1="62" x2="980" y2="62" stroke="#242A22"/>
+    <line x1="0" y1="330" x2="980" y2="330" stroke="#242A22"/>
+
+    <!-- Sutra -->
+    <rect class="nb" x="120" y="86" width="150" height="52" style="stroke:#F0D264"/>
+    <text class="nl" x="138" y="110">Sutra</text><text class="nc" x="138" y="127">16 · the classical rules</text>
+
+    <!-- Skill (spine) -->
+    <rect class="nb" x="120" y="196" width="230" height="76" style="stroke:#C8FF5A;stroke-width:2.2"/>
+    <text class="nl" x="140" y="223" style="font-size:16px">Skill</text>
+    <text class="nc" x="140" y="242">422 · 9 roots · ~356 stubs</text>
+    <text class="nc" x="140" y="259" style="fill:#5F6A5E">the vocabulary mastery is keyed on</text>
+
+    <!-- Problem -->
+    <rect class="nb" x="620" y="196" width="230" height="76" style="stroke:#6BC5FF;stroke-width:2.2"/>
+    <text class="nl" x="640" y="223" style="font-size:16px">Problem</text>
+    <text class="nc" x="640" y="242">807 · all with solution steps</text>
+    <text class="nc" x="640" y="259" style="fill:#5F6A5E">794 pinned to a mastery key</text>
+
+    <!-- REQUIRES self loop -->
+    <path class="edL" d="M150 196 C 150 150, 320 150, 320 194"/>
+    <text class="el" x="182" y="163" style="fill:#C8FF5A">REQUIRES → 255</text>
+    <text class="en" x="182" y="177">the real prerequisite DAG · only 40 skills have one</text>
+
+    <!-- FRONTIER_OF -->
+    <path class="ed dash" d="M120 250 C 60 250, 60 214, 118 214"/>
+    <text class="el" x="46" y="286" style="fill:#5F6A5E">FRONTIER_OF</text>
+    <text class="en" x="46" y="299">2,486 · 100% reciprocal</text>
+    <text class="en" x="46" y="311" style="fill:#FF7A70">adjacency only — never ordering</text>
+
+    <!-- NEXT_TOPIC retracted -->
+    <path class="ed dash" d="M240 272 C 240 306, 330 306, 330 274" style="stroke:#FF7A70"/>
+    <text class="el" x="252" y="322" style="fill:#FF7A70">NEXT_TOPIC 82 · retracted from the DAG</text>
+
+    <!-- Q-matrix -->
+    <line class="edB" x1="352" y1="234" x2="616" y2="234"/>
+    <text class="el" x="404" y="224" style="fill:#6BC5FF">PREREQUISITE_OF → 2,439</text>
+    <text class="en" x="404" y="252">the Q-matrix · bipartite, depth 1, never transitive</text>
+
+    <!-- Sutra to Skill -->
+    <line class="ed" x1="195" y1="140" x2="205" y2="192"/>
+    <text class="el" x="212" y="170">MANIFESTS_AS 16</text>
+
+    <!-- SolveAlong -->
+    <rect class="nb" x="120" y="366" width="200" height="66" style="stroke:#FFB86B"/>
+    <text class="nl" x="138" y="391">SolveAlong</text>
+    <text class="nc" x="138" y="409">791 · the guided walkthrough</text>
+    <text class="nc" x="138" y="424" style="fill:#5F6A5E">shares template_id with a Problem</text>
+
+    <!-- Explainer -->
+    <rect class="nb" x="360" y="366" width="180" height="66" style="stroke:#C58BFF"/>
+    <text class="nl" x="378" y="391">Explainer</text>
+    <text class="nc" x="378" y="409">590 · concept cards</text>
+
+    <!-- Trap -->
+    <rect class="nb" x="620" y="366" width="180" height="66" style="stroke:#FF7A70"/>
+    <text class="nl" x="638" y="391">Trap</text>
+    <text class="nc" x="638" y="409">908 · known misconceptions</text>
+
+    <!-- Book -->
+    <rect class="nb" x="840" y="366" width="110" height="66" style="stroke:#93A08F"/>
+    <text class="nl" x="858" y="391">Book</text><text class="nc" x="858" y="409">6 · sources</text>
+
+    <!-- edges from content up to skill -->
+    <path class="ed" d="M200 364 L 200 276"/>
+    <text class="el" x="206" y="304">TEACHES 307</text>
+    <path class="ed" d="M420 364 C 420 320, 330 300, 300 276"/>
+    <text class="el" x="330" y="352">EXPLAINS 147</text>
+
+    <!-- problem to trap -->
+    <path class="ed" d="M716 276 L 710 362"/>
+    <text class="el" x="722" y="322">TRAPS_PRESENT 781</text>
+
+    <!-- solvealong to trap -->
+    <line class="ed" x1="322" y1="404" x2="616" y2="400"/>
+    <text class="el" x="410" y="394">HAS_TRAP 789</text>
+
+    <!-- appears in book -->
+    <path class="ed" d="M542 392 C 700 456, 760 456, 838 410"/>
+    <text class="el" x="600" y="470">APPEARS_IN 1,381</text>
+
+    <!-- pairing note -->
+    <path class="ed dash" d="M320 372 C 470 340, 560 330, 618 260" style="stroke:#FFB86B"/>
+    <text class="el" x="404" y="336" style="fill:#FFB86B">same template_id, different node</text>
+  </svg></div>
+  <figcaption>Live counts, 9 Sep 2026. Dashed edges exist in the graph but are excluded from prerequisite
+    reasoning — deliberately, and for reasons that were measured rather than assumed.</figcaption></figure>
+
+  <div class="legend">
+    <span><i style="background:#C8FF5A"></i>Skill — mastery vocabulary</span>
+    <span><i style="background:#6BC5FF"></i>Problem — what a learner answers</span>
+    <span><i style="background:#FFB86B"></i>SolveAlong — the walkthrough</span>
+    <span><i style="background:#C58BFF"></i>Explainer — concept card</span>
+    <span><i style="background:#FF7A70"></i>Trap — known misconception</span>
+    <span><i style="background:#F0D264"></i>Sutra — classical rule</span>
+    <span><i style="background:#93A08F"></i>Book — provenance</span>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Three edge families, three different jobs</h2>
+  <p class="lede">The most expensive mistakes in this project came from treating one of these as another.
+    Each is now pinned to a single job, with an explicit prohibition attached.</p>
+  <div class="layers">
+    <div class="L" style="border-top-color:#C8FF5A">
+      <h3>Ordering</h3><span class="cnt">REQUIRES · 255 edges · Skill → Skill</span>
+      <p>Genuine prerequisite structure: <em>you need this before that</em>. Deepest real chain is 6 hops
+        (Division back to Arithmetic). This is what "what should I learn first" reads.</p>
+      <div class="never"><b>Never</b>Only 40 of 422 skills have any prerequisite, so for 90% of the
+        vocabulary this question returns nothing at all.</div>
+    </div>
+    <div class="L" style="border-top-color:#6BC5FF">
+      <h3>Attachment</h3><span class="cnt">PREREQUISITE_OF · 2,439 edges · Skill → Problem</span>
+      <p>The Q-matrix: which skills a given problem exercises. Bipartite and depth-1 — it says a problem
+        needs a skill, never that one skill needs another. This is the join that attributes an answer to
+        a mastery score.</p>
+      <div class="never"><b>Never</b>Do not walk it transitively. Its name invites exactly that misreading,
+        and the architecture document made it.</div>
+    </div>
+    <div class="L" style="border-top-color:#FF7A70">
+      <h3>Adjacency</h3><span class="cnt">FRONTIER_OF 2,486 · NEXT_TOPIC 82</span>
+      <p>Similarity and browse order. FRONTIER_OF is 100% reciprocal — every edge has its mirror — so it
+        expresses "related to", not "comes before". Useful for suggesting a sibling when a topic runs dry.</p>
+      <div class="never"><b>Never</b>NEXT_TOPIC was inverted into prerequisites once and asserted every
+        sub-topic as its own root's prerequisite. Retracted — it cut the longest chain from 23 hops to 6.</div>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>How an adaptive solve-along session is built</h2>
+  <p class="lede">The engine runs entirely on the learner's device. Nothing below needs a network call —
+    which is why the graph has to carry the structure rather than a server deciding in the moment.</p>
+
+  <div class="flow">
+    <div class="step"><span class="n">01</span><div>
+      <h4>Read where the learner stands</h4>
+      <p>Mastery is a probability per skill, held on device. Each problem carries a pinned
+        <code>mastery_key</code> naming which skill its result updates — pinned deliberately, because the
+        old behaviour picked a key by sorting a problem's skill parents alphabetically, so renaming any
+        skill could silently move the mastery of problems it had nothing to do with.</p>
+      <div class="q">P(L) per skill · 4 bands: fractured &lt;35% · fragile &lt;70% · fluid &lt;90% · mastered</div></div></div>
+
+    <div class="step"><span class="n">02</span><div>
+      <h4>Compose the session — 60 / 20 / 20</h4>
+      <p>Sixty percent on the current focus, twenty on skills that were known and are decaying, twenty on
+        the frontier — the next thing whose prerequisites are already satisfied. The frontier is where the
+        REQUIRES DAG earns its place: a skill is only offered once everything it requires is fluid.</p>
+      <div class="q">primary 60% · sinking 20% (spaced repetition) · frontier 20% (prerequisites met)</div></div></div>
+
+    <div class="step"><span class="n">03</span><div>
+      <h4>Pick problems through the Q-matrix</h4>
+      <p>For each chosen skill, walk its Skill→Problem edges, filter to what is servable — verified answer,
+        trust tier permitting, no known defect — and rank by difficulty against the learner's level.
+        Quarantined content is excluded and <em>counted</em>, so an empty page is explainable rather than
+        mysterious.</p>
+      <div class="q b">(:Skill {name})-[:PREREQUISITE_OF]->(:Problem) → filter → rank by difficulty</div></div></div>
+
+    <div class="step"><span class="n">04</span><div>
+      <h4>Choose the render mode from the mastery band — this is the adaptive part</h4>
+      <p>The same problem is presented three different ways depending on how well the learner knows the
+        skill. Fractured gets <em>guided</em>: the walkthrough leads, step by step. Fragile gets
+        <em>solve-along</em>: the learner works, the steps stay available. Fluid gets <em>quick</em>: just
+        the problem, timed. The content is identical; the scaffolding is what adapts.</p>
+      <div class="q o">fractured → guided    fragile → solve_along    fluid → quick</div></div></div>
+
+    <div class="step"><span class="n">05</span><div>
+      <h4>Serve the walkthrough from the paired SolveAlong</h4>
+      <p>Every problem has ordered steps, each with an operation, a result and a description. The chatbot's
+        hint ladder is built from exactly these steps <em>minus the final one</em>, which is how it can be
+        genuinely helpful and still structurally incapable of handing over the answer.</p>
+      <div class="q o">791 SolveAlongs · hint level N = step N · final step withheld</div></div></div>
+
+    <div class="step"><span class="n">06</span><div>
+      <h4>Score, update, and decide what comes next</h4>
+      <p>A wrong answer is matched against the problem's known traps, so the feedback names the actual
+        misconception rather than saying "incorrect". Mastery updates on the pinned key, the result feeds
+        the spaced-repetition schedule, and the next session's 60/20/20 is computed from the new state.</p>
+      <div class="q a">answer → trap match → BKT update on mastery_key → schedule → next session</div></div></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>How adaptive it can actually be, measured</h2>
+  <p class="lede">The mechanism above is built and tested. Its resolution — how finely it can tell one
+    learner apart from another — is set by how the 794 servable problems distribute across mastery keys.
+    They distribute badly.</p>
+
+  <table>
+    <thead><tr><th>Mastery key size</th><th>Keys</th><th>Problems</th><th>Share</th><th style="width:32%"></th></tr></thead>
+    <tbody>
+      <tr><td>100 or more problems</td><td class="num">3</td><td class="num">599</td><td class="num">75.4%</td>
+        <td><span class="bar bad" style="width:100%"></span></td></tr>
+      <tr><td>5 – 19 problems</td><td class="num">5</td><td class="num">57</td><td class="num">7.2%</td>
+        <td><span class="bar warn" style="width:9.5%"></span></td></tr>
+      <tr><td>2 – 4 problems</td><td class="num">24</td><td class="num">61</td><td class="num">7.7%</td>
+        <td><span class="bar warn" style="width:10.2%"></span></td></tr>
+      <tr><td>Exactly 1 problem</td><td class="num">77</td><td class="num">77</td><td class="num">9.7%</td>
+        <td><span class="bar" style="width:12.9%"></span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="finding">
+    <h3>Three keys hold three quarters of the content</h3>
+    <p><b>Arithmetic carries 296 problems. Algebra carries 200. Basic Operations carries 103.</b> Because
+      mastery is one probability per key, the engine tracks a single number across all 296 Arithmetic
+      problems — so a learner who is fluent at addition but lost at percentages reads as one blended score,
+      and the session composer cannot tell those two learners apart. At the other end, <b>77 keys hold
+      exactly one problem</b>, where a mastery estimate rests on a single answer and a lucky guess looks
+      identical to competence.</p>
+    <p>This is not an engine defect — the psychometrics reproduce their pre-loss behaviour exactly, and the
+      render-mode ladder works. It is a <b>vocabulary granularity problem in the graph</b>: the middle is
+      missing. And it compounds with the ordering gap — only 40 of 422 skills have any prerequisite, so
+      the frontier band of the session has nothing to reason about for 90% of the vocabulary.</p>
+  </div>
+
+  <div class="fix">
+    <div class="fx"><span class="tag">Highest leverage</span><h4>Split the three giant keys</h4>
+      <p>Breaking Arithmetic, Algebra and Basic Operations into real sub-skills converts 75% of the pool
+        from one blended score into something the engine can actually steer by.</p></div>
+    <div class="fx"><span class="tag">Ordering</span><h4>Extend REQUIRES beyond 40 skills</h4>
+      <p>The frontier band is only as good as the DAG. Each new prerequisite edge makes one more skill
+        answerable to "what comes next".</p></div>
+    <div class="fx"><span class="tag">Volume</span><h4>Give the singleton keys more problems</h4>
+      <p>77 skills cannot support a mastery estimate on one item each. The factory generates verified
+        problems per pattern — this is exactly what it is for.</p></div>
+    <div class="fx"><span class="tag">Unblocks both</span><h4>Decide the serving path</h4>
+      <p>The 25-book corpus holds thousands of keyed exam questions with no route to a learner. Binding it
+        is the single largest source of both new problems and finer skills.</p></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  All figures queried live from Neo4j and cross-checked against <code>neo4j-live-graph-schema</code>,
+  9 September 2026, after the 8 September vocabulary merge (422 skills, down from 470).
+  Node and edge counts are exact; the graph is the current serving graph, not the corpus.
+</div></footer>
