@@ -1,0 +1,51 @@
+{
+ "artifact": "Corpus-evidence review of the six proposed CAT quant subject aliases",
+ "reviewed_by": "Speed Gym data extraction",
+ "date": "2026-09-09",
+ "reviewed": "data/taxonomy/cat_quant_subject_aliases.json",
+ "method": "Judged on what the questions CONTAIN — their source chapter and their text — not on name similarity. Sampled every row for the contested mapping, not a sample.",
+ "verdict": "5 of 6 confirmed. 1 REJECTED: 'Averages and Alligations' must NOT alias to 'Averages'.",
+ "aliases": [
+  {
+   "subject": "Interest",
+   "proposed": "Simple and Compound Interest",
+   "verdict": "CONFIRM",
+   "evidence": "192 rows, chapters 'Ch 7: Interest' / 'Simple Interest' / 'Compound Interest'; questions are pure SI/CI ('A sum of money at simple interest amounts to Rs 600 in 4 years...'). The target name is more precise than the source, not broader."
+  },
+  {
+   "subject": "Progressions",
+   "proposed": "Sequences and Series",
+   "verdict": "CONFIRM",
+   "evidence": "168 rows, all 'Ch 2: Progressions', all Arun Sharma Quant; AP/GP, arithmetic and geometric means. Progressions is a subset of Sequences and Series, which is the standard CAT grouping.",
+   "warning": "Do NOT extend this alias to the other two series labels. 'Series' (53, Tyra) is NUMBER-PATTERN REASONING ('7 13 78 83 415 — find b'), not algebraic series, and belongs with reasoning/DI, not quant. 'Summation of Series' (64, Hall & Knight, only 14 playable and OCR-damaged) is university algebra and is out of scope by the standing instruction to leave the university-maths books alone."
+  },
+  {
+   "subject": "Ratio, Proportion and Variation",
+   "proposed": "Ratios and Proportions",
+   "verdict": "CONFIRM with a note",
+   "evidence": "140 rows, all 'Ch 8: Ratio, Proportion and Variation'; questions are ratio and proportion (pupils 1:4, wine/water 2:1, price proportion).",
+   "note": "The target name DROPS 'Variation'. The content fits, but direct/inverse variation items lose that word from their skill name. Cosmetic if display_label carries the fuller title."
+  },
+  {
+   "subject": "Averages and Alligations",
+   "proposed": "Averages",
+   "verdict": "REJECT",
+   "evidence": "All 40 rows come from chapter 'Ch 4: Alligations' — not one from an Averages chapter. Checked all 40, not a sample: 27 use mixture/alligation language (alcohol drawn out and replaced, alloys, wine/water), 11 are alligation set-ups in disguise (lions-and-hens heads/legs; travel partly on foot and partly by bicycle), and the only 2 that say 'average' are mixture problems asking for an average cost — which IS the alligation technique.",
+   "why_it_matters": "'Averages' already holds 197 genuine 'Ch 3: Averages' rows. Folding 40 mixture problems in would dilute a clean skill and make a learner's Averages mastery partly a measure of alligation, which is a different technique. A learner weak at mixtures would read as weak at averages, and the remediation served would be wrong.",
+   "recommendation": "Keep 'Averages and Alligations' as its own skill, or create 'Mixtures and Alligations'. No mixtures skill exists anywhere in the taxonomy or corpus today — this is a gap, not a naming collision."
+  },
+  {
+   "subject": "Time, Speed and Distance",
+   "proposed": "Speed, Time, Distance",
+   "verdict": "CONFIRM",
+   "evidence": "195 rows, all 'Ch 10: Time, Speed and Distance'; relative speed, head starts, meeting points. Pure word-order variant."
+  },
+  {
+   "subject": "Time and Work",
+   "proposed": "Work and Time",
+   "verdict": "CONFIRM",
+   "evidence": "191 rows, 'Ch 9: Time and Work' and 'Time and Work'; men-and-boys work rates, pipes and cisterns. Pure word-order variant. (Pipes/cisterns is sometimes split out elsewhere, but is universally taught under Time and Work.)"
+  }
+ ],
+ "if_applied_as_proposed": "40 alligation questions would attach to the wrong skill; the other five mappings are safe."
+}
