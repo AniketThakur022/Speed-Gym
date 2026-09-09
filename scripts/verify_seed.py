@@ -126,13 +126,19 @@ def verify_db(exports: Path) -> None:
                     # and scripts/migrate_skill_vocabulary.py then removed 48:
                     # 24 case duplicates, 16 resolvable namespaced variants,
                     # 3 Basic Operations variants and 5 structural names.
-                    # 467 + 3 - 48 = 422.
+                    # 467 + 3 - 48 = 422. Then +3 on 2026-09-09 when RAG's CAT
+                    # quant panel created the three genuinely missing subjects
+                    # (Number Systems, Geometry and Mensuration, Profit and
+                    # Loss) — the other six of nine mapped onto existing skills
+                    # and were deliberately NOT created, to avoid re-fragmenting
+                    # the vocabulary the migration had just consolidated.
+                    # 467 + 3 - 48 + 3 = 425.
                     dh = session.run(
                         "MATCH (s:Skill) WHERE s.name STARTS WITH 'Dhvajanka Sutra Level' "
                         "RETURN count(s) AS n"
                     ).single()["n"]
-                    check("neo4j :Skill (export + 3 Dhvajanka - 48 vocabulary)", n,
-                          expected + 3 - 48)
+                    check("neo4j :Skill (export + 3 Dhvajanka - 48 vocabulary + 3 CAT quant)", n,
+                          expected + 3 - 48 + 3)
                     check("neo4j Dhvajanka L1-3 present", dh, 3)
                     continue
                 check(f"neo4j :{label}", n, expected)
@@ -147,6 +153,14 @@ def verify_db(exports: Path) -> None:
             # failing on it ever since. Then 262 → 255 when
             # scripts/migrate_skill_vocabulary.py merged the skill vocabulary:
             # 7 edges collapsed onto pairs the survivor already had.
+            # Then 255 -> 277 on 2026-09-09: RAG's CAT quant panel added 24
+            # evidence-reviewed edges AND deleted 2 chain_derived edges pointing
+            # OUT of 'Basic Operations (+, -, x, /)' to break every REQUIRES
+            # cycle (4 distinct node-sets, 11 cyclic traversals). So the net is
+            # +22, not the +24 the panel alone implies: 255 + 24 - 2 = 277.
+            # Verified against the live graph by provenance — 242 chain_derived
+            # + 24 cat_quant_panel_2026-09-09 + 11 curated = 277 — and the graph
+            # now has 0 self-loops and 0 skills on a cycle within 8 hops.
             # PREREQUISITE_OF, TEACHES and EXPLAINS moved for the same reason
             # (dedup onto the survivor plus the 5 structural deletions), so they
             # are pinned to the post-migration contract too.
@@ -156,7 +170,7 @@ def verify_db(exports: Path) -> None:
             # The drops are dedup onto the survivor, self-loop removal, and the
             # 5 structural deletions; no adjacency was lost.
             rel_overrides = {
-                "REQUIRES": 255,
+                "REQUIRES": 277,
                 "PREREQUISITE_OF": 2439,
                 "TEACHES": 307,
                 "EXPLAINS": 147,
