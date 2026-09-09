@@ -134,6 +134,45 @@ def tokenset(s: str) -> frozenset:
     return frozenset(w for w in norm(s).split() if w and w not in STOPWORDS)
 
 
+# --------------------------------------------------------- reviewed aliases ---
+ALIAS_PROPOSED = ROOT / "data/taxonomy/cat_quant_subject_aliases.json"
+ALIAS_REVIEW = ROOT / "data/taxonomy/cat_quant_subject_aliases.REVIEW.json"
+
+
+def load_reviewed_aliases():
+    """Subject -> live :Skill name, taking the REVIEW file as authoritative.
+
+    A proposed alias is applied only where the corpus-evidence review returned a
+    CONFIRM verdict. A REJECTed mapping is dropped and reported: the reviewer
+    judged those questions on what they contain, and 'Averages and Alligations'
+    -> 'Averages' failed because all 40 rows come from an Alligations chapter and
+    27 use mixture language. Attaching them to Averages would teach the wrong
+    skill, which is exactly the failure a name-similarity match makes silently.
+    """
+    if not ALIAS_REVIEW.exists():
+        return {}, {"reviewed": 0, "confirmed": 0, "rejected": [], "unreviewed": []}
+    review = json.loads(ALIAS_REVIEW.read_text())
+    confirmed, rejected = {}, []
+    for a in review.get("aliases", []):
+        subject, target = a.get("subject"), a.get("proposed")
+        if str(a.get("verdict", "")).upper().startswith("CONFIRM"):
+            confirmed[subject] = target
+        else:
+            rejected.append({"subject": subject, "proposed": target,
+                             "verdict": a.get("verdict")})
+    # Any mapping the proposal asserts but the review never cleared stays OUT.
+    unreviewed = []
+    if ALIAS_PROPOSED.exists():
+        proposed = json.loads(ALIAS_PROPOSED.read_text())
+        seen = {a.get("subject") for a in review.get("aliases", [])}
+        for row in proposed.get("taxonomy_subject_to_existing_skill", []):
+            if row.get("taxonomy_subject") not in seen:
+                unreviewed.append(row.get("taxonomy_subject"))
+    return confirmed, {"reviewed": len(review.get("aliases", [])),
+                       "confirmed": len(confirmed), "rejected": rejected,
+                       "unreviewed": unreviewed}
+
+
 class SkillMatcher:
     """Three-tier skill_key -> live :Skill.name matcher.
 
@@ -142,10 +181,14 @@ class SkillMatcher:
     candidate, so a collision in the live vocabulary can never silently pick one.
     """
 
-    CONFIDENCE = {"exact": 1.0, "normalized": 0.9, "tokenset": 0.75}
+    CONFIDENCE = {"reviewed_alias": 1.0, "exact": 1.0, "normalized": 0.9,
+                  "tokenset": 0.75}
 
-    def __init__(self, names):
+    def __init__(self, names, aliases=None):
         self.exact = set(names)
+        # Evidence-reviewed aliases outrank every string tier: they encode what the
+        # questions contain, which no matcher can see.
+        self.aliases = {k: v for k, v in (aliases or {}).items() if v in self.exact}
         self.by_norm = collections.defaultdict(list)
         self.by_tokens = collections.defaultdict(list)
         for n in names:
@@ -157,6 +200,8 @@ class SkillMatcher:
     def match(self, key):
         if not key:
             return None, None
+        if key in self.aliases:
+            return self.aliases[key], "reviewed_alias"
         if key in self.exact:
             return key, "exact"
         c = self.by_norm.get(norm(key))
@@ -278,8 +323,10 @@ def plan(src, live_skills, live_books):
 
     Returns (payload, stats). No I/O, no writes — this is what --dry-run reports.
     """
-    matcher = SkillMatcher(live_skills)
+    aliases, alias_stats = load_reviewed_aliases()
+    matcher = SkillMatcher(live_skills, aliases)
     stats = collections.OrderedDict()
+    stats["reviewed_aliases"] = alias_stats
     questions = src["questions"]
     tax = src["taxonomy"]
 

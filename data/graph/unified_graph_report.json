@@ -1,7 +1,7 @@
 {
-  "generated": "2026-09-09T02:01:57",
+  "generated": "2026-09-09T12:41:35",
   "loader": "scripts/build_unified_graph.py",
-  "wall_seconds": 8.2,
+  "wall_seconds": 7.1,
   "serving_graph_unchanged": true,
   "invariant_violations": [],
   "before": {
@@ -21,7 +21,7 @@
       "Question": 19619,
       "Referral": 0,
       "RevenueEvent": 0,
-      "Skill": 422,
+      "Skill": 425,
       "SolveAlong": 791,
       "SubTopic": 0,
       "Sutra": 16,
@@ -47,7 +47,7 @@
       "NEXT_TOPIC": 82,
       "OF_BOOK": 371,
       "PREREQUISITE_OF": 2439,
-      "REQUIRES": 255,
+      "REQUIRES": 277,
       "TEACHES": 307,
       "TRAPS_PRESENT": 781
     },
@@ -59,8 +59,8 @@
       "Vedic_Made_Easy": "f20f76cdfaa0f829",
       "Vedic_Secrets": "88813f543a00950f"
     },
-    "total_nodes": 28861,
-    "total_rels": 58667
+    "total_nodes": 28864,
+    "total_rels": 58689
   },
   "after": {
     "labels": {
@@ -79,7 +79,7 @@
       "Question": 19619,
       "Referral": 0,
       "RevenueEvent": 0,
-      "Skill": 422,
+      "Skill": 425,
       "SolveAlong": 791,
       "SubTopic": 0,
       "Sutra": 16,
@@ -91,9 +91,9 @@
       "APPEARS_IN": 1381,
       "BRIDGES_TO": 18,
       "COMPLETED": 1,
-      "COVERS": 86,
+      "COVERS": 96,
       "DERIVED_FROM": 348,
-      "EXERCISES": 4121,
+      "EXERCISES": 5936,
       "EXERCISES_TOPIC": 3805,
       "EXPLAINS": 147,
       "FROM_BOOK": 24562,
@@ -105,7 +105,7 @@
       "NEXT_TOPIC": 82,
       "OF_BOOK": 371,
       "PREREQUISITE_OF": 2439,
-      "REQUIRES": 255,
+      "REQUIRES": 277,
       "TEACHES": 307,
       "TRAPS_PRESENT": 781
     },
@@ -117,8 +117,8 @@
       "Vedic_Made_Easy": "f20f76cdfaa0f829",
       "Vedic_Secrets": "88813f543a00950f"
     },
-    "total_nodes": 28861,
-    "total_rels": 58667
+    "total_nodes": 28864,
+    "total_rels": 60514
   },
   "protected_before": {
     "labels": {
@@ -131,7 +131,7 @@
       "Problem": 807,
       "Referral": 0,
       "RevenueEvent": 0,
-      "Skill": 422,
+      "Skill": 425,
       "SolveAlong": 791,
       "SubTopic": 0,
       "Sutra": 16,
@@ -149,7 +149,7 @@
       "MANIFESTS_AS": 16,
       "NEXT_TOPIC": 82,
       "PREREQUISITE_OF": 2439,
-      "REQUIRES": 255,
+      "REQUIRES": 277,
       "TEACHES": 307,
       "TRAPS_PRESENT": 781
     },
@@ -173,7 +173,7 @@
       "Problem": 807,
       "Referral": 0,
       "RevenueEvent": 0,
-      "Skill": 422,
+      "Skill": 425,
       "SolveAlong": 791,
       "SubTopic": 0,
       "Sutra": 16,
@@ -191,7 +191,7 @@
       "MANIFESTS_AS": 16,
       "NEXT_TOPIC": 82,
       "PREREQUISITE_OF": 2439,
-      "REQUIRES": 255,
+      "REQUIRES": 277,
       "TEACHES": 307,
       "TRAPS_PRESENT": 781
     },
@@ -208,23 +208,23 @@
     "corpus_books": 16,
     "questions": 19619,
     "chapters": 371,
-    "exam_topics": 22,
+    "exam_topics": 16,
     "converted": 348,
     "chunks": 4943,
     "rel_from_book": 19619,
     "rel_in_chapter": 16671,
     "rel_of_book": 371,
-    "rel_exercises": 4121,
-    "rel_exercises_topic": 3805,
-    "rel_covers_skill": 58,
-    "rel_covers_topic": 28,
+    "rel_exercises": 5936,
+    "rel_exercises_topic": 1990,
+    "rel_covers_skill": 68,
+    "rel_covers_topic": 18,
     "rel_derived_from": 348,
-    "rel_bridges_to": 18,
+    "rel_bridges_to": 12,
     "rel_chunk_from_book": 4943
   },
   "rows_sent": {
     "CorpusBook nodes": 16,
-    "ExamTopic nodes": 22,
+    "ExamTopic nodes": 16,
     "Chapter nodes": 371,
     "Question nodes": 19619,
     "ConvertedTemplate nodes": 348,
@@ -232,12 +232,12 @@
     "FROM_BOOK": 19619,
     "OF_BOOK": 371,
     "IN_CHAPTER": 16671,
-    "EXERCISES": 4121,
-    "EXERCISES_TOPIC": 3805,
-    "COVERS->Skill": 58,
-    "COVERS->ExamTopic": 28,
+    "EXERCISES": 5936,
+    "EXERCISES_TOPIC": 1990,
+    "COVERS->Skill": 68,
+    "COVERS->ExamTopic": 18,
     "DERIVED_FROM": 348,
-    "BRIDGES_TO": 18,
+    "BRIDGES_TO": 12,
     "Chunk FROM_BOOK": 4943
   },
   "new_label_counts": {
@@ -252,22 +252,22 @@
     "FROM_BOOK": 24562,
     "IN_CHAPTER": 16671,
     "OF_BOOK": 371,
-    "EXERCISES": 4121,
+    "EXERCISES": 5936,
     "EXERCISES_TOPIC": 3805,
-    "COVERS": 86,
+    "COVERS": 96,
     "DERIVED_FROM": 348,
     "BRIDGES_TO": 18,
     "FROM_BOOK(Question->Book)": 2778,
     "FROM_BOOK(Question->CorpusBook)": 16841,
     "FROM_BOOK(Chunk->Book)": 4646,
-    "COVERS(Chapter->Skill)": 58,
+    "COVERS(Chapter->Skill)": 68,
     "COVERS(Chapter->ExamTopic)": 28
   },
   "orphans": {
     "question_without_book": 0,
     "question_without_chapter": 2948,
     "question_without_skill_key": 11693,
-    "question_with_skill_key_but_no_live_skill": 3805,
+    "question_with_skill_key_but_no_live_skill": 1990,
     "chapter_without_taxonomy_rule": 285,
     "exam_topic_without_bridge_to_skill": 4,
     "converted_template_without_question": 0,
@@ -276,18 +276,30 @@
   "reach": {
     "questions_total": 19619,
     "questions_playable": 12872,
-    "questions_reaching_live_skill": 4121,
-    "questions_playable_and_reaching_live_skill": 2934,
-    "questions_on_skills_with_existing_problems": 2745,
-    "questions_on_skills_with_zero_problems": 1376,
-    "questions_with_prerequisite_closure": 1252,
+    "questions_reaching_live_skill": 5936,
+    "questions_playable_and_reaching_live_skill": 4457,
+    "questions_on_skills_with_existing_problems": 3053,
+    "questions_on_skills_with_zero_problems": 2883,
+    "questions_with_prerequisite_closure": 3650,
     "questions_on_stub_skills": 1785,
-    "distinct_skills_touched": 41,
-    "skill_vocabulary_exercised_pct": 9.7,
+    "distinct_skills_touched": 47,
+    "skill_vocabulary_exercised_pct": 11.1,
     "chunks_sharing_a_book_with_questions": 2862,
-    "converted_templates_reaching_live_skill": 52
+    "converted_templates_reaching_live_skill": 88
   },
   "stats": {
+    "reviewed_aliases": {
+      "reviewed": 6,
+      "confirmed": 5,
+      "rejected": [
+        {
+          "subject": "Averages and Alligations",
+          "proposed": "Averages",
+          "verdict": "REJECT"
+        }
+      ],
+      "unreviewed": []
+    },
     "export_rows": 19619,
     "export_distinct_question_ids": 19619,
     "book_map_agrees_with_book_in_graph_flag": true,
@@ -307,23 +319,23 @@
     },
     "rows_with_skill_key": 7926,
     "distinct_skill_keys": 63,
-    "skill_keys_matched": 41,
-    "skill_keys_unmatched": 22,
+    "skill_keys_matched": 47,
+    "skill_keys_unmatched": 16,
     "match_tier_keys": {
-      "exact": 36,
+      "exact": 39,
       "normalized": 3,
-      "tokenset": 2
+      "reviewed_alias": 5
     },
     "match_tier_rows": {
-      "exact": 3531,
+      "exact": 4846,
       "normalized": 204,
-      "tokenset": 386
+      "tokenset": 0
     },
-    "rows_attaching_to_live_skill": 4121,
-    "rows_attaching_to_exam_topic": 3805,
+    "rows_attaching_to_live_skill": 5936,
+    "rows_attaching_to_exam_topic": 1990,
     "live_vocab_norm_collisions": 1,
     "live_vocab_tokenset_collisions": 2,
-    "exam_topics_with_bridge": 18,
+    "exam_topics_with_bridge": 12,
     "exam_topics_without_bridge": 4,
     "bridge_gap_detail": [
       {
@@ -358,8 +370,8 @@
     "chapter_rules": 86,
     "chapters_matched_by_rule": 86,
     "chapters_unmatched_by_rule": 285,
-    "covers_to_skill": 58,
-    "covers_to_exam_topic": 28,
+    "covers_to_skill": 68,
+    "covers_to_exam_topic": 18,
     "covers_unresolvable": 0,
     "covers_unresolvable_detail": [],
     "rule_only_topic_keys": {},
