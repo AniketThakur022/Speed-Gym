@@ -73,7 +73,7 @@ export function AddPrepModal({ onClose }: Props) {
           <button
             type="button"
             onClick={handleClose}
-            className="grid size-8 place-items-center rounded-lg text-muted-foreground/50 hover:text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="grid size-8 place-items-center rounded-lg text-muted-foreground/70 hover:text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             <X size={16} />
           </button>
@@ -82,7 +82,7 @@ export function AddPrepModal({ onClose }: Props) {
         <div className="p-5">
           {!selectedExam ? (
             <div className="flex flex-col gap-2.5">
-              <p className="text-fluid-xs text-muted-foreground/60 mb-1">
+              <p className="text-fluid-xs text-muted-foreground mb-1">
                 Choose an exam or subject to see your progress
               </p>
               {EXAMS.map((exam) => {
@@ -117,12 +117,12 @@ export function AddPrepModal({ onClose }: Props) {
             <div className="flex flex-col gap-3">
               {topics.length === 0 ? (
                 <div className="flex flex-col items-center py-8 text-center">
-                  <p className="text-fluid-sm text-muted-foreground/60">No topic data available yet.</p>
-                  <p className="text-fluid-xs text-muted-foreground/40 mt-1">Complete a sprint to see mastery levels.</p>
+                  <p className="text-fluid-sm text-muted-foreground">No topic data available yet.</p>
+                  <p className="text-fluid-xs text-muted-foreground mt-1">Complete a sprint to see mastery levels.</p>
                 </div>
               ) : (
                 <>
-                  <p className="text-fluid-xs text-muted-foreground/60 mb-1">
+                  <p className="text-fluid-xs text-muted-foreground mb-1">
                     Here&apos;s where you stand:
                   </p>
                   {topics.map((topic) => {
@@ -150,7 +150,7 @@ export function AddPrepModal({ onClose }: Props) {
                               }}
                             />
                           </div>
-                          <span className="text-fluid-xs font-mono text-muted-foreground/60 w-8 text-right">
+                          <span className="text-fluid-xs font-mono text-muted-foreground w-8 text-right">
                             {topic.value}%
                           </span>
                         </div>

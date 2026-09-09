@@ -123,7 +123,7 @@ export default function OnboardingPage() {
 
         {/* Tagline */}
         <div ref={taglineRef} className="text-center mb-10 max-w-xs">
-          <p className="text-sm leading-relaxed text-muted-foreground/70">
+          <p className="text-sm leading-relaxed text-muted-foreground">
             Not a coaching app.
             <br />
             <span className="text-foreground/90 font-semibold">
@@ -143,7 +143,7 @@ export default function OnboardingPage() {
                 className="flex items-center gap-2 rounded-full border border-border/40 bg-card/60 backdrop-blur-sm px-3.5 py-2"
               >
                 <Icon size={13} style={{ color: f.color }} />
-                <span className="text-[11px] font-semibold text-muted-foreground/70">
+                <span className="text-[11px] font-semibold text-muted-foreground">
                   {f.label}
                 </span>
               </div>
@@ -178,11 +178,11 @@ export default function OnboardingPage() {
 
       {/* Footer */}
       <div ref={footerRef} className="relative pb-8 pt-4 text-center px-6">
-        <p className="text-[11px] text-muted-foreground/40 leading-relaxed">
+        <p className="text-[11px] text-muted-foreground leading-relaxed">
           By continuing, you agree to our{" "}
-          <span className="text-muted-foreground/60 font-medium">Terms of Service</span>
+          <span className="text-muted-foreground font-medium">Terms of Service</span>
           {" & "}
-          <span className="text-muted-foreground/60 font-medium">Privacy Policy</span>
+          <span className="text-muted-foreground font-medium">Privacy Policy</span>
         </p>
       </div>
     </main>

@@ -112,7 +112,7 @@ export default function MocksPage() {
             ))}
           </div>
         ) : (
-          <input className="mt-5 w-full rounded-lg border border-border bg-background px-3 py-2" placeholder={question.kind === "essay" ? "Your response" : "Your answer"} value={answer} onChange={(e) => setAnswer(e.target.value)} autoFocus />
+          <input className="mt-5 w-full rounded-lg border border-border bg-background px-3 py-2" aria-label={question.kind === "essay" ? "Your response" : "Your answer"} placeholder={question.kind === "essay" ? "Your response" : "Your answer"} value={answer} onChange={(e) => setAnswer(e.target.value)} autoFocus />
         )}
         <div className="mt-5 flex gap-2">
           <button type="button" onClick={record} className="flex-1 rounded-lg bg-primary px-4 py-2 font-medium text-primary-foreground">{done === total ? "Submit exam" : "Next"}</button>
@@ -127,7 +127,7 @@ export default function MocksPage() {
     <Shell>
       <h1 className="text-fluid-xl font-semibold">Mock Center</h1>
       <p className="mt-1 text-fluid-sm text-muted-foreground">Full-length, server-scored. Ads off, sinking skills deferred until the scorecard.</p>
-      {error && <p className="mt-3 rounded-lg bg-accent p-3 text-fluid-sm">{error}</p>}
+      {error && <p role="alert" className="mt-3 rounded-lg bg-accent p-3 text-fluid-sm">{error}</p>}
       <div className="mt-4 grid gap-2">
         {(blueprints.data?.blueprints ?? []).map((b) => {
           const ready = b.sections.every((s) => s.available);

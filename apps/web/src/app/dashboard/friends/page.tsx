@@ -26,9 +26,9 @@ export default function FriendsPage() {
   return (
     <main className="mx-auto min-h-dvh w-full max-w-xl bg-background px-5 py-8">
       <h1 className="text-fluid-xl font-semibold">Friends</h1>
-      {notice && <p className="mt-3 rounded-lg bg-accent p-3 text-fluid-sm">{notice}</p>}
+      {notice && <p role="status" aria-live="polite" className="mt-3 rounded-lg bg-accent p-3 text-fluid-sm">{notice}</p>}
       <div className="mt-4 flex gap-2">
-        <input className="flex-1 rounded-lg border border-border bg-background px-3 py-2" placeholder="friend@example.com" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <input className="flex-1 rounded-lg border border-border bg-background px-3 py-2" aria-label="Friend's email address" placeholder="friend@example.com" value={email} onChange={(e) => setEmail(e.target.value)} />
         <button type="button" onClick={() => run(() => requestFriend(email), "Request sent")} className="rounded-lg bg-primary px-4 py-2 text-primary-foreground">Add</button>
       </div>
       <div className="mt-4 rounded-lg border border-border bg-card p-3 text-fluid-sm">
@@ -38,7 +38,7 @@ export default function FriendsPage() {
         </div>
         {code && <p className="mt-2 break-all font-mono text-fluid-xs">{code.code}.{code.sig.slice(0, 16)}… <span className="text-muted-foreground">(valid {Math.round(code.expiresIn / 60)} min, one use)</span></p>}
         <div className="mt-2 flex gap-2">
-          <input className="flex-1 rounded-lg border border-border bg-background px-3 py-1" placeholder="paste code.sig" value={redeem} onChange={(e) => setRedeem(e.target.value)} />
+          <input className="flex-1 rounded-lg border border-border bg-background px-3 py-1" aria-label="Pairing code" placeholder="paste code.sig" value={redeem} onChange={(e) => setRedeem(e.target.value)} />
           <button type="button" onClick={() => { const [c, s] = redeem.split("."); void run(() => qrRedeem(c, s), "Paired!"); }} className="rounded-lg border border-border px-3">Redeem</button>
         </div>
       </div>

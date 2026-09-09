@@ -42,13 +42,13 @@ export default function LeaderboardPage() {
       <h2 className="mt-8 text-fluid-lg font-medium">Daily Challenge</h2>
       {daily.isError && <p className="text-fluid-sm text-muted-foreground">No challenge available right now.</p>}
       {daily.data && (daily.data.submitted || done) ? (
-        <p className="mt-2 text-fluid-sm">Done for today: {(done ?? daily.data.submitted)!.problems_correct}/{daily.data.problems.length} correct · score {(done ?? daily.data.submitted)!.score}{done?.rank ? ` · rank #${done.rank}` : ""}</p>
+        <p role="status" aria-live="polite" className="mt-2 text-fluid-sm">Done for today: {(done ?? daily.data.submitted)!.problems_correct}/{daily.data.problems.length} correct · score {(done ?? daily.data.submitted)!.score}{done?.rank ? ` · rank #${done.rank}` : ""}</p>
       ) : daily.data ? (
         <div className="mt-2 grid gap-3">
           {daily.data.problems.map((p, i) => (
             <div key={p.problem_id} className="rounded-lg border border-border bg-card p-3">
               <p className="text-fluid-sm"><MathText>{p.text}</MathText></p>
-              <input className="mt-2 w-full rounded-lg border border-border bg-background px-3 py-1" placeholder="Answer" value={answers[i] ?? ""} onChange={(e) => setAnswers((a) => a.map((v, j) => (j === i ? e.target.value : v)))} />
+              <input className="mt-2 w-full rounded-lg border border-border bg-background px-3 py-1" aria-label={`Answer for question ${i + 1}`} placeholder="Answer" value={answers[i] ?? ""} onChange={(e) => setAnswers((a) => a.map((v, j) => (j === i ? e.target.value : v)))} />
             </div>
           ))}
           <button type="button" onClick={submit} className="rounded-lg bg-primary px-4 py-2 font-medium text-primary-foreground">Submit challenge</button>

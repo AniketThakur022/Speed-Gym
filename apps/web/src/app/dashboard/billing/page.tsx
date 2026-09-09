@@ -109,7 +109,7 @@ export default function BillingPage() {
           {current.current_period_end && <p className="mt-1 text-muted-foreground">Renews {new Date(current.current_period_end).toLocaleDateString()}</p>}
         </div>
       )}
-      {notice && <p className="mt-3 rounded-lg bg-accent p-3 text-fluid-sm">{notice}</p>}
+      {notice && <p role="status" aria-live="polite" className="mt-3 rounded-lg bg-accent p-3 text-fluid-sm">{notice}</p>}
       <div className="mt-5 grid gap-3">
         {(plans.data?.plans ?? []).filter((p) => p.tier !== "free").map((p) => (
           <div key={p.tier} className="rounded-lg border border-border bg-card p-4">

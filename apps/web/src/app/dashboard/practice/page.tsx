@@ -312,7 +312,7 @@ export default function PracticePage() {
       </div>
 
       {hint && (
-        <p className="mt-3 rounded-lg bg-accent p-3 text-fluid-sm">
+        <p role="status" aria-live="polite" className="mt-3 rounded-lg bg-accent p-3 text-fluid-sm">
           <span className="text-fluid-xs uppercase tracking-wide text-muted-foreground">Hint {hint.level}/{hint.max_level} · answer withheld</span>
           <br />
           <MathText>{hint.hint}</MathText>
@@ -326,6 +326,7 @@ export default function PracticePage() {
 
       <input
         className="mt-5 w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground outline-none focus:border-primary"
+        aria-label="Your answer"
         placeholder="Your answer"
         value={answer}
         onChange={(event) => {
@@ -341,7 +342,7 @@ export default function PracticePage() {
       />
 
       {verdict && (
-        <p className="mt-3 text-fluid-sm">
+        <p role="status" aria-live="polite" className="mt-3 text-fluid-sm">
           <span className={verdict.outcome === "correct" ? "text-primary" : "text-foreground"}>
             {OUTCOME_COPY[verdict.outcome]}
           </span>

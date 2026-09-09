@@ -82,7 +82,7 @@ export default function LearnPage() {
         <h1 className="text-[20px] font-bold tracking-[-0.02em] text-foreground leading-tight">
           Topic Explorer
         </h1>
-        <p className="text-[12px] text-muted-foreground/45 font-normal mt-1">
+        <p className="text-[12px] text-muted-foreground font-normal mt-1">
           Navigate the mathematical landscape
         </p>
       </header>
@@ -99,7 +99,7 @@ export default function LearnPage() {
 
       {/* Exam Tabs */}
       <div className="rounded-3xl border backdrop-blur-xl p-4 mt-5" style={{ borderColor: GLASS_BORDER, background: GLASS_BG }}>
-        <p className="text-[10px] font-semibold tracking-[0.18em] text-muted-foreground/40 uppercase mb-3">EXAM PREP</p>
+        <p className="text-[10px] font-semibold tracking-[0.18em] text-muted-foreground uppercase mb-3">EXAM PREP</p>
         <div className="flex flex-wrap gap-2">
           {Object.entries(DOMAIN_LABELS).map(([id, label]) => (
             <button
@@ -110,7 +110,7 @@ export default function LearnPage() {
                 "text-[11px] font-semibold rounded-full px-3.5 py-1.5 transition-all",
                 activeDomain === id
                   ? "bg-gradient-to-r from-primary to-[#a8e62e] text-primary-foreground shadow-[0_0_12px_rgba(199,242,82,0.25)]"
-                  : "bg-white/[0.04] text-muted-foreground/50 border border-white/[0.06] hover:bg-white/[0.07]"
+                  : "bg-white/[0.04] text-muted-foreground border border-white/[0.06] hover:bg-white/[0.07]"
               )}
             >
               {label}
@@ -159,8 +159,8 @@ export default function LearnPage() {
 
         {topics.length === 0 && (
           <div className="rounded-3xl border border-dashed border-white/[0.06] py-12 text-center" style={{ background: GLASS_BG }}>
-            <BookOpen size={24} className="mx-auto text-muted-foreground/25 mb-3" />
-            <p className="text-[13px] text-muted-foreground/40 font-normal">No topics yet. Add a prep to get started.</p>
+            <BookOpen size={24} className="mx-auto text-muted-foreground/70 mb-3" />
+            <p className="text-[13px] text-muted-foreground font-normal">No topics yet. Add a prep to get started.</p>
           </div>
         )}
       </div>
