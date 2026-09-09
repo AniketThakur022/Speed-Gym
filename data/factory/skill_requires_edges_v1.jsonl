@@ -21,11 +21,9 @@
 {"from": "Basic Operations (+, -, ×, ÷)", "to": "Long Division", "source": "chain_derived", "support": 2}
 {"from": "Basic Operations (+, -, ×, ÷)", "to": "Mental calculation strategies", "source": "chain_derived", "support": 2}
 {"from": "Basic Operations (+, -, ×, ÷)", "to": "Multiplication Tables", "source": "chain_derived", "support": 6}
-{"from": "Basic Operations (+, -, ×, ÷)", "to": "Number Bases", "source": "chain_derived", "support": 3}
 {"from": "Basic Operations (+, -, ×, ÷)", "to": "Number Sense", "source": "chain_derived", "support": 9}
 {"from": "Basic Operations (+, -, ×, ÷)", "to": "Number Properties", "source": "chain_derived", "support": 2}
 {"from": "Basic Operations (+, -, ×, ÷)", "to": "NumberTheory", "source": "chain_derived", "support": 14}
-{"from": "Basic Operations (+, -, ×, ÷)", "to": "Divisibility Rules", "source": "chain_derived", "support": 5}
 {"from": "Basic Operations (+, -, ×, ÷)", "to": "Place Value", "source": "chain_derived", "support": 5}
 {"from": "Basic Operations (+, -, ×, ÷)", "to": "Place Value System", "source": "chain_derived", "support": 4}
 {"from": "Basic Operations (+, -, ×, ÷)", "to": "Scientific Notation", "source": "chain_derived", "support": 2}
@@ -253,3 +251,27 @@
 {"from": "VedicMath", "to": "Linear Equations", "source": "curated", "support": 1}
 {"from": "VedicMath", "to": "Polynomials and Factoring", "source": "curated", "support": 1}
 {"from": "VedicMath", "to": "Quadratic Equations", "source": "curated", "support": 1}
+{"from": "Number Systems", "to": "Prime Numbers", "source": "cat_quant_panel_2026-09-09", "support": null}
+{"from": "Number Systems", "to": "Exponents and Radicals", "source": "cat_quant_panel_2026-09-09", "support": null}
+{"from": "Number Systems", "to": "Remainders", "source": "cat_quant_panel_2026-09-09", "support": null}
+{"from": "Geometry and Mensuration", "to": "Polygon Properties", "source": "cat_quant_panel_2026-09-09", "support": null}
+{"from": "Geometry and Mensuration", "to": "Triangles", "source": "cat_quant_panel_2026-09-09", "support": null}
+{"from": "Geometry and Mensuration", "to": "Ratios and Proportions", "source": "cat_quant_panel_2026-09-09", "support": null}
+{"from": "Geometry and Mensuration", "to": "Circles", "source": "cat_quant_panel_2026-09-09", "support": null}
+{"from": "Geometry and Mensuration", "to": "Linear Equations", "source": "cat_quant_panel_2026-09-09", "support": null}
+{"from": "Profit and Loss", "to": "Percentages", "source": "cat_quant_panel_2026-09-09", "support": null}
+{"from": "Profit and Loss", "to": "Fractions and Decimals", "source": "cat_quant_panel_2026-09-09", "support": null}
+{"from": "Simple and Compound Interest", "to": "Percentages", "source": "cat_quant_panel_2026-09-09", "support": null}
+{"from": "Simple and Compound Interest", "to": "Linear Equations", "source": "cat_quant_panel_2026-09-09", "support": null}
+{"from": "Simple and Compound Interest", "to": "Fractions and Decimals", "source": "cat_quant_panel_2026-09-09", "support": null}
+{"from": "Sequences and Series", "to": "Linear Equations", "source": "cat_quant_panel_2026-09-09", "support": null}
+{"from": "Sequences and Series", "to": "Exponents and Radicals", "source": "cat_quant_panel_2026-09-09", "support": null}
+{"from": "Sequences and Series", "to": "Quadratic Equations", "source": "cat_quant_panel_2026-09-09", "support": null}
+{"from": "Averages", "to": "Percentages", "source": "cat_quant_panel_2026-09-09", "support": null}
+{"from": "Averages", "to": "Ratios and Proportions", "source": "cat_quant_panel_2026-09-09", "support": null}
+{"from": "Averages", "to": "Simple and Compound Interest", "source": "cat_quant_panel_2026-09-09", "support": null}
+{"from": "Speed, Time, Distance", "to": "Ratios and Proportions", "source": "cat_quant_panel_2026-09-09", "support": null}
+{"from": "Speed, Time, Distance", "to": "Linear Equations", "source": "cat_quant_panel_2026-09-09", "support": null}
+{"from": "Work and Time", "to": "Fractions and Decimals", "source": "cat_quant_panel_2026-09-09", "support": null}
+{"from": "Work and Time", "to": "Ratios and Proportions", "source": "cat_quant_panel_2026-09-09", "support": null}
+{"from": "Work and Time", "to": "Linear Equations", "source": "cat_quant_panel_2026-09-09", "support": null}

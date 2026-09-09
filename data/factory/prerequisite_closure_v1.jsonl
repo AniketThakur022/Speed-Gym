@@ -6,7 +6,6 @@
 {"descendant_skill": "Applications of Derivatives", "ancestor_skill": "Basic Operations (+, -, ×, ÷)", "min_depth": 2}
 {"descendant_skill": "Applications of Derivatives", "ancestor_skill": "Basic Transformations", "min_depth": 2}
 {"descendant_skill": "Applications of Derivatives", "ancestor_skill": "Basic arithmetic operations", "min_depth": 3}
-{"descendant_skill": "Applications of Derivatives", "ancestor_skill": "Basic number sense", "min_depth": 4}
 {"descendant_skill": "Applications of Derivatives", "ancestor_skill": "Binomial Theorem", "min_depth": 3}
 {"descendant_skill": "Applications of Derivatives", "ancestor_skill": "Coordinate Geometry", "min_depth": 1}
 {"descendant_skill": "Applications of Derivatives", "ancestor_skill": "Coordinate System", "min_depth": 2}
@@ -15,7 +14,6 @@
 {"descendant_skill": "Applications of Derivatives", "ancestor_skill": "Descartes' Rule of Signs", "min_depth": 3}
 {"descendant_skill": "Applications of Derivatives", "ancestor_skill": "Determinants", "min_depth": 2}
 {"descendant_skill": "Applications of Derivatives", "ancestor_skill": "Differentiation", "min_depth": 1}
-{"descendant_skill": "Applications of Derivatives", "ancestor_skill": "Divisibility Rules", "min_depth": 3}
 {"descendant_skill": "Applications of Derivatives", "ancestor_skill": "Exponential Functions", "min_depth": 1}
 {"descendant_skill": "Applications of Derivatives", "ancestor_skill": "Exponents", "min_depth": 2}
 {"descendant_skill": "Applications of Derivatives", "ancestor_skill": "Exponents and Radicals", "min_depth": 1}
@@ -41,9 +39,7 @@
 {"descendant_skill": "Applications of Derivatives", "ancestor_skill": "Matrices", "min_depth": 2}
 {"descendant_skill": "Applications of Derivatives", "ancestor_skill": "Matrix Operations", "min_depth": 2}
 {"descendant_skill": "Applications of Derivatives", "ancestor_skill": "Mental calculation strategies", "min_depth": 3}
-{"descendant_skill": "Applications of Derivatives", "ancestor_skill": "Modular Arithmetic", "min_depth": 4}
 {"descendant_skill": "Applications of Derivatives", "ancestor_skill": "Multiplication Tables", "min_depth": 3}
-{"descendant_skill": "Applications of Derivatives", "ancestor_skill": "Number Bases", "min_depth": 3}
 {"descendant_skill": "Applications of Derivatives", "ancestor_skill": "Number Properties", "min_depth": 3}
 {"descendant_skill": "Applications of Derivatives", "ancestor_skill": "Number Sense", "min_depth": 3}
 {"descendant_skill": "Applications of Derivatives", "ancestor_skill": "NumberTheory", "min_depth": 3}
@@ -54,6 +50,7 @@
 {"descendant_skill": "Applications of Derivatives", "ancestor_skill": "Polynomial Functions", "min_depth": 3}
 {"descendant_skill": "Applications of Derivatives", "ancestor_skill": "Polynomials", "min_depth": 3}
 {"descendant_skill": "Applications of Derivatives", "ancestor_skill": "Polynomials and Factoring", "min_depth": 2}
+{"descendant_skill": "Applications of Derivatives", "ancestor_skill": "Quadratic Equations", "min_depth": 3}
 {"descendant_skill": "Applications of Derivatives", "ancestor_skill": "Rational Root Theorem", "min_depth": 3}
 {"descendant_skill": "Applications of Derivatives", "ancestor_skill": "Ratios and Proportions", "min_depth": 2}
 {"descendant_skill": "Applications of Derivatives", "ancestor_skill": "Reflections", "min_depth": 2}
@@ -70,19 +67,41 @@
 {"descendant_skill": "Applications of Derivatives", "ancestor_skill": "Transformations", "min_depth": 2}
 {"descendant_skill": "Applications of Derivatives", "ancestor_skill": "Trigonometry", "min_depth": 1}
 {"descendant_skill": "Applications of Derivatives", "ancestor_skill": "Vectors", "min_depth": 2}
+{"descendant_skill": "Averages", "ancestor_skill": "Algebra", "min_depth": 3}
+{"descendant_skill": "Averages", "ancestor_skill": "Arithmetic", "min_depth": 3}
+{"descendant_skill": "Averages", "ancestor_skill": "Basic Operations (+, -, ×, ÷)", "min_depth": 2}
+{"descendant_skill": "Averages", "ancestor_skill": "Basic arithmetic operations", "min_depth": 3}
+{"descendant_skill": "Averages", "ancestor_skill": "Decimal Operations", "min_depth": 3}
+{"descendant_skill": "Averages", "ancestor_skill": "Determinants", "min_depth": 3}
+{"descendant_skill": "Averages", "ancestor_skill": "Exponents", "min_depth": 3}
+{"descendant_skill": "Averages", "ancestor_skill": "Fractions", "min_depth": 3}
+{"descendant_skill": "Averages", "ancestor_skill": "Fractions and Decimals", "min_depth": 2}
+{"descendant_skill": "Averages", "ancestor_skill": "Linear Equations", "min_depth": 2}
+{"descendant_skill": "Averages", "ancestor_skill": "Long Division", "min_depth": 3}
+{"descendant_skill": "Averages", "ancestor_skill": "Matrices", "min_depth": 3}
+{"descendant_skill": "Averages", "ancestor_skill": "Matrix Operations", "min_depth": 3}
+{"descendant_skill": "Averages", "ancestor_skill": "Mental calculation strategies", "min_depth": 3}
+{"descendant_skill": "Averages", "ancestor_skill": "Multiplication Tables", "min_depth": 3}
+{"descendant_skill": "Averages", "ancestor_skill": "Number Properties", "min_depth": 3}
+{"descendant_skill": "Averages", "ancestor_skill": "Number Sense", "min_depth": 3}
+{"descendant_skill": "Averages", "ancestor_skill": "NumberTheory", "min_depth": 3}
+{"descendant_skill": "Averages", "ancestor_skill": "Percentages", "min_depth": 1}
+{"descendant_skill": "Averages", "ancestor_skill": "Place Value", "min_depth": 3}
+{"descendant_skill": "Averages", "ancestor_skill": "Place Value System", "min_depth": 3}
+{"descendant_skill": "Averages", "ancestor_skill": "Ratios and Proportions", "min_depth": 1}
+{"descendant_skill": "Averages", "ancestor_skill": "Scientific Notation", "min_depth": 3}
+{"descendant_skill": "Averages", "ancestor_skill": "Simple Equations", "min_depth": 3}
+{"descendant_skill": "Averages", "ancestor_skill": "Simple and Compound Interest", "min_depth": 1}
+{"descendant_skill": "Averages", "ancestor_skill": "Systems of Equations", "min_depth": 3}
 {"descendant_skill": "Basic Operations (+, -, ×, ÷)", "ancestor_skill": "Algebra", "min_depth": 1}
 {"descendant_skill": "Basic Operations (+, -, ×, ÷)", "ancestor_skill": "Arithmetic", "min_depth": 1}
 {"descendant_skill": "Basic Operations (+, -, ×, ÷)", "ancestor_skill": "Basic arithmetic operations", "min_depth": 1}
-{"descendant_skill": "Basic Operations (+, -, ×, ÷)", "ancestor_skill": "Basic number sense", "min_depth": 2}
 {"descendant_skill": "Basic Operations (+, -, ×, ÷)", "ancestor_skill": "Decimal Operations", "min_depth": 1}
-{"descendant_skill": "Basic Operations (+, -, ×, ÷)", "ancestor_skill": "Divisibility Rules", "min_depth": 1}
 {"descendant_skill": "Basic Operations (+, -, ×, ÷)", "ancestor_skill": "Exponents", "min_depth": 1}
 {"descendant_skill": "Basic Operations (+, -, ×, ÷)", "ancestor_skill": "Fractions and Decimals", "min_depth": 1}
 {"descendant_skill": "Basic Operations (+, -, ×, ÷)", "ancestor_skill": "Long Division", "min_depth": 1}
 {"descendant_skill": "Basic Operations (+, -, ×, ÷)", "ancestor_skill": "Mental calculation strategies", "min_depth": 1}
-{"descendant_skill": "Basic Operations (+, -, ×, ÷)", "ancestor_skill": "Modular Arithmetic", "min_depth": 2}
 {"descendant_skill": "Basic Operations (+, -, ×, ÷)", "ancestor_skill": "Multiplication Tables", "min_depth": 1}
-{"descendant_skill": "Basic Operations (+, -, ×, ÷)", "ancestor_skill": "Number Bases", "min_depth": 1}
 {"descendant_skill": "Basic Operations (+, -, ×, ÷)", "ancestor_skill": "Number Properties", "min_depth": 1}
 {"descendant_skill": "Basic Operations (+, -, ×, ÷)", "ancestor_skill": "Number Sense", "min_depth": 1}
 {"descendant_skill": "Basic Operations (+, -, ×, ÷)", "ancestor_skill": "NumberTheory", "min_depth": 1}
@@ -96,12 +115,10 @@
 {"descendant_skill": "Circles", "ancestor_skill": "Basic Operations (+, -, ×, ÷)", "min_depth": 3}
 {"descendant_skill": "Circles", "ancestor_skill": "Basic Transformations", "min_depth": 2}
 {"descendant_skill": "Circles", "ancestor_skill": "Basic arithmetic operations", "min_depth": 4}
-{"descendant_skill": "Circles", "ancestor_skill": "Basic number sense", "min_depth": 5}
 {"descendant_skill": "Circles", "ancestor_skill": "Coordinate Geometry", "min_depth": 1}
 {"descendant_skill": "Circles", "ancestor_skill": "Coordinate System", "min_depth": 2}
 {"descendant_skill": "Circles", "ancestor_skill": "Decimal Operations", "min_depth": 4}
 {"descendant_skill": "Circles", "ancestor_skill": "Determinants", "min_depth": 3}
-{"descendant_skill": "Circles", "ancestor_skill": "Divisibility Rules", "min_depth": 4}
 {"descendant_skill": "Circles", "ancestor_skill": "Exponents", "min_depth": 4}
 {"descendant_skill": "Circles", "ancestor_skill": "Fractions", "min_depth": 3}
 {"descendant_skill": "Circles", "ancestor_skill": "Fractions and Decimals", "min_depth": 3}
@@ -112,9 +129,7 @@
 {"descendant_skill": "Circles", "ancestor_skill": "Matrices", "min_depth": 3}
 {"descendant_skill": "Circles", "ancestor_skill": "Matrix Operations", "min_depth": 3}
 {"descendant_skill": "Circles", "ancestor_skill": "Mental calculation strategies", "min_depth": 4}
-{"descendant_skill": "Circles", "ancestor_skill": "Modular Arithmetic", "min_depth": 5}
 {"descendant_skill": "Circles", "ancestor_skill": "Multiplication Tables", "min_depth": 4}
-{"descendant_skill": "Circles", "ancestor_skill": "Number Bases", "min_depth": 4}
 {"descendant_skill": "Circles", "ancestor_skill": "Number Properties", "min_depth": 4}
 {"descendant_skill": "Circles", "ancestor_skill": "Number Sense", "min_depth": 4}
 {"descendant_skill": "Circles", "ancestor_skill": "NumberTheory", "min_depth": 4}
@@ -136,14 +151,12 @@
 {"descendant_skill": "Complex Numbers", "ancestor_skill": "Basic Operations (+, -, ×, ÷)", "min_depth": 2}
 {"descendant_skill": "Complex Numbers", "ancestor_skill": "Basic Transformations", "min_depth": 2}
 {"descendant_skill": "Complex Numbers", "ancestor_skill": "Basic arithmetic operations", "min_depth": 3}
-{"descendant_skill": "Complex Numbers", "ancestor_skill": "Basic number sense", "min_depth": 4}
 {"descendant_skill": "Complex Numbers", "ancestor_skill": "Binomial Theorem", "min_depth": 2}
 {"descendant_skill": "Complex Numbers", "ancestor_skill": "Coordinate Geometry", "min_depth": 1}
 {"descendant_skill": "Complex Numbers", "ancestor_skill": "Coordinate System", "min_depth": 2}
 {"descendant_skill": "Complex Numbers", "ancestor_skill": "Decimal Operations", "min_depth": 3}
 {"descendant_skill": "Complex Numbers", "ancestor_skill": "Descartes' Rule of Signs", "min_depth": 2}
 {"descendant_skill": "Complex Numbers", "ancestor_skill": "Determinants", "min_depth": 3}
-{"descendant_skill": "Complex Numbers", "ancestor_skill": "Divisibility Rules", "min_depth": 3}
 {"descendant_skill": "Complex Numbers", "ancestor_skill": "Exponential Functions", "min_depth": 3}
 {"descendant_skill": "Complex Numbers", "ancestor_skill": "Exponents", "min_depth": 3}
 {"descendant_skill": "Complex Numbers", "ancestor_skill": "Exponents and Radicals", "min_depth": 2}
@@ -162,9 +175,7 @@
 {"descendant_skill": "Complex Numbers", "ancestor_skill": "Matrices", "min_depth": 3}
 {"descendant_skill": "Complex Numbers", "ancestor_skill": "Matrix Operations", "min_depth": 2}
 {"descendant_skill": "Complex Numbers", "ancestor_skill": "Mental calculation strategies", "min_depth": 3}
-{"descendant_skill": "Complex Numbers", "ancestor_skill": "Modular Arithmetic", "min_depth": 4}
 {"descendant_skill": "Complex Numbers", "ancestor_skill": "Multiplication Tables", "min_depth": 3}
-{"descendant_skill": "Complex Numbers", "ancestor_skill": "Number Bases", "min_depth": 3}
 {"descendant_skill": "Complex Numbers", "ancestor_skill": "Number Properties", "min_depth": 3}
 {"descendant_skill": "Complex Numbers", "ancestor_skill": "Number Sense", "min_depth": 3}
 {"descendant_skill": "Complex Numbers", "ancestor_skill": "NumberTheory", "min_depth": 2}
@@ -194,12 +205,10 @@
 {"descendant_skill": "Conic Sections (Parabola, Ellipse, Hyperbola)", "ancestor_skill": "Basic Operations (+, -, ×, ÷)", "min_depth": 3}
 {"descendant_skill": "Conic Sections (Parabola, Ellipse, Hyperbola)", "ancestor_skill": "Basic Transformations", "min_depth": 2}
 {"descendant_skill": "Conic Sections (Parabola, Ellipse, Hyperbola)", "ancestor_skill": "Basic arithmetic operations", "min_depth": 4}
-{"descendant_skill": "Conic Sections (Parabola, Ellipse, Hyperbola)", "ancestor_skill": "Basic number sense", "min_depth": 5}
 {"descendant_skill": "Conic Sections (Parabola, Ellipse, Hyperbola)", "ancestor_skill": "Coordinate Geometry", "min_depth": 1}
 {"descendant_skill": "Conic Sections (Parabola, Ellipse, Hyperbola)", "ancestor_skill": "Coordinate System", "min_depth": 2}
 {"descendant_skill": "Conic Sections (Parabola, Ellipse, Hyperbola)", "ancestor_skill": "Decimal Operations", "min_depth": 4}
 {"descendant_skill": "Conic Sections (Parabola, Ellipse, Hyperbola)", "ancestor_skill": "Determinants", "min_depth": 3}
-{"descendant_skill": "Conic Sections (Parabola, Ellipse, Hyperbola)", "ancestor_skill": "Divisibility Rules", "min_depth": 4}
 {"descendant_skill": "Conic Sections (Parabola, Ellipse, Hyperbola)", "ancestor_skill": "Exponents", "min_depth": 4}
 {"descendant_skill": "Conic Sections (Parabola, Ellipse, Hyperbola)", "ancestor_skill": "Fractions", "min_depth": 3}
 {"descendant_skill": "Conic Sections (Parabola, Ellipse, Hyperbola)", "ancestor_skill": "Fractions and Decimals", "min_depth": 3}
@@ -210,9 +219,7 @@
 {"descendant_skill": "Conic Sections (Parabola, Ellipse, Hyperbola)", "ancestor_skill": "Matrices", "min_depth": 3}
 {"descendant_skill": "Conic Sections (Parabola, Ellipse, Hyperbola)", "ancestor_skill": "Matrix Operations", "min_depth": 3}
 {"descendant_skill": "Conic Sections (Parabola, Ellipse, Hyperbola)", "ancestor_skill": "Mental calculation strategies", "min_depth": 4}
-{"descendant_skill": "Conic Sections (Parabola, Ellipse, Hyperbola)", "ancestor_skill": "Modular Arithmetic", "min_depth": 5}
 {"descendant_skill": "Conic Sections (Parabola, Ellipse, Hyperbola)", "ancestor_skill": "Multiplication Tables", "min_depth": 4}
-{"descendant_skill": "Conic Sections (Parabola, Ellipse, Hyperbola)", "ancestor_skill": "Number Bases", "min_depth": 4}
 {"descendant_skill": "Conic Sections (Parabola, Ellipse, Hyperbola)", "ancestor_skill": "Number Properties", "min_depth": 4}
 {"descendant_skill": "Conic Sections (Parabola, Ellipse, Hyperbola)", "ancestor_skill": "Number Sense", "min_depth": 4}
 {"descendant_skill": "Conic Sections (Parabola, Ellipse, Hyperbola)", "ancestor_skill": "NumberTheory", "min_depth": 4}
@@ -234,11 +241,9 @@
 {"descendant_skill": "Coordinate Geometry", "ancestor_skill": "Basic Operations (+, -, ×, ÷)", "min_depth": 2}
 {"descendant_skill": "Coordinate Geometry", "ancestor_skill": "Basic Transformations", "min_depth": 1}
 {"descendant_skill": "Coordinate Geometry", "ancestor_skill": "Basic arithmetic operations", "min_depth": 3}
-{"descendant_skill": "Coordinate Geometry", "ancestor_skill": "Basic number sense", "min_depth": 4}
 {"descendant_skill": "Coordinate Geometry", "ancestor_skill": "Coordinate System", "min_depth": 1}
 {"descendant_skill": "Coordinate Geometry", "ancestor_skill": "Decimal Operations", "min_depth": 3}
 {"descendant_skill": "Coordinate Geometry", "ancestor_skill": "Determinants", "min_depth": 2}
-{"descendant_skill": "Coordinate Geometry", "ancestor_skill": "Divisibility Rules", "min_depth": 3}
 {"descendant_skill": "Coordinate Geometry", "ancestor_skill": "Exponents", "min_depth": 3}
 {"descendant_skill": "Coordinate Geometry", "ancestor_skill": "Fractions", "min_depth": 2}
 {"descendant_skill": "Coordinate Geometry", "ancestor_skill": "Fractions and Decimals", "min_depth": 2}
@@ -249,9 +254,7 @@
 {"descendant_skill": "Coordinate Geometry", "ancestor_skill": "Matrices", "min_depth": 2}
 {"descendant_skill": "Coordinate Geometry", "ancestor_skill": "Matrix Operations", "min_depth": 2}
 {"descendant_skill": "Coordinate Geometry", "ancestor_skill": "Mental calculation strategies", "min_depth": 3}
-{"descendant_skill": "Coordinate Geometry", "ancestor_skill": "Modular Arithmetic", "min_depth": 4}
 {"descendant_skill": "Coordinate Geometry", "ancestor_skill": "Multiplication Tables", "min_depth": 3}
-{"descendant_skill": "Coordinate Geometry", "ancestor_skill": "Number Bases", "min_depth": 3}
 {"descendant_skill": "Coordinate Geometry", "ancestor_skill": "Number Properties", "min_depth": 3}
 {"descendant_skill": "Coordinate Geometry", "ancestor_skill": "Number Sense", "min_depth": 3}
 {"descendant_skill": "Coordinate Geometry", "ancestor_skill": "NumberTheory", "min_depth": 3}
@@ -269,17 +272,13 @@
 {"descendant_skill": "Data Interpretation", "ancestor_skill": "Arithmetic", "min_depth": 1}
 {"descendant_skill": "Data Interpretation", "ancestor_skill": "Basic Operations (+, -, ×, ÷)", "min_depth": 1}
 {"descendant_skill": "Data Interpretation", "ancestor_skill": "Basic arithmetic operations", "min_depth": 2}
-{"descendant_skill": "Data Interpretation", "ancestor_skill": "Basic number sense", "min_depth": 3}
 {"descendant_skill": "Data Interpretation", "ancestor_skill": "Decimal Operations", "min_depth": 2}
-{"descendant_skill": "Data Interpretation", "ancestor_skill": "Divisibility Rules", "min_depth": 2}
 {"descendant_skill": "Data Interpretation", "ancestor_skill": "Exponents", "min_depth": 2}
 {"descendant_skill": "Data Interpretation", "ancestor_skill": "Fractions and Decimals", "min_depth": 2}
 {"descendant_skill": "Data Interpretation", "ancestor_skill": "Geometry", "min_depth": 1}
 {"descendant_skill": "Data Interpretation", "ancestor_skill": "Long Division", "min_depth": 2}
 {"descendant_skill": "Data Interpretation", "ancestor_skill": "Mental calculation strategies", "min_depth": 2}
-{"descendant_skill": "Data Interpretation", "ancestor_skill": "Modular Arithmetic", "min_depth": 3}
 {"descendant_skill": "Data Interpretation", "ancestor_skill": "Multiplication Tables", "min_depth": 2}
-{"descendant_skill": "Data Interpretation", "ancestor_skill": "Number Bases", "min_depth": 2}
 {"descendant_skill": "Data Interpretation", "ancestor_skill": "Number Properties", "min_depth": 2}
 {"descendant_skill": "Data Interpretation", "ancestor_skill": "Number Sense", "min_depth": 2}
 {"descendant_skill": "Data Interpretation", "ancestor_skill": "NumberTheory", "min_depth": 2}
@@ -291,9 +290,7 @@
 {"descendant_skill": "Differentiation", "ancestor_skill": "Arithmetic", "min_depth": 2}
 {"descendant_skill": "Differentiation", "ancestor_skill": "Basic Operations (+, -, ×, ÷)", "min_depth": 2}
 {"descendant_skill": "Differentiation", "ancestor_skill": "Basic arithmetic operations", "min_depth": 3}
-{"descendant_skill": "Differentiation", "ancestor_skill": "Basic number sense", "min_depth": 4}
 {"descendant_skill": "Differentiation", "ancestor_skill": "Decimal Operations", "min_depth": 3}
-{"descendant_skill": "Differentiation", "ancestor_skill": "Divisibility Rules", "min_depth": 3}
 {"descendant_skill": "Differentiation", "ancestor_skill": "Exponential Functions", "min_depth": 2}
 {"descendant_skill": "Differentiation", "ancestor_skill": "Exponents", "min_depth": 2}
 {"descendant_skill": "Differentiation", "ancestor_skill": "Exponents and Radicals", "min_depth": 1}
@@ -303,9 +300,7 @@
 {"descendant_skill": "Differentiation", "ancestor_skill": "Logarithms", "min_depth": 2}
 {"descendant_skill": "Differentiation", "ancestor_skill": "Long Division", "min_depth": 3}
 {"descendant_skill": "Differentiation", "ancestor_skill": "Mental calculation strategies", "min_depth": 3}
-{"descendant_skill": "Differentiation", "ancestor_skill": "Modular Arithmetic", "min_depth": 4}
 {"descendant_skill": "Differentiation", "ancestor_skill": "Multiplication Tables", "min_depth": 3}
-{"descendant_skill": "Differentiation", "ancestor_skill": "Number Bases", "min_depth": 3}
 {"descendant_skill": "Differentiation", "ancestor_skill": "Number Properties", "min_depth": 3}
 {"descendant_skill": "Differentiation", "ancestor_skill": "Number Sense", "min_depth": 3}
 {"descendant_skill": "Differentiation", "ancestor_skill": "NumberTheory", "min_depth": 3}
@@ -335,16 +330,12 @@
 {"descendant_skill": "Division", "ancestor_skill": "Arithmetic", "min_depth": 1}
 {"descendant_skill": "Division", "ancestor_skill": "Basic Operations (+, -, ×, ÷)", "min_depth": 1}
 {"descendant_skill": "Division", "ancestor_skill": "Basic arithmetic operations", "min_depth": 2}
-{"descendant_skill": "Division", "ancestor_skill": "Basic number sense", "min_depth": 3}
 {"descendant_skill": "Division", "ancestor_skill": "Decimal Operations", "min_depth": 2}
-{"descendant_skill": "Division", "ancestor_skill": "Divisibility Rules", "min_depth": 2}
 {"descendant_skill": "Division", "ancestor_skill": "Exponents", "min_depth": 2}
 {"descendant_skill": "Division", "ancestor_skill": "Fractions and Decimals", "min_depth": 2}
 {"descendant_skill": "Division", "ancestor_skill": "Long Division", "min_depth": 2}
 {"descendant_skill": "Division", "ancestor_skill": "Mental calculation strategies", "min_depth": 2}
-{"descendant_skill": "Division", "ancestor_skill": "Modular Arithmetic", "min_depth": 3}
 {"descendant_skill": "Division", "ancestor_skill": "Multiplication Tables", "min_depth": 1}
-{"descendant_skill": "Division", "ancestor_skill": "Number Bases", "min_depth": 2}
 {"descendant_skill": "Division", "ancestor_skill": "Number Properties", "min_depth": 2}
 {"descendant_skill": "Division", "ancestor_skill": "Number Sense", "min_depth": 2}
 {"descendant_skill": "Division", "ancestor_skill": "NumberTheory", "min_depth": 2}
@@ -378,9 +369,7 @@
 {"descendant_skill": "Exponents and Radicals", "ancestor_skill": "Arithmetic", "min_depth": 1}
 {"descendant_skill": "Exponents and Radicals", "ancestor_skill": "Basic Operations (+, -, ×, ÷)", "min_depth": 1}
 {"descendant_skill": "Exponents and Radicals", "ancestor_skill": "Basic arithmetic operations", "min_depth": 2}
-{"descendant_skill": "Exponents and Radicals", "ancestor_skill": "Basic number sense", "min_depth": 3}
 {"descendant_skill": "Exponents and Radicals", "ancestor_skill": "Decimal Operations", "min_depth": 2}
-{"descendant_skill": "Exponents and Radicals", "ancestor_skill": "Divisibility Rules", "min_depth": 2}
 {"descendant_skill": "Exponents and Radicals", "ancestor_skill": "Exponential Functions", "min_depth": 1}
 {"descendant_skill": "Exponents and Radicals", "ancestor_skill": "Exponents", "min_depth": 1}
 {"descendant_skill": "Exponents and Radicals", "ancestor_skill": "Fractions and Decimals", "min_depth": 1}
@@ -389,9 +378,7 @@
 {"descendant_skill": "Exponents and Radicals", "ancestor_skill": "Logarithms", "min_depth": 1}
 {"descendant_skill": "Exponents and Radicals", "ancestor_skill": "Long Division", "min_depth": 2}
 {"descendant_skill": "Exponents and Radicals", "ancestor_skill": "Mental calculation strategies", "min_depth": 2}
-{"descendant_skill": "Exponents and Radicals", "ancestor_skill": "Modular Arithmetic", "min_depth": 3}
 {"descendant_skill": "Exponents and Radicals", "ancestor_skill": "Multiplication Tables", "min_depth": 2}
-{"descendant_skill": "Exponents and Radicals", "ancestor_skill": "Number Bases", "min_depth": 2}
 {"descendant_skill": "Exponents and Radicals", "ancestor_skill": "Number Properties", "min_depth": 2}
 {"descendant_skill": "Exponents and Radicals", "ancestor_skill": "Number Sense", "min_depth": 2}
 {"descendant_skill": "Exponents and Radicals", "ancestor_skill": "NumberTheory", "min_depth": 2}
@@ -401,20 +388,56 @@
 {"descendant_skill": "Fractions and Decimals", "ancestor_skill": "Arithmetic", "min_depth": 1}
 {"descendant_skill": "Fractions and Decimals", "ancestor_skill": "NumberTheory", "min_depth": 1}
 {"descendant_skill": "Functions and Graphs", "ancestor_skill": "Algebra", "min_depth": 1}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Algebra", "min_depth": 2}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Analytic Geometry", "min_depth": 3}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Angle Measurement", "min_depth": 2}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Arithmetic", "min_depth": 2}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Basic Geometry", "min_depth": 3}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Basic Operations (+, -, ×, ÷)", "min_depth": 2}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Basic Transformations", "min_depth": 3}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Basic arithmetic operations", "min_depth": 3}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Circles", "min_depth": 1}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Coordinate Geometry", "min_depth": 2}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Coordinate System", "min_depth": 3}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Decimal Operations", "min_depth": 3}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Determinants", "min_depth": 2}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Exponents", "min_depth": 3}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Fractions", "min_depth": 2}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Fractions and Decimals", "min_depth": 2}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Functions and Graphs", "min_depth": 3}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Linear Algebra", "min_depth": 3}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Linear Equations", "min_depth": 1}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Long Division", "min_depth": 3}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Matrices", "min_depth": 2}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Matrix Operations", "min_depth": 2}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Mental calculation strategies", "min_depth": 3}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Multiplication Tables", "min_depth": 3}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Number Properties", "min_depth": 3}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Number Sense", "min_depth": 3}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "NumberTheory", "min_depth": 3}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Place Value", "min_depth": 3}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Place Value System", "min_depth": 3}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Polygon Properties", "min_depth": 1}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Ratios and Proportions", "min_depth": 1}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Reflections", "min_depth": 3}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Scientific Notation", "min_depth": 3}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Similar Triangles", "min_depth": 2}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Simple Equations", "min_depth": 2}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Systems of Equations", "min_depth": 2}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Transformations", "min_depth": 3}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Triangles", "min_depth": 1}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Trigonometry", "min_depth": 3}
+{"descendant_skill": "Geometry and Mensuration", "ancestor_skill": "Vectors", "min_depth": 3}
 {"descendant_skill": "HCF and LCM (Advanced)", "ancestor_skill": "Algebra", "min_depth": 1}
 {"descendant_skill": "HCF and LCM (Advanced)", "ancestor_skill": "Arithmetic", "min_depth": 2}
 {"descendant_skill": "HCF and LCM (Advanced)", "ancestor_skill": "Basic Operations (+, -, ×, ÷)", "min_depth": 1}
 {"descendant_skill": "HCF and LCM (Advanced)", "ancestor_skill": "Basic arithmetic operations", "min_depth": 2}
-{"descendant_skill": "HCF and LCM (Advanced)", "ancestor_skill": "Basic number sense", "min_depth": 3}
 {"descendant_skill": "HCF and LCM (Advanced)", "ancestor_skill": "Decimal Operations", "min_depth": 2}
-{"descendant_skill": "HCF and LCM (Advanced)", "ancestor_skill": "Divisibility Rules", "min_depth": 2}
 {"descendant_skill": "HCF and LCM (Advanced)", "ancestor_skill": "Exponents", "min_depth": 2}
 {"descendant_skill": "HCF and LCM (Advanced)", "ancestor_skill": "Fractions and Decimals", "min_depth": 2}
 {"descendant_skill": "HCF and LCM (Advanced)", "ancestor_skill": "Long Division", "min_depth": 2}
 {"descendant_skill": "HCF and LCM (Advanced)", "ancestor_skill": "Mental calculation strategies", "min_depth": 2}
-{"descendant_skill": "HCF and LCM (Advanced)", "ancestor_skill": "Modular Arithmetic", "min_depth": 3}
 {"descendant_skill": "HCF and LCM (Advanced)", "ancestor_skill": "Multiplication Tables", "min_depth": 2}
-{"descendant_skill": "HCF and LCM (Advanced)", "ancestor_skill": "Number Bases", "min_depth": 2}
 {"descendant_skill": "HCF and LCM (Advanced)", "ancestor_skill": "Number Properties", "min_depth": 2}
 {"descendant_skill": "HCF and LCM (Advanced)", "ancestor_skill": "Number Sense", "min_depth": 2}
 {"descendant_skill": "HCF and LCM (Advanced)", "ancestor_skill": "NumberTheory", "min_depth": 2}
@@ -433,7 +456,6 @@
 {"descendant_skill": "Heights and Distances", "ancestor_skill": "Coordinate System", "min_depth": 3}
 {"descendant_skill": "Heights and Distances", "ancestor_skill": "Decimal Operations", "min_depth": 5}
 {"descendant_skill": "Heights and Distances", "ancestor_skill": "Determinants", "min_depth": 4}
-{"descendant_skill": "Heights and Distances", "ancestor_skill": "Divisibility Rules", "min_depth": 5}
 {"descendant_skill": "Heights and Distances", "ancestor_skill": "Exponents", "min_depth": 5}
 {"descendant_skill": "Heights and Distances", "ancestor_skill": "Fractions", "min_depth": 4}
 {"descendant_skill": "Heights and Distances", "ancestor_skill": "Fractions and Decimals", "min_depth": 4}
@@ -446,7 +468,6 @@
 {"descendant_skill": "Heights and Distances", "ancestor_skill": "Matrix Operations", "min_depth": 4}
 {"descendant_skill": "Heights and Distances", "ancestor_skill": "Mental calculation strategies", "min_depth": 5}
 {"descendant_skill": "Heights and Distances", "ancestor_skill": "Multiplication Tables", "min_depth": 5}
-{"descendant_skill": "Heights and Distances", "ancestor_skill": "Number Bases", "min_depth": 5}
 {"descendant_skill": "Heights and Distances", "ancestor_skill": "Number Properties", "min_depth": 5}
 {"descendant_skill": "Heights and Distances", "ancestor_skill": "Number Sense", "min_depth": 5}
 {"descendant_skill": "Heights and Distances", "ancestor_skill": "NumberTheory", "min_depth": 5}
@@ -473,14 +494,12 @@
 {"descendant_skill": "Integration", "ancestor_skill": "Basic Operations (+, -, ×, ÷)", "min_depth": 2}
 {"descendant_skill": "Integration", "ancestor_skill": "Basic Transformations", "min_depth": 2}
 {"descendant_skill": "Integration", "ancestor_skill": "Basic arithmetic operations", "min_depth": 3}
-{"descendant_skill": "Integration", "ancestor_skill": "Basic number sense", "min_depth": 4}
 {"descendant_skill": "Integration", "ancestor_skill": "Binomial Theorem", "min_depth": 2}
 {"descendant_skill": "Integration", "ancestor_skill": "Coordinate Geometry", "min_depth": 1}
 {"descendant_skill": "Integration", "ancestor_skill": "Coordinate System", "min_depth": 2}
 {"descendant_skill": "Integration", "ancestor_skill": "Decimal Operations", "min_depth": 3}
 {"descendant_skill": "Integration", "ancestor_skill": "Descartes' Rule of Signs", "min_depth": 2}
 {"descendant_skill": "Integration", "ancestor_skill": "Determinants", "min_depth": 3}
-{"descendant_skill": "Integration", "ancestor_skill": "Divisibility Rules", "min_depth": 3}
 {"descendant_skill": "Integration", "ancestor_skill": "Exponential Functions", "min_depth": 3}
 {"descendant_skill": "Integration", "ancestor_skill": "Exponents", "min_depth": 3}
 {"descendant_skill": "Integration", "ancestor_skill": "Exponents and Radicals", "min_depth": 2}
@@ -504,9 +523,7 @@
 {"descendant_skill": "Integration", "ancestor_skill": "Matrices", "min_depth": 3}
 {"descendant_skill": "Integration", "ancestor_skill": "Matrix Operations", "min_depth": 2}
 {"descendant_skill": "Integration", "ancestor_skill": "Mental calculation strategies", "min_depth": 3}
-{"descendant_skill": "Integration", "ancestor_skill": "Modular Arithmetic", "min_depth": 4}
 {"descendant_skill": "Integration", "ancestor_skill": "Multiplication Tables", "min_depth": 3}
-{"descendant_skill": "Integration", "ancestor_skill": "Number Bases", "min_depth": 3}
 {"descendant_skill": "Integration", "ancestor_skill": "Number Properties", "min_depth": 3}
 {"descendant_skill": "Integration", "ancestor_skill": "Number Sense", "min_depth": 3}
 {"descendant_skill": "Integration", "ancestor_skill": "NumberTheory", "min_depth": 2}
@@ -517,6 +534,7 @@
 {"descendant_skill": "Integration", "ancestor_skill": "Polynomial Functions", "min_depth": 2}
 {"descendant_skill": "Integration", "ancestor_skill": "Polynomials", "min_depth": 2}
 {"descendant_skill": "Integration", "ancestor_skill": "Polynomials and Factoring", "min_depth": 1}
+{"descendant_skill": "Integration", "ancestor_skill": "Quadratic Equations", "min_depth": 3}
 {"descendant_skill": "Integration", "ancestor_skill": "Rational Root Theorem", "min_depth": 2}
 {"descendant_skill": "Integration", "ancestor_skill": "Ratios and Proportions", "min_depth": 3}
 {"descendant_skill": "Integration", "ancestor_skill": "Reflections", "min_depth": 2}
@@ -550,7 +568,6 @@
 {"descendant_skill": "Inverse Trigonometric Functions", "ancestor_skill": "Decimal Operations", "min_depth": 5}
 {"descendant_skill": "Inverse Trigonometric Functions", "ancestor_skill": "Descartes' Rule of Signs", "min_depth": 4}
 {"descendant_skill": "Inverse Trigonometric Functions", "ancestor_skill": "Determinants", "min_depth": 4}
-{"descendant_skill": "Inverse Trigonometric Functions", "ancestor_skill": "Divisibility Rules", "min_depth": 5}
 {"descendant_skill": "Inverse Trigonometric Functions", "ancestor_skill": "Exponential Functions", "min_depth": 5}
 {"descendant_skill": "Inverse Trigonometric Functions", "ancestor_skill": "Exponents", "min_depth": 5}
 {"descendant_skill": "Inverse Trigonometric Functions", "ancestor_skill": "Exponents and Radicals", "min_depth": 4}
@@ -571,7 +588,6 @@
 {"descendant_skill": "Inverse Trigonometric Functions", "ancestor_skill": "Matrix Operations", "min_depth": 4}
 {"descendant_skill": "Inverse Trigonometric Functions", "ancestor_skill": "Mental calculation strategies", "min_depth": 5}
 {"descendant_skill": "Inverse Trigonometric Functions", "ancestor_skill": "Multiplication Tables", "min_depth": 5}
-{"descendant_skill": "Inverse Trigonometric Functions", "ancestor_skill": "Number Bases", "min_depth": 5}
 {"descendant_skill": "Inverse Trigonometric Functions", "ancestor_skill": "Number Properties", "min_depth": 5}
 {"descendant_skill": "Inverse Trigonometric Functions", "ancestor_skill": "Number Sense", "min_depth": 5}
 {"descendant_skill": "Inverse Trigonometric Functions", "ancestor_skill": "NumberTheory", "min_depth": 4}
@@ -600,47 +616,64 @@
 {"descendant_skill": "Inverse Trigonometric Functions", "ancestor_skill": "Vector Addition", "min_depth": 2}
 {"descendant_skill": "Inverse Trigonometric Functions", "ancestor_skill": "Vectors", "min_depth": 3}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Algebra", "min_depth": 1}
+{"descendant_skill": "Limits and Continuity", "ancestor_skill": "Algebraic Identities", "min_depth": 4}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Analytic Geometry", "min_depth": 2}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Arithmetic", "min_depth": 1}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Basic Geometry", "min_depth": 2}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Basic Operations (+, -, ×, ÷)", "min_depth": 3}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Basic Transformations", "min_depth": 2}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Basic arithmetic operations", "min_depth": 4}
-{"descendant_skill": "Limits and Continuity", "ancestor_skill": "Basic number sense", "min_depth": 5}
+{"descendant_skill": "Limits and Continuity", "ancestor_skill": "Binomial Theorem", "min_depth": 4}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Coordinate Geometry", "min_depth": 1}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Coordinate System", "min_depth": 2}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Decimal Operations", "min_depth": 4}
+{"descendant_skill": "Limits and Continuity", "ancestor_skill": "Descartes' Rule of Signs", "min_depth": 4}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Determinants", "min_depth": 3}
-{"descendant_skill": "Limits and Continuity", "ancestor_skill": "Divisibility Rules", "min_depth": 4}
-{"descendant_skill": "Limits and Continuity", "ancestor_skill": "Exponents", "min_depth": 4}
+{"descendant_skill": "Limits and Continuity", "ancestor_skill": "Exponential Functions", "min_depth": 3}
+{"descendant_skill": "Limits and Continuity", "ancestor_skill": "Exponents", "min_depth": 3}
+{"descendant_skill": "Limits and Continuity", "ancestor_skill": "Exponents and Radicals", "min_depth": 2}
+{"descendant_skill": "Limits and Continuity", "ancestor_skill": "Factor Theorem", "min_depth": 4}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Factorials", "min_depth": 1}
+{"descendant_skill": "Limits and Continuity", "ancestor_skill": "Factorization", "min_depth": 4}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Fractions", "min_depth": 3}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Fractions and Decimals", "min_depth": 3}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Functions", "min_depth": 1}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Functions and Graphs", "min_depth": 1}
+{"descendant_skill": "Limits and Continuity", "ancestor_skill": "HCF/GCD", "min_depth": 4}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Inequalities", "min_depth": 1}
+{"descendant_skill": "Limits and Continuity", "ancestor_skill": "Inverse Functions", "min_depth": 3}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Limits", "min_depth": 1}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Linear Algebra", "min_depth": 2}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Linear Equations", "min_depth": 2}
+{"descendant_skill": "Limits and Continuity", "ancestor_skill": "Location Principle", "min_depth": 4}
+{"descendant_skill": "Limits and Continuity", "ancestor_skill": "Logarithms", "min_depth": 3}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Long Division", "min_depth": 4}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Matrices", "min_depth": 3}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Matrix Operations", "min_depth": 3}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Mental calculation strategies", "min_depth": 4}
-{"descendant_skill": "Limits and Continuity", "ancestor_skill": "Modular Arithmetic", "min_depth": 5}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Multiplication Tables", "min_depth": 4}
-{"descendant_skill": "Limits and Continuity", "ancestor_skill": "Number Bases", "min_depth": 4}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Number Properties", "min_depth": 4}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Number Sense", "min_depth": 4}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "NumberTheory", "min_depth": 4}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Place Value", "min_depth": 4}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Place Value System", "min_depth": 4}
+{"descendant_skill": "Limits and Continuity", "ancestor_skill": "Polynomial Division", "min_depth": 4}
+{"descendant_skill": "Limits and Continuity", "ancestor_skill": "Polynomial Equations", "min_depth": 4}
+{"descendant_skill": "Limits and Continuity", "ancestor_skill": "Polynomial Functions", "min_depth": 4}
+{"descendant_skill": "Limits and Continuity", "ancestor_skill": "Polynomials", "min_depth": 4}
+{"descendant_skill": "Limits and Continuity", "ancestor_skill": "Polynomials and Factoring", "min_depth": 3}
+{"descendant_skill": "Limits and Continuity", "ancestor_skill": "Quadratic Equations", "min_depth": 2}
+{"descendant_skill": "Limits and Continuity", "ancestor_skill": "Rational Root Theorem", "min_depth": 4}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Ratios and Proportions", "min_depth": 3}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Reflections", "min_depth": 2}
+{"descendant_skill": "Limits and Continuity", "ancestor_skill": "Remainder Theorem", "min_depth": 4}
+{"descendant_skill": "Limits and Continuity", "ancestor_skill": "Roots of Equations", "min_depth": 4}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Scientific Notation", "min_depth": 4}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Sequences", "min_depth": 1}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Sequences and Series", "min_depth": 1}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Series", "min_depth": 1}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Simple Equations", "min_depth": 3}
+{"descendant_skill": "Limits and Continuity", "ancestor_skill": "Synthetic Division", "min_depth": 4}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Systems of Equations", "min_depth": 3}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Transformations", "min_depth": 2}
 {"descendant_skill": "Limits and Continuity", "ancestor_skill": "Trigonometry", "min_depth": 2}
@@ -649,10 +682,8 @@
 {"descendant_skill": "Linear Equations", "ancestor_skill": "Arithmetic", "min_depth": 1}
 {"descendant_skill": "Linear Equations", "ancestor_skill": "Basic Operations (+, -, ×, ÷)", "min_depth": 1}
 {"descendant_skill": "Linear Equations", "ancestor_skill": "Basic arithmetic operations", "min_depth": 2}
-{"descendant_skill": "Linear Equations", "ancestor_skill": "Basic number sense", "min_depth": 3}
 {"descendant_skill": "Linear Equations", "ancestor_skill": "Decimal Operations", "min_depth": 2}
 {"descendant_skill": "Linear Equations", "ancestor_skill": "Determinants", "min_depth": 1}
-{"descendant_skill": "Linear Equations", "ancestor_skill": "Divisibility Rules", "min_depth": 2}
 {"descendant_skill": "Linear Equations", "ancestor_skill": "Exponents", "min_depth": 2}
 {"descendant_skill": "Linear Equations", "ancestor_skill": "Fractions", "min_depth": 1}
 {"descendant_skill": "Linear Equations", "ancestor_skill": "Fractions and Decimals", "min_depth": 1}
@@ -660,9 +691,7 @@
 {"descendant_skill": "Linear Equations", "ancestor_skill": "Matrices", "min_depth": 1}
 {"descendant_skill": "Linear Equations", "ancestor_skill": "Matrix Operations", "min_depth": 1}
 {"descendant_skill": "Linear Equations", "ancestor_skill": "Mental calculation strategies", "min_depth": 2}
-{"descendant_skill": "Linear Equations", "ancestor_skill": "Modular Arithmetic", "min_depth": 3}
 {"descendant_skill": "Linear Equations", "ancestor_skill": "Multiplication Tables", "min_depth": 2}
-{"descendant_skill": "Linear Equations", "ancestor_skill": "Number Bases", "min_depth": 2}
 {"descendant_skill": "Linear Equations", "ancestor_skill": "Number Properties", "min_depth": 2}
 {"descendant_skill": "Linear Equations", "ancestor_skill": "Number Sense", "min_depth": 2}
 {"descendant_skill": "Linear Equations", "ancestor_skill": "NumberTheory", "min_depth": 2}
@@ -681,13 +710,11 @@
 {"descendant_skill": "Mensuration (Area/Volume)", "ancestor_skill": "Basic Operations (+, -, ×, ÷)", "min_depth": 2}
 {"descendant_skill": "Mensuration (Area/Volume)", "ancestor_skill": "Basic Transformations", "min_depth": 3}
 {"descendant_skill": "Mensuration (Area/Volume)", "ancestor_skill": "Basic arithmetic operations", "min_depth": 3}
-{"descendant_skill": "Mensuration (Area/Volume)", "ancestor_skill": "Basic number sense", "min_depth": 4}
 {"descendant_skill": "Mensuration (Area/Volume)", "ancestor_skill": "Circles", "min_depth": 1}
 {"descendant_skill": "Mensuration (Area/Volume)", "ancestor_skill": "Coordinate Geometry", "min_depth": 2}
 {"descendant_skill": "Mensuration (Area/Volume)", "ancestor_skill": "Coordinate System", "min_depth": 3}
 {"descendant_skill": "Mensuration (Area/Volume)", "ancestor_skill": "Decimal Operations", "min_depth": 3}
 {"descendant_skill": "Mensuration (Area/Volume)", "ancestor_skill": "Determinants", "min_depth": 4}
-{"descendant_skill": "Mensuration (Area/Volume)", "ancestor_skill": "Divisibility Rules", "min_depth": 3}
 {"descendant_skill": "Mensuration (Area/Volume)", "ancestor_skill": "Exponents", "min_depth": 3}
 {"descendant_skill": "Mensuration (Area/Volume)", "ancestor_skill": "Fractions", "min_depth": 4}
 {"descendant_skill": "Mensuration (Area/Volume)", "ancestor_skill": "Fractions and Decimals", "min_depth": 3}
@@ -698,9 +725,7 @@
 {"descendant_skill": "Mensuration (Area/Volume)", "ancestor_skill": "Matrices", "min_depth": 4}
 {"descendant_skill": "Mensuration (Area/Volume)", "ancestor_skill": "Matrix Operations", "min_depth": 4}
 {"descendant_skill": "Mensuration (Area/Volume)", "ancestor_skill": "Mental calculation strategies", "min_depth": 3}
-{"descendant_skill": "Mensuration (Area/Volume)", "ancestor_skill": "Modular Arithmetic", "min_depth": 4}
 {"descendant_skill": "Mensuration (Area/Volume)", "ancestor_skill": "Multiplication Tables", "min_depth": 3}
-{"descendant_skill": "Mensuration (Area/Volume)", "ancestor_skill": "Number Bases", "min_depth": 3}
 {"descendant_skill": "Mensuration (Area/Volume)", "ancestor_skill": "Number Properties", "min_depth": 3}
 {"descendant_skill": "Mensuration (Area/Volume)", "ancestor_skill": "Number Sense", "min_depth": 3}
 {"descendant_skill": "Mensuration (Area/Volume)", "ancestor_skill": "NumberTheory", "min_depth": 3}
@@ -724,7 +749,6 @@
 {"descendant_skill": "Modular Arithmetic", "ancestor_skill": "Basic arithmetic operations", "min_depth": 2}
 {"descendant_skill": "Modular Arithmetic", "ancestor_skill": "Basic number sense", "min_depth": 2}
 {"descendant_skill": "Modular Arithmetic", "ancestor_skill": "Decimal Operations", "min_depth": 2}
-{"descendant_skill": "Modular Arithmetic", "ancestor_skill": "Divisibility Rules", "min_depth": 2}
 {"descendant_skill": "Modular Arithmetic", "ancestor_skill": "Exponents", "min_depth": 2}
 {"descendant_skill": "Modular Arithmetic", "ancestor_skill": "Fractions and Decimals", "min_depth": 2}
 {"descendant_skill": "Modular Arithmetic", "ancestor_skill": "Long Division", "min_depth": 2}
@@ -766,12 +790,10 @@
 {"descendant_skill": "Number Bases", "ancestor_skill": "Basic arithmetic operations", "min_depth": 2}
 {"descendant_skill": "Number Bases", "ancestor_skill": "Basic number sense", "min_depth": 1}
 {"descendant_skill": "Number Bases", "ancestor_skill": "Decimal Operations", "min_depth": 2}
-{"descendant_skill": "Number Bases", "ancestor_skill": "Divisibility Rules", "min_depth": 2}
 {"descendant_skill": "Number Bases", "ancestor_skill": "Exponents", "min_depth": 2}
 {"descendant_skill": "Number Bases", "ancestor_skill": "Fractions and Decimals", "min_depth": 2}
 {"descendant_skill": "Number Bases", "ancestor_skill": "Long Division", "min_depth": 2}
 {"descendant_skill": "Number Bases", "ancestor_skill": "Mental calculation strategies", "min_depth": 2}
-{"descendant_skill": "Number Bases", "ancestor_skill": "Modular Arithmetic", "min_depth": 3}
 {"descendant_skill": "Number Bases", "ancestor_skill": "Multiplication Tables", "min_depth": 2}
 {"descendant_skill": "Number Bases", "ancestor_skill": "Number Properties", "min_depth": 2}
 {"descendant_skill": "Number Bases", "ancestor_skill": "Number Sense", "min_depth": 2}
@@ -779,17 +801,38 @@
 {"descendant_skill": "Number Bases", "ancestor_skill": "Place Value", "min_depth": 2}
 {"descendant_skill": "Number Bases", "ancestor_skill": "Place Value System", "min_depth": 2}
 {"descendant_skill": "Number Bases", "ancestor_skill": "Scientific Notation", "min_depth": 2}
+{"descendant_skill": "Number Systems", "ancestor_skill": "Algebra", "min_depth": 3}
+{"descendant_skill": "Number Systems", "ancestor_skill": "Arithmetic", "min_depth": 2}
+{"descendant_skill": "Number Systems", "ancestor_skill": "Basic Operations (+, -, ×, ÷)", "min_depth": 2}
+{"descendant_skill": "Number Systems", "ancestor_skill": "Basic arithmetic operations", "min_depth": 3}
+{"descendant_skill": "Number Systems", "ancestor_skill": "Decimal Operations", "min_depth": 3}
+{"descendant_skill": "Number Systems", "ancestor_skill": "Exponential Functions", "min_depth": 2}
+{"descendant_skill": "Number Systems", "ancestor_skill": "Exponents", "min_depth": 2}
+{"descendant_skill": "Number Systems", "ancestor_skill": "Exponents and Radicals", "min_depth": 1}
+{"descendant_skill": "Number Systems", "ancestor_skill": "Fractions and Decimals", "min_depth": 2}
+{"descendant_skill": "Number Systems", "ancestor_skill": "Functions and Graphs", "min_depth": 2}
+{"descendant_skill": "Number Systems", "ancestor_skill": "Inverse Functions", "min_depth": 2}
+{"descendant_skill": "Number Systems", "ancestor_skill": "Logarithms", "min_depth": 2}
+{"descendant_skill": "Number Systems", "ancestor_skill": "Long Division", "min_depth": 3}
+{"descendant_skill": "Number Systems", "ancestor_skill": "Mental calculation strategies", "min_depth": 3}
+{"descendant_skill": "Number Systems", "ancestor_skill": "Multiplication Tables", "min_depth": 3}
+{"descendant_skill": "Number Systems", "ancestor_skill": "Number Properties", "min_depth": 3}
+{"descendant_skill": "Number Systems", "ancestor_skill": "Number Sense", "min_depth": 3}
+{"descendant_skill": "Number Systems", "ancestor_skill": "NumberTheory", "min_depth": 3}
+{"descendant_skill": "Number Systems", "ancestor_skill": "Place Value", "min_depth": 3}
+{"descendant_skill": "Number Systems", "ancestor_skill": "Place Value System", "min_depth": 3}
+{"descendant_skill": "Number Systems", "ancestor_skill": "Prime Numbers", "min_depth": 1}
+{"descendant_skill": "Number Systems", "ancestor_skill": "Remainders", "min_depth": 1}
+{"descendant_skill": "Number Systems", "ancestor_skill": "Scientific Notation", "min_depth": 3}
 {"descendant_skill": "Paravartya Yojayet (Transpose and Apply)", "ancestor_skill": "Algebra", "min_depth": 1}
 {"descendant_skill": "Paravartya Yojayet (Transpose and Apply)", "ancestor_skill": "Algebraic Identities", "min_depth": 2}
 {"descendant_skill": "Paravartya Yojayet (Transpose and Apply)", "ancestor_skill": "Arithmetic", "min_depth": 1}
 {"descendant_skill": "Paravartya Yojayet (Transpose and Apply)", "ancestor_skill": "Basic Operations (+, -, ×, ÷)", "min_depth": 1}
 {"descendant_skill": "Paravartya Yojayet (Transpose and Apply)", "ancestor_skill": "Basic arithmetic operations", "min_depth": 2}
-{"descendant_skill": "Paravartya Yojayet (Transpose and Apply)", "ancestor_skill": "Basic number sense", "min_depth": 3}
 {"descendant_skill": "Paravartya Yojayet (Transpose and Apply)", "ancestor_skill": "Binomial Theorem", "min_depth": 2}
 {"descendant_skill": "Paravartya Yojayet (Transpose and Apply)", "ancestor_skill": "Decimal Operations", "min_depth": 2}
 {"descendant_skill": "Paravartya Yojayet (Transpose and Apply)", "ancestor_skill": "Descartes' Rule of Signs", "min_depth": 2}
 {"descendant_skill": "Paravartya Yojayet (Transpose and Apply)", "ancestor_skill": "Determinants", "min_depth": 2}
-{"descendant_skill": "Paravartya Yojayet (Transpose and Apply)", "ancestor_skill": "Divisibility Rules", "min_depth": 2}
 {"descendant_skill": "Paravartya Yojayet (Transpose and Apply)", "ancestor_skill": "Exponential Functions", "min_depth": 3}
 {"descendant_skill": "Paravartya Yojayet (Transpose and Apply)", "ancestor_skill": "Exponents", "min_depth": 2}
 {"descendant_skill": "Paravartya Yojayet (Transpose and Apply)", "ancestor_skill": "Exponents and Radicals", "min_depth": 2}
@@ -807,9 +850,7 @@
 {"descendant_skill": "Paravartya Yojayet (Transpose and Apply)", "ancestor_skill": "Matrices", "min_depth": 2}
 {"descendant_skill": "Paravartya Yojayet (Transpose and Apply)", "ancestor_skill": "Matrix Operations", "min_depth": 2}
 {"descendant_skill": "Paravartya Yojayet (Transpose and Apply)", "ancestor_skill": "Mental calculation strategies", "min_depth": 2}
-{"descendant_skill": "Paravartya Yojayet (Transpose and Apply)", "ancestor_skill": "Modular Arithmetic", "min_depth": 3}
 {"descendant_skill": "Paravartya Yojayet (Transpose and Apply)", "ancestor_skill": "Multiplication Tables", "min_depth": 2}
-{"descendant_skill": "Paravartya Yojayet (Transpose and Apply)", "ancestor_skill": "Number Bases", "min_depth": 2}
 {"descendant_skill": "Paravartya Yojayet (Transpose and Apply)", "ancestor_skill": "Number Properties", "min_depth": 2}
 {"descendant_skill": "Paravartya Yojayet (Transpose and Apply)", "ancestor_skill": "Number Sense", "min_depth": 2}
 {"descendant_skill": "Paravartya Yojayet (Transpose and Apply)", "ancestor_skill": "NumberTheory", "min_depth": 2}
@@ -832,16 +873,12 @@
 {"descendant_skill": "Percentages", "ancestor_skill": "Arithmetic", "min_depth": 2}
 {"descendant_skill": "Percentages", "ancestor_skill": "Basic Operations (+, -, ×, ÷)", "min_depth": 1}
 {"descendant_skill": "Percentages", "ancestor_skill": "Basic arithmetic operations", "min_depth": 2}
-{"descendant_skill": "Percentages", "ancestor_skill": "Basic number sense", "min_depth": 3}
 {"descendant_skill": "Percentages", "ancestor_skill": "Decimal Operations", "min_depth": 2}
-{"descendant_skill": "Percentages", "ancestor_skill": "Divisibility Rules", "min_depth": 2}
 {"descendant_skill": "Percentages", "ancestor_skill": "Exponents", "min_depth": 2}
 {"descendant_skill": "Percentages", "ancestor_skill": "Fractions and Decimals", "min_depth": 2}
 {"descendant_skill": "Percentages", "ancestor_skill": "Long Division", "min_depth": 2}
 {"descendant_skill": "Percentages", "ancestor_skill": "Mental calculation strategies", "min_depth": 2}
-{"descendant_skill": "Percentages", "ancestor_skill": "Modular Arithmetic", "min_depth": 3}
 {"descendant_skill": "Percentages", "ancestor_skill": "Multiplication Tables", "min_depth": 2}
-{"descendant_skill": "Percentages", "ancestor_skill": "Number Bases", "min_depth": 2}
 {"descendant_skill": "Percentages", "ancestor_skill": "Number Properties", "min_depth": 2}
 {"descendant_skill": "Percentages", "ancestor_skill": "Number Sense", "min_depth": 2}
 {"descendant_skill": "Percentages", "ancestor_skill": "NumberTheory", "min_depth": 2}
@@ -852,17 +889,13 @@
 {"descendant_skill": "Permutations and Combinations", "ancestor_skill": "Arithmetic", "min_depth": 1}
 {"descendant_skill": "Permutations and Combinations", "ancestor_skill": "Basic Operations (+, -, ×, ÷)", "min_depth": 1}
 {"descendant_skill": "Permutations and Combinations", "ancestor_skill": "Basic arithmetic operations", "min_depth": 2}
-{"descendant_skill": "Permutations and Combinations", "ancestor_skill": "Basic number sense", "min_depth": 3}
 {"descendant_skill": "Permutations and Combinations", "ancestor_skill": "Decimal Operations", "min_depth": 2}
-{"descendant_skill": "Permutations and Combinations", "ancestor_skill": "Divisibility Rules", "min_depth": 2}
 {"descendant_skill": "Permutations and Combinations", "ancestor_skill": "Exponents", "min_depth": 2}
 {"descendant_skill": "Permutations and Combinations", "ancestor_skill": "Factorials", "min_depth": 1}
 {"descendant_skill": "Permutations and Combinations", "ancestor_skill": "Fractions and Decimals", "min_depth": 2}
 {"descendant_skill": "Permutations and Combinations", "ancestor_skill": "Long Division", "min_depth": 2}
 {"descendant_skill": "Permutations and Combinations", "ancestor_skill": "Mental calculation strategies", "min_depth": 2}
-{"descendant_skill": "Permutations and Combinations", "ancestor_skill": "Modular Arithmetic", "min_depth": 3}
 {"descendant_skill": "Permutations and Combinations", "ancestor_skill": "Multiplication Tables", "min_depth": 2}
-{"descendant_skill": "Permutations and Combinations", "ancestor_skill": "Number Bases", "min_depth": 2}
 {"descendant_skill": "Permutations and Combinations", "ancestor_skill": "Number Properties", "min_depth": 2}
 {"descendant_skill": "Permutations and Combinations", "ancestor_skill": "Number Sense", "min_depth": 2}
 {"descendant_skill": "Permutations and Combinations", "ancestor_skill": "NumberTheory", "min_depth": 2}
@@ -874,12 +907,10 @@
 {"descendant_skill": "Polynomials and Factoring", "ancestor_skill": "Arithmetic", "min_depth": 1}
 {"descendant_skill": "Polynomials and Factoring", "ancestor_skill": "Basic Operations (+, -, ×, ÷)", "min_depth": 1}
 {"descendant_skill": "Polynomials and Factoring", "ancestor_skill": "Basic arithmetic operations", "min_depth": 2}
-{"descendant_skill": "Polynomials and Factoring", "ancestor_skill": "Basic number sense", "min_depth": 3}
 {"descendant_skill": "Polynomials and Factoring", "ancestor_skill": "Binomial Theorem", "min_depth": 1}
 {"descendant_skill": "Polynomials and Factoring", "ancestor_skill": "Decimal Operations", "min_depth": 2}
 {"descendant_skill": "Polynomials and Factoring", "ancestor_skill": "Descartes' Rule of Signs", "min_depth": 1}
 {"descendant_skill": "Polynomials and Factoring", "ancestor_skill": "Determinants", "min_depth": 2}
-{"descendant_skill": "Polynomials and Factoring", "ancestor_skill": "Divisibility Rules", "min_depth": 2}
 {"descendant_skill": "Polynomials and Factoring", "ancestor_skill": "Exponential Functions", "min_depth": 2}
 {"descendant_skill": "Polynomials and Factoring", "ancestor_skill": "Exponents", "min_depth": 2}
 {"descendant_skill": "Polynomials and Factoring", "ancestor_skill": "Exponents and Radicals", "min_depth": 1}
@@ -897,9 +928,7 @@
 {"descendant_skill": "Polynomials and Factoring", "ancestor_skill": "Matrices", "min_depth": 2}
 {"descendant_skill": "Polynomials and Factoring", "ancestor_skill": "Matrix Operations", "min_depth": 1}
 {"descendant_skill": "Polynomials and Factoring", "ancestor_skill": "Mental calculation strategies", "min_depth": 2}
-{"descendant_skill": "Polynomials and Factoring", "ancestor_skill": "Modular Arithmetic", "min_depth": 3}
 {"descendant_skill": "Polynomials and Factoring", "ancestor_skill": "Multiplication Tables", "min_depth": 2}
-{"descendant_skill": "Polynomials and Factoring", "ancestor_skill": "Number Bases", "min_depth": 2}
 {"descendant_skill": "Polynomials and Factoring", "ancestor_skill": "Number Properties", "min_depth": 2}
 {"descendant_skill": "Polynomials and Factoring", "ancestor_skill": "Number Sense", "min_depth": 2}
 {"descendant_skill": "Polynomials and Factoring", "ancestor_skill": "NumberTheory", "min_depth": 1}
@@ -921,16 +950,12 @@
 {"descendant_skill": "Prime Numbers", "ancestor_skill": "Arithmetic", "min_depth": 2}
 {"descendant_skill": "Prime Numbers", "ancestor_skill": "Basic Operations (+, -, ×, ÷)", "min_depth": 1}
 {"descendant_skill": "Prime Numbers", "ancestor_skill": "Basic arithmetic operations", "min_depth": 2}
-{"descendant_skill": "Prime Numbers", "ancestor_skill": "Basic number sense", "min_depth": 3}
 {"descendant_skill": "Prime Numbers", "ancestor_skill": "Decimal Operations", "min_depth": 2}
-{"descendant_skill": "Prime Numbers", "ancestor_skill": "Divisibility Rules", "min_depth": 2}
 {"descendant_skill": "Prime Numbers", "ancestor_skill": "Exponents", "min_depth": 2}
 {"descendant_skill": "Prime Numbers", "ancestor_skill": "Fractions and Decimals", "min_depth": 2}
 {"descendant_skill": "Prime Numbers", "ancestor_skill": "Long Division", "min_depth": 2}
 {"descendant_skill": "Prime Numbers", "ancestor_skill": "Mental calculation strategies", "min_depth": 2}
-{"descendant_skill": "Prime Numbers", "ancestor_skill": "Modular Arithmetic", "min_depth": 3}
 {"descendant_skill": "Prime Numbers", "ancestor_skill": "Multiplication Tables", "min_depth": 2}
-{"descendant_skill": "Prime Numbers", "ancestor_skill": "Number Bases", "min_depth": 2}
 {"descendant_skill": "Prime Numbers", "ancestor_skill": "Number Properties", "min_depth": 2}
 {"descendant_skill": "Prime Numbers", "ancestor_skill": "Number Sense", "min_depth": 2}
 {"descendant_skill": "Prime Numbers", "ancestor_skill": "NumberTheory", "min_depth": 2}
@@ -942,23 +967,36 @@
 {"descendant_skill": "Probability", "ancestor_skill": "Basic Operations (+, -, ×, ÷)", "min_depth": 1}
 {"descendant_skill": "Probability", "ancestor_skill": "Basic Probability", "min_depth": 1}
 {"descendant_skill": "Probability", "ancestor_skill": "Basic arithmetic operations", "min_depth": 2}
-{"descendant_skill": "Probability", "ancestor_skill": "Basic number sense", "min_depth": 3}
 {"descendant_skill": "Probability", "ancestor_skill": "Combinatorics", "min_depth": 1}
 {"descendant_skill": "Probability", "ancestor_skill": "Decimal Operations", "min_depth": 2}
-{"descendant_skill": "Probability", "ancestor_skill": "Divisibility Rules", "min_depth": 2}
 {"descendant_skill": "Probability", "ancestor_skill": "Exponents", "min_depth": 2}
 {"descendant_skill": "Probability", "ancestor_skill": "Fractions and Decimals", "min_depth": 1}
 {"descendant_skill": "Probability", "ancestor_skill": "Long Division", "min_depth": 2}
 {"descendant_skill": "Probability", "ancestor_skill": "Mental calculation strategies", "min_depth": 2}
-{"descendant_skill": "Probability", "ancestor_skill": "Modular Arithmetic", "min_depth": 3}
 {"descendant_skill": "Probability", "ancestor_skill": "Multiplication Tables", "min_depth": 2}
-{"descendant_skill": "Probability", "ancestor_skill": "Number Bases", "min_depth": 2}
 {"descendant_skill": "Probability", "ancestor_skill": "Number Properties", "min_depth": 2}
 {"descendant_skill": "Probability", "ancestor_skill": "Number Sense", "min_depth": 2}
 {"descendant_skill": "Probability", "ancestor_skill": "NumberTheory", "min_depth": 2}
 {"descendant_skill": "Probability", "ancestor_skill": "Place Value", "min_depth": 2}
 {"descendant_skill": "Probability", "ancestor_skill": "Place Value System", "min_depth": 2}
 {"descendant_skill": "Probability", "ancestor_skill": "Scientific Notation", "min_depth": 2}
+{"descendant_skill": "Profit and Loss", "ancestor_skill": "Algebra", "min_depth": 3}
+{"descendant_skill": "Profit and Loss", "ancestor_skill": "Arithmetic", "min_depth": 2}
+{"descendant_skill": "Profit and Loss", "ancestor_skill": "Basic Operations (+, -, ×, ÷)", "min_depth": 2}
+{"descendant_skill": "Profit and Loss", "ancestor_skill": "Basic arithmetic operations", "min_depth": 3}
+{"descendant_skill": "Profit and Loss", "ancestor_skill": "Decimal Operations", "min_depth": 3}
+{"descendant_skill": "Profit and Loss", "ancestor_skill": "Exponents", "min_depth": 3}
+{"descendant_skill": "Profit and Loss", "ancestor_skill": "Fractions and Decimals", "min_depth": 1}
+{"descendant_skill": "Profit and Loss", "ancestor_skill": "Long Division", "min_depth": 3}
+{"descendant_skill": "Profit and Loss", "ancestor_skill": "Mental calculation strategies", "min_depth": 3}
+{"descendant_skill": "Profit and Loss", "ancestor_skill": "Multiplication Tables", "min_depth": 3}
+{"descendant_skill": "Profit and Loss", "ancestor_skill": "Number Properties", "min_depth": 3}
+{"descendant_skill": "Profit and Loss", "ancestor_skill": "Number Sense", "min_depth": 3}
+{"descendant_skill": "Profit and Loss", "ancestor_skill": "NumberTheory", "min_depth": 2}
+{"descendant_skill": "Profit and Loss", "ancestor_skill": "Percentages", "min_depth": 1}
+{"descendant_skill": "Profit and Loss", "ancestor_skill": "Place Value", "min_depth": 3}
+{"descendant_skill": "Profit and Loss", "ancestor_skill": "Place Value System", "min_depth": 3}
+{"descendant_skill": "Profit and Loss", "ancestor_skill": "Scientific Notation", "min_depth": 3}
 {"descendant_skill": "Quadratic Equations", "ancestor_skill": "Algebra", "min_depth": 1}
 {"descendant_skill": "Quadratic Equations", "ancestor_skill": "Algebraic Identities", "min_depth": 2}
 {"descendant_skill": "Quadratic Equations", "ancestor_skill": "Analytic Geometry", "min_depth": 2}
@@ -967,14 +1005,12 @@
 {"descendant_skill": "Quadratic Equations", "ancestor_skill": "Basic Operations (+, -, ×, ÷)", "min_depth": 1}
 {"descendant_skill": "Quadratic Equations", "ancestor_skill": "Basic Transformations", "min_depth": 2}
 {"descendant_skill": "Quadratic Equations", "ancestor_skill": "Basic arithmetic operations", "min_depth": 2}
-{"descendant_skill": "Quadratic Equations", "ancestor_skill": "Basic number sense", "min_depth": 3}
 {"descendant_skill": "Quadratic Equations", "ancestor_skill": "Binomial Theorem", "min_depth": 2}
 {"descendant_skill": "Quadratic Equations", "ancestor_skill": "Coordinate Geometry", "min_depth": 1}
 {"descendant_skill": "Quadratic Equations", "ancestor_skill": "Coordinate System", "min_depth": 2}
 {"descendant_skill": "Quadratic Equations", "ancestor_skill": "Decimal Operations", "min_depth": 2}
 {"descendant_skill": "Quadratic Equations", "ancestor_skill": "Descartes' Rule of Signs", "min_depth": 2}
 {"descendant_skill": "Quadratic Equations", "ancestor_skill": "Determinants", "min_depth": 3}
-{"descendant_skill": "Quadratic Equations", "ancestor_skill": "Divisibility Rules", "min_depth": 2}
 {"descendant_skill": "Quadratic Equations", "ancestor_skill": "Exponential Functions", "min_depth": 2}
 {"descendant_skill": "Quadratic Equations", "ancestor_skill": "Exponents", "min_depth": 2}
 {"descendant_skill": "Quadratic Equations", "ancestor_skill": "Exponents and Radicals", "min_depth": 1}
@@ -993,9 +1029,7 @@
 {"descendant_skill": "Quadratic Equations", "ancestor_skill": "Matrices", "min_depth": 3}
 {"descendant_skill": "Quadratic Equations", "ancestor_skill": "Matrix Operations", "min_depth": 2}
 {"descendant_skill": "Quadratic Equations", "ancestor_skill": "Mental calculation strategies", "min_depth": 2}
-{"descendant_skill": "Quadratic Equations", "ancestor_skill": "Modular Arithmetic", "min_depth": 3}
 {"descendant_skill": "Quadratic Equations", "ancestor_skill": "Multiplication Tables", "min_depth": 2}
-{"descendant_skill": "Quadratic Equations", "ancestor_skill": "Number Bases", "min_depth": 2}
 {"descendant_skill": "Quadratic Equations", "ancestor_skill": "Number Properties", "min_depth": 2}
 {"descendant_skill": "Quadratic Equations", "ancestor_skill": "Number Sense", "min_depth": 2}
 {"descendant_skill": "Quadratic Equations", "ancestor_skill": "NumberTheory", "min_depth": 2}
@@ -1022,22 +1056,74 @@
 {"descendant_skill": "Ratios and Proportions", "ancestor_skill": "Arithmetic", "min_depth": 2}
 {"descendant_skill": "Ratios and Proportions", "ancestor_skill": "Basic Operations (+, -, ×, ÷)", "min_depth": 1}
 {"descendant_skill": "Ratios and Proportions", "ancestor_skill": "Basic arithmetic operations", "min_depth": 2}
-{"descendant_skill": "Ratios and Proportions", "ancestor_skill": "Basic number sense", "min_depth": 3}
 {"descendant_skill": "Ratios and Proportions", "ancestor_skill": "Decimal Operations", "min_depth": 2}
-{"descendant_skill": "Ratios and Proportions", "ancestor_skill": "Divisibility Rules", "min_depth": 2}
 {"descendant_skill": "Ratios and Proportions", "ancestor_skill": "Exponents", "min_depth": 2}
 {"descendant_skill": "Ratios and Proportions", "ancestor_skill": "Fractions and Decimals", "min_depth": 1}
 {"descendant_skill": "Ratios and Proportions", "ancestor_skill": "Long Division", "min_depth": 2}
 {"descendant_skill": "Ratios and Proportions", "ancestor_skill": "Mental calculation strategies", "min_depth": 2}
-{"descendant_skill": "Ratios and Proportions", "ancestor_skill": "Modular Arithmetic", "min_depth": 3}
 {"descendant_skill": "Ratios and Proportions", "ancestor_skill": "Multiplication Tables", "min_depth": 2}
-{"descendant_skill": "Ratios and Proportions", "ancestor_skill": "Number Bases", "min_depth": 2}
 {"descendant_skill": "Ratios and Proportions", "ancestor_skill": "Number Properties", "min_depth": 2}
 {"descendant_skill": "Ratios and Proportions", "ancestor_skill": "Number Sense", "min_depth": 2}
 {"descendant_skill": "Ratios and Proportions", "ancestor_skill": "NumberTheory", "min_depth": 2}
 {"descendant_skill": "Ratios and Proportions", "ancestor_skill": "Place Value", "min_depth": 2}
 {"descendant_skill": "Ratios and Proportions", "ancestor_skill": "Place Value System", "min_depth": 2}
 {"descendant_skill": "Ratios and Proportions", "ancestor_skill": "Scientific Notation", "min_depth": 2}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Algebra", "min_depth": 2}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Algebraic Identities", "min_depth": 3}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Analytic Geometry", "min_depth": 3}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Arithmetic", "min_depth": 2}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Basic Geometry", "min_depth": 3}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Basic Operations (+, -, ×, ÷)", "min_depth": 2}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Basic Transformations", "min_depth": 3}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Basic arithmetic operations", "min_depth": 3}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Binomial Theorem", "min_depth": 3}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Coordinate Geometry", "min_depth": 2}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Coordinate System", "min_depth": 3}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Decimal Operations", "min_depth": 3}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Descartes' Rule of Signs", "min_depth": 3}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Determinants", "min_depth": 2}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Exponential Functions", "min_depth": 2}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Exponents", "min_depth": 2}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Exponents and Radicals", "min_depth": 1}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Factor Theorem", "min_depth": 3}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Factorization", "min_depth": 3}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Fractions", "min_depth": 2}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Fractions and Decimals", "min_depth": 2}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Functions and Graphs", "min_depth": 2}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "HCF/GCD", "min_depth": 3}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Inverse Functions", "min_depth": 2}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Linear Algebra", "min_depth": 3}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Linear Equations", "min_depth": 1}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Location Principle", "min_depth": 3}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Logarithms", "min_depth": 2}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Long Division", "min_depth": 3}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Matrices", "min_depth": 2}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Matrix Operations", "min_depth": 2}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Mental calculation strategies", "min_depth": 3}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Multiplication Tables", "min_depth": 3}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Number Properties", "min_depth": 3}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Number Sense", "min_depth": 3}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "NumberTheory", "min_depth": 3}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Place Value", "min_depth": 3}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Place Value System", "min_depth": 3}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Polynomial Division", "min_depth": 3}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Polynomial Equations", "min_depth": 3}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Polynomial Functions", "min_depth": 3}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Polynomials", "min_depth": 3}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Polynomials and Factoring", "min_depth": 2}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Quadratic Equations", "min_depth": 1}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Rational Root Theorem", "min_depth": 3}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Ratios and Proportions", "min_depth": 2}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Reflections", "min_depth": 3}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Remainder Theorem", "min_depth": 3}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Roots of Equations", "min_depth": 3}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Scientific Notation", "min_depth": 3}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Simple Equations", "min_depth": 2}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Synthetic Division", "min_depth": 3}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Systems of Equations", "min_depth": 2}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Transformations", "min_depth": 3}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Trigonometry", "min_depth": 3}
+{"descendant_skill": "Sequences and Series", "ancestor_skill": "Vectors", "min_depth": 3}
 {"descendant_skill": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "ancestor_skill": "Algebra", "min_depth": 1}
 {"descendant_skill": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "ancestor_skill": "Algebraic Identities", "min_depth": 2}
 {"descendant_skill": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "ancestor_skill": "Analytic Geometry", "min_depth": 3}
@@ -1046,14 +1132,12 @@
 {"descendant_skill": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "ancestor_skill": "Basic Operations (+, -, ×, ÷)", "min_depth": 1}
 {"descendant_skill": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "ancestor_skill": "Basic Transformations", "min_depth": 3}
 {"descendant_skill": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "ancestor_skill": "Basic arithmetic operations", "min_depth": 2}
-{"descendant_skill": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "ancestor_skill": "Basic number sense", "min_depth": 3}
 {"descendant_skill": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "ancestor_skill": "Binomial Theorem", "min_depth": 2}
 {"descendant_skill": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "ancestor_skill": "Coordinate Geometry", "min_depth": 2}
 {"descendant_skill": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "ancestor_skill": "Coordinate System", "min_depth": 3}
 {"descendant_skill": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "ancestor_skill": "Decimal Operations", "min_depth": 2}
 {"descendant_skill": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "ancestor_skill": "Descartes' Rule of Signs", "min_depth": 2}
 {"descendant_skill": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "ancestor_skill": "Determinants", "min_depth": 2}
-{"descendant_skill": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "ancestor_skill": "Divisibility Rules", "min_depth": 2}
 {"descendant_skill": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "ancestor_skill": "Exponential Functions", "min_depth": 3}
 {"descendant_skill": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "ancestor_skill": "Exponents", "min_depth": 2}
 {"descendant_skill": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "ancestor_skill": "Exponents and Radicals", "min_depth": 2}
@@ -1072,9 +1156,7 @@
 {"descendant_skill": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "ancestor_skill": "Matrices", "min_depth": 2}
 {"descendant_skill": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "ancestor_skill": "Matrix Operations", "min_depth": 2}
 {"descendant_skill": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "ancestor_skill": "Mental calculation strategies", "min_depth": 2}
-{"descendant_skill": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "ancestor_skill": "Modular Arithmetic", "min_depth": 3}
 {"descendant_skill": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "ancestor_skill": "Multiplication Tables", "min_depth": 2}
-{"descendant_skill": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "ancestor_skill": "Number Bases", "min_depth": 2}
 {"descendant_skill": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "ancestor_skill": "Number Properties", "min_depth": 2}
 {"descendant_skill": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "ancestor_skill": "Number Sense", "min_depth": 2}
 {"descendant_skill": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "ancestor_skill": "NumberTheory", "min_depth": 1}
@@ -1098,6 +1180,55 @@
 {"descendant_skill": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "ancestor_skill": "Transformations", "min_depth": 3}
 {"descendant_skill": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "ancestor_skill": "Trigonometry", "min_depth": 3}
 {"descendant_skill": "Shunyam Saamyasamuccaye (When Samuccaya is Same, It is Zero)", "ancestor_skill": "Vectors", "min_depth": 3}
+{"descendant_skill": "Simple and Compound Interest", "ancestor_skill": "Algebra", "min_depth": 2}
+{"descendant_skill": "Simple and Compound Interest", "ancestor_skill": "Arithmetic", "min_depth": 2}
+{"descendant_skill": "Simple and Compound Interest", "ancestor_skill": "Basic Operations (+, -, ×, ÷)", "min_depth": 2}
+{"descendant_skill": "Simple and Compound Interest", "ancestor_skill": "Basic arithmetic operations", "min_depth": 3}
+{"descendant_skill": "Simple and Compound Interest", "ancestor_skill": "Decimal Operations", "min_depth": 3}
+{"descendant_skill": "Simple and Compound Interest", "ancestor_skill": "Determinants", "min_depth": 2}
+{"descendant_skill": "Simple and Compound Interest", "ancestor_skill": "Exponents", "min_depth": 3}
+{"descendant_skill": "Simple and Compound Interest", "ancestor_skill": "Fractions", "min_depth": 2}
+{"descendant_skill": "Simple and Compound Interest", "ancestor_skill": "Fractions and Decimals", "min_depth": 1}
+{"descendant_skill": "Simple and Compound Interest", "ancestor_skill": "Linear Equations", "min_depth": 1}
+{"descendant_skill": "Simple and Compound Interest", "ancestor_skill": "Long Division", "min_depth": 3}
+{"descendant_skill": "Simple and Compound Interest", "ancestor_skill": "Matrices", "min_depth": 2}
+{"descendant_skill": "Simple and Compound Interest", "ancestor_skill": "Matrix Operations", "min_depth": 2}
+{"descendant_skill": "Simple and Compound Interest", "ancestor_skill": "Mental calculation strategies", "min_depth": 3}
+{"descendant_skill": "Simple and Compound Interest", "ancestor_skill": "Multiplication Tables", "min_depth": 3}
+{"descendant_skill": "Simple and Compound Interest", "ancestor_skill": "Number Properties", "min_depth": 3}
+{"descendant_skill": "Simple and Compound Interest", "ancestor_skill": "Number Sense", "min_depth": 3}
+{"descendant_skill": "Simple and Compound Interest", "ancestor_skill": "NumberTheory", "min_depth": 2}
+{"descendant_skill": "Simple and Compound Interest", "ancestor_skill": "Percentages", "min_depth": 1}
+{"descendant_skill": "Simple and Compound Interest", "ancestor_skill": "Place Value", "min_depth": 3}
+{"descendant_skill": "Simple and Compound Interest", "ancestor_skill": "Place Value System", "min_depth": 3}
+{"descendant_skill": "Simple and Compound Interest", "ancestor_skill": "Ratios and Proportions", "min_depth": 2}
+{"descendant_skill": "Simple and Compound Interest", "ancestor_skill": "Scientific Notation", "min_depth": 3}
+{"descendant_skill": "Simple and Compound Interest", "ancestor_skill": "Simple Equations", "min_depth": 2}
+{"descendant_skill": "Simple and Compound Interest", "ancestor_skill": "Systems of Equations", "min_depth": 2}
+{"descendant_skill": "Speed, Time, Distance", "ancestor_skill": "Algebra", "min_depth": 2}
+{"descendant_skill": "Speed, Time, Distance", "ancestor_skill": "Arithmetic", "min_depth": 2}
+{"descendant_skill": "Speed, Time, Distance", "ancestor_skill": "Basic Operations (+, -, ×, ÷)", "min_depth": 2}
+{"descendant_skill": "Speed, Time, Distance", "ancestor_skill": "Basic arithmetic operations", "min_depth": 3}
+{"descendant_skill": "Speed, Time, Distance", "ancestor_skill": "Decimal Operations", "min_depth": 3}
+{"descendant_skill": "Speed, Time, Distance", "ancestor_skill": "Determinants", "min_depth": 2}
+{"descendant_skill": "Speed, Time, Distance", "ancestor_skill": "Exponents", "min_depth": 3}
+{"descendant_skill": "Speed, Time, Distance", "ancestor_skill": "Fractions", "min_depth": 2}
+{"descendant_skill": "Speed, Time, Distance", "ancestor_skill": "Fractions and Decimals", "min_depth": 2}
+{"descendant_skill": "Speed, Time, Distance", "ancestor_skill": "Linear Equations", "min_depth": 1}
+{"descendant_skill": "Speed, Time, Distance", "ancestor_skill": "Long Division", "min_depth": 3}
+{"descendant_skill": "Speed, Time, Distance", "ancestor_skill": "Matrices", "min_depth": 2}
+{"descendant_skill": "Speed, Time, Distance", "ancestor_skill": "Matrix Operations", "min_depth": 2}
+{"descendant_skill": "Speed, Time, Distance", "ancestor_skill": "Mental calculation strategies", "min_depth": 3}
+{"descendant_skill": "Speed, Time, Distance", "ancestor_skill": "Multiplication Tables", "min_depth": 3}
+{"descendant_skill": "Speed, Time, Distance", "ancestor_skill": "Number Properties", "min_depth": 3}
+{"descendant_skill": "Speed, Time, Distance", "ancestor_skill": "Number Sense", "min_depth": 3}
+{"descendant_skill": "Speed, Time, Distance", "ancestor_skill": "NumberTheory", "min_depth": 3}
+{"descendant_skill": "Speed, Time, Distance", "ancestor_skill": "Place Value", "min_depth": 3}
+{"descendant_skill": "Speed, Time, Distance", "ancestor_skill": "Place Value System", "min_depth": 3}
+{"descendant_skill": "Speed, Time, Distance", "ancestor_skill": "Ratios and Proportions", "min_depth": 1}
+{"descendant_skill": "Speed, Time, Distance", "ancestor_skill": "Scientific Notation", "min_depth": 3}
+{"descendant_skill": "Speed, Time, Distance", "ancestor_skill": "Simple Equations", "min_depth": 2}
+{"descendant_skill": "Speed, Time, Distance", "ancestor_skill": "Systems of Equations", "min_depth": 2}
 {"descendant_skill": "Triangles", "ancestor_skill": "Algebra", "min_depth": 1}
 {"descendant_skill": "Triangles", "ancestor_skill": "Analytic Geometry", "min_depth": 2}
 {"descendant_skill": "Triangles", "ancestor_skill": "Angle Measurement", "min_depth": 1}
@@ -1106,12 +1237,10 @@
 {"descendant_skill": "Triangles", "ancestor_skill": "Basic Operations (+, -, ×, ÷)", "min_depth": 1}
 {"descendant_skill": "Triangles", "ancestor_skill": "Basic Transformations", "min_depth": 2}
 {"descendant_skill": "Triangles", "ancestor_skill": "Basic arithmetic operations", "min_depth": 2}
-{"descendant_skill": "Triangles", "ancestor_skill": "Basic number sense", "min_depth": 3}
 {"descendant_skill": "Triangles", "ancestor_skill": "Coordinate Geometry", "min_depth": 1}
 {"descendant_skill": "Triangles", "ancestor_skill": "Coordinate System", "min_depth": 2}
 {"descendant_skill": "Triangles", "ancestor_skill": "Decimal Operations", "min_depth": 2}
 {"descendant_skill": "Triangles", "ancestor_skill": "Determinants", "min_depth": 3}
-{"descendant_skill": "Triangles", "ancestor_skill": "Divisibility Rules", "min_depth": 2}
 {"descendant_skill": "Triangles", "ancestor_skill": "Exponents", "min_depth": 2}
 {"descendant_skill": "Triangles", "ancestor_skill": "Fractions", "min_depth": 3}
 {"descendant_skill": "Triangles", "ancestor_skill": "Fractions and Decimals", "min_depth": 2}
@@ -1122,9 +1251,7 @@
 {"descendant_skill": "Triangles", "ancestor_skill": "Matrices", "min_depth": 3}
 {"descendant_skill": "Triangles", "ancestor_skill": "Matrix Operations", "min_depth": 3}
 {"descendant_skill": "Triangles", "ancestor_skill": "Mental calculation strategies", "min_depth": 2}
-{"descendant_skill": "Triangles", "ancestor_skill": "Modular Arithmetic", "min_depth": 3}
 {"descendant_skill": "Triangles", "ancestor_skill": "Multiplication Tables", "min_depth": 2}
-{"descendant_skill": "Triangles", "ancestor_skill": "Number Bases", "min_depth": 2}
 {"descendant_skill": "Triangles", "ancestor_skill": "Number Properties", "min_depth": 2}
 {"descendant_skill": "Triangles", "ancestor_skill": "Number Sense", "min_depth": 2}
 {"descendant_skill": "Triangles", "ancestor_skill": "NumberTheory", "min_depth": 2}
@@ -1151,7 +1278,6 @@
 {"descendant_skill": "Trigonometric Equations", "ancestor_skill": "Basic Transformations", "min_depth": 2}
 {"descendant_skill": "Trigonometric Equations", "ancestor_skill": "Basic Trigonometric Ratios", "min_depth": 3}
 {"descendant_skill": "Trigonometric Equations", "ancestor_skill": "Basic arithmetic operations", "min_depth": 3}
-{"descendant_skill": "Trigonometric Equations", "ancestor_skill": "Basic number sense", "min_depth": 4}
 {"descendant_skill": "Trigonometric Equations", "ancestor_skill": "Binomial Theorem", "min_depth": 5}
 {"descendant_skill": "Trigonometric Equations", "ancestor_skill": "Complex Numbers", "min_depth": 3}
 {"descendant_skill": "Trigonometric Equations", "ancestor_skill": "Coordinate Geometry", "min_depth": 1}
@@ -1159,7 +1285,6 @@
 {"descendant_skill": "Trigonometric Equations", "ancestor_skill": "Decimal Operations", "min_depth": 3}
 {"descendant_skill": "Trigonometric Equations", "ancestor_skill": "Descartes' Rule of Signs", "min_depth": 5}
 {"descendant_skill": "Trigonometric Equations", "ancestor_skill": "Determinants", "min_depth": 3}
-{"descendant_skill": "Trigonometric Equations", "ancestor_skill": "Divisibility Rules", "min_depth": 3}
 {"descendant_skill": "Trigonometric Equations", "ancestor_skill": "Exponents", "min_depth": 3}
 {"descendant_skill": "Trigonometric Equations", "ancestor_skill": "Exponents and Radicals", "min_depth": 5}
 {"descendant_skill": "Trigonometric Equations", "ancestor_skill": "Factor Theorem", "min_depth": 5}
@@ -1179,9 +1304,7 @@
 {"descendant_skill": "Trigonometric Equations", "ancestor_skill": "Matrices", "min_depth": 3}
 {"descendant_skill": "Trigonometric Equations", "ancestor_skill": "Matrix Operations", "min_depth": 3}
 {"descendant_skill": "Trigonometric Equations", "ancestor_skill": "Mental calculation strategies", "min_depth": 3}
-{"descendant_skill": "Trigonometric Equations", "ancestor_skill": "Modular Arithmetic", "min_depth": 4}
 {"descendant_skill": "Trigonometric Equations", "ancestor_skill": "Multiplication Tables", "min_depth": 3}
-{"descendant_skill": "Trigonometric Equations", "ancestor_skill": "Number Bases", "min_depth": 3}
 {"descendant_skill": "Trigonometric Equations", "ancestor_skill": "Number Properties", "min_depth": 3}
 {"descendant_skill": "Trigonometric Equations", "ancestor_skill": "Number Sense", "min_depth": 3}
 {"descendant_skill": "Trigonometric Equations", "ancestor_skill": "NumberTheory", "min_depth": 3}
@@ -1221,7 +1344,6 @@
 {"descendant_skill": "Trigonometric Identities", "ancestor_skill": "Basic Transformations", "min_depth": 3}
 {"descendant_skill": "Trigonometric Identities", "ancestor_skill": "Basic Trigonometric Ratios", "min_depth": 1}
 {"descendant_skill": "Trigonometric Identities", "ancestor_skill": "Basic arithmetic operations", "min_depth": 4}
-{"descendant_skill": "Trigonometric Identities", "ancestor_skill": "Basic number sense", "min_depth": 5}
 {"descendant_skill": "Trigonometric Identities", "ancestor_skill": "Binomial Theorem", "min_depth": 3}
 {"descendant_skill": "Trigonometric Identities", "ancestor_skill": "Complex Numbers", "min_depth": 1}
 {"descendant_skill": "Trigonometric Identities", "ancestor_skill": "Coordinate Geometry", "min_depth": 2}
@@ -1229,7 +1351,6 @@
 {"descendant_skill": "Trigonometric Identities", "ancestor_skill": "Decimal Operations", "min_depth": 4}
 {"descendant_skill": "Trigonometric Identities", "ancestor_skill": "Descartes' Rule of Signs", "min_depth": 3}
 {"descendant_skill": "Trigonometric Identities", "ancestor_skill": "Determinants", "min_depth": 4}
-{"descendant_skill": "Trigonometric Identities", "ancestor_skill": "Divisibility Rules", "min_depth": 4}
 {"descendant_skill": "Trigonometric Identities", "ancestor_skill": "Exponential Functions", "min_depth": 4}
 {"descendant_skill": "Trigonometric Identities", "ancestor_skill": "Exponents", "min_depth": 4}
 {"descendant_skill": "Trigonometric Identities", "ancestor_skill": "Exponents and Radicals", "min_depth": 3}
@@ -1248,9 +1369,7 @@
 {"descendant_skill": "Trigonometric Identities", "ancestor_skill": "Matrices", "min_depth": 4}
 {"descendant_skill": "Trigonometric Identities", "ancestor_skill": "Matrix Operations", "min_depth": 3}
 {"descendant_skill": "Trigonometric Identities", "ancestor_skill": "Mental calculation strategies", "min_depth": 4}
-{"descendant_skill": "Trigonometric Identities", "ancestor_skill": "Modular Arithmetic", "min_depth": 5}
 {"descendant_skill": "Trigonometric Identities", "ancestor_skill": "Multiplication Tables", "min_depth": 4}
-{"descendant_skill": "Trigonometric Identities", "ancestor_skill": "Number Bases", "min_depth": 4}
 {"descendant_skill": "Trigonometric Identities", "ancestor_skill": "Number Properties", "min_depth": 4}
 {"descendant_skill": "Trigonometric Identities", "ancestor_skill": "Number Sense", "min_depth": 4}
 {"descendant_skill": "Trigonometric Identities", "ancestor_skill": "NumberTheory", "min_depth": 3}
@@ -1281,12 +1400,10 @@
 {"descendant_skill": "Trigonometric Ratios", "ancestor_skill": "Basic Operations (+, -, ×, ÷)", "min_depth": 3}
 {"descendant_skill": "Trigonometric Ratios", "ancestor_skill": "Basic Transformations", "min_depth": 2}
 {"descendant_skill": "Trigonometric Ratios", "ancestor_skill": "Basic arithmetic operations", "min_depth": 4}
-{"descendant_skill": "Trigonometric Ratios", "ancestor_skill": "Basic number sense", "min_depth": 5}
 {"descendant_skill": "Trigonometric Ratios", "ancestor_skill": "Coordinate Geometry", "min_depth": 1}
 {"descendant_skill": "Trigonometric Ratios", "ancestor_skill": "Coordinate System", "min_depth": 2}
 {"descendant_skill": "Trigonometric Ratios", "ancestor_skill": "Decimal Operations", "min_depth": 4}
 {"descendant_skill": "Trigonometric Ratios", "ancestor_skill": "Determinants", "min_depth": 3}
-{"descendant_skill": "Trigonometric Ratios", "ancestor_skill": "Divisibility Rules", "min_depth": 4}
 {"descendant_skill": "Trigonometric Ratios", "ancestor_skill": "Exponents", "min_depth": 4}
 {"descendant_skill": "Trigonometric Ratios", "ancestor_skill": "Fractions", "min_depth": 3}
 {"descendant_skill": "Trigonometric Ratios", "ancestor_skill": "Fractions and Decimals", "min_depth": 3}
@@ -1298,9 +1415,7 @@
 {"descendant_skill": "Trigonometric Ratios", "ancestor_skill": "Matrices", "min_depth": 3}
 {"descendant_skill": "Trigonometric Ratios", "ancestor_skill": "Matrix Operations", "min_depth": 3}
 {"descendant_skill": "Trigonometric Ratios", "ancestor_skill": "Mental calculation strategies", "min_depth": 4}
-{"descendant_skill": "Trigonometric Ratios", "ancestor_skill": "Modular Arithmetic", "min_depth": 5}
 {"descendant_skill": "Trigonometric Ratios", "ancestor_skill": "Multiplication Tables", "min_depth": 4}
-{"descendant_skill": "Trigonometric Ratios", "ancestor_skill": "Number Bases", "min_depth": 4}
 {"descendant_skill": "Trigonometric Ratios", "ancestor_skill": "Number Properties", "min_depth": 4}
 {"descendant_skill": "Trigonometric Ratios", "ancestor_skill": "Number Sense", "min_depth": 4}
 {"descendant_skill": "Trigonometric Ratios", "ancestor_skill": "NumberTheory", "min_depth": 4}
@@ -1332,7 +1447,6 @@
 {"descendant_skill": "Urdhva Tiryagbhyam (Vertically and Crosswise)", "ancestor_skill": "Decimal Operations", "min_depth": 2}
 {"descendant_skill": "Urdhva Tiryagbhyam (Vertically and Crosswise)", "ancestor_skill": "Descartes' Rule of Signs", "min_depth": 2}
 {"descendant_skill": "Urdhva Tiryagbhyam (Vertically and Crosswise)", "ancestor_skill": "Determinants", "min_depth": 3}
-{"descendant_skill": "Urdhva Tiryagbhyam (Vertically and Crosswise)", "ancestor_skill": "Divisibility Rules", "min_depth": 2}
 {"descendant_skill": "Urdhva Tiryagbhyam (Vertically and Crosswise)", "ancestor_skill": "Exponential Functions", "min_depth": 2}
 {"descendant_skill": "Urdhva Tiryagbhyam (Vertically and Crosswise)", "ancestor_skill": "Exponents", "min_depth": 1}
 {"descendant_skill": "Urdhva Tiryagbhyam (Vertically and Crosswise)", "ancestor_skill": "Exponents and Radicals", "min_depth": 1}
@@ -1352,7 +1466,6 @@
 {"descendant_skill": "Urdhva Tiryagbhyam (Vertically and Crosswise)", "ancestor_skill": "Matrices", "min_depth": 3}
 {"descendant_skill": "Urdhva Tiryagbhyam (Vertically and Crosswise)", "ancestor_skill": "Matrix Operations", "min_depth": 2}
 {"descendant_skill": "Urdhva Tiryagbhyam (Vertically and Crosswise)", "ancestor_skill": "Mental calculation strategies", "min_depth": 2}
-{"descendant_skill": "Urdhva Tiryagbhyam (Vertically and Crosswise)", "ancestor_skill": "Modular Arithmetic", "min_depth": 3}
 {"descendant_skill": "Urdhva Tiryagbhyam (Vertically and Crosswise)", "ancestor_skill": "Multiplication", "min_depth": 1}
 {"descendant_skill": "Urdhva Tiryagbhyam (Vertically and Crosswise)", "ancestor_skill": "Multiplication Tables", "min_depth": 2}
 {"descendant_skill": "Urdhva Tiryagbhyam (Vertically and Crosswise)", "ancestor_skill": "Number Bases", "min_depth": 1}
@@ -1387,14 +1500,12 @@
 {"descendant_skill": "VedicMath", "ancestor_skill": "Basic Operations (+, -, ×, ÷)", "min_depth": 2}
 {"descendant_skill": "VedicMath", "ancestor_skill": "Basic Transformations", "min_depth": 3}
 {"descendant_skill": "VedicMath", "ancestor_skill": "Basic arithmetic operations", "min_depth": 3}
-{"descendant_skill": "VedicMath", "ancestor_skill": "Basic number sense", "min_depth": 4}
 {"descendant_skill": "VedicMath", "ancestor_skill": "Binomial Theorem", "min_depth": 1}
 {"descendant_skill": "VedicMath", "ancestor_skill": "Coordinate Geometry", "min_depth": 2}
 {"descendant_skill": "VedicMath", "ancestor_skill": "Coordinate System", "min_depth": 3}
 {"descendant_skill": "VedicMath", "ancestor_skill": "Decimal Operations", "min_depth": 3}
 {"descendant_skill": "VedicMath", "ancestor_skill": "Descartes' Rule of Signs", "min_depth": 2}
 {"descendant_skill": "VedicMath", "ancestor_skill": "Determinants", "min_depth": 2}
-{"descendant_skill": "VedicMath", "ancestor_skill": "Divisibility Rules", "min_depth": 3}
 {"descendant_skill": "VedicMath", "ancestor_skill": "Exponential Functions", "min_depth": 2}
 {"descendant_skill": "VedicMath", "ancestor_skill": "Exponents", "min_depth": 2}
 {"descendant_skill": "VedicMath", "ancestor_skill": "Exponents and Radicals", "min_depth": 1}
@@ -1413,9 +1524,7 @@
 {"descendant_skill": "VedicMath", "ancestor_skill": "Matrices", "min_depth": 2}
 {"descendant_skill": "VedicMath", "ancestor_skill": "Matrix Operations", "min_depth": 2}
 {"descendant_skill": "VedicMath", "ancestor_skill": "Mental calculation strategies", "min_depth": 3}
-{"descendant_skill": "VedicMath", "ancestor_skill": "Modular Arithmetic", "min_depth": 4}
 {"descendant_skill": "VedicMath", "ancestor_skill": "Multiplication Tables", "min_depth": 3}
-{"descendant_skill": "VedicMath", "ancestor_skill": "Number Bases", "min_depth": 3}
 {"descendant_skill": "VedicMath", "ancestor_skill": "Number Properties", "min_depth": 3}
 {"descendant_skill": "VedicMath", "ancestor_skill": "Number Sense", "min_depth": 3}
 {"descendant_skill": "VedicMath", "ancestor_skill": "NumberTheory", "min_depth": 2}
@@ -1439,3 +1548,27 @@
 {"descendant_skill": "VedicMath", "ancestor_skill": "Transformations", "min_depth": 3}
 {"descendant_skill": "VedicMath", "ancestor_skill": "Trigonometry", "min_depth": 3}
 {"descendant_skill": "VedicMath", "ancestor_skill": "Vectors", "min_depth": 3}
+{"descendant_skill": "Work and Time", "ancestor_skill": "Algebra", "min_depth": 2}
+{"descendant_skill": "Work and Time", "ancestor_skill": "Arithmetic", "min_depth": 2}
+{"descendant_skill": "Work and Time", "ancestor_skill": "Basic Operations (+, -, ×, ÷)", "min_depth": 2}
+{"descendant_skill": "Work and Time", "ancestor_skill": "Basic arithmetic operations", "min_depth": 3}
+{"descendant_skill": "Work and Time", "ancestor_skill": "Decimal Operations", "min_depth": 3}
+{"descendant_skill": "Work and Time", "ancestor_skill": "Determinants", "min_depth": 2}
+{"descendant_skill": "Work and Time", "ancestor_skill": "Exponents", "min_depth": 3}
+{"descendant_skill": "Work and Time", "ancestor_skill": "Fractions", "min_depth": 2}
+{"descendant_skill": "Work and Time", "ancestor_skill": "Fractions and Decimals", "min_depth": 1}
+{"descendant_skill": "Work and Time", "ancestor_skill": "Linear Equations", "min_depth": 1}
+{"descendant_skill": "Work and Time", "ancestor_skill": "Long Division", "min_depth": 3}
+{"descendant_skill": "Work and Time", "ancestor_skill": "Matrices", "min_depth": 2}
+{"descendant_skill": "Work and Time", "ancestor_skill": "Matrix Operations", "min_depth": 2}
+{"descendant_skill": "Work and Time", "ancestor_skill": "Mental calculation strategies", "min_depth": 3}
+{"descendant_skill": "Work and Time", "ancestor_skill": "Multiplication Tables", "min_depth": 3}
+{"descendant_skill": "Work and Time", "ancestor_skill": "Number Properties", "min_depth": 3}
+{"descendant_skill": "Work and Time", "ancestor_skill": "Number Sense", "min_depth": 3}
+{"descendant_skill": "Work and Time", "ancestor_skill": "NumberTheory", "min_depth": 2}
+{"descendant_skill": "Work and Time", "ancestor_skill": "Place Value", "min_depth": 3}
+{"descendant_skill": "Work and Time", "ancestor_skill": "Place Value System", "min_depth": 3}
+{"descendant_skill": "Work and Time", "ancestor_skill": "Ratios and Proportions", "min_depth": 1}
+{"descendant_skill": "Work and Time", "ancestor_skill": "Scientific Notation", "min_depth": 3}
+{"descendant_skill": "Work and Time", "ancestor_skill": "Simple Equations", "min_depth": 2}
+{"descendant_skill": "Work and Time", "ancestor_skill": "Systems of Equations", "min_depth": 2}

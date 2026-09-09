@@ -1,0 +1,26 @@
+{
+ "removed_utc": "2026-09-09",
+ "reason": "Cycle break. These two edges assert that Basic Operations (+,-,x,/) REQUIRES Divisibility Rules and Number Bases — i.e. that the foundation of arithmetic must be taught AFTER two topics that are built on it. Together they close all 11 cyclic traversals among Basic Operations / Divisibility Rules / Number Bases / Modular Arithmetic. The three inbound edges (Divisibility Rules, Number Bases and Modular Arithmetic each REQUIRES Basic Operations) are kept: they run the correct way.",
+ "note_on_support": "Both carry chain_derived support (5 and 3), so the corpus really does assert them — 5 templates taught Basic Operations and named Divisibility Rules as a prerequisite. A support-ranked cycle-breaker would therefore have kept BO -> Divisibility Rules and dropped the correct arm. Direction here is decided on pedagogy, not on counts.",
+ "edges": [
+  {
+   "from": "Basic Operations (+, -, ×, ÷)",
+   "to": "Divisibility Rules",
+   "properties": {
+    "source": "chain_derived",
+    "created_by": "skill_dag_builder_v1",
+    "support": 5
+   }
+  },
+  {
+   "from": "Basic Operations (+, -, ×, ÷)",
+   "to": "Number Bases",
+   "properties": {
+    "source": "chain_derived",
+    "created_by": "skill_dag_builder_v1",
+    "support": 3
+   }
+  }
+ ],
+ "restore_cypher": "MATCH (a:Skill {name: \"Basic Operations (+, -, \\u00d7, \\u00f7)\"}), (b:Skill {name: \"Divisibility Rules\"})\nMERGE (a)-[r:REQUIRES]->(b) SET r += {\"source\": \"chain_derived\", \"created_by\": \"skill_dag_builder_v1\", \"support\": 5};\nMATCH (a:Skill {name: \"Basic Operations (+, -, \\u00d7, \\u00f7)\"}), (b:Skill {name: \"Number Bases\"})\nMERGE (a)-[r:REQUIRES]->(b) SET r += {\"source\": \"chain_derived\", \"created_by\": \"skill_dag_builder_v1\", \"support\": 3};"
+}

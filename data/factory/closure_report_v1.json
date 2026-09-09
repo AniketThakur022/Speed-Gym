@@ -1,20 +1,20 @@
 {
  "skills_in_dag": 126,
- "closure_rows": 1544,
+ "closure_rows": 1574,
  "depth_distribution": {
-  "1": 262,
-  "2": 718,
-  "3": 350,
-  "4": 152,
-  "5": 62
+  "1": 277,
+  "2": 709,
+  "3": 421,
+  "4": 125,
+  "5": 42
  },
  "ancestors_per_skill": {
-  "mean": 12.25,
+  "mean": 12.49,
   "median": 0.0,
-  "max": 76,
-  "zero": 86
+  "max": 69,
+  "zero": 78
  },
- "problem_requirements_rows": 2457,
+ "problem_requirements_rows": 2439,
  "max_depth_cap": 5,
  "note": "Offline equivalent of Strategy A; live run must reproduce these counts (shadow-table diff) before promotion — see sync_manifest protocol.",
  "decline_log": {
